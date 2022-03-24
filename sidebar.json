@@ -1,0 +1,315 @@
+[
+  {
+    "text": "CS",
+    "collapsible": true,
+    "items": [
+      {
+        "text": "HTML",
+        "level": 4,
+        "link": "/CS/HTML"
+      },
+      {
+        "text": "CSS",
+        "level": 4,
+        "link": "/CS/CSS"
+      },
+      {
+        "text": "JavaScript",
+        "level": 4,
+        "link": "/CS/JavaScript"
+      },
+      {
+        "text": "Web API",
+        "level": 4,
+        "link": "/CS/Web API"
+      },
+      {
+        "text": "Node.js",
+        "level": 4,
+        "link": "/CS/Node.js"
+      },
+      {
+        "text": "Vue.js",
+        "level": 4,
+        "link": "/CS/Vue.js"
+      },
+      {
+        "text": "Vue Ecosystem",
+        "level": 5,
+        "link": "/CS/Vue Ecosystem"
+      },
+      {
+        "text": "数据交换格式",
+        "level": 4,
+        "link": "/CS/数据交换格式"
+      },
+      {
+        "text": "网络（Network）",
+        "level": 4,
+        "link": "/CS/网络（Network）"
+      },
+      {
+        "text": "Python",
+        "level": 3,
+        "link": "/CS/Python"
+      },
+      {
+        "text": "Pythonic",
+        "level": 4,
+        "link": "/CS/Pythonic"
+      },
+      {
+        "text": "Python Lib",
+        "level": 4,
+        "link": "/CS/Python Lib"
+      },
+      {
+        "text": "PyPI",
+        "level": 4,
+        "link": "/CS/PyPI"
+      },
+      {
+        "text": "Py Web",
+        "level": 4,
+        "link": "/CS/Py Web"
+      },
+      {
+        "text": "Java",
+        "level": 3,
+        "link": "/CS/Java"
+      },
+      {
+        "text": "Java Advance",
+        "level": 4,
+        "link": "/CS/Java Advance"
+      },
+      {
+        "text": "Java API",
+        "level": 4,
+        "link": "/CS/Java API"
+      },
+      {
+        "text": "Spring",
+        "level": 4,
+        "link": "/CS/Spring"
+      },
+      {
+        "text": "Java Framework",
+        "level": 4,
+        "link": "/CS/Java Framework"
+      },
+      {
+        "text": "Design Patterns",
+        "level": 4,
+        "link": "/CS/Design Patterns"
+      },
+      {
+        "text": "Operating System",
+        "level": 3,
+        "link": "/CS/Operating System"
+      },
+      {
+        "text": "Windows",
+        "level": 4,
+        "link": "/CS/Windows"
+      },
+      {
+        "text": "Microsoft",
+        "level": 5,
+        "link": "/CS/Microsoft"
+      },
+      {
+        "text": "PowerShell",
+        "level": 5,
+        "link": "/CS/PowerShell"
+      },
+      {
+        "text": "Batch",
+        "level": 5,
+        "link": "/CS/Batch"
+      },
+      {
+        "text": "善假于键",
+        "level": 5,
+        "link": "/CS/善假于键"
+      },
+      {
+        "text": "注册表（Registry）",
+        "level": 5,
+        "link": "/CS/注册表（Registry）"
+      },
+      {
+        "text": "Linux",
+        "level": 4,
+        "link": "/CS/Linux"
+      },
+      {
+        "text": "Command",
+        "level": 5,
+        "link": "/CS/Command"
+      },
+      {
+        "text": "Bash",
+        "level": 5,
+        "link": "/CS/Bash"
+      },
+      {
+        "text": "Docker",
+        "level": 4,
+        "link": "/CS/Docker"
+      },
+      {
+        "text": "Kubernetes",
+        "level": 5,
+        "link": "/CS/Kubernetes"
+      },
+      {
+        "text": "Git",
+        "level": 4,
+        "link": "/CS/Git"
+      },
+      {
+        "text": "Github",
+        "level": 5,
+        "link": "/CS/Github"
+      },
+      {
+        "text": "Android",
+        "level": 4,
+        "link": "/CS/Android"
+      },
+      {
+        "text": "Android SDK",
+        "level": 5,
+        "link": "/CS/Android SDK"
+      },
+      {
+        "text": "SSH",
+        "level": 4,
+        "link": "/CS/SSH"
+      },
+      {
+        "text": "C",
+        "level": 3,
+        "link": "/CS/C"
+      },
+      {
+        "text": "C++",
+        "level": 4,
+        "link": "/CS/C++"
+      },
+      {
+        "text": "Data Structure & Algorithm",
+        "level": 3,
+        "link": "/CS/Data Structure & Algorithm"
+      },
+      {
+        "text": "Data structure",
+        "level": 4,
+        "link": "/CS/Data structure"
+      },
+      {
+        "text": "Algorithm",
+        "level": 4,
+        "link": "/CS/Algorithm"
+      },
+      {
+        "text": "SQL",
+        "level": 3,
+        "link": "/CS/SQL"
+      },
+      {
+        "text": "MySQL",
+        "level": 4,
+        "link": "/CS/MySQL"
+      },
+      {
+        "text": "NoSQL",
+        "level": 4,
+        "link": "/CS/NoSQL"
+      }
+    ]
+  },
+  {
+    "text": "Software",
+    "collapsible": true,
+    "items": [
+      {
+        "text": "Application",
+        "level": 3,
+        "link": "/Software/Application"
+      },
+      {
+        "text": "API Collections",
+        "level": 3,
+        "link": "/Software/API Collections"
+      },
+      {
+        "text": "Chrome",
+        "level": 3,
+        "link": "/Software/Chrome"
+      },
+      {
+        "text": "Micro Office",
+        "level": 3,
+        "link": "/Software/Micro Office"
+      },
+      {
+        "text": "FFmpeg",
+        "level": 3,
+        "link": "/Software/FFmpeg"
+      }
+    ]
+  },
+  {
+    "text": "Universal",
+    "collapsible": true,
+    "items": [
+      {
+        "text": "UML",
+        "level": 3,
+        "link": "/Universal/UML"
+      },
+      {
+        "text": "Markdown",
+        "level": 3,
+        "link": "/Universal/Markdown"
+      },
+      {
+        "text": "Regular expression",
+        "level": 3,
+        "link": "/Universal/Regular expression"
+      },
+      {
+        "text": "编码 & 加密",
+        "level": 3,
+        "link": "/Universal/编码 & 加密"
+      },
+      {
+        "text": "Terminology",
+        "level": 3,
+        "link": "/Universal/Terminology"
+      },
+      {
+        "text": "QA",
+        "level": 3,
+        "link": "/Universal/QA"
+      },
+      {
+        "text": "Software",
+        "level": 3,
+        "link": "/Universal/Software"
+      },
+      {
+        "text": "Programming paradigm",
+        "level": 3,
+        "link": "/Universal/Programming paradigm"
+      },
+      {
+        "text": "Security",
+        "level": 3,
+        "link": "/Universal/Security"
+      }
+    ]
+  }
+]

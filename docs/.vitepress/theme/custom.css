@@ -1,0 +1,24 @@
+/* .vitepress/theme/custom.css */
+
+:root {
+    --vp-c-brand: #646cff;
+    --vp-c-brand-light: #747bff;
+
+    --vp-c-hover: #212121;
+    --vp-c-bg: #fff;
+}
+
+.dark {
+    --vp-c-bg: black;
+    --vp-c-text: white;
+    --vp-c-hover: #ffffff;
+}
+
+/* #app {
+    min-height: 100vh;
+    position: relative;
+} */
+
+.theme {
+    background-color: var(--vp-c-bg);
+}
