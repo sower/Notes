@@ -1,10 +1,10 @@
 
 # Pythonic
 > import this
-> ​  <br />  
+> 
 > The Zen of Python
 > by Tim Peters
-> ​  <br />  
+> 
 > Beautiful is better than ugly.
 > 优美胜于丑陋（Python 以编写优美的代码为目标）
 > Explicit is better than implicit.
@@ -40,13 +40,13 @@
 > Namespaces are one honking great idea -- let's do more of those!
 > 命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）
 
-​  <br />  
+
 ```python
 a > b > c
 
 a = c if c > b else b
 ```
-**​**
+
 
 **编码风格——**[**PEP 8**](https://www.python.org/dev/peps/pep-0008/)**（**Python Enhancement Proposal）
 
@@ -74,8 +74,6 @@ a = c if c > b else b
 - 不要在逗号, 分号, 冒号前面加空格, 但应该在它们后面加(行尾除外)
 - 在二元操作符两边都加上一个空格
 - 当’=’用于指示关键字参数或默认参数值时, 不要在其两侧使用空格
-
-​
 
 **文档字符串**  <br />  函数必须要有, 除非它外部不可见、非常短小、简单明了
 
@@ -114,7 +112,6 @@ def fetch_bigtable_rows(big_table, keys, other_silly_variable=None):
     """
     pass
 ```
-​
 
 如果一个类不继承自其它类, 就显式继承object，嵌套类也一样。
 ```python
@@ -137,14 +134,12 @@ class SampleClass(object):
     def public_method(self):
         """Performs operation blah."""
 ```
-​
 
 为临时代码使用**TODO注释**
 ```python
 # TODO(kl@gmail.com): Use a "*" here for string repetition.
 # TODO(Zeke) Change this to use relations.
 ```
-​
 
 pydoc以及单元测试要求模块必须是可导入的
 ```python
@@ -155,9 +150,9 @@ if __name__ == '__main__':
     main()
 ```
 
-  <br />  
-  <br />  
-  <br />  编程规范  <br />  ​
 
-与None作比较使用”is [not]“，不用等号  <br />  使用isinstance判断变量类型  <br />  若list成员个数可以预知，创建应预留正好容纳所有成员的空间  <br />  同一个函数/方法的所有分支返回语句必须统一为显示或隐式，不混合使用  <br />  使用单个下划线替代循环体中未使用的循环变量  <br />  
+
+编程规范
+
+与None作比较使用”is [not]“，不用等号  <br />  使用isinstance判断变量类型  <br />  若list成员个数可以预知，创建应预留正好容纳所有成员的空间  <br />  同一个函数/方法的所有分支返回语句必须统一为显示或隐式，不混合使用  <br />  使用单个下划线替代循环体中未使用的循环变量
 

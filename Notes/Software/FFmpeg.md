@@ -1,9 +1,8 @@
 
 
-
 # FFmpeg
 
-  <br />  [FFmpeg](https://ffmpeg.org/)是视频处理最常用的开源软件。  <br />  功能强大，用途广泛，大量用于视频网站和商业软件，也是许多音频和视频格式的标准编码/解码实现。
+[FFmpeg](https://ffmpeg.org/)是视频处理最常用的开源软件。  <br />  功能强大，用途广泛，大量用于视频网站和商业软件，也是许多音频和视频格式的标准编码/解码实现。
 
 容器：文件的后缀名反映了它的容器格式
 
@@ -53,7 +52,7 @@
 
 ##   <br />    <br />  CLI
 
-  <br />  **ffmpeg [global_options] {[input_file_options] -iinput_url} ... {[output_file_options] output_url} ...**
+**ffmpeg [global_options] {[input_file_options] -iinput_url} ... {[output_file_options] output_url} ...**
 
 **ffmpeg [全局参数] [输入文件参数] -i [输入文件] [输出文件参数] [输出文件]**
 ```shell
@@ -68,7 +67,6 @@ output.webm # 输出文件
 
 ffmpeg -i input.avi output.mp4
 ```
-​
 
 **常用参数**
 
@@ -111,13 +109,16 @@ ffmpeg -i input.avi output.mp4
 
 
 ### 查看文件（元）信息
-`ffmpeg -i input.mp4 [-hide_banner] `  <br />  ​  <br />  
+`ffmpeg -i input.mp4 [-hide_banner] `
+
 
 ### 转换编码格式（transcoding）
-`ffmpeg -i [input.file] -c:v libx264 output.mp4 `  <br />  ​  <br />  
+`ffmpeg -i [input.file] -c:v libx264 output.mp4 `
+
 
 ### 转换容器格式（transmuxing）
-`ffmpeg -i input.mp4 -c copy output.webm `  <br />  ​  <br />  
+`ffmpeg -i input.mp4 -c copy output.webm `
+
 
 ### 调整码率（transrating）
 改变编码的比特率，一般用来将视频文件的体积变小
@@ -129,7 +130,7 @@ ffmpeg \
 -minrate 964K -maxrate 3856K -bufsize 2000K \
 output.mp4
 ```
-​  <br />  
+
 
 ### 改变分辨率（transsizing）
 ```shell
@@ -138,7 +139,7 @@ ffmpeg \
 -vf scale=480:-1 \
 output.mp4
 ```
-​  <br />  
+
 
 ### 提取音频（demuxing）
 ```shell
@@ -149,7 +150,7 @@ output.aac
 
 # -vn表示去掉视频，-c:a copy表示不改变音频编码，直接拷贝
 ```
-​  <br />  
+
 
 ### 添加音轨（muxing）
 将外部音频加入视频，比如添加背景音乐或旁白。
@@ -178,10 +179,11 @@ output_%3d.jpg
 output.jpg
 # -vframes 1指定只截取一帧，-q:v 2表示输出的图片质量，一般是1到5之间（1 为质量最高）。
 ```
-​  <br />  
+
 
 ### 裁剪（cutting）
-截取视频中的一个片段，输出一个新视频。可指定开始时间（start）和持续时间（duration），也可以指定结束时间（end）  <br />  `ffmpeg -ss [start] -i [input] -t [duration] -c copy [output]`  <br />  `ffmpeg -ss [start] -i [input] -to [end] -c copy [output] `  <br />  ​  <br />  
+截取视频中的一个片段，输出一个新视频。可指定开始时间（start）和持续时间（duration），也可以指定结束时间（end）  <br />  `ffmpeg -ss [start] -i [input] -t [duration] -c copy [output]`  <br />  `ffmpeg -ss [start] -i [input] -to [end] -c copy [output] `
+
 
 ### 为音频添加封面
 ```shell
@@ -193,10 +195,11 @@ output.mp4
 
 # -loop 1参数表示图片无限循环，-shortest参数表示音频文件结束，输出视频就结束。
 ```
-​  <br />  
+
 
 ### 添加水印
-`ffmpeg -i input.mp4 -i mark.png -filter_complex overlay output.mp4 `  <br />  ​  <br />  
+`ffmpeg -i input.mp4 -i mark.png -filter_complex overlay output.mp4 `
+
 
 ### 文字水印
 ```shell
@@ -206,11 +209,13 @@ ffmpeg -i input.mp4 -i mark.png -filter_complex overlay output.mp4
 ffmpeg -i input.mp4 \
 -vf "drawtext=fontfile=simsunb.ttf: text='shuiying':x=100:y=10:fontsize=24:fontcolor=yellow:shadowy=2" output.mp4
 ```
-​
+
+
 
 
 # ffplay
-ffmpeg工程中提供的播放器，功能强大，不是图形化界面的，须通过键盘来操作  <br />  ​  <br />  
+ffmpeg工程中提供的播放器，功能强大，不是图形化界面的，须通过键盘来操作
+
 
 ## 快捷键
 | 按键 | 作用 |
@@ -225,7 +230,7 @@ ffmpeg工程中提供的播放器，功能强大，不是图形化界面的，�
 | page down/page up | 向后10min/向前10min |
 | 鼠标点击屏幕 | 跳转到指定位置（根据鼠标位置相对屏幕的宽度计算） |
 
-​  <br />  
+
 
 ## 选项
 | 名称 | 有参数 | 作用 |

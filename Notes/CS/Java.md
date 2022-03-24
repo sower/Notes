@@ -1,6 +1,6 @@
 
 # —— [Java](https://www.oracle.com/cn/java/) ——
-Java是由Sun Microsystems公司于1995年5月推出的Java面向对象程序设计语言和Java平台的总称。由James Gosling和同事们共同研发，并在1995年正式推出。  <br />  [
+Java是由Sun Microsystems公司于1995年5月推出的Java面向对象程序设计语言和Java平台的总称。由James Gosling和同事们共同研发，并在1995年正式推出。[
 
 ](https://www.oracle.com/cn/java/)  <br />  **分布式的、解释型的、动态的**  <br />  ![](https://www.runoob.com/wp-content/uploads/2013/12/ZSSDMld.png#crop=0&crop=0&crop=1&crop=1&id=T4lMm&originHeight=276&originWidth=619&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  **程序示例**
 ```java
@@ -11,7 +11,6 @@ public class Hello {
     }
 }
 ```
-​
 
 版本
 
@@ -20,8 +19,7 @@ public class Hello {
 - Java ME：Micro Edition
 
 
-  <br />  
-  <br />  配置环境变量
+配置环境变量
 ```java
 变量名：JAVA_HOME
 变量值：E:\Java\jdk   //安装路径
@@ -35,7 +33,6 @@ public class Hello {
 ```java
 bin\jlink.exe --module-path jmods --add-modules java.desktop --output jre
 ```
-​
 
 JDK：Java Development Kit
 
@@ -45,7 +42,7 @@ JDK：Java Development Kit
 - javadoc：用于从Java源码中自动提取注释并生成文档；
 - jdb：Java调试器，用于开发阶段的运行调试。
 
-JRE：Java Runtime Environment  <br />  
+JRE：Java Runtime Environment
 
 - JSR规范：Java Specification Request
 - JCP组织：Java Community Process
@@ -64,7 +61,6 @@ JRE：Java Runtime Environment  <br />
  * @auther liaoxuefeng
  */
 ```
-​
 
 Javadoc标签
 
@@ -88,11 +84,9 @@ Javadoc标签
 | {@value} | 显示常量的值，该常量必须是 static 属性。 | Displays the value of a constant, which must be a static field. |
 | @version | 指定类的版本，一般用于类注释 | @version info |
 
-**​**
 
-**​**
 
-**注解（Annotation）**  <br />  放在Java源码的类、方法、字段、参数前的一种特殊“注释”  <br />  注解则可以被编译器打包进入class文件，因此，注解是一种用作标注的“元数据”。  <br />  ​
+**注解（Annotation）**  <br />  放在Java源码的类、方法、字段、参数前的一种特殊“注释”  <br />  注解则可以被编译器打包进入class文件，因此，注解是一种用作标注的“元数据”。
 
 基本 Annotation  <br />  在 java.lang 包下
 
@@ -101,8 +95,6 @@ Javadoc标签
 - @SuppressWarnings("变量值") 抑制编译器警告（常见变量值：unused, rawtypes, unchecked, serial, deprecation, all）
 - @SafeVarargs 抑制编译器“堆污染”警告
 - @FunctionalInterface 函数式接口（接口中只有一个抽象方法
-
-​
 
 **元注解（meta annotation）**：可以修饰其他注解  <br />  @Target——定义Annotation能够被应用于源码的位置：
 
@@ -169,14 +161,14 @@ void check(Person person) throws IllegalArgumentException, ReflectiveOperationEx
 - 关键字不能用作标识符
 - 大小写敏感
 
-**​**
+
 
 **命名规范**
 
 - 类名：大写英文字母开头，后接字母，数字和下划线的组合
 - 方法：小写英文字母开头，后接字母，数字和下划线的组合
 
-**​**
+
 
 **关键字**
 
@@ -290,9 +282,8 @@ double d3 = -1.0 / 0; // -Infinity，负无穷大
 - 对象、数组、字符串都是引用数据类型。
 - 一个引用变量可以用来引用任何与之兼容的类型。
 
-​
+相等判断  <br />  == ：表示引用相等  <br />  equals()方法：引用类型的变量内容相等
 
-相等判断  <br />  == ：表示引用相等  <br />  equals()方法：引用类型的变量内容相等  <br />  ​  <br />  
 
 ### String
 
@@ -301,9 +292,7 @@ double d3 = -1.0 / 0; // -Infinity，负无穷大
 - StringBuffer：早期的StringBuilder的线程安全版本，速度略差
 - StringJoiner ：拼接字符串时，可额外附加一个“开头”和“结尾”。
 
-​
-
-public final class **String**  <br />  extends Object  <br />  implements Serializable, Comparable, CharSequence  <br />  ​
+public final class **String**  <br />  extends Object  <br />  implements Serializable, Comparable, CharSequence
 
 """...""" 表示多行字符串（Text Blocks）  <br />  常用构造器  <br />  String(byte[] bytes, int offset, int length, String charsetName)：使用指定的字符集将 byte[] 数组从 offset 开始、长度为 length 的子数组解码成字符串（构造器声明上抛出了异常）  <br />  String(char[] value, int offset, int count)：将字符数组从 offset 开始、长度为 count 的字符元素连缀成字符串  <br />  实例方法
 
@@ -337,8 +326,6 @@ public final class **String**  <br />  extends Object  <br />  implements Serial
 - String join(CharSequence delimiter, CharSequence... elements)：用一个分隔符将多个字符串连接起来
 - String join(CharSequence delimiter, Iterable<? extends CharSequence> elements)：用一个分隔符将集合中的字符串元素连接起来
 
-​
-
 **StringBuilder**
 
 - StringBuilder append(Object obj)：追加任意类型数据，return this; 追加 "null"
@@ -348,9 +335,6 @@ public final class **String**  <br />  extends Object  <br />  implements Serial
 - String toString()：返回此序列中数据的字符串表示形式
 - void setLength(int newLength)：设置字符序列的长度
 
-​
-
-​
 
 **regex**
 ```java
@@ -373,9 +357,7 @@ boolean b = Pattern.matches ("a*b","aaaaab");
 - matches()	返回整个目标字符串与 Pattern 是否匹配
 - reset()	将现有的 Matcher 对象应用于一个新的字符序列。
 
-​
 
-​  <br />  
 
 ### Array
 ```java
@@ -396,7 +378,7 @@ int[][] arr = { {1, 2, 3}, {4, 5}, {6} };
 // 动态初始化
 int[][] arr = new int[3][]; // 等同于 int[][] arr = {null, null, null};
 ```
-**​**
+
 
 **java.util.Arrays**
 
@@ -408,8 +390,6 @@ int[][] arr = new int[3][]; // 等同于 int[][] arr = {null, null, null};
 - type binarySearch(Object[] a, type key)：使用二分法查询 key 元素值在 a 数组中出现的索引
 - Object[] copyOf(Object[] original, int newLength)：复制 original 数组，截取或用 0（数值类型）、false（布尔类型）或者 null（引用类型）填充，以使新数组的长度为 newLength
 - List asList(T... a)：把一个引用类型的数组或指定个数的对象转换成固定长度的 List，只读数组
-
-
 
 
 ### 枚举类
@@ -446,11 +426,11 @@ enum Weekday {
 | double | java.lang.Double |
 | char | java.lang.Character |
 
-所有的整数和浮点数的包装类型都继承自Number  <br />  ​
+所有的整数和浮点数的包装类型都继承自Number
 
-自动装箱（Auto Boxing）：基本类型数据转成对应的包装类对象  <br />  自动拆箱（Auto Unboxing）：包装类对象转成对应的基本数据类型数据，可能发生NullPointerException；  <br />  ​
+自动装箱（Auto Boxing）：基本类型数据转成对应的包装类对象  <br />  自动拆箱（Auto Unboxing）：包装类对象转成对应的基本数据类型数据，可能发生NullPointerException；
 
-自动装箱和自动拆箱只发生在编译阶段，目的是为了少写代码。装箱和拆箱会影响执行效率。  <br />  ​
+自动装箱和自动拆箱只发生在编译阶段，目的是为了少写代码。装箱和拆箱会影响执行效率。
 
 转换方法
 
@@ -459,9 +439,7 @@ enum Weekday {
 - String toString(xxx value)	基本类型 → 字符串
 - xxx parseXxx(String s)	字符串 → 基本数据
 
-​
-
-java.math.BigInteger：表示任意大小的整数。内部用一个int[]数组来模拟一个非常大的整数  <br />  ​
+java.math.BigInteger：表示任意大小的整数。内部用一个int[]数组来模拟一个非常大的整数
 
 java.math.BigDecimal：表示一个任意大小且精度完全准确的浮点数。使用compareTo()比较两个BigDecimal的值
 
@@ -556,13 +534,13 @@ public class Person {
     }
 }
 ```
-**​**
 
-**JavaBean**：一种符合命名规范的class，它通过getter和setter来定义属性；  <br />  使用Introspector.getBeanInfo()可以获取属性列表。  <br />  **​**
 
-**this变量**  <br />  在方法内部，有一个隐含的变量this，它始终指向当前实例。  <br />  如果没有命名冲突，可以省略this。如果有局部变量和字段重名，那么局部变量优先级更高，须加上this  <br />  ​
+**JavaBean**：一种符合命名规范的class，它通过getter和setter来定义属性；  <br />  使用Introspector.getBeanInfo()可以获取属性列表。
 
-一个构造方法可以调用其他构造方法，语法是this(…)  <br />  **​**
+**this变量**  <br />  在方法内部，有一个隐含的变量this，它始终指向当前实例。  <br />  如果没有命名冲突，可以省略this。如果有局部变量和字段重名，那么局部变量优先级更高，须加上this
+
+一个构造方法可以调用其他构造方法，语法是this(…)
 
 **访问控制修饰符**
 
@@ -573,7 +551,7 @@ public class Person {
 | default | Y | Y | Y | N | N |
 | private | Y | N | N | N | N |
 
-**private，protected用于变量、方法，不能修饰（外部）类**  <br />  **​**
+**private，protected用于变量、方法，不能修饰（外部）类**
 
 **static（静态）修饰符**  <br />  静态字段及方法属于所有实例“共享”，实际是属于class，应直接通过类调用
 
@@ -608,10 +586,8 @@ class Student extends Person {
 :::
 
 
-
 ## Object
-类Object是类层次结构的根  <br />  
-
+类Object是类层次结构的根
 
 | 变量和类型 | 方法 | 描述 |
 | --- | --- | --- |
@@ -763,9 +739,9 @@ public abstract class Hero {
 ```
 
 ## 抽象类 & 接口
-**抽象类**  <br />  抽象方法：通过abstract定义的方法，没有实现。  <br />  抽象类：定义了抽象方法的class。无法构造实例。  <br />  ​
+**抽象类**  <br />  抽象方法：通过abstract定义的方法，没有实现。  <br />  抽象类：定义了抽象方法的class。无法构造实例。
 
-抽象方法本质：定义接口规范，保证所有子类都有相同的接口实现，利用多态。  <br />  ​
+抽象方法本质：定义接口规范，保证所有子类都有相同的接口实现，利用多态。
 
 **接口（Interface）**
 
@@ -876,7 +852,7 @@ public class Pair<T, K> {
     public K getLast() { ... }
 }
 ```
-Java泛型实现方式：擦拭法（Type Erasure）—— 虚拟机对泛型一无所知，所有的工作都是编译器做的（将T替换成Object）  <br />  ​
+Java泛型实现方式：擦拭法（Type Erasure）—— 虚拟机对泛型一无所知，所有的工作都是编译器做的（将T替换成Object）
 
 擦拭法决定了泛型<T>：
 
@@ -907,7 +883,6 @@ public class Pair<T> {
     }
 }
 ```
-​
 
 <? extends T> & <? super T>
 
@@ -924,7 +899,6 @@ public class Collections {
     }
 }
 ```
-​
 
 <?>通配符特点
 
@@ -932,9 +906,6 @@ public class Collections {
 - 不允许调用T get()方法并获取T引用（只能获取Object引用）。
 - Pair<?>是所有Pair<T>的超类
 
-​
-
-​
 
 可以声明带泛型的数组，但不能直接创建带泛型的数组，必须强制转型；
 ```java
@@ -972,7 +943,7 @@ Integer[] ns = ArrayHelper.asArray(1, 2, 3);
 | %n | 换行 |
 
 
-  <br />  [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html)
+[PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html)
 
 | 构造器 | 描述 |
 | --- | --- |
@@ -1009,7 +980,7 @@ Integer[] ns = ArrayHelper.asArray(1, 2, 3);
 | void | [write](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#write(byte%5B%5D,int,int))(byte[] buf, int off, int len) | 将从偏移量为 off的指定字节数组中的 len字节写入此流。 |
 | void | [write](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#write(int))(int b) | 将指定的字节写入此流。 |
 
-​  <br />  
+
 
 ## Scanner
 ```java
@@ -1041,7 +1012,6 @@ public class Main {
 | [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.nio.file.Path))([Path](https://www.apiref.com/java11-zh/java.base/java/nio/file/Path.html) source) | 构造一个新的 Scanner ，它生成从指定文件扫描的值。 |
 | [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.nio.file.Path,java.lang.String))([Path](https://www.apiref.com/java11-zh/java.base/java/nio/file/Path.html) source, [String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) charsetName) | 构造一个新的 Scanner ，它生成从指定文件扫描的值。 |
 | [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.nio.file.Path,java.nio.charset.Charset))([Path](https://www.apiref.com/java11-zh/java.base/java/nio/file/Path.html) source, [Charset](https://www.apiref.com/java11-zh/java.base/java/nio/charset/Charset.html) charset) | 构造一个新的 Scanner ，它生成从指定文件扫描的值。 |
-
 
 
 
@@ -1085,15 +1055,14 @@ public class Main {
 - String[] list()：列出 File 对象的所有子文件名和子目录的**名称**，返回 String 数组
 - static File[] listRoots()：列出系统所有的**根路径**
 
-**​**
+
 
 **文件过滤器**
 
 - String[] list(FilenameFilter filter)
 - File[] listFiles(FilenameFilter filter)：列出 File 对象的所有符合条件的子文件和目录，返回 File 数组
 
-
-  <br />  **try(resource)**
+**try(resource)**
 ```java
 import java.io.*;
 
@@ -1137,8 +1106,8 @@ public class Main {
 
 ## Path
 
-  <br />  
-  <br />  ![](https://www.runoob.com/wp-content/uploads/2013/12/iostream2xx.png#crop=0&crop=0&crop=1&crop=1&id=EkdDe&originHeight=763&originWidth=687&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+![](https://www.runoob.com/wp-content/uploads/2013/12/iostream2xx.png#crop=0&crop=0&crop=1&crop=1&id=EkdDe&originHeight=763&originWidth=687&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 public static void main(String[] args) throws IOException {
         File f = new File("D:/Code/dark.txt");
@@ -1190,21 +1159,17 @@ Files.write(Paths.get("/path/to/file.txt"), lines);
 ```
 
 # 异常（Exception）
-![](https://images2017.cnblogs.com/blog/858860/201709/858860-20170911125844719-1230755033.png#crop=0&crop=0&crop=1&crop=1&id=fUCkL&originHeight=458&originWidth=718&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  **​**
+![](https://images2017.cnblogs.com/blog/858860/201709/858860-20170911125844719-1230755033.png#crop=0&crop=0&crop=1&crop=1&id=fUCkL&originHeight=458&originWidth=718&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 **Throwable**
 
 - 非检查的异常（unckecked exception）：Error 和 RuntimeException 以及他们的子类。
 - 检查的异常（checked exception）：**必须显式处理**（捕获或抛出，使用try 或throws），否则编译不通过。
 
-​  <br />  
-
 - 实例方法
    - String getMessage()：返回该异常的描述信息（提示给用户）
    - String toString()：返回该异常的类型和描述信息（不用）
    - void printStackTrace()：打印异常的跟踪栈信息到控制台，包括异常的类型、异常的原因、异常出现的位置（开发和调试）
-
-​
 
 **捕获异常**
 ```java
@@ -1212,7 +1177,7 @@ try{}
 [catch(){} 
 finally{}]
 ```
-在catch中抛出异常，不会影响finally的执行。JVM会先执行finally，然后抛出异常。  <br />  finally抛出异常后，原来在catch中准备抛出的异常就“消失”了，因为只能抛出一个异常。  <br />  ​
+在catch中抛出异常，不会影响finally的执行。JVM会先执行finally，然后抛出异常。  <br />  finally抛出异常后，原来在catch中准备抛出的异常就“消失”了，因为只能抛出一个异常。
 
 如果一个方法没有捕获到一个检查性异常，那么该方法必须使用 **throws** 关键字来声明。throws 关键字放在方法签名的尾部。  <br />  或使用 **throw** 关键字抛出一个异常，无论它是新实例化的还是刚捕获到的。
 ```java
@@ -1262,7 +1227,7 @@ assert expression [ : "message" ];
 ```java
 (argument,···) -> { ··· }
 ```
-参数类型可以省略，编译器可以自动推断。  <br />  ​
+参数类型可以省略，编译器可以自动推断。
 
 排序函数
 ```java
@@ -1308,8 +1273,8 @@ public interface Callable<V> {
 }
 ```
 
-  <br />  
-  <br />  java.util.stream.Stream
+
+java.util.stream.Stream
 
 ### 筛选
 
@@ -1346,7 +1311,6 @@ public interface Callable<V> {
 - R collect(Collector<T, A, R> collector)
 - R collect(Supplier<R> supplier, BiConsumer<R, T> accumulator, BiConsumer<R, R> combiner)：自定义收集器的供应源 supplier、累加器 accumulator、组合器 combiner
 
-​
 
 **方法**
 
@@ -1380,7 +1344,6 @@ public class Main {
     }
 }
 ```
-
 
 
 # 反射（Reflection）
@@ -1417,8 +1380,9 @@ public class Main {
     }
 }
 ```
-JVM总是动态加载class，可以在运行期根据条件来控制加载class。  <br />  
-  <br />  获取 Class 对应类所包含的构造器（由 Constructor 对象表示）
+JVM总是动态加载class，可以在运行期根据条件来控制加载class。
+
+获取 Class 对应类所包含的构造器（由 Constructor 对象表示）
 
 - Constructor<T> getConstructor(Class<?>… parameterTypes)：获取此 Class 对象对应类的、带指定形参列表的 public 构造器
 - Constructor<T> getDeclaredConstructor(Class<?>.. parameterTypes)：获取此 Class 对象对应类的、带指定形参列表的构造器，与访问权限无关
@@ -1454,20 +1418,17 @@ JVM总是动态加载class，可以在运行期根据条件来控制加载class�
 - Type getGenericSuperclass()：返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type
 - Class<?> getComponentType()：返回数组元素类型的 Class
 
-​
 
-​  <br />  
 
 # **线程（Thread）**
 
-  <br />  Thread  <br />  
-  <br />  类方法
+**Thread**
+
+类方法
 
 - Thread currentThread()：返回当前正在执行的线程对象
 - void sleep(long millis)：让当前正在执行的线程暂停 millis 毫秒，并进入阻塞状态（线程睡眠）
 - void yield()：暂停当前正在执行的线程对象，转入就绪状态（线程让步）
-
-​
 
 实例方法
 
@@ -1481,11 +1442,19 @@ JVM总是动态加载class，可以在运行期根据条件来控制加载class�
 - int getPriority()：返回线程的优先级
 - void setPriority(int newPriority)：更改线程的优先级（范围是 1~10 之间）
 - boolean isAlive()：测试线程是否处于活动状态
+| 变量和类型 | 字段 | 描述 |
+| --- | --- | --- |
+| static int | [MAX_PRIORITY](https://www.apiref.com/java11-zh/java.base/java/lang/Thread.html#MAX_PRIORITY) | 线程可以拥有的最大优先级。 |
+| static int | [MIN_PRIORITY](https://www.apiref.com/java11-zh/java.base/java/lang/Thread.html#MIN_PRIORITY) | 线程可以拥有的最低优先级。 |
+| static int | [NORM_PRIORITY](https://www.apiref.com/java11-zh/java.base/java/lang/Thread.html#NORM_PRIORITY) | 分配给线程的默认优先级。 |
 
 
-  <br />  
-  <br />  
-  <br />  实现多线程：继承Thread类 或 Runnable接口，重写run()
+
+
+## 线程的创建和启动
+实现多线程
+
+- 继承 `Thread`类或 `Runnable`接口，实现`run`方法
 ```java
 // 定义 Thread 类的子类
 public class MyThread extends Thread {
@@ -1522,15 +1491,291 @@ public class Demo {
     }
 }
 ```
-| 变量和类型 | 字段 | 描述 |
+
+
+`interface Callable<V>`  <br />  提供了一个 call() 方法（可以有返回值，可以声明抛出异常）作为**线程执行体**
+
+- V call()：计算结果，如果无法计算结果，则抛出一个异常
+```java
+class Task implements Callable<String> {
+    public String call() throws Exception {
+        return longTimeCalculation(); 
+    }
+}
+```
+
+`interface Future<V>`  <br />  Future接口代表 Callable 接口里 call() 方法的返回值，表示异步计算的结果  <br />  常用方法
+
+- V get()：返回 Callable 任务里 call() 方法的返回值，如果计算时抛出异常将会抛出 ExecutionException 异常，如果当前的线程在等待时被中断将会抛出 InterruptedException 异常（调用该方法将导致程序阻塞，必须等到子线程结束后才会得到返回值）
+- V get(long timeout, TimeUnit unit)：返回 Callable 任务里 call() 方法的返回值，该方法让程序最多阻塞 timeout 和 unit 指定的时间，如果经过指定时间后 Callable 任务依然没有返回值，将会抛出 TimeoutException 异常
+- boolean cancel(boolean maylnterruptlfRunning)：试图取消该 Future 里关联的 Callable 任务
+- boolean isCancelled()：如果在 Callable 任务正常完成前被取消，则返回 true
+- boolean isDone()：如果 Callable 任务已完成（由于正常终止、异常或取消），则返回 true
+```java
+ExecutorService executor = Executors.newFixedThreadPool(4); 
+// 定义任务:
+Callable<String> task = new Task();
+// 提交任务并获得Future:
+Future<String> future = executor.submit(task);
+// 从Future获取异步执行返回的结果:
+String result = future.get(); // 可能阻塞
+```
+
+**CompletableFuture**  <br />  可以传入回调对象，当异步任务完成或者发生异常时，自动调用回调对象的回调方法
+```java
+public class Main {
+    public static void main(String[] args) throws Exception {
+        // 创建异步执行任务:
+        CompletableFuture<Double> cf = CompletableFuture.supplyAsync(Main::fetchPrice);
+        // 如果执行成功:
+        cf.thenAccept((result) -> {
+            System.out.println("price: " + result);
+        });
+        // 如果执行异常:
+        cf.exceptionally((e) -> {
+            e.printStackTrace();
+            return null;
+        });
+        // 主线程不要立刻结束，否则CompletableFuture默认使用的线程池会立刻关闭:
+        Thread.sleep(200);
+    }
+
+    static Double fetchPrice() {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+        }
+        if (Math.random() < 0.3) {
+            throw new RuntimeException("fetch price failed!");
+        }
+        return 5 + Math.random() * 20;
+    }
+}
+```
+
+class `FutureTask<V>`  <br />  FutureTask类实现了` RunnableFuture<V>` 接口（`RunnableFuture<V>` 接口继承了`Runnable` 接口和`Future<V> `接口）  <br />  构造器：FutureTask(Callable<V> callable)、FutureTask(Runnable runnable, V result)（指定成功完成时 get 返回给定的结果为 result）
+
+
+
+**创建线程的三种方式对比**
+
+- 继承 Thread 类
+   1. 线程类已经继承了 Thread 类，不能再继承其它父类
+   1. 访问当前线程直接使用 this
+   1. 多个线程之间**无法共享线程类中的实例变量**
+- 实现 Runnable、Callable 接口的方式创建多线程
+   1. 线程类只是实现了 Runnable 接口，还可以继承其它类
+   1. 访问当前线程须使用 Thread. currentThread() 方法
+   1. 所创建的 Runnable 对象只是**线程的 target**，而多个线程**可以共享同一个 target 对象的实例变量**，所以适合多个相同线程来处理同一份资源的情况
+
+
+
+## 线程同步
+原子操作（atomic operation）：不可被中断的一个或一系列操作
+
+- 同步方法：使用 `synchronized`关键字来修饰某个方法，就相当于**给调用该方法的对象**加了锁
+
+`synchronized`是Java语言层面提供的语法，不需要考虑异常
+
+- 同步锁：java.util.concurrent.locks 包中，Lock 可替代 synchronized 方法和语句的使用
+```java
+public void add(int n) {
+    synchronized(this) { // 锁住this
+        count += n;
+    } // 解锁
+}
+
+// equal to
+
+public synchronized void add(int n) { // 锁住this
+    count += n;
+} // 解锁
+
+
+
+public class Counter {
+    private final Lock lock = new ReentrantLock();
+    private int count;
+
+    public void add(int n) {
+        lock.lock();
+        try {
+            count += n;
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+
+if (lock.tryLock(1, TimeUnit.SECONDS)) {
+    try {
+        ...
+    } finally {
+        lock.unlock();
+    }
+}
+```
+
+**ReentrantReadWriteLock**	可重入读写锁，使用同ReentrantLock
+
+- 只允许一个线程写入；允许多个线程在没有写入时同时读取
+- 适合读多写少的场景
+
+**StampedLock**	把读锁细分为乐观读和悲观读，进一步提升并发效率
+
+- 支持三种模式：写锁、悲观读锁、乐观读
+- 是不可重入锁
+```java
+public class Point {
+    private final StampedLock stampedLock = new StampedLock();
+
+    private double x;
+    private double y;
+
+    public void move(double deltaX, double deltaY) {
+        long stamp = stampedLock.writeLock(); // 获取写锁
+        try {
+            x += deltaX;
+            y += deltaY;
+        } finally {
+            stampedLock.unlockWrite(stamp); // 释放写锁
+        }
+    }
+
+    public double distanceFromOrigin() {
+        long stamp = stampedLock.tryOptimisticRead(); // 获得一个乐观读锁
+        // 注意下面两行代码不是原子操作
+        // 假设x,y = (100,200)
+        double currentX = x;
+        // 此处已读取到x=100，但x,y可能被写线程修改为(300,400)
+        double currentY = y;
+        // 此处已读取到y，如果没有写入，读取是正确的(100,200)
+        // 如果有写入，读取是错误的(100,400)
+        if (!stampedLock.validate(stamp)) { // 检查乐观读锁后是否有其他写锁发生
+            stamp = stampedLock.readLock(); // 获取一个悲观读锁
+            try {
+                currentX = x;
+                currentY = y;
+            } finally {
+                stampedLock.unlockRead(stamp); // 释放悲观读锁
+            }
+        }
+        return Math.sqrt(currentX * currentX + currentY * currentY);
+    }
+}
+```
+
+
+## 线程通信
+
+**Object 类**中用于操作线程通信的实例方法
+
+1. wait()：调用该方法的当前线程会**释放**对**该同步监视器**（调用者）的锁定，JVM 把该线程存放到**等待池**中，等待其他的线程唤醒该线程（该方法声明抛出了 InterruptedException 异常）（为了防止虚假唤醒，此方法**应始终在循环中使用**，即被唤醒后需要再次判断是否满足唤醒条件）
+1. notify()：调用该方法的当前线程唤醒在等待池中的任意一个线程，并把该线程转到**锁池**中等待获取锁
+1. notifyAll()：调用该方法的当前线程唤醒在等待池中的所有线程，并把该线程转到**锁池**中等待获取锁
+:::warning
+这些方法必须在**同步块**中使用，且只能被同步监视器对象来调用，否则会引发 IllegalMonitorStateException 异常
+:::
+
+java.util.concurrent.locks 包中，Condition 接口中的 await()、signal()、signalAll() 方法替代了 Object 监视器方法的使用
+```java
+class TaskQueue {
+    Queue<String> queue = new LinkedList<>();
+
+    public synchronized void addTask(String s) {
+        this.queue.add(s);
+        this.notifyAll();
+    }
+
+    public synchronized String getTask() throws InterruptedException {
+        while (queue.isEmpty()) {
+            this.wait();
+        }
+        return queue.remove();
+    }
+}
+
+
+class TaskQueue {
+    private final Lock lock = new ReentrantLock();
+    // 获得一个绑定了Lock实例的Condition实例
+    private final Condition condition = lock.newCondition();
+    private Queue<String> queue = new LinkedList<>();
+
+    public void addTask(String s) {
+        lock.lock();
+        try {
+            queue.add(s);
+            condition.signalAll();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public String getTask() {
+        lock.lock();
+        try {
+            while (queue.isEmpty()) {
+                condition.await();
+            }
+            return queue.remove();
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+
+
+if (condition.await(1, TimeUnit.SECOND)) {
+    // 被其他线程唤醒
+} else {
+    // 指定时间内没有被其他线程唤醒
+}
+```
+
+
+java.util.concurrent
+
+| interface | non-thread-safe | thread-safe |
 | --- | --- | --- |
-| static int | [MAX_PRIORITY](https://www.apiref.com/java11-zh/java.base/java/lang/Thread.html#MAX_PRIORITY) | 线程可以拥有的最大优先级。 |
-| static int | [MIN_PRIORITY](https://www.apiref.com/java11-zh/java.base/java/lang/Thread.html#MIN_PRIORITY) | 线程可以拥有的最低优先级。 |
-| static int | [NORM_PRIORITY](https://www.apiref.com/java11-zh/java.base/java/lang/Thread.html#NORM_PRIORITY) | 分配给线程的默认优先级。 |
+| List | ArrayList | CopyOnWriteArrayList |
+| Map | HashMap | ConcurrentHashMap |
+| Set | HashSet / TreeSet | CopyOnWriteArraySet |
+| Queue | ArrayDeque / LinkedList | ArrayBlockingQueue / LinkedBlockingQueue |
+| Deque | ArrayDeque / LinkedList | LinkedBlockingDeque |
 
 
-  <br />  
-  <br />  **生产者与消费者模式**  <br />  **管程法**
+
+java.util.concurrent.atomic
+
+- 增加值并返回新值：int addAndGet(int delta)
+- 加1后返回新值：int incrementAndGet()
+- 获取当前值：int get()
+- 用CAS方式设置：int compareAndSet(int expect, int update)
+
+原理：CAS（Compare and Swap，**比较并替换**）
+```java
+// 如果AtomicInteger的当前值是prev，那么就更新为next，否则就什么也不干
+public int incrementAndGet(AtomicInteger var) {
+    int prev, next;
+    do {
+        prev = var.get();
+        next = prev + 1;
+    } while ( ! var.compareAndSet(prev, next));
+    return next;
+}
+```
+
+
+
+
+## 锁
+
+- 乐观锁：一种乐观思想，即认为**读多写少**，遇到并发写的可能性低，每次去**拿数据**的时候都认为别人不会修改，所以**不会上锁**，但是**在更新的时候会判断**一下在此期间别人有没有去更新这个数据：采取**在写时**先读出当前版本号，然后加锁操作（比较跟上一次的版本号，如果一样则更新），如果失败则要重复读-比较-写的操作
+- 悲观锁：悲观思想，即认为**写多**，遇到并发写的可能性高，每次去拿数据的时候都认为别人会修改，所**以每次在读写数据的时候都会上锁**，这样别人想读写这个数据就会 block 直到拿到锁
+
+
+**生产者与消费者模式**  <br />  **管程法**
 ```java
 public class Test{
 	public static void main(String[] args) {
@@ -1679,84 +1924,163 @@ class Light{
 	}
 }
 ```
-java.util.concurrent.locks包提供的ReentrantLock
+
+
+
+## 线程池
+
+创建线程池的静态方法
+
+- ExecutorService newCachedThreadPool()：一个具有缓存功能的线程池，系统根据需要创建线程（**无界线程池**，已有 60 秒钟未被使用的线程会被终止并从缓存中移除）  <br />  `new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue<Runnable>())`
+- ExecutorService newFixedThreadPool(int nThreads)：一个可重用的、**具有固定核心线程数的线程池**  <br />  （使用无界队列，**队列堆积太多**数据导致 OOM）  <br />  `new ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>())`
+- ExecutorService newSingleThreadExecutor()：一个**只有单线程的线程池**  <br />  `new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>()`)
+- ScheduledExecutorService newScheduledThreadPool(int corePoolSize)：一个线程池，可在指定延迟后执行或定期执行线程任务  <br />  `new ThreadPoolExecutor(corePoolSize, Integer.MAX_VALUE, 0, NANOSECONDS, new DelayedWorkQueue())`
+
 ```java
-class TaskQueue {
-    private final Lock lock = new ReentrantLock();
-    private final Condition condition = lock.newCondition();
-    private Queue<String> queue = new LinkedList<>();
-    
-    public void addTask(String s) {
-        lock.lock();
-        try {
-            queue.add(s);
-            condition.signalAll();
-        } finally {
-            lock.unlock();
+public class Main {
+    public static void main(String[] args) {
+        // 创建一个固定大小的线程池:
+        ExecutorService es = Executors.newFixedThreadPool(4);
+        for (int i = 0; i < 6; i++) {
+            es.submit(new Task("" + i));
         }
+        // 关闭线程池:
+        es.shutdown();
     }
-    
-    public String getTask() {
-        lock.lock();
+}
+
+class Task implements Runnable {
+    private final String name;
+
+    public Task(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("start task " + name);
         try {
-            while (queue.isEmpty()) {
-                condition.await();
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+        }
+        System.out.println("end task " + name);
+    }
+}
+```
+
+**ExecutorService 线程池接口**  <br />  Executor 的子接口，代表尽快执行线程的线程池（只要线程池中有空闲线程，就立即执行线程任务）
+
+- void execute(Runnable command)：在未来某个时间执行给定的命令
+- `Future<?> submit(Runnable task)`：将一个 Runnable 对象提交给指定的线程池，线程池将在有空闲线程时执行 Runnable 对象代表的任务，其中 Future 对象代表 Runnable 任务的返回值——但 run () 方法没有返回值，所以 Future 对象将在 run() 方法执行结束后返回 null，但可以调用 Future 的 isDone()、isCancelled() 方法来获得 Runnable 对象的执行状态
+- `Future<T> submit(Runnable task, T result)`：将一个 Runnable 对象提交给指定的线程池，线程池将在有空闲线程时执行 Runnable 对象代表的任务，其中 result 显式指定线程执行结束后的返回值，所以 Future 对象将在 run() 方法执行结束后返回 result
+- `Future<T> submit(Callable<T> task)`：将一个 Callable 对象提交给指定的线程池，线程池将在有空闲线程时执行 Callable 对象代表的任务，其中 Future 代表 Callable 对象里 call() 方法的返回值（调用 AbstractExecutorService#submit 方法，**将 Callable 对象包装成 FutureTask 对象**，再调用 ThreadPoolExecutor#execute 方法 → ThreadPoolExecutor.Worker#run）
+- `List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks)`：执行给定的任务，当所有任务完成时，返回保持任务状态和结果的 Future 列表
+- `T invokeAny(Collection<? extends Callable<T>> tasks)`：执行给定的任务，如果某个任务已成功完成（也就是未抛出异常），则返回其结果
+- void shutdown()：启动线程池的关闭序列，调用该方法后的线程池不再接收新任务，但**会将以前所有已提交任务执行完成**，当线程池中的所有任务都执行完成后，池中的所有线程都会死亡
+- `List<Runnable> shutdownNow()`：试图停止所有正在执行的活动任务，暂停处理正在等待的任务，并返回等待执行的任务列表
+- boolean awaitTermination(long timeout, TimeUnit unit)：**阻塞**，直到所有任务完成执行
+
+**ScheduledExecutorService 接口**  <br />  ExecutorService 的子接口，代表可在指定延迟后或周期性地执行线程任务的线程池
+
+- `ScheduledFuture<V> schedule(Callable<V> callable, long delay, TimeUnit unit)`：指定 callable 任务将在 delay 延迟后执行
+- `ScheduledFuture<?> schedule(Runnable command, long delay, TimeUnit unit)`：指定 command 任务将在 delay 延迟后执行
+- `ScheduledFuture<?> scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)`：指定 command 任务将在 delay 延迟后执行，而且以设定频率重复执行（在 initialDelay 后开始执行，依次在 initialDelay+period、initialDelay+2*period… 处重复执行；如果当前任务耗时较多，超过定时周期 period，则当前任务结束后会立即执行）
+- `ScheduledFuture<?> scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)`：创建并执行一个在给定初始延迟后首次启用的定期操作，随后在每一次执行终止和下一次执行开始之间都存在给定的延迟（如果任务在任一次执行时遇到异常，就会取消后续执行；否则，只能通过程序来显式取消或终止该任务）
+
+
+**ThreadPoolExecutor**
+
+
+
+ForkJoinPool  <br />  线程池的实现类，将一个任务拆分成多个“小任务”并行计算，再把多个“小任务”的结果合成总的计算结果
+```java
+public class Main {
+    public static void main(String[] args) throws Exception {
+        // 创建2000个随机数组成的数组:
+        long[] array = new long[2000];
+        long expectedSum = 0;
+        for (int i = 0; i < array.length; i++) {
+            array[i] = random();
+            expectedSum += array[i];
+        }
+        System.out.println("Expected sum: " + expectedSum);
+        // fork/join:
+        ForkJoinTask<Long> task = new SumTask(array, 0, array.length);
+        long startTime = System.currentTimeMillis();
+        Long result = ForkJoinPool.commonPool().invoke(task);
+        long endTime = System.currentTimeMillis();
+        System.out.println("Fork/join sum: " + result + " in " + (endTime - startTime) + " ms.");
+    }
+
+    static Random random = new Random(0);
+
+    static long random() {
+        return random.nextInt(10000);
+    }
+}
+
+class SumTask extends RecursiveTask<Long> {
+    static final int THRESHOLD = 500;
+    long[] array;
+    int start;
+    int end;
+
+    SumTask(long[] array, int start, int end) {
+        this.array = array;
+        this.start = start;
+        this.end = end;
+    }
+
+    @Override
+    protected Long compute() {
+        if (end - start <= THRESHOLD) {
+            // 如果任务足够小,直接计算:
+            long sum = 0;
+            for (int i = start; i < end; i++) {
+                sum += this.array[i];
+                // 故意放慢计算速度:
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                }
             }
-            return queue.remove();
-        } finally {
-            lock.unlock();
+            return sum;
         }
+        // 任务太大,一分为二:
+        int middle = (end + start) / 2;
+        System.out.println(String.format("split %d~%d ==> %d~%d, %d~%d", start, end, start, middle, middle, end));
+        SumTask subtask1 = new SumTask(this.array, start, middle);
+        SumTask subtask2 = new SumTask(this.array, middle, end);
+        invokeAll(subtask1, subtask2);
+        Long subresult1 = subtask1.join();
+        Long subresult2 = subtask2.join();
+        Long result = subresult1 + subresult2;
+        System.out.println("result = " + subresult1 + " + " + subresult2 + " ==> " + result);
+        return result;
     }
 }
 ```
-ReadWriteLock——悲观锁
-
-- 只允许一个线程写入（其他线程既不能写入也不能读取）
-- 没有写入时，多个线程允许同时读（提高性能）
-```java
-public class Counter {
-    private final ReadWriteLock rwlock = new ReentrantReadWriteLock();
-    private final Lock rlock = rwlock.readLock();
-    private final Lock wlock = rwlock.writeLock();
-    private int[] counts = new int[10];
-    public void inc(int index) {
-        wlock.lock(); // 加写锁
-        try {
-            counts[index] += 1;
-        } finally {
-            wlock.unlock(); // 释放写锁
-        }
-    }
-    public int[] get() {
-        rlock.lock(); // 加读锁
-        try {
-            return Arrays.copyOf(counts, counts.length);
-        } finally {
-            rlock.unlock(); // 释放读锁
-        }
-    }
-}
-```
-StampedLock——乐观锁，不可重入锁。  <br />  java.util.concurrent
-
-| interface | non-thread-safe | thread-safe |
-| --- | --- | --- |
-| List | ArrayList | CopyOnWriteArrayList |
-| Map | HashMap | ConcurrentHashMap |
-| Set | HashSet / TreeSet | CopyOnWriteArraySet |
-| Queue | ArrayDeque / LinkedList | ArrayBlockingQueue / LinkedBlockingQueue |
-| Deque | ArrayDeque / LinkedList | LinkedBlockingDeque |
 
 
 
 
-## ThreadPoolExecutor
 
-  <br />  
+
+
+
+
+
+
+
+
+
+
+`ThreadLocal<T>`
+
 
 
 # JDBC
-nysql-connector-java.jar包：[https://mvnrepository.com/artifact/mysql/mysql-connector-java](https://mvnrepository.com/artifact/mysql/mysql-connector-java)  <br />  ​
+nysql-connector-java.jar包：[https://mvnrepository.com/artifact/mysql/mysql-connector-java](https://mvnrepository.com/artifact/mysql/mysql-connector-java)
 
 maven引入
 ```java
@@ -2131,8 +2455,6 @@ System
 - void exit(int status)：终止 JVM（非 0 的状态码表示异常终止）（底层调用 Runtime 类中的方法）
 - void gc()：运行 GC（底层调用 Runtime 类中的方法）
 
-​
-
 **Runtime**  <br />  类方法
 
 - Runtime getRuntime()：获取与当前 Java 应用程序相关的运行时对象（单例模式）
@@ -2145,11 +2467,7 @@ System
 - void addShutdownHook(Thread hook)：注册虚拟机关闭钩子（一个已初始化但尚未启动的线程）
 - int availableProcessors()：返回虚拟机可用处理器的数目
 
-​
 
-​
-
-​
 
 Collections
 
@@ -2166,6 +2484,4 @@ Collections
 - int size()	返回集合中元素的个数
 - Object[] toArray()	把集合转换为一个数组，所有的集合元素变成对应的数组元素。
 
-​
 
-​  <br />  

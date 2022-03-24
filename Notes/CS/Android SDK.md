@@ -10,7 +10,6 @@
 ```
 
 
-
 ## 命令行工具 cmdline-tools
 
 ### [apkanalyzer](https://developer.android.google.cn/studio/command-line/apkanalyzer?hl=zh-cn)
@@ -25,8 +24,6 @@ subject 查询的内容
 - manifest：分析 APK 文件内的清单的内容。
 - dex：分析 APK 文件内的 DEX 文件。
 - resources：查看文本、图像和字符串资源。
-
-​
 
 verb
 
@@ -65,7 +62,6 @@ avdmanager [global options] command [command options]
 - -h 	使用帮助
 - -v 	详细模式：输出错误、警告和参考性消息。
 
-​  <br />  
 
 ### [sdkmanager](https://developer.android.google.cn/studio/command-line/sdkmanager?hl=zh-cn)
 查看、安装、更新和卸载 Android SDK 的软件包。  <br />  **列出已安装和可用的软件包**
@@ -83,9 +79,9 @@ sdkmanager --update [options]
 ```
 
 
-
 ### [Emulator](https://developer.android.google.cn/studio/run/emulator-commandline?hl=zh-cn)
-**emulator -help-datadir**  <br />  系统目录：包含模拟器用于模拟操作系统的 Android 系统映像  <br />  `Android/sdk/system-images/android-**apiLevel**/variant/arch/`  <br />  AVD 数据目录（内容目录）特定于单个 AVD 实例，包含 AVD 的所有可修改数据  <br />  `~/.android/avd/**name**.avd/`  <br />  ​  <br />  
+**emulator -help-datadir**  <br />  系统目录：包含模拟器用于模拟操作系统的 Android 系统映像  <br />  `Android/sdk/system-images/android-**apiLevel**/variant/arch/`  <br />  AVD 数据目录（内容目录）特定于单个 AVD 实例，包含 AVD 的所有可修改数据  <br />  `~/.android/avd/**name**.avd/`
+
 ```javascript
 emulator -avd avd_name [ {-option [value]} … ]
 ```
@@ -104,7 +100,6 @@ emulator -list-avds
 | -dns-server **_servers_** | 使用指定的 DNS 服务器 |
 | -http-proxy **_proxy_** | 通过指定的 HTTP/HTTPS 代理进行所有 TCP 连接 |
 
-​
 
 -net**speed** delay / speed  <br />  将网络延迟模拟设置为以下 **delay** 值之一（以毫秒为单位）：
 
@@ -120,8 +115,6 @@ emulator -list-avds
 - num - 指定确切的延迟时间。
 - min:max - 分别指定最小延迟时间和最大延迟时间。
 
-​
-
 设置网络速度模拟。使用以下 **speed** 值（以 kbps 为单位）之一，指定最大网络上传和下载速度：
 
 - gsm - GSM/CSD（上传：14.4，下载：14.4）。
@@ -136,14 +129,12 @@ emulator -list-avds
 - num - 指定上传和下载速度。
 - up:down - 分别指定上传速度和下载速度。
 
-​
 
-​  <br />  
 
 ## 构建工具 build-tools
 
 ### [aapt2](https://developer.android.google.cn/studio/command-line/aapt2?hl=zh-cn) (Android Asset Packaging Tool)
-解析 Android 资源，为其编制索引，然后将其编译为针对 Android 平台优化过的二进制格式，最后将编译后的资源打包到单个输出中。  <br />  ​
+解析 Android 资源，为其编制索引，然后将其编译为针对 Android 平台优化过的二进制格式，最后将编译后的资源打包到单个输出中。
 
 增量编译
 
@@ -185,9 +176,8 @@ aapt add [-v] file.{zip,jar,apk} file1 [file2 ...]
 ```
 
 
-
 ### [apksigner](https://developer.android.google.cn/studio/command-line/apksigner?hl=zh-cn)
-为 APK 签名，并检查签名能否在给定 APK 支持的所有平台版本上成功通过验证。  <br />  **​**
+为 APK 签名，并检查签名能否在给定 APK 支持的所有平台版本上成功通过验证。
 
 **为 APK 签名**
 ```shell
@@ -199,16 +189,15 @@ apksigner sign --ks keystore.jks |
 ```shell
 apksigner verify [options] app-name.apk
 ```
-​
 
-[zipalign](https://developer.android.google.cn/studio/command-line/zipalign?hl=zh-cn)  <br />  确保所有未压缩数据的开头均相对于文件开头部分执行特定的对齐，从而优化 APK 文件。  <br />  ​
+[zipalign](https://developer.android.google.cn/studio/command-line/zipalign?hl=zh-cn)  <br />  确保所有未压缩数据的开头均相对于文件开头部分执行特定的对齐，从而优化 APK 文件。
 
-​  <br />  
+
 
 ## 平台工具 platform-tools
 
 ### [adb](https://developer.android.google.cn/studio/command-line/adb?hl=zh-cn)
-安卓调试桥 (Android Debug Bridge)：一个通用命令行工具，其允许您与模拟器实例或连接的 Android 设备进行通信  <br />  ​
+安卓调试桥 (Android Debug Bridge)：一个通用命令行工具，其允许您与模拟器实例或连接的 Android 设备进行通信
 
 组件：
 
@@ -216,9 +205,7 @@ apksigner verify [options] app-name.apk
 - 守护程序 (adbd)：用于在设备上运行命令。守护程序在每个设备上作为后台进程运行。
 - 服务器：用于管理客户端与守护程序之间的通信。服务器在开发机器上作为后台进程运行。
 
-​
-
-运行原理：PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过端口 5037与 adb server通信（转发指令），，adbd 接收命令后解析运行。  <br />  **​**
+运行原理：PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过端口 5037与 adb server通信（转发指令），，adbd 接收命令后解析运行。
 
 **启用 adb 调试**
 
@@ -243,7 +230,6 @@ su setprop service.adb.tcp.port 5555
 1. 当系统提示时，输入您在第 3 步中获得的配对码。系统会显示一条消息，表明您的设备已成功配对。
 1. 运行 `adb connect <ip:port>`
 
-​  <br />  
 
 #### 基础指令
 将命令发送至特定设备  <br />  **adb [-d|-e|-s ] **
@@ -253,13 +239,9 @@ su setprop service.adb.tcp.port 5555
 - -s  指定相应serialNumber 号的设备/模拟器为命令目标
 - command 为所需对设备执行的命令
 
-​
+adb version	adb 版本信息  <br />  **adb devices [-l]**	adb 连接设备  <br />  adb start-server  <br />  adb kill-server
 
-adb version	adb 版本信息  <br />  **adb devices [-l]**	adb 连接设备  <br />  adb start-server  <br />  adb kill-server  <br />  ​
-
-指定adb server 的网络端口port （默认5037）启动服务  <br />  adb -P  start-server  <br />  **​**
-
-**​**
+指定adb server 的网络端口port （默认5037）启动服务  <br />  adb -P  start-server
 
 **文件传输**
 ```shell
@@ -288,10 +270,11 @@ adb reboot	重启
 adb reboot bootloader	重启手机到fastboot模式
 adb reboot recovery 重启手机到recovery模式
 ```
-SD卡的路径 /mnt/sdcard/  <br />  ​  <br />  
+SD卡的路径 /mnt/sdcard/
+
 
 #### 系统属性
-adb get-serialno	获取序列号  <br />  adb shell cat /sys/class/net/wlan0/address	MAC地址  <br />  adb shell cat /proc/cpuinfo	CPU信息  <br />  adb shell settings get secure android_id  <br />  ​
+adb get-serialno	获取序列号  <br />  adb shell cat /sys/class/net/wlan0/address	MAC地址  <br />  adb shell cat /proc/cpuinfo	CPU信息  <br />  adb shell settings get secure android_id
 
 **Window manager**  <br />  wm command
 
@@ -300,8 +283,6 @@ adb get-serialno	获取序列号  <br />  adb shell cat /sys/class/net/wlan0/add
 - overscan [reset|LEFT,TOP,RIGHT,BOTTOM]
 - scaling [off|auto]
 - dismiss-keyguard
-
-​
 
 `adb shell getprop [属性名`]    List  Android system property
 
@@ -321,7 +302,7 @@ adb get-serialno	获取序列号  <br />  adb shell cat /sys/class/net/wlan0/add
 | ro.sf.lcd_density | 屏幕密度 |
 
 
-  <br />  [**dumpsys**](https://developer.android.google.cn/studio/command-line/dumpsys?hl=zh-cn)  <br />  一种在 Android 设备上运行的工具，可提供有关系统服务的信息。
+[**dumpsys**](https://developer.android.google.cn/studio/command-line/dumpsys?hl=zh-cn)  <br />  一种在 Android 设备上运行的工具，可提供有关系统服务的信息。
 ```shell
 adb shell dumpsys [-t timeout] [--help | -l | --skip services | service [arguments] | -c | -h]
 ```
@@ -352,7 +333,6 @@ adb shell dumpsys procstats --hours 3
 应用内存在不同类型的 RAM 分配之间的划分情况
 adb shell dumpsys meminfo package_name|pid [-d]
 ```
-​
 
 adb shell service list
 
@@ -368,9 +348,9 @@ adb shell service list
 | alarm | AlarmManagerService | 闹钟信息 |
 | meminfo | MemBinder | 内存 |
 
-`**adb shell dumpsys window windows | findstr mFocusedApp**`**	**获取当前包名和启动名  <br />  ​
+`**adb shell dumpsys window windows | findstr mFocusedApp**`**	**获取当前包名和启动名
 
-​  <br />  
+
 
 #### 应用管理
 adb install [-lrtsdg] 
@@ -384,7 +364,7 @@ adb install [-lrtsdg]
 | -d | 允许降级覆盖安装 |
 | -g | 授予所有运行时权限 |
 
-adb uninstall [-k]   <br />  k：卸载应用但保留数据和缓存目录  <br />  **​**
+adb uninstall [-k]   <br />  k：卸载应用但保留数据和缓存目录
 
 **package manager (pm)**  <br />  adb shell pm command
 
@@ -453,7 +433,6 @@ adb uninstall [-k]   <br />  k：卸载应用但保留数据和缓存目录  <br
 | remove-user _user_id_ | 移除具有给定 _user_id_ 的用户，从而删除与该用户关联的所有数据。 |
 | get-max-users | 输出设备支持的最大用户数。 |
 
-​
 
 adb shell pm list packages [option] [--user USER_ID] [FILTER]
 
@@ -470,7 +449,7 @@ adb shell pm list packages [option] [--user USER_ID] [FILTER]
 | <FILTER> | 包名包含 <FILTER> 字符串 |
 
 
-  <br />  **activity manager (am)**  <br />  adb shell am [subcommand] [options]
+**activity manager (am)**  <br />  adb shell am [subcommand] [options]
 
 | command | 用途 |
 | --- | --- |
@@ -494,7 +473,6 @@ adb shell pm list packages [option] [--user USER_ID] [FILTER]
 | to-uri _intent_ | 以 URI 的形式输出给定的 intent 规范 |
 | to-intent-uri _intent_ | 以 intent: URI 的形式输出给定的 intent 规范 |
 
-​
 
 adb shell am start [-D] [-W] [-P <FILE>] [--start-profiler <FILE>]  <br />   [--sampling INTERVAL] [-R COUNT] [-S] [--opengl-trace]  <br />   [--user <USER_ID> | current] <INTENT>
 
@@ -507,9 +485,6 @@ adb shell am start [-D] [-W] [-P <FILE>] [--start-profiler <FILE>]  <br />   [--
 - --opengl-trace：启用 OpenGL 函数的跟踪。
 - --user _user_id_ | current：指定要作为哪个用户运行；如果未指定，则作为当前用户运行。
 
-​
-
-​
 
 系统预定义广播
 
@@ -538,7 +513,7 @@ adb shell am start [-D] [-W] [-P <FILE>] [--start-profiler <FILE>]  <br />   [--
 | android.intent.action.MEDIA_MOUNTED | 挂载外部介质 |
 | android.os.action.POWER_SAVE_MODE_CHANGED | 省电模式开启 |
 
-**​**
+
 
 **device policy manager (dpm，设备政策管理器)**
 
@@ -576,7 +551,6 @@ The commands and default sources are:
       press (Default: trackball)
       roll <dx> <dy> (Default: trackball)
 ```
-​
 
 模拟**长按（long press）**  <br />  adb shell input swipe 100 500 100 500 500
 
@@ -615,8 +589,8 @@ The commands and default sources are:
 | 276 | 如果没有 wakelock 则让系统休眠 |
 
 
-  <br />  
-  <br />  [**perfetto**](https://developer.android.google.cn/studio/command-line/perfetto?hl=zh-cn)  <br />  收集性能跟踪数据
+
+[**perfetto**](https://developer.android.google.cn/studio/command-line/perfetto?hl=zh-cn)  <br />  收集性能跟踪数据
 
 - 使用 ftrace 收集内核信息
 - 使用 atrace 收集服务和应用中的用户空间注释
@@ -646,7 +620,7 @@ adb shell perfetto [ --txt ] --config CONFIG_FILE
 | --help &#124; -h | 输出 perfetto 工具的帮助文本。 |
 
 
-  <br />  **root**  <br />  adb [root | unroot]
+**root**  <br />  adb [root | unroot]
 ```shell
 # 查看连接过的 WiFi 密码
 adb shell "su -c 'cat /data/misc/wifi/*.conf'"
@@ -657,7 +631,6 @@ adb shell setenforce [1 | 0]
 # 启用/禁用 dm_verity
 adb [enable-verity | disable-verity]
 ```
-​
 
 dm-verity是Device mapper架构下的一种目标设备类型，通过它来保障设备或设备分区的完整性  <br />  Device Mapper为Linux内核提供了一个从逻辑设备到物理设备的映射框架，用于定制资源的管理策略
 ```shell
@@ -784,9 +757,8 @@ internal debugging:
 ```
 
 
-
 ### [logcat](https://developer.android.google.cn/studio/command-line/logcat?hl=zh-cn)
-通过 adb 调用，用于查看应用和系统日志。  <br />  ​
+通过 adb 调用，用于查看应用和系统日志。
 
 Android 日志
 
@@ -821,7 +793,6 @@ Android 日志
 | -p, --prune | 输出（读取）当前的允许 (white) 列表和拒绝 (black) 列表，不采用任何参数 |
 | -P '<list> ...'  <br />  --prune '<list> ...' -P '<white_and_black_list>' | 写入（设置）允许 (white) 列表和拒绝 (black) 列表以出于特定目的调整日志记录内容 |
 
-​
 
 优先级（priority）
 
@@ -873,9 +844,7 @@ Android 日志
 - all：查看所有缓冲区。
 - default：报告 main、system 和 crash 缓冲区
 
-​
 
-​  <br />  
 
 ### fastboot
 将平台或其他系统映像刷写到设备上
@@ -901,7 +870,7 @@ options:
   -b <base_addr>                           specify a custom kernel base address
   -n <page size>                           specify the nand page size. default: 2
 ```
-**​**
+
 
 **Android系统分区**
 
@@ -913,7 +882,6 @@ options:
 - cache——系统运行时产生的缓存
 - userdata——用户使用APP产生的缓存数据
 
-​  <br />  
 
 # 刷机
 重装手机系统
@@ -921,9 +889,9 @@ options:
 - fastboot，一种线刷，使用USB数据线连接手机的一种刷机模式。线刷更可靠，安全。
 - recovery，一种卡刷，将刷机包放在sd卡上，然后在recovery中刷机的模式
 
-**​**
 
-**主流Android手机进入Fastboot的方式：关机状态下，同时长按【音量-】+【电源键】**  <br />  ​
+
+**主流Android手机进入Fastboot的方式：关机状态下，同时长按【音量-】+【电源键】**
 
 步骤
 
@@ -932,22 +900,18 @@ options:
 1. 安装Magisk.apk，需科学上网，App内下载Magisk.zip
 1. 通过第三方 Recovery 刷入Magisk，获取Root
 
-​
+加锁：fastboot oem lock
 
-加锁：fastboot oem lock  <br />  ​
+BootLoader（引导程序）：在操作系统内核运行之前运行。可以初始化硬件设备、建立内存空间映射图，从而将系统的软硬件环境带到一个合适状态，以便为最终调用操作系统内核准备好正确的环境。
 
-BootLoader（引导程序）：在操作系统内核运行之前运行。可以初始化硬件设备、建立内存空间映射图，从而将系统的软硬件环境带到一个合适状态，以便为最终调用操作系统内核准备好正确的环境。  <br />  **​**
+**Xposed框架(Xposed Framework)**：一套开源的、在Android高权限模式下运行的框架服务，可以在不修改[APK](https://baike.baidu.com/item/APK)文件的情况下影响程序运行(修改系统)的框架服务，基于它可以制作出许多功能强大的模块，且在功能不冲突的情况下同时运作  <br />  一个针对Android平台的动态劫持项目，通过替换/system/bin/app_process程序控制zygote进程，使得app_process在启动过程中会加载XposedBridge.jar这个jar包，从而完成对Zygote进程及其创建的Dalvik虚拟机的劫持。
 
-**​**
+Magisk：通过启动时在 boot 中创建钩子，把 /data/magisk.img 挂载到 /magisk，构建出一个在 system 基础上能够自定义替换，增加以及删除的文件系统，所有操作都在启动的时候完成，实际上并没有对 /system 分区进行修改（即 systemless 接口，以不触动 /system 的方式修改 /system）  <br />  ![](./assets/1643807401160-46fbfb24-73a6-4334-9416-1a4b3d9e2378.png)
 
-**Xposed框架(Xposed Framework)**：一套开源的、在Android高权限模式下运行的框架服务，可以在不修改[APK](https://baike.baidu.com/item/APK)文件的情况下影响程序运行(修改系统)的框架服务，基于它可以制作出许多功能强大的模块，且在功能不冲突的情况下同时运作  <br />  一个针对Android平台的动态劫持项目，通过替换/system/bin/app_process程序控制zygote进程，使得app_process在启动过程中会加载XposedBridge.jar这个jar包，从而完成对Zygote进程及其创建的Dalvik虚拟机的劫持。  <br />  ​
-
-Magisk：通过启动时在 boot 中创建钩子，把 /data/magisk.img 挂载到 /magisk，构建出一个在 system 基础上能够自定义替换，增加以及删除的文件系统，所有操作都在启动的时候完成，实际上并没有对 /system 分区进行修改（即 systemless 接口，以不触动 /system 的方式修改 /system）  <br />  ![](./assets/1643807401160-46fbfb24-73a6-4334-9416-1a4b3d9e2378.png)  <br />  
-  <br />  
 
 
 # Monkey
-向系统发送伪随机的用户事件（如按键、手势、触摸屏等输入），以随机且可重复的方式对应用进行压力测试。  <br />  ​
+向系统发送伪随机的用户事件（如按键、手势、触摸屏等输入），以随机且可重复的方式对应用进行压力测试。
 
 Monkey程序由Android系统自带，使用Java语言写成，在Android文件系统中的路径：`/system/framework/monkey.jar`；  <br />  Monkey.jar程序是由一个名为“monkey”的Shell脚本来启动执行，shell脚本的路径：/system/bin/monkey；
 ```shell
@@ -993,8 +957,6 @@ monkeyrunner 工具提供了一个 API，用于编写可从 Android 代码外部
 - [MonkeyDevice](https://developer.android.google.cn/tools/help/MonkeyDevice?hl=zh-cn)：代表设备或模拟器。此类提供了用于安装和卸载软件包、启动 Activity 以及向应用发送键盘或轻触事件的方法。您也可以使用这个类来运行测试软件包。
 - [MonkeyImage](https://developer.android.google.cn/tools/help/MonkeyImage?hl=zh-cn)：代表屏幕截图。此类提供了用于截屏、将位图转换为各种格式、比较两个 MonkeyImage 对象以及将图片写入文件的方法。
 
-​
-
 示例
 ```python
 # Imports the monkeyrunner modules used by this program
@@ -1028,11 +990,8 @@ result = device.takeSnapshot()
 # Writes the screenshot to a file
 result.writeToFile('myproject/shot1.png','png')
 ```
-​
 
-​
 
-​
 
 [http://appium.io/docs/cn/about-appium/intro/](http://appium.io/docs/cn/about-appium/intro/)
 
@@ -1042,7 +1001,6 @@ result.writeToFile('myproject/shot1.png','png')
 $ npm install -g appium
 $ appium
 ```
-​
 
 [appium-doctor](https://github.com/appium/appium-doctor)	Tool to verify appium installation
 ```javascript
@@ -1060,7 +1018,6 @@ Options:
   --demo      Run appium-doctor demo (for dev).           [boolean]
   -h, --help  Show help                                   [boolean]
 ```
-​
 
 [Appium Desktop](https://github.com/appium/appium-desktop)  <br />  Appium server arguments
 
@@ -1112,9 +1069,8 @@ Options:
 | --deny-insecure | [] | Specify a list of features which will never be allowed to run, even if --relaxed-security is turned on, and even if feature names are listed with --allow-insecure. Should be a comma-separated list, or a path to a filename containing one feature name per line. See also the [security doc](https://appium.io/docs/en/writing-running-appium/security/index.html) |
 | --log-filters | null | Specify a full path to a JSON file containing one or more log filtering rules. This feature is useful for cases when it is necessary to obfuscate sensitive information, which may be present in server log records, like passwords or access tokens. The format of each rule is described in https://github.com/appium/appium-support/blob/master/lib/log-internal.js. An exception will be thrown on server startup if any of the rules has issues. |
 
-​
 
-**预期能力（Desired Capabilities）**  <br />  ​
+**预期能力（Desired Capabilities）**
 
 [Appium 服务器初始化参数（Capability）](https://github.com/appium/appium/blob/master/docs/cn/writing-running-appium/caps.md)  <br />  `<expand_table>`
 
@@ -1215,9 +1171,7 @@ iOS 独有  <br />  `<expand_table>`
 - Android —— uiautomator2
 - IOS —— xcuitest
 
-​
-
-`pip install Appium-Python-Client`  <br />  ​
+`pip install Appium-Python-Client`
 
 需要先运行appium服务
 ```python
@@ -1247,9 +1201,8 @@ adb shell getprop ro.build.version.release	版本号
 adb shell dumpsys window windows | findstr mFocusedApp	包名/界面
 aapt dump badging < apk > | findstr launchable-activity	启动页面
 ```
-​
 
-基本操作  <br />  quit()  <br />  start_activity(package，activity)	启动app  <br />  current_package	获取包名  <br />  current_activity	界面名  <br />  launch_app()  <br />  close_app()  <br />  terminate_app()  <br />  activate_app()  <br />  query_app_state()  <br />  install_app(app_path)  <br />  remove_app("包名")  <br />  is_app_installed()  <br />  reset()  <br />  background_app(seconds)	将应用置于后台  <br />  implicitly_wait(seconds)  <br />  元素定位  <br />  **​**
+基本操作  <br />  quit()  <br />  start_activity(package，activity)	启动app  <br />  current_package	获取包名  <br />  current_activity	界面名  <br />  launch_app()  <br />  close_app()  <br />  terminate_app()  <br />  activate_app()  <br />  query_app_state()  <br />  install_app(app_path)  <br />  remove_app("包名")  <br />  is_app_installed()  <br />  reset()  <br />  background_app(seconds)	将应用置于后台  <br />  implicitly_wait(seconds)  <br />  元素定位
 
 **普通方式的定位**
 
@@ -1265,7 +1218,7 @@ element改为elements是找所有满足的条件，返回数组。  <br />  Mobi
 - self.driver.find_element(MobileBy.ACCESSIBILITY_ID,"")
 - self.driver.find_element(MobileBy.NAME,"")
 
-**​**
+
 
 **元素的常用方法**
 
@@ -1281,7 +1234,7 @@ element改为elements是找所有满足的条件，返回数组。  <br />  Mobi
 - driver.drag_and_drop(origin_el,des_el)
 - driver.scroll(origin_el,des_el)
 
-**​**
+
 
 **元素常用的属性**
 
@@ -1335,9 +1288,8 @@ UIAutomator 查找元素  <br />  **优缺点**
 - 有一些页面有持续滑动的能力，比如微博，没有分页，可以一直滑动，UIAutomator 提供了滑动的很好的方法。
 - driver.find_element_by_android_uiautomator(‘new UiScrollable(new UiSelector().’
 
-‘scrollable(true).instance(0)).’  <br />  ‘scrollIntoView(new UiSelector().textContains(“病人”).’  <br />  ‘instance(0));’).click()  <br />  ​
+‘scrollable(true).instance(0)).’  <br />  ‘scrollIntoView(new UiSelector().textContains(“病人”).’  <br />  ‘instance(0));’).click()
 
-​
 
 模拟操作  <br />  **TouchAction(driver)**
 
@@ -1348,11 +1300,9 @@ UIAutomator 查找元素  <br />  **优缺点**
 - long_press(el=None,x=None,y=None,duration=1000)	长按
 - move_to(x=None,y=None)	移动
 
-​
+**webview**  <br />  webview页面class属性值= android.webkit.webview  <br />  获取所有contexts包括原生页面和webview  <br />  driver.contexts  <br />  获取当前context  <br />  driver.current_context  <br />  进入webview页面  <br />  driver. switch_to. context()
 
-**webview**  <br />  webview页面class属性值= android.webkit.webview  <br />  获取所有contexts包括原生页面和webview  <br />  driver.contexts  <br />  获取当前context  <br />  driver.current_context  <br />  进入webview页面  <br />  driver. switch_to. context()  <br />  ​
-
-toast  <br />  启动参数中添加一个参数  <br />  automationName": "Uiautomator2" #获取toast  <br />  操作触发toast出现的元素  <br />  获取toast，借助selenium中显式等待WebDriverWait类  <br />  ​
+toast  <br />  启动参数中添加一个参数  <br />  automationName": "Uiautomator2" #获取toast  <br />  操作触发toast出现的元素  <br />  获取toast，借助selenium中显式等待WebDriverWait类
 
 小程序  <br />  获取小程序在微信中的进程
 
@@ -1360,13 +1310,13 @@ toast  <br />  启动参数中添加一个参数  <br />  automationName": "Uiau
 1. dumpsus activity top | grep ACTIVITY	# pid
 1. ps pid
 
-得到微信小程序进程 com.tencent.mm:appbrand0  <br />  启动参数中添加微信小程序进程  <br />  "chromeOptions": {"androidProcess": "com. tencent. mm: appbzango"}  <br />  ​
+得到微信小程序进程 com.tencent.mm:appbrand0  <br />  启动参数中添加微信小程序进程  <br />  "chromeOptions": {"androidProcess": "com. tencent. mm: appbzango"}
 
-appium的ChromeDriver目录：appium\node_modules\appium-chromedriver\chromedriver\win  <br />  'chromeOptions': {'androidProcess': 'com.vitalerter'},  <br />  ​
+appium的ChromeDriver目录：appium\node_modules\appium-chromedriver\chromedriver\win  <br />  'chromeOptions': {'androidProcess': 'com.vitalerter'},
 
-Webview debug  <br />  adb 连接 手机或模拟器  <br />  chrome://inspect  <br />  对于内核版本不一致需要vpn  <br />  ​
+Webview debug  <br />  adb 连接 手机或模拟器  <br />  chrome://inspect  <br />  对于内核版本不一致需要vpn
 
-​  <br />  
+
 
 # [Auto.js](https://hyb1996.github.io/AutoJs-Docs/#/)
 基于 JavaScript 语言运行在Android平台上的脚本框架，使用[Rhino 1.7.7.2](https://developer.mozilla.org/zh-CN/docs/Mozilla/Projects/Rhino)作为脚本引擎，支持ES5与部分ES6特性  <br />  工作原理是基于辅助服务AccessibilityService  <br />  [Auto.js-VSCodeExt](https://github.com/hyb1996/Auto.js-VSCode-Extension)
@@ -1384,9 +1334,7 @@ Webview debug  <br />  adb 连接 手机或模拟器  <br />  chrome://inspect  
 - Run Project（运行项目）：运行一个项目，需要Auto.js 4.0.4Alpha5以上支持
 - Save Project（保存项目）：保存一个项目，需要Auto.js 4.0.4Alpha5以上支持
 
-​
 
-​  <br />  
 
 # [scrcpy](https://github.com/Genymobile/scrcpy)
 特点
@@ -1398,9 +1346,7 @@ Webview debug  <br />  adb 连接 手机或模拟器  <br />  chrome://inspect  
 - 快速启动 (最快 1 秒内即可显示第一帧)
 - 无侵入性 (不会在设备上遗留任何程序)
 
-​
-
-确保设备已[开启 adb 调试](https://developer.android.com/studio/command-line/adb.html#Enabling)后，运行scrcpy  <br />  ​
+确保设备已[开启 adb 调试](https://developer.android.com/studio/command-line/adb.html#Enabling)后，运行scrcpy
 
 Option
 
@@ -1446,7 +1392,7 @@ Option
 -  --window-width value
 -  --window-height value
 
-**​**
+
 
 **快捷键**  <br />  MOD 是快捷键的修饰键， 默认是 (左) Alt 或 (左) Super
 

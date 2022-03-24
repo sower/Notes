@@ -1,8 +1,8 @@
-​
 
-[正则表达式](http://regexlab.com)（regex）	一种从左到右匹配主体字符串的模式  <br />  一组由字母和符号组成的特殊文本，它可以用来从文本中找出满足你想要的格式的句子。  <br />  ​  <br />  
+[正则表达式](http://regexlab.com)（regex）	一种从左到右匹配主体字符串的模式  <br />  一组由字母和符号组成的特殊文本，它可以用来从文本中找出满足你想要的格式的句子。
 
-# ​[元字符](https://www.runoob.com/regexp/regexp-metachar.html)
+
+# [元字符](https://www.runoob.com/regexp/regexp-metachar.html)
 | 字符 | 描述 |
 | --- | --- |
 | **\\** | 转义 |
@@ -32,9 +32,8 @@
 |  | (? | 匹配前面不是exp的位置，反向否定预查 |
 | 注释 | (?#comment) | 注释 |
 
-零宽度断言（前后预查）  <br />  先行断言和后发断言都属于非捕获簇（不捕获文本 ，也不针对组合计进行计数）。 先行断言用于判断所匹配的格式是否在另一个确定的格式之前，匹配结果不包含该确定格式（仅作为约束）。  <br />  正向肯定预查："Windows(?=7|10)"能匹配"Windows10"中的"Windows"，但不能匹配"Windows8"中的"Windows"  <br />  反向肯定预查："(?<=7|10)Windows"能匹配"10Windows"中的"Windows"，但不能匹配"8Windows"  <br />  简写字符集  <br />  ​
+零宽度断言（前后预查）  <br />  先行断言和后发断言都属于非捕获簇（不捕获文本 ，也不针对组合计进行计数）。 先行断言用于判断所匹配的格式是否在另一个确定的格式之前，匹配结果不包含该确定格式（仅作为约束）。  <br />  正向肯定预查："Windows(?=7|10)"能匹配"Windows10"中的"Windows"，但不能匹配"Windows8"中的"Windows"  <br />  反向肯定预查："(?<=7|10)Windows"能匹配"10Windows"中的"Windows"，但不能匹配"8Windows"  <br />  简写字符集
 
-​  <br />  
 
 | **\\b** | 匹配一个单词边界，也就是指单词和空格间的位置 |
 | --- | --- |
@@ -54,7 +53,7 @@
 | \\v | 匹配一个垂直制表符 |
 | \\p | 匹配 CR/LF（等同于 \\r\\n），用来匹配 DOS 行终止符 |
 
-**​**  <br />  
+  <br />  
 
 # 标志(模式修正符)
 修改表达式的搜索结果
@@ -72,7 +71,8 @@
 | Multiline | 默认情况下，表达式 "^" 和 "$" 只匹配字符串的开始 ① 和结尾 ④ 位置。如：  <br />  ①xxxxxxxxx②\\n  <br />  ③xxxxxxxxx④  <br />  配置为 Multiline 可以使 "^" 匹配 ① 外，还可以匹配换行符之后，下一行开始前 ③ 的位置，使 "$"匹配 ④ 外，还可以匹配换行符之前，一行结束 ② 的位置。 |
 | Global | 主要在将表达式用来替换时起作用，配置为 Global 表示替换所有的匹配。 |
 
-"/The/gi" => **The** fat cat sat on **the** mat.  <br />  贪婪匹配与惰性匹配 (Greedy vs lazy matching)  <br />  正则表达式默认采用贪婪匹配模式，会匹配尽可能长的子串。可以使用 ? 将贪婪匹配模式转化为惰性匹配模式。  <br />  "/(.*at)/" => The fat cat sat on the mat   <br />  "/(.*?at)/" => The fat cat sat on the mat  <br />  **​**  <br />  
+"/The/gi" => **The** fat cat sat on **the** mat.  <br />  贪婪匹配与惰性匹配 (Greedy vs lazy matching)  <br />  正则表达式默认采用贪婪匹配模式，会匹配尽可能长的子串。可以使用 ? 将贪婪匹配模式转化为惰性匹配模式。  <br />  "/(.*at)/" => The fat cat sat on the mat   <br />  "/(.*?at)/" => The fat cat sat on the mat
+
 
 # Replace Operation
 $1 ~ $999  <br />  Stands for what a certain group captured. If the number is larger than the max group number, DEELX will use less digitals, till the number is smaller than or equal to the max group number.  <br />  For example:  <br />  If the max group number is 20, "$999" means "$9" and common string "99", while "$15" means the 15th group. If you need "$1" and common string "5", you can use $0015 , DEELX at most recognize 3 digitals as number.
@@ -103,9 +103,7 @@ $+  <br />  Stands for what a group captured, which group has the max group numb
 
 ---
 
-$_  <br />  Stands for the whole original text.  <br />  **​**
-
-**​**
+$_  <br />  Stands for the whole original text.
 
 **POSIX**（Portable Operating System Interface，**可移植操作系统接口**）是[IEEE](https://zh.wikipedia.org/wiki/IEEE)为要在各种[UNIX](https://zh.wikipedia.org/wiki/UNIX)[操作系统](https://zh.wikipedia.org/wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)上运行软件，而定义[API](https://zh.wikipedia.org/wiki/API)的一系列互相关联的标准的总称
 

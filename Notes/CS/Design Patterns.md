@@ -1,23 +1,22 @@
 
 
-
 # —— Design Patterns ——
-**软件设计模式（Software Design Pattern）**：一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。  <br />  它描述了在软件设计过程中的一些不断重复发生的问题，以及该问题的解决方案。  <br />  它是解决特定问题的一系列套路，是前辈们的代码设计经验的总结，具有一定的普遍性，可以反复使用。  <br />  作用：提高代码的**可重用性、可读性和可靠性**。  <br />  ​
+**软件设计模式（Software Design Pattern）**：一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。  <br />  它描述了在软件设计过程中的一些不断重复发生的问题，以及该问题的解决方案。  <br />  它是解决特定问题的一系列套路，是前辈们的代码设计经验的总结，具有一定的普遍性，可以反复使用。  <br />  作用：提高代码的**可重用性、可读性和可靠性**。
 
-1995年，四人帮（GoF）Erich Gamma、Richard Helm、Raplh Johnson和Jonhn Vlissides合作出版了《设计模式：可复用面向对象软件的基础》（Design Patterns: Elements of Reusable Object-Oriented Software）  <br />  ​
+1995年，四人帮（GoF）Erich Gamma、Richard Helm、Raplh Johnson和Jonhn Vlissides合作出版了《设计模式：可复用面向对象软件的基础》（Design Patterns: Elements of Reusable Object-Oriented Software）
 
-统一建模语言（Unified Modeling Language，UML）：设计软件蓝图的可视化建模语言，具有简单、统一、图形化、能表达软件设计中的动态与静态信息等特点。  <br />  ​
+统一建模语言（Unified Modeling Language，UML）：设计软件蓝图的可视化建模语言，具有简单、统一、图形化、能表达软件设计中的动态与静态信息等特点。
 
-可见性：公有（public）、私有（private）、受保护（protected）和包（package）分别用符号+、-、#、~来表示  <br />  ![](http://c.biancheng.net/uploads/allimg/181119/3-1Q119161203241.gif#crop=0&crop=0&crop=1&crop=1&id=kyJ2L&originHeight=395&originWidth=450&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  
+可见性：公有（public）、私有（private）、受保护（protected）和包（package）分别用符号+、-、#、~来表示  <br />  ![](http://c.biancheng.net/uploads/allimg/181119/3-1Q119161203241.gif#crop=0&crop=0&crop=1&crop=1&id=kyJ2L&originHeight=395&originWidth=450&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 
 ## 类之间的关系
 **依赖（Dependency）**关系：一种使用关系，它是对象之间耦合度最弱的一种关联方式，是临时性的关联。  <br />  **关联（Association）**关系：对象之间的一种引用关系，用于表示一类对象与另一类对象之间的联系，如老师和学生等。  <br />  **聚合（Aggregation）**关系：关联关系的一种，是强关联关系，是整体和部分之间的关系，是 has-a 的关系。  <br />  **组合（Composition）**关系：关联关系的一种，表示类之间的整体与部分的关系，是一种更强烈的聚合关系，是 cxmtains-a 关系。  <br />  **泛化（Generalization）**关系：对象之间耦合度最大的一种关系，表示一般与特殊的关系，是一种继承关系，是 is-a 的关系。  <br />  **实现（Realization）**关系：接口与实现类之间的关系。
 
 ## 设计原则
-**开闭原则（Open Closed Principle，OCP）**  <br />  软件实体应当对扩展开放，对修改关闭（Software entities should be open for extension，but closed for modification）。  <br />  当应用的需求改变时，在不修改软件实体的源代码或者二进制代码的前提下，可以扩展模块的功能，使其满足新的需求。  <br />  **里氏替换原则（Liskov Substitution Principle，LSP）**  <br />  继承必须确保超类所拥有的性质在子类中仍然成立（Inheritance should ensure that any property proved about supertype objects also holds for subtype objects）。  <br />  子类继承父类时，除添加新的方法完成新增功能外，尽量不要重写父类的方法。  <br />  **依赖倒置原则（Dependence Inversion Principle，DIP）**  <br />  高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象（High level modules shouldnot depend upon low level modules.Both should depend upon abstractions.Abstractions should not depend upon details. Details should depend upon abstractions）  <br />  要面向接口编程，不要面向实现编程  <br />  **单一职责原则（Single Responsibility Principle，SRP）**  <br />  一个类应该有且仅有一个引起它变化的原因，否则类应该被拆分（There should never be more than one reason for a class to change）。  <br />  **接口隔离原则（Interface Segregation Principle，ISP）**  <br />  一个类对另一个类的依赖应该建立在最小的接口上（The dependency of one class to another one should depend on the smallest possible interface）。  <br />  为各个类建立它们需要的专用接口，而不要试图去建立一个很庞大的接口供所有依赖它的类去调用。  <br />  **迪米特法则（Law of Demeter，LoD）**  <br />  只与你的直接朋友交谈，不跟“陌生人”说话（Talk only to your immediate friends and not to strangers）  <br />  如果两个软件实体无须直接通信，那么就不应当发生直接的相互调用，可以通过第三方转发该调用。其目的是降低类之间的耦合度，提高模块的相对独立性。  <br />  **合成复用原则（Composite Reuse Principle，CRP）**  <br />  尽量使用合成/聚合的方式，而不是使用继承  <br />  ​
+**开闭原则（Open Closed Principle，OCP）**  <br />  软件实体应当对扩展开放，对修改关闭（Software entities should be open for extension，but closed for modification）。  <br />  当应用的需求改变时，在不修改软件实体的源代码或者二进制代码的前提下，可以扩展模块的功能，使其满足新的需求。  <br />  **里氏替换原则（Liskov Substitution Principle，LSP）**  <br />  继承必须确保超类所拥有的性质在子类中仍然成立（Inheritance should ensure that any property proved about supertype objects also holds for subtype objects）。  <br />  子类继承父类时，除添加新的方法完成新增功能外，尽量不要重写父类的方法。  <br />  **依赖倒置原则（Dependence Inversion Principle，DIP）**  <br />  高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象（High level modules shouldnot depend upon low level modules.Both should depend upon abstractions.Abstractions should not depend upon details. Details should depend upon abstractions）  <br />  要面向接口编程，不要面向实现编程  <br />  **单一职责原则（Single Responsibility Principle，SRP）**  <br />  一个类应该有且仅有一个引起它变化的原因，否则类应该被拆分（There should never be more than one reason for a class to change）。  <br />  **接口隔离原则（Interface Segregation Principle，ISP）**  <br />  一个类对另一个类的依赖应该建立在最小的接口上（The dependency of one class to another one should depend on the smallest possible interface）。  <br />  为各个类建立它们需要的专用接口，而不要试图去建立一个很庞大的接口供所有依赖它的类去调用。  <br />  **迪米特法则（Law of Demeter，LoD）**  <br />  只与你的直接朋友交谈，不跟“陌生人”说话（Talk only to your immediate friends and not to strangers）  <br />  如果两个软件实体无须直接通信，那么就不应当发生直接的相互调用，可以通过第三方转发该调用。其目的是降低类之间的耦合度，提高模块的相对独立性。  <br />  **合成复用原则（Composite Reuse Principle，CRP）**  <br />  尽量使用合成/聚合的方式，而不是使用继承
 
-​  <br />  
+
 
 # 创建型模式（Creational Patterns）
 
@@ -339,7 +338,6 @@ class Director
 }
 ```
 
-  <br />  
 
 
 # 结构型模式（Structural Patterns）
@@ -902,7 +900,6 @@ class Proxy implements Subject
     }
 }
 ```
-
 
 
 # 行为型模式（Behavioral Patterns）

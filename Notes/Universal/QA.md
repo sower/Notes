@@ -1,10 +1,10 @@
 
 # —— Software Testing ——
-软件测试：在规定的条件下对程序进行操作，以发现程序错误，衡量软件质量，并对其是否能满足设计要求进行评估的过程。  <br />  ​
+软件测试：在规定的条件下对程序进行操作，以发现程序错误，衡量软件质量，并对其是否能满足设计要求进行评估的过程。
 
-软件测试的对象：源程序、目标程序、数据及相关文档  <br />  ​
+软件测试的对象：源程序、目标程序、数据及相关文档
 
-软件测试流程：需求分析-->测试计划-->测试设计-->测试环境搭建-->测试执行-->测试记录-->缺陷管理-->软件评估  <br />  ​
+软件测试流程：需求分析-->测试计划-->测试设计-->测试环境搭建-->测试执行-->测试记录-->缺陷管理-->软件评估
 
 所需能力
 
@@ -33,9 +33,7 @@
 - 功能图法
 - 错误推测法：基于以往的经验和直觉，参照以往的软件系统出现的错误，推测程序中所有可能存在的各种缺陷和错误，然后有针对性地设计测试用例。
 
-​
-
-**白盒测试（White-box Testing）**  <br />  通过检查软件内部的逻辑结构，对软件中的逻辑路径进行覆盖测试；在程序的不同地方设立检查点，检查程序的状态，以确定实际运行状态与预期状态是否一致  <br />  ​
+**白盒测试（White-box Testing）**  <br />  通过检查软件内部的逻辑结构，对软件中的逻辑路径进行覆盖测试；在程序的不同地方设立检查点，检查程序的状态，以确定实际运行状态与预期状态是否一致
 
 原则
 
@@ -43,8 +41,6 @@
 - 所有逻辑值都要测试真（true）和假（false）两种情况。
 - 检查程序的内部数据结构是否有效。
 - 在上、下边界及可操作范围内运行所有循环。
-
-​
 
 方法
 
@@ -57,20 +53,16 @@
 - 符号测试
 - 程序变异
 
-​
-
-灰盒测试（Gray-Box Testing）：多用于集成测试阶段，不仅关注输出、输入的正确性，同时也关注程序内部的情况。  <br />
+灰盒测试（Gray-Box Testing）：多用于集成测试阶段，不仅关注输出、输入的正确性，同时也关注程序内部的情况。
 
 
 ## 方向
-功能测试：检查实际功能是否符合用户的需求  <br />  逻辑功能测试、界面测试、易用性测试、兼容性测试、安装测试等。  <br />  ​
+功能测试：检查实际功能是否符合用户的需求  <br />  逻辑功能测试、界面测试、易用性测试、兼容性测试、安装测试等。
 
 兼容测试（Compatibility Test Suite ）：所设计程序与硬件、软件之间的兼容性的测试。
 
 - 硬件兼容：与整机兼容、与外设兼容
 - 软件兼容：操作系统/平台、应用软件之间的兼容、不同浏览器的兼容、数据库的兼容、分辨率
-
-​
 
 性能测试 (performance testing)：通过测试工具模拟多种正常、峰值以及异常负载条件来对系统的各项性能指标进行的测试。
 
@@ -80,14 +72,12 @@
 - 配置测试：通过对被测系统的软\硬件环境的调整，了解各种不同对系统的性能影响的程度，从而找到系统各项资源的最优分配原则
 - 可靠性测试：在给系统加载一定业务压力的情况下，使系统运行一段时间，以此检测系统是否稳定。
 
-​
-
 吞吐量：通信通道上单位时间能成功传递的平均资料量，比特每秒（bit/s或bps）  <br />  吞吐率：单位时间内网络上传输的数据量，即单位时间内处理客户请求数量。  <br />  事务：一个客户机向服务器发送请求然后服务器做出反应的过程
 
 - TPS (Transaction Per second) ：每秒钟系统能够处理事务或交易的数量，衡量系统处理能力的重要指标。
 - QPS（Queries Per Second，每秒查询数）
 
-RT（Response Time，响应时间）  <br />  QPS(TPS)=并发数/平均响应时间  <br />  ​
+RT（Response Time，响应时间）  <br />  QPS(TPS)=并发数/平均响应时间
 
 响应时间的“2-5-8原则”
 
@@ -96,15 +86,14 @@ RT（Response Time，响应时间）  <br />  QPS(TPS)=并发数/平均响应时
 - 当用户在5-8秒以内得到响应时，会感觉系统的响应速度很慢，但是还可以接受；
 - 而当用户在超过8秒后仍然无法得到响应时，会感觉系统糟透了，或者认为系统已经失去响应，而选择离开这个Web站点，或者发起第二次请求。
 
-​
+2-8原则：80%的bug多发生在软件的20%的模块
 
-2-8原则：80%的bug多发生在软件的20%的模块  <br />  ​
+点击率（Hit Per Second）  <br />  PV（Page View）：页面访问量  <br />  UV（Unique Visitor）：独立访客  <br />  DAU(Daily Active User)，日活跃用户数量  <br />  MAU(Month Active User)：月活跃用户数量
 
-点击率（Hit Per Second）  <br />  PV（Page View）：页面访问量  <br />  UV（Unique Visitor）：独立访客  <br />  DAU(Daily Active User)，日活跃用户数量  <br />  MAU(Month Active User)：月活跃用户数量  <br />  ​
+APP性能指标：内存、CPU、流量、电量、启动速度、滑动速度、界面切换速度、与服务器交互的网络速度。
 
-APP性能指标：内存、CPU、流量、电量、启动速度、滑动速度、界面切换速度、与服务器交互的网络速度。  <br />  ​
+安全测试：IT软件产品的生命周期中，对产品进行检验以验证产品符合安全需求定义和产品质量标准的过程。  <br />  渗透测试 (Penetration test)：通过模拟恶意黑客的攻击方法，来评估计算机网络系统安全的一种评估方法。
 
-安全测试：IT软件产品的生命周期中，对产品进行检验以验证产品符合安全需求定义和产品质量标准的过程。  <br />  渗透测试 (Penetration test)：通过模拟恶意黑客的攻击方法，来评估计算机网络系统安全的一种评估方法。  <br />  ​  <br />
 
 ## 阶段
 1、单元测试（Unit Testing）：又称模块测试，针对单一的程序模块进行的测试。  <br />  2、集成测试（Integration Testing）：又叫组装测试，在单元测试的基础上，对所有模块进行测试。  <br />  3、系统测试（System Testing）：将整个软件看做一个整体来进行测试，包括功能、性能、兼容性  <br />  4、验收测试（Acceptance Testing）：按照软件任务书或合同、供需双方约定的验收依据进行测试，决定是否接收
@@ -112,8 +101,6 @@ APP性能指标：内存、CPU、流量、电量、启动速度、滑动速度�
    - 内测版(alpha)内部交流版本，可能存在很多bug，不建议用户安装。
    - 公测版(beta)面向所有用户，通过用户的反馈再去修改细节。
    - 候选版(gamma)与正式软件相差无几。
-
-​
 
 V模型：需求分析、概要设计、详细设计、编码、单元测试、集成测试、系统测试、验收测试;
 
@@ -130,11 +117,9 @@ V模型：需求分析、概要设计、详细设计、编码、单元测试、�
 | 发现的缺陷认为是固定的。 | 发现的缺陷视为产品故障。 |
 
 
-
 - 冒烟测试（Smoke testing）：对一个新版本进行大规模的系统测试之前，先验证一下软件的基本功能是否实现，是否具备可测性
 - 健全测试（Sanity testing）：
 - 回归测试（Regression Testing）：修改了旧代码后，重新进行测试以确认修改后没有引入新的错误或导致其他代码产生错误。
-
 | 冒烟测试 | 健全测试 |
 | --- | --- |
 | 它是一种测试应用程序所有部分测试位置的广泛方法。 | 它是一种测试应用程序特定部分的狭隘方法。 |
@@ -147,11 +132,8 @@ V模型：需求分析、概要设计、详细设计、编码、单元测试、�
 | 它被视为验收测试的子集。 | 它被认为是回归测试的一个子集。 |
 
 
-
 - 埋点测试
 - MOCK打桩测试
-
-​
 
 埋点：针对特定用户行为或事件进行捕获、处理和发送的相关技术及其实施过程
 
@@ -159,15 +141,14 @@ V模型：需求分析、概要设计、详细设计、编码、单元测试、�
 - 可视化埋点
 - 无/全埋点：先尽可能收集所有控件的操作数据，然后再通过界面配置哪些数据需要在系统里面进行分析
 
-​  <br />
 
 ## 状态
 静态测试（Static Testing）：被测程序不运行，只依靠分析或检查源程序的语句、结构、过程等来检查程序是否有错误。  <br />  动态测试（Dynamic Testing）：通过运行被测试程序，对得到的运行结果与预期的结果进行比较分析，同时分析运行效率和健壮性能等  <br />  静态质量：度量所依据的标准是ISO9126。软件的质量用以下几个方面来衡量，即功能性(Functionality)、可靠(Reliability)、可用性(Usability)、有效性(Efficiency)、可维护性（Maintainability）、可移植性(Portability)。
 
 ## 行为
-人工测试（Manual Testing，MT）  <br />  自动化测试（Automatic Testing，AT）  <br />  对象  <br />  程序测试  <br />  文档测试  <br />  ​
+人工测试（Manual Testing，MT）  <br />  自动化测试（Automatic Testing，AT）  <br />  对象  <br />  程序测试  <br />  文档测试
 
-​  <br />
+
 
 # 测试流程
 
@@ -178,15 +159,11 @@ V模型：需求分析、概要设计、详细设计、编码、单元测试、�
 - 需求文档
 - 口述
 
-​
-
 阶段内容
 
 - 梳理业务流程——流程图
 - 提取功能点
 - 编写需求分析说明书
-
-​
 
 需求不明
 
@@ -194,7 +171,6 @@ V模型：需求分析、概要设计、详细设计、编码、单元测试、�
 - 根据经验
 - 参考同行
 
-​  <br />
 
 ## 测试设计
 测试计划：模板文档编写
@@ -209,31 +185,26 @@ V模型：需求分析、概要设计、详细设计、编码、单元测试、�
 - 测试活动管理
 - 测试标准
 
-​
-
 测试方案（策略）
 
 - 风险分析
 - 技术工具
 
-​
+**设计测试用例**  <br />  测试用例（Test Case）：为某个特殊目标而编制的一组测试输入、执行条件以及预期结果，以便测试某个程序路径或核实是否满足某个特定需求。  <br />  即把测试系统的操作步骤用按照一定的格式用文字描述出来。
 
-**设计测试用例**  <br />  测试用例（Test Case）：为某个特殊目标而编制的一组测试输入、执行条件以及预期结果，以便测试某个程序路径或核实是否满足某个特定需求。  <br />  即把测试系统的操作步骤用按照一定的格式用文字描述出来。  <br />  ​
+遵守5C原则（Correct准确、Clear清晰、Concise简洁、Complete完整、Consistent一致）
 
-遵守5C原则（Correct准确、Clear清晰、Concise简洁、Complete完整、Consistent一致）  <br />  ​
+测试用例应包括：编号，标题，优先级，前提条件，测试数据，测试步骤，预期结果，实际结果。
 
-测试用例应包括：编号，标题，优先级，前提条件，测试数据，测试步骤，预期结果，实际结果。  <br />  ​
 
-​
+用例评审
 
-用例评审  <br />  ​
 
-​  <br />
 
 ## 测试执行
-执行测试用例  <br />  缺陷（Bug）管理  <br />  版本管理  <br />  版本迭代：增量测试、全量测试  <br />  ​
+执行测试用例  <br />  缺陷（Bug）管理  <br />  版本管理  <br />  版本迭代：增量测试、全量测试
 
-软件缺陷  <br />  1、软件没有实现产品的说明书所描述的功能。  <br />  2、软件实现了产品说明书描述不应有的功能。  <br />  3、软件执行了产品说明书没讲的操作。  <br />  4、软件没有实现产品说明书没讲但应该实现的功能。  <br />  5、从软件测试员的角度来看，软件难以理解、不易使用、运行缓慢，或者最终用户认为不对。  <br />  ​
+软件缺陷  <br />  1、软件没有实现产品的说明书所描述的功能。  <br />  2、软件实现了产品说明书描述不应有的功能。  <br />  3、软件执行了产品说明书没讲的操作。  <br />  4、软件没有实现产品说明书没讲但应该实现的功能。  <br />  5、从软件测试员的角度来看，软件难以理解、不易使用、运行缓慢，或者最终用户认为不对。
 
 软件缺陷（Bug）记录的内容
 
@@ -244,9 +215,7 @@ V模型：需求分析、概要设计、详细设计、编码、单元测试、�
 - 附件（截图、录像、日志）
 - 发现日期、发现人、修改日期、修改人、修改方法、回归结果等
 
-​
-
-有效的发现Bug需参考需求以及详细设计等前期文档设计出高效的测试用例，然后严格执行测试用例，对发现的问题要充分确认肯定，然后再向外发布如此才能提高提交Bug的质量。  <br />  ​
+有效的发现Bug需参考需求以及详细设计等前期文档设计出高效的测试用例，然后严格执行测试用例，对发现的问题要充分确认肯定，然后再向外发布如此才能提高提交Bug的质量。
 
 缺陷等级
 
@@ -256,11 +225,9 @@ V模型：需求分析、概要设计、详细设计、编码、单元测试、�
 - 轻微：对产品外观和下道工序可能会有轻微影响的缺陷
 - 建议：增加用户使用体验的建议性问题。（一般情况下，建议也为做为缺陷的一种。这个跟系统的类型与需求有关）
 
-​
+缺陷优先级（priority）
 
-缺陷优先级（priority）  <br />  ​
-
-BUG的生命周期：提交->确认->分配->修复->验证->关闭  <br />  ​
+BUG的生命周期：提交->确认->分配->修复->验证->关闭
 
 缺陷状态
 
@@ -271,7 +238,6 @@ BUG的生命周期：提交->确认->分配->修复->验证->关闭  <br />  ​
 - 回归 ： 对已经修复的问题进行回归确认。
 - 关闭 ： 问题的最后一个状态。
 
-​  <br />
 
 ## 测试总结
 测试报告
@@ -286,8 +252,6 @@ BUG的生命周期：提交->确认->分配->修复->验证->关闭  <br />  ​
       - 哪些需求还没完成
       - 还有多少BUG没有修改
 
-​
-
 QA & QC  <br />  软件质量保证与质量控制的区别
 
 | 项目 | QA | QC |
@@ -301,24 +265,23 @@ QA & QC  <br />  软件质量保证与质量控制的区别
 | 责任 | 开发团队的每个成员都负责QA | 只有特定的测试团队负责QC |
 | 示例 | 验证软件流程。 | 检验软件功能和流程。 |
 
-![](https://images2015.cnblogs.com/blog/15172/201603/15172-20160327140427917-1972216437.png#crop=0&crop=0&crop=1&crop=1&id=oHkBS&originHeight=814&originWidth=1654&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />
-  <br />
-  <br />  ​
+![](https://images2015.cnblogs.com/blog/15172/201603/15172-20160327140427917-1972216437.png#crop=0&crop=0&crop=1&crop=1&id=oHkBS&originHeight=814&originWidth=1654&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
-**测试左移（Testing Shift Left）**  <br />  测试左移是向测试之前的开发阶段移动。  <br />  测试团队在软件开发周期早期和所有干系人合作。因此他们能清晰地理解需求以及设计测试用例去帮助软件“快速失败”，促使团队更早的修改所有的 Bug。更深入的参与和理解会促进测试人员获取产品完整的知识，彻底想清楚各种场景，并根据软件行为设计实时的场景，这些都会帮助团队在编码完成之前识别出一些缺陷。  <br />  测试左移聚焦在使测试人员在全部和最重要的项目阶段参与进来。这就是测试人员把焦点从发现 Bug 转移到 Bug 的预防上，同时也驱动项目的商业目标。  <br />  **测试右移（Testing Shift Right）**  <br />  测试右移是测试活动向产品发布之后的步骤移动。  <br />  产品上线了之后也可以进行一些测试活动。主要关注的是产品性能及可用性监控，以及新功能的测试。通过测试右移可以在生产环境做监控，监控线上性能和可用率，一旦线上发生任何问题，尽快反应，提前反应，给用户良好的体验。  <br />
-  <br />  ​  <br />
+
+
+**测试左移（Testing Shift Left）**  <br />  测试左移是向测试之前的开发阶段移动。  <br />  测试团队在软件开发周期早期和所有干系人合作。因此他们能清晰地理解需求以及设计测试用例去帮助软件“快速失败”，促使团队更早的修改所有的 Bug。更深入的参与和理解会促进测试人员获取产品完整的知识，彻底想清楚各种场景，并根据软件行为设计实时的场景，这些都会帮助团队在编码完成之前识别出一些缺陷。  <br />  测试左移聚焦在使测试人员在全部和最重要的项目阶段参与进来。这就是测试人员把焦点从发现 Bug 转移到 Bug 的预防上，同时也驱动项目的商业目标。  <br />  **测试右移（Testing Shift Right）**  <br />  测试右移是测试活动向产品发布之后的步骤移动。  <br />  产品上线了之后也可以进行一些测试活动。主要关注的是产品性能及可用性监控，以及新功能的测试。通过测试右移可以在生产环境做监控，监控线上性能和可用率，一旦线上发生任何问题，尽快反应，提前反应，给用户良好的体验。
+
+
 
 # 自动化测试
 使用独立于待测软件的其他软件来自动执行测试、比较实际结果与预期并生成测试报告这一过程  <br />  **分类**
 
 - 图形用户交互界面测试（GUI Based Testing）：使用能够产生图形用户界面操作（如出表点击、键盘输入等）的测试框架，模拟用户动作来以观察、验证程序是否正确的响应
-- 接口测试（API Based Testing）：通过调用接口（API）绕过GUI，，以应用到验证的行为进行测试。
+- 接口测试（API Based Testing）：通过调用接口（API）绕过GUI，，以应用到验证的行为进行测试。 
    - Arrange: 准备测试数据，构造请求
    - Act: 通过不同的参数来调用接口，并拿到返回
    - Assert: 断言，判断结果
    - 数据库校验
-
-​
 
 **常用的框架/脚本模式**
 
@@ -332,8 +295,6 @@ QA & QC  <br />  软件质量保证与质量控制的区别
 - 混合模式（混合使用多种模式）
 - [敏捷开发](https://zh.wikipedia.org/wiki/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91)自动化测试框架
 
-​
-
 POM（Page Object Model，页面对象模型）  <br />  页面定位和业务操作分开，分离了测试对象和测试脚本
 
 - PageModle：每个页面都有一个PageClass，标识该页面的Web元素，并包含对这些Web元素执行操作的方法
@@ -341,7 +302,7 @@ POM（Page Object Model，页面对象模型）  <br />  页面定位和业务�
 ```javascript
 from utils.seleniumtools import find_elemenet
 class AdminloginPage():
-
+    
     # 1. 封装要使用的元素
     def __init__(self, driver):
         self.driver = driver
@@ -351,7 +312,7 @@ class AdminloginPage():
     # 2.封装对应的动作
     def go_login_page(self):
         self.driver.get("http://118.24.255.132:9090/shopxo/admin.php?s=/admin/logininfo.html")
-
+        
     # 登录动作
     def login(self, u, p):
         find_elemenet(self.driver, self.username).send_keys(u)
@@ -359,31 +320,28 @@ class AdminloginPage():
         find_elemenet(self.driver, self.loginbtn).click()
 ```
 
-  <br />
 
 
 # 软件开发方法（software development methodology, SDM）
-**DevOps**（**Dev**elopment和**Op**erations的组合词）是一种重视“软件开发人员（Dev）”和“IT运维技术人员（Ops）”之间沟通合作的文化、运动或惯例。透过自动化“软件交付”和“架构变更”的流程，来使得构建、测试、发布软件能够更加地快捷、频繁和可靠。  <br />  **​**
+**DevOps**（**Dev**elopment和**Op**erations的组合词）是一种重视“软件开发人员（Dev）”和“IT运维技术人员（Ops）”之间沟通合作的文化、运动或惯例。透过自动化“软件交付”和“架构变更”的流程，来使得构建、测试、发布软件能够更加地快捷、频繁和可靠。
 
-**极限编程**（Extreme programming，XP），一种[软件工程](https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B)方法学，是[敏捷软件开发](https://zh.wikipedia.org/wiki/%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91)的一种方式。  <br />  **​**
+**极限编程**（Extreme programming，XP），一种[软件工程](https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B)方法学，是[敏捷软件开发](https://zh.wikipedia.org/wiki/%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91)的一种方式。
 
 **迭代式开发**（**迭代增量式开发**，**迭代进化式开发）：**整个开发工作被组织为一系列的短小的、固定长度（如3周）的小项目，被称为一系列的**迭代**。
 
 - 迭代——某版本的生产过程，包括从需求分析到测试完成。
 - 版本——某阶段软件开发的结果，一个可交付使用的产品。
 
-​  <br />
 
 # 实践
 **测试驱动开发**（Test-driven development，TDD）是一种[软件开发过程](https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B)中的应用方法，倡导先写测试程序，然后编码实现其功能得名。
 
 - 驱动代码的设计和功能的实现 --> 驱动代码的再设计和重构
 
-验收性测试驱动开发（Acceptance Test Driven Development，ATDD）：整个团队在开发工作之前，一起讨论、制定每个任务的验收标准，并提取测试用例。  <br />  **​**
+验收性测试驱动开发（Acceptance Test Driven Development，ATDD）：整个团队在开发工作之前，一起讨论、制定每个任务的验收标准，并提取测试用例。
 
-**持续集成**（Continuous integration，CI）是一种[软件工程](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B)流程，将所有[软件工程师](https://zh.wikipedia.org/wiki/%E8%BB%9F%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%AB)对于软件的工作副本持续集成到共享主线（mainline）的一种举措。  <br />  **持续交付**（Continuous delivery，CD），是一种[软件工程](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B)手法，让软件产品的产出过程在一个短周期内完成，以保证软件可以稳定、持续的保持在随时可以释出的状况。  <br />  **持续部署**（Continuous deployment，CD），是一种[软件工程](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B)方法，在[软件开发流程](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E6%B5%81%E7%A8%8B)中，以自动化方式，频繁而且持续性的，将[软件](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94)[部署](https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E9%83%A8%E7%BD%B2)到生产环境（production environment）中，使软件产品能够快速的发展  <br />  ​
+**持续集成**（Continuous integration，CI）是一种[软件工程](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B)流程，将所有[软件工程师](https://zh.wikipedia.org/wiki/%E8%BB%9F%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%AB)对于软件的工作副本持续集成到共享主线（mainline）的一种举措。  <br />  **持续交付**（Continuous delivery，CD），是一种[软件工程](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B)手法，让软件产品的产出过程在一个短周期内完成，以保证软件可以稳定、持续的保持在随时可以释出的状况。  <br />  **持续部署**（Continuous deployment，CD），是一种[软件工程](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B)方法，在[软件开发流程](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E6%B5%81%E7%A8%8B)中，以自动化方式，频繁而且持续性的，将[软件](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94)[部署](https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E9%83%A8%E7%BD%B2)到生产环境（production environment）中，使软件产品能够快速的发展
 
-​
 
 [语义化版本规范](https://semver.org/lang/zh-CN/)  <br />  版本控制命名格式: 主版本号.子版本号[.修正版本号[.编译版本号 ]]  <br />  `Major.Minor [.Revision[.Build]]`
 
@@ -392,25 +350,23 @@ class AdminloginPage():
 - Build ：表示对相同源所作的重新编译。适用于更改处理器、平台或编译器的情况。
 - Revision ：适用于修复以前发布的程序集中的安全漏洞。
 
-​
+alpha: 内部版本  <br />  beta: 公测版本  <br />  rc（Release candiate，正式版本的候选版本）  <br />  LTS (Long Term Support，长期支持)
 
-alpha: 内部版本  <br />  beta: 公测版本  <br />  rc（Release candiate，正式版本的候选版本）  <br />  LTS (Long Term Support，长期支持)  <br />  ​
 
-​
 
-​  <br />
 
 # Testing Tools
 
 ## Jira
-基于Java架构的管理系统，开发者是 Atlassian，是集项目计划、任务分配、需求管理、错误跟踪于一体的商业软件。  <br />  ![](https://community.atlassian.com/t5/image/serverpage/image-id/110990i21F2440EDEB21200/image-dimensions/2000?v=1.0&px=-1#crop=0&crop=0&crop=1&crop=1&id=NPOSF&originHeight=1594&originWidth=1100&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />
-  <br />
+基于Java架构的管理系统，开发者是 Atlassian，是集项目计划、任务分配、需求管理、错误跟踪于一体的商业软件。  <br />  ![](https://community.atlassian.com/t5/image/serverpage/image-id/110990i21F2440EDEB21200/image-dimensions/2000?v=1.0&px=-1#crop=0&crop=0&crop=1&crop=1&id=NPOSF&originHeight=1594&originWidth=1100&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
 
 
 ## Fiddler
-Fiddler 是以代理web服务器的形式工作的，使用代理地址:127.0.0.1:8888  <br />  Fiddler能捕获HTTP和HTTPS流量，并将其记录下来供用户查看。它通过使用自签名证书实现中间人攻击来进行日志记录。  <br />  ​  <br />
+Fiddler 是以代理web服务器的形式工作的，使用代理地址:127.0.0.1:8888  <br />  Fiddler能捕获HTTP和HTTPS流量，并将其记录下来供用户查看。它通过使用自签名证书实现中间人攻击来进行日志记录。
 
-### ​[Using QuickExec](https://docs.telerik.com/fiddler/knowledge-base/quickexec#using-quickexec)
+
+### [Using QuickExec](https://docs.telerik.com/fiddler/knowledge-base/quickexec#using-quickexec)
 | **命令** | **对应请求项** | **介绍** | **示例** |
 | --- | --- | --- | --- |
 | ?string | All | 匹配出包含这个字符串的请求 | ?google |
@@ -439,25 +395,24 @@ Fiddler 是以代理web服务器的形式工作的，使用代理地址:127.0.0.
 - Rules-> Automatic Breakpoint  ->Before Requests | After Response
 - bpu | bpafter string
 
-**​**
 
-**Filters**  <br />  `REGEX:(?insx)/[^\?/]*\.(css|ico|jpg|png|gif|bmp|wav)(\?.*)?$`  <br />  REGEX: 表示启用正则表达式  <br />  (?insx) 设置正则解释的规则，忽略大小写等。  <br />  ​
 
-​
+**Filters**  <br />  `REGEX:(?insx)/[^\?/]*\.(css|ico|jpg|png|gif|bmp|wav)(\?.*)?$`  <br />  REGEX: 表示启用正则表达式  <br />  (?insx) 设置正则解释的规则，忽略大小写等。
+
 
 手机抓包  <br />  1 手机和电脑在同一局域网  <br />  2 fiddler开启远程连接  <br />  3. 手机设置网络代理，指向局域网中fiddler的地址（IP+PORT）  <br />  4. 手机端用浏览器通过 fiddler的地址（xx.xx.xx.xx:8888）下载fiddler证书并安装  <br />  5. 抓包测试完毕，记得关闭手机中的代理，删除手机端安装的fiddler证书
 > _android7.0+的版本新增了证书验证(系统证书)_
 > _ios13.0+ 需要插件 _CertMaker for iOS and Android
 > [https://www.telerik.com/fiddler/add-ons](https://www.telerik.com/fiddler/add-ons)
 
-​  <br />
+
 
 ### 脚本
-菜单->Rules->Customize Rules…（Ctrl+R）  <br />  ​
+菜单->Rules->Customize Rules…（Ctrl+R）
 
 **beforerequest**  <br />  显示IP
 ```javascript
-static function Main()
+static function Main() 
 //显示IP地址
 FiddlerObject.UI.lvSessions.AddBoundColumn ("ServerIP", 120, "X-HostIP");
 ```
@@ -465,9 +420,9 @@ FiddlerObject.UI.lvSessions.AddBoundColumn ("ServerIP", 120, "X-HostIP");
 ```javascript
 if (m_SimulateModem) {
             // Delay sends by 300ms per KB uploaded.
-            oSession["request-trickle-delay"] = "300";
+            oSession["request-trickle-delay"] = "300"; 
             // Delay receives by 150ms per KB downloaded.
-            oSession["response-trickle-delay"] = "150";
+            oSession["response-trickle-delay"] = "150"; 
         }
 ```
 过滤并高亮显示host / url
@@ -492,16 +447,14 @@ if (oSession.HostnameIs("test.com")) {
 删除所有的cookie oSession.oRequest.headers.Remove("Cookie");  <br />  新建cookie oSession.oRequest.headers.Add("Cookie", "username=testname;testpassword=P@ssword1");
 ```javascript
 if (oSession.HostnameIs("******") && oSession.oRequest.headers.Exists("Cookie") ) {
-    var sCookie = oSession.oRequest["Cookie"];
+    var sCookie = oSession.oRequest["Cookie"]; 
     //用replace方法或者正则表达式的方法去操作cookie的string
-    //sCookie = sCookie.Replace("cookieName=", "ignoreme=");
+    //sCookie = sCookie.Replace("cookieName=", "ignoreme="); 
     sCookie = sCookie + ";tt_spver=1";
-    oSession.oRequest["Cookie"] = sCookie;
+    oSession.oRequest["Cookie"] = sCookie; 
 }
 ```
-​
 
-​
 
 **beforerespond**  <br />  修改response body
 ```javascript
@@ -511,7 +464,7 @@ if(oSession.HostnameIs("host") && oSession.url.IndexOf("url_path") > -1){
         // 用正则表达式或者replace方法去修改string
         var regx = '"stream_mode":\d*?'
         strBody=strBody.replace(regx,'"stream_mode":0');
-        // 弹个对话框检查下修改后的body
+        // 弹个对话框检查下修改后的body               
         FiddlerObject.alert(strBody);
         // 将修改后的body，重新写回Request中
         oSession.utilSetResponseBody(strBody);
@@ -525,7 +478,7 @@ if(oSession.HostnameIs("host") && oSession.url.IndexOf("url_path") > -1){
         // 转换为可编辑的JSONObject变量
         var responseJSON = Fiddler.WebFormats.JSON.JsonDecode(responseStringOriginal);
         // 修改JSONObject变量，修改字段数据
-        responseJSON.JSONObject["new_core"] = "True";
+        responseJSON.JSONObject["new_core"] = "True";  
         responseJSON.JSONObject["stream_mode"] = 5;
         // 重新设置Response Body
         var responseStringDestinal = Fiddler.WebFormats.JSON.JsonEncode(responseJSON.JSONObject);
@@ -548,18 +501,15 @@ if(oSession.HostnameIs("host1") && oSession.url.IndexOf("url_path1") > -1){
         //说明已经拿到了播放请求接口,将其返回网络状态码修改成：404
         oSession.oResponse.headers.HTTPResponseCode = 404;
         oSession.oResponse.headers.HTTPResponseStatus = "use fiddler change responed code";
-
+	
      }
 ```
-​
 
 Guide
 
 - [Modifying a Request or Response](https://docs.telerik.com/fiddler/knowledge-base/fiddlerscript/modifyrequestorresponse#modifying-a-request-or-response)
 - [FiddlerScript](http://fiddlerbook.com/Fiddler/dev/ScriptSamples.asp)
 
-
-  <br />
 
 
 ## Jmeter
@@ -578,16 +528,13 @@ bin
 - jmeter.properties 系统配置文件
 - Jmeter.log
 
-​
-
 jmeter.properties
 ```javascript
 sampleresult.default.encoding=UTF-8	解决中文乱码
 language=zh_CN		默认简体中文
 ```
-​
 
-**插件管理器**  <br />  Download [plugins-manager.jar](https://jmeter-plugins.org/get/) and put it into lib/ext directory, then restart JMeter  <br />  ​
+**插件管理器**  <br />  Download [plugins-manager.jar](https://jmeter-plugins.org/get/) and put it into lib/ext directory, then restart JMeter
 
 **测试计划（Test Plan）**  <br />  线程组(Thread Group)	相当于一个业务流程；  <br />  线程属性 ThreadProperties
 
@@ -595,9 +542,7 @@ language=zh_CN		默认简体中文
 - Ramp-Up时间：在X秒内启动上面配置的线程数
 - 循环次数（Loop Count）：循环模拟的次数
 
-​
-
-测试片段（Test Fragment）：控制器上的一个种特殊的线程组  <br />  ​
+测试片段（Test Fragment）：控制器上的一个种特殊的线程组
 
 配置元素(Configuration Elements)：提供对静态数据配置的支持  <br />  预处理器元素(Pre-Processor Elements)  <br />  定时器(Timers)
 
@@ -616,11 +561,7 @@ language=zh_CN		默认简体中文
    - **Received KB/sec：** 每秒从服务器端接收到的数据量
    - **Sent KB/Sec：** 每秒从发送到服务器端的数据量
 
-​
 
-​
-
-​
 
 录制脚本
 
@@ -630,9 +571,6 @@ language=zh_CN		默认简体中文
 - 设置系统或浏览器代理服务器与Jmeter一致（浏览器导入证书即可开始）
 - 添加排除模式    .*.(js|css|PNG|jpg|ico|png|gif|jpeg)
 
-​
-
-​
 
 参数化
 
@@ -640,15 +578,13 @@ language=zh_CN		默认简体中文
 - 用户定义的变量
 - 用户参数
 
-`${变量名}`  <br />  ​
+`${变量名}`
 
 提取
 
 - Xpath
 - JSON 提取器表达式，$..<字段名>
 - 正则
-
-​
 
 函数列表  <br />  `${__functionName(var1,var2,var3)}`	如果参数本身带逗号，使用‘\,’来转义
 
@@ -682,15 +618,13 @@ language=zh_CN		默认简体中文
 | 字符串 | escapeHtml | 使用HTML编码对字符串进行编码。 |
 | 字符串 | TestPlanName | 返回当前测试计划的名称。 |
 
-注意：JMeter函数和变量始终区分大小写。  <br />  ​
+注意：JMeter函数和变量始终区分大小写。
 
-​
 
-**分布式**  <br />  各电脑中的Jmeter环境及脚本路径一致  <br />  打开Jmeter-server.bat，启动Jmeter  <br />  ​
+**分布式**  <br />  各电脑中的Jmeter环境及脚本路径一致  <br />  打开Jmeter-server.bat，启动Jmeter
 
-执行机：将本地IP地址填写到Jmeter的配置文件（remote_hosts字段）（关闭防火墙、其他虚拟网卡）  <br />  控制机：将执行机的IP写入配置文件（remote_hosts字段，用,分开）  <br />  ​
+执行机：将本地IP地址填写到Jmeter的配置文件（remote_hosts字段）（关闭防火墙、其他虚拟网卡）  <br />  控制机：将执行机的IP写入配置文件（remote_hosts字段，用,分开）
 
-​
 
 **命令行模式**  <br />  `jmeter -n -t <testplan.jmx> -l <listener filename>`
 
@@ -762,11 +696,9 @@ language=zh_CN		默认简体中文
 -o, --reportoutputfolder <argument>
 	output folder for report dashboard
 ```
-​
 
-​
 
-**BeanShell**  <br />  用Java写成的，一个小型的、可以下载、嵌入式的Java源代码解释器，具有对象脚本的特性；  <br />  BeanShell可以执行标准Java语句和表达式，以及另外自身的一些脚本命令和语法。  <br />  ​
+**BeanShell**  <br />  用Java写成的，一个小型的、可以下载、嵌入式的Java源代码解释器，具有对象脚本的特性；  <br />  BeanShell可以执行标准Java语句和表达式，以及另外自身的一些脚本命令和语法。
 
 内置**变量**
 
@@ -778,22 +710,20 @@ language=zh_CN		默认简体中文
    - vars.put(String key，String value)
 - **props** - (JMeterProperties - class java.util.Properties)：引用了JMeter的配置信息，可以获取Jmeter的属性
    - props.get("START.HMS")
-   - props.put("PROP1","1234");
+   - props.put("PROP1","1234"); 
 - **prev** - (SampleResult)：获取前面的sample返回的信息
    - getResponseDataAsString()：获取响应信息
    - getResponseCode() ：获取响应code
 - sampler - (Sampler)：gives access to the current sampler
 - Parameters：来保存参数的集合
 
-**​**
+
 
 **引用外部文件**
 
 - 源文件（.java）：source(Path);
 - 字节码文件（.class）：addClassPath(FilePath)，import导入包及类
 - jar包：Test Plan中添加；或将jar包拷贝到jmeter/lib/ext下，重启Jmeter
-
-​
 
 e.g
 ```javascript
@@ -802,9 +732,8 @@ a = ++a;
 String b = String.valueOf(a);
 vars.put("n",b);
 ```
-​
 
-​  <br />
+
 
 ## LoadRunner
 组件
@@ -813,16 +742,12 @@ vars.put("n",b);
 - LoadRunner Controller—创建、运行和监控场景
 - LoadRunner Analysis—分析测试结果，图表报告
 
-​
-
-引用变量	{变量名}  <br />  ​
+引用变量	{变量名}
 
 并发
 
 - 脚本设置集合点	Ir_rendezvous
 - Controller中设置集合点的执行策略
-
-​
 
 事务
 
@@ -830,8 +755,6 @@ vars.put("n",b);
 - 每个请求都要添加事务
 - lr_start_transaction("xxx");
 - lr_end_transaction("xxx", LR_AUTO)
-
-​
 
 负载测试的流程
 
@@ -843,23 +766,22 @@ vars.put("n",b);
 - Define the scenario 定义场景
 - Analyze the results 分析结果
 
-​  <br />
 
 ## [Jenkins](https://jenkins.io/)
-开源的、提供友好操作界面的持续集成(CI)工具，起源于Hudson（Hudson是商用的），主要用于持续、自动的构建/测试软件项目、监控外部任务的运行。  <br />  ​
+开源的、提供友好操作界面的持续集成(CI)工具，起源于Hudson（Hudson是商用的），主要用于持续、自动的构建/测试软件项目、监控外部任务的运行。
 
-用于监视执行重复工作，如建立一个软件项目或工作运行的计划任务。  <br />  不断地进行项目的构建/测试软件  <br />  监控外部运行的作业  <br />  ​
+用于监视执行重复工作，如建立一个软件项目或工作运行的计划任务。  <br />  不断地进行项目的构建/测试软件  <br />  监控外部运行的作业
 
-安装到Tomcat的 webapps 目录下  <br />  ​
+安装到Tomcat的 webapps 目录下
 
-\restart  <br />  \reload  <br />  ​
+\restart  <br />  \reload
 
-汉化插件  <br />  Localization Chinese  <br />  ​
-
-​
+汉化插件  <br />  Localization Chinese
 
 
-## ​[Postman](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/)
+
+
+## [Postman](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/)
 
 - pm.variables.has(variableName:String):function → Boolean
 - pm.variables.get(variableName:String):function → *
@@ -867,9 +789,7 @@ vars.put("n",b);
 - const stringWithVars = pm.variables.replaceIn("Hi, my name is {{$randomFirstName}}");
 - pm.test(testName:String, specFunction:Function):Function
 
-​
-
-`{{variable}}`  <br />  **​**
+`{{variable}}`
 
 **随机唯一性字符串**
 
@@ -880,7 +800,7 @@ vars.put("n",b);
 | $randomUUID | 随机 36 位的 UUID | “6929bb52-3ab2-448a-9796-d6480ecad36b” |
 
 
-  <br />  **随机文字、字符串、颜色（码）**
+**随机文字、字符串、颜色（码）**
 
 | **Variable Name** | **Decription** | **Examples** |
 | --- | --- | --- |
@@ -892,7 +812,6 @@ vars.put("n",b);
 | **$randomAbbreviation** | 随机缩写 | SQL , PCI , JSON |
 
 
-  <br />
 
 
 ## [Robot Framework](https://robotframework.org/)
@@ -905,13 +824,11 @@ vars.put("n",b);
 - **文件对比测试**：Diff Library。
 - **HTTP 测试**：HTTP library (livetest)、HTTP library (Requests)等。
 
-​
+基础库	robotframework  <br />  图形界面	robotframework-ride
 
-基础库	robotframework  <br />  图形界面	robotframework-ride  <br />  ​
+启动图形界面：pythonw.exe  -c "from robotide import main; main()"
 
-启动图形界面：pythonw.exe  -c "from robotide import main; main()"  <br />  ​
-
-${x}=	set variable 1  <br />  ${z}=	evaluate	![](https://cdn.nlark.com/yuque/__latex/40d41f22cbbcb71729268f6c9a67c7dc.svg#card=math&code=%7Bx%7D%2B&id=BMEpj){x}  <br />  @{list}=	create list	1 2 3  <br />  &{map}=	create dictionary	a=1 b=2  <br />  ​
+${x}=	set variable 1  <br />  ${z}=	evaluate	![](https://cdn.nlark.com/yuque/__latex/40d41f22cbbcb71729268f6c9a67c7dc.svg#card=math&code=%7Bx%7D%2B&id=BMEpj){x}  <br />  @{list}=	create list	1 2 3  <br />  &{map}=	create dictionary	a=1 b=2
 
 if
 ```javascript

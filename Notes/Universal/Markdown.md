@@ -4,11 +4,9 @@
 > Markdown 编写的文档可以导出 HTML、Word、图像、PDF、Epub 等多种格式的文档。
 
 
-  <br />  **Reference**
+**Reference**
 
 - [markdown-cheatsheet](https://github.com/tchapi/markdown-cheatsheet)
-
-
 
 
 # Heading
@@ -25,7 +23,7 @@ H1 text
 H2 text
 ```
 
-  <br />  使用多个 # 号加空格表示 1-6 级标题，级别等同个数
+使用多个 # 号加空格表示 1-6 级标题，级别等同个数
 
 # 一级标题
 
@@ -48,7 +46,6 @@ H2 text
 ```
 
 
-
 # Text
 纯文本：没有特殊的格式，换行是两个以上空格加上回车  <br />  _斜体文本_  <br />  **粗体文本**  <br />  **_粗斜体文本_**  <br />  ~~删除~~  <br />  高亮
 ```markdown
@@ -62,7 +59,7 @@ ___Strong emphasized text___ or ***Strong emphasized text***
 
 ==highlight==
 ```
-​  <br />  
+
 
 # Horizontal line
 
@@ -74,7 +71,6 @@ ___Strong emphasized text___ or ***Strong emphasized text***
 _ _ _
 * * *
 ```
-
 
 
 # 引用
@@ -94,16 +90,16 @@ _ _ _
 ```
 
 
-
 # 链接
-`格式：[链接名称](链接地址 "可选标题") or <链接地址>`  <br />  `[Named Link](https://google.com "Named link title") and http://www.google.fr/ or <http://example.com/>`  <br />  
-  <br />  这是一个链接 [markdown](https://www.appinn.com/markdown/index.html#html)  <br />  
+`格式：[链接名称](链接地址 "可选标题") or <链接地址>`  <br />  `[Named Link](https://google.com "Named link title") and http://www.google.fr/ or <http://example.com/>`
+
+这是一个链接 [markdown](https://www.appinn.com/markdown/index.html#html)
 
 
 # 图片
-`格式：![属性文本](图片地址 "可选标题")`  <br />  ![](./assets/1645356478157-0fe5cb32-9b8c-424e-babd-e49ce97399e4.png)RUNOOB  <br />  ​
+`格式：![属性文本](图片地址 "可选标题")`  <br />  ![](./assets/1645356478157-0fe5cb32-9b8c-424e-babd-e49ce97399e4.png)RUNOOB
 
-​  <br />  
+
 
 # 代码
 行内代码：用一对反引号（`）包裹  <br />  C语言的 `printf()` 函数
@@ -111,7 +107,7 @@ _ _ _
 C语言的 `printf()` 函数
 ```
 
-  <br />  代码块：用 ``` 包裹一段代码（可以指定一种语言）
+代码块：用 ``` 包裹一段代码（可以指定一种语言）
 ```
 string s("markdown");
 ```
@@ -122,9 +118,8 @@ string s("markdown");
 ```
 
 
-
 # 列表
-**无序列表**  <br />  使用`星号(*)`、`加号(+)`或是`减号(-)`作为列表标记  <br />  列表嵌套需在子列表中的选项添加**四个空格**  <br />  **​**  <br />  
+**无序列表**  <br />  使用`星号(*)`、`加号(+)`或是`减号(-)`作为列表标记  <br />  列表嵌套需在子列表中的选项添加**四个空格**
 
 - Bullet list 
    - Nested bullet 
@@ -144,7 +139,7 @@ string s("markdown");
 - Bullet list item 2 
 ```
 
-  <br />  **有序列表**  <br />  使用`数字加上 . 号`来表示
+**有序列表**  <br />  使用`数字加上 . 号`来表示
 
 1. A numbered list 
    1. A nested numbered list
@@ -165,9 +160,6 @@ string s("markdown");
    - 第二项嵌套的第一个元素
    - 第二项嵌套的第二个元素
 
-​
-
-​
 
 **任务清单**
 
@@ -177,7 +169,6 @@ string s("markdown");
 - [ ] An uncompleted task
 - [x] A completed task
 ```
-
 
 
 # 表格
@@ -212,7 +203,6 @@ Content Cell  | Content Cell | Content Cell
 ```
 
 
-
 # 转义
 使用`反斜杠(\)`转义特殊字符  <br />  支持以下符号前面加上反斜杠来帮助插入普通的符号：
 > \   反斜线
@@ -228,7 +218,7 @@ Content Cell  | Content Cell | Content Cell
 > .    英文句点
 > !    感叹号
 
-​  <br />  
+
 
 # 流程图
 一段流程图语法以 ```  开头，以 ``` 结尾  <br />  在 ``` 后另起一行，书写graph XX，用以确定将要绘制的流程图及其类型（XX表示流程图类型）。  <br />  流程图分为竖向和横向两大类，竖向包括自上而下和自下而上两种顺序，横向包括从右到左和从左到右两种顺序。  <br />  其对应语法分别为：graph TB/graph BT/graph RL/graph LR。  <br />  A---B 无箭头  <br />  A-->B 有箭头  <br />  A-->|插入文本|B  <br />  TB - top bottom（自上而下）
@@ -269,13 +259,11 @@ A{菱形}
 ```
 
 # 甘特图
-甘特图能够将你最近的计划直观地显示出来  <br />  以 ```  开头，以 ``` 结尾  <br />  在 ``` 后另起一行，书写gantt  <br />  用dateFormat YYYY-MM-DD规定时间轴，title （标题文本）表示甘特图标题。  <br />  ​
+甘特图能够将你最近的计划直观地显示出来  <br />  以 ```  开头，以 ``` 结尾  <br />  在 ``` 后另起一行，书写gantt  <br />  用dateFormat YYYY-MM-DD规定时间轴，title （标题文本）表示甘特图标题。
 
-​
 
-​
 
-[GitHub Flavored Markdown 规范](https://github.github.com/gfm/)  <br />  ​  <br />  
+[GitHub Flavored Markdown 规范](https://github.github.com/gfm/)
 
 ---
 

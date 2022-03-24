@@ -1,6 +1,6 @@
 
 # —— [Tomcat](https://tomcat.apache.org/) ——
-**​**
+
 
 **启动**  <br />  在tomcat的bin中运行startup.bat  <br />  [http://127.0.0.1:8080](http://127.0.0.1:8080)  <br />  tomcat9启动后控制台乱码：
 
@@ -11,7 +11,6 @@
 <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8543" />
 ```
 
-  <br />  
 
 
 # —— [Maven](https://maven.apache.org/) ——
@@ -28,15 +27,12 @@ a-maven-project
 │       └── resources
 └── target
 ```
-​
 
 唯一ID  <br />  对于某个依赖，Maven只需要3个变量即可唯一确定某个jar包：
 
 - groupId：组织的名称，类似Java的包名
 - artifactId：该jar包自身的名称，类似Java的类名
 - version：该jar包的版本
-
-​
 
 依赖关系
 
@@ -61,7 +57,6 @@ a-maven-project
 修改仓库位置
 <localRepository>D:\Code\repository</localRepository>
 ```
-​
 
 搜索第三方组件  <br />  [search.maven.org](https://search.maven.org/)  <br />  生命周期（default为例）phase：
 
@@ -89,8 +84,6 @@ a-maven-project
 - install
 - deploy
 
-​
-
 CLI
 
 - mvn clean：清理所有生成的class和jar；
@@ -98,7 +91,7 @@ CLI
 - mvn clean test：先清理，再执行到test
 - mvn clean package：先清理，再执行到package。
 
-**​**
+
 
 **Reference**
 
@@ -108,7 +101,7 @@ CLI
 - [Configure](https://maven.apache.org/configure.html)
 - [IDE Integration](https://maven.apache.org/ide.html)
 
-plugin  <br />  moudel manager  <br />  ​
+plugin  <br />  moudel manager
 
 **Maven Wrapper**  <br />  给一个项目提供一个独立的，指定版本的Maven给它使用
 ```shell
@@ -141,13 +134,11 @@ my-project
         └── resources
 ```
 
-  <br />  
-  <br />  
+
 
 
 # [Hibernate](http://hibernate.org/orm/)
 
-  <br />  
 
 
 # [MyBatis](https://mybatis.org/mybatis-3/zh/index.html)
@@ -303,9 +294,8 @@ public class Test {
 ```
 
 # —— [Spring](https://spring.io/) ——
-​
 
-​  <br />  
+
 
 # Core
 IoC（Inverse of Control，控制反转）：依赖注入（Dependency Injection，DI）  <br />  AOP（Aspect Oriented Programming，面向切面编程）：横向抽取机制，取代了传统纵向继承体系的重复性代码，其应用主要体现在事务处理、日志管理、权限控制、异常处理等方面。  <br />  ![](http://c.biancheng.net/uploads/allimg/190606/5-1Z606104H1294.gif#crop=0&crop=0&crop=1&crop=1&id=zve4L&originHeight=502&originWidth=666&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
@@ -336,7 +326,7 @@ Spring 的核心容器是其他模块建立的基础
 - Test 模块：支持 Spring 组件，使用 JUnit 或 TestNG 框架的测试。
 
 ## IoC
-设值注入（Setter Injection）  <br />  构造注入（Constructor Injection）  <br />  ​
+设值注入（Setter Injection）  <br />  构造注入（Constructor Injection）
 
 **XML装配Bean**  <br />  配置 applicationContext.xml
 ```xml
@@ -375,7 +365,7 @@ public class App {
     } 
 }
 ```
-**​**  <br />  
+  <br />  
 
 | **Property** | **Explained in…** |
 | --- | --- |
@@ -408,7 +398,7 @@ public class App {
 | lazy-init | 懒加载，值为 true，容器在首次请求时才会创建 Bean 实例；值为 false，容器在启动时创建 Bean 实例。该方法只在 scope=singleton 时有效 |
 
 
-  <br />  **自动装配	autowired**
+**自动装配	autowired**
 
 | 名称 | 说明 |
 | --- | --- |
@@ -425,9 +415,7 @@ public class App {
         autowire="byName" />
     ···
 ```
-**​**
 
-**​**
 
 **Annotation装配Bean**
 
@@ -445,8 +433,7 @@ public class App {
    - @PostConstruct：指定 Bean 的初始化方法
    - @PreDestroy：指定 Bean 销毁之前的方法
 
-
-  <br />  配置 applicationContext.xml
+配置 applicationContext.xml
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -507,10 +494,10 @@ public class AppConfig {
     }
 }
 ```
-**​**  <br />  
+  <br />  
 
 ## AOP
-Aspect Oriented Programming，面向切面编程  <br />  ​
+Aspect Oriented Programming，面向切面编程
 
 **术语**
 
@@ -525,7 +512,7 @@ Aspect Oriented Programming，面向切面编程  <br />  ​
 | Aspect（切面） | 切入点和通知的结合。 |
 
 
-  <br />  **Spring AOP 通知类型**
+**Spring AOP 通知类型**
 
 | 名称 | 说明 |
 | --- | --- |
@@ -536,7 +523,7 @@ Aspect Oriented Programming，面向切面编程  <br />  ​
 | org.springframework.aop.IntroductionInterceptor （引介通知） | 在目标类中添加一些新的方法和属性，可以应用于修改旧版本程序（增强类）。 |
 
 
-  <br />  **XML的声明式**
+**XML的声明式**
 ```java
 //切面类
 public class MyAspect {
@@ -601,9 +588,7 @@ applicationContext.xml 配置
         </aop:aspect>
     </aop:config>
 ```
-**​**
 
-**​**
 
 **Annotation 的声明式**
 
@@ -675,8 +660,8 @@ applicationContext.xml 配置
 <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 ```
 
-  <br />  
-  <br />  AspectJ 切入点语法
+
+AspectJ 切入点语法
 
 - [Supported Pointcut Designators](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop-pointcuts-designators)
 - Spring AOP 常用的切入点指示符（pointcut designators，PCD）
@@ -702,7 +687,6 @@ applicationContext.xml 配置
    - @args：用于匹配入参标注有指定注解的方法
 
 
-  <br />  ​  <br />  
 
 ## JDBCTemplate
 通过配置文件、注解、Java 配置类等形式获取数据库的相关信息，实现了对 JDBC 开发过程中的驱动加载、连接的开启和关闭、SQL 语句的创建与执行、异常处理、事务处理、数据类型转换等操作的封装
@@ -740,7 +724,7 @@ applicationContext.xml 配置
 </beans>
 ```
 
-  <br />  methods
+methods
 
 - public int update(String sql)	用于执行新增、更新、删除等语句；
 - public int update(String sql,Object... args)
@@ -751,10 +735,9 @@ applicationContext.xml 配置
 - public <T> T queryForObject(String sql, RowMapper<T> rowMapper, @Nullable Object... args)
 - public int[] batchUpdate(String sql, List<Object[]> batchArgs, final int[] argTypes) 
 
+**TransactionDefinition**：定义了一个事务规则：事务隔离、事务传播、事务超时、只读状态
 
-  <br />  **TransactionDefinition**：定义了一个事务规则：事务隔离、事务传播、事务超时、只读状态  <br />  
-  <br />  
-  <br />  
+
 
 ```java
 public class UserDao {
@@ -784,20 +767,19 @@ public class UserDao {
 }
 ```
 
-  <br />  
-  <br />  
-  <br />  
-  <br />  
-  <br />  
-  <br />  
-  <br />  
-  <br />  
-  <br />  
-  <br />  
+
+
+
+
+
+
+
+
+
 
 
 # Spring MVC
-**​**
+
 
 **MVC**
 
@@ -805,7 +787,214 @@ public class UserDao {
 - **视图(View)**负责渲染模型数据，一般来说它生成客户端浏览器可以解释HTML输出。
 - **控制器(Controller)**负责处理用户请求并构建适当的模型，并将其传递给视图进行渲染。
 
-# Spring Boot
+执行流程  <br />  ![](./assets/1647764006879-b912438c-b849-4985-bd53-8179202216c1.png)
+
+
+## 注解
+`@RequestMapping`：用于类或方法，用来转换 Web 请求（访问路径和参数）
+
+- 常用属性：
+   - value、path：用于将指定请求的实际地址转换到方法上，value 的属性值可以不带斜杠
+   - method：用来指定该方法仅仅处理哪些 HTTP 请求方式，包括 GET、POST、HEAD、OPTIONS、PUT、PATCH、DELETE、TRACE，如果没有指定 method 属性值，则请求处理方法可以处理任意的 HTTP 请求方式
+   - consumes：指定处理**请求的提交内容类型**（Content-Type），如 "application/json"、"text/html"、"application/x-www-form-urlencoded"、"multipart/form-data"（MediaType 提供了常用的媒体类型）
+   - produces：指定**返回的内容类型**，返回的内容类型必须是 request 请求头（Accept）中所包含的类型，如 "application/json;charset=UTF-8"、"application/json"
+   - headers：指定请求中必须包含某些指定的 header 值，才能让该方法处理，如 "Accept=application/json"
+   - params：指定请求中必须包含某些参数值时，才让该方法处理，如 params="myParam=myValue”，方法仅处理其中名为“myParam”、值为“myValue”的请求
+- 组合注解：@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、PatchMapping
+- 后缀匹配：Spring MVC 中默认将 .* 作为匹配后缀，即映射到 /person 的方法也隐式映射到 /person.*。通过重写 WebMvcConfigurerAdapter 类中的 configurePathMatch 方法可设置不忽略“.”后面的参数，configurer.setUseSuffixPatternMatch(false)（Spring Boot 默认设置为 false）
+- URI 模式：
+   - ? 匹配 1 个字符（但不能是代表路径分隔符的 /）
+   - * 匹配 0 或多个任意的字符（可以是代表路径分隔符的 /）
+   - ** 匹配 0 或多个目录
+   - {varName:regex}，如 {spring:[a-z]+} 将**正则表达式** [a-z]+ 匹配到的值赋值给名为 spring 的路径变量
+   - 也可以嵌入 ${…} 占位符，这些占位符在启动时通过 PropertyPlaceHolderConfigurer 对本地、系统、环境和其它属性源来解析
+   - 最长匹配原则：存在多个路径匹配模式时，Spring MVC 会以最长符合路径模式来匹配一个路径
+
+`@RequestParam`：用于将指定的请求参数设置到方法参数  <br />  属性：name、required（默认 true）、defaultValue  <br />  `@PathVariable`：用于将 REST 风格的请求 URL 中的动态参数设置到方法参数，属性 value 省略则默认绑定同名参数  <br />  `@CrossOrigin`：可用于类或方法，**设置跨域行为**，常用属性：origins（允许域名）、methods、allowedHeaders、exposedHeaders、allowCredentials（是否允许发送 Cookie，**启用后允许域名不能设置为 '*'**）、maxAge（本次预检请求的有效期，单位为秒）
+
+
+```java
+@RestController
+@RequestMapping("/persons")
+class PersonController {
+
+    @GetMapping("/{id}")
+    public Person getPerson(@PathVariable Long id) {
+        // ...
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void add(@RequestBody Person person) {
+        // ...
+    }
+}
+```
+
+
+## 拦截器（Interceptor）
+```java
+public class MyInterceptor implements HandlerInterceptor {
+
+    @Override
+    public boolean preHandle(HttpServletRequest request,
+            HttpServletResponse response, Object handler) throws Exception {
+        System.out.println("preHandle方法在控制器的处理请求方法调用之前执行");
+        return false;
+    }
+    
+        @Override
+    public void postHandle(HttpServletRequest request,
+            HttpServletResponse response, Object handler,
+            ModelAndView modelAndView) throws Exception {
+        System.out.println("postHandle方法在控制器的处理请求方法调用之后，解析视图之前执行");
+    }
+    
+        @Override
+    public void afterCompletion(HttpServletRequest request,
+            HttpServletResponse response, Object handler, Exception ex)
+            throws Exception {
+        System.out.println("afterCompletion方法在控制器的处理请求方法执行完成后执行，即视图渲染结束之后执行");
+    }
+}
+```
+拦截器的配置
+```xml
+<mvc:interceptors>
+  <mvc:interceptor>
+    <!--/** 包括路径及其子路径-->
+    <!--/admin/* 拦截的是/admin/add等等这种 , /admin/add/user不会被拦截-->
+    <!--/admin/** 拦截的是/admin/下的所有-->
+    <mvc:mapping path="/**"/>
+    <!--bean配置的就是拦截器-->
+    <bean class="com.example.MyInterceptor"/>
+  </mvc:interceptor>
+</mvc:interceptors>
+```
+
+
+## JSR 303
+Java Specification Requests：Java 规范提案，指向JCP(Java Community Process)提出新增一个标准化技术规范的正式请求
+
+JSR-303 是JAVA EE 6 中的一项子规范，叫做Bean Validation。  <br />  Hibernate Validator 提供了 JSR 303 规范中所有内置 constraint 的实现，除此之外还有一些附加的 constraint。
+
+| 名称 | 说明 |
+| --- | --- |
+| @Null | 被标注的元素必须为 null |
+| @NotNull | 被标注的元素必须不为 null |
+| @AssertTrue | 被标注的元素必须为 true |
+| @AssertFalse | 被标注的元素必须为 false |
+| @Min(value) | 被标注的元素必须是一个数字，其值必须大于等于指定的最小值 |
+| @Max(value) | 被标注的元素必须是一个数字，其值必须小于等于指定的最大值 |
+| @DecimalMax(value) | 被标注的元素必须是一个数字，其值必须大于等于指定的最大值 |
+| @DecimalMin(value) | 被标注的元素必须是一个数字，其值必须小于等于指定的最小值 |
+| @size | 被标注的元素的大小必须在指定的范围内 |
+| @Digits（integer，fraction） | 被标注的元素必须是一个数字，其值必须在可接受的范围内；integer 指定整数精度，fraction 指定小数精度 |
+| @Past | 被标注的元素必须是一个过去的日期 |
+| @Future | 被标注的元素必须是一个将来的日期 |
+| @Pattern(value) | 被标注的元素必须符合指定的正则表达式 |
+
+
+
+## 文件上传
+
+需导入文件上传的jar包，commons-fileupload  <br />  配置bean：multipartResolver
+```xml
+<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+   <!-- 请求的编码格式，默认为ISO-8859-1 -->
+   <property name="defaultEncoding" value="utf-8"/>
+   <!-- 上传文件大小上限，单位为字节（10485760=10M） -->
+   <property name="maxUploadSize" value="10485760"/>
+   <property name="maxInMemorySize" value="40960"/>
+</bean>
+```
+```java
+@RestController
+public class UpLoadController {
+    //@RequestParam("file") 将name=file控件得到的文件封装成CommonsMultipartFile 对象
+    @PostMapping("/upload")
+    public String upload(@RequestParam("file") MultipartFile file, HttpServletRequest request){
+        String filePath = getPath(request);
+        return saveFile(file, filePath);
+    }
+    
+    @PostMapping("/multiUpload")
+    public String multiUpload(@RequestParam("file") MultipartFile[] files, HttpServletRequest request){
+        String filePath = getPath(request);
+        for (MultipartFile f : files){
+            saveFile(f, filePath);
+        }
+        return "ok";
+    }
+    
+    private String getPath(HttpServletRequest request){
+        return request.getServletContext().getRealPath("/upload");
+    }
+ 
+    private String saveFile(MultipartFile file, String filePath){
+        if (file.isEmpty()){
+            return "未选择文件";
+        }
+        String filename = file.getOriginalFilename(); //获取上传文件原来的名称
+        File temp = new File(filePath);
+        if (!temp.exists()){
+            temp.mkdirs();
+        }
+ 
+        File localFile = new File(filePath+filename);
+        try {
+            file.transferTo(localFile); //把上传的文件保存至本地
+            System.out.println(file.getOriginalFilename()+" 上传成功");
+        }catch (IOException e){
+            e.printStackTrace();
+            return "上传失败";
+        }
+        return "ok";
+    }
+}
+```
+
+## 文件下载
+```java
+@RequestMapping(value="/download")
+public String downloads(HttpServletResponse response ,HttpServletRequest request) throws Exception{
+   // 下载的地址
+   String  path = request.getServletContext().getRealPath("/upload");
+   String  fileName = "image.jpg";
+
+   //1、设置response 响应头
+   response.reset(); //设置页面不缓存,清空buffer
+   response.setCharacterEncoding("UTF-8"); //字符编码
+   response.setContentType("multipart/form-data"); //二进制传输数据
+   //设置响应头
+   response.setHeader("Content-Disposition",
+           "attachment;fileName=" + URLEncoder.encode(fileName, "UTF-8"));
+
+   File file = new File(path,fileName);
+   //2、 读取文件--输入流
+   InputStream input=new FileInputStream(file);
+   //3、 写出文件--输出流
+   OutputStream out = response.getOutputStream();
+
+   byte[] buff =new byte[1024];
+   int index=0;
+   //4、执行 写出操作
+   while((index= input.read(buff))!= -1){
+       out.write(buff, 0, index);
+       out.flush();
+   }
+   out.close();
+   input.close();
+   return null;
+}
+```
+
+
+
+# [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/)
+
+
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -850,33 +1039,416 @@ public class UserDao {
 </project>
 ```
 启动类
-```xml
+```java
 @SpringBootApplication
 @RestController
 public class DemoApplication {
-   public static void main(String[] args) {
-      SpringApplication.run(DemoApplication.class, args);
-   }
-   @RequestMapping(value = "/")
-   public String hello() {
-      return "Hello World";
-   }
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+    
+    @RequestMapping(value = "/")
+    public String hello() {
+        return "Hello World";
+    }
 }
 ```
 
-  <br />  
-  <br />  
-  <br />  
-  <br />  
+
+
+
+
+定制 Banner
+
+- 关闭 banner：spring.main.banner-mode=off
+- 自定义 Banner，banner.txt 或 banner.gif(jpg or png can also be used)
+
+
+
+
+## starter（启动器）
+starter 中整合了该场景下各种可能用到的依赖，只需要在 Maven 中引入 starter 依赖，SpringBoot 就能自动扫描到要加载的信息并启动相应的默认配置。starter 提供了大量的自动配置。
+
+- spring-boot-starter：核心 starter，包含自动配置、日志和 YAML 配置文件的支持
+- spring-boot-starter-web：用于使用 Spring MVC 构建 web 应用，包括 RESTful（默认的内嵌容器是 Tomcat）
+- spring-boot-starter-validation：Starter for using Java Bean Validation with Hibernate Validator
+- spring-boot-starter-test：用于测试 Spring Boot 应用，支持常用测试类库，包括 JUnit, Hamcrest 和 Mockito
+- spring-boot-starter-cache：用于使用 Spring 框架的缓存支持
+- spring-boot-starter-aop：用于使用 Spring AOP 和 AspectJ 实现面向切面编程
+- spring-boot-starter-jdbc：对 JDBC 的支持（使用 Tomcat JDBC 连接池）
+- spring-boot-starter-data-mongodb：用于使用基于文档的数据库 MongoDB 和 Spring Data MongoDB
+- spring-boot-starter-data-redis：用于使用 Spring Data Redis 和 Jedis 客户端操作键-值存储的 Redis
+- spring-boot-starter-data-solr：通过 Spring Data Solr 使用 Apache Solr 搜索平台
+- spring-boot-starter-data-elasticsearch：用于使用 Elasticsearch 搜索，分析引擎和 Spring Data Elasticsearch
+- spring-boot-starter-freemarker：用于使用 FreeMarker 模板引擎构建 MVC web 应用
+- spring-boot-starter-mail：用于使用 Java Mail 和 Spring 框架 email 发送支持
+- spring-boot-starter-activemq：用于使用 Apache ActiveMQ 实现 JMS 消息
+- spring-boot-starter-amqp：用于使用 Spring AMQP 和 RabbitMQ
+
+spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 Spring Boot 的版本仲裁中心，可以对项目内的部分常用依赖进行统一管理。
+
+
+
+## 外部配置
+
+- 可以使用 properties 文件、YAML 文件、环境变量和命令行参数来外部化配置
+- 属性会以如下的顺序进行设值（即后面读取的**不覆盖**前面读取到的）：
+   1. 命令行参数：如` --server.port=9000`，转化成一个 property，并将其添加到 Spring Environment 中
+   1. Java 系统属性 System.getProperties()
+   1. 操作系统环境变量
+   1. jar 包外部的 Profile-specific 应用属性（application-{profile}.properties 或 YAML 文件）
+   1. jar 包内部的 Profile-specific 应用属性（application-{profile}.properties 或 YAML 文件）
+   1. jar 包外部的应用配置（application.properties 或 YAML 文件）
+   1. jar 包内部的应用配置（application.properties 或 YAML 文件）
+   1. @Configuration 类上的 @PropertySource 注解
+   1. 使用 SpringApplication.setDefaultProperties 指定的默认属性
+
+
+### [properties 文件配置参数](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-application-property-files)
+
+   1. 项目根目录下的 /config 子目录 `file:config/`
+   1. 项目根目录 `file:`
+   1. 项目 classpath 下的 /config 包`classpath:/config`
+   1. 项目 classpath 根路径 `classpath:`
+- 指定其它的配置文件名：`spring.config.name`
+- 指定配置文件的加载路径（目录位置或文件路径列表以逗号分割，目录应以 / 结尾）：`spring.config.location`
+```java
+ConfigurableApplicationContext context = new SpringApplicationBuilder(TestDefaultFile.class).properties("spring.config.location=classpath:/test-folder/my-config.properties").run(args); 
+```
+
+- 在 properties 文件中可以使用 `${属性名:默认值}` 引用对应属性的值（当在 properties 文件中找不到引用的属性时默认使用的属性），如 port=9090、server.port=${port:8080}
+- 通过 `@..@` 占位符引用 Maven 项目的属性，通过`${..}`占位符引用 Gradle 项目的属性
+
+
+
+### 属性绑定
+把配置文件中的值与 JavaBean 中对应的属性进行绑定
+
+- `@ConfigurationProperties`：标注在 JavaBean 的类名上，将 properties 属性和一个 Bean 及其属性关联，**松散绑定**
+- `@Value("${app.name}")`：标注在 JavaBean 的属性上，直接将**非静态属性**值注入到 **Bean** 中
+- `@PropertySource`** ：**加载指定的配置文件
+
+```properties
+person.last-name=李四
+person.age=12
+person.birth=2000/12/15
+person.boss=false
+person.maps.k1=v1
+person.maps.k2=14
+person.lists=a,b,c
+person.dog.name=dog
+person.dog.age=2
+```
+```yaml
+person:
+  name: qinjiang
+  age: 3
+  birth: 2000/01/01
+  maps: {k1: v1,k2: v2}
+  lists:
+   - code
+   - girl
+   - music
+  dog:
+    name: 旺财
+    age: 1
+```
+```java
+@PropertySource(value = "classpath:person.properties")//指向对应的配置文件
+@Component
+@ConfigurationProperties(prefix = "person")
+public class Person {
+    private String lastName;
+    private Integer age;
+    private Boolean boss;
+    private Date birth;
+    private Map<String, Object> maps;
+    private List<Object> lists;
+    private Dog dog;
+    
+    // ... getter, setter ...
+}
+```
+
+
+
+
+## I18n
+
+**步骤**  <br />  1 在resources目录下，编写国际化资源文件
+
+- `<bundleName>.properties`：无语言设置时生效
+- `<bundleName>_en_US.properties` ：英语时生效
+- `<bundleName>_zh_CN.properties`：中文时生效
+
+2 使用 ResourceBundleMessageSource 管理国际化资源文件
+> Spring Boot 对 ResourceBundleMessageSource  提供了默认的自动配置。Spring Boot 从容器中获取 MessageSourceProperties 组件，并从中读取国际化资源文件的 basename（文件基本名）、encoding（编码）等信息，将它们封装到 ResourceBundleMessageSource 中。
+> 查看源码，basename默认为“message”，即 Spring Boot 默认会获取类路径下的 message.properties 以及 message_XXX.properties 作为国际化资源文件。
+
+```java
+public class MessageSourceProperties {
+    private String basename = "messages";
+    private Charset encoding;
+    @DurationUnit(ChronoUnit.SECONDS)
+    private Duration cacheDuration;
+    private boolean fallbackToSystemLocale;
+    private boolean alwaysUseMessageFormat;
+    private boolean useCodeAsDefaultMessage;
+    public MessageSourceProperties() {
+        this.encoding = StandardCharsets.UTF_8;
+        this.fallbackToSystemLocale = true;
+        this.alwaysUseMessageFormat = false;
+        this.useCodeAsDefaultMessage = false;
+    }
+    ...
+}
+```
+
+自定义的国际资源文件的基本名
+```yaml
+# yaml
+spring:
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/<bundleName>
+    
+    
+spring.messages.basename=i18n/<bundleName>
+```
+  <br />  3 使用
+```java
+@RestController
+public class DemoController {
+    @Autowired
+    MessageSource messageSource;
+    
+    @GetMapping("/i18n")
+    public String demo() {
+        return messageSource.getMessage("code", null, LocaleContextHolder.getLocale());
+    }
+}
+
+```
+
+**区域信息解析器自动配置**
+> Spring Boot 在 WebMvcAutoConfiguration 中为区域信息解析器（LocaleResolver）进行了自动配置，它会根据请求头中携带的“Accept-Language”参数，获取相应区域信息（Locale）对象。
+
+```java
+@Bean
+@ConditionalOnMissingBean(name = DispatcherServlet.LOCALE_RESOLVER_BEAN_NAME)
+@SuppressWarnings("deprecation")
+public LocaleResolver localeResolver() {
+    if (this.webProperties.getLocaleResolver() == WebProperties.LocaleResolver.FIXED) {
+        return new FixedLocaleResolver(this.webProperties.getLocale());
+    }
+    if (this.mvcProperties.getLocaleResolver() == WebMvcProperties.LocaleResolver.FIXED) {
+        return new FixedLocaleResolver(this.mvcProperties.getLocale());
+    }
+    AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();
+    Locale locale = (this.webProperties.getLocale() != null) ? this.webProperties.getLocale()
+            : this.mvcProperties.getLocale();
+    localeResolver.setDefaultLocale(locale);
+    return localeResolver;
+}
+```
+
+自定义区域信息解析器
+```java
+public class MyLocalResolver implements LocaleResolver {
+    @Override
+    public Locale resolveLocale(HttpServletRequest request) {
+        //获取请求中参数
+        String lang = request.getParameter("lang");
+        //获取默认的区域信息解析器
+        Locale locale = Locale.getDefault();
+        //根据请求中的参数重新构造区域信息对象
+        if (StringUtils.hasText(lang)) {
+            String[] s = lang.split("_");
+            locale = new Locale(s[0], s[1]);
+        }
+        return locale;
+    }
+    
+    @Override
+    public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    }
+}
+
+
+
+// 在MvcConfig 中添加以下方法
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    //将自定义的区域信息解析器以组件的形式添加到容器中
+    @Bean
+    public LocaleResolver localeResolver(){
+        return new MyLocalResolver();
+    }
+}
+```
+
+
+自定义工具类方式
+```java
+import org.springframework.aop.framework.AopContext;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.stereotype.Component;
+ 
+/**
+ * spring工具类 方便在非spring管理环境中获取bean
+ *
+ */
+@Component
+public final class SpringUtils implements BeanFactoryPostProcessor
+{
+    /** Spring应用上下文环境 */
+    private static ConfigurableListableBeanFactory beanFactory;
+ 
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException
+    {
+        SpringUtils.beanFactory = beanFactory;
+    }
+ 
+    /**
+     * 获取对象
+     *
+     * @param name
+     * @return Object 一个以所给名字注册的bean的实例
+     * @throws org.springframework.beans.BeansException
+     *
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T getBean(String name) throws BeansException
+    {
+        return (T) beanFactory.getBean(name);
+    }
+ 
+    /**
+     * 获取类型为requiredType的对象
+     *
+     * @param clz
+     * @return
+     * @throws org.springframework.beans.BeansException
+     *
+     */
+    public static <T> T getBean(Class<T> clz) throws BeansException
+    {
+        T result = (T) beanFactory.getBean(clz);
+        return result;
+    }
+ 
+    /**
+     * 如果BeanFactory包含一个与所给名称匹配的bean定义，则返回true
+     *
+     * @param name
+     * @return boolean
+     */
+    public static boolean containsBean(String name)
+    {
+        return beanFactory.containsBean(name);
+    }
+ 
+    /**
+     * 判断以给定名字注册的bean定义是一个singleton还是一个prototype。 如果与给定名字相应的bean定义没有被找到，将会抛出一个异常（NoSuchBeanDefinitionException）
+     *
+     * @param name
+     * @return boolean
+     * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
+     *
+     */
+    public static boolean isSingleton(String name) throws NoSuchBeanDefinitionException
+    {
+        return beanFactory.isSingleton(name);
+    }
+ 
+    /**
+     * @param name
+     * @return Class 注册对象的类型
+     * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
+     *
+     */
+    public static Class<?> getType(String name) throws NoSuchBeanDefinitionException
+    {
+        return beanFactory.getType(name);
+    }
+ 
+    /**
+     * 如果给定的bean名字在bean定义中有别名，则返回这些别名
+     *
+     * @param name
+     * @return
+     * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
+     *
+     */
+    public static String[] getAliases(String name) throws NoSuchBeanDefinitionException
+    {
+        return beanFactory.getAliases(name);
+    }
+ 
+    /**
+     * 获取aop代理对象
+     *
+     * @param invoker
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T getAopProxy(T invoker)
+    {
+        return (T) AopContext.currentProxy();
+    }
+}
+```
+```java
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
+import com.common.utils.spring.SpringUtils;
+ 
+/**
+ * 获取i18n资源文件
+ *
+ */
+public class MessageUtils
+{
+    /**
+     * 根据消息键和参数 获取消息 委托给spring messageSource
+     *
+     * @param code 消息键
+     * @param args 参数
+     * @return 获取国际化翻译值
+     */
+    public static String getMessage(String code, Object... args)
+    {
+        MessageSource messageSource = SpringUtils.getBean(MessageSource.class);
+        return messageSource.getMessage(code, args, LocaleContextHolder.getLocale());
+    }
+}
+
+// 使用   String message = MessageUtils.getMessage("code")
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Spring Cloud
 
-  <br />  
-  <br />  
-  <br />  
-  <br />  
-  <br />  
+
+
+
+
 
 
 # Log4j2
@@ -963,7 +1535,11 @@ public class Test {
 }
 ```
 
-# [JUnit](https://junit.org/junit5/)
+
+
+# Test
+
+## [JUnit](https://junit.org/junit5/)
 Fixture
 ```java
 // main
@@ -1010,14 +1586,16 @@ public class CalculatorTest {
     void testAdd() {
         assertEquals(100, this.calculator.add(100));
         assertEquals(150, this.calculator.add(50));
-        assertEquals(130, this.calculator.add(-20));
+        assertEquals(130, this.calculator.add(-20) ,
+                     "The optional assertion message is now the last parameter.");
     }
     
     @Test
     void testSub() {
-        assertEquals(-100, this.calculator.sub(100));
-        assertEquals(-150, this.calculator.sub(50));
-        assertEquals(-130, this.calculator.sub(-20));
+        assertAll("sub method",
+            () ->  assertEquals(-100, this.calculator.sub(100)),
+            () -> assertEquals(-150, this.calculator.sub(50))
+        );
     }
 }
 ```
@@ -1027,7 +1605,7 @@ public class CalculatorTest {
 public class Factorial {
     public static long fact(long n) {
         if (n < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Negative");
         }
         long r = 1;
         for (long i = 1; i <= n; i++) {
@@ -1050,11 +1628,33 @@ void testNegative() {
 
 @Test
 void testNegative() {
-    assertThrows(IllegalArgumentException.class, () -> {
+    Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
         Factorial.fact(-1);
     });
+    assertEquals("Negative", exception.getMessage());
 }
 ```
+
+超时
+```java
+@Test
+void timeoutNotExceeded() {
+    // The following assertion succeeds.
+    assertTimeout(ofMinutes(2), () -> {
+        // Perform task that takes less than 2 minutes.
+    });
+}
+
+@Test
+void timeoutNotExceededWithResult() {
+    // The following assertion succeeds, and returns the supplied object.
+    String actualResult = assertTimeout(ofMinutes(2), () -> {
+        return "a result";
+    });
+    assertEquals("a result", actualResult);
+}
+```
+
 条件测试
 ```java
 @Disabled
@@ -1101,57 +1701,122 @@ void testCapitalize(String input, String result) {
 }
 ```
 
-  <br />  
-  <br />  
-  <br />  
 
 
-# [mockito](https://github.com/mockito/mockito)
-  <br />  [PowerMock](https://github.com/powermock/powermock)  <br />  ​
 
-​
+
+## [mockito](https://github.com/mockito/mockito)
+
+- [mock()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#mock-java.lang.Class-)/[@Mock](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mock.html): create mock
+   - optionally specify how it should behave via [Answer](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/stubbing/Answer.html)/[MockSettings](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/MockSettings.html)
+   - [when()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#when-T-)/[given()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/BDDMockito.html#given-T-) to specify how a mock should behave
+   - If the provided answers don't fit your needs, write one yourself extending the [Answer](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/stubbing/Answer.html) interface
+- [spy()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#spy-T-)/[@Spy](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Spy.html): partial mocking, real methods are invoked but still can be verified and stubbed
+- [@InjectMocks](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/InjectMocks.html): automatically inject mocks/spies fields annotated with @Spy or @Mock
+- [verify()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#verify-T-): to check methods were called with given arguments
+   - can use flexible argument matching, for example any expression via the [any()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/ArgumentMatchers.html#any--)
+   - or capture what arguments were called using [@Captor](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Captor.html) instead
+
+验证操作
+```java
+ // 使用Mock对象
+ mockOne.add("one");
+ // 普通验证
+ verify(mockOne).add("one");
+
+ // 验证某个交互是否从未被执行
+ verify(mockOne, never()).add("two");
+ // 验证mock对象没有交互过
+ verifyZeroInteractions(mockTwo, mockThree);
+```
+执行顺序
+```java
+// A. 验证mock一个对象的函数执行顺序
+ List singleMock = mock(List.class);
+
+ //using a single mock
+ singleMock.add("was added first");
+ singleMock.add("was added second");
+
+ // 为该mock对象创建一个inOrder对象
+ InOrder inOrder = inOrder(singleMock);
+
+ // 确保add函数首先执行的是add("was added first"),然后才是add("was added second")
+ inOrder.verify(singleMock).add("was added first");
+ inOrder.verify(singleMock).add("was added second");
+
+
+ // B .验证多个mock对象的函数执行顺序
+ List firstMock = mock(List.class);
+ List secondMock = mock(List.class);
+
+ //using mocks
+ firstMock.add("was called first");
+ secondMock.add("was called second");
+
+ // 为这两个Mock对象创建inOrder对象
+ InOrder inOrder = inOrder(firstMock, secondMock);
+
+ // 验证它们的执行顺序
+ inOrder.verify(firstMock).add("was called first");
+ inOrder.verify(secondMock).add("was called second");
+```
+
+
+[PowerMock](https://github.com/powermock/powermock)
+
+
 
 
 # RabbitMQ
-​
 
-​
 
-​
 
-​
 
-​  <br />  
+
 
 # Kafka
 
-  <br />  
-  <br />  
 
 
-# [Apache ZooKeeper](https://zookeeper.apache.org/)​
 
-  <br />  
-  <br />  
+# [Apache ZooKeeper](https://zookeeper.apache.org/)
+
+
 
 
 # [Elasticsearch](https://www.elastic.co/)
 
 
-
 # [JavaFX](https://wiki.openjdk.java.net/display/OpenJFX/Main)
 
-  <br />  
-  <br />  
-  <br />  
 
 
-# **—— **[IntelliJ IDEA](https://www.423down.com/10850.html)** ——**​
-​  <br />  
+
+# Json
+
+
+## [Jacson](https://github.com/FasterXML/jackson)
+
+
+
+
+
+
+
+
+
+
+
+# **—— **[IntelliJ IDEA](https://www.423down.com/10850.html)** ——**
+
 
 ## [Shortcuts](https://www.jetbrains.com/help/idea/reference-keymap-win-default.html)
 
-  <br />  main方法	psvm  <br />  fori/sout + Tab	生成循环、System.out  <br />  for(User user : users)	user.for+Tab  <br />  Date birthday = user.getBirthday()	user.getBirthday().var+Tab  <br />  ​
+psvm	main方法  <br />  fori	for循环  <br />  sout	System.out  <br />  user.for+Tab	for(User user : users)  <br />  user.getBirthday().var+Tab	Date birthday = user.getBirthday()
+
+insert	插入/改写模式
+
 
 **IntelliJ IDEA's top keyboard shortcuts**
 
@@ -1174,7 +1839,7 @@ void testCapitalize(String input, String result) {
 | [Refactor This...](https://www.jetbrains.com/help/idea/refactoring-source-code.html) | Ctrl+Alt+Shift+T |
 | [Reformat Code](https://www.jetbrains.com/help/idea/reformat-and-rearrange-code.html) | Ctrl+Alt+L |
 
-**​**
+
 
 **Basic editing**
 
@@ -1196,7 +1861,7 @@ void testCapitalize(String input, String result) {
 
 **Caret navigation**
 
-|  |  |
+|   <br />   |   <br />   |
 | --- | --- |
 | Move Caret to Previous Word | Ctrl+Left |
 | Move Caret to Next Word | Ctrl+Right |
@@ -1216,7 +1881,7 @@ void testCapitalize(String input, String result) {
 
 **Select text**
 
-|  |  |
+|   <br />   |   <br />   |
 | --- | --- |
 | Select All | Ctrl+A |
 | Left with Selection | Shift+Left |
@@ -1240,7 +1905,7 @@ void testCapitalize(String input, String result) {
 
 **Multiple carets and selection ranges**
 
-|  |  |
+|   <br />   |   <br />   |
 | --- | --- |
 | [Add/Remove Caret](https://www.jetbrains.com/help/idea/multicursor.html#add-carets-at-selected-locations) | Alt+Shift+Click |
 | [Toggle Column Selection Mode](https://www.jetbrains.com/help/idea/multicursor.html#column_selection) | Alt+Shift+Insert |
@@ -1256,7 +1921,7 @@ void testCapitalize(String input, String result) {
 
 **Coding assistance**
 
-|  |  |
+|   <br />   |   <br />   |
 | --- | --- |
 | [Show Intention Actions](https://www.jetbrains.com/help/idea/intention-actions.html#apply-intention-actions) | Alt+Enter |
 | [Basic Completion](https://www.jetbrains.com/help/idea/auto-completing-code.html#basic_completion) | Ctrl+Space |
@@ -1278,7 +1943,7 @@ void testCapitalize(String input, String result) {
 
 **Context navigation**
 
-|  |  |
+|   <br />   |   <br />   |
 | --- | --- |
 | Next Method | Alt+Down |
 | Previous Method | Alt+Up |
@@ -1307,7 +1972,7 @@ void testCapitalize(String input, String result) {
 
 **Find everything**
 
-|  |  |
+|   <br />   |   <br />   |
 | --- | --- |
 | Search Everywhere | Double Shift |
 | [Find...](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-file.html#find_in_file) | Ctrl+F |
@@ -1324,7 +1989,7 @@ void testCapitalize(String input, String result) {
 
 **Navigate from symbols**
 
-|  |  |
+|   <br />   |   <br />   |
 | --- | --- |
 | [Find Usages](https://www.jetbrains.com/help/idea/find-highlight-usages.html#find-usages) | Alt+F7 |
 | Go to Declaration or Usages | Ctrl+B |
@@ -1336,7 +2001,7 @@ void testCapitalize(String input, String result) {
 
 **Code analysis**
 
-|  |  |
+|   <br />   |   <br />   |
 | --- | --- |
 | [Show Intention Actions](https://www.jetbrains.com/help/idea/intention-actions.html#apply-intention-actions) | Alt+Enter |
 | Error Description | Ctrl+F1 |
@@ -1347,7 +2012,7 @@ void testCapitalize(String input, String result) {
 
 **Run and debug**
 
-|  |  |
+|   <br />   |   <br />   |
 | --- | --- |
 | Run Anything | Double Ctrl |
 | Run context configuration | Shift+F10 |
@@ -1379,7 +2044,7 @@ void testCapitalize(String input, String result) {
 
 **Refactorings**
 
-|  |  |
+|   <br />   |   <br />   |
 | --- | --- |
 | Refactor This... | Ctrl+Alt+Shift+T |
 | Rename... | Shift+F6 |
@@ -1394,7 +2059,7 @@ void testCapitalize(String input, String result) {
 
 **Global VCS actions**
 
-|  |  |
+|   <br />   |   <br />   |
 | --- | --- |
 | VCS Operations Popup... | Alt+` |
 | Commit... | Ctrl+K |
@@ -1408,7 +2073,7 @@ void testCapitalize(String input, String result) {
 
 **Tool windows**
 
-|  |  |
+|   <br />   |   <br />   |
 | --- | --- |
 | Hide Active Tool Window | Shift+Escape |
 | Hide All Tool Windows | Ctrl+Shift+F12 |

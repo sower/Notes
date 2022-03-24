@@ -1,6 +1,5 @@
 
 
-
 # —— 软件（Software）——
 **软件**是一系列按照特定顺序组织的[电脑](https://zh.wikipedia.org/wiki/%E9%9B%BB%E8%85%A6)数据和指令，是电脑中的非有形部分
 
@@ -14,12 +13,13 @@
 
 
 
-**绿色软件**（portable software，**便携软件**）一类小型[软件](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94)，多数为[免费软件](https://zh.wikipedia.org/wiki/%E5%85%8D%E8%B2%BB%E8%BB%9F%E9%AB%94)，最大特点是软件无需安装便可使用，可存放于可移除式存储媒体中，移除后也不会将任何纪录（[注册表](https://zh.wikipedia.org/wiki/%E6%B3%A8%E5%86%8C%E8%A1%A8)消息等）留在本机电脑上。  <br />  ​
+**绿色软件**（portable software，**便携软件**）一类小型[软件](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94)，多数为[免费软件](https://zh.wikipedia.org/wiki/%E5%85%8D%E8%B2%BB%E8%BB%9F%E9%AB%94)，最大特点是软件无需安装便可使用，可存放于可移除式存储媒体中，移除后也不会将任何纪录（[注册表](https://zh.wikipedia.org/wiki/%E6%B3%A8%E5%86%8C%E8%A1%A8)消息等）留在本机电脑上。
 
-​  <br />  
+
 
 # 软件架构（Software Architecture）
-软件的基本结构  <br />  ​  <br />  
+软件的基本结构
+
 
 ## 分层架构（Layered architecture）
 将软件分成若干个水平层，每一层都有清晰的角色和分工，不需要知道其他层的细节。层与层之间通过接口通信。
@@ -30,8 +30,6 @@
 - 数据库（database） ：保存数据
 
 ![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090303.png#crop=0&crop=0&crop=1&crop=1&id=d7Goo&originHeight=511&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
-
-​  <br />  
 
 ## 事件驱动架构（event-driven architecture）
 通过事件进行通信的软件架构。  <br />  事件（event）是状态发生变化时，软件发出的通知。
@@ -67,7 +65,7 @@
 
 # 开源协议
 
-  <br />  **GNU GPL（GNU General Public License，GNU通用公共许可证）**  <br />  只要软件中包含了遵循 GPL 协议的产品或代码，该软件就必须也遵循 GPL 许可协议，也就是必须开源免费，不能闭源收费，因此这个协议并不适合商用软件。  <br />  ​  <br />  
+**GNU GPL（GNU General Public License，GNU通用公共许可证）**  <br />  只要软件中包含了遵循 GPL 协议的产品或代码，该软件就必须也遵循 GPL 许可协议，也就是必须开源免费，不能闭源收费，因此这个协议并不适合商用软件。
 
 | 特点 | 说明 |
 | --- | --- |
@@ -85,17 +83,13 @@
 - 不允许用原始软件的名字、作者名字或机构名称进行市场推广。
 
 
-  <br />  
-  <br />  **Apache 许可证版本（Apache License Version）协议**
+**Apache 许可证版本（Apache License Version）协议**
 
 - 该软件及其衍生品必须继续使用 Apache 许可协议。
 - 如果修改了程序源代码，需要在文档中进行声明。
 - 若软件是基于他人的源代码编写而成的，则需要保留原始代码的协议、商标、专利声明及其他原作者声明的内容信息。
 - 如果再发布的软件中有声明文件，则需在此文件中标注 Apache 许可协议及其他许可协议。
 
-​
-
-​
 
 **MIT（Massachusetts Institute of Technology）协议**  <br />  目前限制最少的开源许可协议之一（比 BSD 和 Apache 的限制都少），只要程序的开发者在修改后的源代码中保留原作者的许可信息即可，因此普遍被商业软件所使用。
 

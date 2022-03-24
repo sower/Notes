@@ -17,7 +17,6 @@ properties-list ::=
     
 /* Comment */
 ```
-​
 
 [值定义语法](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Value_definition_syntax)
 
@@ -72,7 +71,7 @@ selector::pseudo-element {
 <link rel="stylesheet" type="text/css" href="mystyle.css" />
 </head>
 ```
-不要在属性值与单位之间留有空格  <br />  ​
+不要在属性值与单位之间留有空格
 
 内部样式表
 ```css
@@ -93,7 +92,7 @@ This is a paragraph
 如果某些属性在不同的样式表中被同样的选择器定义，那么属性值将从更具体的样式表中被继承过来。
 
 # 层叠 继承 优先级
-[层叠](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance#%E5%B1%82%E5%8F%A0)：当应用两条同级别的规则到一个元素的时候，写在后面的就是实际使用的规则。  <br />  **​**
+[层叠](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance#%E5%B1%82%E5%8F%A0)：当应用两条同级别的规则到一个元素的时候，写在后面的就是实际使用的规则。
 
 [**继承**](https://developer.mozilla.org/zh-CN/docs/CSS/inheritance)  <br />  [控制继承](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance#%E6%8E%A7%E5%88%B6%E7%BB%A7%E6%89%BF)
 
@@ -101,7 +100,7 @@ This is a paragraph
 - initial：设置属性值和浏览器默认样式相同。如果浏览器默认样式中未设置且该属性是自然继承的，那么会设置为 inherit 。
 - unset：将属性重置为自然值，如果属性是自然继承那么就是 inherit，否则和 initial一样
 
-**​**
+
 
 [**优先级**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity)
 
@@ -110,7 +109,7 @@ This is a paragraph
 - 计算选择符中 ID 选择器的个数（a），类选择器、属性选择器以及伪类选择器的个数之和（b），标签选择器和伪元素选择器的个数之和（c），按 a、b、c 的顺序依次比较大小，大的则优先级高，相等则比较下一个。若都相等，按照"就近原则"。
 
 # [@ 规则](https://developer.mozilla.org/zh-CN/docs/Web/CSS/At-rule)
-@charset：定义样式表使用的字符集.  <br />  @import：引入一个外部样式表.  <br />  @namespace：考虑XML命名空间。  <br />  嵌套@规则：可以作为样式表里的一个语句，也可以用在条件规则组里  <br />  @media：如果满足媒介查询的条件则条件规则组里的规则生效。  <br />  @page：描述打印文档时布局的变化.  <br />  @font-face：描述将下载的外部的字体。  <br />  @keyframes：描述 CSS 动画的中间步骤 .  <br />  @supports：如果满足给定条件则条件规则组里的规则生效。  <br />  ​
+@charset：定义样式表使用的字符集.  <br />  @import：引入一个外部样式表.  <br />  @namespace：考虑XML命名空间。  <br />  嵌套@规则：可以作为样式表里的一个语句，也可以用在条件规则组里  <br />  @media：如果满足媒介查询的条件则条件规则组里的规则生效。  <br />  @page：描述打印文档时布局的变化.  <br />  @font-face：描述将下载的外部的字体。  <br />  @keyframes：描述 CSS 动画的中间步骤 .  <br />  @supports：如果满足给定条件则条件规则组里的规则生效。
 
 [响应式设计](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Responsive_Design)  <br />  [媒体查询](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Media_queries)：根据各种设备特征和参数的值或者是否存在来调整网站或应用。
 ```css
@@ -127,13 +126,12 @@ This is a paragraph
 min-width、max-width和width
 朝向orientation：竖放（portrait mode）和横放（landscape mode）
 ```
-viewport是严格等于浏览器的窗口。在桌面浏览器中，viewport就是浏览器窗口的宽度高度。但在移动端设备上就有点复杂。  <br />  ​
+viewport是严格等于浏览器的窗口。在桌面浏览器中，viewport就是浏览器窗口的宽度高度。但在移动端设备上就有点复杂。
 
 物理像素(physical pixel)	显示器(手机屏幕)上最小的物理显示单元，每个像素可以根据操作系统设置自己的颜色和亮度  <br />  设备独立像素(density-independent pixel)	可以认为是计算机坐标系统中的一个点，这个点代表一个可以由程序使用的虚拟像素(如CSS像素)，然后由相关系统转换为物理像素。  <br />  设备像素比(device pixel ratio)	定义了物理像素和设备独立像素的对应关系
 ```css
 设备像素比 = 物理像素 / 设备独立像素
 ```
-​
 
 rem布局
 ```css
@@ -168,11 +166,10 @@ height: 0.37rem;
 ```
 
 
-
 # 布局 Layout
 
 ## 正常布局流（Normal flow）
-一个[块级元素](https://wiki.developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements)的内容宽度是其父元素的100%，其高度与其内容高度一致。内联元素的height width与内容一致。  <br />  块级元素按照基于其父元素的[书写顺序](https://wiki.developer.mozilla.org/en-US/docs/Web/CSS/writing-mode)(默认值: horizontal-tb)的块流动方向(block flow direction)放置 --- 每个块级元素会在上一个元素下面另起一行，它们会被设置好的margin 分隔  <br />  **​**
+一个[块级元素](https://wiki.developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements)的内容宽度是其父元素的100%，其高度与其内容高度一致。内联元素的height width与内容一致。  <br />  块级元素按照基于其父元素的[书写顺序](https://wiki.developer.mozilla.org/en-US/docs/Web/CSS/writing-mode)(默认值: horizontal-tb)的块流动方向(block flow direction)放置 --- 每个块级元素会在上一个元素下面另起一行，它们会被设置好的margin 分隔
 
 [**盒模型**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model)  <br />  [**块级盒子（Block box）**](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/The_box_model#%E5%9D%97%E7%BA%A7%E7%9B%92%E5%AD%90%EF%BC%88block_box%EF%BC%89_%E5%92%8C_%E5%86%85%E8%81%94%E7%9B%92%E5%AD%90%EF%BC%88inline_box%EF%BC%89)
 
@@ -299,8 +296,6 @@ clear
 - 固定定位(Fixed)：将一个元素相对浏览器视口固定
 - 粘性定位(Sticky)：元素先保持和position: static一样的定位，当它的相对视口位置(offset from the viewport)达到某一个预设值时，他就会像position: fixed一样定位。
 
-​
-
 [多列布局（Multiple-column Layout）](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Multiple-column_Layout)
 
 | Property | Description |
@@ -318,7 +313,7 @@ clear
 
 
 # FC(Formatting Context，格式化上下文)
-BFC(Block Formatting Context，[块格式化](https://developer.mozilla.org/zh-CN/docs/CSS/block_formatting_context)上下文）：块级元素的渲染显示规则。容器里面的子元素不会影响到外面的元素  <br />  ​
+BFC(Block Formatting Context，[块格式化](https://developer.mozilla.org/zh-CN/docs/CSS/block_formatting_context)上下文）：块级元素的渲染显示规则。容器里面的子元素不会影响到外面的元素
 
 触发条件
 
@@ -327,8 +322,6 @@ BFC(Block Formatting Context，[块格式化](https://developer.mozilla.org/zh-C
 - 绝对定位元素：position: absolute/fixed
 - display： display: inline-block、table-cell/table-caption、flex/inline-flex
 - 溢出元素 overflow: hidden/scroll/auto/inherit
-
-​
 
 IFC(Inline Formatting Context，行内格式化上下文）  <br />  FFC(Flex Formatting Context，弹性盒子格式化上下文)  <br />  GFC(GridLayout Formatting Context，网格盒子格式化上下文)
 
@@ -539,9 +532,8 @@ div {
   background-color: var(--main-color);    /* 使用变量 */
 }
 ```
-​
 
-`var() = var( <custom-property-name> [, <declaration-value> ]?)`  <br />  ​
+`var() = var( <custom-property-name> [, <declaration-value> ]?)`
 
 搭配JS
 ```css
@@ -997,7 +989,6 @@ background-attachment
 
 
 
-
 # 函数
 | 函数 | 描述 |
 | --- | --- |
@@ -1076,7 +1067,7 @@ background-attachment
 Block（模块）、Element（元素）、Modifier（修饰符）  <br />  命名规矩：block-name__element-name--modifier-name
 
 # ——  Sass (Syntactically Awesome Stylesheets)   ——
-最初由 Hampton Catlin 设计并由 Natalie Weizenbaum 开发的层叠样式表语言  <br />  是一个 CSS 预处理器，CSS 扩展语言，帮助减少 CSS 重复的代码，节省开发时间。  <br />  Sass 文件后缀为 .scss。  <br />  **​**
+最初由 Hampton Catlin 设计并由 Natalie Weizenbaum 开发的层叠样式表语言  <br />  是一个 CSS 预处理器，CSS 扩展语言，帮助减少 CSS 重复的代码，节省开发时间。  <br />  Sass 文件后缀为 .scss。
 
 **NPM 安装**
 ```css
@@ -1143,8 +1134,6 @@ font-weight: bold;
 - [_@_extend ](/extend ) ：样式从另一选择器继承 
 
 
-
-
 # Bootstrap4
 ```css
 <!-- 新 Bootstrap4 核心 CSS 文件 -->
@@ -1159,16 +1148,15 @@ font-weight: bold;
 <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 ```
-​
 
 容器类：
 
 - .container 类用于固定宽度并支持响应式布局的容器。
 - .container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器。
 
-**​**
 
-**网格系统**  <br />  一套响应式、移动设备优先的流式网格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多 12 列。  <br />  **​**
+
+**网格系统**  <br />  一套响应式、移动设备优先的流式网格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多 12 列。
 
 **网格类**
 
@@ -1178,7 +1166,7 @@ font-weight: bold;
 - .col-lg- 大桌面显示器 - 屏幕宽度等于或大于 992px)
 - .col-xl- 超大桌面显示器 - 屏幕宽度等于或大于 1200px)
 
-偏移列通过 offset-_-_ 类来设置  <br />  默认的 **font-size** 为 16px, line-height 为 1.5。  <br />  默认的 **font-family** 为 "Helvetica Neue", Helvetica, Arial, sans-serif。  <br />  ​
+偏移列通过 offset-_-_ 类来设置  <br />  默认的 **font-size** 为 16px, line-height 为 1.5。  <br />  默认的 **font-family** 为 "Helvetica Neue", Helvetica, Arial, sans-serif。
 
 此外，所有的 **<p>** 元素 **margin-top: 0** 、 **margin-bottom: 1rem** (16px)。
 ```css

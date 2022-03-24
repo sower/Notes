@@ -1,10 +1,10 @@
 
 # —— 网络（Network）——
-**互联网**（Internet）：[20世纪](https://zh.wikipedia.org/wiki/20%E4%B8%96%E7%B4%80)末期兴起电脑网络与电脑网络之间所串连成的庞大网络系统。  <br />  万维网是一个由许多互相链接的超文本组成的系统，通过互联网访问。是互联网的一项服务  <br />  ​
+**互联网**（Internet）：[20世纪](https://zh.wikipedia.org/wiki/20%E4%B8%96%E7%B4%80)末期兴起电脑网络与电脑网络之间所串连成的庞大网络系统。  <br />  万维网是一个由许多互相链接的超文本组成的系统，通过互联网访问。是互联网的一项服务
 
-局域网（Local Area Network，LAN）：又称内网。指覆盖局部区域（如办公室或楼层）的[计算机网络](https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C)。  <br />  广域网（Wide Area Network，WAN）：又称外网、公网。是连接不同地区[局域网](https://zh.wikipedia.org/wiki/%E5%B1%80%E5%9F%9F%E7%BD%91)或城域网计算机通信的远程网。  <br />  ​
+局域网（Local Area Network，LAN）：又称内网。指覆盖局部区域（如办公室或楼层）的[计算机网络](https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C)。  <br />  广域网（Wide Area Network，WAN）：又称外网、公网。是连接不同地区[局域网](https://zh.wikipedia.org/wiki/%E5%B1%80%E5%9F%9F%E7%BD%91)或城域网计算机通信的远程网。
 
-VPN（Virtual Private Network，虚拟私人网络）：一种常用于连接中、大型企业或团体与团体间的私人网络的通讯方法。它利用[隧道协议](https://zh.wikipedia.org/wiki/%E9%9A%A7%E9%81%93%E5%8D%8F%E8%AE%AE)（Tunneling Protocol）来达到发送端认证、消息保密与准确性等功能。  <br />  在公用网络上建立专用网络，进行加密通讯。VPN网关通过对数据包的加密和数据包目标地址的转换实现远程访问。  <br />  **​**
+VPN（Virtual Private Network，虚拟私人网络）：一种常用于连接中、大型企业或团体与团体间的私人网络的通讯方法。它利用[隧道协议](https://zh.wikipedia.org/wiki/%E9%9A%A7%E9%81%93%E5%8D%8F%E8%AE%AE)（Tunneling Protocol）来达到发送端认证、消息保密与准确性等功能。  <br />  在公用网络上建立专用网络，进行加密通讯。VPN网关通过对数据包的加密和数据包目标地址的转换实现远程访问。
 
 **(网络)代理**（Proxy）：一种特殊的网络服务，允许一个[网络终端](https://zh.wikipedia.org/w/index.php?title=%E7%BD%91%E7%BB%9C%E7%BB%88%E7%AB%AF&action=edit&redlink=1)（一般为客户端）通过这个服务与另一个网络终端（一般为服务器）进行非直接的连接。  <br />  **Wi-Fi**（wireless fidelity，无线网络/热点）一个基于[IEEE 802.11](https://zh.wikipedia.org/wiki/IEEE_802.11)标准的无线局域网技术。
 
@@ -18,16 +18,16 @@ VPN（Virtual Private Network，虚拟私人网络）：一种常用于连接�
 - 基本服务集标识符（BSSID）：AP的数据链路层的MAC地址
 - 扩展服务集定标识符（ESSID）：无线网络的名称（一个最长32字节区分大小写的字符串）
 
-**​**
 
-**WAP**（Wireless Access Point，无线接入点）：[电脑网络](https://zh.wikipedia.org/wiki/%E9%9B%BB%E8%85%A6%E7%B6%B2%E7%B5%A1)中一种连接无线网络至有线网络（以太网）的设备，又称为无线基站  <br />  ​
+
+**WAP**（Wireless Access Point，无线接入点）：[电脑网络](https://zh.wikipedia.org/wiki/%E9%9B%BB%E8%85%A6%E7%B6%B2%E7%B5%A1)中一种连接无线网络至有线网络（以太网）的设备，又称为无线基站
 
 WPS（Wi-Fi Protected Setup，**Wi-Fi保护设置**）是一个[无线网络](https://zh.wikipedia.org/wiki/%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C)安全标准，旨在让家庭用户使用无线网络时简化加密步骤。  <br />  **WPA**（Wi-Fi Protected Access，Wi-Fi访问保护）：一种保护[无线网络](https://zh.wikipedia.org/wiki/%E7%84%A1%E7%B7%9A%E7%B6%B2%E8%B7%AF)（Wi-Fi）访问安全的技术标准。
 
 - 胖AP（FAT）：常见的无线路由器，一般具备WAN、LAN两种接口，支持地址转换（NAT）功能，有自己的管理系统、DHCP服务等，需要每台AP分别进行设置。
 - 瘦AP（FIT）：本身没有管理系统，需要专门的设备（无线控制器）来统一管理、下发数据等集中管理设备，在AP数量大的情况下，及大简化了管理工作。
 
-无线终端切换信号的规则：无线终端会设置一个阈值，根据当前链路的情况，如信号强度、信噪比以及其它的通信参数来判断当前链路的质量，并决定是否需要切断当前的AP，来寻找其它可用AP。  <br />  ​
+无线终端切换信号的规则：无线终端会设置一个阈值，根据当前链路的情况，如信号强度、信噪比以及其它的通信参数来判断当前链路的质量，并决定是否需要切断当前的AP，来寻找其它可用AP。
 
 **漫游**：一台无线终端设备（手机、电脑等），随着位置的移动，经过两个AP的各自覆盖区域与重叠区域的过程，提供不中断的网络服务
 
@@ -37,7 +37,7 @@ WPS（Wi-Fi Protected Setup，**Wi-Fi保护设置**）是一个[无线网络](ht
    - 必须采用相同的WEP或WPA加密。 
    - 无线AP与无线客户端必须处于同一VLAN、同一IP地址段。
 
-快速漫游协议	802.11k/v/r  <br />  **​**
+快速漫游协议	802.11k/v/r
 
 **以太网**（Ethernet）是一种[计算机](https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA)局域网技术。  <br />  **蜂窝网络**（Cellular network），又称移动网络（mobile network）是一种[移动通信](https://zh.wikipedia.org/wiki/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1)硬件架构，分为模拟蜂窝网络和数字蜂窝网络。  <br />  **蓝牙**（Bluetooth），一种[无线通讯](https://zh.wikipedia.org/wiki/%E7%84%A1%E7%B7%9A%E9%80%9A%E8%A8%8A)技术标准，用来让固定与移动设备，在短距离间交换资料，以形成个人局域网（PAN）。  <br />  NFC（Near-field communication，**近距离无线通信**）是一套[通信协议](https://zh.wikipedia.org/wiki/%E9%80%9A%E8%A8%8A%E5%8D%94%E5%AE%9A)，让两个电子设备在相距几厘米之内进行通信
 
@@ -54,20 +54,17 @@ WPS（Wi-Fi Protected Setup，**Wi-Fi保护设置**）是一个[无线网络](ht
 | 设置程序 | < 0.1 s | < 6 s |
 | 功耗 | < 15mA (read) | varies with class |
 
-**P2P**（peer-to-peer，对等式网络），又称点对点技术，是[无中心服务器](https://zh.wikipedia.org/wiki/%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96)、依靠用户群（peers）交换信息的互联网体系  <br />  减低以往网路传输中的节点，以降低资料遗失的风险。  <br />  **​**
+**P2P**（peer-to-peer，对等式网络），又称点对点技术，是[无中心服务器](https://zh.wikipedia.org/wiki/%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96)、依靠用户群（peers）交换信息的互联网体系  <br />  减低以往网路传输中的节点，以降低资料遗失的风险。
 
-**防火墙**（Firewall）是一个架设在互联网与企业内网之间的信息安全系统，根据企业预定的策略来监控往来的传输。  <br />  ​
+**防火墙**（Firewall）是一个架设在互联网与企业内网之间的信息安全系统，根据企业预定的策略来监控往来的传输。
 
-隔离网络，透过将网络划分成不同的区域（通常情况下称为ZONE），制定出不同区域之间的[访问控制](https://zh.wikipedia.org/wiki/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6)策略来控制不同信任程度区域间传送的数据流  <br />  ​
+隔离网络，透过将网络划分成不同的区域（通常情况下称为ZONE），制定出不同区域之间的[访问控制](https://zh.wikipedia.org/wiki/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6)策略来控制不同信任程度区域间传送的数据流
 
-​  <br />  
 
 - 比特率（Bit rate）：单位时间内传输送或处理的比特的数量。单位为比特每秒（bit/s或bps）
 - 带宽：数字信道所能传送的最高速率。b/s（bps）
 - 吞吐量：单位时间内通过某个网络（或信道、接口）的实际数据量。其绝对上限值等于带宽。
 - 时延：数据（一个报文或分组、甚至比特）从网络（或链路）的一段传送到另一端的时间，也称延迟。
-
-​
 
 数据在TCP层称为流（Stream），数据分组称为分段（Segment）  <br />  数据在IP层称为Datagram，数据分组称为分片（Fragment）。  <br />  UDP 中分组称为Message。
 
@@ -210,7 +207,7 @@ GET和POST的区别
    - Entity headers，例如 [Content-Length](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Length)，适用于请求的 body。如果请求中没有任何 body，则不会发送这样的头文件。
 - [Body](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Messages#body)	不是所有的请求都有一个 body，例如获取资源的请求，GET，HEAD，DELETE 和 OPTIONS，通常它们不需要 body。
 
-![](./assets/1643807418142-0a6801cb-34bd-44f2-84dc-247bd1f6a749.jpeg)  <br />  **​**
+![](./assets/1643807418142-0a6801cb-34bd-44f2-84dc-247bd1f6a749.jpeg)
 
 **服务器响应消息**
 
@@ -315,7 +312,6 @@ Content-Security-Policy: default-src 'self' *.trusted.com
 ```html
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';">
 ```
-​
 
 [HTTP Public Key Pinning (HPKP)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Public_Key_Pinning)	公钥锁定（HPKP）是一种安全功能，它告诉Web客户端将特定加密公钥与某个Web服务器相关联，以降低使用伪造证书进行MITM攻击的风险。  <br />  [HTTP Strict Transport Security](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Strict-Transport-Security)	一个安全功能，它告诉浏览器只能通过HTTPS访问当前资源，而不是HTTP。  <br />  [HTTP cookies](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies)
 
@@ -336,9 +332,7 @@ Content-Security-Policy: default-src 'self' *.trusted.com
 - 提供对[网站](https://zh.wikipedia.org/wiki/%E7%B6%B2%E7%AB%99)服务器的[身份认证](https://zh.wikipedia.org/wiki/%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81)，保护交换资料的隐私与[完整性](https://zh.wikipedia.org/wiki/%E5%AE%8C%E6%95%B4%E6%80%A7)。
 - HTTPS的信任基于预先安装在[操作系统](https://zh.wikipedia.org/wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)中的[证书颁发机构](https://zh.wikipedia.org/wiki/%E8%AF%81%E4%B9%A6%E9%A2%81%E5%8F%91%E6%9C%BA%E6%9E%84)（CA）
 
-​
-
-HTTPS工作流程  <br />  1、TCP 三次同步握手  <br />  2、客户端验证服务器数字证书  <br />  3、DH 算法协商对称加密算法的密钥、hash 算法的密钥  <br />  4、SSL 安全加密隧道协商完成  <br />  5、网页以加密的方式传输，用协商的对称加密算法和密钥加密，保证数据机密性；用协商的hash算法进行数据完整性保护，保证数据不被篡改。  <br />  **​**
+HTTPS工作流程  <br />  1、TCP 三次同步握手  <br />  2、客户端验证服务器数字证书  <br />  3、DH 算法协商对称加密算法的密钥、hash 算法的密钥  <br />  4、SSL 安全加密隧道协商完成  <br />  5、网页以加密的方式传输，用协商的对称加密算法和密钥加密，保证数据机密性；用协商的hash算法进行数据完整性保护，保证数据不被篡改。
 
 **HTTP 与 HTTPS 区别**
 
@@ -376,15 +370,12 @@ FTP URL 格式为：`ftp://[user[:password]@]host[:port]/url-path`
 - 通过在网络中创建安全隧道来实现SSH客户端与服务器之间的连接
 - 以非对称加密实现身份验证
 
-​
-
 协议框架
 
 - 传输层协议（The Transport Layer Protocol）：传输层协议提供服务器认证，数据机密性，信息完整性等的支持。
 - 用户认证协议（The User Authentication Protocol）：用户认证协议为服务器提供客户端的身份鉴别。
 - 连接协议（The Connection Protocol）：连接协议将加密的信息隧道复用成若干个逻辑通道，提供给更高层的应用协议使用。
 
-​  <br />  
 
 ## DHCP
 **动态主机设置协议**（Dynamic Host Configuration Protocol，动态主机组态协定）是一个用于[IP](https://zh.wikipedia.org/wiki/%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AE)网络的网络协议
@@ -392,30 +383,27 @@ FTP URL 格式为：`ftp://[user[:password]@]host[:port]/url-path`
 - 用于内部网或网络服务供应商自动分配IP地址给用户
 - 用于内部网管理员对所有电脑作中央管理
 
-​
-
 原理
 
 - 使用两个[IANA](https://zh.wikipedia.org/wiki/IANA)分配的端口作为[BOOTP](https://zh.wikipedia.org/wiki/BOOTP)：[服务器端](https://zh.wikipedia.org/wiki/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF)使用67/udp，[客户端](https://zh.wikipedia.org/wiki/%E5%AE%A2%E6%88%B7%E7%AB%AF)使用68/udp。
 - 四个基本过程：请求IP租约、提供IP租约、选择IP租约、确认IP租约。
 - 客户在获得了一个IP地址后，就可以发送一个[ARP](https://zh.wikipedia.org/wiki/ARP)请求来避免由于DHCP服务器地址池重叠而引发的IP冲突。
 
-​  <br />  
 
 ## DNS
-域名系统（Domain Name System）：互联网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。  <br />  **​**
+域名系统（Domain Name System）：互联网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。
 
 **网域（Domain Name）**：由一串用点分隔的字符组成的互联网上某一台计算机或计算机组的名称，用于在数据传输时标识计算机的电子方位。
 
 - 域名不区分大小写
 - 每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符
 
-​
+ICANN(因特网域名与地址管理机构，Internet Corporation for Assigned Names and Numbers)：承担域名系统管理、IP地址分配、协议参数配置，以及主服务器系统管理等职能而设立的非盈利机构。
 
-ICANN(因特网域名与地址管理机构，Internet Corporation for Assigned Names and Numbers)：承担域名系统管理、IP地址分配、协议参数配置，以及主服务器系统管理等职能而设立的非盈利机构。  <br />  ​  <br />  
 
 ## SOCKS
-（Protocol for sessions traversal across firewall securely，防火墙安全会话转换协议 ）：用于客户端与外网服务器之间通讯的中间传递。  <br />  ​  <br />  
+（Protocol for sessions traversal across firewall securely，防火墙安全会话转换协议 ）：用于客户端与外网服务器之间通讯的中间传递。
+
 
 # 传输层（Transport Layer）
 该层的协议为应用进程提供端到端的通信服务。它提供[面向连接的](https://zh.wikipedia.org/wiki/%E9%80%A3%E6%8E%A5%E5%B0%8E%E5%90%91%E5%BC%8F%E9%80%9A%E8%A8%8A)数据流支持、可靠性、流量控制、多路复用等服务。
@@ -430,9 +418,9 @@ ICANN(因特网域名与地址管理机构，Internet Corporation for Assigned N
    - 重复累计确认（duplicate cumulative acknowledgements，DupAcks）
 - 连接终止（connection termination）
 
-**​**
 
-**TCP数据报结构**  <br />  ![](./assets/1643807418368-bc9bdc7a-1ba9-4127-9c1a-9caa82c50548.jpeg)  <br />  序号Seq（Sequence Number）：占32位，用来标识从计算机A发送到计算机B的数据包的序号，计算机发送数据时对此进行标记。  <br />  确认号Ack（Acknowledge Number）：占32位，客户端和服务器端都可以发送，Ack = Seq + 1。  <br />  ​
+
+**TCP数据报结构**  <br />  ![](./assets/1643807418368-bc9bdc7a-1ba9-4127-9c1a-9caa82c50548.jpeg)  <br />  序号Seq（Sequence Number）：占32位，用来标识从计算机A发送到计算机B的数据包的序号，计算机发送数据时对此进行标记。  <br />  确认号Ack（Acknowledge Number）：占32位，客户端和服务器端都可以发送，Ack = Seq + 1。
 
 标志位：每个标志位占用1Bit，共有6个
 
@@ -443,7 +431,7 @@ ICANN(因特网域名与地址管理机构，Internet Corporation for Assigned N
 - RST(reset)：重置复位标志，用于复位对应的TCP连接。
 - URG(urgent)：紧急标志，用于保证TCP连接不被中断，并且督促中间层设备尽快处理。
 
-**​**
+
 
 **三次握手 (Three-way Handshake)**  <br />  建立一个TCP连接时，需要客户端和服务器总共发送3个包。  <br />  目的是连接服务器指定端口，建立TCP连接，并同步连接双方的顺序号和确认号并交换 TCP信息  <br />  ![](./assets/1643807418476-ff68797c-e5b8-42f6-ae3c-fddca4aef771.png)
 
@@ -451,9 +439,9 @@ ICANN(因特网域名与地址管理机构，Internet Corporation for Assigned N
 - 第二次握手：服务器Server收到请求后要确认联机信息，向客户端Client发送ack=(客户端Client请求连接时的seq)+1，SYN=1，ACK=1，产生seq=y的包，代表接收到连接请求并且向客户端再次确认；
 - 第三次握手：客户端Client收到后检查ack是否正确，即第一次发送的seq+1，以及位码ACK是否为1，代表收到了服务器端发过来的确认信息。之后客户端Client会再向服务器发送ack=(服务器Server的seq+1)，ACK=1，服务器Server收到后确认ack 值与ACK=1，连接建立成功。
 
-**​**
 
-**四次挥手 **(four-way handshake)  <br />  ![](./assets/1643807418563-2acecf30-91bd-44ad-97f5-edfa1591e8e6.png)  <br />  **​**
+
+**四次挥手 **(four-way handshake)  <br />  ![](./assets/1643807418563-2acecf30-91bd-44ad-97f5-edfa1591e8e6.png)
 
 **MSL(Maximum Segment Lifetime) 报文最长存活时间**
 
@@ -464,12 +452,13 @@ ICANN(因特网域名与地址管理机构，Internet Corporation for Assigned N
 - 客户端Client收到服务器Server的连接释放报文后，必须发出确认，ACK=1，ack=p+1，而自己的顺序号是seq=m+1，此时，客户端Client就进入了TIME-WAIT（时间等待）状态。注意此时TCP连接还没有释放，必须经过2*MSL（最长报文段寿命）的时间后，当客户端Client撤销相应的TCB（保护程序）后，才进入CLOSED状态。
 - 服务器Server只要收到了客户端Client发出的确认，立即进入CLOSED状态。同样，撤销TCB后，就结束了这次的TCP连接。可以看到，服务器Server结束TCP连接的时间要比客户端Client早一些。
 
-**​**
 
-**为什么连接的时候是三次握手，关闭的时候却是四次握手？**  <br />  因为当Server端收到Client端的SYN连接请求报文后，可以直接发送SYN+ACK报文。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，很可能并不会立即关闭SOCKET，所以只能先回复一个ACK报文，告诉Client端，"你发的FIN报文我收到了"。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，因此不能一起发送。故需要四步握手。  <br />  **为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？**  <br />  按照前面所说，当四个报文全部发送完毕后，理论上就算是结束了。但是实际情况往往不会那么可靠，比如最后一条报文发出后丢失了，那么服务器端就不会接收到这一报文，每隔一段时间，服务器端会再次发出FIN报文，此时如果客户端已经断开了，那么就无法响应服务器的二次请求，这样服务器会继续发出FIN报文，从而变成了死循环。所以需要设置一个时间段，如果在这个时间段内接收到了服务器端的再次请求，则代表客户端发出的ACK报文没有接收成功。反之，则代表服务器端成功接收响应报文，客户端进入CLOSED状态，此次连接成功关闭。而这个时间，就规定为了2MSL，即客户端发出ACK报文到服务器端的最大时间 + 服务器没有接收到ACK报文再次发出FIN的最大时间 = 2MSL  <br />  ​  <br />  
+
+**为什么连接的时候是三次握手，关闭的时候却是四次握手？**  <br />  因为当Server端收到Client端的SYN连接请求报文后，可以直接发送SYN+ACK报文。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，很可能并不会立即关闭SOCKET，所以只能先回复一个ACK报文，告诉Client端，"你发的FIN报文我收到了"。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，因此不能一起发送。故需要四步握手。  <br />  **为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？**  <br />  按照前面所说，当四个报文全部发送完毕后，理论上就算是结束了。但是实际情况往往不会那么可靠，比如最后一条报文发出后丢失了，那么服务器端就不会接收到这一报文，每隔一段时间，服务器端会再次发出FIN报文，此时如果客户端已经断开了，那么就无法响应服务器的二次请求，这样服务器会继续发出FIN报文，从而变成了死循环。所以需要设置一个时间段，如果在这个时间段内接收到了服务器端的再次请求，则代表客户端发出的ACK报文没有接收成功。反之，则代表服务器端成功接收响应报文，客户端进入CLOSED状态，此次连接成功关闭。而这个时间，就规定为了2MSL，即客户端发出ACK报文到服务器端的最大时间 + 服务器没有接收到ACK报文再次发出FIN的最大时间 = 2MSL
+
 
 ## UDP
-**用户**[**数据报**](https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E6%8A%A5)**协议**（User Datagram Protocol）是一个简单的面向数据报的通信协议，提供面向事务的简单不可靠信息传送服务  <br />  **​**
+**用户**[**数据报**](https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E6%8A%A5)**协议**（User Datagram Protocol）是一个简单的面向数据报的通信协议，提供面向事务的简单不可靠信息传送服务
 
 **TCP & UDP**  <br />  1、TCP是面向连接的（在客户端和服务器之间传输数据之前要先建立连接），UDP是无连接的  <br />  2、TCP提供可靠的服务（无差错，不丢失，不重复，且按序到达）；UDP提供面向事务的简单的不可靠的传输。  <br />  3、UDP具有较好的实时性，工作效率比TCP高，适用于对高速传输和实时性比较高的通讯或广播通信  <br />  4、TCP连接只能是点到点的，UDP支持一对一，一对多和多对多的交互通信。  <br />  5、TCP对系统资源要求比较多，UDP对系统资源要求比较少  <br />  6、UDP程序结构更加简单  <br />  7、TCP是流模式，UDP是数据报模式
 
@@ -478,7 +467,7 @@ ICANN(因特网域名与地址管理机构，Internet Corporation for Assigned N
 
 - 采用主从式架构模型，用于在两个应用程序间透过网络创建起安全的连线，防止在交换资料时受到窃听及篡改。
 
-**​**
+
 
 **安全连接**
 
@@ -489,12 +478,10 @@ ICANN(因特网域名与地址管理机构，Internet Corporation for Assigned N
 - 为了生成会话密钥用于安全连接，客户端使用服务器的公钥加密随机生成的密钥，并将其发送到服务器，只有服务器才能使用自己的私钥解密。
 - 利用随机数，双方生成用于加密和解密的对称密钥。这就是TLS协议的握手，握手完毕后的连接是安全的，直到连接（被）关闭。如果上述任何一个步骤失败，TLS握手过程就会失败，并且断开所有的连接。
 
-​
 
-​  <br />  
 
 # 网络层（Network Layer）
-提供[路由](https://zh.wikipedia.org/wiki/%E8%B7%AF%E7%94%B1)和寻址的功能，使两终端系统能够互连且决定最佳路径，并具有一定的拥塞控制和流量控制的能力。  <br />  **​**
+提供[路由](https://zh.wikipedia.org/wiki/%E8%B7%AF%E7%94%B1)和寻址的功能，使两终端系统能够互连且决定最佳路径，并具有一定的拥塞控制和流量控制的能力。
 
 **路由器**（Router）是一种[电讯](https://zh.wikipedia.org/wiki/%E9%9B%BB%E8%A8%8A)网络设备，提供路由与转送两种重要机制，可以决定数据包从来源端到目的端所经过的路由路径（host到host之间的传输路径），这个过程称为路由
 
@@ -505,7 +492,7 @@ ICANN(因特网域名与地址管理机构，Internet Corporation for Assigned N
 - 寻址（location addressing）
 
 ### IPv4
-**网际协议版本4**（Internet Protocol version 4，又称互联网通信协议第四版）  <br />  一种[无连接](https://zh.wikipedia.org/wiki/%E7%84%A1%E9%80%A3%E6%8E%A5%E5%BC%8F%E9%80%9A%E8%A8%8A)的协议，操作在使用分组交换的链路层（如以太网）上。此协议会尽最大努力交付数据包，即它不保证任何数据包均能送达目的地，也不保证所有数据包均按照正确的顺序无重复地到达。  <br />  **​**
+**网际协议版本4**（Internet Protocol version 4，又称互联网通信协议第四版）  <br />  一种[无连接](https://zh.wikipedia.org/wiki/%E7%84%A1%E9%80%A3%E6%8E%A5%E5%BC%8F%E9%80%9A%E8%A8%8A)的协议，操作在使用分组交换的链路层（如以太网）上。此协议会尽最大努力交付数据包，即它不保证任何数据包均能送达目的地，也不保证所有数据包均按照正确的顺序无重复地到达。
 
 **IP 地址 ::= {< 网络号 >, < 主机号 >}**  <br />  IPv4 使用32位（4字节）地址，被分为 4 个 8 位段。  <br />  基本分类
 
@@ -518,9 +505,9 @@ ICANN(因特网域名与地址管理机构，Internet Corporation for Assigned N
 - D 类：不分网络 ID 和主机 ID；该地址用于多播。
 - E 类：不分网络 ID 和主机 ID；该地址用于实验。
 
-![](./assets/1643807418652-ce150b6b-602b-4d29-aa39-8061b41a39c5.gif)  <br />  ​
+![](./assets/1643807418652-ce150b6b-602b-4d29-aa39-8061b41a39c5.gif)
 
-网关（Gateway）：是转发其他服务器通信数据的服务器，接收从客户端发送来的请求时，它就像自己拥有资源的源服务器一样对请求进行处理。  <br />  **​**
+网关（Gateway）：是转发其他服务器通信数据的服务器，接收从客户端发送来的请求时，它就像自己拥有资源的源服务器一样对请求进行处理。
 
 **特殊用途的地址**
 
@@ -543,7 +530,6 @@ ICANN(因特网域名与地址管理机构，Internet Corporation for Assigned N
 | 240.0.0.0/4 | 保留（之前的E类网络） |
 | 255.255.255.255/32 | [受限广播](https://zh.wikipedia.org/wiki/%E5%8F%97%E9%99%90%E5%B9%BF%E6%92%AD) |
 
-​
 
 专用网络（**私有IP）**  <br />  不能直接与公共网络通信。需使用[网络地址转换](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2)（NAT）或者代理服务器 （proxy server）来实现
 
@@ -553,23 +539,21 @@ ICANN(因特网域名与地址管理机构，Internet Corporation for Assigned N
 | 172.16.0.0 – 172.31.255.255 | 1,048,576 | 16个连续B类网络 | 172.16.0.0/12 (255.240.0.0) | 20位 |
 | 192.168.0.0 – 192.168.255.255 | 65,536 | 256个连续C类网络 | 192.168.0.0/16 (255.255.0.0) | 16位 |
 
-**环回地址 (Loopback Address)**  <br />  地址块127.0.0.0/8被保留作环回通信用。发送至此地址的报文被作为同一虚拟网络设备上的入站报文（环回），主要用于检查TCP/IP协议栈是否正确运行和本机对本机的链接。  <br />  ​
+**环回地址 (Loopback Address)**  <br />  地址块127.0.0.0/8被保留作环回通信用。发送至此地址的报文被作为同一虚拟网络设备上的入站报文（环回），主要用于检查TCP/IP协议栈是否正确运行和本机对本机的链接。
 
 无类域间路由（Classless Inter-Domain Routing，CIDR）
 
 - 一个用于给用户分配IP地址以及在互联网上有效地路由IP数据包的对IP地址进行归类的方法。
 - 基于可变长子网掩码（VLSM）来进行任意长度的前缀的分配的
 
-​
-
 NAT（Network Address Translation，[网络地址转换](https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2)、**网络掩蔽**、IP掩蔽）
 
 - 一种在IP数据包通过路由器或防火墙时重写来源IP地址或目的IP地址的技术。
 - 实现局域网的IP地址与广域网的地址之间的相互转换，将广域网IP地址转换为大量的局域网IP地址，减少对公网IP地址的占用。
 
-**​**
 
-**网络地址端口转换（NAPT）**  <br />  **​**
+
+**网络地址端口转换（NAPT）**
 
 **IP数据报格式**  <br />  ![](./assets/1643807418743-b61d00a8-91f3-43b9-8a90-54ad19d97512.jpeg)
 
@@ -583,12 +567,11 @@ NAT（Network Address Translation，[网络地址转换](https://baike.baidu.com
 - 标识 : 在数据报长度过长从而发生分片的情况下，相同数据报的不同分片具有相同的标识符。
 - 片偏移 : 和标识符一起，用于发生分片的情况。片偏移的单位为 8 字节。
 
-​  <br />  
 
 ### IPv6
-地址长度为128位，16^32，8组4位十六进制地址  <br />  2001:0db8:86a3:08d3:1319:8a2e:0370:7344  <br />  可以用双冒号“::”表示一组0或多组连续的0，但只能出现一次  <br />  **​**
+地址长度为128位，16^32，8组4位十六进制地址  <br />  2001:0db8:86a3:08d3:1319:8a2e:0370:7344  <br />  可以用双冒号“::”表示一组0或多组连续的0，但只能出现一次
 
-**IPv6 地址 = **64位的网络前缀 + 64位的主机地址  <br />  EUI-64（64-位扩展唯一标识）：主机地址通常根据物理地址自动生成  <br />  **​**
+**IPv6 地址 = **64位的网络前缀 + 64位的主机地址  <br />  EUI-64（64-位扩展唯一标识）：主机地址通常根据物理地址自动生成
 
 **地址分类**
 
@@ -596,7 +579,7 @@ NAT（Network Address Translation，[网络地址转换](https://baike.baidu.com
 - 多播（multicast）地址：组播地址。被指定到一群不同的接口，送到多播地址的数据包会被发送到所有的地址。多播地址由皆为一的字节起始，亦即：它们的前置为FF00::/8。其第二个字节的最后四个比特用以标明"范畴"。多点广播存在于单一来源和多个目的地进行通信。
 - 任播（anycast）地址：像是Unicast（单点传播）与Broadcast（多点广播）的综合
 
-**​**
+
 
 **特殊地址**
 
@@ -606,7 +589,7 @@ NAT（Network Address Translation，[网络地址转换](https://baike.baidu.com
 - IPv4转译地址	::ffff:x.x.x.x/96－用于IPv4映射地址。
 - ···
 
-**​**
+
 
 **地址转换**  <br />  IPv4的一个地址为135.75.43.52（十六进制为0x874B2B34），  <br />  转化为0000:0000:0000:0000:0000:FFFF:874B:2B34 或者::FFFF:874B:2B34。  <br />  使用混合符号（IPv4-compatible address），则地址可以为::ffff:135.75.43.52。
 
@@ -619,21 +602,19 @@ NAT（Network Address Translation，[网络地址转换](https://baike.baidu.com
 | **192** | Rest of Header |  |  |  |
 
 
-
 - Type - ICMP的类型,标识生成的错误报文；
 - Code - 进一步划分ICMP的类型,该字段用来查找产生错误的原因.；例如，ICMP的目标不可达类型可以把这个位设为1至15等来表示不同的意思。
 - Checksum - Internet校验和（RFC 1071），用于进行错误检查，该校验和是从ICMP头和以该字段替换为0的数据计算得出的。
 - Rest of Header - 报头的其余部分，四字节字段，内容根据ICMP类型和代码而有所不同。
 
-​  <br />  
 
 # 链路层（link layer）
 **数据链路层**（Data Link Layer）
 
 ## MAC
-**媒体接入控制**（Media Access Control）子层，提供寻址及媒体访问的控制方式，使得不同设备或网络上的节点可以在多点的网络上通信，而不会互相冲突  <br />  **​**
+**媒体接入控制**（Media Access Control）子层，提供寻址及媒体访问的控制方式，使得不同设备或网络上的节点可以在多点的网络上通信，而不会互相冲突
 
-**MAC地址**（Media Access Control Address，媒体访问控制地址），也称为局域网地址（LAN Address），以太网地址（Ethernet Address）或物理地址（Physical Address），用来确认网络设备位置的地址，在网络中唯一标示一个[网卡](https://zh.wikipedia.org/wiki/%E7%BD%91%E5%8D%A1)  <br />  ​
+**MAC地址**（Media Access Control Address，媒体访问控制地址），也称为局域网地址（LAN Address），以太网地址（Ethernet Address）或物理地址（Physical Address），用来确认网络设备位置的地址，在网络中唯一标示一个[网卡](https://zh.wikipedia.org/wiki/%E7%BD%91%E5%8D%A1)
 
 MAC地址共48位（6个字节），以[十六进制](https://zh.wikipedia.org/wiki/%E5%8D%81%E5%85%AD%E9%80%B2%E4%BD%8D)表示
 
@@ -663,7 +644,7 @@ MAC地址共48位（6个字节），以[十六进制](https://zh.wikipedia.org/w
 - Cookie：通过在客户端记录信息确定用户身份，实际上是一小段的文本信息
 - Session：通过在服务器端记录信息确定用户身份。
 
-**​**
+
 
 **cookies & session**
 
@@ -673,9 +654,9 @@ MAC地址共48位（6个字节），以[十六进制](https://zh.wikipedia.org/w
 - 单个cookie保存的数据<=4KB，一个站点最多保存20个Cookie。
 
 ## URI
-**统一资源**[**标识**](https://zh.wikipedia.org/wiki/%E6%A0%87%E8%AF%86)**符**（Uniform Resource Identifier）：一个用于标识某一互联网资源名称的字符串  <br />  格式  <br />  `[协议名]://[用户名]:[密码]@[主机名]:[端口]/[路径]?[查询参数]#[片段ID] `  <br />  ​
+**统一资源**[**标识**](https://zh.wikipedia.org/wiki/%E6%A0%87%E8%AF%86)**符**（Uniform Resource Identifier）：一个用于标识某一互联网资源名称的字符串  <br />  格式  <br />  `[协议名]://[用户名]:[密码]@[主机名]:[端口]/[路径]?[查询参数]#[片段ID] `
 
-[URL](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Identifying_resources_on_the_Web#urls)（**U**niform **R**esource **L**ocator，**统一资源定位符**、**统一资源定位器**、**网页地址**、**网址**）  <br />  [因特网](https://zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%BD%91)上标准的资源的地址，URI的一种常见形式  <br />  ​
+[URL](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Identifying_resources_on_the_Web#urls)（**U**niform **R**esource **L**ocator，**统一资源定位符**、**统一资源定位器**、**网页地址**、**网址**）  <br />  [因特网](https://zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%BD%91)上标准的资源的地址，URI的一种常见形式
 
 标准格式  <br />  `[协议类型]://[服务器地址]:[端口号]/[资源层级UNIX文件路径][文件名]?[查询]#[片段ID] `  <br />  完整格式  <br />  `[协议类型]://[访问资源需要的凭证信息]@[服务器地址]:[端口号]/[资源层级UNIX文件路径][文件名]?[查询]#[片段ID] `
 
@@ -684,8 +665,6 @@ MAC地址共48位（6个字节），以[十六进制](https://zh.wikipedia.org/w
 - :port - 定义主机上的端口号（http 的默认端口号是 80）
 - path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。
 - 锚点名称通过网页元素的id属性命名
-
-​
 
 Protocol
 
@@ -707,7 +686,6 @@ Protocol
 **媒体类型**（Multipurpose Internet Mail Extensions ）是一种标准，用来表示文档、文件或字节流的性质和格式。  <br />  通用结构
 > type/subtype 由类型与子类型两个字符串中间用'/'分隔而组成。不允许空格存在。type 表示可以被分多个子类的独立类别。 
 
-​
 
 MIME类型对大小写不敏感，但是传统写法都是小写。  <br />  [**重要的MIME类型**](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_Types#%E9%87%8D%E8%A6%81%E7%9A%84mime%E7%B1%BB%E5%9E%8B)
 
@@ -724,17 +702,13 @@ MIME类型对大小写不敏感，但是传统写法都是小写。  <br />  [**
 - 标识服务器上提供特定网络服务的进程。
 - 由本机地址、本机端口号、目标机地址、目标机端口号、通信协议组成的五元组，用于唯一确定正在使用的网络链接。
 
-​
-
-TCP，UDP协议使用16bits端口号来表示和区别网络中的不同应用程序，网络层协议IP使用特定的协议号（TCP 6，UDP 17）来表示和区别传输层协议。  <br />  **​**
+TCP，UDP协议使用16bits端口号来表示和区别网络中的不同应用程序，网络层协议IP使用特定的协议号（TCP 6，UDP 17）来表示和区别传输层协议。
 
 **分类**
 
 - 公认端口（Well Known Ports）：0——1023，它们紧密绑定（binding）于一些服务。通常这些端口的通讯明确表明了某种服务的协议。
 - 注册端口（Registered Ports）：1024——49151。它们松散地绑定于一些服务
 - 动态和/或私有端口（Dynamic and/or Private Ports）：49152——65535。理论上，不应为服务分配这些端口。
-
-​
 
 常见端口
 
@@ -857,7 +831,7 @@ TCP，UDP协议使用16bits端口号来表示和区别网络中的不同应用�
 # CLI
 
 ## PING
-**Packet Internet Groper (因特网包探索器)**——用于测试网络连接量的程序。  <br />  Ping是工作在 TCP/IP网络体系结构中应用层的一个服务命令， 主要是向特定的目的主机发送 ICMP（Internet Control Message Protocol，因特网报文控制协议）Echo 请求报文，测试目的站是否可达及了解其有关状态。  <br />  ​
+**Packet Internet Groper (因特网包探索器)**——用于测试网络连接量的程序。  <br />  Ping是工作在 TCP/IP网络体系结构中应用层的一个服务命令， 主要是向特定的目的主机发送 ICMP（Internet Control Message Protocol，因特网报文控制协议）Echo 请求报文，测试目的站是否可达及了解其有关状态。
 
 ping用于确定本地主机是否能与另一台主机成功交换(发送与接收)数据包，再根据返回的信息，就可以推断[TCP/IP](https://baike.baidu.com/item/TCP%2FIP/214077)参数是否设置正确，以及运行是否正常、网络是否通畅等。Ping命令可以进行以下操作：
 
@@ -865,7 +839,7 @@ ping用于确定本地主机是否能与另一台主机成功交换(发送与接
 1. 每个发送的数据包最多等待一秒。
 1. 打印已传输和接收的数据包数。
 
-需要注意的是，Ping成功并不一定就代表[TCP/IP](https://baike.baidu.com/item/TCP%2FIP/214077)配置正确，有可能还要执行大量的本地主机与远程主机的数据包交换，才能确信TCP/IP配置的正确性。如果执行ping成功而网络仍无法使用，那么问题很可能出在网络系统的软件配置方面，ping成功只保证当前主机与目的主机间存在一条连通的物理路径  。  <br />  **​**
+需要注意的是，Ping成功并不一定就代表[TCP/IP](https://baike.baidu.com/item/TCP%2FIP/214077)配置正确，有可能还要执行大量的本地主机与远程主机的数据包交换，才能确信TCP/IP配置的正确性。如果执行ping成功而网络仍无法使用，那么问题很可能出在网络系统的软件配置方面，ping成功只保证当前主机与目的主机间存在一条连通的物理路径  。
 
 **ping [-t] [-a] [-n count] [-l size] [-f] [-i TTL]**  <br />  **            [-r count] [-s count] [[-j host-list] | [-k host-list]]**  <br />  **            [-w timeout] [-S srcaddr] [-c compartment] [-p]**  <br />  **            [-4] [-6] target_name**  <br />  选项:
 ```
@@ -886,9 +860,10 @@ ping用于确定本地主机是否能与另一台主机成功交换(发送与接
 -4             强制使用 IPv4。
 -6             强制使用 IPv6。
 ```
-localhost：环回地址127.0.0.1的别名, ping环回地址可以验证本地计算机是否正确配置安装TCP/IP协议。  <br />  一个网络故障的典型检测过程是从**本地主机**开始的,在大家检测localhost工作正常以后,可以开始按顺序检测本机IP地址、本地局域网相同子网主机、默认网关,最后检测目标主机的网络是否正常。  <br />  **​**
+localhost：环回地址127.0.0.1的别名, ping环回地址可以验证本地计算机是否正确配置安装TCP/IP协议。  <br />  一个网络故障的典型检测过程是从**本地主机**开始的,在大家检测localhost工作正常以后,可以开始按顺序检测本机IP地址、本地局域网相同子网主机、默认网关,最后检测目标主机的网络是否正常。
 
-**TTL（Time To Live，IPv4包头的一个8 bit字段），指定IP包被路由器丢弃之前允许通过的最大网段数量。**  <br />  **​**  <br />  
+**TTL（Time To Live，IPv4包头的一个8 bit字段），指定IP包被路由器丢弃之前允许通过的最大网段数量。**
+
 
 ## Tracert
 显示数据包到达目标主机所经过的路径（路由器），并显示到达每个节点（路由器）的时间  <br />  **tracert [-d] [-h maximum_hops] [-j host-list] [-w timeout]**  <br />  **               [-R] [-S srcaddr] [-4] [-6] target_name**  <br />  选项:
@@ -909,12 +884,12 @@ localhost：环回地址127.0.0.1的别名, ping环回地址可以验证本地�
 - 后面的IP,就是每个路由节点对应的IP
 - *,在第7个路由节点上,返回消息是超时。
 
-**​**
+
 
 **工作原理**  <br />  通过向目标发送不同IP生存时间(TTL)值的"Internet控制消息协议(ICMP)"回应数据包，Tracert诊断程序确定到目标所采取的路由。要求路径上的每个路由器在转发数据包之前至少将数据包上的TTL递减1，数据包上的TTL减为0时,路由器应该将"ICMP已超时”的消息发回源系统。  <br />  Tracert先发送TTL为1的回应数据包，并在随后的每次发送过程将TTL递增1，直到目标响应或TTL达到最大值，从而**确定路由**。通过检查中间路由器发回的"ICMP已超时”的消息确定路由。某些路由器不经询问直接丢弃TTL过期的数据包，这在Tracert实用程序中看不到。
 
 ## pathping
-**路由跟踪工具**，提供有关在源和目标之间的中间路由的延迟和网络丢包的信息，它将 ping 和 tracert 命令的功能与这两个工具所不提供的其他信息结合起来，综合了二者的功能  <br />  ​
+**路由跟踪工具**，提供有关在源和目标之间的中间路由的延迟和网络丢包的信息，它将 ping 和 tracert 命令的功能与这两个工具所不提供的其他信息结合起来，综合了二者的功能
 
 **pathping [-g host-list] [-h maximum_hops] [-i address] [-n]**  <br />  **                [-p period] [-q num_queries] [-w timeout]**  <br />  **                [-4] [-6] target_name**  <br />  选项:
 ```
@@ -938,30 +913,31 @@ localhost：环回地址127.0.0.1的别名, ping环回地址可以验证本地�
 - nslookup [-opt ...] host server # 仅查找使用 "server" 的 "host"
 
 ## netstat
-显示协议统计信息和当前 TCP/IP 网络连接  <br />  **NETSTAT [-a] [-b] [-e] [-f] [-n] [-o] [-p proto] [-r] [-s] [-x] [-t] [interval]**  <br />  ** -a            显示所有连接和侦听端口**。  <br />  -b           显示在创建每个连接或侦听端口时涉及的可执行程序。  <br />  **-e            显示以太网统计信息**。  <br />  -f            显示外部地址的完全限定域名(FQDN)。  <br />  **-n            以数字形式显示地址和端口号**。  <br />  -o            显示拥有的与每个连接关联的进程 ID。  <br />  -p proto      显示 proto 指定的协议的连接  <br />  -q            显示所有连接、侦听端口和绑定的非侦听 TCP 端口。  <br />  -r            显示路由表。  <br />  ** -s            显示每个协议的统计信息。**默认情况下显示 IP、IPv6、ICMP、ICMPv6、TCP、TCPv6、UDP 和 UDPv6 的统计信息;  <br />  -t            显示当前连接卸载状态。  <br />  -x            显示 NetworkDirect 连接、侦听器和共享终结点。  <br />  -y            显示所有连接的 TCP 连接模板。无法与其他选项结合使用。  <br />  interval      重新显示选定的统计信息，各个显示间暂停的间隔秒数。  <br />  Netstat是在[内核](https://baike.baidu.com/item/%E5%86%85%E6%A0%B8/108410)中访问网络连接状态及其相关信息的程序，它能提供TCP连接，TCP和UDP监听，进程内存管理的相关报告。  <br />  可以显示[路由表](https://baike.baidu.com/item/%E8%B7%AF%E7%94%B1%E8%A1%A8/2707408)、实际的网络连接以及每一个网络接口设备的状态信息，用于显示与IP、TCP、UDP和ICMP协议相关的统计数据，一般用于检验本机各端口的网络连接情况。  <br />  ​
+显示协议统计信息和当前 TCP/IP 网络连接  <br />  **NETSTAT [-a] [-b] [-e] [-f] [-n] [-o] [-p proto] [-r] [-s] [-x] [-t] [interval]**  <br />  ** -a            显示所有连接和侦听端口**。  <br />  -b           显示在创建每个连接或侦听端口时涉及的可执行程序。  <br />  **-e            显示以太网统计信息**。  <br />  -f            显示外部地址的完全限定域名(FQDN)。  <br />  **-n            以数字形式显示地址和端口号**。  <br />  -o            显示拥有的与每个连接关联的进程 ID。  <br />  -p proto      显示 proto 指定的协议的连接  <br />  -q            显示所有连接、侦听端口和绑定的非侦听 TCP 端口。  <br />  -r            显示路由表。  <br />  ** -s            显示每个协议的统计信息。**默认情况下显示 IP、IPv6、ICMP、ICMPv6、TCP、TCPv6、UDP 和 UDPv6 的统计信息;  <br />  -t            显示当前连接卸载状态。  <br />  -x            显示 NetworkDirect 连接、侦听器和共享终结点。  <br />  -y            显示所有连接的 TCP 连接模板。无法与其他选项结合使用。  <br />  interval      重新显示选定的统计信息，各个显示间暂停的间隔秒数。  <br />  Netstat是在[内核](https://baike.baidu.com/item/%E5%86%85%E6%A0%B8/108410)中访问网络连接状态及其相关信息的程序，它能提供TCP连接，TCP和UDP监听，进程内存管理的相关报告。  <br />  可以显示[路由表](https://baike.baidu.com/item/%E8%B7%AF%E7%94%B1%E8%A1%A8/2707408)、实际的网络连接以及每一个网络接口设备的状态信息，用于显示与IP、TCP、UDP和ICMP协议相关的统计数据，一般用于检验本机各端口的网络连接情况。
 
-查看所有端口：netstat -ano  <br />  查看指定端口：netstat -ano | findstr "808"  <br />  查看指定进程：tasklist | findstr "808"  <br />  ​
+查看所有端口：netstat -ano  <br />  查看指定端口：netstat -ano | findstr "808"  <br />  查看指定进程：tasklist | findstr "808"
 
-arp -a  <br />  ​  <br />  
+arp -a
+
 
 # 网络设备
-**​**
+
 
 **双工**（duplex）：二台[通信](https://zh.wikipedia.org/wiki/%E9%80%9A%E8%A8%8A)设备之间，允许有双向的资料传输
 
 - 半双工（half-duplex）的系统允许二台设备之间的双向资料传输，但不能同时进行。
 - 全双工（full-duplex）的系统允许二台设备间同时进行双向资料传输。
 
-**时分双工**（TDD，Time-Division Duplexing）：利用[时间分隔多任务](https://zh.wikipedia.org/wiki/%E6%99%82%E9%96%93%E5%88%86%E9%9A%94%E5%A4%9A%E5%B7%A5)技术来分隔发送及接收的信号。  <br />  **频分双工**（FDD，Frequency-Division Duplexing）：利用[频率分隔多任务](https://zh.wikipedia.org/wiki/%E9%A0%BB%E7%8E%87%E5%88%86%E9%9A%94%E5%A4%9A%E5%B7%A5)技术来分隔发送及接收的信号。上传及  <br />  下载的区段之间用“频率偏移”（frequency offset）的方式分隔。  <br />  ​
+**时分双工**（TDD，Time-Division Duplexing）：利用[时间分隔多任务](https://zh.wikipedia.org/wiki/%E6%99%82%E9%96%93%E5%88%86%E9%9A%94%E5%A4%9A%E5%B7%A5)技术来分隔发送及接收的信号。  <br />  **频分双工**（FDD，Frequency-Division Duplexing）：利用[频率分隔多任务](https://zh.wikipedia.org/wiki/%E9%A0%BB%E7%8E%87%E5%88%86%E9%9A%94%E5%A4%9A%E5%B7%A5)技术来分隔发送及接收的信号。上传及  <br />  下载的区段之间用“频率偏移”（frequency offset）的方式分隔。
 
-交换机（Switch）：将多个网络设备连接起来组成一个局域网。  <br />  **网络交换机**（Network switch）：一种网络硬件，通过[报文交换](https://zh.wikipedia.org/wiki/%E6%8A%A5%E6%96%87%E4%BA%A4%E6%8D%A2)接收和转发数据到目标设备，它能够在计算机网络上连接不同的设备。  <br />  **​**
+交换机（Switch）：将多个网络设备连接起来组成一个局域网。  <br />  **网络交换机**（Network switch）：一种网络硬件，通过[报文交换](https://zh.wikipedia.org/wiki/%E6%8A%A5%E6%96%87%E4%BA%A4%E6%8D%A2)接收和转发数据到目标设备，它能够在计算机网络上连接不同的设备。
 
 **路由器**（Router）：又称网关设备，用于连接多个逻辑上分开的网络。  <br />  **中继器**（Repeater）：一个将输入信号增强放大的[模拟](https://zh.wikipedia.org/wiki/%E6%A8%A1%E6%93%AC%E4%BF%A1%E8%99%9F)设备，而不考虑输入信号种类。  <br />  **调制解调器**（Modem，modulator-demodulator）：俗称“猫”，一个将[数字信号](https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7)调变到模拟信号上进行传输，并解调收到的模拟信号以得到数字信号的电子设备。  <br />  **桥接器**（network bridge，网桥）：一种[网络](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C)设备，负责网络桥接（network bridging）。将网络的多个网段在数据链路层连接起来。
 
 - 无线桥接（Wireless bridge）：连接两个或多个物理上或逻辑上（不同网络传输协议）分开的网络区段的硬件组件。
 - 透明桥接：使用一个称为转发信息库的表来控制网段之间的帧转发。
 
-**​**
+
 
 **分组交换**（Packet switching）：一种相对于[电路交换](https://zh.wikipedia.org/wiki/%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2)的通信范例，分组（又称消息、或消息碎片）在节点间单独路由，不需要在传输前先建立通信路径。
 

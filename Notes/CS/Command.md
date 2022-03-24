@@ -1,8 +1,7 @@
 
 # —— Command ——
-​
 
-内建命令： 一些比较简单的 Linux 系统命令是写在 bash 源码的 builtins 里面的，由 shell 程序识别并在 shell 程序内部完成运行，通常在 Linux 系统加载运行时 shell 就被加载并驻留在系统内存中。而且解析内部命令 shell 不需要创建子进程，因此其执行速度比外部命令快。比如：history、cd、exit 等。  <br />  外部命令： Linux 系统中的实用程序部分，因为实用程序的功能通常都比较强大，程序量也很大，在系统加载时并不随系统一起被加载到内存中，而是在需要时才将其调入内存。虽然其不包含在 shell 中，但是其命令执行过程是由 shell 程序控制的。外部命令是在 Bash 之外额外安装的，通常放在/bin，/usr/bin，/sbin，/usr/sbin 等。比如：ls、vi 等。  <br />  **​**
+内建命令： 一些比较简单的 Linux 系统命令是写在 bash 源码的 builtins 里面的，由 shell 程序识别并在 shell 程序内部完成运行，通常在 Linux 系统加载运行时 shell 就被加载并驻留在系统内存中。而且解析内部命令 shell 不需要创建子进程，因此其执行速度比外部命令快。比如：history、cd、exit 等。  <br />  外部命令： Linux 系统中的实用程序部分，因为实用程序的功能通常都比较强大，程序量也很大，在系统加载时并不随系统一起被加载到内存中，而是在需要时才将其调入内存。虽然其不包含在 shell 中，但是其命令执行过程是由 shell 程序控制的。外部命令是在 Bash 之外额外安装的，通常放在/bin，/usr/bin，/sbin，/usr/sbin 等。比如：ls、vi 等。
 
 **获取帮助**
 
@@ -10,7 +9,7 @@
 - man [-k] <command> 		Manual pages
 - <command> --help | -h
 
-**​**
+
 
 **查询命令路径**
 
@@ -22,11 +21,10 @@
 
 
 
-查看Linux内核版本  <br />  cat /proc/version  <br />  uname -a  <br />  ​
+查看Linux内核版本  <br />  cat /proc/version  <br />  uname -a
 
-Linux系统版本	lsb_release -a  <br />  系统的位数	file /bin/ss  <br />  CPU信息	cat /proc/cpuinfo	lscpu  <br />  shell	cat /etc/shells  <br />  ​
+Linux系统版本	lsb_release -a  <br />  系统的位数	file /bin/ss  <br />  CPU信息	cat /proc/cpuinfo	lscpu  <br />  shell	cat /etc/shells
 
-​
 
 uname	print system information  <br />  uname [OPTION]...
 
@@ -40,9 +38,6 @@ uname	print system information  <br />  uname [OPTION]...
 - -i, --hardware-platform  输出硬件平台或（不可移植）
 - -o, --operating-system   输出操作系统名称
 
-​
-
-​
 
 history [-c] [-d offset] [n]  <br />  history -anrw [filename]
 
@@ -53,23 +48,22 @@ history [-c] [-d offset] [n]  <br />  history -anrw [filename]
 - -r           读取历史文件，并将其内容附加到历史列表中。
 - -w           将当前历史记录列表附加到历史记录文件中并且附加它们到历史列表中。
 
-​  <br />  
 
 ## 常用
-**​**
+
 
 **echo [option]  message**  <br />  输出一行文本
 
 - -n	取消换行
 - -e	解释引号（双引号和单引号）里面的特殊字符
 
-**​**
 
-**clear 清屏**  <br />  ​
 
-exit - cause normal process termination  <br />  exit [n]  <br />  **​**
+**clear 清屏**
 
-**date**  <br />  **cal**  <br />  ​
+exit - cause normal process termination  <br />  exit [n]
+
+**date**  <br />  **cal**
 
 halt	poweroff	reboot  <br />  shutdown [OPTIONS...] [TIME] [WALL...]
 
@@ -80,17 +74,15 @@ halt	poweroff	reboot  <br />  shutdown [OPTIONS...] [TIME] [WALL...]
 - -h [n | hh:mm]	n分钟后关机
 
 
-  <br />  
-  <br />  sync - Synchronize cached writes to persistent storage  <br />  sync [OPTION] [FILE]
+sync - Synchronize cached writes to persistent storage  <br />  sync [OPTION] [FILE]
 
 - -d, --data	sync only file data, no unneeded metadata
 - -f, --file-system	sync the file systems that contain the files
 
-​
+alias [-p] [名称[=值] ... ]  <br />  -p        以可重用的格式打印所有的已定义的别名  <br />  unalias [-a] 名称 [名称 ...]  <br />  -a        删除所有的别名定义
 
-alias [-p] [名称[=值] ... ]  <br />  -p        以可重用的格式打印所有的已定义的别名  <br />  unalias [-a] 名称 [名称 ...]  <br />  -a        删除所有的别名定义  <br />  ​
+IFS（内部字段分隔符，Internal Field Separator），修改分隔标志
 
-IFS（内部字段分隔符，Internal Field Separator），修改分隔标志  <br />  ​  <br />  
 
 ## 文件管理
 **cd - Change Directory **  <br />  cd [路径]
@@ -103,7 +95,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志  
 | . | 代表当前目录 |
 | .. | 代表上级目录 |
 
-**​**
+
 
 **ls - list directory contents**  <br />  **ls [OPTION]  [FILE]**
 
@@ -126,7 +118,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志  
 | --full-time | 以完整时间模式 （包含年、月、日、时、分）输出 |
 | --time={atime,ctime} | 输出 access 时间或改变权限属性时间（ctime），而不是内容变更时间。 |
 
-**ll = 'ls -alF'**  <br />  **​**
+**ll = 'ls -alF'**
 
 **tree**  <br />  以树状图列出目录的内容
 
@@ -145,7 +137,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志  
 - -p 列出权限标示。
 - -s 列出文件或目录大小
 
-**​**
+
 
 **mkdir - make directories**  <br />  mkdir [OPTION]... DIRECTORY...
 
@@ -153,7 +145,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志  
 - -p, --parents 递归创建所有目录
 - -v, --verbose
 
-**​**
+
 
 **rmdir - remove empty directories **  <br />  rmdir [OPTION]... DIRECTORY...
 
@@ -161,7 +153,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志  
 - -p, --parents 递归所有目录
 - -v, --verbose
 
-**​**
+
 
 **rm   - remove files or directories**  <br />  **rm [选项] 文件**
 
@@ -170,7 +162,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志  
 - -r, -R, --recursive
 - -d, --dir remove empty directories
 
-**​**
+
 
 **cp - **copy files and directories  <br />  cp [选项] 源文件 目标文件
 
@@ -183,7 +175,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志  
 - -R, -r, --recursive
 - -u, --update
 
-**​**
+
 
 **mv  - **move (rename)  <br />  mv [选项] 源文件 目标文件
 
@@ -193,7 +185,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志  
 - -v：显示文件或目录的移动过程；
 - -u, --update
 
-**​**
+
 
 **touch	**change file timestamps  <br />  touch [选项] 文件名
 
@@ -204,16 +196,12 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志  
 - -r, --reference=FILE
 - -t：命令后面可以跟欲修订的时间，而不用目前的时间，时间书写格式为 YYMMDDhhmm。
 
-​
-
-file	查看文件类型  <br />  **​**
+file	查看文件类型
 
 **ln	设置文件连接**  <br />  ln [选项] 源文件 目标文件
 
 - -s：建立软链接文件。如果不加 "-s" 选项，则建立硬链接文件；
 - -f：强制。如果目标文件已经存在，则删除目标文件后再建立链接文件；
-
-​
 
 locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数据库来检索信息  <br />  locate [OPTION]... PATTERN
 
@@ -226,7 +214,7 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 - -p, --ignore-spaces
 - -r, --regexp REGEXP
 
-**​**
+
 
 **find	查找文件**  <br />  find path -option [ -print ] [ -exec -ok command ] {} \;
 
@@ -238,12 +226,10 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 - -mtime 修改时间 （内容被修改）
 - -ctime 变化时间 （元数据或权限变化）
 
-​
 
-​  <br />  
 
 ## 文本处理
-**​**
+
 
 **cat - **concatenate	tac 倒序  <br />  cat [选项] [文件]
 
@@ -258,7 +244,7 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 - -E, --show-ends 在每行结束处显示$
 - -u (被忽略)
 
-**​**
+
 
 **nl	**number lines of files  <br />  nl [参数] [file]
 
@@ -285,7 +271,7 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 - -s 把连续的多个空行显示为一行
 - -u 把文件内容中的下画线去掉
 
-**​**
+
 
 **less**
 
@@ -302,7 +288,7 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 - d	向下移动半页。
 - v	使用配置的编辑器编辑当前文件。
 
-**​**
+
 
 **head [参数]  [文件]**
 
@@ -311,7 +297,7 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 - -q, --quiet, --silent	隐藏文件名
 - -v --verbose	显示文件名
 
-**​**
+
 
 **tail [参数]  [文件]**
 
@@ -321,7 +307,7 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 - --pid=PID 与-f合用，表示在进程ID，PID死掉之后结束
 - -s, --sleep-interval=S 与-f合用，表示在每次反复的间隔休眠S秒
 
-**​**
+
 
 **sort**
 
@@ -341,7 +327,7 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 - -s, --stable
 - -u, --unique
 
-**​**
+
 
 **grep - global regular expressions print		查找文本**  <br />  grep [OPTIONS] PATTERN [FILE...]  <br />  grep [OPTIONS] -e PATTERN ... [FILE...]		egrep  <br />  grep [OPTIONS] -f FILE ... [FILE...]
 
@@ -355,8 +341,9 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 - -r --recursive
 - -R, --dereference-recursive
 
-Context control:  <br />  -B, --before-context=NUM  print NUM lines of leading context  <br />  -A, --after-context=NUM   print NUM lines of trailing context  <br />  -C, --context=NUM         print NUM lines of output context  <br />  -NUM                      same as --context=NUM  <br />  
-  <br />  **sed - stream editor **for filtering and transforming text  <br />  一种流编辑器，一次处理一行内容。处理时，把当前处理的行存储在临时缓冲区中，称为“模式空间”（pattern space），接着用sed 命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。然后读入下行，执行下一个循环。如果没有使诸如‘D’ 的特殊命令，那会在两个循环之间清空模式空间，但不会清空保留空间。这样不断重复，直到文件末尾。文件内容并没有改变，除非你使用重定向存储输出或-i。  <br />  `sed [options] '[地址定界] command' file(s)`
+Context control:  <br />  -B, --before-context=NUM  print NUM lines of leading context  <br />  -A, --after-context=NUM   print NUM lines of trailing context  <br />  -C, --context=NUM         print NUM lines of output context  <br />  -NUM                      same as --context=NUM
+
+**sed - stream editor **for filtering and transforming text  <br />  一种流编辑器，一次处理一行内容。处理时，把当前处理的行存储在临时缓冲区中，称为“模式空间”（pattern space），接着用sed 命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。然后读入下行，执行下一个循环。如果没有使诸如‘D’ 的特殊命令，那会在两个循环之间清空模式空间，但不会清空保留空间。这样不断重复，直到文件末尾。文件内容并没有改变，除非你使用重定向存储输出或-i。  <br />  `sed [options] '[地址定界] command' file(s)`
 
 | 选项 | 含义 |
 | --- | --- |
@@ -377,8 +364,6 @@ Context control:  <br />  -B, --before-context=NUM  print NUM lines of leading c
    - #,/pat1/
 - ~：步进
    - sed -n** '1~2p' ** 只打印奇数行 （1~2 从第1行，一次加2行）
-
-​
 
 command
 
@@ -414,7 +399,6 @@ sed替换标记
 ```shell
 sed -n -e '1~2=' -e '1~2p' test.txt
 ```
-​
 
 awk  Alfred Aho，Peter Weinberger 和 Brian Kernighan 创造  <br />  awk [选项] '脚本命令' 文件名  <br />  awk 'BEGIN{ commands } pattern{ commands } END{ commands }'
 
@@ -431,7 +415,7 @@ awk  Alfred Aho，Peter Weinberger 和 Brian Kernighan 创造  <br />  awk [选�
 - $2 代表文本行中的第 2 个数据字段；
 - $n 代表文本行中的第 n 个数据字段。
 
-**​**
+
 
 **cut	**remove sections from each line of files  <br />  显示每行从开头算起 n1 到 n2 的文字  <br />  cut  file [option] [n1,n2]
 
@@ -441,11 +425,7 @@ awk  Alfred Aho，Peter Weinberger 和 Brian Kernighan 创造  <br />  awk [选�
 - -f ：与-d一起使用，指定显示哪个区域。
 - -n ：取消分割多字节字符。仅和 -b 标志一起使用
 
-​
-
-N      N'th byte, character or field, counted from 1  <br />  N-     from N'th byte, character or field, to end of line  <br />  N-M    from N'th to M'th (included) byte, character or field  <br />  -M     from first to M'th (included) byte, character or field  <br />  **​**
-
-**​**
+N      N'th byte, character or field, counted from 1  <br />  N-     from N'th byte, character or field, to end of line  <br />  N-M    from N'th to M'th (included) byte, character or field  <br />  -M     from first to M'th (included) byte, character or field
 
 **wc	**print  newline, word, and byte counts for each file  <br />  wc [-clw] [FILE]
 
@@ -455,7 +435,7 @@ N      N'th byte, character or field, counted from 1  <br />  N-     from N'th b
 - -w --words：显示字数。
 - -L, --max-line-length
 
-**​**
+
 
 **uniq	**report or omit repeated lines  <br />  uniq [-cdu] [-f<栏位>] [-s<字符位置>] [-w<字符位置>] [INPUT [OUTPUT]]
 
@@ -467,7 +447,7 @@ N      N'th byte, character or field, counted from 1  <br />  N-     from N'th b
 - -s, --skip-chars=N：忽略比较指定的字符。
 - -w, --check-chars=N：指定要比较的字符
 
-**​**
+
 
 **tr	**translate or delete characters  <br />  tr [OPTION] …SET1[SET2]
 
@@ -476,7 +456,7 @@ N      N'th byte, character or field, counted from 1  <br />  N-     from N'th b
 - -s, --squeeze-repeats：缩减连续重复的字符成指定的单个字符
 - -t, --truncate-set1：削减 SET1 指定范围，使之与 SET2 设定长度相等
 
-**​**
+
 
 **join	**join lines of two files on a common field  <br />  join [option]... file1 file2
 
@@ -485,21 +465,19 @@ N      N'th byte, character or field, counted from 1  <br />  N-     from N'th b
 - -1	指明第一个文件要用哪个字段来对比，默认对比第一个字段
 - -2	指明第二个文件要用哪个字段来对比，默认对比第一个字段
 
-​
-
 paste	merge lines of files  <br />  paste [option] file...
 
 - -d, --delimiters=LIST
 - -s, --serial：不合并到一行，每个文件为一行
 
-**​**
+
 
 **tee**  <br />  读取标准输入的数据，并将其内容输出成文件  <br />  tee [-ai] [文件...]
 
 - -a --append 　附加到既有文件的后面，而非覆盖它．
 - -i --ignore-interrupts 　忽略中断信号。
 
-**​**
+
 
 **col	**filter reverse line feeds from input  <br />  col [-bfhpx] [-l num]
 
@@ -509,12 +487,9 @@ paste	merge lines of files  <br />  paste [option] file...
 - -h	将空格转换为Tab（默认选项）
 - -l<缓冲区列数> 预设的内存缓冲区有128列，您可以自行指定缓冲区的大小
 
-​
 
-​  <br />  
 
 ## 权限管理
-​
 
 chgrp - change group  <br />  chgrp [OPTION]... GROUP FILE
 
@@ -525,21 +500,17 @@ chgrp - change group  <br />  chgrp [OPTION]... GROUP FILE
 - --dereference 作用于符号链接的指向，而不是符号链接本身
 - --no-dereference 作用于符号链接本身
 
-​
-
 chown - change owner  <br />  chown [OPTION]... [OWNER][:[GROUP]] FILE
 
 - -c, --changes
 - -R, --recursive
 
-chmod - change mode  <br />  chmod [-R]... MODE[,MODE]... FILE  <br />  ![](./assets/1644633126373-54dbce11-9d0c-4956-b786-b247b71881a1.gif)  <br />  **​**
+chmod - change mode  <br />  chmod [-R]... MODE[,MODE]... FILE  <br />  ![](./assets/1644633126373-54dbce11-9d0c-4956-b786-b247b71881a1.gif)
 
 **umask**  <br />  查看系统默认权限中准备丢弃的权限
 
 - 文件最高权限为666
 - 目录最高权限为777
-
-​
 
 文件（或目录）的初始权限 = 文件（或目录）的最大默认权限 - umask权限
 ```shell
@@ -551,7 +522,6 @@ else
     #如果UID小于199（超级用户），则使用此umask值
 fi
 ```
-​
 
 getfacl  get file access control lists 查看文件或目录当前设定的 ACL 权限信息  <br />  getfacl [-aceEsRLPtpndvh] file  <br />  setfacl 选项 文件名
 
@@ -564,7 +534,6 @@ getfacl  get file access control lists 查看文件或目录当前设定的 ACL 
 | -R | 递归设定 ACL 权限，指设定的 ACL 权限会对目录下的所有子文件生效，命令格式为 "setfacl -m u:用户名:权限 -R 文件名"（群组使用 g:群组名:权限），例如 setfacl -m u:st:rx -R /project 表示 st 用户对已存在于 project 目录中的子文件和子目录拥有 rx 权限。 |
 | -k | 删除默认 ACL 权限。 |
 
-​
 
 chattr - change file attributes on a Linux file system  <br />  chattr [+-=] [属性] 文件或目录名
 
@@ -578,7 +547,6 @@ chattr - change file attributes on a Linux file system  <br />  chattr [+-=] [�
 | u | 设置此属性的文件或目录，在删除时，其内容会被保存，以保证后期能够恢复，常用来防止意外删除文件或目录。 |
 | s | 和 u 相反，删除文件或目录时，会被彻底删除（直接从硬盘上删除，然后用 0 填充所占用的区域），不可恢复。 |
 
-​
 
 list file attributes on a Linux second extended file system  <br />  lsattr [选项] 文件或目录名
 
@@ -586,12 +554,9 @@ list file attributes on a Linux second extended file system  <br />  lsattr [选
 - -d：如果目标是目录，只会列出目录本身的隐藏属性，而不会列出所含文件或子目录的隐藏属性信息；
 - -R：和 -d 恰好相反，作用于目录时，会连同子目录的隐藏信息数据也一并显示出来。
 
-​
 
-​  <br />  
 
 ## 打包压缩
-​
 
 tar [必要参数] [选择参数] [文件]
 
@@ -613,13 +578,9 @@ tar [必要参数] [选择参数] [文件]
 -  --zstd 通过 zstd 过滤归档
 -  -Z, --compress, --uncompress 通过 compress 过滤归档
 
-​
 
-​
+**.tar文件格式**  <br />  解包：tar xvf FileName.tar  <br />  打包：tar cvf FileName.tar DirName  <br />  **.gz文件格式**  <br />  解压1：gunzip FileName.gz  <br />  解压2：gzip -d FileName.gz  <br />  压缩：gzip FileName  <br />  **.tar.gz 和 .tgz**  <br />  解压：tar zxvf FileName.tar.gz  <br />  压缩：tar zcvf FileName.tar.gz DirName  <br />  **.bz2文件格式**  <br />  解压1：bzip2 -d FileName.bz2  <br />  解压2：bunzip2 FileName.bz2  <br />  压缩： bzip2 -z FileName  <br />  **.tar.bz2文件格式**  <br />  解压：tar jxvf FileName.tar.bz2  <br />  压缩：tar jcvf FileName.tar.bz2 DirName  <br />  **.Z文件格式**  <br />  解压：uncompress FileName.Z  <br />  压缩：compress FileName  <br />  **.tar.Z文件格式**  <br />  解压：tar Zxvf FileName.tar.Z  <br />  压缩：tar Zcvf FileName.tar.Z DirName  <br />  **.zip文件格式**  <br />  解压：unzip FileName.zip  <br />  压缩：zip FileName.zip DirName  <br />  **.rar**  <br />  解压：rar x FileName.rar  <br />  压缩：rar a FileName.rar DirName
 
-**.tar文件格式**  <br />  解包：tar xvf FileName.tar  <br />  打包：tar cvf FileName.tar DirName  <br />  **.gz文件格式**  <br />  解压1：gunzip FileName.gz  <br />  解压2：gzip -d FileName.gz  <br />  压缩：gzip FileName  <br />  **.tar.gz 和 .tgz**  <br />  解压：tar zxvf FileName.tar.gz  <br />  压缩：tar zcvf FileName.tar.gz DirName  <br />  **.bz2文件格式**  <br />  解压1：bzip2 -d FileName.bz2  <br />  解压2：bunzip2 FileName.bz2  <br />  压缩： bzip2 -z FileName  <br />  **.tar.bz2文件格式**  <br />  解压：tar jxvf FileName.tar.bz2  <br />  压缩：tar jcvf FileName.tar.bz2 DirName  <br />  **.Z文件格式**  <br />  解压：uncompress FileName.Z  <br />  压缩：compress FileName  <br />  **.tar.Z文件格式**  <br />  解压：tar Zxvf FileName.tar.Z  <br />  压缩：tar Zcvf FileName.tar.Z DirName  <br />  **.zip文件格式**  <br />  解压：unzip FileName.zip  <br />  压缩：zip FileName.zip DirName  <br />  **.rar**  <br />  解压：rar x FileName.rar  <br />  压缩：rar a FileName.rar DirName  <br />  ​
-
-​
 
 zip [选项] 压缩包名 源文件或源目录列表
 
@@ -632,7 +593,6 @@ zip [选项] 压缩包名 源文件或源目录列表
 | -压缩级别 | 压缩级别是从 1~9 的数字，-1 代表压缩速度更快，-9 代表压缩效果更好。 |
 | -u | 更新压缩文件，即往压缩文件中添加新文件。 |
 
-​
 
 unzip [选项] 压缩包名
 
@@ -645,7 +605,6 @@ unzip [选项] 压缩包名
 | -t | 测试压缩文件有无损坏，但并不解压。 |
 | -x 文件列表 | 解压文件，但不包含文件列表中指定的文件。 |
 
-​
 
 gzip [选项] 源文件
 
@@ -671,10 +630,9 @@ gunzip [选项] 文件
 
 
 
-
 ## 系统管理
 
-  <br />  w 或 who 命令都可以查看服务器上目前已登录的用户信息  <br />  w - Show who is logged on and what they are doing  <br />  w [options] [user]
+w 或 who 命令都可以查看服务器上目前已登录的用户信息  <br />  w - Show who is logged on and what they are doing  <br />  w [options] [user]
 
 - -h, --no-header     do not print header
 - -u, --no-current    ignore current process username
@@ -693,7 +651,6 @@ gunzip [选项] 文件
 | PCPU | 当前进程所占用的 CPU 运算时间。 |
 | WHAT | 当前用户正在执行的进程名称和选项 |
 
-​
 
 who - show who is logged on  <br />  who [OPTION]... [ FILE | ARG1 ARG2 ]
 
@@ -708,8 +665,6 @@ who - show who is logged on  <br />  who [OPTION]... [ FILE | ARG1 ARG2 ]
 - -s, --short           只显示名称、线路和时间(默认)
 - -T, -w, --mesg        用+，- 或 ? 标注用户消息状态
 - -u, --users           列出已登录的用户
-
-​
 
 last, lastb - show a listing of last logged in users  <br />  last [options] [username...] [tty...]
 
@@ -727,8 +682,7 @@ last, lastb - show a listing of last logged in users  <br />  last [options] [us
 - -w, --fullnames      显示完整的用户名和域名
 - -x, --system         显示系统关机项和运行级别更改
 
-
-  <br />  lastlog - 报告所有用户的最近登录情况，或者指定用户的最近登录情况  <br />  lastlog [选项]  <br />  -b, --before DAYS             仅打印早于 DAYS 的最近登录记录  <br />  -C, --clear                   清除一个用户的最近登录记录(须配合 -u 使用)  <br />  -S, --set                     设置最近登录记录为当前时间(须配合 -u 使用)  <br />  -t, --time DAYS               仅打印晚于 DAYS 的最近登录记录  <br />  -u, --user LOGIN              打印 LOGIN 用户的最近登录记录  <br />  ​
+lastlog - 报告所有用户的最近登录情况，或者指定用户的最近登录情况  <br />  lastlog [选项]  <br />  -b, --before DAYS             仅打印早于 DAYS 的最近登录记录  <br />  -C, --clear                   清除一个用户的最近登录记录(须配合 -u 使用)  <br />  -S, --set                     设置最近登录记录为当前时间(须配合 -u 使用)  <br />  -t, --time DAYS               仅打印晚于 DAYS 的最近登录记录  <br />  -u, --user LOGIN              打印 LOGIN 用户的最近登录记录
 
 ps - process status  <br />  ps [options]
 
@@ -739,8 +693,6 @@ ps - process status  <br />  ps [options]
 - -e：Select all processes
    - ps aux		查看系统中所有的进程；
    - ps -le		查看系统中所有的进程，进程的父进程的 PID 和进程优先级；
-
-​
 
 进程状态
 
@@ -756,9 +708,6 @@ ps - process status  <br />  ps [options]
 - -l：多线程（小写 L）。
 - -+：位于后台。
 
-​
-
-​
 
 pstree - display a tree of processes  <br />  pstree [选项] [PID或用户名]
 
@@ -769,8 +718,6 @@ pstree - display a tree of processes  <br />  pstree [选项] [PID或用户名]
 - -p, --show-pids     显示 PID；隐含启用 -c 选项
 - -u, --uid-changes   显示用户 ID（UID）的变化
 
-​
-
 top - display Linux processes
 
 - -d 3：指定 top 命令每隔几秒更新
@@ -780,16 +727,12 @@ top - display Linux processes
 - -s：使 top 命令在安全模式中运行，避免在交互模式中出现错误；
 - -u 用户名：只监听某个用户的进程；
 
-​
-
 交互模式下
 
 - P：以CPU使用率排序，默认此项
 - M：以内存的使用率排序
 - N：以PID排序
 - q：退出top
-
-​
 
 lsof - list open files
 
@@ -802,11 +745,9 @@ lsof - list open files
 - -s p:s  exclude(^)|select protocol (p = TCP|UDP) states by name(s).
 - -u s   exclude(^)|select login|UID set s	列出某个用户的进程打开的文件
 
-​
+nice  <br />  给要启动的进程赋予 NI 值，不能修改已运行进程的 NI 值。  <br />  nice [-n NI值] 命令	 NI 值范围 -20~19
 
-nice  <br />  给要启动的进程赋予 NI 值，不能修改已运行进程的 NI 值。  <br />  nice [-n NI值] 命令	 NI 值范围 -20~19  <br />  ​
-
-renice [优先级] PID  <br />  ​
+renice [优先级] PID
 
 kill - send a signal to a process  <br />  kill [options] <pid> [...]
 
@@ -822,7 +763,6 @@ kill - send a signal to a process  <br />  kill [options] <pid> [...]
 | 11 | SEGV | 段错误。 |
 | 15 | TERM | 正常结束进程，是 kill 命令的默认信号。 |
 
-​
 
 killall - kill processes by name  <br />  killall [选项] [信号] 进程名
 
@@ -836,8 +776,6 @@ killall - kill processes by name  <br />  killall [选项] [信号] 进程名
 - -u,--user 用户      仅杀死指定 "用户" 的进程
 - -v,--verbose        报告信号是否成功送出
 - -q,--quiet
-
-​
 
 pgrep, pkill - look up or signal processes based on name and other attributes  <br />  pkill [options] 
 
@@ -853,13 +791,11 @@ pgrep, pkill - look up or signal processes based on name and other attributes  <
 - -t, --terminal <tty,...>  match by controlling terminal
 - -U, --uid <ID,...>        match by real IDs
 
-​
+trap  <br />  trap [command] [SIGINT]
 
-trap  <br />  trap [command] [SIGINT]  <br />  ​
+把命令放入后台的方法：在命令后面加入 空格 &  <br />  **命令执行过裎中按 Ctrl+Z 快捷键，命令在后台处于暂停状态**
 
-把命令放入后台的方法：在命令后面加入 空格 &  <br />  **命令执行过裎中按 Ctrl+Z 快捷键，命令在后台处于暂停状态**  <br />  ​
-
-"+"：最近一个放入后台的工作，也是工作恢复时默认恢复的工作  <br />  "-"：倒数第二个放入后台的工作  <br />  第三个以后的工作就没有"+-"标志了  <br />  ​
+"+"：最近一个放入后台的工作，也是工作恢复时默认恢复的工作  <br />  "-"：倒数第二个放入后台的工作  <br />  第三个以后的工作就没有"+-"标志了
 
 jobs [选项]  <br />  查看当前终端放入后台的工作
 
@@ -871,17 +807,15 @@ jobs [选项]  <br />  查看当前终端放入后台的工作
 | -r | 只列出运行中的进程。 |
 | -s | 只列出已停止的进程。 |
 
-​
 
-fg: - Foreground  <br />  fg %工作号	（% 可有可无）  <br />  ​
+fg: - Foreground  <br />  fg %工作号	（% 可有可无）
 
-bg - Background  <br />  bg ％工作号  <br />  ​
+bg - Background  <br />  bg ％工作号
 
-sleep - delay for a specified amount of time  <br />  sleep number[smhd]  <br />  s 为秒，m 为 分钟，h 为小时，d 为日数  <br />  ​
+sleep - delay for a specified amount of time  <br />  sleep number[smhd]  <br />  s 为秒，m 为 分钟，h 为小时，d 为日数
 
-nohup - No HangUP  <br />  让后台工作在离开操作终端时，也能够正确地在后台执行  <br />  nohup [命令] &  <br />  ​
+nohup - No HangUP  <br />  让后台工作在离开操作终端时，也能够正确地在后台执行  <br />  nohup [命令] &
 
-​
 
 at [选项] [时间]
 
@@ -904,17 +838,14 @@ at [选项] [时间]
 | MMDDYY、MM/DD/YY、MM.DD.YY | 比如 011518 表示 2018 年 1 月 15 号。 |
 | now+时间 | 以 minutes、hours、days 或 weeks 为单位，例如 now+5 days 表示命令在 5 天之后的此时此刻执行。 |
 
-​
 
-atq  <br />  查看当前等待运行的工作  <br />  atrm [工作号]  <br />  用于删除指定的工作  <br />  **​**
+atq  <br />  查看当前等待运行的工作  <br />  atrm [工作号]  <br />  用于删除指定的工作
 
 **crontab**
 
 - /etc/crontab	配置文件
 - /etc/cron.allow
 - /etc/cron.deny
-
-​
 
 crontab [选项] [file]  <br />  循环执行定时任务
 
@@ -947,8 +878,6 @@ crontab [选项] [file]  <br />  循环执行定时任务
 - 6 个选项都不能为空
 - 最小有效时间是分钟
 
-​
-
 e.g 1
 ```shell
 # 进入编辑界面
@@ -962,7 +891,6 @@ e.g 2
 * * * * * root run-parts /root/cron/
 #让系统每分钟都执行一次/root/cron/目录中的脚本，脚本执行者是root用户
 ```
-​
 
 anacron [选项] [工作名]  <br />  以 1 天、1周、1个月为检测周期，判断是否有定时任务在关机之后没有执行。如果有，anacron 会在特定的时间重新执行这些定时任务。  <br />  /etc/anacrontab
 
@@ -974,7 +902,6 @@ anacron [选项] [工作名]  <br />  以 1 天、1周、1个月为检测周期�
 | -n | 立即执行 /etc/anacrontab 中所有的工作，忽略所有的延迟时间。 |
 | -q | 禁止将信息输出到标准错误，常和 -d 选项合用。 |
 
-​
 
 vmstat - Virtual Meomory Statistics（虚拟内存统计）  <br />  监控 CPU 使用、进程状态、内存使用、虚拟内存使用、硬盘输入/输出状态等信息  <br />  vmstat [-a] [刷新延时 刷新次数]  <br />  vmstat [选项]
 
@@ -995,9 +922,8 @@ vmstat - Virtual Meomory Statistics（虚拟内存统计）  <br />  监控 CPU 
 | system | 系统信息字段： -in：每秒被中断的进程次数。 -cs：每秒进行的事件切换次数。 这两个数越大，代表系统与接口设备的通信越繁忙。 |
 | cpu | CPU信息字段： -us：非内核进程消耗 CPU 运算时间的百分比。 -sy：内核进程消耗 CPU 运算时间的百分比。 -id：空闲 CPU 的百分比。 -wa：等待 I/O 所消耗的 CPU 百分比。 -st：被虚拟机所盗用的 CPU 百分比。 |
 
-​
 
-dmesg - diagnostic message  <br />  开机信息文件 /var/log/dmesg  <br />  ​
+dmesg - diagnostic message  <br />  开机信息文件 /var/log/dmesg
 
 free  <br />  显示系统内存状态，包括系统物理内存、虚拟内存（swap 交换分区）、共享内存和系统缓存的使用情况  <br />  free [选项]
 
@@ -1013,12 +939,11 @@ free  <br />  显示系统内存状态，包括系统物理内存、虚拟内存
 
 
 
-
 ## 用户（组）
 
-  <br />  id - print real and effective user and group IDs  <br />  id [OPTION]... [USER]  <br />  ​
+id - print real and effective user and group IDs  <br />  id [OPTION]... [USER]
 
-whoami ——打印当前执行操作的用户名  <br />  who am i ——打印登陆当前 Linux 系统的用户名  <br />  ​
+whoami ——打印当前执行操作的用户名  <br />  who am i ——打印登陆当前 Linux 系统的用户名
 
 su - Swith user  <br />  su [选项] 用户名
 
@@ -1029,8 +954,6 @@ su - Swith user  <br />  su [选项] 用户名
 - -c, --command COMMAND
 - -s, --shell SHELL
 
-​
-
 sudoedit — execute a command as another user  <br />  sudo [option]
 
 - -b, --background              在后台运行命令
@@ -1039,8 +962,6 @@ sudoedit — execute a command as another user  <br />  sudo [option]
 - -g, --group=group             以指定的用户组或 ID 执行命令
 - -u, --user=user               以指定用户或 ID 运行命令(或编辑文件)
 - -H, --set-home                将 HOME 变量设为目标用户的主目录。
-
-​
 
 useradd 只创建用户，不会创建用户密码和工作目录，创建完了需要使用 passwd  去设置新用户的密码。  <br />  adduser 在创建用户的同时，会创建工作目录和密码（提示你设置）  <br />  useradd [选项] 用户名
 
@@ -1061,8 +982,6 @@ userdel [-r] 用户名
 
 - -r ：删除用户的家目录。
 
-​
-
 usermod [选项] 用户名
 
 - -c 用户说明：修改用户的说明信息，即修改 /etc/passwd 文件目标用户信息的第 5 个字段；
@@ -1076,8 +995,6 @@ usermod [选项] 用户名
 - -U：解锁用户（Unlock），和 -L 对应；
 - -s shell：修改用户的登录 Shell，默认是 /bin/bash。
 
-​
-
 passwd [选项] 用户名
 
 - -S：查询用户密码的状态，也就是 /etc/shadow 文件中此用户密码的内容。仅 root 用户可用；
@@ -1089,8 +1006,6 @@ passwd [选项] 用户名
 - -w 天数：设置用户密码过期前的警告天数，对于 /etc/shadow 文件中各行密码的第 6 个字段；
 - -i 日期：设置用户密码失效日期，对应 /etc/shadow 文件中各行密码的第 7 个字段。
 
-​
-
 chage [选项] 用户名
 
 - -l：列出用户的详细密码状态;
@@ -1101,25 +1016,19 @@ chage [选项] 用户名
 - -i 天数：修改密码过期后的宽限天数，也就是 /etc/shadow 文件中的第 7 个字段；
 - -E 日期：修改账号失效日期，格式为 YYYY-MM-DD，也就是 /etc/shadow 文件中的第 8 个字段。
 
-​
-
-gruop [用户名]  <br />  显示用户所在组  <br />  ​
+gruop [用户名]  <br />  显示用户所在组
 
 groupadd [选项] 组名
 
 - -g GID：指定组 ID；
 - -r：创建系统群组。
 
-​
-
 groupmod [选现] 组名
 
 - -g GID：修改组 ID；
 - -n 新组名：修改组名；
 
-​
-
-groupdel 组名  <br />  ​
+groupdel 组名
 
 gpasswd 选项 组名  <br />  给群组设置一个群组管理员
 
@@ -1133,12 +1042,12 @@ gpasswd 选项 组名  <br />  给群组设置一个群组管理员
 | -a user | 将 user 用户加入到群组中。 |
 | -d user | 将 user 用户从群组中移除。 |
 
-newgrp 组名  <br />  从用户的附加组中选择一个群组，作为用户新的初始组  <br />  ​
+newgrp 组名  <br />  从用户的附加组中选择一个群组，作为用户新的初始组
 
-​  <br />  
+
 
 ## 网络
-ip addr  <br />  ​
+ip addr
 
 hostname
 
@@ -1148,17 +1057,13 @@ hostname
 - -i, --ip-address       addresses for the host name
 - -I, --all-ip-addresses all addresses for the host
 
-​
-
 ifconfig [-v] [-a] [-s] [interface]
 
 - -a     display all interfaces which are currently available, even if down
 - -s     display a short list
 - -v     be more verbose for some error conditions
 
-​
-
-禁用网卡设备  <br />  ifdown	网卡设备名  <br />  启用网卡设备  <br />  ifup	网卡设备名  <br />  ​
+禁用网卡设备  <br />  ifdown	网卡设备名  <br />  启用网卡设备  <br />  ifup	网卡设备名
 
 netstat 选项
 
@@ -1170,29 +1075,22 @@ netstat 选项
 - -p：列出该服务的进程 ID (PID)；
 - -r：列出路由列表
 
-​
+查看路由状态  <br />  route -n  <br />  临时设定（或删除）网关  <br />  route [add | del] default gw 192.168.1.1
 
-查看路由状态  <br />  route -n  <br />  临时设定（或删除）网关  <br />  route [add | del] default gw 192.168.1.1  <br />  ​
-
-nslookup [主机名或IP]  <br />  进行域名与IP地址解析  <br />  ​
+nslookup [主机名或IP]  <br />  进行域名与IP地址解析
 
 ping [选项] ip或域名  <br />  探测指定IP或域名的网络状况
 
 - -c：指定ping包的次数
 
-​
-
 traceroute [选项] IP或域名  <br />  路由跟踪命令
 
 - -n：使用IP，不使用域名，速度更快
 
-​
+DNS查询	host domain  <br />  反向DNS查询	host IP
 
-DNS查询	host domain  <br />  反向DNS查询	host IP  <br />  ​
+ufw - program for managing a netfilter firewall  <br />  ufw COMMAND  <br />  Commands:  <br />  enable                          enables the firewall  <br />  disable                         disables the firewall  <br />  default ARG                     set default policy  <br />  logging LEVEL                   set logging to LEVEL  <br />  allow ARGS                      add allow rule  <br />  deny ARGS                       add deny rule  <br />  reject ARGS                     add reject rule  <br />  limit ARGS                      add limit rule  <br />  delete RULE|NUM                 delete RULE  <br />  insert NUM RULE                 insert RULE at NUM  <br />  route RULE                      add route RULE  <br />  route delete RULE|NUM           delete route RULE  <br />  route insert NUM RULE           insert route RULE at NUM  <br />  reload                          reload firewall  <br />  reset                           reset firewall  <br />  status                          show firewall status  <br />  status numbered                 show firewall status as numbered list of RULES  <br />  status verbose                  show verbose firewall status  <br />  show ARG                        show firewall report
 
-ufw - program for managing a netfilter firewall  <br />  ufw COMMAND  <br />  Commands:  <br />  enable                          enables the firewall  <br />  disable                         disables the firewall  <br />  default ARG                     set default policy  <br />  logging LEVEL                   set logging to LEVEL  <br />  allow ARGS                      add allow rule  <br />  deny ARGS                       add deny rule  <br />  reject ARGS                     add reject rule  <br />  limit ARGS                      add limit rule  <br />  delete RULE|NUM                 delete RULE  <br />  insert NUM RULE                 insert RULE at NUM  <br />  route RULE                      add route RULE  <br />  route delete RULE|NUM           delete route RULE  <br />  route insert NUM RULE           insert route RULE at NUM  <br />  reload                          reload firewall  <br />  reset                           reset firewall  <br />  status                          show firewall status  <br />  status numbered                 show firewall status as numbered list of RULES  <br />  status verbose                  show verbose firewall status  <br />  show ARG                        show firewall report  <br />  ​
-
-​
 
 Wget - The non-interactive network downloader  <br />  一个GPL许可证下的自由软件，支持HTTP和FTP协议，支持代理服务器和断点续传功能，能够自动递归远程主机的目录，找到合乎条件的文件并将其下载到本地硬盘上  <br />  wget [option]... [URL]...
 
@@ -1205,8 +1103,6 @@ Wget - The non-interactive network downloader  <br />  一个GPL许可证下的�
 - -nc, --no-clobber                不要下载已存在将被覆盖的文件
 - -N,  --timestamping              只获取比本地文件新的文件
 - -r,  --recursive                 指定递归下载
-
-​
 
 curl - transfer a URL	客户端（client）的 URL 工具  <br />  curl [options...] <url>
 
@@ -1224,8 +1120,6 @@ curl - transfer a URL	客户端（client）的 URL 工具  <br />  curl [options
 - -b, --cookie <data|filename> Send cookies from string/file
 - -c, --cookie-jar <filename> Write cookies to <filename> after operation
 
-​  <br />  
-
 - -e, --referer <URL> Referrer URL
 - -k, --insecure Allow insecure server connections when using SSL
 - --limit-rate <speed> Limit transfer speed to RATE
@@ -1236,12 +1130,12 @@ curl - transfer a URL	客户端（client）的 URL 工具  <br />  curl [options
 
 
 
-rsync 远程同步（remote sync）  <br />  检查发送方和接收方已有的文件，仅传输有变动的部分  <br />  `rsync [OPTION]... SRC [SRC]... [USER@]HOST:DEST`  <br />  
-  <br />  
+rsync 远程同步（remote sync）  <br />  检查发送方和接收方已有的文件，仅传输有变动的部分  <br />  `rsync [OPTION]... SRC [SRC]... [USER@]HOST:DEST`
+
 
 
 ## 文件系统管理
-**​**
+
 
 **df - disk free 可用容量**  <br />  df [选项] [目录或文件名]
 
@@ -1259,8 +1153,6 @@ rsync 远程同步（remote sync）  <br />  检查发送方和接收方已有�
 - -a：显示每个子文件的磁盘占用量。默认只统计子目录的磁盘占用量
 - -h：使用习惯单位显示磁盘占用量，如 KB、MB 或 GB 等；
 - -s：统计总磁盘占用量，而不列出子目录和子文件的磁盘占用量
-
-​
 
 mount	挂载磁盘到目录树
 
@@ -1282,9 +1174,8 @@ mount	挂载磁盘到目录树
 | defaults | 定义默认值，相当于 rw、suid、dev、exec、auto、nouser、async 这 7 个选项。 |
 | remount | 重新挂载已挂载的文件系统，一般用于指定修改特殊权限。 |
 
-​
 
-umount [directory | device]  <br />  ​
+umount [directory | device]
 
 fsck - File system check  <br />  fsck [选项] 分区设备文件名
 
@@ -1298,13 +1189,10 @@ fsck - File system check  <br />  fsck [选项] 分区设备文件名
 | -f | 强制检测，一般 fsck 命令如果没有发现分区有问题，则是不会检测的。如果强制检测，那么不管是否发现问题，都会检测。 |
 | -y | 自动修复，和 -a 作用一致，不过有些文件系统只支持 -y。 |
 
-​
 
 dumpe2fs [-h] 文件名  <br />  查看文件系统的详细信息
 
 - -h ：仅列出 superblock（超级块）的数据信息
-
-​
 
 parted 硬盘设备文件名
 
@@ -1330,13 +1218,10 @@ parted 硬盘设备文件名
 | unit UNIT | 设置默认的单位 |
 | Version | 显示版本 |
 
-​
 
 mkfs - Make file system  <br />  mkfs [-t 文件系统格式] 分区设备文件名
 
 - t 文件系统格式：用于指定格式化的文件系统，如 ext3、ext4；
-
-​
 
 quotacheck [-avugfM] 文件系统
 
@@ -1349,17 +1234,7 @@ quotacheck [-avugfM] 文件系统
 | -f | 强制扫瞄文件系统，并写入新的 quota 记录文件 |
 | -M | 强制以读写的方式扫瞄文件系统，只有在特殊情况下才会使用。 |
 
-**​**
 
-**​**
-
-**​**
-
-**​**
-
-**​**
-
-**​**
 
 **文件管理**
 
@@ -1378,7 +1253,6 @@ quotacheck [-avugfM] 文件系统
 | [whereis](https://www.runoob.com/linux/linux-comm-whereis.html) | [mcopy](https://www.runoob.com/linux/linux-comm-mcopy.html) | [mshowfat](https://www.runoob.com/linux/linux-comm-mshowfat.html) | [rhmask](https://www.runoob.com/linux/linux-comm-rhmask.html) |
 | [scp](https://www.runoob.com/linux/linux-comm-scp.html) | [awk](https://www.runoob.com/linux/linux-comm-awk.html) | [read](https://www.runoob.com/linux/linux-comm-read.html) | [updatedb](https://www.runoob.com/linux/linux-comm-updatedb.html) |
 
-​
 
 **文档编辑**
 
@@ -1391,7 +1265,6 @@ quotacheck [-avugfM] 文件系统
 | [sort](https://www.runoob.com/linux/linux-comm-sort.html) | [spell](https://www.runoob.com/linux/linux-comm-spell.html) | [tr](https://www.runoob.com/linux/linux-comm-tr.html) | [expr](https://www.runoob.com/linux/linux-comm-expr.html) |
 | [uniq](https://www.runoob.com/linux/linux-comm-uniq.html) | [wc](https://www.runoob.com/linux/linux-comm-wc.html) | [let](https://www.runoob.com/linux/linux-comm-let.html) |  |
 
-​
 
 **文件传输**
 
@@ -1401,7 +1274,6 @@ quotacheck [-avugfM] 文件系统
 | [uucp](https://www.runoob.com/linux/linux-comm-uucp.html) | [uucico](https://www.runoob.com/linux/linux-comm-uucico.html) | [tftp](https://www.runoob.com/linux/linux-comm-tftp.html) | [ncftp](https://www.runoob.com/linux/linux-comm-ncftp.html) |
 | [ftpshut](https://www.runoob.com/linux/linux-comm-ftpshut.html) | [ftpwho](https://www.runoob.com/linux/linux-comm-ftpwho.html) | [ftpcount](https://www.runoob.com/linux/linux-comm-ftpcount.html) |   |
 
-​  <br />  
 
 | **磁盘管理** |  |  |  |
 | --- | --- | --- | --- |

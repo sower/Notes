@@ -1,39 +1,32 @@
 
 # Github
-**​**  <br />  
+  <br />  
 
 # 远程仓库
 1 创建SSH Key
 ```shell
 ssh-keygen -t rsa -C "youremail@example.com"
 ```
-一路回车，使用默认值即可  <br />  .ssh\  <br />  id_rsa 私钥  <br />  id_rsa.pub 公钥  <br />  ​
+一路回车，使用默认值即可  <br />  .ssh\  <br />  id_rsa 私钥  <br />  id_rsa.pub 公钥
 
-2 登陆GitHub，打开“Account settings”，“SSH Keys”页面，在Key文本框里粘贴id_rsa.pub文件的内容  <br />  **​**
-
-**​**
+2 登陆GitHub，打开“Account settings”，“SSH Keys”页面，在Key文本框里粘贴id_rsa.pub文件的内容
 
 **添加远程库**
 ```shell
 git remote add origin git@github.com:sower/Testing.git
 git push [-u] origin master
 ```
-**​**
 
-**failed to push some refs to '**[**https://github.com/**](https://github.com/)**...**  <br />  git pull --rebase origin master  <br />  ​
 
-​
+**failed to push some refs to '**[**https://github.com/**](https://github.com/)**...**  <br />  git pull --rebase origin master
 
-​  <br />  
+
+
 
 # [GitHub Pages](https://pages.github.com/)
-​
 
-​
 
-​
 
-​
 
 [GitHub Docs](https://docs.github.com/en)
 
@@ -46,14 +39,12 @@ git push [-u] origin master
 
 [
 
-](https://docs.github.com/cn/articles/getting-started-with-writing-and-formatting-on-github)  <br />  [GitHub Flavored Markdown 规范](https://github.github.com/gfm/)  <br />  
-  <br />  ​
+](https://docs.github.com/cn/articles/getting-started-with-writing-and-formatting-on-github)  <br />  [GitHub Flavored Markdown 规范](https://github.github.com/gfm/)
 
-**​**
 
-​
+  <br />  
 
-​
+
 
 [使用高级 Git 命令](https://docs.github.com/cn/github/using-git/using-advanced-git-commands)
 
@@ -63,11 +54,9 @@ git push [-u] origin master
 - [关于 Git 子树合并](https://docs.github.com/cn/github/using-git/about-git-subtree-merges)
 - [将子文件夹拆分成新仓库](https://docs.github.com/cn/github/using-git/splitting-a-subfolder-out-into-a-new-repository)
 
-​
-
 [键盘快捷键](https://docs.github.com/cn/github/getting-started-with-github/keyboard-shortcuts)
 
-# ​[搜索语法](https://docs.github.com/cn/github/searching-for-information-on-github/understanding-the-search-syntax)
+# [搜索语法](https://docs.github.com/cn/github/searching-for-information-on-github/understanding-the-search-syntax)
 | 查询 | 示例 |
 | --- | --- |
 | >n | [cats stars:>1000](https://github.com/search?utf8=%E2%9C%93&q=cats+stars%3A%3E1000&type=Repositories) 匹配含有 "cats" 字样、星标超过 1000 个的仓库。 |
@@ -110,23 +99,21 @@ git push [-u] origin master
 - language:LANGUAGE
 - topic:TOPIC
 
-[搜索主题](https://docs.github.com/cn/github/searching-for-information-on-github/searching-topics)  <br />  [搜索代码](https://docs.github.com/cn/github/searching-for-information-on-github/searching-code)  <br />  [搜索包](https://docs.github.com/cn/github/searching-for-information-on-github/searching-for-packages)  <br />  ​
+[搜索主题](https://docs.github.com/cn/github/searching-for-information-on-github/searching-topics)  <br />  [搜索代码](https://docs.github.com/cn/github/searching-for-information-on-github/searching-code)  <br />  [搜索包](https://docs.github.com/cn/github/searching-for-information-on-github/searching-for-packages)
 
-​  <br />  
 
-# ​[GitHub Packages](https://docs.github.com/en/packages)
-​  <br />  
 
-# ​[GitHub Actions](https://docs.github.com/en/actions)
+# [GitHub Packages](https://docs.github.com/en/packages)
 
-  <br />  [awesome-actions](https://github.com/sdras/awesome-actions)  <br />  ​  <br />  
+
+# [GitHub Actions](https://docs.github.com/en/actions)
+
+[awesome-actions](https://github.com/sdras/awesome-actions)
 
 - workflow （工作流程）：持续集成一次运行的过程，就是一个 workflow。
 - job （任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务。
 - step（步骤）：每个 job 由多个 step 构成，一步步完成。
 - action （动作）：每个 step 可以依次执行一个或多个命令（action）。
-
-​
 
 actions/checkout@v2：工作流程针对仓库的代码运行，或者您使用仓库中定义的操作，须使用检出操作。
 
@@ -136,9 +123,7 @@ actions/checkout@v2：工作流程针对仓库的代码运行，或者您使用�
 - [actions/cache](https://github.com/actions/cache) - Cache dependencies and build outputs in GitHub Actions.
 - [actions/github-script](https://github.com/actions/github-script) - Write a script for GitHub API and the workflow contexts.
 
-​
-
-[元数据语法](https://docs.github.com/cn/actions/creating-actions/metadata-syntax-for-github-actions)  <br />  ​
+[元数据语法](https://docs.github.com/cn/actions/creating-actions/metadata-syntax-for-github-actions)
 
 [对操作使用输入和输出](https://docs.github.com/cn/actions/learn-github-actions/finding-and-customizing-actions#using-inputs-and-outputs-with-an-action)
 ```shell
@@ -181,7 +166,6 @@ runs:
   post-if: 'runner.os == linux'
 ```
 
-
 ```shell
 runs:
   using: "composite"
@@ -220,7 +204,6 @@ strategy:
     os: [ubuntu-latest, macos-latest, windows-latest]
   fail-fast: false
 ```
-​
 
 [工作流程语法](https://docs.github.com/cn/actions/reference/workflow-syntax-for-github-actions)
 
@@ -277,8 +260,6 @@ strategy:
 - [jobs.<job_id>.services.<service_id>.volumes](https://docs.github.com/cn/actions/reference/workflow-syntax-for-github-actions#)
 - [jobs.<job_id>.services.<service_id>.options](https://docs.github.com/cn/actions/reference/workflow-syntax-for-github-actions#)
 
-​
-
 [上下文和表达式语法](https://docs.github.com/cn/actions/reference/context-and-expression-syntax-for-github-actions)
 ```shell
 steps:
@@ -299,9 +280,7 @@ env:
 - fromJSON(value)
 - hashFiles(path)
 
-​
-
-[作业状态检查函数](https://docs.github.com/cn/actions/reference/context-and-expression-syntax-for-github-actions#job-status-check-functions)  <br />  ​
+[作业状态检查函数](https://docs.github.com/cn/actions/reference/context-and-expression-syntax-for-github-actions#job-status-check-functions)
 
 [工作流程命令](https://docs.github.com/cn/actions/reference/workflow-commands-for-github-actions)
 ```shell
@@ -335,7 +314,7 @@ steps:
 echo "$HOME/.local/bin" >> $GITHUB_PATH
 ```
 
-  <br />  [触发工作流程的事件](https://docs.github.com/cn/actions/reference/events-that-trigger-workflows)
+[触发工作流程的事件](https://docs.github.com/cn/actions/reference/events-that-trigger-workflows)
 ```shell
 on:
   # Trigger the workflow on push or pull request,
@@ -404,7 +383,6 @@ catch (err) {
 }
 ```
 
-  <br />  
 
 
 # Bitbucket
@@ -449,5 +427,5 @@ pipelines:
 ```
 [
 
-](https://learngitbranching.js.org/?locale=zh_CN)  <br />  
+](https://learngitbranching.js.org/?locale=zh_CN)
 

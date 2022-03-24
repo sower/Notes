@@ -2,9 +2,7 @@
 # [—— Moudle ——](https://docs.python.org/zh-cn/3/library/index.html)
 
 
-
 # —— 数据类型
-
 
 
 # [datetime--- 基本的日期和时间类型](https://docs.python.org/zh-cn/3/library/datetime.html)
@@ -20,8 +18,6 @@
 - classmethod date.fromordinal(ordinal)	返回对应于预期格列高利历序号的日期
 - classmethod date.fromisoformat(date_string)	返回一个对应于以 YYYY-MM-DD 格式给出的 date_string 的 date 对象
 
-​
-
 实例方法
 
 - date.replace(year=self.year, month=self.month, day=self.day)	返回一个具有同样值的日期
@@ -30,9 +26,7 @@
 - date.isoformat()	返回一个以 ISO 8601 格式 YYYY-MM-DD 来表示日期的字符串
 - date.strftime(format)	返回一个由显式格式字符串所指明的代表日期的字符串
 
-​
-
-class datetime.**time**  <br />  一个独立于任何特定日期的理想化时间，属性：[hour](https://docs.python.org/zh-cn/3/library/datetime.html#datetime.time.hour), minute, second, microsecond 和 tzinfo  <br />  ​
+class datetime.**time**  <br />  一个独立于任何特定日期的理想化时间，属性：[hour](https://docs.python.org/zh-cn/3/library/datetime.html#datetime.time.hour), minute, second, microsecond 和 tzinfo
 
 class datetime.time(hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)
 
@@ -43,8 +37,6 @@ class datetime.time(hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, f
 - time.dst()		如果 tzinfo 为 None，则返回 None，否则返回 self.tzinfo.dst(None)
 - time.tzname()	如果 tzinfo 为 None，则返回 None，否则返回 self.tzinfo.tzname(None)
 
-​
-
 class datetime.**datetime	**日期和时间的结合。
 
 - today()
@@ -53,8 +45,6 @@ class datetime.**datetime	**日期和时间的结合。
 - fromtimestamp(timestamp, tz=None)
 - utcfromtimestamp(timestamp)	返回对应于 POSIX 时间戳的 UTC datetime，其中 tzinfo 值为 None
 - combine(date, time, tzinfo=self.tzinfo)	返回一个新的 datetime 对象
-
-​
 
 实例方法
 
@@ -71,13 +61,9 @@ class datetime.**datetime	**日期和时间的结合。
 - 'milliseconds': 包含完整时间，但将秒值的小数部分截断至微秒。 格式为 HH:MM:SS.sss
 - 'microseconds': 以 HH:MM:SS.ffffff 格式包含完整时间。
 
-​
-
 class datetime.**timedelta	**表示两个 date 或者 time 的时间间隔，精确到微秒  <br />  class datetime.timedelta(days=0, seconds=0, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)  <br />  所有参数都是可选的并且默认为 0。 这些参数可以是整数或者浮点数，也可以是正数或者负数。
 
 - timedelta.total_seconds()
-
-​
 
 class datetime.**timezone**	一个实现了 [tzinfo](https://docs.python.org/zh-cn/3/library/datetime.html#datetime.tzinfo) 抽象基类的子类，用于表示相对于 世界标准时间（UTC）的偏移量。  <br />  class datetime.timezone(offset, name=None)		offset 限制于 -timedelta(hours=24) 和 timedelta(hours=24) 之间  <br />  时区转换
 ```javascript
@@ -120,7 +106,7 @@ strftime(format) ：创建由一个显式格式字符串所控制的表示时间
 | %Z | 时区名称（如果不存在时区，则不包含字符）。 |
 
 
-#### str互换datetime
+str互换datetime
 ```javascript
 >>> from datetime import datetime
 >>> cday = datetime.strptime('2015-6-1 18:19:59', '%Y-%m-%d %H:%M:%S')
@@ -131,9 +117,8 @@ strftime(format) ：创建由一个显式格式字符串所控制的表示时间
 >>> print(now.strftime('%Y{y}%m{m}%d{d}').format(y='年',m='月',d='日'))
 2020年10月18日
 ```
-​
 
-​  <br />  
+
 
 # [time--- 时间的访问和转换](https://docs.python.org/zh-cn/3/library/time.html)
 | 从 | 到 | 使用 |
@@ -208,9 +193,7 @@ strftime(format) ：创建由一个显式格式字符串所控制的表示时间
 - reverse()	将deque逆序排列。返回 None 。
 - rotate(n=1)	向右循环移动 n 步。 如果 n 是负数，就向左循环。
 
-​
-
-如果deque不是空的，向右循环移动一步就等价于 d.appendleft(d.pop()) ， 向左循环一步就等价于 d.append(d.popleft()) 。  <br />  ​
+如果deque不是空的，向右循环移动一步就等价于 d.appendleft(d.pop()) ， 向左循环一步就等价于 d.append(d.popleft()) 。
 
 只读属性:	**maxlen**——Deque的最大尺寸，如果没有限定的话就是 None 。
 ```javascript
@@ -324,7 +307,6 @@ s = [('red', 1), ('blue', 2), ('red', 3), ('blue', 4), ('red', 1), ('blue', 4)]
 - popitem(last=True)：移除并返回一个 (key, value) 键值对。 如果 last 值为真，则按 LIFO 后进先出的顺序返回键值对，否则就按 FIFO 先进先出的顺序返回键值对。
 - move_to_end(key, last=True)：将现有 key 移动到有序字典的任一端。 如果 last 为真值（默认）则将元素移至末尾；如果 last 为假值则将元素移至开头。如果 key 不存在则会触发 KeyError
 
-​  <br />  
 
 ## ChainMap
 **class collections.ChainMap(*maps)**  <br />  将多个映射快速的链接到一起  <br />  支持所有常用字典方法。还有一个 maps 属性(attribute)，一个创建子上下文的方法(method)， 一个存取它们首个映射的属性(property)
@@ -367,8 +349,6 @@ class PrioritizedItem:
 - 最小堆
 - 索引从 0 开始，最小的元素总是在根结点：heap[0]
 - pop 方法返回最小的项
-
-​
 
 方法
 
@@ -440,9 +420,7 @@ return 'zh-CN'
 - group(num=0)：匹配的整个表达式的字符串，group() 可以一次输入多个组号，在这种情况下它将返回一个包含那些组所对应值的元组。
 - groups()：返回一个包含所有小组字符串的元组，从 1 到 所含的小组号。
 
-​
 
-​  <br />  
 
 # —— 函数式编程模块
 
@@ -532,14 +510,13 @@ return 'zh-CN'
 - operator.itemgetter(*items)
 - operator.methodcaller(name, /, *args, **kwargs)
 
-​
+**原地运算符**  <br />  operator.**iadd**(a, b)  <br />  operator.**__iadd__**(a, b)  <br />  a = iadd(a, b) 等价于 a += b。  <br />  operator.**iand**(a, b)  <br />  operator.**__iand__**(a, b)  <br />  a = iand(a, b) 等价于 a &= b。  <br />  operator.**iconcat**(a, b)  <br />  operator.**__iconcat__**(a, b)  <br />  a = iconcat(a, b) 等价于 a += b 其中 a 和 b 为序列。  <br />  operator.**ifloordiv**(a, b)  <br />  operator.**__ifloordiv__**(a, b)  <br />  a = ifloordiv(a, b) 等价于 a //= b。  <br />  operator.**ilshift**(a, b)  <br />  operator.**__ilshift__**(a, b)  <br />  a = ilshift(a, b) 等价于 a <<= b。  <br />  operator.**imod**(a, b)  <br />  operator.**__imod__**(a, b)  <br />  a = imod(a, b) 等价于 a %= b。  <br />  operator.**imul**(a, b)  <br />  operator.**__imul__**(a, b)  <br />  a = imul(a, b) 等价于 a *= b。  <br />  operator.**imatmul**(a, b)  <br />  operator.**__imatmul__**(a, b)  <br />  a = imatmul(a, b) 等价于 a @= b。  <br />  operator.**ior**(a, b)  <br />  operator.**__ior__**(a, b)  <br />  a = ior(a, b) 等价于 a |= b。  <br />  operator.**ipow**(a, b)  <br />  operator.**__ipow__**(a, b)  <br />  a = ipow(a, b) 等价于 a **= b。  <br />  operator.**irshift**(a, b)  <br />  operator.**__irshift__**(a, b)  <br />  a = irshift(a, b) 等价于 a >>= b。  <br />  operator.**isub**(a, b)  <br />  operator.**__isub__**(a, b)  <br />  a = isub(a, b) 等价于 a -= b。  <br />  operator.**itruediv**(a, b)  <br />  operator.**__itruediv__**(a, b)  <br />  a = itruediv(a, b) 等价于 a /= b。  <br />  operator.**ixor**(a, b)  <br />  operator.**__ixor__**(a, b)  <br />  a = ixor(a, b) 等价于 a ^= b。
 
-**原地运算符**  <br />  operator.**iadd**(a, b)  <br />  operator.**__iadd__**(a, b)  <br />  a = iadd(a, b) 等价于 a += b。  <br />  operator.**iand**(a, b)  <br />  operator.**__iand__**(a, b)  <br />  a = iand(a, b) 等价于 a &= b。  <br />  operator.**iconcat**(a, b)  <br />  operator.**__iconcat__**(a, b)  <br />  a = iconcat(a, b) 等价于 a += b 其中 a 和 b 为序列。  <br />  operator.**ifloordiv**(a, b)  <br />  operator.**__ifloordiv__**(a, b)  <br />  a = ifloordiv(a, b) 等价于 a //= b。  <br />  operator.**ilshift**(a, b)  <br />  operator.**__ilshift__**(a, b)  <br />  a = ilshift(a, b) 等价于 a <<= b。  <br />  operator.**imod**(a, b)  <br />  operator.**__imod__**(a, b)  <br />  a = imod(a, b) 等价于 a %= b。  <br />  operator.**imul**(a, b)  <br />  operator.**__imul__**(a, b)  <br />  a = imul(a, b) 等价于 a *= b。  <br />  operator.**imatmul**(a, b)  <br />  operator.**__imatmul__**(a, b)  <br />  a = imatmul(a, b) 等价于 a @= b。  <br />  operator.**ior**(a, b)  <br />  operator.**__ior__**(a, b)  <br />  a = ior(a, b) 等价于 a |= b。  <br />  operator.**ipow**(a, b)  <br />  operator.**__ipow__**(a, b)  <br />  a = ipow(a, b) 等价于 a **= b。  <br />  operator.**irshift**(a, b)  <br />  operator.**__irshift__**(a, b)  <br />  a = irshift(a, b) 等价于 a >>= b。  <br />  operator.**isub**(a, b)  <br />  operator.**__isub__**(a, b)  <br />  a = isub(a, b) 等价于 a -= b。  <br />  operator.**itruediv**(a, b)  <br />  operator.**__itruediv__**(a, b)  <br />  a = itruediv(a, b) 等价于 a /= b。  <br />  operator.**ixor**(a, b)  <br />  operator.**__ixor__**(a, b)  <br />  a = ixor(a, b) 等价于 a ^= b。  <br />  ​  <br />  
 
 # [functools--- 高阶函数和可调用对象上的操作](https://docs.python.org/zh-cn/3/library/functools.html)
-**@functools.cached_property(func)**：将一个类方法转换为特征属性，一次性计算该特征属性的值，然后将其缓存为实例生命周期内的普通属性。  <br />  **@functools.lru_cache(user_function)**  <br />  **@functools.lru_cache(maxsize=128, typed=False)**  <br />  **@functools.total_ordering**：给定一个声明一个或多个全比较排序方法的类，这个类装饰器实现剩余的方法  <br />  **@functools.singledispatch**：将一个函数转换为 单分派 generic function  <br />  **@functools.wraps(wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)**：用于在定义包装器函数时发起调用 update_wrapper() 作为函数装饰器  <br />  ​
+**@functools.cached_property(func)**：将一个类方法转换为特征属性，一次性计算该特征属性的值，然后将其缓存为实例生命周期内的普通属性。  <br />  **@functools.lru_cache(user_function)**  <br />  **@functools.lru_cache(maxsize=128, typed=False)**  <br />  **@functools.total_ordering**：给定一个声明一个或多个全比较排序方法的类，这个类装饰器实现剩余的方法  <br />  **@functools.singledispatch**：将一个函数转换为 单分派 generic function  <br />  **@functools.wraps(wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)**：用于在定义包装器函数时发起调用 update_wrapper() 作为函数装饰器
 
-**functools.cmp_to_key(func)**  <br />  **functools.partial(func, /, *args, **keywords)**：返回一个新的部分对象，当被调用时其行为类似于 func 附带位置参数 args 和关键字参数 keywords 被调用。  <br />  **functools.reduce(function, iterable[, initializer])**  <br />  **functools.update_wrapper(wrapper, wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)**：更新一个 wrapper 函数以使其类似于 wrapped 函数  <br />  ​
+**functools.cmp_to_key(func)**  <br />  **functools.partial(func, /, *args, **keywords)**：返回一个新的部分对象，当被调用时其行为类似于 func 附带位置参数 args 和关键字参数 keywords 被调用。  <br />  **functools.reduce(function, iterable[, initializer])**  <br />  **functools.update_wrapper(wrapper, wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)**：更新一个 wrapper 函数以使其类似于 wrapped 函数
 
 **class functools.partialmethod(func, /, *args, **keywords)**：返回一个新的 partialmethod 描述器，其行为类似 partial 但它被设计用作方法定义而非直接用作可调用对象。  <br />  **class functools.singledispatchmethod(func)**：将一个方法转换为 单分派 generic function
 ```python
@@ -567,8 +544,6 @@ python -m timeit "'-'.join(map(str, range(100)))"
 - timeit.timeit(stmt='pass', setup='pass', timer=, number=1000000, globals=None)
 - timeit.repeat(stmt='pass', setup='pass', timer=, repeat=5, number=1000000, globals=None)
 - timeit.default_timer()	默认的计时器，总是 time.perf_counter() 。
-
-​
 
 class timeit.Timer(stmt='pass', setup='pass', timer=, globals=None)  <br />  用于小代码片段的计数执行速度的类
 ```javascript
@@ -614,9 +589,21 @@ print(timeit.timeit('[func(42) for func in (f,g,h)]', globals=globals()))
    - 从已打开的 file object 文件 中读取封存后的对象，重建其中特定对象的层次结构并返回
 - pickle.loads(bytes_object, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)
    - 对于封存生成的对象 bytes_object，还原出原对象的结构并返回
+```python
+import pickle
+<bytes>  = pickle.dumps(<object>)
+<object> = pickle.loads(<bytes>)
 
+def read_pickle_file(filename):
+    with open(filename, 'rb') as file:
+        return pickle.load(file)
+    
+def write_to_pickle_file(filename, an_object):
+    with open(filename, 'wb') as file:
+        pickle.dump(an_object, file)
+```
 
-  <br />  class pickle.Pickler(file, protocol=None, *, fix_imports=True, buffer_callback=None)  <br />  接受一个二进制文件用于写入 pickle 数据流
+class pickle.Pickler(file, protocol=None, *, fix_imports=True, buffer_callback=None)  <br />  接受一个二进制文件用于写入 pickle 数据流
 
 - dump(obj)
 - 将 obj 封存后的内容写入已打开的文件对象，该文件对象已经在构造函数中指定
@@ -625,14 +612,11 @@ print(timeit.timeit('[func(42) for func in (f,g,h)]', globals=globals()))
 - reducer_override(self, obj)
 - 可以在 Pickler 的子类中定义的特殊 reducer
 
-
-  <br />  class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)  <br />  接受一个二进制文件用于读取 pickle 数据流
+class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)  <br />  接受一个二进制文件用于读取 pickle 数据流
 
 - load()：从构造函数中指定的文件对象里读取封存好的对象，重建其中特定对象的层次结构并返回
 - persistent_load(pid)：默认抛出 UnpicklingError 异常
 - find_class(module, name)：如有必要，导入 module 模块并返回其中名叫 name 的对象
-
-​
 
 **class pickle.PickleBuffer(buffer)**  <br />  缓冲区的包装器 (wrapper)，缓冲区中包含着可封存的数据
 
@@ -642,27 +626,26 @@ print(timeit.timeit('[func(42) for func in (f,g,h)]', globals=globals()))
 # [json--- JSON 编码和解码器](https://docs.python.org/zh-cn/3/library/json.html)
 
 - json.dump(obj, fp, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False, **kw)
-- 将 obj 序列化为 JSON 格式化流形式
+   - 将 obj 序列化为 JSON 格式化流形式
 - json.load(fp, *, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
 
-​  <br />  
-
 - json.dumps(obj, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False, **kw)
-- 将 obj 序列化为 JSON 格式的 str
+   - 将 obj 序列化为 JSON 格式的 str
 - json.loads(s, *, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
-
-​
 
 class json.**JSONDecoder**(*, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, strict=True, object_pairs_hook=None)  <br />  简单的JSON解码器  <br />  class json.**JSONEncoder**(*, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, sort_keys=False, indent=None, separators=None, default=None)  <br />  用于Python数据结构的可扩展JSON编码器
 ```python
->>> import json
->>> d = dict(name='Bob', age=20, score=88)
->>> json.dumps(d, indent=4, ensure_ascii=False, sort_keys=True)
-'{"age": 20, "score": 88, "name": "Bob"}'
+import json
+<str>    = json.dumps(<object>, ensure_ascii=True, indent=None)
+<object> = json.loads(<str>)
 
->>> json_str = '{"age": 20, "score": 88, "name": "Bob"}'
->>> json.loads(json_str)
-{'age': 20, 'score': 88, 'name': 'Bob'}
+def read_json_file(filename):
+    with open(filename, encoding='utf-8') as file:
+        return json.load(file)
+    
+def write_to_json_file(filename, an_object):
+    with open(filename, 'w', encoding='utf-8') as file:
+        json.dump(an_object, file, ensure_ascii=False, indent=2)
 ```
 
 # csv --- CSV 文件读写
@@ -670,14 +653,14 @@ csv.reader(csvfile, dialect='excel', **fmtparams)  <br />  csv.writer(csvfile, d
 ```python
 import csv
 
-with open('passwd', newline='', encoding='utf-8') as f:
-    reader = csv.reader(f, delimiter=':', quoting=csv.QUOTE_NONE)
-    for row in reader:
-        print(row)
-        
-with open('some.csv', 'w', newline='') as f:
-    writer = csv.writer(f)
-    writer.writerows(someiterable)
+def read_csv_file(filename):
+    with open(filename, encoding='utf-8', newline='') as file:
+        return list(csv.reader(file, delimiter=':', quoting=csv.QUOTE_NONE))        
+
+def write_to_csv_file(filename, rows):
+    with open(filename, 'w', encoding='utf-8', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerows(rows)
 ```
 class csv.DictReader(f, fieldnames=None, restkey=None, restval=None, dialect='excel', *args, **kwds)  <br />  class csv.DictWriter(f, fieldnames, restval='', extrasaction='raise', dialect='excel', *args, **kwds)
 ```python
@@ -771,15 +754,12 @@ html.entities --- HTML 一般实体的定义
 - os.path.isdir()    函数分别检验给出的路径是一个目录
 - os.path.exists()   函数用来检验给出的路径是否真地存在
 
-​
-
 执行外部shell命令
 
 - os.system(’command‘)	无返回
 - os.popen(cmd, mode='r', buffering=-1)	可读取返回
 
 # [pathlib--- 面向对象的文件系统路径](https://docs.python.org/zh-cn/3/library/pathlib.html)
-
 
 - PurePath.parent	父路径
 - PurePath.name	最后路径组件的字符串
@@ -794,7 +774,6 @@ html.entities --- HTML 一般实体的定义
 - PurePath.with_stem(stem)	返回一个带有修改后 stem 的新路径
 - PurePath.with_suffix(suffix)	返回一个新的路径并修改 suffix
 
-​  <br />  
 ```python
 def list_file(file, path: Path, level: int = 1):
     # 标题分5级
@@ -847,7 +826,6 @@ if __name__ == '__main__':
 | [os.path.dirname()](https://docs.python.org/zh-cn/3/library/os.path.html#os.path.dirname) | [PurePath.parent](https://docs.python.org/zh-cn/3/library/pathlib.html#pathlib.PurePath.parent) |
 | [os.path.samefile()](https://docs.python.org/zh-cn/3/library/os.path.html#os.path.samefile) | [Path.samefile()](https://docs.python.org/zh-cn/3/library/pathlib.html#pathlib.Path.samefile) |
 | [os.path.splitext()](https://docs.python.org/zh-cn/3/library/os.path.html#os.path.splitext) | [PurePath.suffix](https://docs.python.org/zh-cn/3/library/pathlib.html#pathlib.PurePath.suffix) |
-
 
 
 ```python
@@ -928,6 +906,11 @@ listFile(p)
 - sys.getwindowsversion() 获取Windows的版本
 - sys.stdin.readline() 从标准输入读一行，sys.stdout.write(“a”) 屏幕输出a
 - sys.setdefaultencoding(name) 用来设置当前默认的字符编码
+```python
+import sys
+scripts_path = sys.argv[0]
+arguments    = sys.argv[1:]
+```
 
 # [argparse](https://docs.python.org/zh-cn/3/library/argparse.html#module-argparse) --- 命令行选项、参数和子命令解析器
 class **argparse.ArgumentParser**(prog=None, usage=None, description=None, epilog=None, parents=[], formatter_class=argparse.HelpFormatter, prefix_chars='-', fromfile_prefix_chars=None, argument_default=None, conflict_handler='error', add_help=True, allow_abbrev=True, exit_on_error=True)
@@ -946,8 +929,6 @@ class **argparse.ArgumentParser**(prog=None, usage=None, description=None, epilo
 - allow_abbrev - 如果缩写是无歧义的，则允许缩写长选项 （默认值：True）
 - exit_on_error - 决定当错误发生时是否让 ArgumentParser 附带错误信息退出。 (默认值: True)
 
-​
-
 ArgumentParser.add_argument(name or flags...[, action][, nargs][, const][, default][, type][, choices][, required][, help][, metavar][, dest])
 
 - name or flags - 一个命名或者一个选项字符串的列表，例如 foo 或 -f, --foo。
@@ -962,11 +943,9 @@ ArgumentParser.add_argument(name or flags...[, action][, nargs][, const][, d
 - metavar - 在使用方法消息中使用的参数值示例。
 - dest - 被添加到 parse_args() 所返回对象上的属性名。
 
-​
+class** argparse.Action**(option_strings, dest, nargs=None, const=None, default=None, type=None, choices=None, required=False, help=None, metavar=None)
 
-class** argparse.Action**(option_strings, dest, nargs=None, const=None, default=None, type=None, choices=None, required=False, help=None, metavar=None)  <br />  ​
-
-ArgumentParser.parse_args(args=None, namespace=None)	将参数字符串转换为对象并将其设为命名空间的属性。  <br />  ArgumentParser.add_subparsers([title][, description][, prog][, parser_class][, action][, option_string][, dest][, required][, help][, metavar])	创建子命令  <br />  ArgumentParser.add_argument_group(title=None, description=None)	创建适当的分组  <br />  ArgumentParser.add_mutually_exclusive_group(required=False)	创建一个互斥组  <br />  ArgumentParser.set_defaults(**kwargs)	解析器默认值  <br />  ​
+ArgumentParser.parse_args(args=None, namespace=None)	将参数字符串转换为对象并将其设为命名空间的属性。  <br />  ArgumentParser.add_subparsers([title][, description][, prog][, parser_class][, action][, option_string][, dest][, required][, help][, metavar])	创建子命令  <br />  ArgumentParser.add_argument_group(title=None, description=None)	创建适当的分组  <br />  ArgumentParser.add_mutually_exclusive_group(required=False)	创建一个互斥组  <br />  ArgumentParser.set_defaults(**kwargs)	解析器默认值
 
 class argparse.FileType(mode='r', bufsize=-1, encoding=None, errors=None)
 ```javascript
@@ -1000,7 +979,6 @@ optional arguments:
 ```
 
 # [urllib--- URL 处理模块](https://docs.python.org/zh-cn/3/library/urllib.html)
-​
 
 [urllib.request--- 用于打开 URL 的可扩展库](https://docs.python.org/zh-cn/3/library/urllib.request.html)  <br />  **urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)**
 
@@ -1015,8 +993,6 @@ optional arguments:
 - parse.parse_qs(qs, keep_blank_values=False, strict_parsing=False, encoding='utf-8', errors='replace', max_num_fields=None, separator='&')	解析以字符串参数形式（类型为 application/x-www-form-urlencoded 的数据）给出的查询字符串
 - parse.urljoin(base, url, allow_fragments=True)	通过合并一个 "基准 URL" (base) 和另一个 URL (url) 来构造一个完整 ("absolute") URL
 - parse.urldefrag(url)	返回不带片段标识符的 url 修改版本
-
-​
 
 [URL 转码](https://docs.python.org/zh-cn/3/library/urllib.parse.html#url-quoting)
 
@@ -1053,15 +1029,13 @@ with request.urlopen(req, data=login_data.encode('utf-8')) as f:
 ```
 
 # [threading--- 基于线程的并行](https://docs.python.org/zh-cn/3/library/threading.html)
-GIL(global interpreter lock，全局解释器锁)：使得同一个时刻只有一个线程在一个CPU上执行字节码。无法将多个线程映射到多个CPU上。  <br />  ​
+GIL(global interpreter lock，全局解释器锁)：使得同一个时刻只有一个线程在一个CPU上执行字节码。无法将多个线程映射到多个CPU上。
 
 释放条件
 
 1. 字节码执行一定行数后释放
 1. 通过时间片划分
 1. 遇到IO操作时会主动释放。
-
-
 
 - threading.active_count()
    - 返回当前存活的线程类 Thread 对象
@@ -1083,9 +1057,7 @@ GIL(global interpreter lock，全局解释器锁)：使得同一个时刻只有�
 - threading.stack_size([size])
    - 返回创建线程时用的堆栈大小
 
-​
-
-**class threading.Thread(group=None, target=None, name=None, args=(), kwargs={}, *, daemon=None)**  <br />  target 是用于 run() 方法调用的可调用对象  <br />  name 是线程名称  <br />  args 是用于调用目标函数的参数元组  <br />  kwargs 是用于调用目标函数的关键字参数字典  <br />  ​
+**class threading.Thread(group=None, target=None, name=None, args=(), kwargs={}, *, daemon=None)**  <br />  target 是用于 run() 方法调用的可调用对象  <br />  name 是线程名称  <br />  args 是用于调用目标函数的参数元组  <br />  kwargs 是用于调用目标函数的关键字参数字典
 
 其他线程可以调用一个线程的 join() 方法。这会阻塞调用该方法的线程，直到被调用 join() 方法的线程终结。
 
@@ -1095,7 +1067,7 @@ GIL(global interpreter lock，全局解释器锁)：使得同一个时刻只有�
 - is_alive()：返回线程是否存活
 - daemon：一个表示这个线程是（True）否（False）守护线程的布尔值
 
-**​**
+
 
 **class threading.Lock**  <br />  实现原始锁对象的类
 
@@ -1103,14 +1075,14 @@ GIL(global interpreter lock，全局解释器锁)：使得同一个时刻只有�
 - release()：释放一个锁
 - locked()：如果获得了锁则返回真值
 
-**​**
+
 
 **class threading.RLock**  <br />  此类实现了重入锁对象
 
 - acquire(blocking=True, timeout=-1)：可以阻塞或非阻塞地获得锁
 - release()：释放锁，自减递归等级
 
-**​**
+
 
 **class threading.Condition(lock=None)**  <br />  实现条件变量对象的类
 
@@ -1121,14 +1093,14 @@ GIL(global interpreter lock，全局解释器锁)：使得同一个时刻只有�
 - notify(n=1)：默认唤醒一个等待这个条件的线程
 - notify_all()：唤醒所有正在等待这个条件的线程
 
-**​**
+
 
 **class threading.Semaphore(value=1)**  <br />  该类实现信号量对象
 
 - acquire(blocking=True, timeout=None)：获取一个信号量
 - release()：释放一个信号量，将内部计数器的值增加1
 
-**​**
+
 
 **class threading.Event**  <br />  实现事件对象的类
 
@@ -1137,7 +1109,7 @@ GIL(global interpreter lock，全局解释器锁)：使得同一个时刻只有�
 - clear()：将内部标志设置为false
 - wait(timeout=None)：阻塞线程直到内部变量为true
 
-**​**
+
 
 **class threading.Timer(interval, function, args=None, kwargs=None)**  <br />  定时器，在经过 interval 秒的间隔事件后，将会用参数 args 和关键字参数 kwargs 调用 function
 
@@ -1225,9 +1197,9 @@ t2.join()
 ```
 
 # [multiprocessing--- 基于进程的并行](https://docs.python.org/zh-cn/3/library/multiprocessing.html)
-**class multiprocessing.Process(group=None, target=None, name=None, args=(), kwargs={}, *, daemon=None)**  <br />   Process 类拥有和 threading.Thread 等价的大部分方法。  <br />  ​
+**class multiprocessing.Process(group=None, target=None, name=None, args=(), kwargs={}, *, daemon=None)**  <br />   Process 类拥有和 threading.Thread 等价的大部分方法。
 
-**multiprocessing.Pipe([duplex])**  <br />  返回一对 Connection`对象 ``(conn1, conn2)` ， 分别表示管道的两端。  <br />  ​
+**multiprocessing.Pipe([duplex])**  <br />  返回一对 Connection`对象 ``(conn1, conn2)` ， 分别表示管道的两端。
 
 class multiprocessing.Queue([maxsize])  <br />  返回一个使用一个管道和少量锁和信号量实现的共享队列实例。  <br />  除了 task_done() 和 join() 之外，Queue  实现了标准库类 queue.Queue 中所有的方法  <br />  class multiprocessing.SimpleQueue  <br />  一个简化的 Queue 类的实现，很像带锁的 Pipe  <br />  class multiprocessing.JoinableQueue([maxsize])  <br />  JoinableQueue 类是 Queue 的子类，额外添加了 task_done() 和 join() 方法  <br />  multiprocessing.active_children()：返回当前进程存活的子进程的列表。  <br />  multiprocessing.cpu_count()：返回系统的CPU数量。  <br />  ...  <br />  class multiprocessing.connection.Connection  <br />  Connection 对象允许收发可以序列化的对象或字符串，可以看作面向消息的连接套接字。  <br />  **class multiprocessing.pool.Pool([processes[, initializer[, initargs[, maxtasksperchild[, context]]]]])**  <br />  一个进程池对象，它控制可以提交作业的工作进程池
 
@@ -1289,7 +1261,7 @@ print(time.time()-a)
 ```
 
 # [subprocess](https://docs.python.org/zh-cn/3/library/subprocess.html#module-subprocess) --- 子进程管理
-subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, env=None, universal_newlines=None, **other_popen_kwargs)  <br />  运行被 arg 描述的指令。等待指令完成，然后返回一个 CompletedProcess 实例。  <br />  ​
+subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, env=None, universal_newlines=None, **other_popen_kwargs)  <br />  运行被 arg 描述的指令。等待指令完成，然后返回一个 CompletedProcess 实例。
 
 class subprocess.CompletedProcess  <br />  run() 的返回值, 代表一个进程已经结束.
 
@@ -1472,8 +1444,6 @@ LogRecord 属性
 - makeRecord(name, level, fn, lno, msg, args, exc_info, func=None, extra=None, sinfo=None)：这是一种工厂方法，可以在子类中对其进行重写以创建专门的 LogRecord 实例。
 - hasHandlers()：检查此记录器是否配置了任何处理器。
 
-​
-
 **class logging.Handler**	处理器
 
 - **init**(level=NOTSET)：初始化 Handler 实例时，将过滤列表置为空，并且创建锁来序列化对 I/O 的访问
@@ -1492,16 +1462,12 @@ LogRecord 属性
 - format(record)：设置了格式器则用其对记录进行格式化
 - emit(record)：执行实际记录给定日志记录所需的操作
 
-​
-
 **class logging.Formatter(fmt=None, datefmt=None, style='%')**  <br />  格式器——将 [LogRecord](https://docs.python.org/zh-cn/3/library/logging.html#logging.LogRecord) 转换为可由人或外部系统解释的字符串
 
 - format(record)：记录的属性字典用作字符串格式化操作的参数。
 - formatTime(record, datefmt=None)：由想要使用格式化时间的格式器中的 format() 调用
 - formatException(exc_info)：将指定的异常信息（由 sys.exc_info() 返回的标准异常元组）格式化为字符串。
 - formatStack(stack_info)：将指定的堆栈信息格式化为字符串
-
-​
 
 **class logging.Filter(name='')	过滤器被 Handlers 和 Loggers 用来实现比按层级提供更复杂的过滤操作**  <br />  [logging.handlers](https://docs.python.org/zh-cn/3/library/logging.handlers.html#module-logging.handlers)
 
@@ -1657,9 +1623,7 @@ class unittest.TestSuite(tests=())
 - debug()
 - countTestCases()
 
-​
-
-class unittest.TestLoader  <br />  ​
+class unittest.TestLoader
 
 生成HTMLTestRunner测试报告
 ```python
@@ -2006,18 +1970,18 @@ h = hmac.new(key, message, digestmod='MD5')
 h.hexdigest()	# 'fa4ee7d173f2d97ee79022d1a7355bcf'
 ```
 
-# ​[secrets--- 生成管理密码的安全随机数](https://docs.python.org/zh-cn/3/library/secrets.html)
+# [secrets--- 生成管理密码的安全随机数](https://docs.python.org/zh-cn/3/library/secrets.html)
 
-  <br />  _class _secrets.**SystemRandom**  <br />  用操作系统提供的最高质量源生成随机数的类。详见 [random.SystemRandom](https://docs.python.org/zh-cn/3/library/random.html#random.SystemRandom)。  <br />  secrets.**choice**(_sequence_)  <br />  返回从非空序列中随机选取的元素。  <br />  secrets.**randbelow**(_n_)  <br />  返回 [0, _n_) 范围内的随机整数。  <br />  secrets.**randbits**(_k_)  <br />  返回 _k_ 个随机比特位的整数。  <br />  ​
+_class _secrets.**SystemRandom**  <br />  用操作系统提供的最高质量源生成随机数的类。详见 [random.SystemRandom](https://docs.python.org/zh-cn/3/library/random.html#random.SystemRandom)。  <br />  secrets.**choice**(_sequence_)  <br />  返回从非空序列中随机选取的元素。  <br />  secrets.**randbelow**(_n_)  <br />  返回 [0, _n_) 范围内的随机整数。  <br />  secrets.**randbits**(_k_)  <br />  返回 _k_ 个随机比特位的整数。
 
-secrets.**token_bytes**([_nbytes=None_])  <br />  返回含 _nbytes_ 个字节的随机字节字符串  <br />  secrets.**token_hex**([_nbytes=None_])  <br />  返回十六进制随机文本字符串。  <br />  secrets.**token_urlsafe**([_nbytes=None_])  <br />  返回安全的 URL 随机文本字符串  <br />  
+secrets.**token_bytes**([_nbytes=None_])  <br />  返回含 _nbytes_ 个字节的随机字节字符串  <br />  secrets.**token_hex**([_nbytes=None_])  <br />  返回十六进制随机文本字符串。  <br />  secrets.**token_urlsafe**([_nbytes=None_])  <br />  返回安全的 URL 随机文本字符串
 
 
 # [zipfile--- 使用ZIP存档](https://docs.python.org/zh-cn/3/library/zipfile.html)
 
-  <br />  _class _zipfile.**ZipFile**(_file_, _mode='r'_, _compression=ZIP_STORED_, _allowZip64=True_, _compresslevel=None_, _*_, _strict_timestamps=True_)  <br />  打开一个 ZIP 文件，_file_ 为一个指向文件的路径  <br />  ​
+_class _zipfile.**ZipFile**(_file_, _mode='r'_, _compression=ZIP_STORED_, _allowZip64=True_, _compresslevel=None_, _*_, _strict_timestamps=True_)  <br />  打开一个 ZIP 文件，_file_ 为一个指向文件的路径
 
-ZipFile.**close**()	关闭归档文件。  <br />  ZipFile.**getinfo**(_name_)	返回一个 [ZipInfo](https://docs.python.org/zh-cn/3/library/zipfile.html#zipfile.ZipInfo) 对象，其中包含有关归档成员 _name_ 的信息  <br />  ZipFile.**infolist**()  <br />  ZipFile.**namelist**()	返回按名称排序的归档成员列表。  <br />  ZipFile.**open**(_name_, _mode='r'_, _pwd=None_, _*_, _force_zip64=False_)	以二进制文件类对象的形式访问一个归档成员。  <br />  ZipFile.**extract**(_member_, _path=None_, _pwd=None_)  <br />  从归档中提取出一个成员放入当前工作目录  <br />  ZipFile.**extractall**(_path=None_, _members=None_, _pwd=None_)  <br />  从归档中提取出所有成员放入当前工作目录  <br />  ZipFile.**printdir**()  <br />  将归档的目录表打印到 sys.stdout。  <br />  ZipFile.**setpassword**(_pwd_)  <br />  设置 _pwd_ 为用于提取已加密文件的默认密码。  <br />  ZipFile.**read**(_name_, _pwd=None_)  <br />  返回归档中文件 _name_ 的字节数据。  <br />  ZipFile.**testzip**()  <br />  读取归档中的所有文件并检查它们的 CRC 和文件头  <br />  ZipFile.**write**(_filename_, _arcname=None_, _compress_type=None_, _compresslevel=None_)  <br />  将名为 _filename_ 的文件写入归档，给予的归档名为 _arcname_   <br />  ZipFile.**writestr**(_zinfo_or_arcname_, _data_, _compress_type=None_, _compresslevel=None_)[¶](https://docs.python.org/zh-cn/3/library/zipfile.html#zipfile.ZipFile.writestr)  <br />  将一个文件写入归档  <br />  ​
+ZipFile.**close**()	关闭归档文件。  <br />  ZipFile.**getinfo**(_name_)	返回一个 [ZipInfo](https://docs.python.org/zh-cn/3/library/zipfile.html#zipfile.ZipInfo) 对象，其中包含有关归档成员 _name_ 的信息  <br />  ZipFile.**infolist**()  <br />  ZipFile.**namelist**()	返回按名称排序的归档成员列表。  <br />  ZipFile.**open**(_name_, _mode='r'_, _pwd=None_, _*_, _force_zip64=False_)	以二进制文件类对象的形式访问一个归档成员。  <br />  ZipFile.**extract**(_member_, _path=None_, _pwd=None_)  <br />  从归档中提取出一个成员放入当前工作目录  <br />  ZipFile.**extractall**(_path=None_, _members=None_, _pwd=None_)  <br />  从归档中提取出所有成员放入当前工作目录  <br />  ZipFile.**printdir**()  <br />  将归档的目录表打印到 sys.stdout。  <br />  ZipFile.**setpassword**(_pwd_)  <br />  设置 _pwd_ 为用于提取已加密文件的默认密码。  <br />  ZipFile.**read**(_name_, _pwd=None_)  <br />  返回归档中文件 _name_ 的字节数据。  <br />  ZipFile.**testzip**()  <br />  读取归档中的所有文件并检查它们的 CRC 和文件头  <br />  ZipFile.**write**(_filename_, _arcname=None_, _compress_type=None_, _compresslevel=None_)  <br />  将名为 _filename_ 的文件写入归档，给予的归档名为 _arcname_   <br />  ZipFile.**writestr**(_zinfo_or_arcname_, _data_, _compress_type=None_, _compresslevel=None_)[¶](https://docs.python.org/zh-cn/3/library/zipfile.html#zipfile.ZipFile.writestr)  <br />  将一个文件写入归档
 
 _class _zipfile.**Path**(_root_, _at=''_)
 
@@ -2030,8 +1994,6 @@ _class _zipfile.**Path**(_root_, _at=''_)
 - Path.**read_text**(_*_, _**_)	读取当前文件为 unicode 文本
 - Path.**read_bytes**()	读取当前文件为字节串。
 - Path.**joinpath**(_*other_)	返回一个新的 Path 对象，其中合并了每个 _other_ 参数
-
-
 
 ```python
 import psutil
@@ -2071,7 +2033,6 @@ class Zip:
         src_file.extractall(dest_dir)
 ```
 
-  <br />  
 
 
 # [socket](https://docs.python.org/zh-cn/3/library/socket.html#module-socket) --- 底层网络接口
@@ -2287,36 +2248,5 @@ add_float.restype = c_float
 print( "Sum of 5.5 and 4.1 = ", str(add_float(a, b)))
 ```
 
-# Tkinter
-| 控件 | 描述 |
-| --- | --- |
-| Button | 按钮控件；在程序中显示按钮。 |
-| Canvas | 画布控件；显示图形元素如线条或文本 |
-| Checkbutton | 多选框控件；用于在程序中提供多项选择框 |
-| Entry | 输入控件；用于显示简单的文本内容 |
-| Frame | 框架控件；在屏幕上显示一个矩形区域，多用来作为容器 |
-| Label | 标签控件；可以显示文本和位图 |
-| Listbox | 列表框控件；在Listbox窗口小部件是用来显示一个字符串列表给用户 |
-| Menubutton | 菜单按钮控件，由于显示菜单项。 |
-| Menu | 菜单控件；显示菜单栏,下拉菜单和弹出菜单 |
-| Message | 消息控件；用来显示多行文本，与label比较类似 |
-| Radiobutton | 单选按钮控件；显示一个单选的按钮状态 |
-| Scale | 范围控件；显示一个数值刻度，为输出限定范围的数字区间 |
-| Scrollbar | 滚动条控件，当内容超过可视化区域时使用，如列表框。. |
-| Text | 文本控件；用于显示多行文本 |
-| Toplevel | 容器控件；用来提供一个单独的对话框，和Frame比较类似 |
-| Spinbox | 输入控件；与Entry类似，但是可以指定输入范围值 |
-| PanedWindow | PanedWindow是一个窗口布局管理的插件，可以包含一个或者多个子控件。 |
-| LabelFrame | labelframe 是一个简单的容器控件。常用与复杂的窗口布局。 |
-| tkMessageBox | 用于显示你应用程序的消息框。 |
 
-| 属性 | 描述 |
-| --- | --- |
-| Dimension | 控件大小； |
-| Color | 控件颜色； |
-| Font | 控件字体； |
-| Anchor | 锚点； |
-| Relief | 控件样式； |
-| Bitmap | 位图； |
-| Cursor | 光标； |
 

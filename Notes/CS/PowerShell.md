@@ -1,6 +1,6 @@
 
 # —— [PowerShell](https://docs.microsoft.com/zh-cn/powershell/) ——
-任务自动化和[配置管理](https://zh.wikipedia.org/w/index.php?title=%E7%B5%84%E6%85%8B%E7%AE%A1%E7%90%86&action=edit&redlink=1)框架，由.NET Framework和.NET Core是构建的命令行界面壳层相关脚本语言组成  <br />  ​
+任务自动化和[配置管理](https://zh.wikipedia.org/w/index.php?title=%E7%B5%84%E6%85%8B%E7%AE%A1%E7%90%86&action=edit&redlink=1)框架，由.NET Framework和.NET Core是构建的命令行界面壳层相关脚本语言组成
 
 Windows PowerShell ISE是Windows PowerShell的主机应用程序  <br />  文件扩展名
 
@@ -11,8 +11,6 @@ Windows PowerShell ISE是Windows PowerShell的主机应用程序  <br />  文件
 - .psm1（脚本模块）
 - .pssc（会话配置文件）
 - .cdxml (Cmdlet定义的XML文档)
-
-​
 
 查看版本：$PSVersionTable.PSVersion
 
@@ -32,10 +30,11 @@ Windows PowerShell ISE是Windows PowerShell的主机应用程序  <br />  文件
 | Ctrl+Home | 删除光标最左端的所有字符 |
 | Tab | 自动补齐命令或者文件名 |
 
-能自动识别计算机容量单位，包括KB，MB，GB，TB，PB  <br />  ​  <br />  
+能自动识别计算机容量单位，包括KB，MB，GB，TB，PB
+
 
 # cmdlet
-执行特定操作的专用.NET[类](https://zh.wikipedia.org/wiki/%E7%B1%BB_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6))  <br />  指令名称的格式都是以[连字号](https://zh.wikipedia.org/wiki/%E8%BF%9E%E5%AD%97%E5%8F%B7)（-）隔开的一对动词和名词，并且通常都是单数名词  <br />  ​
+执行特定操作的专用.NET[类](https://zh.wikipedia.org/wiki/%E7%B1%BB_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6))  <br />  指令名称的格式都是以[连字号](https://zh.wikipedia.org/wiki/%E8%BF%9E%E5%AD%97%E5%8F%B7)（-）隔开的一对动词和名词，并且通常都是单数名词
 
 常见命令行解释器命令对比
 
@@ -55,7 +54,7 @@ Windows PowerShell ISE是Windows PowerShell的主机应用程序  <br />  文件
 | Pop-Location | [popd](https://zh.wikipedia.org/w/index.php?title=Pushd_and_popd&action=edit&redlink=1) | popd | 将工作路径更改为最近推送到堆栈上的位置 |
 | Push-Location | [pushd](https://zh.wikipedia.org/w/index.php?title=Pushd_and_popd&action=edit&redlink=1) | pushd | 将工作路径存储到堆栈中 |
 | Set-Location | [cd](https://zh.wikipedia.org/wiki/Cd_(%E5%91%BD%E4%BB%A4)), [chdir](https://zh.wikipedia.org/wiki/Cd_(%E5%91%BD%E4%BB%A4)) | cd | 改变工作路径 |
-| Tee-Object | ​  <br />   | [tee](https://zh.wikipedia.org/wiki/Tee) | 将输入管道传输到文件或变量，并沿管道传递输入 |
+| Tee-Object |   <br />   | [tee](https://zh.wikipedia.org/wiki/Tee) | 将输入管道传输到文件或变量，并沿管道传递输入 |
 | Write-Output | [echo](https://zh.wikipedia.org/wiki/Echo_(%E5%91%BD%E4%BB%A4)) | echo | 将字符串或其他对像打印到[标准流](https://zh.wikipedia.org/wiki/%E6%A8%99%E6%BA%96%E4%B8%B2%E6%B5%81) |
 | Get-Process | tlist,[tasklist](https://zh.wikipedia.org/w/index.php?title=Tasklist&action=edit&redlink=1) | [ps](https://zh.wikipedia.org/wiki/Ps_(Unix)) | 列出所有正在运行的进程 |
 | Stop-Process | [kill](https://zh.wikipedia.org/w/index.php?title=Kill_(command)&action=edit&redlink=1),[taskkill](https://zh.wikipedia.org/wiki/Kill_(%E5%91%BD%E4%BB%A4)) | kill | 停止正在运行的进程 |
@@ -75,7 +74,6 @@ Windows PowerShell ISE是Windows PowerShell的主机应用程序  <br />  文件
 - Out-Null
 - Start-Sleep -Seconds
 
-​  <br />  
 ```shell
 # 列出计算机的 IP 地址
 Get-CimInstance -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=$true | Select-Object -ExpandProperty IPAddress
@@ -94,9 +92,7 @@ New-NetIPAddress -InterfaceIndex 8 -IpAddress 192.168.1.2 -PrefixLength 24 -Defa
 3.设置DNS服务器地址
 Set-DNSClientServerAddress -InterfaceIndex 8 -ServerAddress ("192.168.1.3","192.168.1.4")
 ```
-​
 
-​
 
 计算机
 
@@ -104,8 +100,6 @@ Set-DNSClientServerAddress -InterfaceIndex 8 -ServerAddress ("192.168.1.3","192.
 - Rename-Computer
 - [Stop-Computer](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/stop-computer?view=powershell-7)
 - rundll32.exe user32.dll,LockWorkStation	锁定计算机
-
-​
 
 Host
 
@@ -122,16 +116,12 @@ Host
 - [Get-History](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-history?view=powershell-7)
 - Invoke-History
 
-​
-
 位置
 
 - [Get-Location](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-location?view=powershell-7.2)
 - [Pop-Location](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/pop-location?view=powershell-7.2)
 - [Push-Location](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/push-location?view=powershell-7.2)
 - [Set-Location](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location?view=powershell-7.2)
-
-​
 
 路径
 
@@ -140,8 +130,6 @@ Host
 - [Resolve-Path](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/resolve-path?view=powershell-7)
 - [Split-Path](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/split-path?view=powershell-7)
 - [Test-Path](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/test-path?view=powershell-7)
-
-​
 
 文本
 
@@ -152,8 +140,6 @@ Host
 - [Get-Clipboard](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/get-clipboard?view=powershell-7)
 - [Set-Clipboard](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/set-clipboard?view=powershell-7)
 - Select-String
-
-​
 
 文件
 
@@ -169,8 +155,6 @@ Host
 - [Get-ChildItem](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7)
 - Clear-RecycleBin
 
-​
-
 属性
 
 - [Clear-ItemProperty](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/clear-itemproperty?view=powershell-7.2)
@@ -182,15 +166,11 @@ Host
 - [Rename-ItemProperty](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/rename-itemproperty?view=powershell-7.2)
 - [Set-ItemProperty](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-itemproperty?view=powershell-7.2)
 
-​
-
 PSDrive
 
 - [Get-PSDrive](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-psdrive?view=powershell-7.2)
 - [New-PSDrive](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/new-psdrive?view=powershell-7.2)
 - [Remove-PSDrive](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/remove-psdrive?view=powershell-7.2)
-
-​
 
 格式化
 
@@ -199,8 +179,6 @@ PSDrive
 - [Format-List](https://docs.microsoft.com/zh-cn/powershell/module/Microsoft.PowerShell.Utility/format-list?view=powershell-7)
 - [Format-Table](https://docs.microsoft.com/zh-cn/powershell/module/Microsoft.PowerShell.Utility/format-table?view=powershell-7)
 - [Format-Wide](https://docs.microsoft.com/zh-cn/powershell/module/Microsoft.PowerShell.Utility/format-wide?view=powershell-7)
-
-​
 
 对象
 
@@ -214,8 +192,6 @@ PSDrive
 - [Where-Object](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/where-object?view=powershell-7)
 - Tee-Object
 
-​
-
 服务
 
 - Get-Service
@@ -226,8 +202,6 @@ PSDrive
 - Resume-Service
 - New-Service
 - Set-Service
-
-​
 
 [进程](https://docs.microsoft.com/zh-cn/powershell/scripting/samples/managing-processes-with-process-cmdlets)
 
@@ -245,8 +219,6 @@ PSDrive
 - [Start-Job](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)
 - [Stop-Job](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/stop-job?view=powershell-7)
 - [Wait-Job](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/wait-job?view=powershell-7)
-
-​
 
 虚拟机
 
@@ -279,8 +251,6 @@ PSDrive
 - [Undo-Transaction](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Management/undo-transaction?view=powershell-5.1)
 - [Use-Transaction](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Management/use-transaction?view=powershell-5.1)
 
-​
-
 别名
 
 - [Export-Alias](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/export-alias?view=powershell-7)
@@ -290,8 +260,6 @@ PSDrive
 - [Set-Alias](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/set-alias?view=powershell-7)
 - [Remove-Alias](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/remove-alias?view=powershell-7)
 
-​
-
 变量
 
 - Clear-Variable
@@ -300,9 +268,8 @@ PSDrive
 - [Remove-Variable](https://docs.microsoft.com/zh-cn/powershell/module/Microsoft.PowerShell.Utility/remove-variable?view=powershell-7)
 - [Set-Variable](https://docs.microsoft.com/zh-cn/powershell/module/Microsoft.PowerShell.Utility/set-variable?view=powershell-7)
 
-​
+Get-NetTCPConnection	端口信息  <br />  Get-WmiObject win32_service | select PathName	查看服务信息
 
-Get-NetTCPConnection	端口信息  <br />  Get-WmiObject win32_service | select PathName	查看服务信息  <br />  ​  <br />  
 
 ## [Microsoft.PowerShell.Core](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/?view=powershell-7)
 | [Add-History](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/add-history?view=powershell-7) | Appends entries to the session history. |
@@ -578,7 +545,7 @@ Get-NetTCPConnection	端口信息  <br />  Get-WmiObject win32_service | select 
 - [PowerShellGet](https://docs.microsoft.com/zh-cn/powershell/module/powershellget/?view=powershell-7#powershellget)
 - [PSReadLine](https://docs.microsoft.com/zh-cn/powershell/module/psreadline/?view=powershell-7#psreadline)
 
-**​**  <br />  
+  <br />  
 
 ---
 
@@ -591,7 +558,7 @@ Get-NetTCPConnection	端口信息  <br />  Get-WmiObject win32_service | select 
 [-<Optional Switch Parameters>]
 [-<Optional Parameter Name>] <Required Parameter Value>
 ```
-语法大写为可读性，但不区分大小写。  <br />  
+语法大写为可读性，但不区分大小写。
 
 
 # [Keywords](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_language_keywords)
@@ -634,17 +601,17 @@ Get-NetTCPConnection	端口信息  <br />  Get-WmiObject win32_service | select 
 | While | [about_While](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_while?view=powershell-7.2)  <br />  , [about_Do](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_do?view=powershell-7.2) |
 
 
-  <br />  **注释**
+**注释**
 
 - 单行注释：#
 - 多行注释：<#	...	#>
 
 # [变量](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_variables)
-无需声明，直接使用  <br />  以`$`符号开头或在`{}`内，不区分大小写，包含空格和特殊字符  <br />  默认值 [$null](https://docs.microsoft.com/zh-cn/powershell/scripting/learn/deep-dives/everything-about-null)  <br />  **​**
+无需声明，直接使用  <br />  以`$`符号开头或在`{}`内，不区分大小写，包含空格和特殊字符  <br />  默认值 [$null](https://docs.microsoft.com/zh-cn/powershell/scripting/learn/deep-dives/everything-about-null)
 
-**全局变量 **`$global: variable = `  <br />  **局部变量 **`$variable = `  <br />  脚本变量`$script: variable = `  <br />  ​
+**全局变量 **`$global: variable = `  <br />  **局部变量 **`$variable = `  <br />  脚本变量`$script: variable = `
 
-变量赋值或修改  <br />  `$a = 123`  <br />  `Set-Variable s "test"`  <br />  获取变量值  <br />  `get-variable var`   #获取单个变量值  <br />  `get-variable var*`  #获取多个变量值  <br />  清空变量值  <br />  `clear-variable var`  <br />  `remove-variable var`  <br />  `$var=$null`  <br />  变量类型  <br />  `$var.GetType()`  <br />  ​
+变量赋值或修改  <br />  `$a = 123`  <br />  `Set-Variable s "test"`  <br />  获取变量值  <br />  `get-variable var`   #获取单个变量值  <br />  `get-variable var*`  #获取多个变量值  <br />  清空变量值  <br />  `clear-variable var`  <br />  `remove-variable var`  <br />  `$var=$null`  <br />  变量类型  <br />  `$var.GetType()`
 
 [**自动变量**](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables)
 
@@ -694,13 +661,13 @@ $path = [Environment]::GetEnvironmentVariable('PSModulePath', 'Machine')
 $newpath = $path + ';C:\Program Files\<WindowsPowerShell>\Modules'
 [Environment]::SetEnvironmentVariable("PSModulePath", $newpath, 'Machine')
 ```
-**​**
 
-**强制指定变量类型**  <br />  `[type] $var = value`  <br />  ​
 
-变量类型  <br />  [int] 、[long]、[string] 、[char] 、[bool] 、[byte] 、[double] 、[decimal] 、[single]  <br />  [array] ：数组对象  <br />  [xml] ：XML对象  <br />  [hashtable] ：哈希表对象，类似于一个字典对象  <br />  **​**
+**强制指定变量类型**  <br />  `[type] $var = value`
 
-**常量**  <br />  `New-Variable num -Value 100 -Force -Option readonly`	只读变量，可删除  <br />  `new-variable num -Value "strong" -Option constant`	常量  <br />  ​
+变量类型  <br />  [int] 、[long]、[string] 、[char] 、[bool] 、[byte] 、[double] 、[decimal] 、[single]  <br />  [array] ：数组对象  <br />  [xml] ：XML对象  <br />  [hashtable] ：哈希表对象，类似于一个字典对象
+
+**常量**  <br />  `New-Variable num -Value 100 -Force -Option readonly`	只读变量，可删除  <br />  `new-variable num -Value "strong" -Option constant`	常量
 
 Booleans: `$false`, `$true`
 
@@ -719,15 +686,11 @@ System.String  <br />  方法
 - -match   正则表达式匹配
 - -like       通配符匹配
 
-​  <br />  
-
 - -Join 
 - -Split <String> 
    - -Split (<String[]>) 
    - <String> -Split <Delimiter>[,<Max-substrings>[,"<Options>"]] 
    - <String> -Split {<ScriptBlock>} [,<Max-substrings>]
-
-​
 
 变量替换	在字符串中指定变量
 ```shell
@@ -754,8 +717,6 @@ $message = "Date: $(Get-Date)"
 属性
 
 - count
-
-​
 
 对象数组
 ```shell
@@ -833,7 +794,7 @@ $myObject | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name
 - /    除
 - %   模
 
-**赋值**运算符	=   +=    -=    *=    /=   %=  <br />  **​**
+**赋值**运算符	=   +=    -=    *=    /=   %=
 
 [**逻辑**运算符](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logical_operators)
 
@@ -842,7 +803,7 @@ $myObject | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name
 - -or   或
 - -xor 异或
 
-**​**
+
 
 [**比较**运算符](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators)（可在运算符前加上 `i` 或者 `c` ，以指定是否区分大小写）
 
@@ -869,8 +830,7 @@ $myObject | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name
 - `::`  静态方法调用   
    - `[DateTime]::Now`  #返回当前时间
 
-
-  <br />  其他运算符
+其他运算符
 
 - , 数组构造函数
 - ..  范围运算符
@@ -880,9 +840,8 @@ $myObject | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name
 - -bor     二进制或
 - -bnot    二进制非
 
-​
+命令解析顺序  <br />  别名（alias）->  函数->   cmdlet ->   脚本  ->   可执行文件  ->    正常文件
 
-命令解析顺序  <br />  别名（alias）->  函数->   cmdlet ->   脚本  ->   可执行文件  ->    正常文件  <br />  ​  <br />  
 
 # [流程控制](https://docs.microsoft.com/zh-cn/powershell/scripting/learn/deep-dives/everything-about-if)
 **条件**
@@ -991,7 +950,6 @@ Set-ExecutionPolicy
    [<CommonParameters>]
 ```
 
-  <br />  
 
 ```shell
 function Test-MrErrorHandling {
@@ -1015,17 +973,23 @@ function Test-MrErrorHandling {
     }
 }
 ```
-​
 
-​
 
-​  <br />  
+
 
 # [Moudle](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_modules)
 模块是包含 PowerShell 成员的包，例如 cmdlet、提供程序、函数、工作流、变量和别名。
+
+**构成**
+
+- 文件夹
+- 清单文件：一种 PowerShell 数据文件 (`.psd1`) ，用于描述模块的内容并确定如何处理模块
+- 模块文件：脚本和存储它的目录必须使用相同的名称
+
 ```powershell
 # 查找已导入到会话中的模块
 Get-Module
+Get-Module -Name xxx -list
 
 # 在模块中查找命令
 Get-Command -Module <module-name>
@@ -1039,12 +1003,14 @@ $env:PSModulePath -split ';'
 # 添加默认模块位置
 $Env:PSModulePath = $Env:PSModulePath + ";<path>"
 
+# 安装模块
+Install-Module -Name  <module-name>
+
 # 从会话中删除模块
 Remove-Module <module-name>
 ```
-​
 
-unicode转换
+**自定义模块**  <br />  1在默认模块位置，新建一个模块目录，并创建同名的模块`psm1`文件
 ```powershell
 function ConvertFrom-Unicode {
     [CmdletBinding()]
@@ -1094,9 +1060,131 @@ function ConvertTo-Unicode {
 
 Export-ModuleMember -Function ConvertFrom-Unicode,ConvertTo-Unicode
 ```
-​
+2 生成模块的`psd1`清单文件  <br />  `New-ModuleManifest -Path '.\xxx.psd1' -Author 'Someone' -RootModule .\xxx.psm1 -Description 'This is a template module.'`
+```powershell
+#
+# 模块“xxx”的模块清单
+#
+# 生成者: Someone
+#
+# 生成时间: 2022/3/21
+@{
 
-​  <br />  
+# 与此清单关联的脚本模块或二进制模块文件。
+RootModule = '.\xxx.psm1'
+
+# 此模块的版本号。
+ModuleVersion = '1.0'
+
+# 支持的 PSEditions
+# CompatiblePSEditions = @()
+
+# 用于唯一标识此模块的 ID
+GUID = 'b6da06b9-2a4f-4ed7-9107-dbf74b4fcbd5'
+
+# 此模块的作者
+Author = 'Someone'
+
+# 此模块所属的公司或供应商
+CompanyName = 'Unkonwn'
+
+# 此模块的版权声明
+Copyright = '(c) 2022 Someone。保留所有权利。'
+
+# 此模块所提供功能的说明
+Description = 'This is a template module.'
+
+# 此模块要求的 Windows PowerShell 引擎的最低版本
+# PowerShellVersion = ''
+
+# 此模块要求的 Windows PowerShell 主机的名称
+# PowerShellHostName = ''
+
+# 此模块要求的 Windows PowerShell 主机的最低版本
+# PowerShellHostVersion = ''
+
+# 此模块要求使用的最低 Microsoft .NET Framework 版本。此先决条件仅对 PowerShell Desktop 版本有效。
+# DotNetFrameworkVersion = ''
+
+# 此模块要求使用的最低公共语言运行时(CLR)版本。此先决条件仅对 PowerShell Desktop 版本有效。
+# CLRVersion = ''
+
+# 此模块要求的处理器体系结构(无、X86、Amd64)
+# ProcessorArchitecture = ''
+
+# 必须在导入此模块之前先导入全局环境中的模块
+# RequiredModules = @()
+
+# 导入此模块之前必须加载的程序集
+# RequiredAssemblies = @()
+
+# 导入此模块之前运行在调用方环境中的脚本文件(.ps1)。
+# ScriptsToProcess = @()
+
+# 导入此模块时要加载的类型文件(.ps1xml)
+# TypesToProcess = @()
+
+# 导入此模块时要加载的格式文件(.ps1xml)
+# FormatsToProcess = @()
+
+# 将作为 RootModule/ModuleToProcess 中所指定模块的嵌套模块导入的模块
+# NestedModules = @()
+
+# 要从此模块中导出的函数。为了获得最佳性能，请不要使用通配符，不要删除该条目。如果没有要导出的函数，请使用空数组。
+FunctionsToExport = ''
+
+# 要从此模块中导出的 cmdlet。为了获得最佳性能，请不要使用通配符，不要删除该条目。如果没有要导出的 cmdlet，请使用空数组。
+CmdletsToExport = '*'
+
+# 要从此模块中导出的变量
+VariablesToExport = '*'
+
+# 要从此模块中导出的别名。为了获得最佳性能，请不要使用通配符，不要删除该条目。如果没有要导出的别名，请使用空数组。
+AliasesToExport = '*'
+
+# 要从此模块导出的 DSC 资源
+# DscResourcesToExport = @()
+
+# 与此模块一起打包的所有模块的列表
+# ModuleList = @()
+
+# 与此模块一起打包的所有文件的列表
+# FileList = @()
+
+# 要传递到 RootModule/ModuleToProcess 中指定的模块的专用数据。这还可能包含 PSData 哈希表以及 PowerShell 使用的其他模块元数据。
+PrivateData = @{
+
+    PSData = @{
+
+        # 应用于此模块的标记。这些标记有助于在联机库中执行模块发现。
+        # Tags = @()
+
+        # 指向此模块的许可证的 URL。
+        # LicenseUri = ''
+
+        # 指向此项目的主网站的 URL。
+        # ProjectUri = ''
+
+        # 指向表示此模块的图标的 URL。
+        # IconUri = ''
+
+        # 此模块的 ReleaseNotes
+        # ReleaseNotes = ''
+
+    } # PSData 哈希表末尾
+
+} # PrivateData 哈希表末尾
+
+# 此模块的 HelpInfo URI
+# HelpInfoURI = ''
+
+# 从此模块中导出的命令的默认前缀。可以使用 Import-Module -Prefix 覆盖默认前缀。
+# DefaultCommandPrefix = ''
+
+}
+```
+
+
 
 # Resource
 

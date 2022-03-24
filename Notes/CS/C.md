@@ -1,23 +1,30 @@
 <a name="29327766"></a>
 # —— C ——
 
-  <br />  
-  <br />  C 语言是一种通用的高级语言，最初是由 Dennis Ritchie 在贝尔实验室为开发 UNIX 操作系统而设计的。  <br />  
-  <br />  C 语言最开始是于 1972 年在 DEC PDP-11 计算机上被首次实现。  <br />  
-  <br />  1978 年，布莱恩·柯林汉（Brian Kernighan）和丹尼斯·里奇（Dennis Ritchie）制作了 C 的第一个公开可用的描述(K&R 标准)。  <br />  
-  <br />  
-  <br />  
+
+C 语言是一种通用的高级语言，最初是由 Dennis Ritchie 在贝尔实验室为开发 UNIX 操作系统而设计的。
+
+C 语言最开始是于 1972 年在 DEC PDP-11 计算机上被首次实现。
+
+1978 年，布莱恩·柯林汉（Brian Kernighan）和丹尼斯·里奇（Dennis Ritchie）制作了 C 的第一个公开可用的描述(K&R 标准)。
+
+
 
 <a name="b6003d0f"></a>
 # --基本语法--
 
-  <br />  每个 C 程序都至少有一个函数，即主函数 int main( int argc, char *argv[] )  <br />  
-  <br />  每个语句必须以分号结束，它表明一个逻辑实体的结束。  <br />  
-  <br />  **标识符**  <br />  
-  <br />  用来标识变量、函数，或任何其他用户自定义项目的名称。一个标识符以字母 A-Z 或 a-z 或下划线 _ 开始，后跟零个或多个字母、下划线和数字（0-9）。  <br />  
-  <br />  C 是**区分大小写**的编程语言。  <br />  
-  <br />  
-  <br />  **注释**  <br />  
+每个 C 程序都至少有一个函数，即主函数 int main( int argc, char *argv[] )
+
+每个语句必须以分号结束，它表明一个逻辑实体的结束。
+
+**标识符**
+
+用来标识变量、函数，或任何其他用户自定义项目的名称。一个标识符以字母 A-Z 或 a-z 或下划线 _ 开始，后跟零个或多个字母、下划线和数字（0-9）。
+
+C 是**区分大小写**的编程语言。
+
+
+**注释**
 
 ```c
 // 单行注释
@@ -29,12 +36,10 @@
  */
 ```
 
-  <br />  
-  <br />  
+
 
 <a name="185f7bf6"></a>
 # 数据类型
-
 
 -  基本类型：整型（int）、字符型（char）、浮点型（float，double）、枚举型（enum） 
 -  构造类型：数组类型、结构体类型（struct)、共用体类型(union) 、函数类型 
@@ -56,24 +61,22 @@
 | long double | 16 字节 | 3.4E-4932 到 1.1E+4932  (精确到19 位小数) |
 
 
-  <br />  
-  <br />  **void类型**
+
+**void类型**
 
 -  函数返回为空 
 -  函数参数为空 
 -  指针指向 void
 
 
-  <br />  
-  <br />  **常量：**固定值，在程序执行期间不会改变，又叫做字面量。  <br />  
+**常量：**固定值，在程序执行期间不会改变，又叫做字面量。
 
 -  整型 ：十进制、八进制(前缀 0)或十六进制(前缀 0x)的常量，可以带一个后缀 U（无符号整数，unsigned） 和 L（长整数，long），前缀后缀大小不敏感 
 -  实型 ：小数形式（1. ，.1均可）或指数形式（e|E 后为整数） 
 -  字符 ：一对单引号括（‘ ’）起的一个字符，或转义字符 
 -  字符串：一对双引号（“ ”）起的若干个字符，以‘\0'为结束符
 
-
-  <br />  **转义字符表**
+**转义字符表**
 
 | 转义序列 | 含义 | 转义序列 | 含义 |
 | --- | --- | --- | --- |
@@ -86,11 +89,13 @@
 | \\f | 换页符 |  |  |
 
 
-  <br />  
-  <br />  **左值（lvalue）：**指向内存位置的表达式被称为左值（lvalue）表达式。可以出现在赋值号的左边或右边。  <br />  **右值（rvalue）：**存储在内存中某些地址的数值，不能对其进行赋值的表达式。只可以出现在赋值号的右边  <br />  
-  <br />  
-  <br />  **数组**​  <br />  用来存储一系列数据，可以存储一个固定大小的相同类型元素的顺序集合。  <br />  
-  <br />  **数组声明**
+
+**左值（lvalue）：**指向内存位置的表达式被称为左值（lvalue）表达式。可以出现在赋值号的左边或右边。  <br />  **右值（rvalue）：**存储在内存中某些地址的数值，不能对其进行赋值的表达式。只可以出现在赋值号的右边
+
+
+**数组**  <br />  用来存储一系列数据，可以存储一个固定大小的相同类型元素的顺序集合。
+
+**数组声明**
 ```c
 type arrayName [ arraySize ];
 
@@ -98,25 +103,28 @@ type arrayName [ arraySize ];
 type name[size1][size2]...[sizeN];
 ```
 
-  <br />  
-  <br />  
-  <br />  **字符串**：实质是使用 null 字符 '\0' 终止的一维字符数组  <br />  
-  <br />  
-  <br />  **枚举 (enumeration)**
+
+
+**字符串**：实质是使用 null 字符 '\0' 终止的一维字符数组
+
+
+**枚举 (enumeration)**
 ```c
 enum　枚举名　{枚举元素1,枚举元素2,……};
 ```
 
-  <br />  
-  <br />  
+
 
 
 # 流程控制
 
-  <br />  C 语言把任何**非零**和非空的值假定为 true，把零或 null 假定为 false。  <br />  
-  <br />  **条件**​  <br />  
-  <br />  **三元运算符：   expresion ? statement1 : statement2 ;**​  <br />  
-  <br />  **if-else**
+C 语言把任何**非零**和非空的值假定为 true，把零或 null 假定为 false。
+
+**条件**
+
+**三元运算符：   expresion ? statement1 : statement2 ;**
+
+**if-else**
 ```cpp
 if(boolean_expression 1)
 {
@@ -133,8 +141,8 @@ else
 }]
 ```
 
-  <br />  
-  <br />  **switch-case**
+
+**switch-case**
 ```cpp
 switch(expression)
 {
@@ -151,9 +159,10 @@ switch(expression)
 }
 ```
 
-  <br />  
-  <br />  **循环**​  <br />  
-  <br />  **while**
+
+**循环**
+
+**while**
 ```c
 while(condition)
 {
@@ -161,7 +170,7 @@ while(condition)
 }
 ```
 
-  <br />  **do-while**
+**do-while**
 ```c
 do
 {
@@ -170,7 +179,7 @@ do
 }while( condition );
 ```
 
-  <br />  **for**
+**for**
 ```cpp
 for ( init; condition; increment )
 {
@@ -178,21 +187,19 @@ for ( init; condition; increment )
 }
 ```
 
-  <br />  
-  <br />  **控制语句**
+
+**控制语句**
 
 -  break：终止（跳出）循环或 switch 语句 
 -  continue：停止本次循环迭代，直接开始下次循环迭代 
 -  goto  label：跳转到到被标记的语句
 
 
-  <br />  
-
 <a name="43430a90"></a>
 # 函数（Function）
 
-  <br />  
-  <br />  **函数定义**
+
+**函数定义**
 ```c
 return_type function_name( parameter list )
 {
@@ -200,15 +207,16 @@ return_type function_name( parameter list )
 }
 ```
 
-  <br />  
-  <br />  函数**声明 | 原型（declaration | prototype）**：告诉编译器函数名称及如何调用函数，函数的实际主体可以单独定义。
+
+函数**声明 | 原型（declaration | prototype）**：告诉编译器函数名称及如何调用函数，函数的实际主体可以单独定义。
 ```c
 return_type function_name( parameter list );
 ```
 
-  <br />  
-  <br />  **函数签名（signature）：函数名，参数的个数、数据类型、顺序**​  <br />  
-  <br />  e.g.
+
+**函数签名（signature）：函数名，参数的个数、数据类型、顺序**
+
+e.g.
 ```c
 #include <stdio.h>
  
@@ -231,35 +239,36 @@ int max(int a, int b)
 }
 ```
 
-  <br />  
-  <br />  
-  <br />  
+
+
 
 <a name="a56e2331"></a>
 # 指针（Point）
 
-  <br />  **指针**：一个变量，其值为某个变量的地址。 （4 Byte）
+**指针**：一个变量，其值为某个变量的地址。 （4 Byte）
 ```c
 type *point_name;
 ```
 
-  <br />  每一个变量都有一个内存位置，每一个内存位置都定义了可使用连字号（&）运算符访问的地址，它表示了在内存中的一个地址。  <br />  
-  <br />  
-  <br />  悬空（dangling)指针：内存被释放的指针  <br />  内存泄漏（memory leak)：释放空内存  <br />  
-  <br />  **函数指针**
+每一个变量都有一个内存位置，每一个内存位置都定义了可使用连字号（&）运算符访问的地址，它表示了在内存中的一个地址。
+
+
+悬空（dangling)指针：内存被释放的指针  <br />  内存泄漏（memory leak)：释放空内存
+
+**函数指针**
 ```c
 fun_return_type (*fun_ptr)( parameter list ) = [&] fun_name;
 ```
 
-  <br />  
-  <br />  **回调函数**：一个通过函数指针调用的函数。  <br />  
-  <br />  
-  <br />  
+
+**回调函数**：一个通过函数指针调用的函数。
+
+
 
 <a name="fbf46319"></a>
 # 结构体 & 联合体
 
-  <br />  **位域**
+**位域**
 ```c
 // 结构内声明位域
 struct
@@ -268,7 +277,6 @@ struct
 };
 ```
 
-  <br />  
 
 -  type：只能为 int(整型)，unsigned int(无符号整型)，signed int(有符号整型) 三种类型 
 -  width：必须小于或等于指定类型的位宽度。
@@ -293,13 +301,12 @@ int main( )
 }
 ```
 
-  <br />  
-  <br />  
+
 
 
 # IO
 
-  <br />  FILE *fopen( const char * filename, const char * mode )  <br />  打开文件出错时，返回一个空指针（ NULL）
+FILE *fopen( const char * filename, const char * mode )  <br />  打开文件出错时，返回一个空指针（ NULL）
 
 | 打开方式 | 说明 |
 | --- | --- |
@@ -314,16 +321,16 @@ int main( )
 | "b" | 二进制文件。 |
 
 
-  <br />  
-  <br />  `int fclose(FILE *fp);`  <br />  
-  <br />  
-  <br />  
-  <br />  
+
+`int fclose(FILE *fp);`
+
+
+
 
 <a name="becce13b"></a>
 # 预处理器（Preprocessor）
 
-  <br />  预处理器：一些指令，指示编译器在实际编译之前所需完成的预处理。
+预处理器：一些指令，指示编译器在实际编译之前所需完成的预处理。
 
 -  以井号（#）开头，只有空格字符可以出现在预处理指令之前。 
 -  预处理指令语句，结尾无分号（;）。
@@ -342,7 +349,7 @@ int main( )
 | #pragma | 使用标准化方法，向编译器发布特殊的命令到编译器中 |
 
 
-  <br />  **预定义宏**
+**预定义宏**
 
 | 宏 | 描述 |
 | --- | --- |
@@ -353,15 +360,15 @@ int main( )
 | __STDC__ | 当编译器以 ANSI 标准编译时，则定义为 1。 |
 
 
-
 ```c
 typedef  type  alias
 ```
 
-  <br />  typedef 是由编译器执行解释的  <br />  `#define` 语句是由预编译器进行处理的。  <br />  
-  <br />  
-  <br />  
-  <br />  **宏运算符**
+typedef 是由编译器执行解释的  <br />  `#define` 语句是由预编译器进行处理的。
+
+
+
+**宏运算符**
 
 -  **延续运算符（\） **
 -  **字符串常量化运算符（#）**：把一个宏的参数转换为字符串常量 
@@ -382,14 +389,13 @@ int main(void)
 }
 ```
 
-  <br />  
-  <br />  
-  <br />  
+
+
 
 <a name="2db41159"></a>
 # 可变参数 (Variadic)
 
-  <br />  [** <stdarg.h>**](https://zh.cppreference.com/w/c/variadic)​
+[** <stdarg.h>**](https://zh.cppreference.com/w/c/variadic)
 
 | [va_start](https://zh.cppreference.com/w/c/variadic/va_start) | 令函数得以访问可变参数 (宏函数) |
 | --- | --- |
@@ -398,8 +404,8 @@ int main(void)
 | [va_end](https://zh.cppreference.com/w/c/variadic/va_end) | 结束函数可变参数的行程 (宏函数) |
 
 
-  <br />  
-  <br />  [**va_list**](https://zh.cppreference.com/w/c/variadic/va_list)：保有 va_start 、 va_arg 、 va_end 及 va_copy 所需信息  <br />  
+
+[**va_list**](https://zh.cppreference.com/w/c/variadic/va_list)：保有 va_start 、 va_arg 、 va_end 及 va_copy 所需信息
 
 ```c
 #include <stdio.h>
@@ -432,17 +438,19 @@ int main()
 }
 ```
 
-  <br />  
-  <br />  
-  <br />  
+
+
 
 <a name="6a8bef7b"></a>
 # 错误处理
 
-  <br />  发生错误时，大多数的 C 或 UNIX 函数调用返回 1 或 NULL，同时会设置一个全局变量的错误代码 errno，表示在函数调用期间发生了错误。  <br />  
-  <br />  一般在程序初始化时，把 errno 设置为 0值，表示程序中没有错误。  <br />  
-  <br />  `void perror( const char *s );`  <br />  打印当前存储于系统变量 [errno](https://zh.cppreference.com/w/c/error/errno) 的错误码到 stderr ，即显示您传给它的字符串，后跟一个冒号、一个空格和当前 errno 值的文本表示形式。  <br />  
-  <br />  `char* strerror( int errnum );`	返回一个指针，指针指向当前 errno 值的文本表示形式。  <br />  `errno_t strerror_s( char *buf, rsize_t bufsz, errno_t errnum );`  <br />  `[size_t](http://zh.cppreference.com/w/c/types/size_t) strerrorlen_s( errno_t errnum );`  <br />  
+发生错误时，大多数的 C 或 UNIX 函数调用返回 1 或 NULL，同时会设置一个全局变量的错误代码 errno，表示在函数调用期间发生了错误。
+
+一般在程序初始化时，把 errno 设置为 0值，表示程序中没有错误。
+
+`void perror( const char *s );`  <br />  打印当前存储于系统变量 [errno](https://zh.cppreference.com/w/c/error/errno) 的错误码到 stderr ，即显示您传给它的字符串，后跟一个冒号、一个空格和当前 errno 值的文本表示形式。
+
+`char* strerror( int errnum );`	返回一个指针，指针指向当前 errno 值的文本表示形式。  <br />  `errno_t strerror_s( char *buf, rsize_t bufsz, errno_t errnum );`  <br />  `[size_t](http://zh.cppreference.com/w/c/types/size_t) strerrorlen_s( errno_t errnum );`
 
 ```c
 #include <stdio.h>
@@ -476,16 +484,17 @@ int main ()
 */
 ```
 
-  <br />  
-  <br />  
-  <br />  通常情况下，程序成功执行完一个操作正常退出的时候会带有值 EXIT_SUCCESS（宏， 0）  <br />  如果程序中存在一种错误情况，当您退出程序时，会带有状态值 EXIT_FAILURE（ -1）  <br />  
-  <br />  
+
+
+通常情况下，程序成功执行完一个操作正常退出的时候会带有值 EXIT_SUCCESS（宏， 0）  <br />  如果程序中存在一种错误情况，当您退出程序时，会带有状态值 EXIT_FAILURE（ -1）
+
 
 <a name="a225ce07"></a>
 # 信号处理
 
-  <br />  信号是由操作系统传给进程的中断，会提早终止一个程序。在操作系统上，一般通过按 Ctrl+C 产生中断。  <br />  
-  <br />  [**<signal.h>**](https://zh.cppreference.com/w/c/program)  <br />  **信号管理函数**
+信号是由操作系统传给进程的中断，会提早终止一个程序。在操作系统上，一般通过按 Ctrl+C 产生中断。
+
+[**<signal.h>**](https://zh.cppreference.com/w/c/program)  <br />  **信号管理函数**
 
 | [signal](https://zh.cppreference.com/w/c/program/signal) | 为特定的信号设置信号处理函数 (函数) |
 | --- | --- |
@@ -495,18 +504,16 @@ int main ()
 | [SIG_ERR](https://zh.cppreference.com/w/c/program/SIG_ERR) | 遇到错误 |
 
 
-  <br />  捕获突发事件
+捕获突发事件
 ```cpp
 void (*signal (int sig, void (*func)(int)))(int);
 ```
 
-  <br />  
-  <br />  生成信号函数
+
+生成信号函数
 ```cpp
 int raise (signal sig);
 ```
-
-
 
 | 信号 | 描述 |
 | --- | --- |
@@ -518,7 +525,7 @@ int raise (signal sig);
 | SIGTERM | 发送到程序的终止请求。 |
 
 
-  <br />  e.g
+e.g
 ```cpp
 #include <stdio.h>
 #include <stdlib.h>
@@ -551,8 +558,7 @@ int main()
 }
 ```
 
-  <br />  
-  <br />  
+
 
 <a name="022a84f4"></a>
 # 运算符优先级
@@ -574,7 +580,7 @@ int main()
 | 赋值  | = += -= *= /= %=>>= <<= &= ^= &#124;=  | 从右到左  |
 | 逗号  | ,  | 从左到右  |
 
-**短路求值**​  <br />  
+**短路求值**
 
 <a name="cfb5f18c"></a>
 # 关键字
@@ -586,14 +592,15 @@ int main()
 <a name="a5684d0a"></a>
 # ——[头文件](https://zh.cppreference.com/w/c/header)——
 
-  <br />  头文件是扩展名为 **.h** 的文件，包含了 C 函数声明和宏定义，被多个源文件中引用共享。  <br />  
-  <br />  `**#include**`** **：用于引用系统头文件，在系统目录的标准列表中搜索名为 file 的文件。  <br />  `**#include "file"**`：用于引用用户头文件，在包含当前文件的目录中搜索名为 file 的文件。  <br />  
-  <br />  
+头文件是扩展名为 **.h** 的文件，包含了 C 函数声明和宏定义，被多个源文件中引用共享。
+
+`**#include**`** **：用于引用系统头文件，在系统目录的标准列表中搜索名为 file 的文件。  <br />  `**#include "file"**`：用于引用用户头文件，在包含当前文件的目录中搜索名为 file 的文件。
+
 
 <a name="95a2bf18"></a>
 ## [<stdio.h> ](https://zh.cppreference.com/w/c/io)
 
-  <br />  **无格式输入/输出 （窄字符）**
+**无格式输入/输出 （窄字符）**
 
 | [fgetc ](https://zh.cppreference.com/w/c/io/fgetc)  <br />  getc | 从文件流获取一个字符 (函数) |
 | --- | --- |
@@ -607,8 +614,6 @@ int main()
 | [ungetc](https://zh.cppreference.com/w/c/io/ungetc) | 将一个字符送回文件流 (函数) |
 
 
-  <br />  
-
 
 | [scanf](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [fscanf](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [sscanf](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [scanf_s](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [fscanf_s](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [sscanf_s](https://zh.cppreference.com/w/c/io/fscanf)  <br />  (C11)(C11)(C11) | 从**stdin**、文件流或缓冲区读取格式化输入  <br />  (函数) |
 | --- | --- |
@@ -617,7 +622,7 @@ int main()
 | [vprintf](https://zh.cppreference.com/w/c/io/vfprintf)[vfprintfvsprintfvsnprintfvprintf_svfprintf_svsprintf_svsnprintf_s](https://zh.cppreference.com/w/c/io/vfprintf)  <br />  (C99)(C11)(C11)(C11)(C11) | 打印格式化输出到**stdout**、文件流或缓冲区  <br />  使用可变参数列表 |
 
 
-  <br />  **printf() 格式输出**​  <br />  `%[flag][width][.precision]type`
+**printf() 格式输出**  <br />  `%[flag][width][.precision]type`
 
 | 修饰符（优先级） |  | 含义 |
 | --- | --- | --- |
@@ -630,15 +635,12 @@ int main()
 | .precision |  | 精度 |
 
 
-
-
 |   | short | int | long | unsigned short | unsigned int | unsigned long |
 | --- | --- | --- | --- | --- | --- | --- |
 | 八进制 | -- | -- | -- | %ho | %o | %lo |
 | 十进制 | %hd | %d | %ld | %hu | %u | %lu |
 | 十六进制 | -- | -- | -- | %hx 或 %hX | %x 或 %X | %lx 或 %lX |
 
-​  <br />  
 
 | 格式控制符 | 说明 |
 | --- | --- |
@@ -655,8 +657,8 @@ int main()
 | %s | 输出一个字符串 |
 
 
-  <br />  
-  <br />  `int sprintf( char *restrict buffer, const char *restrict format, ... );`
+
+`int sprintf( char *restrict buffer, const char *restrict format, ... );`
 ```cpp
 char str[100];
 int data = 1024;
@@ -667,11 +669,9 @@ const char* s2 = "World";
 sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 ```
 
-  <br />  ​
 
-`int snprintf( char *restrict buffer, int bufsz, const char *restrict format, ... );`  <br />  是sprintf函数的更加安全版本，考虑到字符串的字节数，防止了字符串溢出。最多从源串中拷贝n－1个字符到目标串中，然后再在后面加一个0。所以如果目标串的大小为n 的话，将不会溢出。  <br />  ​
+`int snprintf( char *restrict buffer, int bufsz, const char *restrict format, ... );`  <br />  是sprintf函数的更加安全版本，考虑到字符串的字节数，防止了字符串溢出。最多从源串中拷贝n－1个字符到目标串中，然后再在后面加一个0。所以如果目标串的大小为n 的话，将不会溢出。
 
-​
 
 `int sscanf( const char *restrict buffer, const char *restrict format, ... );`
 ```cpp
@@ -680,15 +680,13 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
  sscanf(s, "%[^:]://%[^:]:%[1-9]", protocol, host, port);  //解析网址
 ```
 
-
 - ** [] ：表示范围,%[1-9]表示只读取1-9这几个数字 %[a-z]表示只读取a-z小写字母，类似地 %[A-Z]只读取大写字母**
 - **^ ： 表示不取，如：%[^1]表示读取除'1'以外的所有字符 %[^/]表示除/以外的所有字符**
 - **, ：范围可以用","相连接 如%[1-9,a-z]表示同时取1-9数字和a-z小写字母 **
 - 原则：从第一个在指定范围内的数字开始读取，到第一个不在范围内的数字结束%s 可以看成%[] 的一个特例 %[^ ](注意^后面有一个空格！)
 
 
-  <br />  
-  <br />  **文件访问**
+**文件访问**
 
 | [fopen ](https://zh.cppreference.com/w/c/io/fopen)  <br />  fopen_s (C11) | 打开文件 (函数) |
 | --- | --- |
@@ -704,8 +702,8 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 | [fwrite](https://zh.cppreference.com/w/c/io/fwrite) | 写入到文件 |
 
 
-  <br />  
-  <br />  **文件位置**
+
+**文件位置**
 
 | [ftell](https://zh.cppreference.com/w/c/io/ftell) | 返回当前的文件位置指示值 (函数) |
 | --- | --- |
@@ -715,8 +713,8 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 | [rewind](https://zh.cppreference.com/w/c/io/rewind) | 将文件位置指示器移动到文件首 |
 
 
-  <br />  
-  <br />  **文件操作**
+
+**文件操作**
 
 | [remove](https://zh.cppreference.com/w/c/io/remove) | 删除文件 (函数) |
 | --- | --- |
@@ -725,8 +723,8 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 | [tmpnam ](https://zh.cppreference.com/w/c/io/tmpnam)  <br />  tmpnam_s (C11) | 返回唯一的文件名 |
 
 
-  <br />  
-  <br />  **错误处理**
+
+**错误处理**
 
 | [clearerr](https://zh.cppreference.com/w/c/io/clearerr) | 清除错误 (函数) |
 | --- | --- |
@@ -735,9 +733,9 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 | [perror](https://zh.cppreference.com/w/c/io/perror) | 显示对应当前错误的字符串到 stderr |
 
 
-  <br />  
-  <br />  
-  <br />  **宏**
+
+
+**宏**
 
 | stdin stdout stderr | 与标准输入流关联的 FILE_ 类型表达式 与标准输出流关联的 FILE_ 类型表达式 与标准错误输出流关联的 FILE* 类型表达式 (宏常量) |
 | --- | --- |
@@ -751,12 +749,11 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 | L_tmpnam L_tmpnam_s (C11) | 保有 [tmpnam ](https://zh.cppreference.com/w/c/io/tmpnam)  <br />  结果所需的数组大小 保有 tmpnam_s 结果所需的数组大小 (宏常量) |
 
 
-  <br />  
 
 
-## ​[<cstdlib>](https://zh.cppreference.com/w/cpp/header/cstdlib)
+## [<cstdlib>](https://zh.cppreference.com/w/cpp/header/cstdlib)
 
-  <br />  **类型**
+**类型**
 
 | [div_t](https://zh.cppreference.com/w/cpp/numeric/math/div) | struct div_t {  int quot ;  int rem ;  } ; |
 | --- | --- |
@@ -765,7 +762,7 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 | [size_t](https://zh.cppreference.com/w/cpp/types/size_t) | [sizeof运](https://zh.cppreference.com/w/cpp/language/sizeof)  <br />  算符返回的无符号整数类型 (typedef) |
 
 
-  <br />  **函数**
+**函数**
 
 | 进程式控制制 |  |
 | --- | --- |
@@ -802,15 +799,15 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 | [div (int)ldivlldiv ](https://zh.cppreference.com/w/cpp/numeric/math/div)  <br />  (C++11) | 计算整数除法的商和余数 |
 
 
-  <br />  
-  <br />  `void **qsort** ( void * ptr, size_t count, size_t size, int ( * comp ) ( const void * , const void * ) ) ;`
+
+`void **qsort** ( void * ptr, size_t count, size_t size, int ( * comp ) ( const void * , const void * ) ) ;`
 > ptr	-	指向要排序的数组的指针
 > count	-	数组元素数
 > size	-	数组中元素的大小，以位元组表示
-> comp	-	比较函数。若首个参数小于第二个，则返回负整数值，若首个参数大于第二个，则返回正整数值，若两参数相等，则返回零。​
+> comp	-	比较函数。若首个参数小于第二个，则返回负整数值，若首个参数大于第二个，则返回正整数值，若两参数相等，则返回零。
 
 
-  <br />  `void *** bsearch **( const void * key, const void * ptr, size_t count, size_t size，int ( * comp ) ( const void * , const void * ) ) ;`
+`void *** bsearch **( const void * key, const void * ptr, size_t count, size_t size，int ( * comp ) ( const void * , const void * ) ) ;`
 > key	-	指向要搜索的元素的指针
 > ptr	-	指向要检验的数组的指针
 > count	-	数组中元素的数量
@@ -818,17 +815,18 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 > comp	-	比较函数。若首个参数小于第二个，则返回负整数值，若首个参数大于第二个，则返回正整数值，若两参数相等，则返回零。作为首参数传递key，作为第二参数传递来自数组的元素。
 
 
-  <br />  随机数发生器的初始化函数。  <br />  
+随机数发生器的初始化函数。
 
 ```javascript
 void srand(unsigned seed);
 ```
 
-  <br />  
-  <br />  **用法:** 它初始化随机种子，会提供一个种子，这个种子会对应一个随机数，如果使用相同的种子后面的 rand() 函数会出现一样的随机数，如: srand(1); 直接使用 1 来初始化种子。不过为了防止随机数每次重复，常常使用系统时间来初始化，即使用 time函数来获得系统时间，它的返回值为从 00:00:00 GMT, January 1, 1970 到现在所持续的秒数，然后将time_t型数据转化为(unsigned)型再传给srand函数，即: srand((unsigned) time(&t)); 还有一个经常用法，不需要定义time_t型t变量,即: srand((unsigned) time(NULL)); 直接传入一个空指针，因为你的程序中往往并不需要经过参数获得的数据。
+
+**用法:** 它初始化随机种子，会提供一个种子，这个种子会对应一个随机数，如果使用相同的种子后面的 rand() 函数会出现一样的随机数，如: srand(1); 直接使用 1 来初始化种子。不过为了防止随机数每次重复，常常使用系统时间来初始化，即使用 time函数来获得系统时间，它的返回值为从 00:00:00 GMT, January 1, 1970 到现在所持续的秒数，然后将time_t型数据转化为(unsigned)型再传给srand函数，即: srand((unsigned) time(&t)); 还有一个经常用法，不需要定义time_t型t变量,即: srand((unsigned) time(NULL)); 直接传入一个空指针，因为你的程序中往往并不需要经过参数获得的数据。
 <a name="d41d8cd9-1"></a>
-  <br />  [<ctime>](https://zh.cppreference.com/w/cpp/header/ctime)  <br />  **宏常量	CLOCKS_PER_SEC**	每秒的处理器始时钟嘀嗒数  <br />  
-  <br />  **类型**
+[<ctime>](https://zh.cppreference.com/w/cpp/header/ctime)  <br />  **宏常量	CLOCKS_PER_SEC**	每秒的处理器始时钟嘀嗒数
+
+**类型**
 
 | [clock_t](https://zh.cppreference.com/w/cpp/chrono/c/clock_t) | 进程运行时间 (typedef) |
 | --- | --- |
@@ -838,8 +836,8 @@ void srand(unsigned seed);
 | [timespec ](https://zh.cppreference.com/w/cpp/chrono/c/timespec)  <br />  (C++17 起) | 以秒和纳秒表示的时间 (结构体) |
 
 
-  <br />  
-  <br />  **struct tm ;**
+
+**struct tm ;**
 
 | int tm_sec | [0, 60] |
 | --- | --- |
@@ -852,8 +850,6 @@ void srand(unsigned seed);
 | int tm_yday | 自一月1日起之日– [0, 365] (公开成员对象) |
 | int tm_isdst | 夏令时标志。值若夏令时有效则为正，若无效则为零，若无可用信息则为负 |
 
-
-  <br />  
 
 
 | 时间操纵 |  |
@@ -871,8 +867,6 @@ void srand(unsigned seed);
 | [localtime](https://zh.cppreference.com/w/cpp/chrono/c/localtime) | 转换纪元起时间为以本地时间表示的日历时间 (函数) |
 | [mktime](https://zh.cppreference.com/w/cpp/chrono/c/mktime) | 转换日历时间为纪元起的时间 (函数) |
 
-
-  <br />  
 
 
 | 基本运算 |  |
@@ -948,8 +942,6 @@ void srand(unsigned seed);
 | [isgreaterequal ](https://zh.cppreference.com/w/cpp/numeric/math/isgreaterequal)  <br />  (C++11) | 检查第一个浮点实参是否大于或等于第二个 |
 
 
-  <br />  
-
 
 | 函数 |  |
 | --- | --- |
@@ -969,8 +961,8 @@ void srand(unsigned seed);
 | [toupper](https://zh.cppreference.com/w/cpp/string/byte/toupper) | 转换字元为大写 (函数) |
 
 
-  <br />  
-  <br />  **transform(s[i].begin(), s[i].end(), s[i].begin(), ::tolower);**
+
+**transform(s[i].begin(), s[i].end(), s[i].begin(), ::tolower);**
 
 | 字元串操纵 |  |
 | --- | --- |
@@ -1001,8 +993,7 @@ void srand(unsigned seed);
 | [strerror](https://zh.cppreference.com/w/cpp/string/byte/strerror) | 返回给定错误码的文本版本 |
 
 
-  <br />  
-  <br />  
+
 
 <a name="0712fc4f"></a>
 ## [<limits.h>](https://zh.cppreference.com/w/c/types/limits)
@@ -1015,8 +1006,6 @@ void srand(unsigned seed);
 | SCHAR_MAX SHRT_MAX INT_MAX LONG_MAX LLONG_MAX (C99) | 分别为 signed char 、 short 、 int 、 long 和 long long的最大值 (宏常量) |
 | UCHAR_MAX USHRT_MAX UINT_MAX ULONG_MAX ULLONG_MAX (C99) | 分别为 unsigned char 、 unsigned short 、 unsigned int 、 unsigned long 和 unsigned long long 的最大值 |
 
-
-  <br />  
 
 
 | FLT_RADIX | 用于表示所有三种浮点数类型的底（整数基） (宏常量) |
@@ -1038,8 +1027,8 @@ void srand(unsigned seed);
 | FLT_HAS_SUBNORMDBL_HAS_SUBNORMLDBL_HAS_SUBNORM (C11) | 类型是否支持非正规（[非正规）](https://en.wikipedia.org/wiki/Denormal_number)  <br />  数： -1 为不确定， 0 为不支持， 1 为支持 (宏常量) |
 
 
-  <br />  
-  <br />  [assert](https://zh.cppreference.com/w/cpp/error/assert)  <br />  
+
+[assert](https://zh.cppreference.com/w/cpp/error/assert)
 
 ```cpp
 #ifdef NDEBUG
@@ -1049,9 +1038,8 @@ void srand(unsigned seed);
 #endif
 ```
 
-  <br />  
-  <br />  
-  <br />  
+
+
 
 <a name="08b14789"></a>
 ## [<stdbool.h>](https://zh.cppreference.com/w/c/types/boolean)
@@ -1065,13 +1053,13 @@ C 编程语言从 C99 开始支持以内建类型 _Bool 进行的布尔运算
 | __bool_true_false_are_defined | 整数常量 1 |
 
 
-  <br />  
-  <br />  
+
 
 <a name="681e39b2"></a>
 ## <conio.h>
-Console Input/Output（控制台输入[输出](https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA/5885826)），定义了通过控制台进行数据输入和输出的函数，主要是一些用户通过按键盘产生的对应操作。  <br />  
-  <br />  **屏幕操作函数**
+Console Input/Output（控制台输入[输出](https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA/5885826)），定义了通过控制台进行数据输入和输出的函数，主要是一些用户通过按键盘产生的对应操作。
+
+**屏幕操作函数**
 
 1.  clrscr()		清除字符窗口函数 
 2.  window()	字符窗口函数 
@@ -1083,8 +1071,7 @@ Console Input/Output（控制台输入[输出](https://baike.baidu.com/item/%E6%
 8.  puttext() 	拷出文字函数 
 9.  movetext() 	移动文字函数
 
-
-  <br />  **字符属性函数**
+**字符属性函数**
 
 10.  textmode() 	文本模式函数 
 11.  highvideo()	高亮度函数	// 适用于cprintf() , cputs() 
@@ -1094,26 +1081,27 @@ Console Input/Output（控制台输入[输出](https://baike.baidu.com/item/%E6%
 15.  textattr(int newattr) 	文本属性函数 
 16.  textbackground() 	文本背景函数
 
-
-  <br />  **屏显状态函数**
+**屏显状态函数**
 
 17.  wherex() 	光标处x坐标函数 
 18.  wherey() 	光标处y坐标函数 
 19.  gettextinfo() 	获取文本窗口信息函数
 
+**不回显函数getch()**  <br />  **回显函数getche()**  <br />  函数用途：从控制台读取一个字符	（当用户按下某个字符时，函数自动读取，无需按回车）  <br />  函数原型：int getch(void)，阻塞函数（函数不返回，无法不进行下一步操作）  <br />  返回值：读取的字符
 
-  <br />  **不回显函数getch()**  <br />  **回显函数getche()**​  <br />  函数用途：从控制台读取一个字符	（当用户按下某个字符时，函数自动读取，无需按回车）  <br />  函数原型：int getch(void)，阻塞函数（函数不返回，无法不进行下一步操作）  <br />  返回值：读取的字符  <br />  
-  <br />  
-  <br />  **int kbhit(void);**  <br />  用于非阻塞地响应键盘输入事件，即“键盘敲击”(keyboard hit)。  <br />  功能及返回值： 检查当前是否有键盘输入，若有则返回一个非0值，否则返回0。  <br />  
-  <br />  
-  <br />  
+
+**int kbhit(void);**  <br />  用于非阻塞地响应键盘输入事件，即“键盘敲击”(keyboard hit)。  <br />  功能及返回值： 检查当前是否有键盘输入，若有则返回一个非0值，否则返回0。
+
+
 
 <a name="GCC"></a>
 # GCC
-GNU Compiler Collection，GNU 编译器套件  <br />  
-  <br />  支持编译C、C++、 Go、Objective-C，Objective-C ++，Fortran，Ada，D 和 BRIG（HSAIL）等程序  <br />  
-  <br />  
-  <br />  **gcc [-E|-S|-c] [infile,] [-o outfile]**
+GNU Compiler Collection，GNU 编译器套件
+
+支持编译C、C++、 Go、Objective-C，Objective-C ++，Fortran，Ada，D 和 BRIG（HSAIL）等程序
+
+
+**gcc [-E|-S|-c] [infile,] [-o outfile]**
 
 | 指令选项 | 功 能 |
 | --- | --- |
@@ -1124,7 +1112,6 @@ GNU Compiler Collection，GNU 编译器套件  <br />
 | -llibrary（-I library） | 其中 library 表示要搜索的库文件的名称。该选项用于手动指定链接环节中程序可以调用的库文件。建议 -l 和库文件名之间不使用空格，比如 -lstdc++。 |
 | -ansi | 对于 C 语言程序来说，其等价于 -std=c90； 对于 C++ 程序来说，其等价于 -std=c++98。 |
 | -std= | 手动指令编程语言所遵循的标准，例如 c89、c90、c98、c11 等。 |
-
 
 
 ```

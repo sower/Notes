@@ -1,32 +1,32 @@
 
 # —— [批处理](https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/windows-commands) ——
-将一系列命令按一定的顺序集合为一个可执行的文本文件，其扩展名为BAT或CMD，这些命令统称批处理命令。  <br />  **​**
+将一系列命令按一定的顺序集合为一个可执行的文本文件，其扩展名为BAT或CMD，这些命令统称批处理命令。
 
-**强制终止**：可以在键盘上按下Ctrl+C组合键来强行终止一个批处理的执行过程。  <br />  **MS-DOS**（MicroSoft Disk Operating System，微软磁盘操作系统）  <br />  [https://github.com/microsoft/ms-dos](https://github.com/microsoft/ms-dos)  <br />  ​  <br />  
+**强制终止**：可以在键盘上按下Ctrl+C组合键来强行终止一个批处理的执行过程。  <br />  **MS-DOS**（MicroSoft Disk Operating System，微软磁盘操作系统）  <br />  [https://github.com/microsoft/ms-dos](https://github.com/microsoft/ms-dos)
+
 
 # 特殊符号
-**@**  <br />  关闭当前命令行回显  <br />  放在命令前，让执行窗口中，无论 echo 是否为打开状态，都不显示它后面这一行的命令本身。  <br />  ​
+**@**  <br />  关闭当前命令行回显  <br />  放在命令前，让执行窗口中，无论 echo 是否为打开状态，都不显示它后面这一行的命令本身。
 
-**|**  <br />  命令管道符  <br />  把前一命令的输出结果当后一命令的输入参数来使用。  <br />  ​
+**|**  <br />  命令管道符  <br />  把前一命令的输出结果当后一命令的输入参数来使用。
 
-**||**  <br />  组合命令符  <br />  当一条命令失败后才执行第二条命令，当碰到执行正确的命令后，将不执行后面所有的命令。  <br />  ​
+**||**  <br />  组合命令符  <br />  当一条命令失败后才执行第二条命令，当碰到执行正确的命令后，将不执行后面所有的命令。
 
-**&，&&**  <br />  组合命令  <br />  连接多个 DOS 命令，按顺序执行。  &&遇到错误停止，&不会  <br />  ​
+**&，&&**  <br />  组合命令  <br />  连接多个 DOS 命令，按顺序执行。  &&遇到错误停止，&不会
 
-**>，>> **  <br />  输出重定向符  <br />  把前面命令的输出写入到一个文件中。“>”覆写内容，“>>”追加内容到原文件末尾  <br />  ​
+**>，>> **  <br />  输出重定向符  <br />  把前面命令的输出写入到一个文件中。“>”覆写内容，“>>”追加内容到原文件末尾
 
-**<  **  <br />  输入重定向命令  <br />  从文件中读入命令输入，而不是从键盘中读入  <br />  ​
+**<  **  <br />  输入重定向命令  <br />  从文件中读入命令输入，而不是从键盘中读入
 
-**^**  <br />  转义字符，可用于续行  <br />  需转义的字符：^  >  & |  <br />  ​
+**^**  <br />  转义字符，可用于续行  <br />  需转义的字符：^  >  & |
 
-,      逗号相当于空格，  <br />  ;      分号        当命令相同时，可以将不同目标用分号隔离，执行效果不变。  <br />  ​
+,      逗号相当于空格，  <br />  ;      分号        当命令相同时，可以将不同目标用分号隔离，执行效果不变。
 
 变量的表示方法
 
 - `%var%` 普通情况下的表达法
 - `!var!` 引用延迟的变量
 
-​  <br />  
 
 # 运算符
 算数及其赋值，逻辑，按位  <br />  **compare-op**
@@ -45,19 +45,15 @@ GEQ - 大于或等于
 - 标准输出(Standard Out)文件(stdout)：显示在屏幕上，1
 - 标准错误（stderr）文件：显示在屏幕上的任何错误消息，2
 
-​
-
 重定向输出
 ```javascript
 DIR C:\ > lists.txt 2> &1
 ```
-​
 
 抑制程序输出
 ```javascript
 Dir C:\ > NUL
 ```
-
 
 
 # —— Command ——
@@ -72,7 +68,8 @@ Dir C:\ > NUL
 | 竖线(&#124;) | 互斥项的分隔符。 须选择一个。 |
 | 省略(…) | 可以重复并多次使用的项。 |
 
-/ ， - 等价  <br />  ​  <br />  
+/ ， - 等价
+
 
 # 简单命令
 
@@ -91,9 +88,7 @@ Dir C:\ > NUL
 - PATH [[drive:]path[;...][;%PATH%]：为可执行文件显示或设置一个搜索路径。
 - CHCP [nnn]：显示或设置活动代码页编号。
 
-​
-
-活动代码页编号：  <br />  65001——UTF-8  <br />  936——简体中文  <br />  950——繁体中文  <br />  437——美国/加拿大英语  <br />  932——日文  <br />  949——韩文  <br />  866——俄文  <br />  ​
+活动代码页编号：  <br />  65001——UTF-8  <br />  936——简体中文  <br />  950——繁体中文  <br />  437——美国/加拿大英语  <br />  932——日文  <br />  949——韩文  <br />  866——俄文
 
 颜色属性由两个十六进制数字指定
 ```
@@ -119,7 +114,7 @@ echo Hello World!
 echo.Hello World!
 echo/Hello World!
 ```
-`echo.`显示一个空行，相当于一个回车  <br />  ​
+`echo.`显示一个空行，相当于一个回车
 
 .  ,  :  ;  /  [  \  ]  +  (  =
 
@@ -142,8 +137,9 @@ echo/Hello World!
 - /nh	指定列标题不应显示在输出中。 这仅对表和 CSV 格式有效。
 
 # mode
-配置系统设备  <br />  
-  <br />  设备状态:          MODE [device] [/STATUS]  <br />  打印重定向:        MODE LPTn[:]=COMm[:]  <br />  选择代码页:        MODE CON[:] CP SELECT=yyy  <br />  代码页状态:        MODE CON[:] CP [/STATUS]  <br />  显示模式:          MODE CON[:] [COLS=c] [LINES=n]  <br />  击键率:            MODE CON[:] [RATE=r DELAY=d]
+配置系统设备
+
+设备状态:          MODE [device] [/STATUS]  <br />  打印重定向:        MODE LPTn[:]=COMm[:]  <br />  选择代码页:        MODE CON[:] CP SELECT=yyy  <br />  代码页状态:        MODE CON[:] CP [/STATUS]  <br />  显示模式:          MODE CON[:] [COLS=c] [LINES=n]  <br />  击键率:            MODE CON[:] [RATE=r DELAY=d]
 
 # timeout
 这个工具接受超时参数，等候一段指定的时间(秒)或等按任意键。  <br />  参数列表:
@@ -193,10 +189,8 @@ FIND [/V] [/C] [/N] [/I] [/OFF[LINE]] "string" [[drive:][path]filename[ ...]]
 - [drive:][path]filename
 
 
-
-
 # findstr
-FINDSTR [/B] [/E] [/L] [/R] [/S] [/I] [/X] [/V] [/N] [/M] [/O] [/P] [/F:file]  <br />   [/C:string] [/G:file] [/D:dir list] [/A:color attributes] [/OFF[LINE]]  <br />   strings [[drive:][path]filename[ ...]]  <br />  ​
+FINDSTR [/B] [/E] [/L] [/R] [/S] [/I] [/X] [/V] [/N] [/M] [/O] [/P] [/F:file]  <br />   [/C:string] [/G:file] [/D:dir list] [/A:color attributes] [/OFF[LINE]]  <br />   strings [[drive:][path]filename[ ...]]
 
  /B 在一行的开始配对模式。  <br />   /E 在一行的结尾配对模式。  <br />   /L 按字使用搜索字符串。  <br />   /R 将搜索字符串作为一般表达式使用。  <br />   /S 在当前目录和所有子目录中搜索匹配文件。  <br />   /I 指定搜索不分大小写。  <br />   /X 打印完全匹配的行。  <br />   /V 只打印不包含匹配的行。  <br />   /N 在匹配的每行前打印行数。  <br />   /M 如果文件含有匹配项，只打印其文件名。  <br />   /O 在每个匹配行前打印字符偏移量。  <br />   /P 忽略有不可打印字符的文件。  <br />   /OFF[LINE] 不跳过带有脱机属性集的文件。  <br />   /A:attr 指定有十六进位数字的颜色属性。请见 "color /?"  <br />   /F:file 从指定文件读文件列表 (/ 代表控制台)。  <br />   /C:string 使用指定字符串作为文字搜索字符串。  <br />   /G:file 从指定的文件获得搜索字符串。 (/ 代表控制台)。  <br />   /D:dir 查找以分号为分隔符的目录列表  <br />   strings 要查找的文字。  <br />   [drive:][path]filename  <br />   指定要查找的文件。
 
@@ -261,18 +255,18 @@ FOR %variable IN (set) DO command [command-parameters]
 -  command 指定对每个文件执行的命令。
 -  command-parameters	为特定命令指定参数或命令行开关。
 
-​
+在批处理程序中使用 FOR 命令时，指定变量请使用 %%variable，而不要用 %variable。变量名称是区分大小写的，所以 %i 不同于 %I.
 
-在批处理程序中使用 FOR 命令时，指定变量请使用 %%variable，而不要用 %variable。变量名称是区分大小写的，所以 %i 不同于 %I.  <br />  ​
+如果启用命令扩展，则会支持下列 FOR 命令的其他格式:  <br />  `FOR /D %variable IN (set) DO command [command-parameters]`  <br />   如果集中包含通配符，则指定与目录名匹配，而不与文件名匹配。
 
-如果启用命令扩展，则会支持下列 FOR 命令的其他格式:  <br />  `FOR /D %variable IN (set) DO command [command-parameters]`​  <br />   如果集中包含通配符，则指定与目录名匹配，而不与文件名匹配。  <br />  ​
+`FOR /R [[drive:]path] %variable IN (set) DO command [command-parameters]`  <br />   检查以 [drive:]path 为根的目录树，指向每个目录中的 FOR 语句。  <br />   如果在 /R 后没有指定目录规范，则使用当前目录。如果集仅为一个单点(.)字符，  <br />   则枚举该目录树。
 
-`FOR /R [[drive:]path] %variable IN (set) DO command [command-parameters]`  <br />   检查以 [drive:]path 为根的目录树，指向每个目录中的 FOR 语句。  <br />   如果在 /R 后没有指定目录规范，则使用当前目录。如果集仅为一个单点(.)字符，  <br />   则枚举该目录树。  <br />  ​
+`FOR /L %variable IN (start,step,end) DO command [command-parameters]`  <br />   该集表示以增量形式从开始到结束的一个数字序列。
 
-`FOR /L %variable IN (start,step,end) DO command [command-parameters]`  <br />   该集表示以增量形式从开始到结束的一个数字序列。  <br />  ​
+FOR /F ["options"] %variable IN (file-set) DO command [command-parameters]  <br />  FOR /F ["options"] %variable IN ("string") DO command [command-parameters]  <br />  FOR /F ["options"] %variable IN ('command') DO command [command-parameters]  <br />   fileset 为一个或多个文件名。继续到 fileset 中的下一个文件之前，每份文件都被打开、读取并经过处理。处理包括读取文件，将其分成一行行的文字，然后将每行解析成零或更多的符号。然后用已找到的符号字符串变量值调用 For 循环。
 
-FOR /F ["options"] %variable IN (file-set) DO command [command-parameters]  <br />  FOR /F ["options"] %variable IN ("string") DO command [command-parameters]  <br />  FOR /F ["options"] %variable IN ('command') DO command [command-parameters]  <br />   fileset 为一个或多个文件名。继续到 fileset 中的下一个文件之前，每份文件都被打开、读取并经过处理。处理包括读取文件，将其分成一行行的文字，然后将每行解析成零或更多的符号。然后用已找到的符号字符串变量值调用 For 循环。  <br />  
-  <br />  范例:  <br />  `FOR /F "eol=; tokens=2,3* delims=, " %i in (myfile.txt) do @echo %i %j %k`  <br />   会分析 myfile.txt 中的每一行，忽略以分号打头的那些行，将每行中的第二个和第三个符号传递给 for 函数体，用逗号和/或 空格分隔符号。请注意，此 for 函数体的语句引用 %i 来 获得第二个符号，引用 %j 来获得第三个符号，引用 %k 来获得第三个符号后的所有剩余符号。对于带有空格的文件 名，你需要用双引号将文件名括起来。为了用这种方式来使用双引号，还需要使用 usebackq 选项，否则，双引号会被理解成是用作定义某个要分析的字符串的。  <br />  ​  <br />  
+范例:  <br />  `FOR /F "eol=; tokens=2,3* delims=, " %i in (myfile.txt) do @echo %i %j %k`  <br />   会分析 myfile.txt 中的每一行，忽略以分号打头的那些行，将每行中的第二个和第三个符号传递给 for 函数体，用逗号和/或 空格分隔符号。请注意，此 for 函数体的语句引用 %i 来 获得第二个符号，引用 %j 来获得第三个符号，引用 %k 来获得第三个符号后的所有剩余符号。对于带有空格的文件 名，你需要用双引号将文件名括起来。为了用这种方式来使用双引号，还需要使用 usebackq 选项，否则，双引号会被理解成是用作定义某个要分析的字符串的。
+
 
 # SHUTDOWN
 **shutdown [/i | /l | /s | /sg | /r | /g | /a | /p | /h | /e | /o] [/hybrid] [/soft] [/fw] [/f]**  <br />  **    [/m \computer][/t xxx][/d [p|u:]xx:yy [/c "comment"]]**
@@ -379,27 +373,28 @@ START ["title"] [/D path] [/I] [/MIN] [/MAX]
 ```
 
 # tasklist
-显示在本地或远程机器上当前运行的进程列表  <br />  **TASKLIST [/S system [/U username [/P [password]]]]**  <br />  ** [/M [module] | /SVC | /V] [/FI filter] [/FO format] [/NH]**  <br />  ​
+显示在本地或远程机器上当前运行的进程列表  <br />  **TASKLIST [/S system [/U username [/P [password]]]]**  <br />  ** [/M [module] | /SVC | /V] [/FI filter] [/FO format] [/NH]**
 
- /S system 指定连接到的远程系统  <br />   /U [domain\]user 指定应该在哪个用户上下文执行这个命令  <br />   /P [password] 为提供的用户上下文指定密码。如果省略，则提示输入  <br />   /M [module] 列出当前使用所给 exe/dll 名称的所有任务。  <br />   如果没有指定模块名称，显示所有加载的模块  <br />   /SVC 显示每个进程中主持的服务  <br />   /APPS 显示 Microsoft Store 应用及其关联的进程  <br />   /V 显示详细任务信息  <br />   /FI filter 显示一系列符合筛选器指定条件的任务  <br />   /FO format 指定输出格式。 有效值: "TABLE"、"LIST"、"CSV"。  <br />   /NH 指定列标题不应该在输出中显示。  <br />  
-  <br />  获取内存大于40MB的进程
+ /S system 指定连接到的远程系统  <br />   /U [domain\]user 指定应该在哪个用户上下文执行这个命令  <br />   /P [password] 为提供的用户上下文指定密码。如果省略，则提示输入  <br />   /M [module] 列出当前使用所给 exe/dll 名称的所有任务。  <br />   如果没有指定模块名称，显示所有加载的模块  <br />   /SVC 显示每个进程中主持的服务  <br />   /APPS 显示 Microsoft Store 应用及其关联的进程  <br />   /V 显示详细任务信息  <br />   /FI filter 显示一系列符合筛选器指定条件的任务  <br />   /FO format 指定输出格式。 有效值: "TABLE"、"LIST"、"CSV"。  <br />   /NH 指定列标题不应该在输出中显示。
+
+获取内存大于40MB的进程
 ```javascript
 tasklist /fi "memusage gt 40000"
 ```
 
 # taskkill
-按照进程 ID (PID) 或映像名称终止任务  <br />  **TASKKILL [/S system [/U username [/P [password]]]]**  <br />  ** { [/FI filter] [/PID processid | /IM imagename] } [/T] [/F]**  <br />  ​
+按照进程 ID (PID) 或映像名称终止任务  <br />  **TASKKILL [/S system [/U username [/P [password]]]]**  <br />  ** { [/FI filter] [/PID processid | /IM imagename] } [/T] [/F]**
 
  /S system 指定要连接的远程系统  <br />   /U [domain\]user 指定应该在哪个用户上下文执行这个命令  <br />   /P [password] 为提供的用户上下文指定密码。如果忽略，提示输入。  <br />   /FI filter 应用筛选器以选择一组任务。  <br />   允许使用 "*"。例如，映像名称 eq acme*  <br />   /PID processid 指定要终止的进程的 PID。 使用 TaskList 取得 PID。  <br />   /IM imagename 指定要终止的进程的映像名称。通配符 '*'可用来指定所有任务或映像名称。  <br />   /T 终止指定的进程和由它启用的子进程。  <br />   /F 指定强制终止进程。
 
 # net
-NET  <br />   [ ACCOUNTS | COMPUTER | CONFIG | CONTINUE | FILE | GROUP | HELP |  <br />   HELPMSG | LOCALGROUP | PAUSE | SESSION | SHARE | START |  <br />   STATISTICS | STOP | TIME | USE | USER | VIEW ]  <br />  ​
+NET  <br />   [ ACCOUNTS | COMPUTER | CONFIG | CONTINUE | FILE | GROUP | HELP |  <br />   HELPMSG | LOCALGROUP | PAUSE | SESSION | SHARE | START |  <br />   STATISTICS | STOP | TIME | USE | USER | VIEW ]
 
-停止和启动特定的服务  <br />  `**Net stop/start [servicename]**`  <br />  **​**
+停止和启动特定的服务  <br />  `**Net stop/start [servicename]**`
 
-显示工作站或服务器的网络统计信息  <br />  `Net statistics [WORKSTATION]`  <br />  ​
+显示工作站或服务器的网络统计信息  <br />  `Net statistics [WORKSTATION]`
 
-NET USER  <br />  [username [password | *] [options]] [/DOMAIN]  <br />   username {password | *} /ADD [options] [/DOMAIN]  <br />   username [/DELETE] [/DOMAIN]  <br />   username [/TIMES:{times | ALL}]  <br />   username [/ACTIVE: {YES | NO}]  <br />  ​
+NET USER  <br />  [username [password | *] [options]] [/DOMAIN]  <br />   username {password | *} /ADD [options] [/DOMAIN]  <br />   username [/DELETE] [/DOMAIN]  <br />   username [/TIMES:{times | ALL}]  <br />   username [/ACTIVE: {YES | NO}]
 
 **直接改密**
 ```javascript
@@ -407,13 +402,13 @@ net user %username% password
 ```
 
 # SC
-用来与服务控制管理器和服务进行通信  <br />  sc <server> [command] [service name] <option1> <option2>...  <br />  ​
+用来与服务控制管理器和服务进行通信  <br />  sc <server> [command] [service name] <option1> <option2>...
 
- <server> 选项的格式为 "\\ServerName"  <br />   可通过键入以下命令获取有关命令的更多帮助: "sc [command]"  <br />   命令:  <br />   query-----------查询服务的状态，或枚举服务类型的状态。  <br />   queryex---------查询服务的扩展状态或枚举服务类型的状态。  <br />   start-----------启动服务。  <br />   pause-----------向服务发送 PAUSE 控制请求。  <br />   interrogate-----向服务发送 INTERROGATE 控制请求。  <br />   continue--------向服务发送 CONTINUE 控制请求。  <br />   stop------------向服务发送 STOP 请求。  <br />   config----------更改服务的配置(永久)。  <br />   description-----更改服务的描述。  <br />   failure---------更改失败时服务执行的操作。  <br />   failureflag-----更改服务的失败操作标志。  <br />   sidtype---------更改服务的服务 SID 类型。  <br />   privs-----------更改服务的所需特权。  <br />   managedaccount--更改服务以将服务帐户密码标记为由 LSA 管理。  <br />   qc--------------查询服务的配置信息。  <br />   qdescription----查询服务的描述。  <br />   qfailure--------查询失败时服务执行的操作。  <br />   qfailureflag----查询服务的失败操作标志。  <br />   qsidtype--------查询服务的服务 SID 类型。  <br />   qprivs----------查询服务的所需特权。  <br />   qtriggerinfo----查询服务的触发器参数。  <br />   qpreferrednode--查询服务的首选 NUMA 节点。  <br />   qmanagedaccount-查询服务是否将帐户与 LSA 管理的密码结合使用。  <br />   qprotection-----查询服务的进程保护级别。  <br />   quserservice----查询用户服务模板的本地实例。  <br />   delete ----------(从注册表中)删除服务。  <br />   create----------创建服务(并将其添加到注册表中)。  <br />   control---------向服务发送控制。  <br />   sdshow----------显示服务的安全描述符。  <br />   sdset-----------设置服务的安全描述符。  <br />   showsid---------显示与任意名称对应的服务 SID 字符串。  <br />   triggerinfo-----配置服务的触发器参数。  <br />   preferrednode---设置服务的首选 NUMA 节点。  <br />   GetDisplayName--获取服务的 DisplayName。  <br />   GetKeyName------获取服务的 ServiceKeyName。  <br />   EnumDepend------枚举服务依赖关系。  <br />  ​
+ <server> 选项的格式为 "\\ServerName"  <br />   可通过键入以下命令获取有关命令的更多帮助: "sc [command]"  <br />   命令:  <br />   query-----------查询服务的状态，或枚举服务类型的状态。  <br />   queryex---------查询服务的扩展状态或枚举服务类型的状态。  <br />   start-----------启动服务。  <br />   pause-----------向服务发送 PAUSE 控制请求。  <br />   interrogate-----向服务发送 INTERROGATE 控制请求。  <br />   continue--------向服务发送 CONTINUE 控制请求。  <br />   stop------------向服务发送 STOP 请求。  <br />   config----------更改服务的配置(永久)。  <br />   description-----更改服务的描述。  <br />   failure---------更改失败时服务执行的操作。  <br />   failureflag-----更改服务的失败操作标志。  <br />   sidtype---------更改服务的服务 SID 类型。  <br />   privs-----------更改服务的所需特权。  <br />   managedaccount--更改服务以将服务帐户密码标记为由 LSA 管理。  <br />   qc--------------查询服务的配置信息。  <br />   qdescription----查询服务的描述。  <br />   qfailure--------查询失败时服务执行的操作。  <br />   qfailureflag----查询服务的失败操作标志。  <br />   qsidtype--------查询服务的服务 SID 类型。  <br />   qprivs----------查询服务的所需特权。  <br />   qtriggerinfo----查询服务的触发器参数。  <br />   qpreferrednode--查询服务的首选 NUMA 节点。  <br />   qmanagedaccount-查询服务是否将帐户与 LSA 管理的密码结合使用。  <br />   qprotection-----查询服务的进程保护级别。  <br />   quserservice----查询用户服务模板的本地实例。  <br />   delete ----------(从注册表中)删除服务。  <br />   create----------创建服务(并将其添加到注册表中)。  <br />   control---------向服务发送控制。  <br />   sdshow----------显示服务的安全描述符。  <br />   sdset-----------设置服务的安全描述符。  <br />   showsid---------显示与任意名称对应的服务 SID 字符串。  <br />   triggerinfo-----配置服务的触发器参数。  <br />   preferrednode---设置服务的首选 NUMA 节点。  <br />   GetDisplayName--获取服务的 DisplayName。  <br />   GetKeyName------获取服务的 ServiceKeyName。  <br />   EnumDepend------枚举服务依赖关系。
 
- 以下命令不需要服务名称:  <br />   sc <server> <command> <option>  <br />   boot------------(ok | bad)指示是否应将上一次启动另存为最近一次已知的正确启动配置  <br />   Lock------------锁定服务数据库  <br />   QueryLock-------查询 SCManager 数据库的 LockStatus  <br />  ​
+ 以下命令不需要服务名称:  <br />   sc <server> <command> <option>  <br />   boot------------(ok | bad)指示是否应将上一次启动另存为最近一次已知的正确启动配置  <br />   Lock------------锁定服务数据库  <br />   QueryLock-------查询 SCManager 数据库的 LockStatus
 
-QUERY 和 QUERYEX 选项:  <br />   如果查询命令带服务名称，将返回  <br />   该服务的状态。其他选项不适合这种  <br />   情况。如果查询命令不带参数或  <br />   带下列选项之一，将枚举此服务。  <br />   type= 要枚举的服务的类型(driver, service, userservice, all)  <br />   (默认 = service)  <br />   state= 要枚举的服务的状态 (inactive, all)  <br />   (默认 = active)  <br />   bufsize= 枚举缓冲区的大小(以字节计)  <br />   (默认 = 4096)  <br />   ri= 开始枚举的恢复索引号  <br />   (默认 = 0)  <br />   group= 要枚举的服务组  <br />   (默认 = all groups)  <br />  ​
+QUERY 和 QUERYEX 选项:  <br />   如果查询命令带服务名称，将返回  <br />   该服务的状态。其他选项不适合这种  <br />   情况。如果查询命令不带参数或  <br />   带下列选项之一，将枚举此服务。  <br />   type= 要枚举的服务的类型(driver, service, userservice, all)  <br />   (默认 = service)  <br />   state= 要枚举的服务的状态 (inactive, all)  <br />   (默认 = active)  <br />   bufsize= 枚举缓冲区的大小(以字节计)  <br />   (默认 = 4096)  <br />   ri= 开始枚举的恢复索引号  <br />   (默认 = 0)  <br />   group= 要枚举的服务组  <br />   (默认 = all groups)
 
 语法示例  <br />  sc query - 枚举活动服务和驱动程序的状态  <br />  sc query eventlog - 显示 eventlog 服务的状态  <br />  sc queryex eventlog - 显示 eventlog 服务的扩展状态  <br />  sc query type= driver - 仅枚举活动驱动程序  <br />  sc query type= service - 仅枚举 Win32 服务  <br />  sc query state= all - 枚举所有服务和驱动程序  <br />  sc query bufsize= 50 - 枚举缓冲区为 50 字节  <br />  sc query ri= 14 - 枚举时恢复索引 = 14  <br />  sc queryex group= "" - 枚举不在组内的活动服务  <br />  sc query type= interact - 枚举所有不活动服务  <br />  sc query type= driver group= NDIS - 枚举所有 NDIS 驱动程序
 
@@ -436,17 +431,15 @@ QUERY 和 QUERYEX 选项:  <br />   如果查询命令带服务名称，将返�
 - /D  也处理文件夹。
 - /L  处理符号链接和符号链接目标的属性
 
-​
-
 隐藏文件：attrib +s +h + 文件路径  <br />  取消隐藏：attrib -s -h + 文件路径
 
 # copy
-将一份或多份文件复制到另一个位置。  <br />  COPY [/D] [/V] [/N] [/Y | /-Y] [/Z] [/L] [/A | /B ] source [/A | /B]  <br />   [+ source [/A | /B] [+ ...]] [destination [/A | /B]]  <br />  ​
+将一份或多份文件复制到另一个位置。  <br />  COPY [/D] [/V] [/N] [/Y | /-Y] [/Z] [/L] [/A | /B ] source [/A | /B]  <br />   [+ source [/A | /B] [+ ...]] [destination [/A | /B]]
 
  source 指定要复制的文件。  <br />   /A 表示一个 ASCII 文本文件。  <br />   /B 表示一个二进位文件。  <br />   /D 允许解密要创建的目标文件  <br />   destination 为新文件指定目录和/或文件名。  <br />   /V 验证新文件写入是否正确。  <br />   /N 复制带有非 8dot3 名称的文件时，尽可能使用短文件名。  <br />   /Y 不使用确认是否要覆盖现有目标文件的提示。  <br />   /-Y 使用确认是否要覆盖现有目标文件的提示。  <br />   /Z 用可重新启动模式复制已联网的文件。  <br />   /L 如果源是符号链接，请将链接复制到目标而不是源链接指向的实际文件。
 
 # xcopy
-复制文件和目录树。  <br />  XCOPY source [destination] [/A | /M] [/D[:date]] [/P] [/S [/E]] [/V] [/W]  <br />   [/C] [/I] [/Q] [/F] [/L] [/G] [/H] [/R] [/T] [/U]  <br />   [/K] [/N] [/O] [/X] [/Y] [/-Y] [/Z] [/B] [/J]  <br />   [/EXCLUDE:file1[+file2][+file3]...]  <br />  ​
+复制文件和目录树。  <br />  XCOPY source [destination] [/A | /M] [/D[:date]] [/P] [/S [/E]] [/V] [/W]  <br />   [/C] [/I] [/Q] [/F] [/L] [/G] [/H] [/R] [/T] [/U]  <br />   [/K] [/N] [/O] [/X] [/Y] [/-Y] [/Z] [/B] [/J]  <br />   [/EXCLUDE:file1[+file2][+file3]...]
 
 source       指定要复制的文件。  <br />  destination  指定新文件的位置和/或名称。  <br />  /A           仅复制有存档属性集的文件，不更改属性。  <br />  /M           仅复制有存档属性集的文件，并关闭存档属性。  <br />  /D:m-d-y     复制在指定日期或指定日期以后更改的文件。  <br />  /EXCLUDE:file1[+file2][+file3]...   指定含有字符串的文件列表。  <br />  /P           创建每个目标文件之前提示你。  <br />  /S           复制目录和子目录，不包括空目录。  <br />  /E           复制目录和子目录，包括空目录。  <br />  /V           验证每个新文件的大小。  <br />  /W           提示你在复制前按键。  <br />  /C           即使有错误，也继续复制。  <br />  /I           如果目标不存在，且要复制多个文件，则假定目标必须是目录。  <br />  /Q           复制时不显示文件名。  <br />  /F           复制时显示完整的源文件名和目标文件名。  <br />  /L           显示要复制的文件。  <br />  /G           允许将加密文件复制到不支持加密的目标。  <br />  /H           也复制隐藏文件和系统文件。  <br />  /R           覆盖只读文件。  <br />  /T           创建目录结构，但不复制文件。  <br />  /U           只复制已经存在于目标中的文件。  <br />  /K           复制属性。一般的 Xcopy 会重置只读属性。  <br />  /N           用生成的短名称复制。  <br />  /O           复制文件所有权和 ACL 信息。  <br />  /X           复制文件审核设置(隐含 /O)。  <br />  /Y           取消提示以确认要覆盖现有目标文件。  <br />  /-Y          要提示以确认要覆盖现有目标文件。  <br />  /Z           在可重新启动模式下复制网络文件。  <br />  /B           复制符号链接本身与链接目标。  <br />  /J           复制时不使用缓冲的 I/O。推荐复制大文件时使用
 
@@ -454,13 +447,15 @@ source       指定要复制的文件。  <br />  destination  指定新文件�
 删除一个或多个文件。  <br />  DEL [/P] [/F] [/S] [/Q] [/A[[:]attributes]] names  <br />  ERASE [/P] [/F] [/S] [/Q] [/A[[:]attributes]] names  <br />  names         指定一个或多个文件或者目录列表，可用通配符  <br />  /P            删除每一个文件之前提示确认。  <br />  /F            强制删除只读文件。  <br />  /S            删除所有子目录中的指定的文件。  <br />  /Q            安静模式。删除全局通配符时，不要求确认  <br />  /A            根据属性选择要删除的文件  <br />   属性 R 只读文件 S 系统文件  <br />   H 隐藏文件 A 准备存档的文件  <br />   I 无内容索引文件 L 重新分析点  <br />   O 脱机文件 - 表示“否”的前缀
 
 # FC
-比较两个文件或两个文件集并显示它们之间的不同  <br />  FC [/A] [/C] [/L] [/LBn] [/N] [/OFF[LINE]] [/T] [/U] [/W] [/nnnn]  [drive1:][path1]filename1 [drive2:][path2]filename2  <br />  FC /B [drive1:][path1]filename1 [drive2:][path2]filename2  <br />  /A         只显示每个不同处的第一行和最后一行。  <br />  /B         执行二进制比较。  <br />  /C         不分大小写。  <br />  /L         将文件作为 ASCII 文字比较。  <br />  /LBn       将连续不匹配的最大值设置为指定的行数。  <br />  /N         在 ASCII 比较上显示行数。  <br />  /OFF[LINE] 不要跳过带有脱机属性集的文件。  <br />  /T         不要将制表符扩充到空格。  <br />  /U         将文件作为 UNICODE 文本文件比较。  <br />  /W         为了比较而压缩空白(制表符和空格)。  <br />  /nnnn      指定不匹配处后必须连续匹配的行数  <br />  ​  <br />  
+比较两个文件或两个文件集并显示它们之间的不同  <br />  FC [/A] [/C] [/L] [/LBn] [/N] [/OFF[LINE]] [/T] [/U] [/W] [/nnnn]  [drive1:][path1]filename1 [drive2:][path2]filename2  <br />  FC /B [drive1:][path1]filename1 [drive2:][path2]filename2  <br />  /A         只显示每个不同处的第一行和最后一行。  <br />  /B         执行二进制比较。  <br />  /C         不分大小写。  <br />  /L         将文件作为 ASCII 文字比较。  <br />  /LBn       将连续不匹配的最大值设置为指定的行数。  <br />  /N         在 ASCII 比较上显示行数。  <br />  /OFF[LINE] 不要跳过带有脱机属性集的文件。  <br />  /T         不要将制表符扩充到空格。  <br />  /U         将文件作为 UNICODE 文本文件比较。  <br />  /W         为了比较而压缩空白(制表符和空格)。  <br />  /nnnn      指定不匹配处后必须连续匹配的行数
+
 
 # 目录（directory）操作
 
 ## DIR
-显示目录中的文件和子目录列表  <br />  DIR [drive:][path][filename] [/A[[:]attributes]] [/B] [/C] [/D] [/L] [/N]  <br />   [/O[[:]sortorder]] [/P] [/Q] [/R] [/S] [/T[[:]timefield]] [/W] [/X] [/4]  <br />  
-  <br />   /A 显示具有指定属性的文件。 属性 D 目录 R 只读文件  <br />   H 隐藏文件 A 准备存档的文件  <br />   S 系统文件 I 无内容索引文件  <br />   L 重新分析点 O 脱机文件 - 表示“否”的前缀  <br />   /B 使用空格式(没有标题信息或摘要)。  <br />   /C 在文件大小中显示千位数分隔符。这是默认值。用 /-C 来禁用分隔符显示。  <br />   /D 跟宽式相同，但文件是按栏分类列出的。  <br />   /L 用小写。  <br />   /N 新的长列表格式，其中文件名在最右边。  <br />   /O 用分类顺序列出文件。排列顺序 N 按名称(字母顺序) S 按大小(从小到大)  <br />   E 按扩展名(字母顺序) D 按日期/时间(从先到后)  <br />   G 组目录优先 - 反转顺序的前缀  <br />   /P 在每个信息屏幕后暂停。  <br />   /Q 显示文件所有者。  <br />   /R 显示文件的备用数据流。  <br />   /S 显示指定目录和所有子目录中的文件。  <br />   /T 控制显示或用来分类的时间字符域时间段 C 创建时间  <br />   A 上次访问时间  <br />   W 上次写入的时间  <br />   /W 用宽列表格式。  <br />   /4 以四位数字显示年份
+显示目录中的文件和子目录列表  <br />  DIR [drive:][path][filename] [/A[[:]attributes]] [/B] [/C] [/D] [/L] [/N]  <br />   [/O[[:]sortorder]] [/P] [/Q] [/R] [/S] [/T[[:]timefield]] [/W] [/X] [/4]
+
+ /A 显示具有指定属性的文件。 属性 D 目录 R 只读文件  <br />   H 隐藏文件 A 准备存档的文件  <br />   S 系统文件 I 无内容索引文件  <br />   L 重新分析点 O 脱机文件 - 表示“否”的前缀  <br />   /B 使用空格式(没有标题信息或摘要)。  <br />   /C 在文件大小中显示千位数分隔符。这是默认值。用 /-C 来禁用分隔符显示。  <br />   /D 跟宽式相同，但文件是按栏分类列出的。  <br />   /L 用小写。  <br />   /N 新的长列表格式，其中文件名在最右边。  <br />   /O 用分类顺序列出文件。排列顺序 N 按名称(字母顺序) S 按大小(从小到大)  <br />   E 按扩展名(字母顺序) D 按日期/时间(从先到后)  <br />   G 组目录优先 - 反转顺序的前缀  <br />   /P 在每个信息屏幕后暂停。  <br />   /Q 显示文件所有者。  <br />   /R 显示文件的备用数据流。  <br />   /S 显示指定目录和所有子目录中的文件。  <br />   /T 控制显示或用来分类的时间字符域时间段 C 创建时间  <br />   A 上次访问时间  <br />   W 上次写入的时间  <br />   /W 用宽列表格式。  <br />   /4 以四位数字显示年份
 
 ## MD / MKDIR
 创建目录  <br />  MKDIR [drive:]path  <br />  MD [drive:]path
@@ -503,12 +498,12 @@ source       指定要复制的文件。  <br />  destination  指定新文件�
 # Internet
 
 ## IPCONFIG
-ipconfig [/allcompartments] [/? | /all |/renew [adapter] | /release [adapter] |  <br />                               /renew6 [adapter] | /release6 [adapter] |  <br />                               /flushdns | /displaydns | /registerdns |  <br />                               /showclassid adapter |  <br />                               /setclassid adapter [classid] |  <br />                               /showclassid6 adapter |  <br />                               /setclassid6 adapter [classid] ]  <br />  ​
+ipconfig [/allcompartments] [/? | /all |/renew [adapter] | /release [adapter] |  <br />                               /renew6 [adapter] | /release6 [adapter] |  <br />                               /flushdns | /displaydns | /registerdns |  <br />                               /showclassid adapter |  <br />                               /setclassid adapter [classid] |  <br />                               /showclassid6 adapter |  <br />                               /setclassid6 adapter [classid] ]
 
 ipconfig：显示绑定到 TCP/IP 的每个适配器的 IP 地址、子网掩码和默认网关  <br />  ipconfig /all ：查看电脑网络连接信息，包括本地IP、DNS地址等。  <br />  ipconfig /flushdns：清除DNS解析程序缓存。
 
 ## RASDIAL
-rasdial entryname [username [password|*]] [/DOMAIN:domain]  <br />              [/PHONE:phonenumber] [/CALLBACK:callbacknumber]  <br />              [/PHONEBOOK:phonebookfile] [/PREFIXSUFFIX]  <br />      rasdial [entryname] /DISCONNECT  <br />  ​
+rasdial entryname [username [password|*]] [/DOMAIN:domain]  <br />              [/PHONE:phonenumber] [/CALLBACK:callbacknumber]  <br />              [/PHONEBOOK:phonebookfile] [/PREFIXSUFFIX]  <br />      rasdial [entryname] /DISCONNECT
 
 **网络连接**
 ```javascript
@@ -516,7 +511,7 @@ rasdial 宽带连接名 用户名 密码
 ```
 
 ## netsh
-netsh [-a AliasFile] [-c Context] [-r RemoteMachine] [-u [DomainName]UserName] [-p Password | *]  <br />  [Command | -f ScriptFile]  <br />  ​
+netsh [-a AliasFile] [-c Context] [-r RemoteMachine] [-u [DomainName]UserName] [-p Password | *]  <br />  [Command | -f ScriptFile]
 
 **开热点（WIFI）**
 ```javascript
@@ -534,14 +529,12 @@ netsh wlan show hostednetwork setting=security
 ```
 
 
-
 # 函数
 ```javascript
 :function_name
 Do_something
 EXIT /B 0
 ```
-
 
 
 # —— 实例 ——

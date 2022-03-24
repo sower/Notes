@@ -1,11 +1,11 @@
 
 
-
 # ——超文本标记语言 (Hyper Text Markup Language)——
 
 
-Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)  <br />  
-  <br />  **HTML 基本文档**
+Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)
+
+**HTML 基本文档**
 ```html
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -18,7 +18,6 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)  <b
   </body>
 </html>
 ```
-
 
 
 # HTML元素
@@ -126,7 +125,6 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)  <b
 
 
 
-
 ## 文本格式化（Formatting）
 | 标签 | 描述 |
 | --- | --- |
@@ -210,7 +208,7 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)  <b
     at 50/100
 </meter>
 ```
-​
+
 
 
 ## 链接（Links）
@@ -230,7 +228,6 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)  <b
 
 <link rel="stylesheet" type="text/css" href="theme.css">
 ```
-​
 
 **<a>属性**
 
@@ -348,7 +345,8 @@ p {color:blue;}
   这是一段解释文本。
 </details>
 ```
-![](./assets/1643811695749-c054d621-6156-4e0f-b82e-5464847cae8f.jpeg)  <br />  ​  <br />  
+![](./assets/1643811695749-c054d621-6156-4e0f-b82e-5464847cae8f.jpeg)
+
 
 ## 列表（List）
 | 标签 | 描述 |
@@ -363,7 +361,6 @@ p {color:blue;}
 | [<menuitem>](https://www.w3school.com.cn/tags/tag_menuitem.asp) | 定义用户可以从弹出菜单调用的命令/菜单项目。 |
 | [<command>](https://www.w3school.com.cn/tags/tag_command.asp) | 定义命令按钮。 |
 
-​
 
 <ol>属性
 
@@ -418,7 +415,6 @@ p {color:blue;}
 | [<col>](https://www.w3school.com.cn/tags/tag_col.asp) | column |
 | [<colgroup>](https://www.w3school.com.cn/tags/tag_colgroup.asp) | 定义表格中供格式化的列组。 |
 
-​
 
 <col>span属性：默认为1。如果大于1，表示该列的宽度包含连续的多列。  <br />  <th> & <td>
 
@@ -531,7 +527,6 @@ p {color:blue;}
    - _parent（父窗口）
    - _top（顶层窗口）
 
-​  <br />  
 ```html
 <form action="https://example.com/api"
       enctype="multipart/form-data"
@@ -541,7 +536,6 @@ p {color:blue;}
   <input type="submit" value="上传"> <input type="reset" value="清除">
 </form>
 ```
-​
 
 **<fieldset>属性**
 
@@ -557,14 +551,11 @@ p {color:blue;}
     </fieldset>
 </form>
 ```
-​
 
 **<label>属性**
 
 - for：关联控件的id属性。
 - form：关联表单的id属性。设置了该属性后，<label>可以放置在页面的任何位置，否则只能放在<form>内部。
-
-​
 
 **<input>属性**
 
@@ -590,9 +581,7 @@ text	普通的(单行)文本输入框  <br />  search	搜索的文本输入框  
 - size：表示输入框的显示长度有多少个字符宽，默认等于20。超过这个数字的字符，必须移动光标才能看到。
 - spellcheck：是否对用户输入启用拼写检查
 
-​
-
-color	选择颜色的控件  <br />  date	日期的输入框(YYYY-MM-DD)  <br />  time	时间的输入框(hh:mm:ss)  <br />  month	YYYY-MM  <br />  week	yyyy-Www  <br />  datetime-local	yyyy-MM-ddThh:mm  <br />  ​
+color	选择颜色的控件  <br />  date	日期的输入框(YYYY-MM-DD)  <br />  time	时间的输入框(hh:mm:ss)  <br />  month	YYYY-MM  <br />  week	yyyy-Www  <br />  datetime-local	yyyy-MM-ddThh:mm
 
 button	没有默认行为的按钮，通过脚本指定click事件的监听函数来使用。  <br />  submit	表单的提交按钮  <br />  image	将一个图像文件作为提交按钮
 
@@ -601,8 +590,6 @@ button	没有默认行为的按钮，通过脚本指定click事件的监听函�
 - formmethod：提交表单使用的 HTTP 方法（get或post）。
 - formnovalidate：表示数据提交给服务器之前，是否要忽略表单验证。
 - formtarget：收到服务器返回的数据后，在哪一个窗口显示。
-
-​
 
 reset	重置按钮  <br />  checkbox	复选框  <br />  radio	单选框
 
@@ -633,7 +620,6 @@ reset	重置按钮  <br />  checkbox	复选框  <br />  radio	单选框
   </div>
 </fieldset>
 ```
-​
 
 password	密码输入框
 
@@ -656,9 +642,7 @@ file	文件选择框
    - environment（外接的摄像头或麦克风）。
 - multiple：是否允许用户选择多个文件。
 
-​
-
-hidden	不显示在页面的控件，用户无法输入它的值，主要用来向服务器传递一些隐藏信息  <br />  ​
+hidden	不显示在页面的控件，用户无法输入它的值，主要用来向服务器传递一些隐藏信息
 
 number	数字输入框，只能输入数字  <br />  range	滑块
 
@@ -675,7 +659,7 @@ number	数字输入框，只能输入数字  <br />  range	滑块
          min="0" max="11">
 ```
 
-  <br />  **<button>	属性**
+**<button>	属性**
 
 - autofocus：布尔属性，表示网页加载时，焦点就在这个按钮。
 - disabled：布尔属性，表示按钮不可用，会导致按钮变灰，不可点击。
@@ -703,7 +687,7 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 </button>
 ```
 
-  <br />  **<select>属性**
+**<select>属性**
 
 - autofocus：布尔属性，页面加载时是否自动获得焦点。
 - disabled：布尔属性，是否禁用当前控件。
@@ -744,7 +728,6 @@ number	数字输入框，只能输入数字  <br />  range	滑块
   </select>
 </label>
 ```
-​
 
 **<textarea>属性**
 
@@ -770,7 +753,6 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 这是一个很长的故事。
 </textarea>
 ```
-​
 
 **<output>属性**
 
@@ -793,7 +775,6 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 | [<noframes>](https://www.w3school.com.cn/tags/tag_noframes.asp) | 定义针对不支持框架的用户的替代内容。 |
 | [<iframe>](https://www.w3school.com.cn/tags/tag_iframe.asp) | 定义内联框架。 |
 
-​
 
 <iframe>属性
 
@@ -827,7 +808,6 @@ number	数字输入框，只能输入数字  <br />  range	滑块
    - allow-top-navigation-by-user-activation：允许嵌入的网页对顶级窗口进行导航，但必须由用户激活。
    - allow-downloads-without-user-activation：允许在没有用户激活的情况下，嵌入的网页启动下载。
 
-​  <br />  
 ```html
 <iframe src="https://www.example.com"
         width="100%" height="500" frameborder="0"
@@ -835,7 +815,6 @@ number	数字输入框，只能输入数字  <br />  range	滑块
   <p><a href="https://www.example.com">点击打开嵌入页面</a></p>
 </iframe>
 ```
-​
 
 **图片（Images）**
 
@@ -849,7 +828,6 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 | [<figure>](https://www.w3school.com.cn/tags/tag_figure.asp) | 定义媒介内容的分组，以及它们的标题。 |
 | <picture> | 容器标签 |
 
-​
 
 **<img> 属性**
 
@@ -893,7 +871,7 @@ number	数字输入框，只能输入数字  <br />  range	滑块
   <img src="logo.png" alt="ACME Corp">
 </picture>
 ```
-​  <br />  
+
 
 ## 影音 (Multimedia)
 | 标签 | 描述 |
@@ -906,7 +884,6 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 | [<object>](https://www.w3school.com.cn/tags/tag_object.asp) | 定义嵌入的对象。 |
 | [<param>](https://www.w3school.com.cn/tags/tag_param.asp) | 定义对象的参数。 |
 
-​
 
 <video>属性
 
@@ -934,7 +911,6 @@ number	数字输入框，只能输入数字  <br />  range	滑块
        poster="poster.png">
 </video>
 ```
-​
 
 <audio>属性
 
@@ -952,7 +928,6 @@ number	数字输入框，只能输入数字  <br />  range	滑块
   <p>你的浏览器不支持 HTML5 音频，请直接下载<a href="foo.mp3">音频文件</a>。</p>
 </audio>
 ```
-​
 
 <track>属性
 
@@ -986,7 +961,6 @@ number	数字输入框，只能输入数字  <br />  range	滑块
        width="250"
        height="200">
 ```
-​
 
 <object>属性
 
@@ -1005,14 +979,11 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 
 
 # 字符
-​
 
 **码点表示法**  <br />  每个字符有一个 Unicode 号码，称为码点（code point）
 
 - &#N;（十进制，N代表码点）
 - &#xN;（十六进制，N代表码点）
-
-​
 
 **实体表示法（entity）**  <br />  HTML 为一些特殊字符，规定了容易记忆的名字，允许通过名字来表示它们
 
@@ -1038,11 +1009,9 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 | 空格 | &nbsp; |
 
 
-  <br />  
 
 
 # 全局属性
-​  <br />  
 
 | 属性 | 描述 |
 | --- | --- |
@@ -1063,7 +1032,6 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 | [title](https://www.w3school.com.cn/tags/att_standard_title.asp) | 规定有关元素的额外信息。 |
 | [translate](https://www.w3school.com.cn/tags/att_global_translate.asp) | 规定是否应该翻译元素内容。 |
 
-​
 
 lang属性的值，必须符合 BCP47 的标准。
 
@@ -1084,7 +1052,7 @@ lang属性的值，必须符合 BCP47 的标准。
 
 
 ## <a>
-除了网页元素的通用接口（Node接口、Element接口、HTMLElement接口），它还继承了HTMLAnchorElement接口和HTMLHyperlinkElementUtils接口。  <br />  ​
+除了网页元素的通用接口（Node接口、Element接口、HTMLElement接口），它还继承了HTMLAnchorElement接口和HTMLHyperlinkElementUtils接口。
 
 [属性](https://wangdoc.com/javascript/elements/a.html#%E5%B1%9E%E6%80%A7)
 
@@ -1099,9 +1067,8 @@ lang属性的值，必须符合 BCP47 的标准。
 - [text 属性](https://wangdoc.com/javascript/elements/a.html#text-%E5%B1%9E%E6%80%A7)
 - [type](https://wangdoc.com/javascript/elements/a.html#type-%E5%B1%9E%E6%80%A7)接目标的 MIME 类型
 
-​  <br />  
 
-## ​[<img>](https://wangdoc.com/javascript/elements/image.html)
+## [<img>](https://wangdoc.com/javascript/elements/image.html)
 继承了 HTMLImageElement 接口
 
 - HTMLImageElement.src	图像的完整网址
@@ -1117,10 +1084,9 @@ lang属性的值，必须符合 BCP47 的标准。
 - [HTMLImageElement.referrerPolicy](https://wangdoc.com/javascript/elements/image.html#htmlimageelementreferrerpolicy)
 - [HTMLImageElement.x，HTMLImageElement.y](https://wangdoc.com/javascript/elements/image.html#htmlimageelementx%EF%BC%8Chtmlimageelementy)
 
-​  <br />  
 
-## ​[<form>](https://wangdoc.com/javascript/elements/form.html)
-继承了 HTMLFormElement 接口  <br />  ​
+## [<form>](https://wangdoc.com/javascript/elements/form.html)
+继承了 HTMLFormElement 接口
 
 属性
 
@@ -1135,8 +1101,6 @@ lang属性的值，必须符合 BCP47 的标准。
 - autocomplete：字符串on或off，表示浏览器是否要对<input>控件提供自动补全。
 - noValidate：布尔值，表示是否关闭表单的自动校验。
 
-​
-
 方法
 
 - submit()：提交表单，但是不会触发submit事件和表单的自动校验。
@@ -1146,8 +1110,8 @@ lang属性的值，必须符合 BCP47 的标准。
 
 
 
-## ​[<input>](https://wangdoc.com/javascript/elements/input.html)
-HTMLInputElement 接口  <br />  ​
+## [<input>](https://wangdoc.com/javascript/elements/input.html)
+HTMLInputElement 接口
 
 [特征属性](https://wangdoc.com/javascript/elements/input.html#%E7%89%B9%E5%BE%81%E5%B1%9E%E6%80%A7)
 
@@ -1160,8 +1124,6 @@ HTMLInputElement 接口  <br />  ​
 - validity：返回一个ValidityState对象，表示<input>节点的校验状态。该属性只读。
 - validationMessage：字符串，表示该<input>节点的校验失败时，用户看到的报错信息。如果该节点不需要校验，或者通过校验，该属性为空字符串。该属性只读。
 - willValidate：布尔值，表示表单提交时，该<input>元素是否会被校验。该属性只读。
-
-​
 
 [表单相关属性](https://wangdoc.com/javascript/elements/input.html#%E8%A1%A8%E5%8D%95%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7)
 
@@ -1186,22 +1148,16 @@ HTMLInputElement 接口  <br />  ​
 - selectionEnd：整数，表示选中文本的结束位置。如果没有选中文本，返回光标在<input>元素内部的位置。该属性可读写。
 - selectionDirection：字符串，表示选中文本的方向。可能的值包括forward（与文字书写方向一致）、backward（与文字书写方向相反）和none（文字方向未知）。该属性可读写。
 
-​
-
 [复选框和单选框的特有属性](https://wangdoc.com/javascript/elements/input.html#%E5%A4%8D%E9%80%89%E6%A1%86%E5%92%8C%E5%8D%95%E9%80%89%E6%A1%86%E7%9A%84%E7%89%B9%E6%9C%89%E5%B1%9E%E6%80%A7)
 
 - checked：布尔值，表示该<input>元素是否选中。该属性可读写。
 - defaultChecked：布尔值，表示该<input>元素默认是否选中。该属性可读写。
 - indeterminate：布尔值，表示该<input>元素是否还没有确定的状态。一旦用户点击过一次，该属性就会变成false，表示用户已经给出确定的状态了。该属性可读写。
 
-​
-
 [文件上传按钮的特有属性](https://wangdoc.com/javascript/elements/input.html#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE%E7%9A%84%E7%89%B9%E6%9C%89%E5%B1%9E%E6%80%A7)
 
 - accept：字符串，表示该元素可以接受的文件类型，类型之间使用逗号分隔。该属性可读写。
 - files：返回一个FileList实例对象，包含了选中上传的一组File实例对象。
-
-​
 
 [其他属性](https://wangdoc.com/javascript/elements/input.html#%E5%85%B6%E4%BB%96%E5%B1%9E%E6%80%A7)
 
@@ -1214,8 +1170,6 @@ HTMLInputElement 接口  <br />  ​
 - step：字符串，表示在min属性到max属性之间，每次递增或递减时的数值或时间。
 - valueAsDate：Date实例，一旦设置，该<input>元素的值会被解释为指定的日期。如果无法解析该属性的值，<input>节点的值将是null。
 - valueAsNumber：浮点数，当前<input>元素的值会被解析为这个数值。
-
-​
 
 方法
 
@@ -1230,9 +1184,8 @@ HTMLInputElement 接口  <br />  ​
 - stepDown()：将当前<input>节点的值减少一个步长。
 - stepUp()：将当前<input>节点的值增加一个步长。
 
-​  <br />  
 
-## ​[<option>](https://wangdoc.com/javascript/elements/option.html)
+## [<option>](https://wangdoc.com/javascript/elements/option.html)
 HTMLOptionElement 接口  <br />  属性
 
 - disabled：布尔值，表示该项是否可选择。
@@ -1245,9 +1198,7 @@ HTMLOptionElement 接口  <br />  属性
 - value：字符串，该选项的值。表单提交时，上传的就是选中项的这个属性。
 
 
-
-
-## ​[<video>，<audio>](https://wangdoc.com/javascript/elements/video.html)
+## [<video>，<audio>](https://wangdoc.com/javascript/elements/video.html)
 HTMLMediaElement接口  <br />  属性
 
 - HTMLMediaElement.audioTracks：返回一个类似数组的对象，表示媒体文件包含的音轨。
@@ -1302,11 +1253,7 @@ HTMLVideoElement
 - HTMLVideoElement.videoWidth：该属性只读，返回一个整数，表示视频文件自身的宽度（单位像素）。
 - HTMLVideoElement.poster：字符串，表示一个图像文件的 URL，用来在无法获取视频文件时替代显示
 
-​  <br />  
-
 - HTMLVideoElement.getVideoPlaybackQuality()：返回一个对象，包含了当前视频回放的一些数据
-
-​
 
 事件
 
@@ -1335,12 +1282,11 @@ HTMLVideoElement
 
 
 
-
 ---
 
-​  <br />  
 
-# ​[Canvas](https://wangdoc.com/webapi/canvas.html)
+
+# [Canvas](https://wangdoc.com/webapi/canvas.html)
 一个可以用 JavaScript 操作的位图（bitmap）
 ```vue
 <canvas id="myCanvas" width="400" height="250">
@@ -1350,7 +1296,7 @@ HTMLVideoElement
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
 ```
-​  <br />  
+
 
 ## 绘制图形
 路径
@@ -1381,8 +1327,6 @@ var ctx = canvas.getContext('2d');
 - CanvasRenderingContext2D.getLineDash()：返回一个数组，表示虚线里面线段和间距的长度。
 - CanvasRenderingContext2D.setLineDash()：数组，用于指定虚线里面线段和间距的长度。
 
-​
-
 矩形
 
 - CanvasRenderingContext2D.rect()：绘制矩形路径。
@@ -1390,14 +1334,10 @@ var ctx = canvas.getContext('2d');
 - CanvasRenderingContext2D.strokeRect()：绘制矩形边框。
 - CanvasRenderingContext2D.clearRect()：指定矩形区域的像素都变成透明。
 
-​
-
 弧线
 
 - CanvasRenderingContext2D.arc()：通过指定圆心和半径绘制弧形。
 - CanvasRenderingContext2D.arcTo()：通过指定两根切线和半径绘制弧形。
-
-​
 
 文本
 
@@ -1419,8 +1359,6 @@ var ctx = canvas.getContext('2d');
 - CanvasRenderingContext2D.createRadialGradient()：定义辐射渐变样式。
 - CanvasRenderingContext2D.createPattern()：定义图像填充样式。
 
-​
-
 阴影
 
 - CanvasRenderingContext2D.shadowBlur：阴影的模糊程度，默认为0。
@@ -1432,7 +1370,6 @@ var ctx = canvas.getContext('2d');
 
 
 ## 图像处理
-​
 
 CanvasRenderingContext2D.drawImage()
 
@@ -1454,9 +1391,7 @@ CanvasRenderingContext2D.drawImage()
 - CanvasRenderingContext2D.putImageData()：将 ImageData 对象写入画布
 - CanvasRenderingContext2D.createImageData()：生成 ImageData 对象
 
-​
-
-CanvasRenderingContext2D.save()：将画布的当前样式保存到堆栈，相当于在内存之中产生一个样式快照。  <br />  CanvasRenderingContext2D.restore()：将画布的样式恢复到上一个保存的快照，如果没有已保存的快照，则不产生任何效果。  <br />  CanvasRenderingContext2D.canvas：指向当前CanvasRenderingContext2D对象所在的<canvas>元素  <br />  ​
+CanvasRenderingContext2D.save()：将画布的当前样式保存到堆栈，相当于在内存之中产生一个样式快照。  <br />  CanvasRenderingContext2D.restore()：将画布的样式恢复到上一个保存的快照，如果没有已保存的快照，则不产生任何效果。  <br />  CanvasRenderingContext2D.canvas：指向当前CanvasRenderingContext2D对象所在的<canvas>元素
 
 图像变换
 
@@ -1493,9 +1428,9 @@ setInterval(function () {
   ctx.fill();
 }, 30);
 ```
-​  <br />  
 
-# ​[SVG](https://wangdoc.com/webapi/svg.html)
+
+# [SVG](https://wangdoc.com/webapi/svg.html)
  (Scalable Vector Graphics ，可伸缩矢量图形)
 
 - 用于定义用于网络的基于矢量的图形
@@ -1511,46 +1446,45 @@ setInterval(function () {
 </svg>
 ```
 
-  <br />  SVG 的 CSS 属性
+SVG 的 CSS 属性
 
 -  fill：填充色 
 -  stroke：描边色 
 -  stroke-width：边框宽度 
 
-
-  <br />  `[<circle>](https://wangdoc.com/webapi/svg.html#circle%E6%A0%87%E7%AD%BE)`  <br />  cx、cy、r属性分别为横坐标、纵坐标和半径，单位为像素
+`[<circle>](https://wangdoc.com/webapi/svg.html#circle%E6%A0%87%E7%AD%BE)`  <br />  cx、cy、r属性分别为横坐标、纵坐标和半径，单位为像素
 ```html
 <circle cx="30"  cy="50" r="25" />
 ```
 
-  <br />  `[<line>](https://wangdoc.com/webapi/svg.html#line%E6%A0%87%E7%AD%BE)`
+`[<line>](https://wangdoc.com/webapi/svg.html#line%E6%A0%87%E7%AD%BE)`
 ```html
   <line x1="0" y1="0" x2="200" y2="0" style="stroke:rgb(0,0,0);stroke-width:5" />
 ```
 
-  <br />  `[<polyline>](https://wangdoc.com/webapi/svg.html#polyline%E6%A0%87%E7%AD%BE)`
+`[<polyline>](https://wangdoc.com/webapi/svg.html#polyline%E6%A0%87%E7%AD%BE)`
 ```html
  <polyline points="3,3 30,28 3,53" fill="none" stroke="black" />
 ```
 
-  <br />  `[<rect>](https://wangdoc.com/webapi/svg.html#rect%E6%A0%87%E7%AD%BE)`
+`[<rect>](https://wangdoc.com/webapi/svg.html#rect%E6%A0%87%E7%AD%BE)`
 ```html
   <rect x="0" y="0" height="100" width="200" style="stroke: #70d5dd; fill: #dd524b" />
 ```
 
-  <br />  `[<ellipse>](https://wangdoc.com/webapi/svg.html#ellipse%E6%A0%87%E7%AD%BE)`
+`[<ellipse>](https://wangdoc.com/webapi/svg.html#ellipse%E6%A0%87%E7%AD%BE)`
 ```html
  <ellipse cx="60" cy="60" ry="40" rx="20" stroke="black" stroke-width="5" fill="silver"/>
   cx属性和cy属性，指定了椭圆中心的横坐标和纵坐标（单位像素）；
   rx属性和ry属性，指定了椭圆横向轴和纵向轴的半径（单位像素）。
 ```
 
-  <br />  `[<polygon>](https://wangdoc.com/webapi/svg.html#polygon%E6%A0%87%E7%AD%BE)`
+`[<polygon>](https://wangdoc.com/webapi/svg.html#polygon%E6%A0%87%E7%AD%BE)`
 ```html
 <polygon fill="green" stroke="orange" stroke-width="1" points="0,0 100,0 100,100 0,100 0,0"/>
 ```
 
-  <br />  `[<path>](https://wangdoc.com/webapi/svg.html#path%E6%A0%87%E7%AD%BE)`
+`[<path>](https://wangdoc.com/webapi/svg.html#path%E6%A0%87%E7%AD%BE)`
 
 -  M：移动到（moveto） 
 -  L：画直线到（lineto） 
@@ -1568,13 +1502,14 @@ setInterval(function () {
  "></path>
 ```
 
-  <br />  `<text>`
+`<text>`
 ```html
  <text x="50" y="25">Hello World</text>
 ```
 
-  <br />  `[<use>](https://wangdoc.com/webapi/svg.html#use%E6%A0%87%E7%AD%BE)` 复制一个形状  <br />  
-  <br />  `[<g>](https://wangdoc.com/webapi/svg.html#g%E6%A0%87%E7%AD%BE)`  将多个形状组成一个组（group）
+`[<use>](https://wangdoc.com/webapi/svg.html#use%E6%A0%87%E7%AD%BE)` 复制一个形状
+
+`[<g>](https://wangdoc.com/webapi/svg.html#g%E6%A0%87%E7%AD%BE)`  将多个形状组成一个组（group）
 ```html
    <g id="myCircle">
     <text x="25" y="20">圆形</text>
@@ -1584,7 +1519,7 @@ setInterval(function () {
  <use href="#myCircle" x="10" y="0" fill="blue" />
 ```
 
-  <br />  `[<defs>](https://wangdoc.com/webapi/svg.html#defs%E6%A0%87%E7%AD%BE)` 自定义形状，它内部的代码不会显示，仅供引用
+`[<defs>](https://wangdoc.com/webapi/svg.html#defs%E6%A0%87%E7%AD%BE)` 自定义形状，它内部的代码不会显示，仅供引用
 ```html
   <defs>
     <g id="myCircle">
@@ -1594,7 +1529,7 @@ setInterval(function () {
   </defs>
 ```
 
-  <br />  `[<pattern>](https://wangdoc.com/webapi/svg.html#pattern%E6%A0%87%E7%AD%BE)`	自定义一个形状，该形状可以被引用来平铺一个区域。
+`[<pattern>](https://wangdoc.com/webapi/svg.html#pattern%E6%A0%87%E7%AD%BE)`	自定义一个形状，该形状可以被引用来平铺一个区域。
 ```html
   <defs>
     <pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
@@ -1603,21 +1538,19 @@ setInterval(function () {
   </defs>
 ```
 
-  <br />  `[<image>](https://wangdoc.com/webapi/svg.html#image%E6%A0%87%E7%AD%BE)`
+`[<image>](https://wangdoc.com/webapi/svg.html#image%E6%A0%87%E7%AD%BE)`
 ```html
   <image xlink:href="path/to/image.jpg"
     width="50%" height="50%"/>
 ```
 
-  <br />  `[<animate>](https://wangdoc.com/webapi/svg.html#animate%E6%A0%87%E7%AD%BE)` 产生动画效果
+`[<animate>](https://wangdoc.com/webapi/svg.html#animate%E6%A0%87%E7%AD%BE)` 产生动画效果
 
 -  attributeName：发生动画效果的属性名。 
 -  from：单次动画的初始值。 
 -  to：单次动画的结束值。 
 -  dur：单次动画的持续时间。 
 -  repeatCount：动画的循环模式。 
-
-
 
 ```html
   <rect x="0" y="0" width="100" height="100" fill="#feac5e">
@@ -1631,13 +1564,13 @@ setInterval(function () {
   </rect>
 ```
 
-  <br />  读取 SVG 源码
+读取 SVG 源码
 ```javascript
 var svgString = new XMLSerializer()
   .serializeToString(document.querySelector('svg'));
 ```
 
-  <br />  SVG 图像转为 Canvas 图像
+SVG 图像转为 Canvas 图像
 ```javascript
 // 将 SVG 图像指定到Image对象的src属性
 var img = new Image();
@@ -1659,7 +1592,7 @@ img.onload = function () {
 
 
 # 响应性设计（Responsive Web Design）
-自动识别屏幕宽度、并做出相应调整的网页设计。  <br />  **允许网页宽度自动调整**  <br />  
+自动识别屏幕宽度、并做出相应调整的网页设计。  <br />  **允许网页宽度自动调整**
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -1667,8 +1600,9 @@ img.onload = function () {
 原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%。-->
 ```
 
-  <br />  **不使用绝对宽度**  <br />  
-  <br />  **流动布局（fluid grid）**：各个区块的位置都是浮动的，不是固定不变的。  <br />  
+**不使用绝对宽度**
+
+**流动布局（fluid grid）**：各个区块的位置都是浮动的，不是固定不变的。
 
 ```css
 .main {
@@ -1681,7 +1615,7 @@ img.onload = function () {
 }
 ```
 
-  <br />  **选择加载CSS**  <br />  
+**选择加载CSS**
 
 ```html
 <link rel="stylesheet" type="text/css"
@@ -1692,7 +1626,7 @@ img.onload = function () {
    @import url("tinyScreen.css") screen and (max-device-width: 400px);
 ```
 
-  <br />  **CSS的@media规则**  <br />  
+**CSS的@media规则**
 
 ```css
 @media screen and (max-device-width: 400px) {
@@ -1706,17 +1640,15 @@ img.onload = function () {
 }
 ```
 
-  <br />  如果屏幕宽度小于400像素，则column块取消浮动（float:none）、宽度自动调节（width:auto），sidebar块不显示（display:none）
+如果屏幕宽度小于400像素，则column块取消浮动（float:none）、宽度自动调节（width:auto），sidebar块不显示（display:none）
 
 
-# ​[可访问性（accessibility）](https://developer.mozilla.org/zh-CN/docs/Learn/Accessibility)
+# [可访问性（accessibility）](https://developer.mozilla.org/zh-CN/docs/Learn/Accessibility)
 
 
-Web内容对于残障用户的可阅读和可理解性，也让普通用户能更容易使用和理解（使用移动设备或低速网络等）​
+Web内容对于残障用户的可阅读和可理解性，也让普通用户能更容易使用和理解（使用移动设备或低速网络等）
 
 - [良好的语义](https://developer.mozilla.org/zh-CN/docs/Learn/Accessibility/HTML#%E8%89%AF%E5%A5%BD%E7%9A%84%E8%AF%AD%E4%B9%89)
-
-​
 
 **ARIA** (Accessible Rich Internet Applications) 是一组属性，用于定义使残障人士更容易访问 Web 内容和 Web 应用程序  <br />  它补充了 HTML，以便在没有其他机制时可以将应用程序中常用的交互和小部件传递给辅助技术。
 

@@ -6,8 +6,6 @@ App类型
 - Web 应用（web application）
 - 混合应用（hybrid application）	分三层：HTML5 网页层、网页引擎层（本质是一个隔离的浏览器实例）、容器层。
 
-​
-
 操作系统的架构
 
 - 应用程序层
@@ -15,7 +13,7 @@ App类型
 - 核心类库
 - Linux 内核
 
-![](http://c.biancheng.net/uploads/allimg/190327/5-1Z32G5124H60.gif#crop=0&crop=0&crop=1&crop=1&id=CegQR&originHeight=517&originWidth=799&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  ​
+![](http://c.biancheng.net/uploads/allimg/190327/5-1Z32G5124H60.gif#crop=0&crop=0&crop=1&crop=1&id=CegQR&originHeight=517&originWidth=799&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 应用程序框架层
 
@@ -58,7 +56,7 @@ class TitleLayout(context: Context, attrs: AttributeSet) : LinearLayout(context,
 	}
 }
 ```
-**​**
+
 
 **Android 的布局**  <br />  通过容器的布局属性来管理子控件的位置关系
 
@@ -70,7 +68,7 @@ class TitleLayout(context: Context, attrs: AttributeSet) : LinearLayout(context,
 - 网格布局：GirdLayout
 - 约束布局：ConstraintLayout
 
-**​**
+
 
 **Android 常用的控件**
 
@@ -109,15 +107,11 @@ res
 - 在代码中	[<package_name>.]R.<resource_type>.<resource_name>	R.string.app_name
 - 在XML中	@[<package_name>:]<resource_type>/<resource_name>	@string/app_name
 
-​
-
 单位
 
 - px	pixe，像素。一个像素单位对应一个屏幕像素单位。不推荐使用px，不会根据屏幕密度自动缩放。
 - dp	density-independent pixel，密度无关像素。1dp在设备屏幕上总是等于1/160英寸。
 - sp	scale-independent pixel，缩放无关像素。通常用来设置屏幕上的字体大小。
-
-​
 
 **AndroidManifest.xml**
 
@@ -238,7 +232,6 @@ public class ChildActivity extends AppCompatActivity {
     }
 }
 ```
-​
 
 [Fragment](https://developer.android.google.cn/reference/androidx/fragment/app/Fragment?hl=zh-cn) 表示应用界面中可重复使用的一部分  <br />  ![](https://developer.android.google.cn/images/guide/fragments/fragment-view-lifecycle.png?hl=zh-cn#crop=0&crop=0&crop=1&crop=1&id=yizdq&originHeight=1004&originWidth=821&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
@@ -316,7 +309,6 @@ if (sendIntent.resolveActivity(getPackageManager()) != null) {
     </intent-filter>
 </activity>
 ```
-
 
 
 ## [服务](https://developer.android.google.cn/guide/components/services?hl=zh-cn)
@@ -439,7 +431,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 ```
 
 
-
 ## [权限](https://developer.android.google.cn/guide/topics/permissions/overview?hl=zh-cn)
 安装时权限  <br />  运行时权限
 ```java
@@ -491,13 +482,14 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
-特殊权限	与特定的应用操作相对应。只有平台和原始设备制造商 (OEM) 可以定义特殊权限  <br />  ​  <br />  
+特殊权限	与特定的应用操作相对应。只有平台和原始设备制造商 (OEM) 可以定义特殊权限
+
 
 ## 数据存储
 
 - [数据和文件存储概览](https://developer.android.google.cn/guide/topics/data/data-storage?hl=zh-cn)
 
-**​**
+
 
 **文件存储**  <br />  默认目录：`/data/data/<package name>/files/<file>`  <br />  文件的操作模式: MODE_PRIVATE、MODE_APPEND
 ```java
@@ -548,9 +540,9 @@ public String load() {
 	return content.toString();
 }
 ```
-**​**
 
-**SharedPreferences存储**  <br />  使用键值对的方式来存储数据  <br />  默认目录：`/data/data/<package name>/shared_prefs/<filename.xml>`  <br />  文件操作模式：MODE_PRIVATE  <br />  ​
+
+**SharedPreferences存储**  <br />  使用键值对的方式来存储数据  <br />  默认目录：`/data/data/<package name>/shared_prefs/<filename.xml>`  <br />  文件操作模式：MODE_PRIVATE
 
 写
 ```java
@@ -567,7 +559,6 @@ String name = pref.getString("name", "");
 int age = pref.getInt("age", 0);
 boolean married = pref.getBoolean("married", false);
 ```
-
 
 
 ## 内容提供器（Content Provider）
@@ -802,13 +793,10 @@ class MainActivity : AppCompatActivity() {
 ```
 
 
-
 ## [广播](https://developer.android.google.cn/guide/components/broadcasts?hl=zh-cn)
 
 - 标准广播 （Normal broadcasts）是一种完全异步执行的广播，在广播发出之后，所有的广播接收器几乎都会在同一时刻接收到这条广播消息
 - 有序广播 （Ordered broadcasts）则是一种同步执行的广播，在广播发出之后，同一时刻只会有一个广播接收器能够收到这条广播消息
-
-​
 
 接收系统广播  <br />  	动态注册监听网络变化  <br />  	`<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />`
 ```javascript
@@ -849,7 +837,6 @@ public class MainActivity extends AppCompatActivity {
 	}
 }
 ```
-​
 
 静态注册实现开机启动
 ```javascript
@@ -906,13 +893,11 @@ intent.setPackage(getpackageName()))
 sendBroadcast(intent);
 sendOrderedBroadcast(intent, null);
 ```
-​
 
 广播截断，以阻止其继续传播
 ```java
 abortBroadcast();
 ```
-​
 
 本地广播
 ```javascript
@@ -959,7 +944,6 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 
-
 ## Notification
 ```java
 Intent intent = new Intent(this, NotificationActivity.class);
@@ -992,7 +976,6 @@ manager.notify(1, notification);
    - PRIORITY_HIGH
    - PRIORITY_MAX
 
-​  <br />  
 
 ## 多媒体
 功能声明
@@ -1256,7 +1239,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 }
 ```
-​
 
 video
 
@@ -1273,9 +1255,8 @@ android:id="@+id/video_view"
 android:layout_width="match_parent"
 android:layout_height="wrap_content" />
 ```
-​
 
-Android不允许在子线程中进行UI操作  <br />  ​
+Android不允许在子线程中进行UI操作
 
 异步消息处理
 
@@ -1287,8 +1268,6 @@ Android不允许在子线程中进行UI操作  <br />  ​
 
 
 - [输入事件概览](https://developer.android.google.cn/guide/topics/ui/ui-events?hl=zh-cn)
-
-​
 
 全局获取Context
 ```java
@@ -1339,11 +1318,7 @@ public class LongRunningService extends Service {
 Intent intent = new Intent(context, LongRunningService.class);
 context.startService(intent);
 ```
-**​**
 
-**​**
-
-**​**
 
 **Android 的CPU类型(ABIs)**  <br />  应用程序二进制接口（Application Binary Interface）定义了二进制文件如何运行在相应的系统平台上，从使用的指令集，内存对齐到可用的系统函数库。  <br />  在Android 系统上，每一个CPU架构对应一个ABI
 
@@ -1358,7 +1333,6 @@ context.startService(intent);
 adb shell getprop ro.product.cpu.abi    
 adb shell getprop ro.product.cpu.abilist    CPU 支持的 abi 列表
 ```
-
 
 
 # [ANDROID STUDIO](https://developer.android.google.cn/studio?hl=zh-cn)
@@ -1382,7 +1356,6 @@ adb shell getprop ro.product.cpu.abilist    CPU 支持的 abi 列表
 | 转到上一个编辑位置 | Ctrl+Shift+退格键 | Command+Shift+Delete |
 | 关闭活动编辑器标签页 | Ctrl+F4 | Command+W |
 
-​  <br />  
 
 | 编写代码 |  |  |
 | --- | --- | --- |
@@ -1450,19 +1423,16 @@ implementation	远程依赖声明
 testImplementation和androidTestImplementation	声明测试用例库
 ```
 
-  <br />  
-  <br />  [在 WebView 中开发 Web 应用](https://developer.android.google.cn/guide/webapps/webview?hl=zh-cn)  <br />  Webview调用Java方法  <br />  1、允许WebView加载js  <br />  webView.getSettings().setJavaScriptEnabled(true);  <br />  2、编写js接口类  <br />  3、给WebView添加js接口  <br />  webView.addJavascriptInterface(obj, name);  <br />  ​
+
+[在 WebView 中开发 Web 应用](https://developer.android.google.cn/guide/webapps/webview?hl=zh-cn)  <br />  Webview调用Java方法  <br />  1、允许WebView加载js  <br />  webView.getSettings().setJavaScriptEnabled(true);  <br />  2、编写js接口类  <br />  3、给WebView添加js接口  <br />  webView.addJavascriptInterface(obj, name);
 
 Android调用js方法  <br />  使用loadUrl方法调用javascript
 
 - webView.loadUrljavascript:jsString);
 - jsString是要调用的js代码的字符串
 
-​
+Chrome调试  <br />  打开允许调试的开关  <br />  webView.setWebContentsDebuggingEnabled(true);
 
-Chrome调试  <br />  打开允许调试的开关  <br />  webView.setWebContentsDebuggingEnabled(true);  <br />  ​
-
-​
 
 activity_main.xml
 ```javascript
@@ -1583,7 +1553,6 @@ public class MainActivity extends AppCompatActivity implements JSBridge {
     }
 }
 ```
-​
 
 /main/assets/index.html
 ```javascript
@@ -1629,5 +1598,4 @@ public class MainActivity extends AppCompatActivity implements JSBridge {
 
 </html>
 ```
-
 

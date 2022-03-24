@@ -1,8 +1,8 @@
 
 # —— [Javascript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference) ——
-1995年，Brendan Eich设计出了一门跨平台、面向对象的脚本语言，它能使网页可交互。  <br />  ECMAScript标准：ECMA（European Computer Manufacturers Association）组织定制了JavaScript语言的标准  <br />  脚本语言（script language）：不具备开发操作系统的能力，而是用来编写控制其他大型应用程序（比如浏览器）的“脚本”  <br />  ​
+1995年，Brendan Eich设计出了一门跨平台、面向对象的脚本语言，它能使网页可交互。  <br />  ECMAScript标准：ECMA（European Computer Manufacturers Association）组织定制了JavaScript语言的标准  <br />  脚本语言（script language）：不具备开发操作系统的能力，而是用来编写控制其他大型应用程序（比如浏览器）的“脚本”
 
-一切皆对象，对象为引用值  <br />  ​
+一切皆对象，对象为引用值
 
 **注释**
 ```javascript
@@ -105,8 +105,6 @@
 - transient
 - volatile
 
-​
-
 直接量null、true和false同样不能被当成标识使用
 
 # 变量
@@ -116,7 +114,7 @@
 - [let](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let)：声明一个块作用域的局部变量，可选初始化一个值。
 - [const](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const)：声明一个块作用域的只读常量。
 
-**​**
+
 
 **Hoisting (提升）**： JavaScript 将所有声明提升到当前作用域顶部，提升后的变量将返回 undefined 值。  <br />  用 let 或 const 声明的不会被赋予初始值  <br />  只有函数声明会被提升到顶部，而函数表达式不会被提升
 ```javascript
@@ -134,7 +132,7 @@ var baz = function() {
 ```
 
 # 数据类型
-原始数据类型（[Primitive data types](https://developer.mozilla.org/en-US/docs/Glossary/Primitive)）一种既非[对象](https://developer.mozilla.org/en-US/docs/Glossary/object)也无[方法](https://developer.mozilla.org/en-US/docs/Glossary/method)的数据。共有7种：[string](https://developer.mozilla.org/en-US/docs/Glossary/string)，[number](https://developer.mozilla.org/en-US/docs/Glossary/number)，[bigint](https://developer.mozilla.org/en-US/docs/Glossary/bigint)，[boolean](https://developer.mozilla.org/en-US/docs/Glossary/boolean)，[null](https://developer.mozilla.org/en-US/docs/Glossary/null)（空值），[undefined](https://developer.mozilla.org/en-US/docs/Glossary/undefined)（未定义），[symbol](https://developer.mozilla.org/en-US/docs/Glossary/symbol)  <br />  ​
+原始数据类型（[Primitive data types](https://developer.mozilla.org/en-US/docs/Glossary/Primitive)）一种既非[对象](https://developer.mozilla.org/en-US/docs/Glossary/object)也无[方法](https://developer.mozilla.org/en-US/docs/Glossary/method)的数据。共有7种：[string](https://developer.mozilla.org/en-US/docs/Glossary/string)，[number](https://developer.mozilla.org/en-US/docs/Glossary/number)，[bigint](https://developer.mozilla.org/en-US/docs/Glossary/bigint)，[boolean](https://developer.mozilla.org/en-US/docs/Glossary/boolean)，[null](https://developer.mozilla.org/en-US/docs/Glossary/null)（空值），[undefined](https://developer.mozilla.org/en-US/docs/Glossary/undefined)（未定义），[symbol](https://developer.mozilla.org/en-US/docs/Glossary/symbol)
 
 除了 null 和 undefined之外，所有基本类型都有其对应的包装对象
 
@@ -546,8 +544,6 @@ isObject(true) // false
    - Object.entries()：返回对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组。
    - Object.fromEntries()：Object.entries()的逆操作，用于将一个键值对数组转为对象
 
-​  <br />  
-
 - 对象属性模型的方法
    - Object.getOwnPropertyDescriptor()：获取某个属性的描述对象。
    - Object.getOwnPropertyDescriptors()：返回指定对象所有自身属性（非继承属性）的描述对象
@@ -567,19 +563,15 @@ isObject(true) // false
    - 可以通过改变原型对象，来为对象增加属性。
    - 只能冻结属性指向的对象，而不能冻结对象本身的内容
 
-​  <br />  
-
 - 原型链相关方法
    - Object.create()：指定原型对象和属性，返回一个新的对象。
    - Object.getPrototypeOf()：获取对象的Prototype对象。
    - Object.setPrototypeOf(a, b)	将对象a的原型，设置为对象b
 
-​  <br />  
-
 - Object.is()：比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致
 - Object.assign()：对象合并，将源对象（source）的所有可枚举属性，复制（浅拷贝，同名属性的替换）到目标对象（target）
 
-**​**
+
 
 **实例方法	**定义在Object原型对象Object.prototype上的方法
 
@@ -638,7 +630,7 @@ var obj = {
 obj.p // "getter"
 obj.p = 123 // "setter: 123"
 ```
-原型链”（prototype chain）：对象到原型，再到原型的原型……  <br />  Object.prototype  -->  null  <br />  ​
+原型链”（prototype chain）：对象到原型，再到原型的原型……  <br />  Object.prototype  -->  null
 
 prototype  <br />  constructor：默认指向prototype对象所在的构造函数。
 ```javascript
@@ -667,7 +659,7 @@ var s = new Student('jack');
 //为对象构造器添加新属性
 Student.prototype.nationality = "English";
 ```
-如果构造函数内部有return语句，且return后面跟着一个对象，new命令会返回return语句指定的对象；否则，返回this对象。  <br />  **​**
+如果构造函数内部有return语句，且return后面跟着一个对象，new命令会返回return语句指定的对象；否则，返回this对象。
 
 **new 命令的原理**
 
@@ -718,7 +710,7 @@ person.age = 50;
 - objectName["property"]       // person["age"]
 - objectName[expression]       // x = "age"; person[x]
 
-访问属性方法没有使用 ()，则将返回其定义  <br />  ​
+访问属性方法没有使用 ()，则将返回其定义
 
 对象的拷贝
 ```javascript
@@ -795,7 +787,7 @@ class Bar extends Foo {
 
 Bar.classMethod() // "hello, too"
 ```
-JavaScript 属性值的继承是在运行时通过检索对象的原型链来实现的。因为对象只有一个原型与之关联，所以 JavaScript 无法动态地从多个原型链中继承。  <br />  **​**
+JavaScript 属性值的继承是在运行时通过检索对象的原型链来实现的。因为对象只有一个原型与之关联，所以 JavaScript 无法动态地从多个原型链中继承。
 
 **Mixin（混入）**
 ```javascript
@@ -1074,7 +1066,6 @@ function sumAll() {
     return sum;
 }
 ```
-​
 
 默认参数  <br />  **可变参数**
 ```javascript
@@ -1204,7 +1195,7 @@ var myIterable = {};
 myIterable[Symbol.iterator] = gen;
 [...myIterable] // [1, 2, 3]
 ```
-Generator.prototype.return()	返回给定的值，并且终结遍历 Generator 函数  <br />  ​
+Generator.prototype.return()	返回给定的值，并且终结遍历 Generator 函数
 
 async函数：将 Generator 函数的星号（*）替换成async，将yield替换成await
 
@@ -1226,7 +1217,6 @@ asyncPrint('hello world', 50);
 
 - [for await...of](https://wangdoc.com/es6/async-iterator.html#for-awaitof)
 
-​  <br />  
 
 ## Math
 | 属性 | 描述 |
@@ -1342,7 +1332,7 @@ const promise = new Promise(function(resolve, reject) {
 - rejected：失败，没有完成操作。
 - settled： fulfilled 或 rejected 二者中的任意一个状态
 
-**​**
+
 
 **方法**
 
@@ -1432,7 +1422,7 @@ let intersect = new Set([...a].filter(x => b.has(x)));
 // （a 相对于 b 的）差集
 let difference = new Set([...a].filter(x => !b.has(x)));
 ```
-**​**
+
 
 **WeakSet**  <br />  成员只能是对象（弱引用）  <br />  不能遍历
 
@@ -1475,7 +1465,7 @@ map.forEach(function(value, key, map) {
 // 对象转为 Map
 let map = new Map(Object.entries(obj));
 ```
-**​**
+
 
 **WeakMap**  <br />  键所对应的对象，可能会在将来消失。有助于防止内存泄漏  <br />  method：get()、set()、has()、delete()
 
@@ -1662,9 +1652,10 @@ import(specifier)    // 支持动态加载模块
 - func?.(...args) // 函数或对象方法的调用
 - 短路机制
 
-**​**
 
-**Null 判断运算符  ??**  <br />  行为类似||，运算符左侧的值为null或undefined时，才会返回右侧的值  <br />  **​**  <br />  
+
+**Null 判断运算符  ??**  <br />  行为类似||，运算符左侧的值为null或undefined时，才会返回右侧的值
+
 
 # Others
 **JS Event Loop 事件循环机制**  <br />  任务执行顺序：
@@ -1683,7 +1674,7 @@ process.nextTick(console.log, 4);
 console.log(5);
 // 打印 5 4 3 2 1 或者 5 4 3 1 2
 ```
-**​**
+
 
 **函数防抖（debounce）**  <br />  指触发事件后在规定时间内函数只能执行一次，如果在规定时间内又触发了事件，则会重新计算函数执行时间。  <br />  应用场景
 
@@ -1702,7 +1693,7 @@ document.addEventListener('scroll', function(){
     }, 300);
 });
 ```
-**​**
+
 
 **函数节流（throttle）**  <br />  限制一个函数在规定时间内只能执行一次。  <br />  应用场景
 
@@ -1718,7 +1709,6 @@ document.addEventListener('scroll', function(){
 });
 ```
 
-  <br />  
 
 
 # JSON
@@ -1729,8 +1719,6 @@ JavaScript Object Notation：一种数据交换的文本格式  <br />  2002年�
 1. 字符串必须使用双引号表示，不能使用单引号。
 1. 对象的键名必须放在双引号里面。
 1. 数组或对象最后一个成员的后面，不能加逗号。
-
-​
 
 序列化：JSON.stringify(object [```]);  <br />  反序列化：JSON.parse()
 ```javascript

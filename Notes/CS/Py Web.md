@@ -215,8 +215,6 @@ if __name__ == '__main__':
 - [ItsDangerous](https://pythonhosted.org/itsdangerous/): 安全地注入数据以确保数据的完整性，通常用于保护 Flask 的 session cookie。
 - [Click](https://click.palletsprojects.com/en/7.x/): 一个解析命令行的应用，它支持在 Flask 中自定义管理命令。
 
-​
-
 <converter:variable_name>主要类型
 
 | 类型 | 含义 |
@@ -227,7 +225,7 @@ if __name__ == '__main__':
 | path | 和 string 类似，但是接受斜杠“/” |
 | uuid | 接受 uuid 字符串 |
 
-在你的包中或模块旁边创建一个名为 static 的文件夹  <br />  给静态文件生成 URL ，使用特殊的 static 端点名：  <br />  `url_for('static', filename='style.css')`  <br />  这个文件是应该存储在文件系统上的 static/style.css 。  <br />  ​
+在你的包中或模块旁边创建一个名为 static 的文件夹  <br />  给静态文件生成 URL ，使用特殊的 static 端点名：  <br />  `url_for('static', filename='style.css')`  <br />  这个文件是应该存储在文件系统上的 static/style.css 。
 
 **渲染模板**  <br />  使用方法 render_template()
 ```python
@@ -260,7 +258,6 @@ Flask 将会在 templates 文件夹中寻找模板
 </body>
 </html>
 ```
-​
 
 文件上传  <br />  在 HTML 表单设置属性 enctype="multipart/form-data"
 ```python
@@ -273,7 +270,6 @@ def upload_file():
         f.save('/var/www/uploads/' + secure_filename(f.filename))
     ...
 ```
-​
 
 cookies
 ```python
@@ -290,7 +286,6 @@ def index():
     resp.set_cookie('username', 'the username')
     return resp
 ```
-​
 
 session
 ```python
@@ -322,9 +317,8 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 ```
-​
 
-escape()可以在你不使用模板引擎的时候做转义  <br />  redirect() 函数重定向用户到其它地方  <br />  abort() 函数提前中断一个请求并带有一个错误代码。  <br />  ​
+escape()可以在你不使用模板引擎的时候做转义  <br />  redirect() 函数重定向用户到其它地方  <br />  abort() 函数提前中断一个请求并带有一个错误代码。
 
 api示例
 ```python
@@ -393,7 +387,6 @@ Variables（变量）
 {{ mylist[myintvar] }}
 {{ myobj.somemethod() }}
 ```
-​
 
 **Filter（过滤器）**  <br />  用来修改变量，使用一个竖线和变量相隔。
 
@@ -409,7 +402,6 @@ Variables（变量）
 | [filesizeformat()](https://jinja.palletsprojects.com/en/master/templates/#filesizeformat) | [length()](https://jinja.palletsprojects.com/en/master/templates/#length) | [replace()](https://jinja.palletsprojects.com/en/master/templates/#replace) | [sum()](https://jinja.palletsprojects.com/en/master/templates/#sum) | [wordwrap()](https://jinja.palletsprojects.com/en/master/templates/#wordwrap) |
 | [first()](https://jinja.palletsprojects.com/en/master/templates/#first) | [list()](https://jinja.palletsprojects.com/en/master/templates/#list) | [reverse()](https://jinja.palletsprojects.com/en/master/templates/#reverse) | [title()](https://jinja.palletsprojects.com/en/master/templates/#title) | [xmlattr()](https://jinja.palletsprojects.com/en/master/templates/#xmlattr) |
 
-​
 
 Tests（测试，判断）
 
@@ -421,7 +413,6 @@ Tests（测试，判断）
 | [eq()](https://jinja.palletsprojects.com/en/master/templates/#eq) | [gt()](https://jinja.palletsprojects.com/en/master/templates/#gt) | [lt()](https://jinja.palletsprojects.com/en/master/templates/#lt) | [sameas()](https://jinja.palletsprojects.com/en/master/templates/#sameas) |  |
 | [escaped()](https://jinja.palletsprojects.com/en/master/templates/#escaped) | [in()](https://jinja.palletsprojects.com/en/master/templates/#in) | [mapping()](https://jinja.palletsprojects.com/en/master/templates/#mapping) | [sequence()](https://jinja.palletsprojects.com/en/master/templates/#sequence) |  |
 
-​
 
 List of Control Structures
 ```python
@@ -444,8 +435,6 @@ Whitespace Control（空格控制）  <br />  默认
 
 - 如果末尾有换行符，则去除；
 - 其他空格原样保留。
-
-​
 
 去掉Jinja2语句占据的空行
 ```python
@@ -526,7 +515,8 @@ Import
 </dl>
 <p>{{ forms.textarea('comment') }}</p>
 ```
-Global Functions  <br />  range([start, ]stop[, step])  <br />  lipsum(n=5, html=True, min=20, max=100)  <br />  为模板生成一些lorem ipsum  <br />  ​  <br />  
+Global Functions  <br />  range([start, ]stop[, step])  <br />  lipsum(n=5, html=True, min=20, max=100)  <br />  为模板生成一些lorem ipsum
+
 
 # [Django](https://docs.djangoproject.com/zh-hans/3.0/)
 python -m django --version
@@ -631,9 +621,9 @@ urlpatterns = [
 - python manage.py makemigrations	对模型的更改创建新的迁移表
 - python manage.py migrate	应用迁移到数据库中
 
-**​**
 
-**数据迁移（Migrations）**  <br />  修改Model后，需要进行数据迁移。迁移是Django对模型所做的更改传递到数据库中的方式。  <br />  每当对数据库进行了更改（添加、修改、删除等）操作，都需要进行数据迁移。  <br />  ​
+
+**数据迁移（Migrations）**  <br />  修改Model后，需要进行数据迁移。迁移是Django对模型所做的更改传递到数据库中的方式。  <br />  每当对数据库进行了更改（添加、修改、删除等）操作，都需要进行数据迁移。
 
 模型是真实数据的简明描述，对应数据库的一张表，包含了存储的数据所必要的字段和行为。
 ```python
@@ -644,7 +634,7 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     pub_date = models.DateTimeField('date published')
 ```
-模型是 django.db.models.Model 类的子类。每个字段都是 Field 类的实例。  <br />  ​
+模型是 django.db.models.Model 类的子类。每个字段都是 Field 类的实例。
 
 为这个应用创建数据库 schema（生成 CREATE TABLE 语句）。  <br />  创建可以与 Book 对象进行交互的 Python 数据库 API。
 ```python
@@ -667,7 +657,7 @@ python manage.py sqlmigrate myApp 0001
 在数据库里创建新定义的模型的数据表
 python manage.py migrate
 ```
-**​**
+
 
 **Template 模板**  <br />  在 myProject/myApp 里创建一个 templates 目录。Django 会在这个目录里查找模板文件。  <br />  myProject/settings.py 文件中的 TEMPLATES 配置项描述了 Django 如何载入和渲染模板。默认设置了 DjangoTemplates 后端，并设置 APP_DIRS = True。这一选项将会让 DjangoTemplates 在每个 INSTALLED_APPS 文件夹中寻找 templates 子目录。  <br />  新建模板文件 myApp/templates/myApp/detail.html，
 ```python
@@ -723,7 +713,7 @@ urlpatterns = [
 // 推荐
 <li><a href="{% url 'myApp:detail' book.id %}"></a></li>
 ```
-启动项目	python manage.py runserver [127.0.0.1:8000]  <br />  **​**
+启动项目	python manage.py runserver [127.0.0.1:8000]
 
 **后台**  <br />  python manage.py createsuperuser	创建管理员账号  <br />  Username: rain  <br />  Email address: [1493636205@qq.com](mailto:1493636205@qq.com)  <br />  Password:15675347347  <br />  在admin中注册应用
 ```javascript
@@ -732,7 +722,6 @@ from django.contrib import admin
 from .models import Book
 admin.site.register(Book)
 ```
-​
 
 快捷函数  <br />  django.shortcuts
 
@@ -778,9 +767,9 @@ admin.site.register(Book)
 | URLField | 用于保存URL地址的字符串类型，默认最大长度200。 |
 | UUIDField | 用于保存通用唯一识别码（Universally Unique Identifier）的字段 |
 
-关系类型字段  <br />  class ForeignKey(to, on_delete, **options)  <br />  class ManyToManyField(to, **options)  <br />  class OneToOneField(to, on_delete, parent_link=False, **options)  <br />  ​
+关系类型字段  <br />  class ForeignKey(to, on_delete, **options)  <br />  class ManyToManyField(to, **options)  <br />  class OneToOneField(to, on_delete, parent_link=False, **options)
 
-字段选项  <br />  null：字段为空时，Django 会将数据库中该字段设置为 NULL。  <br />  blank：是否允许字段为空。  <br />  choices：一系列二元组，用作此字段的选项  <br />  default：字段的默认值  <br />  help_text：额外的“帮助”文本，随表单控件一同显示  <br />  primary_key：  <br />  unique：  <br />  db_column：定义当前字段在数据表内的列名。如果未指定，Django将使用字段名作为列名。  <br />  db_index：是否为该字段创建索引。  <br />  db_tablespace：用于字段索引的数据库表空间的名字，前提是当前字段设置了索引  <br />  editable：如果设为False，那么当前字段将不会在admin后台或者其它的ModelForm表单中显示，同时还会被模型验证功能跳过。  <br />  error_messages：用于自定义错误信息。参数接收字典类型的值。字典的键可以是null、 blank、 invalid、 invalid_choice、 unique和unique_for_date其中的一个。  <br />  unique_for_date：日期唯一  <br />  unique_for_month  <br />  unique_for_year  <br />  verbose_name：为字段设置一个人类可读，更加直观的别名。  <br />  ​
+字段选项  <br />  null：字段为空时，Django 会将数据库中该字段设置为 NULL。  <br />  blank：是否允许字段为空。  <br />  choices：一系列二元组，用作此字段的选项  <br />  default：字段的默认值  <br />  help_text：额外的“帮助”文本，随表单控件一同显示  <br />  primary_key：  <br />  unique：  <br />  db_column：定义当前字段在数据表内的列名。如果未指定，Django将使用字段名作为列名。  <br />  db_index：是否为该字段创建索引。  <br />  db_tablespace：用于字段索引的数据库表空间的名字，前提是当前字段设置了索引  <br />  editable：如果设为False，那么当前字段将不会在admin后台或者其它的ModelForm表单中显示，同时还会被模型验证功能跳过。  <br />  error_messages：用于自定义错误信息。参数接收字典类型的值。字典的键可以是null、 blank、 invalid、 invalid_choice、 unique和unique_for_date其中的一个。  <br />  unique_for_date：日期唯一  <br />  unique_for_month  <br />  unique_for_year  <br />  verbose_name：为字段设置一个人类可读，更加直观的别名。
 
 查询集  <br />  class QuerySet(model=None, query=None, using=None)
 
@@ -875,8 +864,6 @@ admin.site.register(Book)
 - Sum：class Sum(expression, output_field=None, **extra)
 - Variance：class Variance(expression, sample=False, **extra)	方差
 
-​
-
 视图  <br />  class HttpRequest  <br />  每当一个用户请求发送过来，Django将HTTP数据包中的相关内容，打包成为一个HttpRequest对象，并传递给每个视图函数作为第一位置参数，也就是request，供我们调用  <br />  class QueryDict  <br />  HttpRequest对象的GET和POST属性都是一个django.http.QueryDict  <br />  class HttpResponse  <br />  每个视图实例化、填充和返回一个HttpResponse对象
 ```python
 # views.py
@@ -943,10 +930,9 @@ urlpatterns = [
 
 ## [django-rest-framework](https://github.com/encode/django-rest-framework)
 
-  <br />  
-  <br />  
-  <br />  
-  <br />  
+
+
+
 
 
 # [FastAPI](https://fastapi.tiangolo.com/)
@@ -989,9 +975,9 @@ if __name__ == "__main__":
 - stream -- (optional) if False, the response content will be immediately downloaded.
 - cert -- (optional) if String, path to ssl client cert file (.pem). If Tuple, ('cert', 'key') pair.
 
-**​**
 
-**requests.head(url, **kwargs)**  <br />  **requests.get(url, params=None, **kwargs)**  <br />  **requests.post(url, data=None, json=None, **kwargs)**  <br />  **requests.put(url, data=None, **kwargs)**  <br />  **requests.patch(url, data=None, **kwargs)**  <br />  **requests.delete(url, **kwargs)**  <br />  **​**
+
+**requests.head(url, **kwargs)**  <br />  **requests.get(url, params=None, **kwargs)**  <br />  **requests.post(url, data=None, json=None, **kwargs)**  <br />  **requests.put(url, data=None, **kwargs)**  <br />  **requests.patch(url, data=None, **kwargs)**  <br />  **requests.delete(url, **kwargs)**
 
 **class requests.Session**  <br />  **class requests.Response**
 
@@ -1550,8 +1536,6 @@ def test_match():
 
 - pytest-timeout	标记超时时间 @pytest.mark.timeout(60)
 - pytest-html 生成html报告插件	--html=report.html
-
-
 
 - [Functions](https://docs.pytest.org/en/latest/reference/reference.html#functions)
    - approx(expected, rel=None, abs=None, nan_ok=False)

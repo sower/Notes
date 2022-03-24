@@ -2,10 +2,10 @@
 # —— Google Chrome ——
 
 
-
 ## [DevTools（开发者工具）](https://developer.chrome.com/docs/devtools/)
 
-  <br />  [awesome-chrome-devtools](https://github.com/ChromeDevTools/awesome-chrome-devtools)  <br />  一套内置于Google Chrome中的Web开发和调试工具，可用来对网站进行迭代、调试和分析。  <br />  ​  <br />  
+[awesome-chrome-devtools](https://github.com/ChromeDevTools/awesome-chrome-devtools)  <br />  一套内置于Google Chrome中的Web开发和调试工具，可用来对网站进行迭代、调试和分析。
+
 
 ### panel
 
@@ -19,9 +19,6 @@
 - Application：查看网页加载的各种资源文件（比如代码文件、字体文件 CSS 文件等），以及在硬盘上创建的各种内容（比如本地缓存、Cookie、Local Storage等）。
 - Security：调试混合内容问题，证书问题等等。
 
-​
-
-​
 
 **Dom 设置断点（DOM change breakpoints）**
 
@@ -35,10 +32,9 @@
 - Node Removal 的触发条件
    - 当前选中元素被移除时触发
 
-​  <br />  
 
 ### Performance
-FPS：主要和动画性能有关，代表每秒帧数。图表中的绿色长条越高，说明FPS越高，用户体验越好。如果其中有红色长条，代表着这部分帧数有卡顿，需要优化。  <br />  CPU：和底部的 Summary 对应，显示了页面加载过程中，各阶段对 CPU 的占用时间，占用时间越多，代表该阶段越需要优化。  <br />  NET：主要展示了网络请求的先后顺序以及各自的请求耗时，可以被 Network 面板完美替代，建议直接查看 Network  <br />  Main：展现了主线程在 Record 过程中做的所有事情，包括：Loading、Scripting、Rendering、Painting 等等。图的横轴代表着时间，纵轴代表着调用堆栈。每一个长条代表执行了一个事件或函数，长条的长度代表着耗时的长短，如果某个长条右上角是红色的则表示该函数存在性能问题，需要重点关注。  <br />  ​
+FPS：主要和动画性能有关，代表每秒帧数。图表中的绿色长条越高，说明FPS越高，用户体验越好。如果其中有红色长条，代表着这部分帧数有卡顿，需要优化。  <br />  CPU：和底部的 Summary 对应，显示了页面加载过程中，各阶段对 CPU 的占用时间，占用时间越多，代表该阶段越需要优化。  <br />  NET：主要展示了网络请求的先后顺序以及各自的请求耗时，可以被 Network 面板完美替代，建议直接查看 Network  <br />  Main：展现了主线程在 Record 过程中做的所有事情，包括：Loading、Scripting、Rendering、Painting 等等。图的横轴代表着时间，纵轴代表着调用堆栈。每一个长条代表执行了一个事件或函数，长条的长度代表着耗时的长短，如果某个长条右上角是红色的则表示该函数存在性能问题，需要重点关注。
 
 Performance monitor
 
@@ -47,7 +43,6 @@ Performance monitor
 1. 点击选项按钮，打开选项菜单
 1. 选择“Performance monitor”
 
-​  <br />  
 
 ### Shortcut
 **全局**
@@ -70,10 +65,10 @@ Performance monitor
 | 缩小 | Ctrl + - |
 | 恢复默认文本大小 | Ctrl + 0 |
 
-**​**  <br />  
+  <br />  
 
 ## API
-`$_`	最近一次计算的表达式的值  <br />  ​
+`$_`	最近一次计算的表达式的值
 
 **选择元素**
 
@@ -83,7 +78,7 @@ Performance monitor
 | $$(selector) | 返回一个与指定的CSS选择器匹配的所有元素的数组。document.querySelectorAll()的别名。 |
 | $x(path) | 返回一个与指定的 XPath 匹配的元素的数组。 |
 
-copy(object)	将指定对象的字符串表示复制到剪贴板。  <br />  debug(function)  <br />  keys(object)	返回一个包含属于指定对象的属性名的数组  <br />  values(object)	返回一个包含属于指定对象的所有属性值的数组  <br />  ​
+copy(object)	将指定对象的字符串表示复制到剪贴板。  <br />  debug(function)  <br />  keys(object)	返回一个包含属于指定对象的属性名的数组  <br />  values(object)	返回一个包含属于指定对象的所有属性值的数组
 
 inspect(object/function)	在适当的面板中打开并选择指定的元素或对象  <br />  getEventListeners(object)	返回在指定对象上注册事件的监听器  <br />  monitor(function)	当调用指定的函数时，将在控制台记录一指示函数名和函数被调用时传入的参数的消息  <br />  monitorEvents(object[, events])	当指定事件之一在指定对象上发生时，Event对象将被记录到控制台。 
 
@@ -94,7 +89,8 @@ inspect(object/function)	在适当的面板中打开并选择指定的元素或�
 | touch | "touchstart", "touchmove", "touchend", "touchcancel" |
 | control | "resize", "scroll", "zoom", "focus", "blur", "select", "change", "submit", "reset" |
 
-profile()	通过可选名称，启动JavaScript CPU分析会话  <br />  profileEnd()	停止分析并在Profile(分析)面板中显示结果  <br />  **​**  <br />  
+profile()	通过可选名称，启动JavaScript CPU分析会话  <br />  profileEnd()	停止分析并在Profile(分析)面板中显示结果
+
 
 ## filter(过滤器)
 
@@ -111,10 +107,8 @@ profile()	通过可选名称，启动JavaScript CPU分析会话  <br />  profile
 - set-cookie-value **(cookie值)** : 显示具有 Set-Cookie 头,并且值与指定值匹配的资源。
 - status-code **(状态码)** : 仅显示其HTTP状态代码与指定代码匹配的资源。
 
+模拟地理位置坐标  <br />  在 More Tools (更多工具)下，单击 Sensors (传感器)
 
-  <br />  模拟地理位置坐标  <br />  在 More Tools (更多工具)下，单击 Sensors (传感器)  <br />  ​
-
-​
 
 **screenshot**
 
@@ -123,24 +117,20 @@ profile()	通过可选名称，启动JavaScript CPU分析会话  <br />  profile
 - Capture node screenshot
 - Capture screenshot
 
-​  <br />  
 
 ## CLI
---help  <br />  --headless	在无头模式下运行，即没有UI或显示服务器依赖性  <br />  --disable-gpu	禁用GPU硬件加速  <br />  --disable-gpu-vsync	在呈现之前阻止GPU在vsync上进行同步  <br />  --dump-dom	指示headless_shell将document.body.innerHTML打印到stdout。  <br />  --remote-debugging-port	在指定端口上启用HTTP远程调试。  <br />  --print-to-pdf	保存已加载页面的pdf文件。  <br />  --screenshot	保存已加载页面的屏幕截图。  <br />  --start-maximized                           启动就最大化  <br />  --no-sandbox                                 取消沙盒模式  <br />  --window-position	指定初始窗口位置:-窗口位置=x，y  <br />  --window-size	设置初始窗口大小。提供格式为“800,600”的字符串。  <br />  –user-data-dir=”[PATH]”              指定用户文件夹User Data路径，可以把书签这样的用户数据保存在系统分区以外的分区。  <br />  –disk-cache-dir=”[PATH]“            指定缓存Cache路径  <br />  –disk-cache-size=                       指定Cache大小，单位Byte  <br />  –first run                                     重置到初始状态，第一次运行  <br />  –incognito                                    隐身模式启动  <br />  –disable-javascript                        禁用Javascript  <br />  --omnibox-popup-count="num"   将地址栏弹出的提示菜单数量改为num个  <br />  --user-agent="xxxxxxxx"                修改HTTP请求头部的Agent字符串  <br />  --disable-plugins                            禁止加载所有插件，可以增加速度  <br />  --disable-javascript                        禁用JavaScript，如果觉得速度慢在加上这个  <br />  --disable-java                                  禁用java   <br />  --single-process                             单进程运行  <br />  --process-per-tab                           每个标签使用单独进程  <br />  --process-per-site                           每个站点使用单独进程  <br />  --in-process-plugins                      插件不启用单独进程  <br />  --disable-popup-blocking             禁用弹出拦截  <br />  --disable-plugins                            禁用插件  <br />  --disable-images                            禁用图像  <br />  --enable-udd-profiles                    启用账户切换菜单  <br />  --proxy-pac-url                               使用pac代理 [via 1/2]  <br />  --lang=zh-CN                                 设置语言为简体中文  <br />  --disk-cache-dir                             自定义缓存目录  <br />  --disk-cache-size                          自定义缓存最大值（单位byte）  <br />  --media-cache-size                      自定义多媒体缓存最大值（单位byte）  <br />  --bookmark-menu                         在工具 栏增加一个书签按钮  <br />  --enable-sync                                启用书签同步  <br />  ​
+--help  <br />  --headless	在无头模式下运行，即没有UI或显示服务器依赖性  <br />  --disable-gpu	禁用GPU硬件加速  <br />  --disable-gpu-vsync	在呈现之前阻止GPU在vsync上进行同步  <br />  --dump-dom	指示headless_shell将document.body.innerHTML打印到stdout。  <br />  --remote-debugging-port	在指定端口上启用HTTP远程调试。  <br />  --print-to-pdf	保存已加载页面的pdf文件。  <br />  --screenshot	保存已加载页面的屏幕截图。  <br />  --start-maximized                           启动就最大化  <br />  --no-sandbox                                 取消沙盒模式  <br />  --window-position	指定初始窗口位置:-窗口位置=x，y  <br />  --window-size	设置初始窗口大小。提供格式为“800,600”的字符串。  <br />  –user-data-dir=”[PATH]”              指定用户文件夹User Data路径，可以把书签这样的用户数据保存在系统分区以外的分区。  <br />  –disk-cache-dir=”[PATH]“            指定缓存Cache路径  <br />  –disk-cache-size=                       指定Cache大小，单位Byte  <br />  –first run                                     重置到初始状态，第一次运行  <br />  –incognito                                    隐身模式启动  <br />  –disable-javascript                        禁用Javascript  <br />  --omnibox-popup-count="num"   将地址栏弹出的提示菜单数量改为num个  <br />  --user-agent="xxxxxxxx"                修改HTTP请求头部的Agent字符串  <br />  --disable-plugins                            禁止加载所有插件，可以增加速度  <br />  --disable-javascript                        禁用JavaScript，如果觉得速度慢在加上这个  <br />  --disable-java                                  禁用java   <br />  --single-process                             单进程运行  <br />  --process-per-tab                           每个标签使用单独进程  <br />  --process-per-site                           每个站点使用单独进程  <br />  --in-process-plugins                      插件不启用单独进程  <br />  --disable-popup-blocking             禁用弹出拦截  <br />  --disable-plugins                            禁用插件  <br />  --disable-images                            禁用图像  <br />  --enable-udd-profiles                    启用账户切换菜单  <br />  --proxy-pac-url                               使用pac代理 [via 1/2]  <br />  --lang=zh-CN                                 设置语言为简体中文  <br />  --disk-cache-dir                             自定义缓存目录  <br />  --disk-cache-size                          自定义缓存最大值（单位byte）  <br />  --media-cache-size                      自定义多媒体缓存最大值（单位byte）  <br />  --bookmark-menu                         在工具 栏增加一个书签按钮  <br />  --enable-sync                                启用书签同步
 
-​
 
-​  <br />  
 
 ---
 
 
-  <br />  ​
 
 [Awesome-WebExtensions](https://github.com/fregante/Awesome-WebExtensions)  <br />  [web-extension-starter](https://github.com/abhijithvijayan/web-extension-starter)
 
-# ​[Extensions](https://developer.chrome.com/docs/extensions/)
-Extensions are software programs, built on web technologies (such as HTML, CSS, and JavaScript) that enable users to customize the Chrome browsing experience.  <br />  ​
+# [Extensions](https://developer.chrome.com/docs/extensions/)
+Extensions are software programs, built on web technologies (such as HTML, CSS, and JavaScript) that enable users to customize the Chrome browsing experience.
 
 **Components**
 
@@ -156,15 +146,12 @@ Extensions are software programs, built on web technologies (such as HTML, CSS, 
    - [Commands](https://developer.chrome.com/docs/extensions/mv3/user_interface/#commands)
    - [Override pages](https://developer.chrome.com/docs/extensions/mv3/user_interface/#override)
 
-​
 
-​
+[debugging tutorial](https://developer.chrome.com/docs/extensions/mv3/tut_debugging/)  <br />  [extensions APIs](https://developer.chrome.com/docs/extensions/reference/)
 
-[debugging tutorial](https://developer.chrome.com/docs/extensions/mv3/tut_debugging/)  <br />  [extensions APIs](https://developer.chrome.com/docs/extensions/reference/)  <br />  ​
 
-​  <br />  
 
-## ​[Manifest](https://developer.chrome.com/docs/extensions/mv3/manifest/)
+## [Manifest](https://developer.chrome.com/docs/extensions/mv3/manifest/)
 ```json
 {
   // Required
@@ -274,7 +261,8 @@ Extensions are software programs, built on web technologies (such as HTML, CSS, 
   "web_accessible_resources": [...]
 }
 ```
-​
+
+
 
 Match patterns
 ```json
@@ -317,7 +305,6 @@ https://*/*	  Matches any URL that uses the https scheme
   }
 }
 ```
-​
 
 [API Reference](https://developer.chrome.com/docs/extensions/reference/)
 
@@ -330,7 +317,6 @@ chrome.contextMenus.create({
     "contexts": ["selection"]
   });
 ```
-​
 
 [permissions](https://developer.chrome.com/docs/extensions/reference/permissions)
 ```json
@@ -346,7 +332,7 @@ chrome.permissions.contains({
   }
 });
 ```
-​  <br />  
+
 
 ## [runtime](https://developer.chrome.com/docs/extensions/reference/runtime)
 ```json
@@ -356,7 +342,6 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 });
 ```
-​  <br />  
 
 -  [Message Passing](https://developer.chrome.com/docs/extensions/mv3/messaging/)
 ```json
@@ -373,7 +358,7 @@ chrome.runtime.sendMessage('hello', (response) => {
     console.log('received :', response);
 });
 ```
-​  <br />  
+
 
 ## [scripting](https://developer.chrome.com/docs/extensions/reference/scripting)
 ```json
@@ -386,7 +371,7 @@ chrome.scripting.executeScript({
       console.log('injectionResult: ', injectionResult);
 });
 ```
-​  <br />  
+
 
 ## [tabs](https://developer.chrome.com/docs/extensions/reference/tabs)
 ```json
@@ -402,7 +387,7 @@ async function tab() {
   return tab;
 }
 ```
-​  <br />  
+
 
 ## [storage](https://developer.chrome.com/docs/extensions/reference/storage)
 ```json
@@ -424,7 +409,7 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
   }
 });
 ```
-​  <br />  
+
 
 ## [webRequest](https://developer.chrome.com/docs/extensions/reference/webRequest)
 ```json
@@ -439,7 +424,6 @@ chrome.webNavigation.onCompleted.addListener(() => {
   console.info("The user has loaded my favorite website!");
 }, filter);
 ```
-​
 
 [Extending DevTools](https://developer.chrome.com/docs/extensions/mv3/devtools/)
 
@@ -455,7 +439,6 @@ chrome.devtools.panels.create("My Panel",
     }
 );
 ```
-​
 
 [notifications](https://developer.chrome.com/docs/extensions/reference/notifications)
 
@@ -477,17 +460,12 @@ chrome.tabs.create({...})
     // failure case
   });
 ```
-​
 
-​
 
-​
 
-**Skills**  <br />  ​
+**Skills**
 
-​
 
-​
 
 chrome://flags  <br />  Chrome 恢复显示网址 https:// 和 www   <br />  chrome://flags/#omnibox-ui-hide-steady-state-url-trivial-subdomains
 

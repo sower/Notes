@@ -1,9 +1,8 @@
 
 
-
 # Tree
 
-  <br />  树：由n（n>0）个有限节点组成一个具有层次关系的[集合](https://wiwiki.kfd.me/wiki/%E9%9B%86%E5%90%88_(%E6%95%B0%E5%AD%A6))。  <br />  ![](./assets/1644386284328-6e94cda5-aac7-4e5e-a389-5b588cb52be9.png)  <br />  ​
+树：由n（n>0）个有限节点组成一个具有层次关系的[集合](https://wiwiki.kfd.me/wiki/%E9%9B%86%E5%90%88_(%E6%95%B0%E5%AD%A6))。  <br />  ![](./assets/1644386284328-6e94cda5-aac7-4e5e-a389-5b588cb52be9.png)
 
 **基本术语**
 
@@ -20,8 +19,6 @@
 - 结点的层次（Level）：规定根结点在 1 层，其他任一结点的层数是其父结点的层数加一
 - 树的深度（Depth）：树中所有结点中的最大层次是这棵树的深度
 
-​
-
 特点
 
 - 每个节点都只有有限个子节点或无子节点；
@@ -31,9 +28,8 @@
 - 树里面没有环路(cycle)
 
 
-  <br />  
-  <br />  
-  <br />  **树与森林**  <br />  **树 --> 二叉树**
+
+**树与森林**  <br />  **树 --> 二叉树**
 
    - 加线：在兄弟之间加一连线
    - 抹线：对每个结点，除了其左孩子外，去除其与其余孩子之间的关系
@@ -46,11 +42,9 @@
    - 以第一棵树根结点为二叉树的根
 
 
-  <br />  
-
 
 ## BinTree
-**二叉树**是每个节点最多只有两个分支的树结构。  <br />  通常分支被称作“左子树”或“右子树”。二叉树的分支具有左右次序，不能随意颠倒。  <br />  ​
+**二叉树**是每个节点最多只有两个分支的树结构。  <br />  通常分支被称作“左子树”或“右子树”。二叉树的分支具有左右次序，不能随意颠倒。
 
 **特点**
 
@@ -59,12 +53,9 @@
 - 包含n个结点的二叉树的高度至少为(log2n)+1
 - 在任意一棵二叉树中，若终端结点的个数为n0，度为2的结点数为n2，则n0=n2+1
 
-​  <br />  
-
 - [完全二叉树](https://wiwiki.kfd.me/wiki/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91)：对于一棵二叉树，假设其深度为d（d>1）。除了第d层外，其它各层的节点数目均已达最大值，且第d层所有节点从左向右连续地紧密排列
    - [满二叉树](https://wiwiki.kfd.me/wiki/%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91)：所有叶节点都在最底层的完全二叉树；
 
-​  <br />  
 ```c
 typedef struct TNode *Position;
 typedef Position BinTree; /* 二叉树类型 */
@@ -78,7 +69,7 @@ struct TNode{ /* 树结点定义 */
 
 ### Traversal
 
-  <br />  先序遍历
+先序遍历
 ```c
 // 递归实现
 void PreorderTraversal( BinTree BT )
@@ -108,7 +99,7 @@ void PreOrderTraversal(BinTree BT){
 } 
 ```
 
-  <br />  中序遍历
+中序遍历
 ```c
 // 递归实现
 void InorderTraversal( BinTree BT )
@@ -140,7 +131,7 @@ void InOrderTraversal(BinTree BT){
 } 
 ```
 
-  <br />  后序遍历
+后序遍历
 ```c
 // 递归实现
 void PostorderTraversal( BinTree BT )
@@ -171,7 +162,6 @@ void PostOrderTraversal(BinTree BT){
 		printf("%d",v[i]->Data);
 } 
 ```
-​
 
 层序遍历
 ```c
@@ -193,8 +183,7 @@ void LevelOrderTraversal(BinTree BT){
 }
 ```
 
-  <br />  
-  <br />  
+
 
 
 ## BinTree Search Tree
@@ -320,12 +309,12 @@ BinTree Delete( BinTree BST, ElementType X )
 }
 ```
 
-  <br />  
 
 
 ## AVL Tree
-一种结构平衡的二叉搜索树，每个节点的左右两子树高度差都不超过一的二叉树  <br />  平衡二叉树由G.M. **A**delson-Velsky和E.M. Landis发明  <br />  
-  <br />  **LL单旋**  <br />  ![](./assets/1643807394369-238162b4-da14-4e4c-950a-8ba50a914119.jpeg)
+一种结构平衡的二叉搜索树，每个节点的左右两子树高度差都不超过一的二叉树  <br />  平衡二叉树由G.M. **A**delson-Velsky和E.M. Landis发明
+
+**LL单旋**  <br />  ![](./assets/1643807394369-238162b4-da14-4e4c-950a-8ba50a914119.jpeg)
 ```c
 typedef struct AVLNode *Position;
 typedef Position AVLTree; /* AVL树类型 */
@@ -408,13 +397,12 @@ AVLTree Insert( AVLTree T, ElementType X )
 }
 ```
 
-  <br />  
 
 
 ## Huffman Tree
-最优二叉树：带权路径长度（WPL）最短的树，权值较大的结点离根较近  <br />  ​
+最优二叉树：带权路径长度（WPL）最短的树，权值较大的结点离根较近
 
-**哈夫曼编码(Huffman Coding)**：无前缀编码，用于无损数据压缩的熵编码（权编码）算法  <br />  原理：使用[变长编码表](https://wiwiki.kfd.me/w/index.php?title=%E8%AE%8A%E9%95%B7%E7%B7%A8%E7%A2%BC%E8%A1%A8&action=edit&redlink=1)对源符号（如文件中的一个字母）进行编码，其中[变长编码表](https://wiwiki.kfd.me/w/index.php?title=%E8%AE%8A%E9%95%B7%E7%B7%A8%E7%A2%BC%E8%A1%A8&action=edit&redlink=1)是通过一种评估来源符号出现概率的方法得到的，出现概率高的字母使用较短的编码，反之出现概率低的则使用较长的编码，这便使编码之后的字符串的平均长度、[期望值](https://wiwiki.kfd.me/wiki/%E6%9C%9F%E6%9C%9B%E5%80%BC)降低，从而达到[无损压缩](https://wiwiki.kfd.me/wiki/%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9)数据的目的。  <br />  ​
+**哈夫曼编码(Huffman Coding)**：无前缀编码，用于无损数据压缩的熵编码（权编码）算法  <br />  原理：使用[变长编码表](https://wiwiki.kfd.me/w/index.php?title=%E8%AE%8A%E9%95%B7%E7%B7%A8%E7%A2%BC%E8%A1%A8&action=edit&redlink=1)对源符号（如文件中的一个字母）进行编码，其中[变长编码表](https://wiwiki.kfd.me/w/index.php?title=%E8%AE%8A%E9%95%B7%E7%B7%A8%E7%A2%BC%E8%A1%A8&action=edit&redlink=1)是通过一种评估来源符号出现概率的方法得到的，出现概率高的字母使用较短的编码，反之出现概率低的则使用较长的编码，这便使编码之后的字符串的平均长度、[期望值](https://wiwiki.kfd.me/wiki/%E6%9C%9F%E6%9C%9B%E5%80%BC)降低，从而达到[无损压缩](https://wiwiki.kfd.me/wiki/%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9)数据的目的。
 
 ![](./assets/1644412353211-f78c41ce-1367-41d9-b04b-c05ec69ac012.png)  <br />  **特点**
 
@@ -530,11 +518,10 @@ int main()
 }
 ```
 
-  <br />  
 
 
-## ​[B树](https://wiwiki.kfd.me/wiki/B%E6%A0%91)
-一种对读写操作进行优化的自平衡的二叉查找树，能够保持数据有序，拥有多个子树。  <br />  
+## [B树](https://wiwiki.kfd.me/wiki/B%E6%A0%91)
+一种对读写操作进行优化的自平衡的二叉查找树，能够保持数据有序，拥有多个子树。
 
 
 ## Red-Black Tree
@@ -965,9 +952,9 @@ if __name__ == "__main__":
 ```
 
 # Heap
-**堆**是一种特别的[完全二叉树](https://wiwiki.kfd.me/wiki/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91)​  <br />  优先队列（priority Queue）：取出元素的顺序是依照元素的优先级大小，以**完全二叉树**存储  <br />  根节点最大的堆叫做**最大堆**或**大根堆**，根节点最小的堆叫做**最小堆**或**小根堆**  <br />  **​**
+**堆**是一种特别的[完全二叉树](https://wiwiki.kfd.me/wiki/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91)  <br />  优先队列（priority Queue）：取出元素的顺序是依照元素的优先级大小，以**完全二叉树**存储  <br />  根节点最大的堆叫做**最大堆**或**大根堆**，根节点最小的堆叫做**最小堆**或**小根堆**
 
-**二叉堆**（binary heap）是一种特殊的[堆](https://wiwiki.kfd.me/wiki/%E5%A0%86_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84))，二叉堆是[完全二叉树](https://wiwiki.kfd.me/wiki/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91)或者是近似完全二叉树。  <br />  ![](./assets/1644413152304-bcb1c88d-8604-45ae-8f2c-bd89e264f92d.svg)  <br />  
+**二叉堆**（binary heap）是一种特殊的[堆](https://wiwiki.kfd.me/wiki/%E5%A0%86_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84))，二叉堆是[完全二叉树](https://wiwiki.kfd.me/wiki/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91)或者是近似完全二叉树。  <br />  ![](./assets/1644413152304-bcb1c88d-8604-45ae-8f2c-bd89e264f92d.svg)
 
 ```c
 typedef struct HNode *Heap; /* 堆的类型定义 */
@@ -1082,8 +1069,9 @@ void BuildHeap( MaxHeap H )
 - 查找（Find）：确定某个元素处于哪个子集；
 - 合并（Union）：将两个子集合并成一个集合。
 
-![](./assets/1644413467136-0ae48fa9-406b-4547-bcad-f58bbac3ca0c.svg)  <br />  
-  <br />  路径压缩：把在路径上的每个节点都直接连接到根上  <br />  ![](./assets/1644413509142-925cd89f-aff8-4d12-ad70-f024a754c0e5.svg)
+![](./assets/1644413467136-0ae48fa9-406b-4547-bcad-f58bbac3ca0c.svg)
+
+路径压缩：把在路径上的每个节点都直接连接到根上  <br />  ![](./assets/1644413509142-925cd89f-aff8-4d12-ad70-f024a754c0e5.svg)
 ```c
 #define MAXN 1000                  /* 集合最大元素个数 */
 typedef int ElementType;           /* 默认元素可以用非负整数表示 */
@@ -1114,7 +1102,7 @@ SetName Find( SetType S, ElementType X )
 ```
 
 # Graph
-一个二元组_G_ = (_V_, _E_)，其中集合_V_中的元素称为**节点**（Vertex），集合_E_中的元素是两个节点组成的无序对，称为**边**（Edge）。  <br />  ​  <br />  
+一个二元组_G_ = (_V_, _E_)，其中集合_V_中的元素称为**节点**（Vertex），集合_E_中的元素是两个节点组成的无序对，称为**边**（Edge）。
 
 - 表示”多对多”的关系
 - 包含
@@ -1124,9 +1112,7 @@ SetName Find( SetType S, ElementType X )
       - 有向边 <v,w> 表示从 v 指向 w 的边（单行线） v→w
       - 不考虑重边和自回路
 
-​
-
-**无向图 (Undirected graph)**  <br />  **有向图 (Directed graph)**  <br />  ​
+**无向图 (Undirected graph)**  <br />  **有向图 (Directed graph)**
 
 常见术语
 
@@ -1141,7 +1127,6 @@ SetName Find( SetType S, ElementType X )
 - 稠密图：顶点多边也多的图
 - 完全图：对于给定的一组顶点，顶点间都存在边
 
-​  <br />  
 
 ## 表示法
 
@@ -1348,7 +1333,6 @@ void DFS( LGraph Graph, Vertex V, void (*Visit)(Vertex) )
 ```
 
 
-
 ### 邻接矩阵 - BFS
 广度优先搜索（Breadth First Search)：从根节点开始，沿着树的宽度遍历树的节点
 ```c
@@ -1387,16 +1371,13 @@ void BFS ( MGraph Graph, Vertex S, void (*Visit)(Vertex) )
 ```
 
 
-
 ## 最短路径
-
 
 - **确定起点的最短路径问题** - 单源最短路问题，已知起始结点。在边权非负时适合使用[Dijkstra算法](https://wiwiki.kfd.me/wiki/Dijkstra%E7%AE%97%E6%B3%95)，若边权为负时则适合使用[Bellman-ford算法](https://wiwiki.kfd.me/wiki/Bellman-ford)或者[SPFA算法](https://wiwiki.kfd.me/wiki/SPFA%E7%AE%97%E6%B3%95)。
 - **确定终点的最短路径问题** - 与确定起点的问题相反，该问题是已知终结结点，求最短路径的问题。在[无向图](https://wiwiki.kfd.me/wiki/%E7%84%A1%E5%90%91%E5%9C%96)中该问题与确定起点的问题完全等同，在[有向图](https://wiwiki.kfd.me/wiki/%E6%9C%89%E5%90%91%E5%9B%BE)中该问题等同于把所有路径方向反转的确定起点的问题。
 - **确定起点终点的最短路径问题** - 即已知起点和终点，求两结点之间的最短路径。
 - **全局最短路径问题** - 也叫多源最短路问题，求图中所有的最短路径。适合使用[Floyd-Warshall算法](https://wiwiki.kfd.me/wiki/Floyd-Warshall%E7%AE%97%E6%B3%95)。
 
-​  <br />  
 
 ### 邻接表 - 无权图的单源 算法
 ```c
@@ -1424,9 +1405,8 @@ void Unweighted ( LGraph Graph, int dist[], int path[], Vertex S )
 ```
 
 
-
 ### 邻接矩阵 - 有权图的单源 Dijkstra算法
-**​**
+
 
 **流程**
 
@@ -1495,9 +1475,7 @@ bool Dijkstra( MGraph Graph, int dist[], int path[], Vertex S )
 ```
 
 
-
 ### 邻接矩阵 - 多源  Floyd算法
-
 
 ```c
 bool Floyd( MGraph Graph, WeightType D[][MaxVertexNum], Vertex path[][MaxVertexNum] )
@@ -1525,13 +1503,14 @@ bool Floyd( MGraph Graph, WeightType D[][MaxVertexNum], Vertex path[][MaxVertexN
 ```
 
 
-
 ## 最小生成树
 
-  <br />  最小生成树（Minimum Spanning Tree，MST）：一副**连通加权无向图**中一棵权值最小的生成树。  <br />  ​  <br />  
+最小生成树（Minimum Spanning Tree，MST）：一副**连通加权无向图**中一棵权值最小的生成树。
+
 
 ### 邻接矩阵 - Prim算法
-基本思想：从一个结点开始，每次选择距离最小的一个结点，以及用新的边更新其他结点的距离  <br />  ​  <br />  
+基本思想：从一个结点开始，每次选择距离最小的一个结点，以及用新的边更新其他结点的距离
+
 ```c
 Vertex FindMinDist( MGraph Graph, WeightType dist[] )
 { /* 返回未被收录顶点中dist最小者 */
@@ -1606,10 +1585,9 @@ int Prim( MGraph Graph, LGraph MST )
 ```
 
 
-
 ### 邻接表 - Kruskal算法
 
-  <br />  基本思想：每次选取未联通且权值最小的边  <br />  步骤
+基本思想：每次选取未联通且权值最小的边  <br />  步骤
 
 1. 新建图，拥有原图中相同的节点，但没有边
 1. 将原图中所有的边按权值从小到大排序
@@ -1753,15 +1731,14 @@ int Kruskal( LGraph Graph, LGraph MST )
 ```
 
 
-
 ### Boruvka 算法
-​
 
-前两种算法的结合。它可以用于求解 **边权互不相同** 的无向图的最小生成森林  <br />  
+前两种算法的结合。它可以用于求解 **边权互不相同** 的无向图的最小生成森林
 
 
 ## 邻接表 - 拓扑排序
-Topological sorting  <br />  任何有向无环图至少有一个拓扑排序  <br />  ​  <br />  
+Topological sorting  <br />  任何有向无环图至少有一个拓扑排序
+
 ```c
 bool TopSort( LGraph Graph, Vertex TopOrder[] )
 { /* 对Graph进行拓扑排序,  TopOrder[]顺序存储排序后的顶点下标 */
@@ -1801,5 +1778,4 @@ bool TopSort( LGraph Graph, Vertex TopOrder[] )
         return true;
 }
 ```
-
 

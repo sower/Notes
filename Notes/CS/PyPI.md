@@ -1,14 +1,12 @@
 
 # ——[PyPI](https://pypi.org/)——
 
-  <br />  
-  <br />  Resource
+
+Resource
 
 - [awesome-python-cn](https://github.com/jobbole/awesome-python-cn)
 - [awesome-python](https://github.com/vinta/awesome-python)
 
-
-  <br />  
 
 
 # [NumPy](https://numpy.org/)
@@ -830,85 +828,179 @@ app.start("Notepad.exe")
 app.UntitledNotepad.draw_outline()
 app.UntitledNotepad.menu_select("编辑(&E) -> 粘贴(&P)")
 ```
-​
 
-​
 
-​
 
-​  <br />  
+
 
 # [paramiko](https://github.com/paramiko/paramiko)
 
-
 ```python
-import sys
-import logging
-from paramiko.client import SSHClient, AutoAddPolicy
-from paramiko import AuthenticationException
-from paramiko.ssh_exception import NoValidConnectionsError
+# coding:utf8
 
+import paramiko
+import os
+import time
 
-class SshClient():
-    def __init__(self):
-        self.ssh_client = SSHClient()
+class SshConnectError(Exception):
+    pass
 
-    def ssh_login(self, host_ip, username, password, port=22):
+class controlHost:
+    def __init__(self, host, username, password, port=22, key_file='C:/Users/Ylem/.ssh/id_rsa'):  # 本地密钥文件路径
+        self.host = host
+        self.pkey = paramiko.RSAKey.from_private_key_file(key_file)
+        # 调用类中的静态方法__sshConn 返回ssh连接对象
+        self.ssh = controlHost.__sshConn(
+            host, username, password, self.pkey, port)
+        self.sftp = self.__sftpConn()
+
+    def close(self):
+        if hasattr(self.ssh, "close"):
+            self.ssh.close()
+
+    @staticmethod
+    def __sshConn(host, username, password, pkey, port):
+        # 创建一个SSH客户端client对象
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         try:
-            # 设置允许连接known_hosts文件中的主机（默认连接不在known_hosts文件中的主机会拒绝连接抛出SSHException）
-            self.ssh_client.set_missing_host_key_policy(AutoAddPolicy())
-            self.ssh_client.connect(
-                host_ip, port, username=username, password=password)
-        except AuthenticationException:
-            logging.warning('username or password error')
-            return 1001
-        except NoValidConnectionsError:
-            logging.warning('connect time out')
-            return 1002
+            ssh.connect(hostname=host, port=port,
+                        username=username, pkey=pkey)
+            print('免密登陆方式')
         except:
-            print("Unexpected error:", sys.exc_info()[0])
-            return 1003
-        return 1000
+            try:
+                ssh.connect(hostname=host, port=port,
+                            username=username, password=password)
+                print('密码认证')
+            except AuthenticationException:
+                logging.warning('username or password error')
+            except NoValidConnectionsError:
+                logging.warning('connect time out')
+            except:
+                print("Unexpected error:", sys.exc_info()[0])
+            else:
+                return ssh
+        else:
+            return ssh
 
-    def execute_some_command(self, command):
-        stdin, stdout, stderr = self.ssh_client.exec_command(command)
-        out, err = stdout.read(), stderr.read()
-        result = out if out else err
-        print(result.decode("utf-8"))
+    # 返回sftp通道实例对象 方法
+    def __sftpConn(self):
+        transport = self.ssh.get_transport()
+        # 创建一个已连通的SFTP客户端通道
+        sftp = paramiko.SFTPClient.from_transport(transport)
+        return sftp
 
-    def ssh_logout(self):
-        self.ssh_client.close()
+    # 执行命令方法
+    def exeCommand(self, cmd, timeout=300):
+        stdin, stdout, stderr = self.ssh.exec_command(cmd, timeout=timeout)
+        channel = stdout.channel
+        exit_code = channel.recv_exit_status()
+        # 报错返回码是127，没有报错是0
+        stdout = stdout.read().strip().decode("utf-8")
+        stderr = stderr.read().strip().decode("utf-8")
+        return {"stdout": stdout, "stderr": stderr, 'exit_code': exit_code}
+
+    def interact(self):
+        self.channel = self.ssh.invoke_shell()
+        print("--- 开启ssh交互式终端 --- \r\n")
+
+    def interactConmands(self, cmds):
+        cmds.append('exit')
+        for cmd in cmds:
+            time.sleep(0.5)
+            self.channel.send(cmd+' \r\n')
+            time.sleep(0.5)
+            result = self.channel.recv(9999)
+            yield result.decode("utf-8")
+
+    # 文件上传下载方法
+    def sftpFile(self, localpath, remotepath, action):
+        try:
+            if action == 'push':
+                dirname = os.path.dirname(remotepath)
+                self.exeCommand(f"mkdir -p {dirname}")
+                self.sftp.put(localpath, remotepath)
+                return {"status": 1, "message": f'sftp {self.host} {action} success!'}
+            elif action == "pull":
+                dirname = os.path.dirname(localpath)
+                if not os.path.exists(dirname):
+                    os.makedirs(dirname)
+                # if os.path.exists(localpath):
+                os.remove(localpath)
+                self.sftp.get(remotepath, localpath)
+                return {"status": 1, "stdout": f'sftp {self.host} {action} success!', "stderr": ""}
+        except Exception as e:
+            return {"status": 0, "stderr": f'sftp {self.host} {action} failed {str(e)}', "stdout": ""}
+
+    @staticmethod
+    def iter_local_path(abs_path):
+        '''遍历本机该目录中所有的文件，并返回'''
+        result = set([])
+        for j in os.walk(abs_path):
+            print(j)
+            base_path = j[0]
+            file_list = j[2]
+            for k in file_list:
+                p = os.path.join(base_path, k)
+                result.add(p)
+        return result
+
+    def iter_remote_path(self, abs_path):
+        '''获取远程主机绝对路径下的所有文件'''
+        result = set([])
+        try:
+            stat = str(self.sftp.lstat(abs_path))
+            print('stat', stat)
+        except FileNotFoundError:
+            return result
+        else:
+            if stat.startswith("d"):
+                file_list = self.exeCommand(f"ls {abs_path}")["stdout"].decode(
+                    encoding='utf-8').strip().splitlines()
+
+                for j in file_list:
+                    p = os.path.join(abs_path, j)
+                    result.update(self.iter_remote_path(p))
+            else:
+                result.add(abs_path)
+        return result
 
 
-if __name__ == "__main__":
-    ssh = SshClient()
-    if ssh.ssh_login(host_ip="192.168.0.101", username="u0_a168", password="1999", port=8022) == 1000:
-        ssh.execute_some_command("ls")
-        ssh.ssh_logout()
+if __name__ == '__main__':
+    ssh = controlHost(host="192.168.0.100", username="u0_a168",
+                      password="1999", port=8022)
+
+    # 测试 获取本地某个目录的所有文件
+    # w = ssh.iter_local_path("/root/test")
+    # print(w)
+
+    # 测试 获取远程主机某个目录的所有文件
+    # y = ssh.iter_remote_path("/root/test")
+    # print(y)
+
+    # 测试 上传下载
+    # 将本地机器的/tmp/ansible.txt，上传至远程主机/tmp目录下并命名为xx.sh
+    # w = ssh.sftpFile("/tmp/ansible.txt", '/tmp/xx.txt', "push")
+    # w = ssh.sftpFile('/tmp/aaaa.py', '/tmp/xyz.py', 'pull')
+    ssh.interact()
+    g = ssh.interactConmands(['pwd', 'ls', 'whoami'])
+    for h in g:
+        print('---------')
+        print(h)
+    ssh.close()
+
 ```
-​
 
-​
 
-​
 
-​
 
-​
 
-​
 
-​
 
-​
 
-​
 
-​
 
-​
 
-​
 
 WSGI（Web Server Gateway Interface）一种描述web server如何与web application通信的规范。（PEP 3333）  <br />  Web程序必须有一个可调用对象，且该可调用对象接收两个参数，返回一个可迭代对象：
 

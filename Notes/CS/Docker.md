@@ -1,14 +1,12 @@
 
 # —— [Docker](https://www.docker.com/)  ——
 
-  <br />  一个开源的应用容器引擎，遵从 Apache2.0 协议开源。由 [Go 语言](https://golang.google.cn/) 进行开发实现，基于 Linux 内核的 [cgroup](https://zh.wikipedia.org/wiki/Cgroups)，[namespace](https://en.wikipedia.org/wiki/Linux_namespaces)，以及 [OverlayFS](https://docs.docker.com/storage/storagedriver/overlayfs-driver/) 类的 [Union FS](https://en.wikipedia.org/wiki/Union_mount) 等技术，对进程进行封装隔离，属于 [操作系统层面的虚拟化技术](https://en.wikipedia.org/wiki/Operating-system-level_virtualization)。  <br />  让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。  <br />  ​
+一个开源的应用容器引擎，遵从 Apache2.0 协议开源。由 [Go 语言](https://golang.google.cn/) 进行开发实现，基于 Linux 内核的 [cgroup](https://zh.wikipedia.org/wiki/Cgroups)，[namespace](https://en.wikipedia.org/wiki/Linux_namespaces)，以及 [OverlayFS](https://docs.docker.com/storage/storagedriver/overlayfs-driver/) 类的 [Union FS](https://en.wikipedia.org/wiki/Union_mount) 等技术，对进程进行封装隔离，属于 [操作系统层面的虚拟化技术](https://en.wikipedia.org/wiki/Operating-system-level_virtualization)。  <br />  让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。
 
 版本
 
 - CE（Community Edition，社区版）
 - EE（Enterprise Edition，企业版）
-
-​
 
 基本概念
 
@@ -18,18 +16,12 @@
    - [Docker Hub](https://hub.docker.com/)
    - [阿里云加速器](https://www.aliyun.com/product/acr?source=5176.11533457&userCode=8lx5zmtu)、[DaoCloud 加速器](https://www.daocloud.io/mirror#accelerator-doc)
 
-​
-
-​
 
 Resource
 
 - [docker_practice](https://github.com/yeasy/docker_practice)
 
-​
-
-![image.png](./assets/1644501203821-ab179753-5ac2-4aa0-b9f3-172f0fbe488f.png)  <br />  
-
+![image.png](./assets/1644501203821-ab179753-5ac2-4aa0-b9f3-172f0fbe488f.png)
 
 | Command | Description |
 | --- | --- |
@@ -91,11 +83,11 @@ Resource
 | [docker volume](https://docs.docker.com/engine/reference/commandline/volume/) | Manage volumes |
 | [docker wait](https://docs.docker.com/engine/reference/commandline/wait/) | Block until one or more containers stop, then print their exit codes |
 
-​  <br />  
+
 
 # 安装
 
-  <br />  [Install on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+[Install on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 ```shell
 1 Uninstall old versions
 sudo apt-get remove docker docker-engine docker.io containerd runc
@@ -123,14 +115,12 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
 ```
-​
 
 使用安装脚本自动安装
 ```shell
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
-​
 
 卸载
 ```shell
@@ -138,7 +128,6 @@ sudo apt-get purge docker-ce docker-ce-cli containerd.io
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 ```
-​
 
 ubuntu下docker配置国内镜像源
 ```shell
@@ -162,12 +151,10 @@ ubuntu下docker配置国内镜像源
  docker info    确认信息
 ```
 
-  <br />  
-  <br />  
+
 
 
 # 镜像管理
-​
 
 **虚悬镜像(dangling image)** ：由于新旧镜像同名，旧镜像名称被取消，从而出现仓库名、标签均为 <none> 的镜像
 ```shell
@@ -178,8 +165,6 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 # 删除
 docker image prune
 ```
-
-
 
 | Command | Description |
 | --- | --- |
@@ -241,8 +226,8 @@ docker login [OPTIONS] [SERVER]
 - --password-stdin    Take the password from stdin
 - -u, --username string   Username
 
-docker logout [SERVER]  <br />  
-  <br />  
+docker logout [SERVER]
+
 
 
 # 数据管理
@@ -256,8 +241,6 @@ docker logout [SERVER]  <br />
 - 对 数据卷 的更新，不会影响镜像
 - 数据卷 默认会一直存在，即使容器被删除
 
-​  <br />  
-
 | Command | Description |
 | --- | --- |
 | [docker volume create](https://docs.docker.com/engine/reference/commandline/volume_create/) | Create a volume |
@@ -266,11 +249,8 @@ docker logout [SERVER]  <br />
 | [docker volume prune](https://docs.docker.com/engine/reference/commandline/volume_prune/) | Remove all unused local volumes |
 | [docker volume rm](https://docs.docker.com/engine/reference/commandline/volume_rm/) | Remove one or more volumes |
 
-​  <br />  
 
 - 挂载主机目录 (Bind mounts)
-
-
 
 ```shell
 docker run -d -P \
@@ -280,10 +260,9 @@ docker run -d -P \
   nginx:alpine
 ```
 
-  <br />  
-  <br />  
-  <br />  
-  <br />  
+
+
+
 
 
 # 容器
@@ -315,7 +294,7 @@ docker run -d -P \
 | [docker container update](https://docs.docker.com/engine/reference/commandline/container_update/) | Update configuration of one or more containers |
 | [docker container wait](https://docs.docker.com/engine/reference/commandline/container_wait/) | Block until one or more containers stop, then print their exit codes |
 
-​
+
 
 
 ## 容器生命周期管理
@@ -336,9 +315,10 @@ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
 - -v, --volume list                 Bind mount a volume
 - --volumes-from list              Mount volumes from the specified container(s)
 
--v	容器内路径		匿名挂载  <br />  -v	卷名:容器内路径		具名挂载  <br />  -v	/宿主机路径:容器内路径	指定路径挂载  <br />  
-  <br />  
-  <br />  exit：容器停止退出  <br />  Ctrl+P+Q：容器不停止退出。  <br />  ​
+-v	容器内路径		匿名挂载  <br />  -v	卷名:容器内路径		具名挂载  <br />  -v	/宿主机路径:容器内路径	指定路径挂载
+
+
+exit：容器停止退出  <br />  Ctrl+P+Q：容器不停止退出。
 
 docker rm [OPTIONS] CONTAINER [CONTAINER...]
 
@@ -399,13 +379,9 @@ docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]	提交一个容器的文件
 - --message , -m		Commit message
 - --pause , -p	true	Pause container during commit
 
-​
 
-​
 
-​
 
-​  <br />  
 
 # Docker network
 网络架构：容器网络模型（CNM）的方案
@@ -414,11 +390,11 @@ docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]	提交一个容器的文件
 - Libnetwork 是 CNM 的具体实现，Libnetwork 通过 Go 语言编写，并实现了 CNM 中列举的核心组件。
 - 驱动通过实现特定网络拓扑的方式来拓展该模型的能力。
 
-![](http://c.biancheng.net/uploads/allimg/190418/4-1Z41Q55GJ60.gif#crop=0&crop=0&crop=1&crop=1&id=pUscv&originHeight=306&originWidth=728&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  
-  <br />  
-  <br />  
-  <br />  ![image.png](./assets/1644627887995-8d50d964-255a-49cb-9572-04557e0c5f8e.png)  <br />  
+![](http://c.biancheng.net/uploads/allimg/190418/4-1Z41Q55GJ60.gif#crop=0&crop=0&crop=1&crop=1&id=pUscv&originHeight=306&originWidth=728&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
+
+
+![image.png](./assets/1644627887995-8d50d964-255a-49cb-9572-04557e0c5f8e.png)
 
 | Command | Description |
 | --- | --- |
@@ -430,14 +406,13 @@ docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]	提交一个容器的文件
 | [docker network prune](https://docs.docker.com/engine/reference/commandline/network_prune/) | Remove all unused networks |
 | [docker network rm](https://docs.docker.com/engine/reference/commandline/network_rm/) | Remove one or more networks |
 
-docker network create --driver bridge --subnet 192.168.0.0/16 --gateway 192.168.0.1 mynet  <br />  -d, --driver string        Driver to manage the Network (default "bridge")  <br />  --gateway strings      IPv4 or IPv6 Gateway for the master subnet  <br />  --subnet strings       Subnet in CIDR format that represents a network segment  <br />  ​
+docker network create --driver bridge --subnet 192.168.0.0/16 --gateway 192.168.0.1 mynet  <br />  -d, --driver string        Driver to manage the Network (default "bridge")  <br />  --gateway strings      IPv4 or IPv6 Gateway for the master subnet  <br />  --subnet strings       Subnet in CIDR format that represents a network segment
 
-​
 
-​  <br />  
+
 
 # [Dockerfile](https://docs.docker.com/engine/reference/builder/)
-一个用来构建镜像的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。  <br />  ​
+一个用来构建镜像的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。
 
 指令不区分大小写
 ```shell
@@ -463,7 +438,7 @@ CMD echo $MYPATH
 CMD echo "---end---"
 CMD /bin/bash
 ```
-docker build [-f dockerfile] -t 镜像名: [tag] .  <br />  ​
+docker build [-f dockerfile] -t 镜像名: [tag] .
 
 基本指令
 ```shell
@@ -515,19 +490,16 @@ ONBUILD <INSTRUCTION>
 SHELL ["executable", "parameters"]
 ```
 
-  <br />  
-  <br />  
+
 
 
 # [Compose](http://docs.docker.com/compose/)
-用于定义和运行多容器 Docker 应用程序的工具，负责实现对 Docker 容器集群的快速编排  <br />  ​
+用于定义和运行多容器 Docker 应用程序的工具，负责实现对 Docker 容器集群的快速编排
 
 概念：
 
 - 服务 (service)：一个应用的容器，实际上可以包括若干运行相同镜像的容器实例。
 - 项目 (project)：由一组关联的应用容器组成的一个完整业务单元，在 docker-compose.yml 文件中定义。
-
-​
 
 安装
 ```shell
@@ -546,15 +518,12 @@ docker-compose --version
 # 卸载
 sudo rm /usr/local/bin/docker-compose
 ```
-​
 
 三步：
 
 - 使用 Dockerfile 定义应用程序的环境。
 - 使用 docker-compose.yml 定义构成应用程序的服务，这样它们可以在隔离环境中一起运行。
 - 最后，执行 docker-compose up 命令来启动并运行整个应用程序。
-
-​
 
 Usage
 ```shell
@@ -609,7 +578,6 @@ Commands:
   unpause            Unpause services
   up                 Create and start containers
 ```
-​
 
 [Compose file](https://docs.docker.com/compose/compose-file/compose-file-v3/)  <br />  The Compose file is a [YAML](https://yaml.org/) file defining services, networks and volumes.
 ```shell
@@ -703,7 +671,6 @@ volumes:
   db-data:
 ```
 
-
 - [build](https://docs.docker.com/compose/compose-file/compose-file-v3/#build)
    - [context](https://docs.docker.com/compose/compose-file/compose-file-v3/#context)
    - [dockerfile](https://docs.docker.com/compose/compose-file/compose-file-v3/#dockerfile)
@@ -796,8 +763,7 @@ volumes:
    - [external](https://docs.docker.com/compose/compose-file/compose-file-v3/#external-1)
    - [name](https://docs.docker.com/compose/compose-file/compose-file-v3/#name-1)
 
-
-  <br />  Dockerfile
+Dockerfile
 ```shell
 FROM python:3.7-alpine
 WORKDIR /code
@@ -882,14 +848,12 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 - version： 显示 Docker Machine 的版本或者主机 Docker 版本
 - help： 显示帮助信息
 
-​
 
-​  <br />  
 
 # Swarm mode
-**​**
 
-管理 (manager) 节点：一个 Swarm 集群可以有多个管理节点，但只有一个管理节点可以成为 leader  <br />  工作 (worker) 节点：任务执行节点，管理节点将服务 (service) 下发至工作节点执行  <br />  ![](./assets/1644629232019-5513b7ff-b129-4592-acf4-faf31155892d.png)  <br />  **​**
+
+管理 (manager) 节点：一个 Swarm 集群可以有多个管理节点，但只有一个管理节点可以成为 leader  <br />  工作 (worker) 节点：任务执行节点，管理节点将服务 (service) 下发至工作节点执行  <br />  ![](./assets/1644629232019-5513b7ff-b129-4592-acf4-faf31155892d.png)
 
 任务 （Task）：Swarm 中的最小的调度单位，目前来说就是一个单一的容器。  <br />  服务 （Services）：一组任务的集合，服务定义了任务的属性。有两种模式
 
@@ -910,7 +874,8 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 | [docker swarm unlock-key](https://docs.docker.com/engine/reference/commandline/swarm_unlock-key/) | Manage the unlock key |
 | [docker swarm update](https://docs.docker.com/engine/reference/commandline/swarm_update/) | Update the swarm |
 
-初始化集群  <br />  `docker swarm init --advertise-addr 192.168.99.100`  <br />  增加工作节点  <br />  `docker swarm join \ --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c \     192.168.99.100:2377`  <br />  ​  <br />  
+初始化集群  <br />  `docker swarm init --advertise-addr 192.168.99.100`  <br />  增加工作节点  <br />  `docker swarm join \ --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c \     192.168.99.100:2377`
+
 
 ## Node
 | Command | Description |
@@ -923,7 +888,7 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 | [docker node rm](https://docs.docker.com/engine/reference/commandline/node_rm/) | Remove one or more nodes from the swarm |
 | [docker node update](https://docs.docker.com/engine/reference/commandline/node_update/) | Update a node |
 
-**​**  <br />  
+  <br />  
 
 ## Service
 | Command | Description |
@@ -938,7 +903,8 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 | [docker service scale](https://docs.docker.com/engine/reference/commandline/service_scale/) | Scale one or multiple replicated services |
 | [docker service update](https://docs.docker.com/engine/reference/commandline/service_update/) | Update a service |
 
-新建服务  <br />  `docker service create --replicas 3 -p 80:80 --name nginx nginx:1.13.7-alpine`  <br />  服务伸缩  <br />  `docker service scale nginx=5`  <br />  升级服务  <br />  `docker service update  --image nginx:1.13.12-alpine  nginx`  <br />  服务回退  <br />  `docker service rollback nginx`  <br />  ​  <br />  
+新建服务  <br />  `docker service create --replicas 3 -p 80:80 --name nginx nginx:1.13.7-alpine`  <br />  服务伸缩  <br />  `docker service scale nginx=5`  <br />  升级服务  <br />  `docker service update  --image nginx:1.13.12-alpine  nginx`  <br />  服务回退  <br />  `docker service rollback nginx`
+
 
 ## Stack
 | Command | Description |
@@ -949,7 +915,7 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 | [docker stack rm](https://docs.docker.com/engine/reference/commandline/stack_rm/) | Remove one or more stacks |
 | [docker stack services](https://docs.docker.com/engine/reference/commandline/stack_services/) | List the services in the stack |
 
-​  <br />  
+
 
 ## Secret
 | Command | Description |
@@ -959,7 +925,7 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 | [docker secret ls](https://docs.docker.com/engine/reference/commandline/secret_ls/) | List secrets |
 | [docker secret rm](https://docs.docker.com/engine/reference/commandline/secret_rm/) | Remove one or more secrets |
 
-​  <br />  
+
 
 ## Config
 | Command | Description |
@@ -969,13 +935,12 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 | [docker config ls](https://docs.docker.com/engine/reference/commandline/config_ls/) | List configs |
 | [docker config rm](https://docs.docker.com/engine/reference/commandline/config_rm/) | Remove one or more configs |
 
-​
 
-​
 
-​
 
-​  <br />  
+
+
+
 
 # docker buildx
 | Command | Description |
@@ -993,16 +958,14 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 | [docker buildx use](https://docs.docker.com/engine/reference/commandline/buildx_use/) | Set the current builder instance |
 | [docker buildx version](https://docs.docker.com/engine/reference/commandline/buildx_version/) | Show buildx version information |
 
-​
 
-​  <br />  
+
 
 # [kubernetes](https://github.com/kubernetes/kubernetes)
-​
 
-Kubernetes 是 Google 团队发起的开源项目，它的目标是管理跨多个主机的容器，提供基本的部署，维护以及应用伸缩，主要实现语言为 Go 语言。  <br />  ​
+Kubernetes 是 Google 团队发起的开源项目，它的目标是管理跨多个主机的容器，提供基本的部署，维护以及应用伸缩，主要实现语言为 Go 语言。
 
-**基本概念**  <br />  ![image.png](./assets/1644630796866-d619a28c-cffc-4362-97bd-f1dc20a8b440.png)  <br />  ​  <br />  
+**基本概念**  <br />  ![image.png](./assets/1644630796866-d619a28c-cffc-4362-97bd-f1dc20a8b440.png)
 
 - 节点（Node）：一个节点是一个运行 Kubernetes 中的主机。
 - 容器组（Pod）：一个 Pod 对应于由若干容器组成的一个容器组，同个组内的容器共享一个存储卷(volume)。
@@ -1015,14 +978,8 @@ Kubernetes 是 Google 团队发起的开源项目，它的目标是管理跨多�
 - web 界面（ux）：用户可以通过 web 界面操作 Kubernetes。
 - 命令行操作（cli）：kubectl命令。
 
-​
 
-​
 
-​
 
-​
 
-​
 
-​  <br />  

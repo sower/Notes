@@ -1,8 +1,9 @@
 
 # —— Linux ——
 
-  <br />  Linux 是一套免费使用和自由传播的类 Unix 操作系统，是一个基于 POSIX 和 UNIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。  <br />  Linux 内核最初是由芬兰人林纳斯·托瓦兹（Linus Torvalds）在赫尔辛基大学上学时出于个人爱好而编写的  <br />  
-  <br />  resource
+Linux 是一套免费使用和自由传播的类 Unix 操作系统，是一个基于 POSIX 和 UNIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。  <br />  Linux 内核最初是由芬兰人林纳斯·托瓦兹（Linus Torvalds）在赫尔辛基大学上学时出于个人爱好而编写的
+
+resource
 
 - [Awesome-Linux-Software](https://github.com/luong-komorebi/Awesome-Linux-Software)
 - [How-To-Secure-A-Linux-Server](https://github.com/imthenachoman/How-To-Secure-A-Linux-Server)
@@ -40,8 +41,6 @@ FHS（Filesystem Hierarchy Standard，文件系统层次结构标准）：多数
 - /var：用于存储动态数据，例如缓存、日志文件、软件运行过程中产生的文件等
 - /run：一个临时文件系统，存储系统启动以来的信息。当系统重启时，目录下的文件清除
 
-​
-
 /etc/passwd  <br />  用户名：密码：UID（用户ID）：GID（组ID）：描述性信息：主目录：默认Shell  <br />  /etc/shadow  <br />  用户名：加密密码：最后一次修改时间：最小修改时间间隔：密码有效期：密码需要变更前的警告天数：密码过期后的宽限时间：账号失效时间：保留字段  <br />  /ect/group  <br />  组名：密码：GID：该用户组中的用户列表  <br />  /etc/gshadow  <br />  组名：加密密码：组管理员：组附加用户列表  <br />  /etc/login.defs
 
 | 设置项 | 含义 |
@@ -60,7 +59,7 @@ FHS（Filesystem Hierarchy Standard，文件系统层次结构标准）：多数
 | USERGROUPS_ENAB yes | 指定删除用户的时候是否同时删除用户组 |
 | ENCRYPT_METHOD SHA512 | 指定用户密码采用的加密规则，默认采用 SHA512 |
 
-/etc/default/useradd  <br />  ​  <br />  
+/etc/default/useradd
 
 | UID 范围 | 用户身份 |
 | --- | --- |
@@ -71,16 +70,14 @@ FHS（Filesystem Hierarchy Standard，文件系统层次结构标准）：多数
 
 # 术语
 
-  <br />  挂载：将设备文件中的顶级目录连接到 Linux 根目录下的某一目录（最好是空目录），访问此目录就等同于访问设备文件。  <br />  归档(打包)：一个文件或目录的集合，而这个集合被存储在一个文件中。  <br />  压缩：利用算法将文件进行处理，已达到保留最大文件信息，而让文件体积变小的目的。  <br />  ​
+挂载：将设备文件中的顶级目录连接到 Linux 根目录下的某一目录（最好是空目录），访问此目录就等同于访问设备文件。  <br />  归档(打包)：一个文件或目录的集合，而这个集合被存储在一个文件中。  <br />  压缩：利用算法将文件进行处理，已达到保留最大文件信息，而让文件体积变小的目的。
 
 **文件**
 
 - 用户数据 (user data) ：即文件数据块 (data block)，记录文件真实内容的地方
 - 元数据 (metadata)：文件的附加属性（文件大小、创建时间、所有者等信息）。元数据中的 inode 号（inode 是文件元数据的一部分但其并不包含文件名，inode 号即索引节点号）才是文件的唯一标识而非文件名。
 
-​
-
-**inode **：默认大小为 128 Byte，用来记录文件的权限（r、w、x）、文件的所有者和属组、文件的大小、文件的状态改变时间（ctime）、文件的最近一次读取时间（atime）、文件的最近一次修改时间（mtime）、文件的数据真正保存的 block 编号。  <br />  ​
+**inode **：默认大小为 128 Byte，用来记录文件的权限（r、w、x）、文件的所有者和属组、文件的大小、文件的状态改变时间（ctime）、文件的最近一次读取时间（atime）、文件的最近一次修改时间（mtime）、文件的数据真正保存的 block 编号。
 
 **文件链接**
 
@@ -91,7 +88,7 @@ FHS（Filesystem Hierarchy Standard，文件系统层次结构标准）：多数
    - 不能对目录进行创建，只可对文件创建；
    - 删除一个硬链接文件并不影响其他有相同 inode 号的文件。
 
-Linux 文件系统中的目录均隐藏了两个个特殊的目录：当前目录（.）与父目录（..）。查看这两个特殊目录的 inode 号可知这两目录就是两个硬链接。  <br />  ​  <br />  
+Linux 文件系统中的目录均隐藏了两个个特殊的目录：当前目录（.）与父目录（..）。查看这两个特殊目录的 inode 号可知这两目录就是两个硬链接。
 
 - **软链接(symbolic link)**：快捷方式，即产生一个特殊的文件，该文件用来指向另一个文件，此链接方式同样适用于目录。
 
@@ -103,8 +100,6 @@ Linux 文件系统中的目录均隐藏了两个个特殊的目录：当前目�
    - 软链接可对文件或目录创建；
    - 创建软链接时，链接计数 i_nlink 不会增加；
    - 删除软链接并不影响被指向的文件，但若被指向的原文件被删除，则相关软连接被称为死链接（dangling link）
-
-​
 
 缓存（cache）：读取硬盘中的数据时，把最常用的数据保存在内存的缓存区中，再次读取该数据时，就不去硬盘中读取了，而在缓存中读取。  <br />  缓冲（buffer）：向硬盘写入数据时，先把数据放入缓冲区，再一起写入硬盘，把分散的写操作集中进行，减少磁盘碎片和硬盘的反复寻道，从而提高系统性能。
 > 简单来说，缓存（cache）是用来加速数据从硬盘中"读取"的，而缓冲（buffer）是用来加速数据"写入"硬盘的。
@@ -129,7 +124,7 @@ Linux 文件系统中的目录均隐藏了两个个特殊的目录：当前目�
 | rw- | 110 | 6 |
 | rwx | 111 | 7 |
 
-read - write - execute - SUID  <br />  ​  <br />  
+read - write - execute - SUID
 
 | 字符 | 文件类型 |
 | --- | --- |
@@ -141,7 +136,7 @@ read - write - execute - SUID  <br />  ​  <br />
 | p | 管道文件，其主要作用是解决多个程序同时存取一个文件所造成的错误。 |
 | l | 链接文件，快捷方式 |
 
-ACL （Access Control List，访问控制列表）：实现对单一用户设定访问文件的权限。  <br />  ​
+ACL （Access Control List，访问控制列表）：实现对单一用户设定访问文件的权限。
 
 mask 权限：用户或群组能拥有的最大 ACL 权限，超出部分做无效处理。
 
@@ -149,7 +144,6 @@ mask 权限：用户或群组能拥有的最大 ACL 权限，超出部分做无�
 - SetGID（SGID 特殊权限）：群组，能作用于目录
 - Sticky BIT（SBIT 特殊权限）：仅对目录有效，用户在此目录下创建的文件或目录，只有自己和 root 才有权利修改或删除该文件。
 
-​  <br />  
 
 # 配置文件
 
@@ -174,12 +168,9 @@ mask 权限：用户或群组能拥有的最大 ACL 权限，超出部分做无�
    - PATH变量
    - 调用/etc/profile.d/*.sh文件
 
+**注销时候生效的环境变量配置文件**  <br />  ~/.bash_logout  <br />  历史记录保存在硬盘上  <br />  ~/.bash_history
 
-  <br />  **注销时候生效的环境变量配置文件**  <br />  ~/.bash_logout  <br />  历史记录保存在硬盘上  <br />  ~/.bash_history  <br />  **​**
-
-**​**
-
-**登入显示**  <br />  登陆后欢迎信息: **/etc/motd**  <br />  本地和远程登录都显示此欢迎信息  <br />  ​
+**登入显示**  <br />  登陆后欢迎信息: **/etc/motd**  <br />  本地和远程登录都显示此欢迎信息
 
 本地终端迎信息 **/etc/issue**
 
@@ -195,9 +186,9 @@ mask 权限：用户或群组能拥有的最大 ACL 权限，超出部分做无�
 | \\t | 显示当前系统时间 |
 | \\u | 显示当前登录用户的序列号 |
 
-远程终端欢迎信息:** /etc/issue.net**  <br />  不能使用转义符  <br />  是否显示此欢迎信息，由ssh的配置文件/etc/ssh/sshd_config决定，加入"Banner /etc/issue.net"行才能显示  <br />  ​
+远程终端欢迎信息:** /etc/issue.net**  <br />  不能使用转义符  <br />  是否显示此欢迎信息，由ssh的配置文件/etc/ssh/sshd_config决定，加入"Banner /etc/issue.net"行才能显示
 
-​  <br />  
+
 
 ## 网络文件
 CentOS  <br />  网卡信息文件  <br />  /etc/sysconfig/network-scripts/ifcfg-eth0
@@ -216,7 +207,7 @@ DNS1=202.106.0.20
 IPV6INIT=no	# IPv6没有启用
 USERCTL=no	# 不允许非root用户控制此网卡
 ```
-可通过修改该文件来设置IP  <br />  ​
+可通过修改该文件来设置IP
 
 主机名文件  <br />  /etc/sysconfig/network
 ```shell
@@ -226,14 +217,12 @@ HOSTNAME-localhost.localdomain
 ```shell
 hostname [主机名]	#查看与临时设置主机名命令
 ```
-​
 
 DNS配置文件  <br />  /etc/resolv.conf
 ```shell
 nameserver 202.106.0.20
 search localhost
 ```
-​
 
 Ubuntu  <br />  重启网卡
 ```shell
@@ -241,13 +230,12 @@ systemctl restart networking
 /etc/init.d/networking restart
 ```
 
-  <br />  
 
 
 # 进程
-**​**
 
-**进程优先级**  <br />  PRI (最终值) = PRI (原始值) + NI  <br />  PRI 代表 Priority，NI 代表 Nice  <br />  ​
+
+**进程优先级**  <br />  PRI (最终值) = PRI (原始值) + NI  <br />  PRI 代表 Priority，NI 代表 Nice
 
 数值越小代表该进程越优先被 CPU 处理。  <br />  PRI值是由内核动态调整的，用户不能直接修改。可修改 NI 值来影响 PRI 值，间接地调整进程优先级。
 
@@ -256,7 +244,7 @@ systemctl restart networking
 - 普通用户只能调高 NI 值，而不能降低。
 - 只有 root 用户才能设定进程 NI 值为负值，而且可以调整任何用户的进程。
 
-**​**
+
 
 **进程信号**
 
@@ -287,8 +275,6 @@ sudo apt install build-essential
 - 解xx.bz2：bunzip2 xx.bz2
 - 解xx.tar：tar xf xx.tar
 
-​
-
 进入到解压出的目录中  <br />  用ls -F --color或者ls -F命令查看一下可执行文件，可执行文件会以*号的尾部标志
 ```shell
 ./configure		# 检查系统是否有编译时所需的库，以及库的版本是否满足编译的需要等安装所需要的系统信息
@@ -302,9 +288,9 @@ sudo make distclean
 # 软件的源代码目录，卸载源代码编译安装的软件
 sudo make uninstall
 ```
-​
 
-export PATH=$PATH:/usr/local/<软件名>/...（解压目录）/bin  <br />  ​  <br />  
+export PATH=$PATH:/usr/local/<软件名>/...（解压目录）/bin
+
 
 ## RPM
 RPM Package Manager，软件包管理器，支持事务机制，很多 Linux 发行版都默认使用此机制作为软件安装的管理方式，例如 Fedora、CentOS、SuSE 等。无法解决软件包的依赖关系  <br />  RPM 二进制包命名
@@ -312,33 +298,32 @@ RPM Package Manager，软件包管理器，支持事务机制，很多 Linux 发
 - name-version-release.os.arch.rpm
 - 包名-版本号-发布次数-发行商-Linux平台-适合的硬件平台-包扩展名
 
-​
+rpm {-i|--install} [install-options] PACKAGE_FILE ...  <br />  rpm {-U|--upgrade} [install-options] PACKAGE_FILE ...	若未软件尚未安装，则安装软件  <br />  rpm {-F|--freshen} [install-options] PACKAGE_FILE ...	升级软件  <br />  rpm {-e|--erase} [--allmatches] [--justdb] [--nodeps] [--noscripts]  <br />   [--notriggers] [--test] PACKAGE_NAME ...
 
-rpm {-i|--install} [install-options] PACKAGE_FILE ...  <br />  rpm {-U|--upgrade} [install-options] PACKAGE_FILE ...	若未软件尚未安装，则安装软件  <br />  rpm {-F|--freshen} [install-options] PACKAGE_FILE ...	升级软件  <br />  rpm {-e|--erase} [--allmatches] [--justdb] [--nodeps] [--noscripts]  <br />   [--notriggers] [--test] PACKAGE_NAME ...  <br />  ​
-
--v, -vv, -vvv：表示详细信息。  <br />  -h：以"#"号显示安装进度。  <br />  --test：仅作测试，不真正执行，可用于测试安装，测试卸载。  <br />  --replacepkgs：重新安装。替换原有的安装。  <br />  --force：忽略软件包及文件的冲突。  <br />  --initdb：新建RPM的数据库。  <br />  --rebuilddb：重建RPM的数据库。  <br />  --percent：以百分比的形式输出安装的进度。  <br />  ​
+-v, -vv, -vvv：表示详细信息。  <br />  -h：以"#"号显示安装进度。  <br />  --test：仅作测试，不真正执行，可用于测试安装，测试卸载。  <br />  --replacepkgs：重新安装。替换原有的安装。  <br />  --force：忽略软件包及文件的冲突。  <br />  --initdb：新建RPM的数据库。  <br />  --rebuilddb：重建RPM的数据库。  <br />  --percent：以百分比的形式输出安装的进度。
 
 rpm {-q|--query} [select-options] [query-options]  <br />  rpm -q：查询某一个RPM包是否已安装  <br />  rpm -qi：查询某一个RPM包的详细信息  <br />  rpm -ql：列出某RPM包中所包含的文件。  <br />  rpm -qf：查询某文件是哪个RPM包生成的。  <br />  rpm -qa：列出当前系统所有已安装的包  <br />  rpm {-V|--verify} [select-options] [verify-options]
 
 ## YUM
-Yellowdog Updater Modified 一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。YUM客户端基于RPM包进行管理，可以通过HTTP服务器下载、FTP服务器下载、本地软件池的等方式获得软件包，可以从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系。使用Python语言写成。  <br />  ​
+Yellowdog Updater Modified 一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。YUM客户端基于RPM包进行管理，可以通过HTTP服务器下载、FTP服务器下载、本地软件池的等方式获得软件包，可以从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系。使用Python语言写成。
 
-yum install ：安装  <br />  yum reinstall ： 重装  <br />  yum remove ： 卸载 （被依赖的包也会被卸载）  <br />  yum check-update ：检查可升级的包  <br />  yum list ： 查看仓库中包信息  <br />  yum search ： 根据包名在仓库中查询包  <br />  yum repolist ： 查看当前的yum仓库  <br />  yum info ： 查看包的信息  <br />  yum provides ： 查询某文件属于哪个包  <br />  yum clean ： 清除本地yum缓存  <br />  yum makecache ： 手动生成缓存  <br />  yum history ： 查看历史  <br />  ​
+yum install ：安装  <br />  yum reinstall ： 重装  <br />  yum remove ： 卸载 （被依赖的包也会被卸载）  <br />  yum check-update ：检查可升级的包  <br />  yum list ： 查看仓库中包信息  <br />  yum search ： 根据包名在仓库中查询包  <br />  yum repolist ： 查看当前的yum仓库  <br />  yum info ： 查看包的信息  <br />  yum provides ： 查询某文件属于哪个包  <br />  yum clean ： 清除本地yum缓存  <br />  yum makecache ： 手动生成缓存  <br />  yum history ： 查看历史
 
-yum grouplist ： 查看yum仓库包组  <br />  yum groupinfo ： 查看指定包组信息  <br />  yum groupinstall ： 安装包组（"yum install @包组名" 也可以安装包组）  <br />  yum groupremove ： 卸载包组  <br />  ​
+yum grouplist ： 查看yum仓库包组  <br />  yum groupinfo ： 查看指定包组信息  <br />  yum groupinstall ： 安装包组（"yum install @包组名" 也可以安装包组）  <br />  yum groupremove ： 卸载包组
 
-yum list installed ： 只显示已安装的包  <br />  yum list available ： 只显示未安装的包  <br />  yum list updatees ： 查看可更新的包  <br />  yum list extras ： 显示不属于任何仓库的，额外的包  <br />  yum list obsoletes ： 显示被废弃的包  <br />  yum list recent ： 新添加进yum仓库的包  <br />  yum search （all） 字符串 ： 根据字符串查询带有相关字符的包  <br />  ​
+yum list installed ： 只显示已安装的包  <br />  yum list available ： 只显示未安装的包  <br />  yum list updatees ： 查看可更新的包  <br />  yum list extras ： 显示不属于任何仓库的，额外的包  <br />  yum list obsoletes ： 显示被废弃的包  <br />  yum list recent ： 新添加进yum仓库的包  <br />  yum search （all） 字符串 ： 根据字符串查询带有相关字符的包
 
-yum repolist ： 查看当前能够使用的yum仓库  <br />  yum repolist all ： 查看所有仓库  <br />  yum repolist enabled ： 查看当前启用的仓库  <br />  yum repolist disabled ： 查看当前禁用的仓库  <br />  ​  <br />  
+yum repolist ： 查看当前能够使用的yum仓库  <br />  yum repolist all ： 查看所有仓库  <br />  yum repolist enabled ： 查看当前启用的仓库  <br />  yum repolist disabled ： 查看当前禁用的仓库
+
 
 ## APT
-Advanced Packaging Tool是Linux系统下的一款安装包管理工具  <br />  APT可以自动下载，配置，安装二进制或者源代码格式的软件包  <br />  ​
+Advanced Packaging Tool是Linux系统下的一款安装包管理工具  <br />  APT可以自动下载，配置，安装二进制或者源代码格式的软件包
 
-apt是apt-get和apt-cache命令的子集，为包管理提供必要的命令  <br />  ​
+apt是apt-get和apt-cache命令的子集，为包管理提供必要的命令
 
-普通安装：apt-get install softname1 softname2 …;  <br />  修复安装：apt-get -f install softname1 softname2... ;（解决依赖问题）  <br />  重新安装：apt-get --reinstall install softname1 softname2...;  <br />  移除式卸载：apt-get remove softname1 softname2 …;  <br />  清除式卸载：apt-get purge sofname1 softname2...;  <br />  ​
+普通安装：apt-get install softname1 softname2 …;  <br />  修复安装：apt-get -f install softname1 softname2... ;（解决依赖问题）  <br />  重新安装：apt-get --reinstall install softname1 softname2...;  <br />  移除式卸载：apt-get remove softname1 softname2 …;  <br />  清除式卸载：apt-get purge sofname1 softname2...;
 
-apt update                   # 更新软件源  <br />  apt upgrade                  # 升级没有依赖问题的软件包  <br />  apt dist-upgrade             # 升级并解决依赖关系  <br />  apt full-upgrade             # 升级整个系统，删除已安装的软件包  <br />  apt-get autoremove		移除之前被其他软件包依赖，但现在不再被使用的软件包  <br />  apt-get clean			移除下载到本地的已经安装的软件包，默认保存在 /var/cache/apt/archives/  <br />  apt-get autoclean		移除已安装的软件的旧版本软件包  <br />  apt-cache search # ------(package 搜索包)  <br />  apt-cache show #------(package 获取包的相关信息，如说明、大小、版本等)  <br />  apt-cache depends #-------(package 了解使用依赖)  <br />  apt-cache rdepends # ------(package 了解某个具体的依赖.)  <br />  apt-get build-dep # ------(package 安装相关的编译环境)  <br />  apt-get source #------(package 下载该包的源代码)  <br />  apt-get clean && apt-get autoclean # --------清理下载文件的存档 && 只清理过时的包  <br />  apt-get check #-------检查是否有损坏的依赖  <br />  apt-file search filename -----查找filename属于哪个软件包  <br />  apt-file list packagename -----列出软件包的内容  <br />  apt-file update --更新apt-file的数据库  <br />  ​
+apt update                   # 更新软件源  <br />  apt upgrade                  # 升级没有依赖问题的软件包  <br />  apt dist-upgrade             # 升级并解决依赖关系  <br />  apt full-upgrade             # 升级整个系统，删除已安装的软件包  <br />  apt-get autoremove		移除之前被其他软件包依赖，但现在不再被使用的软件包  <br />  apt-get clean			移除下载到本地的已经安装的软件包，默认保存在 /var/cache/apt/archives/  <br />  apt-get autoclean		移除已安装的软件的旧版本软件包  <br />  apt-cache search # ------(package 搜索包)  <br />  apt-cache show #------(package 获取包的相关信息，如说明、大小、版本等)  <br />  apt-cache depends #-------(package 了解使用依赖)  <br />  apt-cache rdepends # ------(package 了解某个具体的依赖.)  <br />  apt-get build-dep # ------(package 安装相关的编译环境)  <br />  apt-get source #------(package 下载该包的源代码)  <br />  apt-get clean && apt-get autoclean # --------清理下载文件的存档 && 只清理过时的包  <br />  apt-get check #-------检查是否有损坏的依赖  <br />  apt-file search filename -----查找filename属于哪个软件包  <br />  apt-file list packagename -----列出软件包的内容  <br />  apt-file update --更新apt-file的数据库
 
 参数
 
@@ -365,7 +350,6 @@ sudo do-release-upgrade -d
 ```
 
 
-
 ## Dpkg
 Debian Package，由 Debian Linux 所开发的包管理机制，通过 DPKG 包，Debian Linux 就可以进行软件包管理，主要应用在 Debian 和 Ubuntu 中。
 
@@ -379,7 +363,6 @@ Debian Package，由 Debian Linux 所开发的包管理机制，通过 DPKG 包�
 - -L 　   显示已安装软件包的目录信息
 - -reconfigure 重新配置
 
-​  <br />  
 
 # LVM （ Logical Volume Manager ，逻辑卷管理）
 对硬盘分区的一种管理机制，适合于管理大存储设备，并允许用户动态调整文件系统的大小。
@@ -389,11 +372,9 @@ Debian Package，由 Debian Linux 所开发的包管理机制，通过 DPKG 包�
 - 逻辑卷（Logical Volume，LV）：卷组是一块逻辑硬盘，硬盘必须分区之后才能使用，把这个分区称作逻辑卷。逻辑卷可以被格式化和写入数据。可以把逻辑卷想象为分区。
 - 物理扩展（Physical Extend，PE）：PE 是用来保存数据的最小单元，我们的数据实际上都是写入 PE 当中的。PE 的大小是可以配置的，默认是 4MB。
 
-​
+建立物理卷：pvcreate [设备文件名]  <br />  查看物理卷：pvscan——查询系统中哪些硬盘或分区是物理卷  <br />  pvdisplay——查看更详细的物理卷状态  <br />  删除物理卷：pvremove [设备文件名]
 
-建立物理卷：pvcreate [设备文件名]  <br />  查看物理卷：pvscan——查询系统中哪些硬盘或分区是物理卷  <br />  pvdisplay——查看更详细的物理卷状态  <br />  删除物理卷：pvremove [设备文件名]  <br />  ​
-
-建立卷组：vgcreate [-s PE 大小] 卷组名 物理卷名  <br />  激活卷组：vgchange -a y 卷组名  <br />  停用卷组：vachange -a n 卷组名  <br />  查看卷组：vgscan——查看系统中是否有卷组  <br />  vgdisplay ——查看卷组的详细状态  <br />  增加卷组容量：vgextend 卷组名 物理卷名  <br />  减少卷组容量：vgreduce 卷组名 物理卷名  <br />  删除卷组：vgremove 卷组名  <br />  ​
+建立卷组：vgcreate [-s PE 大小] 卷组名 物理卷名  <br />  激活卷组：vgchange -a y 卷组名  <br />  停用卷组：vachange -a n 卷组名  <br />  查看卷组：vgscan——查看系统中是否有卷组  <br />  vgdisplay ——查看卷组的详细状态  <br />  增加卷组容量：vgextend 卷组名 物理卷名  <br />  减少卷组容量：vgreduce 卷组名 物理卷名  <br />  删除卷组：vgremove 卷组名
 
 建立逻辑卷：lvcreate [选项] [-n 逻辑卷名] 卷组名
 
@@ -401,14 +382,12 @@ Debian Package，由 Debian Linux 所开发的包管理机制，通过 DPKG 包�
 - -l 个数：按照 PE 个数指定逻辑卷大小，这个参数需要换算容量，太麻烦；
 - -n 逻辑卷名：指定逻辑卷名；
 
-格式化和挂载之后才能正常使用  <br />  ​
+格式化和挂载之后才能正常使用
 
 查看逻辑卷：lvscan——系统中是否拥有逻辑卷  <br />  lvdisplay——逻辑卷的详细信息  <br />  调整逻辑卷大小：lvresize [选项] 逻辑卷的设备文件名
 
 - -L 容量：安装容量调整大小，单位为 KB、GB、TB 等。使用 + 増加空间，- 代表减少空间。如果直接写容量，则代表设定逻辑卷大小为指定大小；
 - -l 个数：按照 PE 个数调整逻辑卷大小；
-
-​
 
 调整分区的大小：resize2fs [选项] [设备文件名] [调整的大小]
 
@@ -416,7 +395,8 @@ Debian Package，由 Debian Linux 所开发的包管理机制，通过 DPKG 包�
 - 设备文件名：指定调整哪个分区的大小；
 - 调整的大小：指定把分区调整到多大，要加 M、G 等单位。如果不加大小，则会使用整个分区；
 
-删除逻辑卷：lvremove 逻辑卷的设备文件名  <br />  ​  <br />  
+删除逻辑卷：lvremove 逻辑卷的设备文件名
+
 
 # 服务
 **service 服务名 [start | stop | restart | reload | status]**  <br />  systemd是Linux系统最新的初始化系统(init)，提高系统的启动速度，尽可能启动较少的进程，尽可能更多进程并发启动。  <br />  systemd对应的进程管理命令是**systemctl**，兼容了service
@@ -436,7 +416,7 @@ service redis start
 | 停止某服务 | service httpd stop | systemctl stop httpd.service |
 | 重启某服务 | service httpd restart | systemctl restart httpd.service |
 
-查看服务是否开机启动：systemctl is-enabled firewalld.service  <br />  查看开机启动的服务列表：systemctl list-unit-files|grep enabled  <br />  查看启动失败的服务列表：systemctl --failed  <br />  ​  <br />  
+查看服务是否开机启动：systemctl is-enabled firewalld.service  <br />  查看开机启动的服务列表：systemctl list-unit-files|grep enabled  <br />  查看启动失败的服务列表：systemctl --failed
 
 | 服务名称 | 功能简介 | 建议 |
 | --- | --- | --- |
@@ -510,7 +490,6 @@ service redis start
 
 
 
-
 # 日志
 | 日志文件 | 说 明 |
 | --- | --- |
@@ -525,7 +504,7 @@ service redis start
 | /var/log/wtmp | 永久记录所有用户的登陆、注销信息，同时记录系统的后动、重启、关机事件。二进制文件 |
 | /var/tun/ulmp | 记录当前已经登录的用户的信息。这个文件会随着用户的登录和注销而不断变化，只记录当前登录用户的信息。使用w、who、users等命令查看 |
 
-**​**
+
 
 **logrotate **  <br />  进行日志轮替（日志转储），把旧的日志文件移动并改名，同时创建一个新的空日志文件用来记录新日志，当旧日志文件超出保存的范围时就删除。  <br />  /etc/logrotate.conf 的默认内容
 ```shell
@@ -569,9 +548,8 @@ rotate 1
 ```
 
 
-
 # 系统启动流程
-BIOS自检 -> 启动 GRUB -> 加载内核 -> 执行第一个进程 -> 配置系统初始环境  <br />  ​
+BIOS自检 -> 启动 GRUB -> 加载内核 -> 执行第一个进程 -> 配置系统初始环境
 
 以CentOS 6.x为例：
 
@@ -588,8 +566,6 @@ BIOS自检 -> 启动 GRUB -> 加载内核 -> 执行第一个进程 -> 配置系�
 1. 最后执行 /etc/rc.d/rc.local 中的程序。
 1. 如果是字符界面启动，就可以看到登录界面了。如果是图形界面启动，就会调用相应的 X Window 接口。
 
-​
-
 BIOS（Basic Input/Output System，基本输入/输出系统）：一个固件（嵌入在硬件中的软件）  <br />  runlevel
 
 | 运行级别 | 含 义 |
@@ -602,7 +578,8 @@ BIOS（Basic Input/Output System，基本输入/输出系统）：一个固件�
 | 5 | 图形模式 |
 | 6 | 重新启动 |
 
-init n 改变当前的运行级别  <br />  ​  <br />  
+init n 改变当前的运行级别
+
 
 # SELinux
 Security Enhanced Linux ：美国国家安全局（NSA）联合其他安全机构（如 SCC 公司）共同开发的，旨在增强传统 Linux 操作系统的安全性，解决传统 Linux 系统中自主访问控制（DAC）系统中的各种权限问题（如 root 权限过高等）
@@ -610,15 +587,13 @@ Security Enhanced Linux ：美国国家安全局（NSA）联合其他安全机�
 - 自主访问控制（Discretionary Access Control，DAC）：依据用户的身份和该身份对文件及目录的 rwx 权限来判断是否可以访问
 - 强制访问控制（Mandatory Access Control，MAC）：通过 SELinux 的默认策略规则来控制特定的进程对系统的文件资源的访问
 
-​
-
 主体（Subject）：就是想要访问文件或目录资源的进程  <br />  目标（Object）：需要访问的文件或目录资源  <br />  策略（Policy）
 
 - -targeted： SELinux 的默认策略，主要是限制网络服务的，对本机系统的限制极少
 - -mls（Multi-Level Security）：多级安全保护策略，限制得更为严格。
 - Minimum
 
-安全上下文（Security Context）：每个进程、文件和目录都有自己的安全上下文，进程具体是否能够访问文件或目录，需要安全上下文匹配。  <br />  ​
+安全上下文（Security Context）：每个进程、文件和目录都有自己的安全上下文，进程具体是否能够访问文件或目录，需要安全上下文匹配。
 
 工作模式
 
@@ -626,11 +601,9 @@ Security Enhanced Linux ：美国国家安全局（NSA）联合其他安全机�
 - Permissive（宽容模式）：安全策略规则并没有被强制执行。当应该拒绝访问时，访问仍然被允许，会向日志文件发送一条消息
 - Enforcing（强制模式）
 
-​
+getenforce	查询SELinux的工作模式  <br />  sestatus	查看策略
 
-getenforce	查询SELinux的工作模式  <br />  sestatus	查看策略  <br />  ​
 
-​  <br />  
 
 # 操作
 光标移动
@@ -658,22 +631,19 @@ getenforce	查询SELinux的工作模式  <br />  sestatus	查看策略  <br />  
 
 
 
-
 # —— vi ——
-![](https://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch1.gif#crop=0&crop=0&crop=1&crop=1&id=f6Bqi&originHeight=724&originWidth=1024&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  ​
+![](https://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch1.gif#crop=0&crop=0&crop=1&crop=1&id=f6Bqi&originHeight=724&originWidth=1024&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 vi - Visual Interface  <br />  [vim](http://vimdoc.sourceforge.net/htmldoc/quickref.html) - Vi IMproved, a programmer's text editor
 
 - vim-tiny：功能比较少（+表示拥有的功能），体积小，速度快。
 - vim-basic：完整版的vim，没有图形界面，没有菜单
 
-
-  <br />  resource
+resource
 
 - [vim-galore](https://github.com/mhinz/vim-galore)
 - [vimrc](https://github.com/amix/vimrc)
 
-​  <br />  
 
 ## 启动
 vim [options] [file ..]       编辑指定的文件
@@ -692,7 +662,6 @@ vim [options] [file ..]       编辑指定的文件
 - --startuptime <file>	Write startup timing messages to <file>
 - --clean		'nocompatible', Vim defaults, no plugins, no viminfo
 
-​  <br />  
 
 # 命令模式（Command mode）
 
@@ -717,7 +686,8 @@ vim [options] [file ..]       编辑指定的文件
 | n | 重复n次command |
 | . | 重复前一个动作 |
 
-paste、visual、undo、delete、expurgate  <br />  ​  <br />  
+paste、visual、undo、delete、expurgate
+
 
 ## 光标移动
 | +，- | 光标移动到非空格符的下，上一行 |
@@ -733,7 +703,7 @@ paste、visual、undo、delete、expurgate  <br />  ​  <br />
 | gg | 首行 |
 | n | 向下移动 n 行 |
 
-w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一个字的字尾  <br />  b ,B  把光标移到上一个字的字首  <br />  小写指英文单词、标点符号和非字母字符；  <br />  大写指的字是指两个空格之间的任何内容。  <br />  ​
+w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一个字的字尾  <br />  b ,B  把光标移到上一个字的字首  <br />  小写指英文单词、标点符号和非字母字符；  <br />  大写指的字是指两个空格之间的任何内容。
 
 {：该命令将光标向前移至上一个段落的开头。  <br />  }：该命令将光标向后移至下一个段落的开头。
 
@@ -754,7 +724,6 @@ w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一�
 
 
 
-
 # 输入模式（Insert mode）
 | 命令 | 说明 |
 | --- | --- |
@@ -766,7 +735,8 @@ w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一�
 | cc | 替换整行 |
 | cw | 替换从光标所在位置后到一个单词结尾的字符 |
 
-插入命令i、附加命令a、空行插入命令o、修改命令c、取代命令r、替换命令s  <br />  ​  <br />  
+插入命令i、附加命令a、空行插入命令o、修改命令c、取代命令r、替换命令s
+
 
 # 底线命令模式（Last line mode）
 | :w | 保存但是不退出 Vim 编辑器 |
@@ -818,9 +788,10 @@ w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一�
    - /g 在全局文件中进行替换。 
    - /c 在每次替换之前需要用户进行确认。
 
-**​**
 
-**文本对齐**  <br />  :ce	居中  <br />  :ri	右对齐  <br />  :le	左对齐  <br />  ​  <br />  
+
+**文本对齐**  <br />  :ce	居中  <br />  :ri	右对齐  <br />  :le	左对齐
+
 
 ## 窗口切分
 :split 文件名	打开新的竖向向视窗  <br />  :vsp 文件名	打开新的横向视窗  <br />  :new	打开一个新的 vim 视窗
@@ -834,7 +805,7 @@ w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一�
 
 
 ## 配置
-全局配置：/etc/vim/vimrc或者/etc/vimrc  <br />  用户配置：~/.vimrc	需要手动创建  <br />  ​
+全局配置：/etc/vim/vimrc或者/etc/vimrc  <br />  用户配置：~/.vimrc	需要手动创建
 
 属性设置
 

@@ -1,6 +1,7 @@
 
 # ——Package——
-编译器会自动导入JDK的核心类使用java.lang包；  <br />  包名推荐使用倒置的域名，例如org.apache。  <br />  import static：导入一个类的静态字段和静态方法  <br />  classpath：JVM用到的一个环境变量，它用来指示JVM如何搜索class。  <br />  jar包：相当于目录，可以包含很多.class文件，方便下载和使用；  <br />  模块（Module）：.jmod文件每一个都是一个模块，模块名就是文件名。  <br />  ​  <br />  
+编译器会自动导入JDK的核心类使用java.lang包；  <br />  包名推荐使用倒置的域名，例如org.apache。  <br />  import static：导入一个类的静态字段和静态方法  <br />  classpath：JVM用到的一个环境变量，它用来指示JVM如何搜索class。  <br />  jar包：相当于目录，可以包含很多.class文件，方便下载和使用；  <br />  模块（Module）：.jmod文件每一个都是一个模块，模块名就是文件名。
+
 
 # java.math
 
@@ -1523,7 +1524,6 @@ public interface **PreparedStatement**  <br />  extends Statement
 
 ## ConnectionPool
 
-  <br />  
-  <br />  
-  <br />  
+
+
 

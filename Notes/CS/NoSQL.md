@@ -1,6 +1,6 @@
 
 # —— Not Only SQL ——
-非关系型数据库：可以处理分布式、规模庞大、类型不确定、完整性没有保证的“杂乱”数据  <br />  **​**
+非关系型数据库：可以处理分布式、规模庞大、类型不确定、完整性没有保证的“杂乱”数据
 
 **CAP 理论**：针对分布式数据库而言的，指在一个分布式系统中，一致性、可用性、分区容错性三者不可兼得。
 
@@ -8,15 +8,13 @@
 - 可用性(Availability)：保证每个请求不管成功或者失败都有响应
 - 分隔容忍(Partition tolerance) ：系统中任意信息的丢失或失败不会影响系统的继续运作
 
-![](https://www.runoob.com/wp-content/uploads/2013/10/cap-theoram-image.png#crop=0&crop=0&crop=1&crop=1&id=y8n8P&originHeight=578&originWidth=671&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  **​**
+![](https://www.runoob.com/wp-content/uploads/2013/10/cap-theoram-image.png#crop=0&crop=0&crop=1&crop=1&id=y8n8P&originHeight=578&originWidth=671&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 **BASE理论**（由 Eric Brewer 定义）  <br />  NoSQL数据库通常对可用性及一致性的弱要求原则:
 
 - Basically Availble --基本可用
 - Soft-state --软状态/柔性事务。 "Soft state" 可以理解为"无连接"的, 而 "Hard state" 是"面向连接"的
 - Eventual Consistency -- 最终一致性， 也是是 ACID 的最终目的。
-
-​  <br />  
 
 | 分类 | 相关产品 | 应用场景 | 数据模型 | 优点 | 缺点 |
 | --- | --- | --- | --- | --- | --- |
@@ -26,14 +24,13 @@
 | 图形数据库 | [Neo4j](http://c.biancheng.net/view/6579.html)、InfoGrid | 社交网络、推荐系统，专注构建关系图谱 | 图结构 | 支持复杂的图形算法 | 复杂性高，只能支持一定的数据规模 |
 
 
-  <br />  
-  <br />  
+
 
 
 # —— Redis ——
-Remote Dictionary Server（远程字典服务器）  <br />  ​
+Remote Dictionary Server（远程字典服务器）
 
-由Salvatore Sanfilippo编写的key-value存储系统。  <br />  一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。  <br />  **​**
+由Salvatore Sanfilippo编写的key-value存储系统。  <br />  一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。
 
 **Redis架构**
 
@@ -43,15 +40,13 @@ Remote Dictionary Server（远程字典服务器）  <br />  ​
 - redis-check-aof：更新日志检查（Append-only file）
 - redis-benchmark：性能测试，用以模拟同时由N个客户端发送M个 SETs/GETs 查询
 
-​
-
 `redis-cli -h host -p port -a password`
 
 - 设置密码：CONFIG set requirepass "password"
 - 查看密码：CONFIG get requirepass
 - 验证密码：AUTH password
 
-**​**
+
 
 **连接**
 
@@ -64,7 +59,7 @@ Remote Dictionary Server（远程字典服务器）  <br />  ​
 | [SELECT index](http://www.yiibai.com/redis/connection_select.html) | 更改当前连接的所选数据库 |
 
 
-  <br />  性能测试：`redis-benchmark [option] [option value]`
+性能测试：`redis-benchmark [option] [option value]`
 
 | **选项** | **说明** | **默认值** |
 | --- | --- | --- |
@@ -84,9 +79,9 @@ Remote Dictionary Server（远程字典服务器）  <br />  ​
 | **-t** | 只运行逗号分隔的测试列表 |  |
 | **-I** | 空闲模式。 只打开N个空闲连接并等待 |  |
 
-示例：`redis-benchmark -h 127.0.0.1 -p 6379 -t set,lpush -n 10000 -q`  <br />  ​
+示例：`redis-benchmark -h 127.0.0.1 -p 6379 -t set,lpush -n 10000 -q`
 
-​  <br />  
+
 
 # 数据类型
 | 数据类型 | 数据类型存储的值 | 说 明 |
@@ -119,7 +114,6 @@ Remote Dictionary Server（远程字典服务器）  <br />  ​
 
 
 
-
 ## String
 | 命令 | 描述说明 |
 | --- | --- |
@@ -144,7 +138,7 @@ Remote Dictionary Server（远程字典服务器）  <br />  ​
 | [SETEX key seconds value](http://www.yiibai.com/redis/strings_setex.html) | 使用键和到期时间来设置值 |
 | [PSETEX key milliseconds value](http://www.yiibai.com/redis/strings_psetex.html) | 设置键的值和到期时间(以毫秒为单位) |
 
-​  <br />  
+
 
 ## Hash
 | 命令 | 说明 |
@@ -163,7 +157,7 @@ Remote Dictionary Server（远程字典服务器）  <br />  ​
 | [HSETNX key field value](http://www.yiibai.com/redis/hashes_hsetnx.html) | 仅当字段不存在时，才设置散列字段的值 |
 | [HVALS key](http://www.yiibai.com/redis/hashes_hvals.html) | 获取哈希中的所有值 |
 
-​  <br />  
+
 
 ## List
 | 命令 | 说明 |
@@ -207,7 +201,7 @@ Remote Dictionary Server（远程字典服务器）  <br />  ​
 | [SUNIONSTORE destination key1 [key2]](http://www.yiibai.com/redis/sets_sunionstore.html) | 添加多个集并将结果集存储在键中 |
 | [SSCAN key cursor [MATCH pattern] [COUNT count]](http://www.yiibai.com/redis/sets_sscan.html) | 递增地迭代集合中的元素 |
 
-​  <br />  
+
 
 ## Sorted set
 | 命   令 | 说   明  |
@@ -265,7 +259,6 @@ Remote Dictionary Server（远程字典服务器）  <br />  ​
 | [MULTI](http://www.yiibai.com/redis/transactions_multi.html) | 标记事务块的开始 |
 | [UNWATCH](http://www.yiibai.com/redis/transactions_unwatch.html) | 取消 WATCH 命令对所有 key 的监视。 |
 | [WATCH key [key …]](http://www.yiibai.com/redis/transactions_watch.html) | 监视给定的键以确定MULTI / EXEC块的执行 |
-
 
 
 
@@ -357,18 +350,15 @@ info [section]：查询 Redis 相关信息
 
 
 
-
 # 备份
-快照恢复（RDB）  <br />  通过快照（snapshotting）实现的，它是备份当前瞬间 Redis 在内存中的数据记录。将默认文件 dump.rdb  <br />  只追加文件（Append-Only File，AOF）  <br />  当 Redis 执行写命令后，在一定的条件下将执行过的写命令依次保存在 Redis 的文件中，将来就可以依次执行那些保存的命令恢复 Redis 的数据了。  <br />  ​
+快照恢复（RDB）  <br />  通过快照（snapshotting）实现的，它是备份当前瞬间 Redis 在内存中的数据记录。将默认文件 dump.rdb  <br />  只追加文件（Append-Only File，AOF）  <br />  当 Redis 执行写命令后，在一定的条件下将执行过的写命令依次保存在 Redis 的文件中，将来就可以依次执行那些保存的命令恢复 Redis 的数据了。
 
-​
 
-​
 
-​  <br />  
+
 
 # —— MongoDB ——
-[mongodb](https://www.mongodb.com/)由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。  <br />  旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。  <br />  ​
+[mongodb](https://www.mongodb.com/)由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。  <br />  旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。
 
 面向集合存储，易于存储对象类型的数据，模式自由，支持动态查询，支持完全索引，支持复制和故障恢复，使用高效的二进制数据存储，文件存储格式为 BSON （ 一种 JSON 的扩展）等。
 
@@ -383,8 +373,7 @@ info [section]：查询 Redis 相关信息
 | primary key | primary key | 主键 |
 
 
-  <br />  
-  <br />  
-  <br />  
-  <br />  
+
+
+
 

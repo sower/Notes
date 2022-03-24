@@ -1,40 +1,30 @@
 
 # Public API
-[public-apis](https://github.com/public-apis/public-apis)  <br />  [接口大全](https://www.free-api.com/)  <br />  ​
+[public-apis](https://github.com/public-apis/public-apis)  <br />  [接口大全](https://www.free-api.com/)
 
 **综合**
 
 - [M3O](https://m3o.com/)**	Micro APIs**
 - [Abstract APIs](https://www.abstractapi.com/)	api@tmpbox.net	Aa123456!
 
-​
-
 **临时邮箱**
 
 - [https://www.snapmail.cc](https://www.snapmail.cc)
 - [Temp Mail - 10M](https://temp-mail.org/zh/)
-
-​
 
 [**Cloud Storage & File Sharing**](https://github.com/public-apis/public-apis#cloud-storage--file-sharing)
 
 - [https://www.file.io](https://www.file.io)
 - [https://gofile.io/api](https://gofile.io/api)
 
-​
-
 文本存储
 
 - [ExtendsClass JSON Storage](https://extendsclass.com/json-storage.html)
 - [JSONbin.io](https://jsonbin.io/)
 
-​
-
 [Documents & Productivity](https://github.com/public-apis/public-apis#documents--productivity)  <br />  [Authentication](https://github.com/public-apis/public-apis#authentication)  <br />  [AirVisual](https://airvisual.com/api) Air quality and weather data  <br />  [Weather](https://github.com/public-apis/public-apis#weather)  <br />     <br />  [Development](https://github.com/public-apis/public-apis#development)
 
 - [https://app.screenshotapi.net](https://app.screenshotapi.net)
-
-​
 
 [JSON 2 JSONP](https://json2jsonp.com/)  <br />  [Netlify](https://docs.netlify.com/api/get-started/)  <br />  [OneSignal](https://documentation.onesignal.com/docs/onesignal-api)  <br />  [https://pusher.com/beams](https://pusher.com/beams)  <br />  [https://quickchart.io/](https://quickchart.io/)  <br />  [https://scraperbox.com/](https://scraperbox.com/)
 
@@ -43,16 +33,14 @@
 - [Google Keep](https://developers.google.com/keep/api/reference/rest) API to read, write, and format Google Keep notes OAuth Yes Unknown
 - [Google Sheets](https://developers.google.com/sheets/api/reference/rest) API to read, write, and format Google Sheets data
 
- [https://api.slack.com/](https://api.slack.com/)  <br />  ​
+ [https://api.slack.com/](https://api.slack.com/)
 
 图床
 
 - 壁纸	[https://bing.ioliu.cn/v1/rand](https://bing.ioliu.cn/v1/rand)
 - 随机unsplash：[https://picsum.photos/](https://picsum.photos/)
 
-​
 
-​  <br />  
 ```shell
 # coding=utf-8
 import urllib3
@@ -108,13 +96,13 @@ if __name__ == '__main__':
         f.write(url + "\n")
         f.close()
 ```
-解决防盗链可以用 `<meta name="referrer" content="no-referrer" />`  <br />  
-  <br />  
-  <br />  
+解决防盗链可以用 `<meta name="referrer" content="no-referrer" />`
+
+
 
 
 # 油猴脚本
-**​**  <br />  
+  <br />  
 
 ## 元数据块
 描述脚本的一个用户脚本部分。它通常包含脚本名称，命名空间，描述和包含和排除规则。出现在JavaScript行注释中，可能会出现在脚本内的任何位置， 但通常靠近文件的顶部。
@@ -146,8 +134,7 @@ if __name__ == '__main__':
 - Greasy Fork 要读取的脚本元键值【https://greasyfork.org/zh-CN/help/meta-keys】
 - Metadata Block - GreaseSpot Wiki （api文档）【https://wiki.greasespot.net/Metadata_Block】
 
-
-  <br />  示例：Google谷歌翻译自动中英互译
+示例：Google谷歌翻译自动中英互译
 ```shell
 // ==UserScript==
 // @name        Google Translate Auto Languages
@@ -178,7 +165,6 @@ new MutationObserver(() => {
 }).observe(detectTab, { characterData: true, subtree: true });
 if (detectTab.getAttribute("aria-selected") !== "true") detectTab.click();
 ```
-
 
 ```javascript
 // ==UserScript==
@@ -211,9 +197,8 @@ if (detectTab.getAttribute("aria-selected") !== "true") detectTab.click();
 ```
 
 
-
 # Bookmarklet
-小书签（bookmarklet，书签小程式），是一种小型的程序(Applet)，以网址(URL)的形式被存为浏览器中的书签，也可以是网页上的一个链接。Bookmarklet是由Bookmark和Applet组合而来。  <br />  实质是一段Javascript代码，以`"javascript:"`开头。点击之后，会对当前页面执行某种操作。  <br />  它通常在网页中以链接的形式出现：  <br />  ` <a href="javascript:alert('hi');">xxx</a> `  <br />  ​
+小书签（bookmarklet，书签小程式），是一种小型的程序(Applet)，以网址(URL)的形式被存为浏览器中的书签，也可以是网页上的一个链接。Bookmarklet是由Bookmark和Applet组合而来。  <br />  实质是一段Javascript代码，以`"javascript:"`开头。点击之后，会对当前页面执行某种操作。  <br />  它通常在网页中以链接的形式出现：  <br />  ` <a href="javascript:alert('hi');">xxx</a> `
 
 **规则**
 
@@ -223,13 +208,13 @@ if (detectTab.getAttribute("aria-selected") !== "true") detectTab.click();
 1. 采用匿名函数，不污染全局变量`javascript: (function(){...})(); `
 1. 对文本和URL进行编码：为了防止出现非法字符，代码以外的文本都应该使用`encodeURIComponent()`函数进行编码，比如把空格变成`%20`。
 
-**​**
+
 
 **编写技巧**
 
 - 防止刷新页面
 
-如果代码对页面有改动（比如使用了`document.write`），浏览器就会用一个新页面替换原有页面。所以最好用`void()`命令，把语句放在里面。  <br />  ` javascript:void(document.links[0].href='http://www.ibm.com/'); `  <br />  ​  <br />  
+如果代码对页面有改动（比如使用了`document.write`），浏览器就会用一个新页面替换原有页面。所以最好用`void()`命令，把语句放在里面。  <br />  ` javascript:void(document.links[0].href='http://www.ibm.com/'); `
 
 - 连接外部javascript代码
 ```shell
@@ -242,7 +227,7 @@ javascript:(function(){
 })();
 ```
 
-  <br />  添加外部函数库
+添加外部函数库
 ```shell
 
 if (!window.jQuery) {
@@ -260,49 +245,40 @@ function foo() {
 ```
 
 
-
 ## 常用
-[bookmarkleter](https://github.com/chriszarate/bookmarkleter) 生成器  <br />  ​
+[bookmarkleter](https://github.com/chriszarate/bookmarkleter) 生成器
 
 显示明文密码
 ```javascript
 javascript:(function()%7Bvar%20IN,F;IN=document.getElementsByTagName('input');for(var%20i=0;i<IN.length;i++)%7BF=IN%5Bi%5D;if(F.type.toLowerCase()=='password')%7Btry%7BF.type='text'%7Dcatch(r)%7Bvar%20n,Fa;n=document.createElement('input');Fa=F.attributes;for(var%20ii=0;ii<Fa.length;ii++)%7Bvar%20k,knn,knv;k=Fa%5Bii%5D;knn=k.nodeName;knv=k.nodeValue;if(knn.toLowerCase()!='type')%7Bif(knn!='height'&&knn!='width'&!!knv)n%5Bknn%5D=knv%7D%7D;F.parentNode.replaceChild(n,F)%7D%7D%7D%7D)()
 ```
-​
 
 解除右键限制
 ```javascript
 javascript:(function(bookmarklets)%7Bfor(var%20i=0;i%3Cbookmarklets.length;i++)%7Bvar%20code=bookmarklets%5Bi%5D.url;if(code.indexOf(%22javascript:%22)!=-1)%7Bcode=code.replace(%22javascript:%22,%22%22);eval(code)%7Delse%7Bcode=code.replace(/%5Es+%7Cs+$/g,%22%22);if(code.length%3E0)%7Bwindow.open(code)%7D%7D%7D%7D)(%5B%7Btitle:%22%E7%A0%B4%E9%99%A4%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E9%99%90%E5%88%B6%22,url:%22javascript:function%20applyWin(a)%7Bif(typeof%20a.__nnANTImm__===%5Cx22undefined%5Cx22)%7Ba.__nnANTImm__=%7B%7D;a.__nnANTImm__.evts=%5B%5Cx22mousedown%5Cx22,%5Cx22mousemove%5Cx22,%5Cx22copy%5Cx22,%5Cx22contextmenu%5Cx22%5D;a.__nnANTImm__.initANTI=function()%7Ba.__nnantiflag__=true;a.__nnANTImm__.evts.forEach(function(c,b,d)%7Ba.addEventListener(c,this.fnANTI,true)%7D,a.__nnANTImm__)%7D;a.__nnANTImm__.clearANTI=function()%7Bdelete%20a.__nnantiflag__;a.__nnANTImm__.evts.forEach(function(c,b,d)%7Ba.removeEventListener(c,this.fnANTI,true)%7D,a.__nnANTImm__);delete%20a.__nnANTImm__%7D;a.__nnANTImm__.fnANTI=function(b)%7Bb.stopPropagation();return%20true%7D;a.addEventListener(%5Cx22unload%5Cx22,function(b)%7Ba.removeEventListener(%5Cx22unload%5Cx22,arguments.callee,false);if(a.__nnantiflag__===true)%7Ba.__nnANTImm__.clearANTI()%7D%7D,false)%7Da.__nnantiflag__===true?a.__nnANTImm__.clearANTI():a.__nnANTImm__.initANTI()%7DapplyWin(top);var%20fs=top.document.querySelectorAll(%5Cx22frame,%20iframe%5Cx22);for(var%20i=0,len=fs.length;i%3Clen;i++)%7Bvar%20win=fs%5Bi%5D.contentWindow;try%7Bwin.document%7Dcatch(ex)%7Bcontinue%7DapplyWin(fs%5Bi%5D.contentWindow)%7D;void%200;%22%7D,%7Btitle:%22%E7%A0%B4%E9%99%A4%E9%80%89%E6%8B%A9%E5%A4%8D%E5%88%B6%E9%99%90%E5%88%B6%22,url:%22javascript:(function()%7Bvar%20doc=document;var%20bd=doc.body;bd.onselectstart=bd.oncopy=bd.onpaste=bd.onkeydown=bd.oncontextmenu=bd.onmousemove=bd.onselectstart=bd.ondragstart=doc.onselectstart=doc.oncopy=doc.onpaste=doc.onkeydown=doc.oncontextmenu=null;doc.onselectstart=doc.oncontextmenu=doc.onmousedown=doc.onkeydown=function%20()%7Breturn%20true;%7D;with(document.wrappedJSObject%7C%7Cdocument)%7Bonmouseup=null;onmousedown=null;oncontextmenu=null;%7Dvar%20arAllElements=document.getElementsByTagName(%5Cx27*%5Cx27);for(var%20i=arAllElements.length-1;i%3E=0;i--)%7Bvar%20elmOne=arAllElements;with(elmOne.wrappedJSObject%7C%7CelmOne)%7Bonmouseup=null;onmousedown=null;%7D%7Dvar%20head=document.getElementsByTagName(%5Cx27head%5Cx27)%5B0%5D;if(head)%7Bvar%20style=document.createElement(%5Cx27style%5Cx27);style.type=%5Cx27text/css%5Cx27;style.innerHTML=%5Cx22html,*%7B-moz-user-select:auto!important;%7D%5Cx22;head.appendChild(style);%7Dvoid(0);%7D)();%22%7D%5D)
 ```
-​  <br />  
 
-# ​[jsdelivr](https://github.com/jsdelivr/jsdelivr)
-Root endpoint : **https://cdn.jsdelivr.net**  <br />  **​**
 
-**npm**  <br />  Load any project hosted on npm:  <br />  `/npm/package@version/file `  <br />  ​
+# [jsdelivr](https://github.com/jsdelivr/jsdelivr)
+Root endpoint : **https://cdn.jsdelivr.net**
 
-Load exact version:  <br />  `/npm/jquery@3.1.0/dist/jquery.min.js `  <br />  ​
+**npm**  <br />  Load any project hosted on npm:  <br />  `/npm/package@version/file `
 
-Use a version range instead of an exact version:  <br />  `/npm/jquery@3/dist/jquery.min.js`  <br />  `/npm/jquery@3.1/dist/jquery.min.js `  <br />  ​
+Load exact version:  <br />  `/npm/jquery@3.1.0/dist/jquery.min.js `
 
-Omit the version completely or use "latest" to load the latest one (not recommended for production usage):  <br />  `/npm/jquery@latest/dist/jquery.min.js`  <br />  `/npm/jquery/dist/jquery.min.js `  <br />  ​
+Use a version range instead of an exact version:  <br />  `/npm/jquery@3/dist/jquery.min.js`  <br />  `/npm/jquery@3.1/dist/jquery.min.js `
 
-Add ".min" to any JS/CSS/SVG file to get a minified version - if one doesn't exist, we'll generate it for you. All generated files come with source maps and can be easily used during development:  <br />  `/npm/github-markdown-css@2.4.1/github-markdown.min.css `  <br />  **​**
+Omit the version completely or use "latest" to load the latest one (not recommended for production usage):  <br />  `/npm/jquery@latest/dist/jquery.min.js`  <br />  `/npm/jquery/dist/jquery.min.js `
 
-**GitHub**  <br />  Load any GitHub release, commit, or branch:  <br />  `/gh/user/repo@version/file `  <br />  Load exact version:  <br />  `/gh/jquery/jquery@3.1.0/dist/jquery.min.js `  <br />  `/gh/jquery/jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944/dist/jquery.min.js `  <br />  Use a version range instead of an exact version (only works with valid semver versions):  <br />  `/gh/jquery/jquery@3/dist/jquery.min.js`  <br />  `/gh/jquery/jquery@3.1/dist/jquery.min.js`  <br />  ​
+Add ".min" to any JS/CSS/SVG file to get a minified version - if one doesn't exist, we'll generate it for you. All generated files come with source maps and can be easily used during development:  <br />  `/npm/github-markdown-css@2.4.1/github-markdown.min.css `
 
-​
+**GitHub**  <br />  Load any GitHub release, commit, or branch:  <br />  `/gh/user/repo@version/file `  <br />  Load exact version:  <br />  `/gh/jquery/jquery@3.1.0/dist/jquery.min.js `  <br />  `/gh/jquery/jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944/dist/jquery.min.js `  <br />  Use a version range instead of an exact version (only works with valid semver versions):  <br />  `/gh/jquery/jquery@3/dist/jquery.min.js`  <br />  `/gh/jquery/jquery@3.1/dist/jquery.min.js`
 
-​
 
-​
 
-​
 
-​
 
-​
 
-​
 
-​  <br />  
+
+

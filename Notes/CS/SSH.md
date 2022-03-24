@@ -1,4 +1,4 @@
-**​**
+
 
 **远程管理协议**
 
@@ -6,8 +6,6 @@
 - RFB（Remote FrameBuffer，图形化远程管理协议）：VNC 远程管理工具基于此协议。
 - Telnet（命令行界面远程管理协议）：几乎所有的操作系统都默认支持此协议。数据传送使用明文传输的方式。
 - SSH（Secure Shell，命令行界面远程管理协议）：几乎所有操作系统都默认支持此协议。数据传输会对数据进行加密并压缩，安全快速。
-
-​
 
 SSH  <br />  **Secure Shell**（安全外壳协议）是一种加密的[网络传输协议](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE)，可在不安全的网络中为网络服务提供安全的传输环境
 
@@ -34,8 +32,6 @@ SSH  <br />  **Secure Shell**（安全外壳协议）是一种加密的[网络�
 - [ssh-keyscan](https://man.openbsd.org/ssh-keyscan) — Utility for gathering public host keys from a number of hosts
 - [ssh-keysign](https://man.openbsd.org/ssh-keysign) — Helper program for host-based authentication
 
-​
-
 **ssh** [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
 ```
 [-b bind_address] [-c cipher_spec] [-D [bind_address:]port]
@@ -45,15 +41,14 @@ SSH  <br />  **Secure Shell**（安全外壳协议）是一种加密的[网络�
        [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
        [-w local_tun[:remote_tun]] destination [command]
 ```
-**​**
 
-**ssh-keygen**	[-q] [-a rounds] [-b bits] [-C comment] [-f output_keyfile] [-m format] [-N new_passphrase] [-O option] [-t dsa | ecdsa | ecdsa-sk | ed25519 | ed25519-sk | rsa] [-w provider] [-Z cipher]  <br />  **ssh-keygen** -R hostname [-f known_hosts_file]    Removes all keys belonging to the specified hostname (with optional port number) from a known_hosts file  <br />  **scp** [-346BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]  <br />       [-l limit] [-o ssh_option] [-P port] [-S program] source ... target  <br />  [-r    ](https://man.openbsd.org/scp#r)Recursively copy entire directories. Note that scp follows symbolic links encountered in the tree traversal.  <br />  ​
+
+**ssh-keygen**	[-q] [-a rounds] [-b bits] [-C comment] [-f output_keyfile] [-m format] [-N new_passphrase] [-O option] [-t dsa | ecdsa | ecdsa-sk | ed25519 | ed25519-sk | rsa] [-w provider] [-Z cipher]  <br />  **ssh-keygen** -R hostname [-f known_hosts_file]    Removes all keys belonging to the specified hostname (with optional port number) from a known_hosts file  <br />  **scp** [-346BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]  <br />       [-l limit] [-o ssh_option] [-P port] [-S program] source ... target  <br />  [-r    ](https://man.openbsd.org/scp#r)Recursively copy entire directories. Note that scp follows symbolic links encountered in the tree traversal.
 
 **ssh-copy-id** [-h|-?|-f|-n] [-i [identity_file]] [-p port] [[-o ] ...] [user@]hostname  <br />  自动将公钥拷贝到远程服务器的~/.ssh/authorized_keys文件(authorized_keys文件的末尾必须是换行符)  <br />  查看公钥的指纹
 ```javascript
 ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key.pub
 ```
-​
 
 SSH 连接的握手阶段，客户端必须跟服务端约定加密参数集（cipher suite）
 ```javascript
@@ -67,12 +62,11 @@ TLS_RSA_WITH_AES_128_CBC_SHA
 - CBC：加密模式
 - SHA：数字签名的 Hash 函数
 
-​
 
-​  <br />  
 
 # 配置
-每个命令占据一行。  <br />  每行都是配置项和对应的值，配置项的大小写不敏感，与值之间使用空格分隔。  <br />  配置项与值之间有一个等号，等号前后的空格可选。  <br />  #开头的行表示注释，只能放在一行的开头  <br />  [ssh_config](https://man.openbsd.org/ssh_config) — The client configuration file  <br />  ​  <br />  
+每个命令占据一行。  <br />  每行都是配置项和对应的值，配置项的大小写不敏感，与值之间使用空格分隔。  <br />  配置项与值之间有一个等号，等号前后的空格可选。  <br />  #开头的行表示注释，只能放在一行的开头  <br />  [ssh_config](https://man.openbsd.org/ssh_config) — The client configuration file
+
 
 ### 配置命令
 
@@ -108,19 +102,20 @@ TLS_RSA_WITH_AES_128_CBC_SHA
 - UserKnownHostsFile /users/smith/.ssh/my_local_hosts_file：指定当前用户的known_hosts文件（服务器公钥指纹列表）的位置。
 - VerifyHostKeyDNS yes：是否通过检查 SSH 服务器的 DNS 记录，确认公钥指纹是否与known_hosts文件保存的一致。
 
-[sshd_config](https://man.openbsd.org/sshd_config) — The daemon configuration file  <br />  ​  <br />  
+[sshd_config](https://man.openbsd.org/sshd_config) — The daemon configuration file
+
 
 # 端口转发（Port forwarding）
-又称 SSH 隧道（tunnel）  <br />  ​  <br />  
+又称 SSH 隧道（tunnel）
+
 
 ## 动态转发
-本机与 SSH 服务器之间创建了一个加密连接，然后本机内部针对某个端口的通信，都通过这个加密连接转发。  <br />  ​
+本机与 SSH 服务器之间创建了一个加密连接，然后本机内部针对某个端口的通信，都通过这个加密连接转发。
 
 命令
 ```javascript
 ssh -D local-port tunnel-host -N
 ```
-​
 
 需要把 HTTP 请求转成 SOCKS5 协议，才能把本地端口的请求转发出去  <br />  示例
 ```javascript
@@ -130,7 +125,7 @@ curl -x socks5://localhost:2121 http://www.example.com
 ```javascript
 DynamicForward tunnel-host:local-port
 ```
-**​**  <br />  
+  <br />  
 
 ## 本地转发（local forwarding）
 SSH 服务器作为中介的跳板机，建立本地计算机与特定目标网站之间的加密连接。  <br />  命令 
@@ -142,9 +137,8 @@ ssh -L local-port:target-host:target-port tunnel-host
 Host test.example.com
 LocalForward client-IP:client-port server-IP:server-port
 ```
-**​**
 
-**​**  <br />  
+
 
 ## 远程转发
 命令
@@ -156,25 +150,23 @@ ssh -R local-port:target-host:target-port -N local
 Host test.example.com
 RemoteForward local-IP:local-port target-ip:target-port
 ```
-​
 
-​  <br />  
+
 
 # 简易 VPN
 VPN 用来在外网与内网之间建立一条加密通道。内网的服务器不能从外网直接访问，必须通过一个跳板机，如果本机可以访问跳板机，就可以使用 SSH 本地转发，简单实现一个 VPN。
 ```javascript
 ssh -L 2080:corp-server:80 -L 2443:corp-server:443 tunnel-host -N
 ```
-上面命令通过 SSH 跳板机，将本机的2080端口绑定内网服务器的80端口，本机的2443端口绑定内网服务器的443端口。  <br />  **​**
+上面命令通过 SSH 跳板机，将本机的2080端口绑定内网服务器的80端口，本机的2443端口绑定内网服务器的443端口。
 
-**​**  <br />  
 
 # ssh免密登入
 1 本机生成密钥对
 ```javascript
 ssh-keygen -t rsa   # -t表示类型选项，这里采用rsa加密算法
 ```
-然后根据提示一步步的按enter键即可，执行结束以后会在 /home/user 下生成一个 .ssh 文件夹，包含私钥文件 id_rsa 和公钥文件 id_rsa.pub。  <br />  ​
+然后根据提示一步步的按enter键即可，执行结束以后会在 /home/user 下生成一个 .ssh 文件夹，包含私钥文件 id_rsa 和公钥文件 id_rsa.pub。
 
 2 将公钥复制到远程主机中  <br />  ssh-copy-id 将公钥写到远程主机的 ~/ .ssh/authorized_key 文件中
 ```javascript
@@ -191,13 +183,9 @@ Host vm
     # IdentityFile "~/.ssh/id_rsa"	# 认证文件,私钥文件位置
     # Port 22                      # 指定端口
 ```
-​
 
-​
 
-​
 
-​
 
 Windows
 ```shell

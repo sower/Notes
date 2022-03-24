@@ -1,23 +1,22 @@
 
 # —— Python ——
-Python是Guido van Rossum在1989年圣诞节期间编写的一个脚本语言。  <br />  Python是一种广泛使用的解释型、高级编程、通用型编程语言。Python支持多种编程范式，包括面向对象、结构化、指令式、函数式和反射式编程。它拥有动态类型系统和垃圾回收功能，能够自动管理内存使用，拥有一个巨大而广泛的标准库。  <br />  Python源代码遵循 GPL(GNU General Public License)协议  <br />  
-  <br />  
+Python是Guido van Rossum在1989年圣诞节期间编写的一个脚本语言。  <br />  Python是一种广泛使用的解释型、高级编程、通用型编程语言。Python支持多种编程范式，包括面向对象、结构化、指令式、函数式和反射式编程。它拥有动态类型系统和垃圾回收功能，能够自动管理内存使用，拥有一个巨大而广泛的标准库。  <br />  Python源代码遵循 GPL(GNU General Public License)协议
 
 
-# -- 基本语法 --
+
+# Syntax
+
 格式
 
 - 注释以#开头
 - 缩进是语法的一部分
-- 在非 [], {}, 或 () 中的多行语句，需要使用反斜杠()
+- 在非 [], {}, 或 () 中的多行语句，需要使用反斜杠(/)
 - 同一行中使用多条语句，语句之间使用分号(;)分割
 
-
-  <br />  如果不使用默认编码(utf-8)，文件的 第一行要写成特殊的注释
+如果不使用默认编码(utf-8)，文件的第一行要写成特殊的注释
 ```python
 # -*- coding: encoding -*-
 ```
-​
 
 docstring（文档字符串）：一种特殊类型的注释，位于一个函数或类定义之后，或一个文件的开头，其功能是对定义的说明  <br />  用三个引号、单引号或者双引号括起来
 ```python
@@ -32,15 +31,13 @@ class Test:
 t = Test()
 help(t)
 ```
-**​**
+
 
 **变量**
 
 - 变量无需声明，变量在使用前必须赋值，赋值后该变量才会被创建
 - 在局部作用域需要修改全局变量时，需要使用关键字global
 - 组合数据类型，如果局部变量未真实创建，则是全局变量
-
-​
 
 **赋值**
 ```python
@@ -49,9 +46,9 @@ target1, target2, ···= expression1 ,expression2,···
 target1, *target2 = matching - length - iterable
 ```
 
-  <br />  ​
 
-在交互模式（interactive mode）中，最后被输出的表达式结果被赋值给变量 _  <br />  ​  <br />  
+在交互模式（interactive mode）中，最后被输出的表达式结果被赋值给变量 _
+
 
 ### Format
 %  [keyname] [flags] [width] [.prec] typecode
@@ -61,7 +58,6 @@ print('%d * %d = %d' % (a, b, a * b))
 print('{0} * {1} = {2}'.format(a, b, a * b))
 print(f'{a:.1f} * {b} = {a * b}')    # 格式化字符串字面值
 ```
-​
 
 位置及关键字参数可以任意的结合
 ```python
@@ -73,7 +69,6 @@ The story of Bill, Manfred, and Georg.
 print('Jack: {Jack:d}; Sjoerd: {Sjoerd:d}; Dcab: {Dcab:d}'.format(**table))  # 等同
 Jack: 4098; Sjoerd: 4127; Dcab: 8637678
 ```
-​
 
 General Options
 ```python
@@ -172,7 +167,7 @@ def make_counter():
     return counter
 ```
 
-  <br />  标识符：以字母或下划线开头，只能包含字母数字和下划线，区分大小写
+标识符：以字母或下划线开头，只能包含字母数字和下划线，区分大小写
 
 ## 命名约定
 | **Type** | **Public** | **Internal** |
@@ -194,22 +189,18 @@ def make_counter():
 - __spam（双下划线开头）：类的私有名称，比如在类SpamEggs内，__spam将变成_SpamEggs__spam。
 - __spam__（双下划线开头双下划线结尾）：指那些包含在用户控制的名字空间中的“魔术”对象或特性，比如__name__、__doc__、__init__、__import__、__file__等。
 
-​
 
-​  <br />  
 
 # 数据类型
 
 - immutable：Number（数字）、String（字符串）、Tuple（元组）；
 - mutable：List（列表）、Dictionary（字典）、Set（集合）。
 
-​
+**hashable -- 可哈希**：一个对象的哈希值如果在其生命周期内绝不改变  <br />  不可变序列类型实现对 [hash()](https://docs.python.org/zh-cn/3/library/functions.html#hash) 内置函数的支持
 
-**hashable -- 可哈希**：一个对象的哈希值如果在其生命周期内绝不改变  <br />  不可变序列类型实现对 [hash()](https://docs.python.org/zh-cn/3/library/functions.html#hash) 内置函数的支持  <br />  ​
 
-​
+**None**：NoneType 类型的唯一值，常用于表示缺少值  <br />  **bool：True，False**
 
-**None**：NoneType 类型的唯一值，常用于表示缺少值  <br />  **bool：True，False**  <br />  **​**  <br />  
 
 ## 二进制序列
 
@@ -228,7 +219,7 @@ def make_counter():
 >>> bytes(v[1:4])
 b'bce'
 ```
-**​**  <br />  
+  <br />  
 
 ## Number (数)
 
@@ -236,8 +227,7 @@ b'bce'
 - float (浮点数)： 1.23、3E-2
 - complex (复数)：1 + 2.2j，complex(a,b)
 
-
-  <br />  **常量：正无穷float('inf') ，负无穷float('-inf') ，非数float('nan')**  <br />  **​**
+**常量：正无穷float('inf') ，负无穷float('-inf') ，非数float('nan')**
 
 **int**
 
@@ -253,7 +243,6 @@ b'bce'
 - **float.hex()：**以十六进制字符串的形式返回一个浮点数表示
 - **classmethod float.fromhex(s)：**返回以十六进制字符串 s 表示的浮点数的类方法
 
-​  <br />  
 
 ## Str (字符串)
 由 Unicode 码位构成的不可变 [序列](https://docs.python.org/zh-cn/3/library/stdtypes.html#typesseq)
@@ -262,8 +251,6 @@ b'bce'
 - 使用三引号('''或""")可以指定一个多行字符串。
 - 按字面意义级联字符串，如"this " "is " "string"会被自动转换为this is string。
 - 没有单独的字符类型，一个字符就是长度为 1 的字符串。
-
-​
 
 字符串前缀
 
@@ -335,9 +322,7 @@ str1 = str.translate(trantab,'2')
 - whitespace：空白符号的 ASCII 字符组成的字符串。 包括空格、制表、换行、回车、进纸和纵向制表符。
 - printable：可打印符号的 ASCII 字符组成的字符串。 digits, ascii_letters, punctuation 和 whitespace 的总和。
 
-​
-
-**string.capwords(s, sep=None)	**首字母大写  <br />  ​
+**string.capwords(s, sep=None)	**首字母大写
 
 **class string.Formatter**
 
@@ -349,8 +334,6 @@ str1 = str.translate(trantab,'2')
 - format_field(value, format_spec)
 - convert_field(value, conversion)
 
-​
-
 **class string.Template(template)**  <br />  substitute(mapping={}, /, **kwds)：执行模板替换，返回一个新字符串  <br />  safe_substitute(mapping={}, /, **kwds)
 ```python
 >>> from string import Template
@@ -360,9 +343,11 @@ str1 = str.translate(trantab,'2')
 ```
 
 ## List（列表）
-列表：写在方括号 [ ] 之间、用逗号分隔开的元素列表。元素的类型可以不同，可以嵌套。  <br />  
-  <br />  **创建 n*m 列表：a = [ [None] * m for _ in range(n) ]**  <br />  
-  <br />  **列表方法**
+列表：写在方括号 [ ] 之间、用逗号分隔开的元素列表。元素的类型可以不同，可以嵌套。
+
+**创建 n*m 列表：**`a = [ [None] * m for _ in range(n) ]`
+
+**列表方法**
 
 | 方法 | 描述 |
 | --- | --- |
@@ -378,7 +363,13 @@ str1 = str.translate(trantab,'2')
 | [list.clear()](https://www.runoob.com/python3/python3-att-list-clear.html) | 清空列表 |
 | [list.copy()](https://www.runoob.com/python3/python3-att-list-copy.html) | 复制列表 |
 
-**L.sort(key=lambda x:(-x[i],x[j]))**		operator.itemgetter() 优于 lambda  <br />  ​  <br />  
+```python
+L.sort(key=lambda x:(-x[i],x[j]))		# operator.itemgetter() 优于 lambda
+flatter_list     = list(itertools.chain.from_iterable(<list>))
+product_of_elems = functools.reduce(lambda out, el: out * el, <collection>)
+```
+
+
 
 ## Tuple（元组）
 与列表类似，不同之处在于元组的元素不能修改。元组写在小括号（ ）里，元素之间用逗号隔开。  <br />  tuple可以包含可变的对象
@@ -389,11 +380,10 @@ tup3 = 1, 2,
 ```
 
 
-
 ## Set（集合）
-由具有唯一性的 [hashable](https://docs.python.org/zh-cn/3/glossary.html#term-hashable) 对象所组成的无序多项集  <br />  frozenset：不可变并且为 hashable --- 其内容在被创建后不能再改变  <br />  ​
+由具有唯一性的 [hashable](https://docs.python.org/zh-cn/3/glossary.html#term-hashable) 对象所组成的无序多项集  <br />  frozenset：不可变并且为 hashable --- 其内容在被创建后不能再改变
 
-注意：创建一个空集合必须用 set() ，{ } 是用来创建一个空字典。  <br />  ​
+注意：创建一个空集合必须用 set() ，{ } 是用来创建一个空字典。
 
 **集合方法**
 
@@ -423,8 +413,6 @@ tup3 = 1, 2,
 - **并集 |** : `**x|y**`，包括集合 x 和 y 中所有元素。
 - **差集 -** : `**x-y**`，包括在集合 x 中但不在集合 y 中的元素。
 - **补集 ^** : `**x^y**`，包括集合 x 和 y 的非共同元素
-
-
 
 
 ## Dictionary（字典）
@@ -477,8 +465,6 @@ D = sorted(d.items(), key=lambda x:(x[1],x[0]]), [reverse = False])
 - class enum.IntEnum：创建属于 int 的子类的枚举常量。
 - class enum.IntFlag：创建可使用按位运算符进行组合而不会丢失其 IntFlag 成员资格的枚举常量。
 - class enum.Flag：创建枚举常量 可使用按位运算符进行组合而不会丢失其 Flag 成员资格的枚举常量。
-
-​
 
 **enum.unique()**：此 Enum 类装饰器可确保只将一个名称绑定到任意一个值。  <br />  **class enum.auto**：实例会被替换为一个可用作 Enum 成员的正确值。
 ```python
@@ -639,7 +625,6 @@ if condition_1:
 else:
     statement_block_3]
 ```
-​
 
 模式匹配
 ```python
@@ -666,13 +651,11 @@ for <variable> in <sequence>:
 [else:
     statement_block_2]
 ```
-​  <br />  
 
 - pass：空语句，一般用做占位语句，保持程序结构的完整性
 - break
 - continue
 
-​  <br />  
 
 ## 序列遍历
 单序列 + 索引
@@ -699,17 +682,10 @@ zip() 将字典”反转”为 (值，键) 元组序列
 
 ## 生成式 Comprehensions
 ```python
->>> [pow(x,x) for x in range(5) if x % 2]
-[1, 27]
-
-d = {key: value for (key, value) in iterable}
->>> {x: x**2 for x in (2, 4, 6)}
-{2: 4, 4: 16, 6: 36}
-
-
->>> vec = [4, 3, -9]
->>> (x*y for x in vec for y in vec)
-<generator object <genexpr> at 0x000002041F78E5E0>
+<list> = [i+1 for i in range(10)]                         # [1, 2, ..., 10]
+<set>  = {i for i in range(10) if i > 5}                  # {6, 7, 8, 9}
+<generator> = (i+5 for i in range(10))                    # (5, 6, ..., 14)
+<dict> = {i: i*2 for i in range(10)}                      # {0: 0, 1: 2, ..., 9: 18}
 ```
 
 ## 迭代器 Iterator
@@ -738,7 +714,8 @@ items = [1, 2, [3, 4, [5, 6], 7], 8]
 for x in flatten(items):
     print(x)
 ```
-StopIteration 异常：标识迭代的完成，防止出现无限循环的情况。  <br />  在 __next__() 方法中可以设置在完成指定循环次数后触发 StopIteration 异常来结束迭代  <br />  ​  <br />  
+StopIteration 异常：标识迭代的完成，防止出现无限循环的情况。  <br />  在 __next__() 方法中可以设置在完成指定循环次数后触发 StopIteration 异常来结束迭代
+
 
 ## 生成器 Generator
 一次生成一个值的特殊类型函数。一种特殊的迭代器，只能对其迭代一次。  <br />  半协程（semicoroutine）是特殊的、能力更弱的协程。
@@ -790,11 +767,9 @@ def function_name ( parameter1[: agr_annotations],...) [-> retrun_annotations]:
 - 函数可以同时返回多个值，实质是一个tuple。
 - 注解（annotation）以dict形式存储  function.__annotation__
 
-​
+**- 位置参数**  <br />  **- 默认参数**  <br />  默认参数应该使用不可变对象  <br />  **- 可变参数**  <br />  *args 是可变参数，args接收的是一个tuple；  <br />  既可以直接传入：func(1, 2, 3)，又可以先组装list或tuple，再通过_args传入：func(_(1, 2, 3))。  <br />  **- 关键字参数**  <br />  **kw 是关键字参数，kw接收的是一个dict。  <br />  既可以直接传入：func(a=1, b=2)，又可以先组装dict，再通过**kw传入：func(**{'a': 1, 'b': 2})。  <br />  **- 命名的关键字参数**  <br />  限制调用者可以传入的参数名，同时可以提供默认值。  <br />  定义命名的关键字参数在没有可变参数的情况下不要忘了写分隔符 *，否则定义的将是位置参数。
 
-**- 位置参数**  <br />  **- 默认参数**  <br />  默认参数应该使用不可变对象  <br />  **- 可变参数**  <br />  *args 是可变参数，args接收的是一个tuple；  <br />  既可以直接传入：func(1, 2, 3)，又可以先组装list或tuple，再通过_args传入：func(_(1, 2, 3))。  <br />  **- 关键字参数**  <br />  **kw 是关键字参数，kw接收的是一个dict。  <br />  既可以直接传入：func(a=1, b=2)，又可以先组装dict，再通过**kw传入：func(**{'a': 1, 'b': 2})。  <br />  **- 命名的关键字参数**  <br />  限制调用者可以传入的参数名，同时可以提供默认值。  <br />  定义命名的关键字参数在没有可变参数的情况下不要忘了写分隔符 *，否则定义的将是位置参数。  <br />  ​
-
-参数定义的顺序：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。  <br />  对于任意函数，都可以通过类似 func(*args, **kw) 的形式调用它，无论它的参数是如何定义的。  <br />  ​
+参数定义的顺序：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。  <br />  对于任意函数，都可以通过类似 func(*args, **kw) 的形式调用它，无论它的参数是如何定义的。
 
 **特殊属性**
 
@@ -881,7 +856,6 @@ mysleep()
 应该用functools.wraps定义函数装饰器，否则导致__name__, __doc__等内部属性混乱
 :::
 
-  <br />  
 
 
 # 异常处理
@@ -889,15 +863,23 @@ mysleep()
 ```python
 try:
       suite
-except [type [as value] ...]:     
+except [<exception> [as value] ...]:     
       pass
 [···
 else:
       pass
 finally:
       pass    ]
+
+
+# Exception Object
+arguments = <name>.args
+exc_type  = <name>.__class__
+filename  = <name>.__traceback__.tb_frame.f_code.co_filename
+func_name = <name>.__traceback__.tb_frame.f_code.co_name
+line      = linecache.getline(filename, <name>.__traceback__.tb_lineno)
+error_msg = ''.join(traceback.format_exception(exc_type, <name>, <name>.__traceback__))
 ```
-​
 
 raise 唯一的一个参数指定了要被抛出的异常，且必须是一个异常的实例或异常的类
 ```python
@@ -905,7 +887,6 @@ raise instance [ | class]   [from  (other_ex | None)]
 
 raise NameError('HiThere')
 ```
-​
 
 assert（断言）用于判断一个表达式，在表达式条件为 false 的时候触发异常
 ```python
@@ -915,7 +896,6 @@ if not expression:
     raise AssertionError(arguments)
 ```
 
-  <br />  
 
 
 ## [内置异常](https://docs.python.org/zh-cn/3/library/exceptions.html)
@@ -985,7 +965,6 @@ BaseException
            +-- BytesWarning
            +-- ResourceWarning
 ```
-​
 
 自定义异常
 ```python
@@ -1007,7 +986,6 @@ class InputError(Error):
 ```
 
 
-
 # OOP
 
 ## 类（class)
@@ -1024,8 +1002,6 @@ class ClassName [(Object)]:
 - 类有一个名为 __init__() 的特殊方法（**构造方法**），该方法在类实例化时会自动调用
 - 类的方法必须有一个额外的**第一个参数名称**，按照惯例它的名称是 self，代表的是类的实例
 
-​
-
 **类的私有属性/方法**  <br />  __private_attrs：双下划线开头，声明该属性/方法为私有，不能在类的外部被使用或直接访问。  <br />  self.__private_attrs  <br />  实际上python内部将__private_attrs更改为_ClassName_private_attrs
 
 ## 继承（Inheritance）
@@ -1038,7 +1014,6 @@ class DerivedClassName(Base1, Base2 ...):
     .
     <statement-N>
 ```
-​
 
 **MRO**（Method Resolution Order，方法解析顺序）   <br />  C3算法，使用的是拓扑排序，在一个有向无环图中
 
@@ -1073,7 +1048,6 @@ class F(D, E):
 print(F.__mro__)
 # (<class '__main__.F'>, <class '__main__.D'>, <class '__main__.E'>, <class '__main__.B'>, <class '__main__.A'>, <class '__main__.C'>, <class 'object'>)
 ```
-​
 
 Python 中所有的方法实际上都是 virtual 方法
 ```python
@@ -1127,8 +1101,6 @@ classmethod与staticmethod
 - classmethod第一个参数是class，可以应用类变量。
 - staticmethod和普通函数一样，只不过它放在类中。
 
-​
-
 @property：将一个方法变成属性调用的
 ```python
 //  birth是可读写属性，age是一个只读属性
@@ -1146,14 +1118,14 @@ class Student(object):
     def age(self):
         return 2015 - self._birth
 ```
-**​**
+
 
 **__slots__**：限制该class实例能添加的属性。仅对当前类实例起作用，对继承的子类是不起作用
 ```python
 class Student(object):
     __slots__ = ('name', 'age') # 用tuple定义允许绑定的属性名称
 ```
-​  <br />  
+
 
 ## 魔法方法
 
@@ -1175,8 +1147,6 @@ class Student(object):
 - **__pow__: 乘方**
 - ···
 
-​
-
 **比较运算符**
 
 - object.**__lt__**(_self_, _other_)
@@ -1194,8 +1164,6 @@ class Student(object):
 - __getattribute__：无论是否找到属性均调用。
 - __setattr__：对属性赋值时调用。
 - __delattr__：删除属性时调用。
-
-​
 
 运算符重载
 ```python
@@ -1245,7 +1213,7 @@ print (v1 + v2)
 ```
 
 ## Duck Types
-A duck type is an implicit type that prescribes a set of special methods. Any object that has those methods defined is considered a member of that duck type.  <br />  ​
+A duck type is an implicit type that prescribes a set of special methods. Any object that has those methods defined is considered a member of that duck type.
 
 **Comparable**
 
@@ -1427,7 +1395,6 @@ True
 ```
 
 
-
 ## 自省（Introspection）
 Variables
 ```python
@@ -1454,17 +1421,14 @@ param_kinds  = [a.kind for a in <sig>.parameters.values()]
 ```
 
 
-
 ## 元类（MetaClass）
-创建类的类。可以对类内部的定义（包括类属性和类方法）进行动态的修改  <br />  类用于创建类实例；元类用于创建类。 即：元类 -> 类 -> 类实例  <br />  ​
+创建类的类。可以对类内部的定义（包括类属性和类方法）进行动态的修改  <br />  类用于创建类实例；元类用于创建类。 即：元类 -> 类 -> 类实例
 
 **type(object, bases, dict)**
 
 - object：类的名称
 - bases：存储的是该类的父类的元组
 - dict：类内定义的属性或者方法
-
-​
 
 条件
 
@@ -1492,7 +1456,6 @@ boy = Boy()
 print(boy.name)
 boy.say()
 ```
-​
 
 单例模式
 ```python
@@ -1513,7 +1476,6 @@ class Singleton:
   print(c1 is c2)
 ```
 
-  <br />  
 
 
 # File
@@ -1528,7 +1490,7 @@ class Singleton:
 - closefd: 传入的file参数类型
 - opener
 
-**​**
+
 
 **mode**
 
@@ -1568,19 +1530,18 @@ class Singleton:
 >>> f.closed
 True
 ```
-**​**
+
 
 **f.seek(offset, from_what) **  <br />  from_what 的值, 如果是 0 表示开头, 如果是 1 表示当前位置, 2 表示文件的结尾
 
 - seek(x,0) ： 从起始位置即文件首行首字符开始移动 x 个字符
 - seek(-x,2)：表示从文件的结尾往前移动x个字符
 
-​  <br />  
 
 # Module & Package
-一个模块：一个包含Python定义和语句的文件，即一个.py文件  <br />  ​
+一个模块：一个包含Python定义和语句的文件，即一个.py文件
 
-**模块导入： import [package.]module*	[as alias]**  <br />  **from [package.]module import name [as alias]**  <br />  全导入： from module import *		(不推荐)  <br />  ​
+**模块导入： import [package.]module*	[as alias]**  <br />  **from [package.]module import name [as alias]**  <br />  全导入： from module import *		(不推荐)
 
 每个模块都有一个__name__属性，当其值是'__main__'时，表明该模块自身在运行，否则是被引入。
 
@@ -1601,7 +1562,7 @@ parent/
 - 命名空间包：由多个 部分 构成的，每个部分为父包增加一个子包。 各个部分可能处于文件系统的不同位置。
 
 # 类型注解
-提供给编辑器进行类型检查的机会，对 Python 程序的运行不会产生任何影响。  <br />  [typing](https://docs.python.org/zh-cn/3/library/typing.html#module-typing) --- 类型提示支持  <br />  ​
+提供给编辑器进行类型检查的机会，对 Python 程序的运行不会产生任何影响。  <br />  [typing](https://docs.python.org/zh-cn/3/library/typing.html#module-typing) --- 类型提示支持
 
 **变量注解**
 ```python
@@ -1650,7 +1611,6 @@ def bar(vector: Vector3D):
 v_3d = Vector3D((4, 5, 6))
 bar(vector=v_3d)
 ```
-​
 
 typing.[**Any**](https://docs.python.org/zh-cn/3/library/typing.html#typing.Any)	不受限的特殊类型，所有类型都与 Any 兼容  <br />  typing.**NoReturn**	标记没有返回值的函数的特殊类型  <br />  typing.**Union**	参数必须是某种类型，且至少有一个
 ```python
@@ -1740,7 +1700,7 @@ typing.**AnyStr	** AnyStr = TypeVar('AnyStr', str, bytes)  <br />  class ty
 | [vars()](https://www.w3school.com.cn/python/ref_func_vars.asp) | 返回对象的 __dict__ 属性。 |
 | [zip()](https://www.w3school.com.cn/python/ref_func_zip.asp) | 从两个或多个迭代器返回一个迭代器 |
 
-**input([prompt])——返回str**  <br />  ​
+**input([prompt])——返回str**
 
 **print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)**
 
@@ -1750,11 +1710,9 @@ typing.**AnyStr	** AnyStr = TypeVar('AnyStr', str, bytes)  <br />  class ty
 - file -- 要写入的文件对象。
 - flush -- 输出是否被缓存通常决定于 file，但如果 flush 关键字参数为 True，流会被强制刷新。
 
-​
+**del var ...**
 
-**del var ...**  <br />  ​
-
-**def range( [strat,] stop[, step=1] )**  <br />  class range(stop)  <br />  class range(start, stop[, step])  <br />  
+**def range( [strat,] stop[, step=1] )**  <br />  class range(stop)  <br />  class range(start, stop[, step])
 
 
 ## [copy](https://docs.python.org/zh-cn/3/library/copy.html#module-copy)
@@ -1763,8 +1721,6 @@ typing.**AnyStr	** AnyStr = TypeVar('AnyStr', str, bytes)  <br />  class ty
 - 直接赋值：对象的引用（别名）。
 - 浅拷贝(copy)：拷贝父对象，不会拷贝对象的内部的子对象。
 - 深拷贝(deepcopy)： copy 模块的 deepcopy 方法，完全拷贝了父对象及其子对象。
-
-​
 
 方法
 
@@ -1809,8 +1765,6 @@ typing.**AnyStr	** AnyStr = TypeVar('AnyStr', str, bytes)  <br />  class ty
 - math.inf：浮点正无穷大。 （负无穷大-math.inf ）即 float('inf')
 - math.nan：浮点“非数字”（NaN）值。 即 float('nan')
 
-​
-
 **三角函数**
 
 | 函数 | 描述 |
@@ -1850,20 +1804,21 @@ typing.**AnyStr	** AnyStr = TypeVar('AnyStr', str, bytes)  <br />  class ty
 
 
 ## [random](https://docs.python.org/zh-cn/3/library/random.html?highlight=%E7%94%9F%E6%88%90%E5%99%A8#module-random)
-seed(a=None, version=2)：初始化随机数生成器  <br />  getstate()：返回捕获生成器当前内部状态的对象  <br />  setstate(state)：state 是从 getstate() 获得的，并且 setstate() 将生成器的内部状态恢复到 getstate() 被调用时的状态  <br />  getrandbits(k)：返回带有 k 位随机的Python整数  <br />  ​
+seed(a=None, version=2)：初始化随机数生成器  <br />  getstate()：返回捕获生成器当前内部状态的对象  <br />  setstate(state)：state 是从 getstate() 获得的，并且 setstate() 将生成器的内部状态恢复到 getstate() 被调用时的状态  <br />  getrandbits(k)：返回带有 k 位随机的Python整数
 
-randrange(start, stop[, step])：从 range(start, stop, step) 返回一个随机选择的元素  <br />  randint(a, b)：返回随机整数 N 满足 a <= N <= b  <br />  choice(seq)：从非空序列 seq 返回一个随机元素  <br />  choices(population, weights=None, _, cum_weights=None, k=1)：从_population*中选择替换，返回大小为 k 的元素列表  <br />  shuffle(x[, random])：将序列 x 随机打乱位置  <br />  sample(population, k)：返回从总体序列或集合中选择的唯一元素的 k 长度列表  <br />  random()：返回 [0.0, 1.0) 范围内的下一个随机浮点数  <br />  uniform(a, b)：返回一个随机浮点数 N ，当 a <= b 时 a <= N <= b ，当 b < a 时 b <= N <= a  <br />  triangular(low, high, mode)：返回一个随机浮点数 N ，使得 low <= N <= high 并在这些边界之间使用指定的 mode  <br />  betavariate(alpha, beta)：Beta 分布  <br />  expovariate(lambd)：指数分布  <br />  gammavariate(alpha, beta)：Gamma 分布  <br />  gauss(mu, sigma)：高斯分布  <br />  lognormvariate(mu, sigma)：对数正态分布  <br />  normalvariate(mu, sigma)：正态分布  <br />  vonmisesvariate(mu, kappa)：冯·米塞斯（von Mises）分布  <br />  paretovariate(alpha)：帕累托分布  <br />  weibullvariate(alpha, beta)：威布尔分布  <br />  **class random.Random([seed])**  <br />  **​**  <br />  
+randrange(start, stop[, step])：从 range(start, stop, step) 返回一个随机选择的元素  <br />  randint(a, b)：返回随机整数 N 满足 a <= N <= b  <br />  choice(seq)：从非空序列 seq 返回一个随机元素  <br />  choices(population, weights=None, _, cum_weights=None, k=1)：从_population*中选择替换，返回大小为 k 的元素列表  <br />  shuffle(x[, random])：将序列 x 随机打乱位置  <br />  sample(population, k)：返回从总体序列或集合中选择的唯一元素的 k 长度列表  <br />  random()：返回 [0.0, 1.0) 范围内的下一个随机浮点数  <br />  uniform(a, b)：返回一个随机浮点数 N ，当 a <= b 时 a <= N <= b ，当 b < a 时 b <= N <= a  <br />  triangular(low, high, mode)：返回一个随机浮点数 N ，使得 low <= N <= high 并在这些边界之间使用指定的 mode  <br />  betavariate(alpha, beta)：Beta 分布  <br />  expovariate(lambd)：指数分布  <br />  gammavariate(alpha, beta)：Gamma 分布  <br />  gauss(mu, sigma)：高斯分布  <br />  lognormvariate(mu, sigma)：对数正态分布  <br />  normalvariate(mu, sigma)：正态分布  <br />  vonmisesvariate(mu, kappa)：冯·米塞斯（von Mises）分布  <br />  paretovariate(alpha)：帕累托分布  <br />  weibullvariate(alpha, beta)：威布尔分布  <br />  **class random.Random([seed])**
+
 
 # CLI
 
-  <br />  `python [-bBdEhiIOqsSuvVWx?] [-c 'command' | -m module-name | script | - ] [args]`  <br />  ​
+`python [-bBdEhiIOqsSuvVWx?] [-c 'command' | -m module-name | script | - ] [args]`
 
 程序
 
 - python.exe	   运行时，会弹出一个黑色的控制台窗口
 - pythonw.exe	无窗口的Python可执行程序，即运行时，没有窗口，代码在后台执行。用于运行GUI（窗口程序），会忽略程序中向控制台输出的信息
 
-**​**
+
 
 **文件**
 
@@ -1872,9 +1827,8 @@ randrange(start, stop[, step])：从 range(start, stop, step) 返回一个随机
 - .pyc	由.py文件经过编译后生成的字节码文件，其加载速度相对于.py快些，还可实现源码隐藏
 - .pyo	优化编译后的程序（相比于.pyc文件更小），也可以提高加载速度
 
-​
+第一次执行代码的时，Python解释器把编译的字节码放在__pycache__文件夹中，这样以后再次运行的话，如果被调用的模块未发生改变，那就跳过编译，直接去__pycache__文件夹中去运行相关的*.pyc文件，缩短时间。
 
-第一次执行代码的时，Python解释器把编译的字节码放在__pycache__文件夹中，这样以后再次运行的话，如果被调用的模块未发生改变，那就跳过编译，直接去__pycache__文件夹中去运行相关的*.pyc文件，缩短时间。  <br />  ​  <br />  
 
 ## pip
 Python 包管理工具，提供了对Python 包的查找、下载、安装、卸载的功能。
@@ -1924,7 +1878,7 @@ optional arguments:
   --prompt PROMPT       Provides an alternative prompt prefix for this
                         environment.
 ```
-创建虚拟环境  <br />  **python -m venv  venv_name**  <br />  **​**
+创建虚拟环境  <br />  **python -m venv  venv_name**
 
 激活虚拟环境
 ```python

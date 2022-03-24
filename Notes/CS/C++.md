@@ -12,7 +12,7 @@ typedef short int wchar_t;
 
 - 布尔类型 bool (true,fasle) : 1byte
 
-**​**
+
 
 **运算符**：&（引用，reference），&&（右值引用，用于为临时对象[延长生存期](https://zh.cppreference.com/w/cpp/language/reference_initialization#.E4.B8.B4.E6.97.B6.E9.87.8F.E7.94.9F.E5.AD.98.E6.9C.9F)）  <br />  引用 vs 指针
 
@@ -20,7 +20,7 @@ typedef short int wchar_t;
 - 一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象。
 - 引用必须在创建时被初始化。指针可以在任何时间被初始化。
 
-**​**
+
 
 **函数**
 
@@ -29,9 +29,7 @@ typedef short int wchar_t;
 - 内联函数（inline function）
 - 变长实参
 
-​
-
-C++ 会在程序的编译阶段对函数的函数名进行“再次重命名”，例如：  <br />  void Swap(int a, int b) 会被重命名为_Swap_int_int；  <br />  void Swap(float x, float y) 会被重命名为_Swap_float_float。  <br />  C 语言的标准对它们进行编译，两个函数的函数名都是_Swap。  <br />  **​**
+C++ 会在程序的编译阶段对函数的函数名进行“再次重命名”，例如：  <br />  void Swap(int a, int b) 会被重命名为_Swap_int_int；  <br />  void Swap(float x, float y) 会被重命名为_Swap_float_float。  <br />  C 语言的标准对它们进行编译，两个函数的函数名都是_Swap。
 
 **流程控制**
 
@@ -42,7 +40,7 @@ C++ 会在程序的编译阶段对函数的函数名进行“再次重命名”�
 for(type rangeVarriable : Array)
     statement;
 ```
-**​**
+
 
 **强制类型转换**
 
@@ -93,9 +91,9 @@ for(type rangeVarriable : Array)
 |  | &=   ^=   &#124;= | 以逐位与、异或及或[复合赋值](https://zh.cppreference.com/w/cpp/language/operator_assignment#.E5.86.85.E5.BB.BA.E7.9A.84.E5.A4.8D.E5.90.88.E8.B5.8B.E5.80.BC) |  |
 | 17 | , | [逗号](https://zh.cppreference.com/w/cpp/language/operator_other#.E5.86.85.E5.BB.BA.E7.9A.84.E9.80.97.E5.8F.B7.E8.BF.90.E7.AE.97.E7.AC.A6) | 从左到右 |
 
-​
 
-[sizeof...](https://zh.cppreference.com/w/cpp/language/sizeof...) 查询[形参包](https://zh.cppreference.com/w/cpp/language/parameter_pack)的大小  <br />  [typeid](https://zh.cppreference.com/w/cpp/language/typeid) 查询类型的类型信息	`typeid(type | expression).name()`  <br />  [noexcept](https://zh.cppreference.com/w/cpp/language/noexcept) 查询表达式是否能抛出异常，返回 bool 类型  <br />  [alignof](https://zh.cppreference.com/w/cpp/language/alignof) 查询类型的对齐要求	alignof(type)  <br />  ​  <br />  
+[sizeof...](https://zh.cppreference.com/w/cpp/language/sizeof...) 查询[形参包](https://zh.cppreference.com/w/cpp/language/parameter_pack)的大小  <br />  [typeid](https://zh.cppreference.com/w/cpp/language/typeid) 查询类型的类型信息	`typeid(type | expression).name()`  <br />  [noexcept](https://zh.cppreference.com/w/cpp/language/noexcept) 查询表达式是否能抛出异常，返回 bool 类型  <br />  [alignof](https://zh.cppreference.com/w/cpp/language/alignof) 查询类型的对齐要求	alignof(type)
+
 
 # [C++ 关键字](https://zh.cppreference.com/mwiki/index.php?title=cpp/keyword&variant=zh-hans)
 | [alignas](https://zh.cppreference.com/w/cpp/keyword/alignas) (C++11 起)  <br />  [alignof](https://zh.cppreference.com/w/cpp/keyword/alignof) (C++11 起)  <br />  [and](https://zh.cppreference.com/w/cpp/keyword/and)  <br />  [and_eq](https://zh.cppreference.com/w/cpp/keyword/and_eq)  <br />  [asm](https://zh.cppreference.com/w/cpp/keyword/asm)  <br />  [atomic_cancel](https://zh.cppreference.com/w/cpp/language/transactional_memory) (TM TS)  <br />  [atomic_commit](https://zh.cppreference.com/w/cpp/language/transactional_memory) (TM TS)  <br />  [atomic_noexcept](https://zh.cppreference.com/w/cpp/language/transactional_memory) (TM TS)  <br />  [auto](https://zh.cppreference.com/w/cpp/keyword/auto)(1)  <br />  [bitand](https://zh.cppreference.com/w/cpp/keyword/bitand)  <br />  [bitor](https://zh.cppreference.com/w/cpp/keyword/bitor)  <br />  [bool](https://zh.cppreference.com/w/cpp/keyword/bool)  <br />  [break](https://zh.cppreference.com/w/cpp/keyword/break)  <br />  [case](https://zh.cppreference.com/w/cpp/keyword/case)  <br />  [catch](https://zh.cppreference.com/w/cpp/keyword/catch)  <br />  [char](https://zh.cppreference.com/w/cpp/keyword/char)  <br />  [char8_t](https://zh.cppreference.com/w/cpp/keyword/char8_t) (C++20 起)  <br />  [char16_t](https://zh.cppreference.com/w/cpp/keyword/char16_t) (C++11 起)  <br />  [char32_t](https://zh.cppreference.com/w/cpp/keyword/char32_t) (C++11 起)  <br />  [class](https://zh.cppreference.com/w/cpp/keyword/class)(1)  <br />  [compl](https://zh.cppreference.com/w/cpp/keyword/compl)  <br />  [concept](https://zh.cppreference.com/w/cpp/keyword/concept) (C++20 起)  <br />  [const](https://zh.cppreference.com/w/cpp/keyword/const)  <br />  [consteval](https://zh.cppreference.com/w/cpp/keyword/consteval) (C++20 起)  <br />  [constexpr](https://zh.cppreference.com/w/cpp/keyword/constexpr) (C++11 起)  <br />  [constinit](https://zh.cppreference.com/w/cpp/keyword/constinit) (C++20 起)  <br />  [const_cast](https://zh.cppreference.com/w/cpp/keyword/const_cast)  <br />  [continue](https://zh.cppreference.com/w/cpp/keyword/continue)  <br />  [co_await](https://zh.cppreference.com/w/cpp/keyword/co_await) (C++20 起)  <br />  [co_return](https://zh.cppreference.com/w/cpp/keyword/co_return) (C++20 起)  <br />  [co_yield](https://zh.cppreference.com/w/cpp/keyword/co_yield) (C++20 起)  <br />  [decltype](https://zh.cppreference.com/w/cpp/keyword/decltype) (C++11 起) | [default](https://zh.cppreference.com/w/cpp/keyword/default)(1)  <br />  [delete](https://zh.cppreference.com/w/cpp/keyword/delete)(1)  <br />  [do](https://zh.cppreference.com/w/cpp/keyword/do)  <br />  [double](https://zh.cppreference.com/w/cpp/keyword/double)  <br />  [dynamic_cast](https://zh.cppreference.com/w/cpp/keyword/dynamic_cast)  <br />  [else](https://zh.cppreference.com/w/cpp/keyword/else)  <br />  [enum](https://zh.cppreference.com/w/cpp/keyword/enum)  <br />  [explicit](https://zh.cppreference.com/w/cpp/keyword/explicit)  <br />  [export](https://zh.cppreference.com/w/cpp/keyword/export)(1)(3)  <br />  [extern](https://zh.cppreference.com/w/cpp/keyword/extern)(1)  <br />  [false](https://zh.cppreference.com/w/cpp/keyword/false)  <br />  [float](https://zh.cppreference.com/w/cpp/keyword/float)  <br />  [for](https://zh.cppreference.com/w/cpp/keyword/for)  <br />  [friend](https://zh.cppreference.com/w/cpp/keyword/friend)  <br />  [goto](https://zh.cppreference.com/w/cpp/keyword/goto)  <br />  [if](https://zh.cppreference.com/w/cpp/keyword/if)  <br />  [inline](https://zh.cppreference.com/w/cpp/keyword/inline)(1)  <br />  [int](https://zh.cppreference.com/w/cpp/keyword/int)  <br />  [long](https://zh.cppreference.com/w/cpp/keyword/long)  <br />  [mutable](https://zh.cppreference.com/w/cpp/keyword/mutable)(1)  <br />  [namespace](https://zh.cppreference.com/w/cpp/keyword/namespace)  <br />  [new](https://zh.cppreference.com/w/cpp/keyword/new)  <br />  [noexcept](https://zh.cppreference.com/w/cpp/keyword/noexcept) (C++11 起)  <br />  [not](https://zh.cppreference.com/w/cpp/keyword/not)  <br />  [not_eq](https://zh.cppreference.com/w/cpp/keyword/not_eq)  <br />  [nullptr](https://zh.cppreference.com/w/cpp/keyword/nullptr) (C++11 起)  <br />  [operator](https://zh.cppreference.com/w/cpp/keyword/operator)  <br />  [or](https://zh.cppreference.com/w/cpp/keyword/or)  <br />  [or_eq](https://zh.cppreference.com/w/cpp/keyword/or_eq)  <br />  [private](https://zh.cppreference.com/w/cpp/keyword/private)  <br />  [protected](https://zh.cppreference.com/w/cpp/keyword/protected)  <br />  [public](https://zh.cppreference.com/w/cpp/keyword/public)  <br />  [reflexpr](https://zh.cppreference.com/mwiki/index.php?title=cpp/keyword/reflexpr&action=edit&redlink=1) (反射 TS) | [register](https://zh.cppreference.com/w/cpp/keyword/register)(2)  <br />  [reinterpret_cast](https://zh.cppreference.com/w/cpp/keyword/reinterpret_cast)  <br />  [requires](https://zh.cppreference.com/w/cpp/keyword/requires) (C++20 起)  <br />  [return](https://zh.cppreference.com/w/cpp/keyword/return)  <br />  [short](https://zh.cppreference.com/w/cpp/keyword/short)  <br />  [signed](https://zh.cppreference.com/w/cpp/keyword/signed)  <br />  [sizeof](https://zh.cppreference.com/w/cpp/keyword/sizeof)(1)  <br />  [static](https://zh.cppreference.com/w/cpp/keyword/static)  <br />  [static_assert](https://zh.cppreference.com/w/cpp/keyword/static_assert) (C++11 起)  <br />  [static_cast](https://zh.cppreference.com/w/cpp/keyword/static_cast)  <br />  [struct](https://zh.cppreference.com/w/cpp/keyword/struct)(1)  <br />  [switch](https://zh.cppreference.com/w/cpp/keyword/switch)  <br />  [synchronized](https://zh.cppreference.com/w/cpp/language/transactional_memory) (TM TS)  <br />  [template](https://zh.cppreference.com/w/cpp/keyword/template)  <br />  [this](https://zh.cppreference.com/w/cpp/keyword/this)  <br />  [thread_local](https://zh.cppreference.com/w/cpp/keyword/thread_local) (C++11 起)  <br />  [throw](https://zh.cppreference.com/w/cpp/keyword/throw)  <br />  [true](https://zh.cppreference.com/w/cpp/keyword/true)  <br />  [try](https://zh.cppreference.com/w/cpp/keyword/try)  <br />  [typedef](https://zh.cppreference.com/w/cpp/keyword/typedef)  <br />  [typeid](https://zh.cppreference.com/w/cpp/keyword/typeid)  <br />  [typename](https://zh.cppreference.com/w/cpp/keyword/typename)  <br />  [union](https://zh.cppreference.com/w/cpp/keyword/union)  <br />  [unsigned](https://zh.cppreference.com/w/cpp/keyword/unsigned)  <br />  [using](https://zh.cppreference.com/w/cpp/keyword/using)(1)  <br />  [virtual](https://zh.cppreference.com/w/cpp/keyword/virtual)  <br />  [void](https://zh.cppreference.com/w/cpp/keyword/void)  <br />  [volatile](https://zh.cppreference.com/w/cpp/keyword/volatile)  <br />  [wchar_t](https://zh.cppreference.com/w/cpp/keyword/wchar_t)  <br />  [while](https://zh.cppreference.com/w/cpp/keyword/while)  <br />  [xor](https://zh.cppreference.com/w/cpp/keyword/xor)  <br />  [xor_eq](https://zh.cppreference.com/w/cpp/keyword/xor_eq) |
@@ -105,7 +103,7 @@ for(type rangeVarriable : Array)
 
 
 # ——基本语法——
-**输入输出**  <br />  `cout << "Value of str is : " << str << endl;`  <br />  `cin >> name >> age;`  <br />  标准错误流（cerr）	<< 	非缓冲  <br />  标准日志流（clog）缓冲  <br />  **​**
+**输入输出**  <br />  `cout << "Value of str is : " << str << endl;`  <br />  `cin >> name >> age;`  <br />  标准错误流（cerr）	<< 	非缓冲  <br />  标准日志流（clog）缓冲
 
 **速度**
 
@@ -113,16 +111,16 @@ for(type rangeVarriable : Array)
 - Windows：C使用printf耗时 > C不解除绑定耗时 > C++解除绑定耗时 > C语言printf耗时
 - Linux： C不解除绑定耗时> C使用printf耗时 = C语言printf耗时 > C++解除绑定耗时
 
-**​**
 
-**原因：**为了保证混用 cin 与 scanf 能保持同步且不出错，设置了一个缓冲区，防止指针错误造成乱码，因此cin会牺牲一些效率  <br />  **​**
+
+**原因：**为了保证混用 cin 与 scanf 能保持同步且不出错，设置了一个缓冲区，防止指针错误造成乱码，因此cin会牺牲一些效率
 
 **解除**
 
 - iso::sync_with_stdio（false）：C++为了兼容C，保证程序在使用 printf 和 cout 时不发生混乱，将输出流绑到了一起，默认iso::sync_with_stdio(true)，即开启。
 - cin.tie(0)，cout.tie(0)：解除的是C运行库层面的对数据传输的绑定,stdin和stdout在更底层的操作系统层面有绑定，没有解除，cin.tie(NULL)，cout.tie(NULL)是继续松绑C传输的效率。
 
-**​**
+
 
 **模板**
 ```cpp
@@ -161,7 +159,7 @@ int main(){
     return 0;
 }
 ```
-**​**
+
 
 **命名空间（namespace）**  <br />  命名空间可嵌套，不连续，或无名（unnamed）空间
 ```cpp
@@ -172,7 +170,7 @@ namespace namespace_name {
 // 使用标准库命名空间
 using namespace std;
 ```
-**​**
+
 
 **using**
 
@@ -180,7 +178,7 @@ using namespace std;
 - using 指令：using  namespace std;
 - 类型别名：using type alias
 
-**​**
+
 
 **初始化列表 **[**initializer_list**](https://zh.cppreference.com/w/cpp/utility/initializer_list)  <br />  template< class T >  <br />  class initializer_list;  <br />  一个访问 const T 类型对象数组的轻量代理对象
 
@@ -281,25 +279,21 @@ lambda 表达式可以直接使用 this 指针，对于[]的形式须显式传�
 | --- | --- |
 | [operator""s ](https://zh.cppreference.com/w/cpp/string/basic_string/operator%22%22s)  <br />  (C++14) | 转换字符数组字面量为 basic_string  (函数) |
 
-原始字符串字面量（raw string literal)  <br />  `R " [d-char-sequence](···)[d-char-sequence] "`  <br />  可选分隔符序列 <= 16个字符，前后一致  <br />  ​
+原始字符串字面量（raw string literal)  <br />  `R " [d-char-sequence](···)[d-char-sequence] "`  <br />  可选分隔符序列 <= 16个字符，前后一致
 
-​
 
-​  <br />  
+
 
 # OOP
 
 
-
 ## 类（Class）
-default：class-private	, struct-public  <br />  ​
+default：class-private	, struct-public
 
 **构造函数 Constructor**
 
 - 与类名相同且无返回类型的成员函数，用于初始化对象
 - 类无显式（explicit）声明，编译器自动提供无参的
-
-​
 
 **- Default constructor 默认构造函数**
 
@@ -309,13 +303,11 @@ default：class-private	, struct-public  <br />  ​
 - 类名() = default ;
 - 类名 :: 类名 ( ) = default ;
 
-​
-
 constructor initializer 初始化列表：推荐，初始化const类型数据成员的唯一方法，初始顺序与声明次序相同
 ```cpp
 ClassName （parameterList）[：datafield（value），···]  { }
 ```
-**​**
+
 
 **- Copy constructor 拷贝构造函数**
 
@@ -329,7 +321,7 @@ ClassName （[const] ClassName&）{ }  //参数>1，要有默认值
 - shallow copy：相当于引用，指向对象地址
 - deep copy：指向对象内容
 
-**​**
+
 
 **- Move constructors 移动构造函数**
 
@@ -337,7 +329,7 @@ ClassName （[const] ClassName&）{ }  //参数>1，要有默认值
 - class_name ( 类名 && ) = default;
 - class_name ( 类名 && ) = delete;
 
-**​**
+
 
 **- Convert constructor 转换构造函数**  <br />  不以说明符 **explicit** 声明且可以单个参数调用的构造函数
 ```cpp
@@ -376,7 +368,7 @@ int main()
     bool nb2 = static_cast<bool>(b2); // OK：static_cast 进行直接初始化
 }
 ```
-**​**
+
 
 **Destructor 析构函数**：自动释放对象所分配的资源
 
@@ -445,7 +437,7 @@ int main( )
    return 0;
 }
 ```
-**​**
+
 
 **this 指针**  <br />  一个[纯右值](https://zh.cppreference.com/w/cpp/language/value_category)表达式，其值是对其调用成员函数的对象的地址
 ```cpp
@@ -557,7 +549,6 @@ int main(void)
    return 0;
 }
 ```
-​
 
 using声明可改变成员在派生类中的访问限制
 ```cpp
@@ -571,9 +562,10 @@ class Derived : public Base {
     using Base::Base; // 继承父类的全部构造函数 (C++11)
 };
 ```
-**​**
 
-**friend 友元**  <br />  友元声明出现于[类体](https://zh.cppreference.com/w/cpp/language/class)内，并向一个函数或另一个类授予对包含友元声明的类的私有及受保护成员的访问权  <br />  ​  <br />  
+
+**friend 友元**  <br />  友元声明出现于[类体](https://zh.cppreference.com/w/cpp/language/class)内，并向一个函数或另一个类授予对包含友元声明的类的私有及受保护成员的访问权
+
 
 ## 多态
 **虚函数**
@@ -597,7 +589,6 @@ struct B : A
     void bar() override; // 错误：A::bar 非虚
 };
 ```
-​
 
 final：指定某个[虚函数](https://zh.cppreference.com/w/cpp/language/virtual)不能在子类中被覆盖，或某个类不能被子类继承
 ```cpp
@@ -636,7 +627,7 @@ struct C : B // 错误：B 为 final
 | 空间申请与释放 | new, delete, new[ ] , delete[] |
 | 其他运算符 | **()**(函数调用)，**->**(成员访问)，**,**(逗号)，**[]**(下标) |
 
-​  <br />  
+
 ```cpp
 #include <iostream>
 using namespace std;
@@ -685,11 +676,10 @@ int main()
     return 0;
 }
 ```
-​
 
-嵌套类（nested class）  <br />  嵌套类中的声明能使用外围类的所有成员，遵循非静态成员的[常规使用规则](https://zh.cppreference.com/w/cpp/language/data_members#.E7.94.A8.E6.B3.95)  <br />  ​
+嵌套类（nested class）  <br />  嵌套类中的声明能使用外围类的所有成员，遵循非静态成员的[常规使用规则](https://zh.cppreference.com/w/cpp/language/data_members#.E7.94.A8.E6.B3.95)
 
-​  <br />  
+
 
 # 模板 Template
 模板是泛型编程的基础，泛型编程即以一种独立于任何特定类型的方式编写代码。
@@ -812,7 +802,7 @@ catch( [const ExceptionName&] e )
 | std::range_error | 当尝试存储超出范围的值时，会抛出该异常。 |
 | std::underflow_error | 当发生数学下溢时，会抛出该异常。 |
 
-**​**
+
 
 **自定义异常**
 ```cpp
@@ -845,15 +835,13 @@ int main()
   }
 }
 ```
-​  <br />  
 
 ---
 
-​
 
-MFC(Microsoft Foundation Classes)：微软公司提供的一个类库（class libraries），以C++类的形式封装了Windows的API，并且包含一个应用程序框架，以减少应用程序开发人员的工作量。其中包含的类包含大量Windows句柄封装类和很多Windows的内建控件和组件的封装类。  <br />  **​**
+MFC(Microsoft Foundation Classes)：微软公司提供的一个类库（class libraries），以C++类的形式封装了Windows的API，并且包含一个应用程序框架，以减少应用程序开发人员的工作量。其中包含的类包含大量Windows句柄封装类和很多Windows的内建控件和组件的封装类。
 
-**STL**(Standard Template Library)分为容器(containers)、迭代器(iterators)、空间配置器(allocator)、配接器(adapters)、算法(algorithms)、仿函数(functors)六部分。  <br />  **​**
+**STL**(Standard Template Library)分为容器(containers)、迭代器(iterators)、空间配置器(allocator)、配接器(adapters)、算法(algorithms)、仿函数(functors)六部分。
 
 **序列式容器**
 
@@ -861,7 +849,7 @@ MFC(Microsoft Foundation Classes)：微软公司提供的一个类库（class li
 - 列表(list) 由节点组成的双向链表，每个结点包含着一个元素
 - 双端队列(deque) 连续存储的指向不同元素的指针所组成的数组
 
-**​**
+
 
 **适配器容器**
 
@@ -869,7 +857,7 @@ MFC(Microsoft Foundation Classes)：微软公司提供的一个类库（class li
 - 队列(queue) 先进先出(FIFO)的值的排列 
 - 优先队列(priority_queue) 元素的次序是由作用于所存储的值对上的某种谓词决定的的一种队列 
 
-**​**
+
 
 **关联式容器**
 
@@ -878,9 +866,9 @@ MFC(Microsoft Foundation Classes)：微软公司提供的一个类库（class li
 - 映射(map) 由{键，值}对组成的集合，以某种作用于键对上的谓词排列 
 - 多重映射(multimap) 允许键对有相等的次序的映射 
 
-**​**
 
-**对**(pair) 和map类似，但只有一对键值   <br />  **智能指针**(auto_ptr) 将一个用new开辟内存的指针赋给auto_ptr，会自动回收空间   <br />  **空间配置器(allocator)**：对operator new & delete 包装实现内存分配。  <br />  **​**
+
+**对**(pair) 和map类似，但只有一对键值   <br />  **智能指针**(auto_ptr) 将一个用new开辟内存的指针赋给auto_ptr，会自动回收空间   <br />  **空间配置器(allocator)**：对operator new & delete 包装实现内存分配。
 
 **动态多维数组**
 ```cpp
@@ -889,7 +877,7 @@ int **p = new int*[n];
 for (int i = 0; i < n; ++i)
     p[i] = new int[m];
 ```
-**​**
+
 
 **自定义排序容器**
 ```cpp
@@ -924,9 +912,9 @@ struct T
 };
 set<T> s;
 ```
-**​**
 
-**仿函数(functor)：**模仿函数的类，使用方式如同函数。本质是类中重载括弧运算符operator()  <br />  ​
+
+**仿函数(functor)：**模仿函数的类，使用方式如同函数。本质是类中重载括弧运算符operator()
 
 无序容器自定义哈希函数和比较规则
 ```cpp
@@ -985,11 +973,10 @@ int main()
     return 0;
 }
 ```
-​
 
-排序速度：sort（functor）> qsort > sort（function）  <br />  ​
+排序速度：sort（functor）> qsort > sort（function）
 
-循环定义：`#define _for(i, a, b) for(int i = (a); i < (b);++i)`  <br />  **​**
+循环定义：`#define _for(i, a, b) for(int i = (a); i < (b);++i)`
 
 **容器内容输出**
 ```cpp
@@ -1798,7 +1785,8 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | [cshift](https://zh.cppreference.com/w/cpp/numeric/valarray/cshift) | 循环移动valarray的元素 (公开成员函数) |
 | [apply](https://zh.cppreference.com/w/cpp/numeric/valarray/apply) | 将函数应用到valarray的每个元素 |
 
-**slice( std::size_t start, std::size_t size, std::size_t stride );**  <br />  **gslice ( std:: size_t start, const std:: valarray < std:: size_t > & sizes,**  <br />  **                           const std:: valarray < std:: size_t > & strides ) ;**  <br />  **​**  <br />  
+**slice( std::size_t start, std::size_t size, std::size_t stride );**  <br />  **gslice ( std:: size_t start, const std:: valarray < std:: size_t > & sizes,**  <br />  **                           const std:: valarray < std:: size_t > & strides ) ;**
+
 
 ## [<algorithm>](https://zh.cppreference.com/w/cpp/algorithm)
 
@@ -2125,7 +2113,6 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 
 
 
-
 ### 智能指针
 | [unique_ptr ](https://zh.cppreference.com/w/cpp/memory/unique_ptr)  <br />  (C++11) | 拥有独有对象所有权语义的智能指针 (类模板) |
 | --- | --- |
@@ -2316,7 +2303,7 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 
 # 线程
 
-  <br />  **class  **[**thread**](https://zh.cppreference.com/w/cpp/thread/thread)  <br />  线程在构造关联的线程对象时立即开始执行（等待任何OS调度延迟），从提供给作为[构造函数参数](https://zh.cppreference.com/w/cpp/thread/thread/thread)的顶层函数开始
+**class  **[**thread**](https://zh.cppreference.com/w/cpp/thread/thread)  <br />  线程在构造关联的线程对象时立即开始执行（等待任何OS调度延迟），从提供给作为[构造函数参数](https://zh.cppreference.com/w/cpp/thread/thread/thread)的顶层函数开始
 
 | 观察器 |  |
 | --- | --- |

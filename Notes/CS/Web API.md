@@ -1,16 +1,15 @@
 
 # —— [Web API](https://developer.mozilla.org/zh-CN/docs/Web/API) ——
-**网页中嵌入 JavaScript 代码**  <br />
+**网页中嵌入 JavaScript 代码**
 
-- 直接嵌入代码
+- <script>元素直接嵌入代码
 ```javascript
 <script>
   console.log(new Date().toLocaleTimeString());
 </script>
 ```
 
-
-- 加载外部脚本
+- <script>标签加载外部脚本
 ```javascript
 <script charset="utf-8" src="https://www.example.com/script.js"></script>
 ```
@@ -20,74 +19,69 @@
 <button id="myBtn" onclick="console.log(this.id)">点击</button>
 ```
 
-
 - URL 协议
 ```javascript
 <a href="javascript: void new Date().toLocaleTimeString();">点击</a>
 ```
 
-  <br />  **浏览器**  <br />
-  <br />  **渲染引擎**：将网页代码渲染为用户视觉可以感知的平面文档。
+**浏览器**
 
--  Firefox：Gecko 引擎
--  Safari：WebKit 引擎
--  Chrome：Blink 引擎
+**渲染引擎**：将网页代码渲染为用户视觉可以感知的平面文档。
 
+-  Firefox：Gecko 引擎 
+-  Safari：WebKit 引擎 
+-  Chrome：Blink 引擎 
 
-  <br />  四个阶段
+四个阶段
 
--  解析代码：HTML 代码解析为 DOM，CSS 代码解析为 CSSOM（CSS Object Model）。
--  对象合成：将 DOM 和 CSSOM 合成一棵渲染树（render tree）。
--  布局：计算出渲染树的布局（layout）。
--  绘制：将渲染树绘制到屏幕。
+-  解析代码：HTML 代码解析为 DOM，CSS 代码解析为 CSSOM（CSS Object Model）。 
+-  对象合成：将 DOM 和 CSSOM 合成一棵渲染树（render tree）。 
+-  布局：计算出渲染树的布局（layout）。 
+-  绘制：将渲染树绘制到屏幕。 
 
+**JavaScript 解释器**
 
-  <br />  **JavaScript 解释器**
+-  读取代码，进行词法分析（Lexical analysis），将代码分解成词元（token）。 
+-  对词元进行语法分析（parsing），将代码整理成“语法树”（syntax tree）。 
+-  使用“翻译器”（translator），将代码转为字节码（bytecode）。 
+-  即时编译（Just In Time compiler，JIT），即字节码只在运行时编译，并且把编译结果缓存（inline cache）。 
 
--  读取代码，进行词法分析（Lexical analysis），将代码分解成词元（token）。
--  对词元进行语法分析（parsing），将代码整理成“语法树”（syntax tree）。
--  使用“翻译器”（translator），将代码转为字节码（bytecode）。
--  即时编译（Just In Time compiler，JIT），即字节码只在运行时编译，并且把编译结果缓存（inline cache）。
-
-
-  <br />  JavaScript 虚拟机
+JavaScript 虚拟机
 
 - [Nitro/JavaScript Core](https://en.wikipedia.org/wiki/WebKit#JavaScriptCore) (Safari)
 - [Carakan](https://dev.opera.com/articles/view/labs-carakan/) (Opera)
 - [SpiderMonkey](https://developer.mozilla.org/en-US/docs/SpiderMonkey) (Firefox)
 - [V8](https://en.wikipedia.org/wiki/Chrome_V8) (Chrome, Chromium)
 
-
-
 <a name="e0fe7ea9"></a>
 # —— HTML DOM ——
 
-  <br />  **Document Object Model（文档对象模型）：**一项 W3C (World Wide Web Consortium) 标准。  <br />  **              即**如何获取、修改、添加或删除 HTML 元素的标准。  <br />
-  <br />  分为 3 个不同的部分：
+**Document Object Model（文档对象模型）：**一项 W3C (World Wide Web Consortium) 标准。  <br />  **              即**如何获取、修改、添加或删除 HTML 元素的标准。
 
--  Core DOM - 所有文档类型的标准模型
--  XML DOM - XML 文档的标准模型
--  HTML DOM - HTML 文档的标准模型
+分为 3 个不同的部分：
 
+-  Core DOM - 所有文档类型的标准模型 
+-  XML DOM - XML 文档的标准模型 
+-  HTML DOM - HTML 文档的标准模型 
 
-  <br />  **HTML DOM 树**  <br />
-  <br />  ![](https://www.w3school.com.cn/i/ct_htmltree.gif#crop=0&crop=0&crop=1&crop=1&id=LzjhR&originHeight=266&originWidth=486&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />
+**HTML DOM 树**
+
+![](https://www.w3school.com.cn/i/ct_htmltree.gif#crop=0&crop=0&crop=1&crop=1&id=LzjhR&originHeight=266&originWidth=486&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 <a name="73a11b68"></a>
 # [Node](https://developer.mozilla.org/zh-CN/docs/Web/API/Node)
 
-  <br />  **Type**  <br />
+**Type**
 
--  Document：文档树的顶层节点
--  DocumentType：doctype标签（比如）
--  Element：各种HTML标签（如、等）
--  Attr：元素的属性（如class="right"）
--  Text：标签之间或标签包含的文本
--  Comment：注释
--  DocumentFragment：文档的片段
+-  Document：文档树的顶层节点 
+-  DocumentType：doctype标签（比如） 
+-  Element：各种HTML标签（如、等） 
+-  Attr：元素的属性（如class="right"） 
+-  Text：标签之间或标签包含的文本 
+-  Comment：注释 
+-  DocumentFragment：文档的片段 
 
-
-  <br />  **property**  <br />
+**property**
 
 - [Node.nodeType](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType)
 | Name | Value |
@@ -106,55 +100,47 @@
 | NOTATION_NODE | 12 |
 
 
+-  Node.nodeName 
+-  Node.nodeValue 
+-  Node.textContent 
+-  Node.baseURI 
+-  Node.ownerDocument 
+-  Node.nextSibling 
+-  Node.previousSibling 
+-  Node.parentNode 
+-  Node.parentElement 
+-  Node.firstChild，Node.lastChild 
+-  Node.childNodes 
+-  Node.isConnected 
 
--  Node.nodeName
--  Node.nodeValue
--  Node.textContent
--  Node.baseURI
--  Node.ownerDocument
--  Node.nextSibling
--  Node.previousSibling
--  Node.parentNode
--  Node.parentElement
--  Node.firstChild，Node.lastChild
--  Node.childNodes
--  Node.isConnected
+**methods**
 
-
-  <br />  **methods**
-
--  Node.appendChild()
--  Node.hasChildNodes()
--  Node.cloneNode()
--  Node.insertBefore()
--  Node.removeChild()
--  Node.replaceChild()
--  Node.contains()
--  Node.isEqualNode()，Node.isSameNode()
--  Node.normalize()
--  Node.getRootNode()
-
-
+-  Node.appendChild() 
+-  Node.hasChildNodes() 
+-  Node.cloneNode() 
+-  Node.insertBefore() 
+-  Node.removeChild() 
+-  Node.replaceChild() 
+-  Node.contains() 
+-  Node.isEqualNode()，Node.isSameNode() 
+-  Node.normalize() 
+-  Node.getRootNode() 
 
 <a name="15a9f566"></a>
 # [NodeList](https://developer.mozilla.org/zh-CN/docs/Web/API/NodeList)
 
--  NodeList.length
--  NodeList.forEach()
--  NodeList.item()	索引的节点，如果索引越界，则返回null
--  NodeList.keys()，NodeList.values()，NodeList.entries()
-
-
+-  NodeList.length 
+-  NodeList.forEach() 
+-  NodeList.item()	索引的节点，如果索引越界，则返回null 
+-  NodeList.keys()，NodeList.values()，NodeList.entries() 
 
 <a name="d30551e2"></a>
 # [HTMLCollection](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCollection)
-节点对象的集合，只能包含元素节点（element）  <br />
+节点对象的集合，只能包含元素节点（element）
 
--  HTMLCollection.length
--  HTMLCollection.item()
--  HTMLCollection.namedItem()
-
-
+-  HTMLCollection.length 
+-  HTMLCollection.item() 
+-  HTMLCollection.namedItem() 
 
 <a name="c9b6bcc8"></a>
 # [ParentNode](https://developer.mozilla.org/zh-CN/docs/Web/API/ParentNode)
@@ -165,32 +151,25 @@
 - ParentNode.childElementCount
 - ParentNode.append()，ParentNode.prepend()
 
-
-
 <a name="411e165f"></a>
 # [ChildNode](https://developer.mozilla.org/zh-CN/docs/Web/API/ChildNode)
-
 
 - ChildNode.remove()
 - ChildNode.before()，ChildNode.after()
 - ChildNode.replaceWith()
 
-
-
 <a name="b570334e"></a>
 # [Document ](https://developer.mozilla.org/zh-CN/docs/Web/API/Document)
 
-  <br />  Property
+Property
 
 - document.defaultView	所属的window对象
-- document.doctype
+- document.doctype	
 - document.documentElement	根元素节点（root）
 - document.body，document.head
 - document.scrollingElement
 - document.activeElement	当前焦点（focus）的 DOM 元素
 - document.fullscreenElement	全屏状态展示的 DOM 元素
-
-​  <br />
 
 - document.links	所有设定了href属性的<a>及<area>节点。
 - document.forms	所有<form>表单节点
@@ -198,8 +177,6 @@
 - document.embeds，document.plugins	所有<embed>节点
 - document.scripts	所有<script>节点。
 - document.styleSheets	内嵌或引入的样式表集合
-
-​  <br />
 
 - document.documentURI，document.URL
 - document.domain
@@ -210,8 +187,6 @@
 - document.referrer	文档的访问者来自哪里
 - document.dir	文字方向
 - document.compatMode	浏览器处理文档的模式，BackCompat（向后兼容模式）和CSS1Compat（严格模式）
-
-​  <br />
 
 - document.hidden
 - document.visibilityState
@@ -252,12 +227,10 @@
 - document.execCommand()，document.queryCommandSupported()，document.queryCommandEnabled()
 - document.getSelection()
 
-
-
 <a name="c80ac6cd"></a>
 # [Element](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)
 
-  <br />  **Property**
+**Property**
 
 - Element.id
 - Element.tagName
@@ -267,8 +240,6 @@
 - Element.lang
 - Element.tabIndex
 - Element.title
-
-​  <br />
 
 - Element.hidden
 - Element.contentEditable，Element.isContentEditable
@@ -297,8 +268,6 @@
 - Element.firstElementChild，Element.lastElementChild
 - Element.nextElementSibling，Element.previousElementSibling
 
-​
-
 **Methods**
 
 - getAttribute()：读取某个属性的值
@@ -307,8 +276,6 @@
 - hasAttribute()：某个属性是否存在
 - hasAttributes()：当前元素是否有属性
 - removeAttribute()：删除属性
-
-​  <br />
 
 - Element.querySelector()
 - Element.querySelectorAll()
@@ -320,8 +287,6 @@
 - Element.addEventListener()：添加事件的回调函数
 - Element.removeEventListener()：移除事件监听函数
 - Element.dispatchEvent()：触发事件
-
-​  <br />
 
 - Element.scrollIntoView()
 - Element.getBoundingClientRect()	元素节点的大小、位置等信息
@@ -349,48 +314,41 @@
 - false——冒泡传播：最内侧元素的事件会首先被处理，然后是更外侧的
 - true——捕获传播：最外侧元素的事件会首先被处理，然后是更内侧的
 
-
-
 <a name="39ebacb9"></a>
 # [Attr](https://developer.mozilla.org/zh-CN/docs/Web/API/Attr)ibute
 
-  <br />  **propery**
+**propery**
 
--  name
--  specified
--  value
+-  name 
+-  specified 
+-  value 
 
+有些 HTML 属性名是 JavaScript 的保留字，转为 JavaScript 属性时，必须改名
 
-  <br />  有些 HTML 属性名是 JavaScript 的保留字，转为 JavaScript 属性时，必须改名
-
--  for属性改为htmlFor
--  class属性改为className
-
-
+-  for属性改为htmlFor 
+-  class属性改为className 
 
 <a name="a162991c"></a>
 # [Text](https://developer.mozilla.org/zh-CN/docs/Web/API/Text)
-文本节点（Text）代表元素节点（Element）和属性节点（Attribute）的文本内容。  <br />
-  <br />  属性
+文本节点（Text）代表元素节点（Element）和属性节点（Attribute）的文本内容。
 
--  data
--  wholeText
--  length
--  nextElementSibling，previousElementSibling
+属性
 
+-  data 
+-  wholeText 
+-  length 
+-  nextElementSibling，previousElementSibling 
 
-  <br />  方法
+方法
 
--  appendData()，deleteData()，insertData()，replaceData()，subStringData()
--  remove()
--  splitText()
-
-
+-  appendData()，deleteData()，insertData()，replaceData()，subStringData() 
+-  remove() 
+-  splitText() 
 
 <a name="eb99c89e"></a>
 # [DocumentFragment](https://developer.mozilla.org/zh-CN/docs/Web/API/DocumentFragment)
 
-  <br />  文档的片段，用于构建一个 DOM 结构，然后插入当前文档。它没有父节点，但是可以插入任意数量的子节点。它不属于当前文档，比直接操作 DOM 树快得多。  <br />
+文档的片段，用于构建一个 DOM 结构，然后插入当前文档。它没有父节点，但是可以插入任意数量的子节点。它不属于当前文档，比直接操作 DOM 树快得多。
 
 ```javascript
 // 反转一个指定节点的所有子节点的顺序
@@ -401,34 +359,31 @@ function reverse(n) {
 }
 ```
 
-
 <a name="f4b803ce"></a>
 # [CSSStyleDeclaration](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration)
 
-  <br />  连词号需要变成骆驼拼写法
+连词号需要变成骆驼拼写法
 
--  CSSStyleDeclaration.cssText
--  CSSStyleDeclaration.length
--  CSSStyleDeclaration.parentRule
--  CSSStyleDeclaration.getPropertyPriority()	有没有设置important优先级
--  CSSStyleDeclaration.getPropertyValue()
--  CSSStyleDeclaration.item()
--  CSSStyleDeclaration.removeProperty()
--  CSSStyleDeclaration.setProperty()
+-  CSSStyleDeclaration.cssText 
+-  CSSStyleDeclaration.length 
+-  CSSStyleDeclaration.parentRule 
+-  CSSStyleDeclaration.getPropertyPriority()	有没有设置important优先级 
+-  CSSStyleDeclaration.getPropertyValue() 
+-  CSSStyleDeclaration.item() 
+-  CSSStyleDeclaration.removeProperty() 
+-  CSSStyleDeclaration.setProperty() 
 
+CSS
 
-  <br />  CSS
-
--  CSS.escape()	转义 CSS 选择器里面的特殊字符
--  CSS.supports()
-
-
+-  CSS.escape()	转义 CSS 选择器里面的特殊字符 
+-  CSS.supports() 
 
 <a name="cafc7eab"></a>
 # [Mutation Observer](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver)
 
-  <br />  监视 DOM 变动  <br />
-  <br />  构造
+监视 DOM 变动
+
+构造
 ```javascript
 var observer = new MutationObserver(function (mutations, observer) {
   mutations.forEach(function(mutation) {
@@ -437,7 +392,7 @@ var observer = new MutationObserver(function (mutations, observer) {
 });
 ```
 
-  <br />  方法
+方法
 ```javascript
 mutationObserver.observe(document.documentElement, {
   attributes: true,
@@ -452,18 +407,16 @@ mutationObserver.disconnect()	停止观察
 mutationObserver.takeRecords()	清除变动记录
 ```
 
-  <br />  **MutationRecord**  <br />  DOM 每次发生变化，就会生成一条变动记录（MutationRecord 实例）
+**MutationRecord**  <br />  DOM 每次发生变化，就会生成一条变动记录（MutationRecord 实例）
 
--  type：观察的变动类型（attributes、characterData或者childList）。
--  target：发生变动的DOM节点。
--  addedNodes：新增的DOM节点。
--  removedNodes：删除的DOM节点。
--  previousSibling：前一个同级节点，如果没有则返回null。
--  nextSibling：下一个同级节点，如果没有则返回null。
--  attributeName：发生变动的属性。如果设置了attributeFilter，则只返回预先指定的属性。
--  oldValue：变动前的值。这个属性只对attribute和characterData变动有效，如果发生childList变动，则返回null。
-
-
+-  type：观察的变动类型（attributes、characterData或者childList）。 
+-  target：发生变动的DOM节点。 
+-  addedNodes：新增的DOM节点。 
+-  removedNodes：删除的DOM节点。 
+-  previousSibling：前一个同级节点，如果没有则返回null。 
+-  nextSibling：下一个同级节点，如果没有则返回null。 
+-  attributeName：发生变动的属性。如果设置了attributeFilter，则只返回预先指定的属性。 
+-  oldValue：变动前的值。这个属性只对attribute和characterData变动有效，如果发生childList变动，则返回null。 
 
 ```javascript
 // 使用MutationObserver对象封装一个监听 DOM 生成的函数
@@ -522,11 +475,10 @@ ready('.foo', function(element){
 });
 ```
 
-
 <a name="14d9b7d8"></a>
 # [EventTarget](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget)
 
-  <br />  EventTarget.addEventListener(type, listener[, useCapture])  <br />  EventTarget.removeEventListener(type, listener[, useCapture])  <br />  EventTarget.dispatchEvent(event)
+EventTarget.addEventListener(type, listener[, useCapture])  <br />  EventTarget.removeEventListener(type, listener[, useCapture])  <br />  EventTarget.dispatchEvent(event)
 
 - type：事件名称
 - listener：监听函数。
@@ -535,20 +487,16 @@ ready('.foo', function(element){
    - once：布尔值，表示监听函数是否只触发一次，然后就自动移除。
    - passive：布尔值，表示监听函数不会调用事件的preventDefault方法。
 
-​
-
 **事件的传播**  <br />  一个事件发生后，会在子元素和父元素之间传播（propagation）。
 
 - 捕获阶段（capture phase）：从window对象传导到目标节点（上层传到底层）
 - 目标阶段（target phase）：在目标节点上触发
 - 冒泡阶段（bubbling phase）：从目标节点传导回window对象（从底层传回上层）
 
-
-
 <a name="4ab832ec"></a>
 # [Event](https://developer.mozilla.org/zh-CN/docs/Web/API/Event)
 
-  <br />  **event = new Event(type, options);**
+**event = new Event(type, options);**
 ```javascript
 function dispatchInputEvent(account) {
     let inputEvent = new Event('input', {
@@ -569,7 +517,7 @@ document.querySelector('.login').click();
 console.log('login completely');
 ```
 
-  <br />  属性
+属性
 
 - [Event.bubbles](https://wangdoc.com/javascript/events/event.html#eventbubbles%EF%BC%8Ceventeventphase)	是否会冒泡
 - [Event.eventPhase](https://wangdoc.com/javascript/events/event.html#eventbubbles%EF%BC%8Ceventeventphase)
@@ -584,8 +532,6 @@ console.log('login completely');
 - [Event.isTrusted](https://wangdoc.com/javascript/events/event.html#eventistrusted)
 - [Event.detail](https://wangdoc.com/javascript/events/event.html#eventdetail)
 
-​
-
 方法
 
 - [Event.preventDefault()](https://wangdoc.com/javascript/events/event.html#eventpreventdefault)	取消浏览器对当前事件的默认行为
@@ -593,104 +539,94 @@ console.log('login completely');
 - [Event.stopImmediatePropagation()](https://wangdoc.com/javascript/events/event.html#eventstopimmediatepropagation)	阻止同一个事件的其他监听函数被调用
 - [Event.composedPath()](https://wangdoc.com/javascript/events/event.html#eventcomposedpath)	事件的最底层节点和依次冒泡经过的所有上层节点
 
-
-
 <a name="cee24e66"></a>
 ## [MouseEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent)
 
-  <br />  Type
+Type
 
--  click：按下鼠标（通常是按下主按钮）时触发。
--  dblclick：在同一个元素上双击鼠标时触发。
--  mousedown：按下鼠标键时触发。
--  mouseup：释放按下的鼠标键时触发。
--  mousemove：当鼠标在一个节点内部移动时触发。
--  mouseenter：鼠标进入一个节点时触发，进入子节点不会触发这个事件
--  mouseover：鼠标进入一个节点时触发，进入子节点会再一次触发这个事件
--  mouseout：鼠标离开一个节点时触发，离开父节点也会触发这个事件
--  mouseleave：鼠标离开一个节点时触发，离开父节点不会触发这个事件
--  contextmenu：按下鼠标右键时（上下文菜单出现前）触发
--  wheel：滚动鼠标的滚轮时触发
+-  click：按下鼠标（通常是按下主按钮）时触发。 
+-  dblclick：在同一个元素上双击鼠标时触发。 
+-  mousedown：按下鼠标键时触发。 
+-  mouseup：释放按下的鼠标键时触发。 
+-  mousemove：当鼠标在一个节点内部移动时触发。 
+-  mouseenter：鼠标进入一个节点时触发，进入子节点不会触发这个事件 
+-  mouseover：鼠标进入一个节点时触发，进入子节点会再一次触发这个事件 
+-  mouseout：鼠标离开一个节点时触发，离开父节点也会触发这个事件 
+-  mouseleave：鼠标离开一个节点时触发，离开父节点不会触发这个事件 
+-  contextmenu：按下鼠标右键时（上下文菜单出现前）触发 
+-  wheel：滚动鼠标的滚轮时触发 
 
+Property
 
-  <br />  Property  <br />
-
--  screenX：数值，鼠标相对于屏幕的水平位置（单位像素），默认值为0，设置该属性不会移动鼠标。
--  screenY：数值，鼠标相对于屏幕的垂直位置（单位像素）
--  clientX：数值，鼠标相对于程序窗口的水平位置（单位像素），默认值为0，设置该属性不会移动鼠标。
--  clientY：数值，鼠标相对于程序窗口的垂直位置（单位像素）。
--  ctrlKey：布尔值，是否同时按下了 Ctrl 键，默认值为false。
--  shiftKey：布尔值，是否同时按下了 Shift 键，默认值为false。
--  altKey：布尔值，是否同时按下 Alt 键，默认值为false。
--  metaKey：布尔值，是否同时按下 Meta 键，默认值为false。
--  button：数值，表示按下了哪一个鼠标按键，默认值为0，表示按下主键（通常是鼠标的左键）或者当前事件没有定义这个属性；1表示按下辅助键（通常是鼠标的中间键），2表示按下次要键（通常是鼠标的右键）。
--  buttons：数值，表示按下了鼠标的哪些键，是一个三个比特位的二进制值，默认为0（没有按下任何键）。1（二进制001）表示按下主键（通常是左键），2（二进制010）表示按下次要键（通常是右键），4（二进制100）表示按下辅助键（通常是中间键）
--  relatedTarget：节点对象，表示事件的相关节点，默认为null。mouseenter和mouseover事件时，表示鼠标刚刚离开的那个元素节点；mouseout和mouseleave事件时，表示鼠标正在进入的那个元素节点。
+-  screenX：数值，鼠标相对于屏幕的水平位置（单位像素），默认值为0，设置该属性不会移动鼠标。 
+-  screenY：数值，鼠标相对于屏幕的垂直位置（单位像素） 
+-  clientX：数值，鼠标相对于程序窗口的水平位置（单位像素），默认值为0，设置该属性不会移动鼠标。 
+-  clientY：数值，鼠标相对于程序窗口的垂直位置（单位像素）。 
+-  ctrlKey：布尔值，是否同时按下了 Ctrl 键，默认值为false。 
+-  shiftKey：布尔值，是否同时按下了 Shift 键，默认值为false。 
+-  altKey：布尔值，是否同时按下 Alt 键，默认值为false。 
+-  metaKey：布尔值，是否同时按下 Meta 键，默认值为false。 
+-  button：数值，表示按下了哪一个鼠标按键，默认值为0，表示按下主键（通常是鼠标的左键）或者当前事件没有定义这个属性；1表示按下辅助键（通常是鼠标的中间键），2表示按下次要键（通常是鼠标的右键）。 
+-  buttons：数值，表示按下了鼠标的哪些键，是一个三个比特位的二进制值，默认为0（没有按下任何键）。1（二进制001）表示按下主键（通常是左键），2（二进制010）表示按下次要键（通常是右键），4（二进制100）表示按下辅助键（通常是中间键） 
+-  relatedTarget：节点对象，表示事件的相关节点，默认为null。mouseenter和mouseover事件时，表示鼠标刚刚离开的那个元素节点；mouseout和mouseleave事件时，表示鼠标正在进入的那个元素节点。 
 -  [MouseEvent.offsetX，MouseEvent.offsetY](https://wangdoc.com/javascript/events/mouse.html#mouseeventoffsetx%EF%BC%8Cmouseeventoffsety)	鼠标位置与目标节点上/左侧的padding边缘的水平距离
 - [MouseEvent.pageX，MouseEvent.pageY](https://wangdoc.com/javascript/events/mouse.html#mouseeventpagex%EF%BC%8Cmouseeventpagey)	鼠标位置与文档左/上侧边缘的距离（单位像素）
--  MouseEvent.getModifierState()		有没有按下特定的功能键
+-  MouseEvent.getModifierState()		有没有按下特定的功能键 
 
+**WheelEvent**
 
-  <br />  **WheelEvent**  <br />
-  <br />  new WheelEvent('wheel', options)
+new WheelEvent('wheel', options)
 
--  WheelEvent.deltaX：数值，表示滚轮的水平滚动量。
--  WheelEvent.deltaY：数值，表示滚轮的垂直滚动量。
--  WheelEvent.deltaZ：数值，表示滚轮的 Z 轴滚动量。
--  WheelEvent.deltaMode：数值，表示上面三个属性的单位，0是像素，1是行，2是页。
-
-
+-  WheelEvent.deltaX：数值，表示滚轮的水平滚动量。 
+-  WheelEvent.deltaY：数值，表示滚轮的垂直滚动量。 
+-  WheelEvent.deltaZ：数值，表示滚轮的 Z 轴滚动量。 
+-  WheelEvent.deltaMode：数值，表示上面三个属性的单位，0是像素，1是行，2是页。 
 
 <a name="743d2904"></a>
 ## [KeyboardEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent)
 
-  <br />  Type
+Type
 
--  keydown：按下键盘时触发。
--  keypress：按下有值的键时触发，即按下 Ctrl、Alt、Shift、Meta 这样无值的键，这个事件不会触发。
--  keyup：松开键盘时触发该事件。
+-  keydown：按下键盘时触发。 
+-  keypress：按下有值的键时触发，即按下 Ctrl、Alt、Shift、Meta 这样无值的键，这个事件不会触发。 
+-  keyup：松开键盘时触发该事件。 
 
+Property
 
-  <br />  Property
+-  key：字符串，当前按下的键，默认为空字符串。 
+-  code：字符串，表示当前按下的键的字符串形式，默认为空字符串。 
+-  location：整数，当前按下的键的位置，默认为0。 
+-  ctrlKey：布尔值，是否按下 Ctrl 键，默认为false。 
+-  shiftKey：布尔值，是否按下 Shift 键，默认为false。 
+-  altKey：布尔值，是否按下 Alt 键，默认为false。 
+-  metaKey：布尔值，是否按下 Meta 键，默认为false。 
+-  repeat：布尔值，是否重复按键，默认为false 
 
--  key：字符串，当前按下的键，默认为空字符串。
--  code：字符串，表示当前按下的键的字符串形式，默认为空字符串。
--  location：整数，当前按下的键的位置，默认为0。
--  ctrlKey：布尔值，是否按下 Ctrl 键，默认为false。
--  shiftKey：布尔值，是否按下 Shift 键，默认为false。
--  altKey：布尔值，是否按下 Alt 键，默认为false。
--  metaKey：布尔值，是否按下 Meta 键，默认为false。
--  repeat：布尔值，是否重复按键，默认为false
-
-
-  <br />  KeyboardEvent.getModifierState()	表示是否按下或激活指定的功能键  <br />
+KeyboardEvent.getModifierState()	表示是否按下或激活指定的功能键
 
 <a name="30d0aa87"></a>
 ## [ProgressEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/ProgressEvent)
 
-  <br />  描述资源加载的进度，主要由 AJAX 请求、<img>、<audio>、<video>、<style>、<link>等外部资源的加载触发  <br />  Type
+描述资源加载的进度，主要由 AJAX 请求、<img>、<audio>、<video>、<style>、<link>等外部资源的加载触发  <br />  Type
 
--  abort：外部资源中止加载时（比如用户取消）触发。
--  error：由于错误导致外部资源无法加载时触发。
--  load：外部资源加载成功时触发。
--  loadstart：外部资源开始加载时触发。
--  loadend：外部资源停止加载时触发，发生顺序排在error、abort、load等事件的后面。
--  progress：外部资源加载过程中不断触发。
--  timeout：加载超时时触发。
+-  abort：外部资源中止加载时（比如用户取消）触发。 
+-  error：由于错误导致外部资源无法加载时触发。 
+-  load：外部资源加载成功时触发。 
+-  loadstart：外部资源开始加载时触发。 
+-  loadend：外部资源停止加载时触发，发生顺序排在error、abort、load等事件的后面。 
+-  progress：外部资源加载过程中不断触发。 
+-  timeout：加载超时时触发。 
 
+Property
 
-  <br />  Property
-
--  lengthComputable：布尔值，表示加载的总量是否可以计算，默认是false。
--  loaded：整数，表示已经加载的量，默认是0。
--  total：整数，表示需要加载的总量，默认是0。
-
-
+-  lengthComputable：布尔值，表示加载的总量是否可以计算，默认是false。 
+-  loaded：整数，表示已经加载的量，默认是0。 
+-  total：整数，表示需要加载的总量，默认是0。 
 
 <a name="61fc36cf"></a>
 ## [InputEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/InputEvent)
 
-  <br />  Type
+Type
 
 - input事件：<input>、<select>、<textarea>的值发生变化时触发。
 - select事件：在<input>、<textarea>里面选中文本时触发。
@@ -698,8 +634,6 @@ console.log('login completely');
 - invalid 事件：表单元素的值不满足校验条件触发
 - reset事件：表单重置（所有表单成员变回默认值）时触发
 - submit事件：表单数据向服务器提交时触发
-
-​
 
 Property
 
@@ -711,52 +645,47 @@ Property
 - data：字符串，表示插入的字符串
 - dataTransfer：返回一个 DataTransfer 对象实例，该属性通常只在输入框接受富文本输入时有效。
 
-
-
 <a name="03ef30b2"></a>
 ## [TouchEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent)
 
-  <br />  Touch：一个触摸点
+Touch：一个触摸点
 
--  identifier：必需，整数，表示触摸点的唯一 ID。
--  target：必需，元素节点，表示触摸点开始时所在的网页元素。
--  clientX：数值，表示触摸点相对于浏览器窗口左上角的水平距离，默认为0。
--  clientY：数值，表示触摸点相对于浏览器窗口左上角的垂直距离，默认为0。
--  screenX：数值，表示触摸点相对于屏幕左上角的水平距离，默认为0。
--  screenY：数值，表示触摸点相对于屏幕左上角的垂直距离，默认为0。
--  pageX：数值，表示触摸点相对于网页左上角的水平位置（即包括页面的滚动距离），默认为0。
--  pageY：数值，表示触摸点相对于网页左上角的垂直位置（即包括页面的滚动距离），默认为0。
--  radiusX：数值，表示触摸点周围受到影响的椭圆范围的 X 轴半径，默认为0。
--  radiusY：可选：数值，表示触摸点周围受到影响的椭圆范围的 Y 轴半径，默认为0。
--  rotationAngle：数值，表示触摸区域的椭圆的旋转角度，单位为度数，在0到90度之间，默认值为0。
--  force：数值，范围在0到1之间，表示触摸压力。0代表没有压力，1代表硬件所能识别的最大压力，默认为0。
+-  identifier：必需，整数，表示触摸点的唯一 ID。 
+-  target：必需，元素节点，表示触摸点开始时所在的网页元素。 
+-  clientX：数值，表示触摸点相对于浏览器窗口左上角的水平距离，默认为0。 
+-  clientY：数值，表示触摸点相对于浏览器窗口左上角的垂直距离，默认为0。 
+-  screenX：数值，表示触摸点相对于屏幕左上角的水平距离，默认为0。 
+-  screenY：数值，表示触摸点相对于屏幕左上角的垂直距离，默认为0。 
+-  pageX：数值，表示触摸点相对于网页左上角的水平位置（即包括页面的滚动距离），默认为0。 
+-  pageY：数值，表示触摸点相对于网页左上角的垂直位置（即包括页面的滚动距离），默认为0。 
+-  radiusX：数值，表示触摸点周围受到影响的椭圆范围的 X 轴半径，默认为0。 
+-  radiusY：可选：数值，表示触摸点周围受到影响的椭圆范围的 Y 轴半径，默认为0。 
+-  rotationAngle：数值，表示触摸区域的椭圆的旋转角度，单位为度数，在0到90度之间，默认值为0。 
+-  force：数值，范围在0到1之间，表示触摸压力。0代表没有压力，1代表硬件所能识别的最大压力，默认为0。 
 
+TouchList：多个触摸点的集合  <br />  TouchEvent：触摸引发的事件实例
 
-  <br />  TouchList：多个触摸点的集合  <br />  TouchEvent：触摸引发的事件实例  <br />
-  <br />  Type
+Type
 
--  touchstart：用户开始触摸时触发，它的target属性返回发生触摸的元素节点。
--  touchend：用户不再接触触摸屏时（或者移出屏幕边缘时）触发，
--  touchmove：用户移动触摸点时触发，
--  touchcancel：触摸点取消时触发
+-  touchstart：用户开始触摸时触发，它的target属性返回发生触摸的元素节点。 
+-  touchend：用户不再接触触摸屏时（或者移出屏幕边缘时）触发， 
+-  touchmove：用户移动触摸点时触发， 
+-  touchcancel：触摸点取消时触发 
 
+Property
 
-  <br />  Property
-
--  touches：TouchList实例，代表所有的当前处于活跃状态的触摸点，默认值[]。
--  targetTouches：TouchList实例，代表所有处在触摸的目标元素节点内部、且仍然处于活动状态的触摸点，默认值[]。
--  changedTouches：TouchList实例，代表本次触摸事件的相关触摸点，默认值是一个空数组[]。
--  ctrlKey：布尔值，表示 Ctrl 键是否同时按下，默认值为false。
--  shiftKey：布尔值，表示 Shift 键是否同时按下，默认值为false。
--  altKey：布尔值，表示 Alt 键是否同时按下，默认值为false。
--  metaKey：布尔值，表示 Meta 键（或 Windows 键）是否同时按下，默认值为false。
-
-
+-  touches：TouchList实例，代表所有的当前处于活跃状态的触摸点，默认值[]。 
+-  targetTouches：TouchList实例，代表所有处在触摸的目标元素节点内部、且仍然处于活动状态的触摸点，默认值[]。 
+-  changedTouches：TouchList实例，代表本次触摸事件的相关触摸点，默认值是一个空数组[]。 
+-  ctrlKey：布尔值，表示 Ctrl 键是否同时按下，默认值为false。 
+-  shiftKey：布尔值，表示 Shift 键是否同时按下，默认值为false。 
+-  altKey：布尔值，表示 Alt 键是否同时按下，默认值为false。 
+-  metaKey：布尔值，表示 Meta 键（或 Windows 键）是否同时按下，默认值为false。 
 
 <a name="a175f756"></a>
 ## [DragEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/DragEvent)
 
-  <br />  **Type**
+**Type**
 
 - drag：拖拉过程中，在被拖拉的节点上持续触发（相隔几百毫秒）。
 - dragstart：用户开始拖拉时，在被拖拉的节点上触发
@@ -765,8 +694,6 @@ Property
 - dragover：拖拉到当前节点上方时，在当前节点上持续触发（相隔几百毫秒）
 - dragleave：拖拉操作离开当前节点范围时，在当前节点上触发
 - drop：被拖拉的节点或选中的文本，释放到目标节点时，在目标节点上触发
-
-​
 
 Property
 
@@ -787,9 +714,7 @@ Property
    - uninitialized：默认值，等同于all
 - DataTransfer.files
 - DataTransfer.types	拖拉的数据格式（通常是 MIME 值）
-- DataTransfer.items	返回DataTransferItemList
-
-​
+- DataTransfer.items	返回DataTransferItemList 
 
 Method
 
@@ -798,11 +723,8 @@ Method
 - [DataTransfer.clearData()](https://wangdoc.com/javascript/events/drag.html#datatransfercleardata)
 - [DataTransfer.setDragImage()](https://wangdoc.com/javascript/events/drag.html#datatransfersetdragimage)
 
-
-
 <a name="7461993e"></a>
 ## 其他常见事件
-
 
 - [资源事件](https://wangdoc.com/javascript/events/common.html#%E8%B5%84%E6%BA%90%E4%BA%8B%E4%BB%B6)
    - [beforeunload 事件](https://wangdoc.com/javascript/events/common.html#beforeunload-%E4%BA%8B%E4%BB%B6)
@@ -823,8 +745,7 @@ Method
 - [焦点事件](https://wangdoc.com/javascript/events/common.html#%E7%84%A6%E7%82%B9%E4%BA%8B%E4%BB%B6)
 - [CustomEvent 接口](https://wangdoc.com/javascript/events/common.html#customevent-%E6%8E%A5%E5%8F%A3)
 
-
-  <br />  **事件句柄　(Event Handlers)**
+**事件句柄　(Event Handlers)**
 
 | 属性 | 事件发生时 | 属性 | 事件发生时 |
 | --- | --- | --- | --- |
@@ -841,15 +762,13 @@ Method
 | [onload](https://www.w3school.com.cn/jsref/event_onload.asp) | 一张页面或一幅图像完成加载。 |  |  |
 
 
-
 <a name="8f22921d"></a>
 # —— 浏览器对象模型 Browser Object Model (BOM) ——
-
 
 <a name="bdc427af"></a>
 # [Window](https://developer.mozilla.org/zh-CN/docs/Web/API/Window)
 
-  <br />  [属性](https://wangdoc.com/javascript/bom/window.html#window-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7)
+[属性](https://wangdoc.com/javascript/bom/window.html#window-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7)
 
 - [window.name](https://wangdoc.com/javascript/bom/window.html#windowname)
 - [window.closed，window.opener](https://wangdoc.com/javascript/bom/window.html#windowclosed%EF%BC%8Cwindowopener)
@@ -884,8 +803,6 @@ Method
    - window.isSecureContext	当前窗口是否处在加密环境（https）
 - [window.isSecureContext](https://wangdoc.com/javascript/bom/window.html#windowissecurecontext)
 
-​
-
 [方法](https://wangdoc.com/javascript/bom/window.html#window-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95)
 
 - [window.alert()，window.prompt()，window.confirm()](https://wangdoc.com/javascript/bom/window.html#windowalert%EF%BC%8Cwindowprompt%EF%BC%8Cwindowconfirm)
@@ -899,8 +816,6 @@ Method
 - [window.getComputedStyle()，window.matchMedia()](https://wangdoc.com/javascript/bom/window.html#windowgetcomputedstyle%EF%BC%8Cwindowmatchmedia)
 - [window.requestAnimationFrame()](https://wangdoc.com/javascript/bom/window.html#windowrequestanimationframe)
 - [window.requestIdleCallback()](https://wangdoc.com/javascript/bom/window.html#windowrequestidlecallback)
-
-​
 
 [事件](https://wangdoc.com/javascript/bom/window.html#%E4%BA%8B%E4%BB%B6)
 
@@ -923,8 +838,7 @@ Method
    - window.onunhandledrejection：未处理的 Promise 对象的reject事件的监听函数。
    - window.onunload：unload事件的监听函数。
 
-
-  <br />  [多窗口操作](https://wangdoc.com/javascript/bom/window.html#%E5%A4%9A%E7%AA%97%E5%8F%A3%E6%93%8D%E4%BD%9C)
+[多窗口操作](https://wangdoc.com/javascript/bom/window.html#%E5%A4%9A%E7%AA%97%E5%8F%A3%E6%93%8D%E4%BD%9C)
 
 - [窗口的引用](https://wangdoc.com/javascript/bom/window.html#%E7%AA%97%E5%8F%A3%E7%9A%84%E5%BC%95%E7%94%A8)
    - top：顶层窗口，即最上层的那个窗口
@@ -942,7 +856,7 @@ var frameDoc = frame.contentWindow.document;
 <a name="Navigator"></a>
 ## Navigator
 
-  <br />  [属性](https://wangdoc.com/javascript/bom/navigator.html#navigator-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7)
+[属性](https://wangdoc.com/javascript/bom/navigator.html#navigator-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7)
 
 - [Navigator.userAgent](https://wangdoc.com/javascript/bom/navigator.html#navigatoruseragent)
 - [Navigator.plugins](https://wangdoc.com/javascript/bom/navigator.html#navigatorplugins)
@@ -952,14 +866,10 @@ var frameDoc = frame.contentWindow.document;
 - [Navigator.geolocation](https://wangdoc.com/javascript/bom/navigator.html#navigatorgeolocation)
 - [Navigator.cookieEnabled](https://wangdoc.com/javascript/bom/navigator.html#navigatorcookieenabled)	浏览器的 Cookie 功能是否打开
 
-​
-
 [方法](https://wangdoc.com/javascript/bom/navigator.html#navigator-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95)
 
 - [Navigator.javaEnabled()](https://wangdoc.com/javascript/bom/navigator.html#navigatorjavaenabled)
 - [Navigator.sendBeacon()](https://wangdoc.com/javascript/bom/navigator.html#navigatorsendbeacon)	向服务器异步发送数据
-
-​
 
 [实验性属性](https://wangdoc.com/javascript/bom/navigator.html#navigator-%E7%9A%84%E5%AE%9E%E9%AA%8C%E6%80%A7%E5%B1%9E%E6%80%A7)
 
@@ -972,8 +882,6 @@ var frameDoc = frame.contentWindow.document;
    - rtt：当前连接的估计有效往返时间，四舍五入到最接近的25毫秒的倍数。
    - saveData：用户是否设置了浏览器的减少数据使用量选项（比如不加载图片），返回true或者false。
    - type：当前连接的介质类型，可能的值为bluetooth、cellular、ethernet、none、wifi、wimax、other、unknown。
-
-
 
 <a name="e9cdaf27"></a>
 ## [Screen](https://wangdoc.com/javascript/bom/navigator.html#screen-%E5%AF%B9%E8%B1%A1)
@@ -990,12 +898,10 @@ var frameDoc = frame.contentWindow.document;
    - portrait-primary表示竖放
    - portrait-secondary表示颠倒的竖放。
 
-
-
 <a name="History"></a>
 ## History
 
-  <br />  [属性](https://wangdoc.com/javascript/bom/history.html#%E5%B1%9E%E6%80%A7)
+[属性](https://wangdoc.com/javascript/bom/history.html#%E5%B1%9E%E6%80%A7)
 
 - History.length：当前窗口访问过的网址数量（包括当前网页）
 - History.state：History 堆栈最上层的状态值
@@ -1006,26 +912,24 @@ var frameDoc = frame.contentWindow.document;
 - [History.pushState(](https://wangdoc.com/javascript/bom/history.html#historypushstate%EF%BC%8C)state, title, url[)](https://wangdoc.com/javascript/bom/history.html#historypushstate%EF%BC%8C)	在历史中添加一条记录
 - [History.replaceState()](https://wangdoc.com/javascript/bom/history.html#historyreplacestate)
 
-​
-
-[popstate 事件](https://wangdoc.com/javascript/bom/history.html#popstate-%E4%BA%8B%E4%BB%B6)：当同一个文档的浏览历史（即history对象）出现变化时，就会触发  <br />
+[popstate 事件](https://wangdoc.com/javascript/bom/history.html#popstate-%E4%BA%8B%E4%BB%B6)：当同一个文档的浏览历史（即history对象）出现变化时，就会触发
 
 <a name="Location"></a>
 ## Location
 
-  <br />  属性。
+属性。
 
--  Location.href：整个 URL。
--  Location.protocol：当前 URL 的协议，包括冒号（:）。
--  Location.host：主机。如果端口不是协议默认的80和433，则还会包括冒号（:）和端口。
--  Location.hostname：主机名，不包括端口。
--  Location.port：端口号。
--  Location.pathname：URL 的路径部分，从根路径/开始。
--  Location.search：查询字符串部分，从问号?开始。
--  Location.hash：片段字符串部分，从#开始。
--  Location.username：域名前面的用户名。
--  Location.password：域名前面的密码。
--  Location.origin：URL 的协议、主机名和端口。
+-  Location.href：整个 URL。 
+-  Location.protocol：当前 URL 的协议，包括冒号（:）。 
+-  Location.host：主机。如果端口不是协议默认的80和433，则还会包括冒号（:）和端口。 
+-  Location.hostname：主机名，不包括端口。 
+-  Location.port：端口号。 
+-  Location.pathname：URL 的路径部分，从根路径/开始。 
+-  Location.search：查询字符串部分，从问号?开始。 
+-  Location.hash：片段字符串部分，从#开始。 
+-  Location.username：域名前面的用户名。 
+-  Location.password：域名前面的密码。 
+-  Location.origin：URL 的协议、主机名和端口。 
 | 方法 | 描述 |
 | --- | --- |
 | [assign()](https://www.w3school.com.cn/jsref/met_loc_assign.asp) | 加载新的文档。 |
@@ -1033,47 +937,44 @@ var frameDoc = frame.contentWindow.document;
 | [replace()](https://www.w3school.com.cn/jsref/met_loc_replace.asp) | 用新的文档替换当前文档。 |
 
 
-
 <a name="URL"></a>
 ## URL
 
-  <br />  统一资源定位器（Uniform Resource Locator）用于定位万维网上的文档（或其他数据）。  <br />
-  <br />  语法规则： protocol://hostname[:port]/path[?key1=value1&key2=value2][#anchor]
+统一资源定位器（Uniform Resource Locator）用于定位万维网上的文档（或其他数据）。
 
--  :port - 定义主机上的端口号（http 的默认端口号是 80）
--  path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。
--  锚点名称通过网页元素的id属性命名
+语法规则： protocol://hostname[:port]/path[?key1=value1&key2=value2][#anchor]
 
+-  :port - 定义主机上的端口号（http 的默认端口号是 80） 
+-  path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。 
+-  锚点名称通过网页元素的id属性命名 
 
-  <br />  **URL 字符**
+**URL 字符**
 
--  URL 元字符：分号（;），逗号（,），斜杠（/），问号（?），冒号（:），at（@），&，等号（=），加号（+），美元符号（$），井号（#）
--  语义字符：a-z，A-Z，0-9，连词号（-），下划线（_），点（.），感叹号（!），波浪线（~），星号（*），单引号（'），圆括号（()）
--  其他字符（如汉字）：理论上不需要手动转义，浏览器会自动将它们转义。转义方法是使用这些字符的十六进制 UTF-8 编码，每两位算作一组，然后每组头部添加百分号（%）。
+-  URL 元字符：分号（;），逗号（,），斜杠（/），问号（?），冒号（:），at（@），&，等号（=），加号（+），美元符号（$），井号（#） 
+-  语义字符：a-z，A-Z，0-9，连词号（-），下划线（_），点（.），感叹号（!），波浪线（~），星号（*），单引号（'），圆括号（()） 
+-  其他字符（如汉字）：理论上不需要手动转义，浏览器会自动将它们转义。转义方法是使用这些字符的十六进制 UTF-8 编码，每两位算作一组，然后每组头部添加百分号（%）。 
 
+编码和解码
 
-  <br />  编码和解码
+-  encodeURI()	转码整个 URL 
+-  encodeURIComponent()	转码 URL 的组成部分，会转码除了语义字符之外的所有字符 
+-  decodeURI() 
+-  decodeURIComponent() 
 
--  encodeURI()	转码整个 URL
--  encodeURIComponent()	转码 URL 的组成部分，会转码除了语义字符之外的所有字符
--  decodeURI()
--  decodeURIComponent()
-
-
-  <br />  URL  <br />
+URL
 
 ```javascript
 var url = new URL('http://user:passwd@www.example.com:4097/path/a.html?x=111#part1');
 ```
 
-  <br />  URL 实例的属性与Location对象的属性基本一致  <br />
-  <br />  方法
+URL 实例的属性与Location对象的属性基本一致
 
--  URL.createObjectURL()	为上传/下载的文件、流媒体文件生成一个 URL 字符串
--  URL.revokeObjectURL()	释放URL.createObjectURL()方法生成的 URL 实例
+方法
 
+-  URL.createObjectURL()	为上传/下载的文件、流媒体文件生成一个 URL 字符串 
+-  URL.revokeObjectURL()	释放URL.createObjectURL()方法生成的 URL 实例 
 
-  <br />  [**URLSearchParams**](https://wangdoc.com/javascript/bom/location.html#urlsearchparams-%E5%AF%B9%E8%B1%A1)
+[**URLSearchParams**](https://wangdoc.com/javascript/bom/location.html#urlsearchparams-%E5%AF%B9%E8%B1%A1)
 
 - [URLSearchParams.toString()](https://wangdoc.com/javascript/bom/location.html#urlsearchparamstostring)
 - [URLSearchParams.append()](https://wangdoc.com/javascript/bom/location.html#urlsearchparamsappend)
@@ -1084,19 +985,17 @@ var url = new URL('http://user:passwd@www.example.com:4097/path/a.html?x=111#par
 - [URLSearchParams.sort()](https://wangdoc.com/javascript/bom/location.html#urlsearchparamssort)
 - [URLSearchParams.keys()，URLSearchParams.values()，URLSearchParams.entries()](https://wangdoc.com/javascript/bom/location.html#urlsearchparamskeys%EF%BC%8Curlsearchparamsvalues%EF%BC%8Curlsearchparamsentries)
 
-
-
 <a name="9340ff13"></a>
 ## [Storage](https://wangdoc.com/javascript/bom/storage.html)
 
-  <br />  Storage 接口用于脚本在浏览器保存数据。两个对象部署了这个接口：window.sessionStorage和window.localStorage。  <br />
+Storage 接口用于脚本在浏览器保存数据。两个对象部署了这个接口：window.sessionStorage和window.localStorage。
 
--  sessionStorage：数据用于浏览器的一次会话（session），当会话结束（通常是窗口关闭），数据被清空；
--  localStorage：数据长期存在，下一次访问该网站的时候，网页可以直接读取以前保存的数据。
+-  sessionStorage：数据用于浏览器的一次会话（session），当会话结束（通常是窗口关闭），数据被清空； 
+-  localStorage：数据长期存在，下一次访问该网站的时候，网页可以直接读取以前保存的数据。 
 
+除了保存期限的长短不同，这两个对象的其他方面都一致。
 
-  <br />  除了保存期限的长短不同，这两个对象的其他方面都一致。  <br />
-  <br />  [属性和方法](https://wangdoc.com/javascript/bom/storage.html#%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95)
+[属性和方法](https://wangdoc.com/javascript/bom/storage.html#%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95)
 
 - [Storage.setItem()](https://wangdoc.com/javascript/bom/storage.html#storagesetitem)	存入(键值)数据
 - [Storage.getItem()](https://wangdoc.com/javascript/bom/storage.html#storagegetitem)
@@ -1104,224 +1003,210 @@ var url = new URL('http://user:passwd@www.example.com:4097/path/a.html?x=111#par
 - [Storage.clear()](https://wangdoc.com/javascript/bom/storage.html#storageclear)	清除所有保存的数据
 - [Storage.key()](https://wangdoc.com/javascript/bom/storage.html#storagekey)
 
-​
-
 [storage 事件](https://wangdoc.com/javascript/bom/storage.html#storage-%E4%BA%8B%E4%BB%B6)
 
--  StorageEvent.key：字符串，表示发生变动的键名。
--  StorageEvent.newValue：字符串，表示新的键值
--  StorageEvent.oldValue：字符串，表示旧的键值。如果该键值对是新增的，该属性返回null。
--  StorageEvent.storageArea：对象，返回键值对所在的整个对象
--  StorageEvent.url：字符串，表示原始触发 storage 事件的那个网页的网址。
+-  StorageEvent.key：字符串，表示发生变动的键名。 
+-  StorageEvent.newValue：字符串，表示新的键值 
+-  StorageEvent.oldValue：字符串，表示旧的键值。如果该键值对是新增的，该属性返回null。 
+-  StorageEvent.storageArea：对象，返回键值对所在的整个对象 
+-  StorageEvent.url：字符串，表示原始触发 storage 事件的那个网页的网址。 
 
+ArrayBuffer  <br />  表示一段二进制数据，用来模拟内存里面的数据
 
-  <br />  ArrayBuffer  <br />  表示一段二进制数据，用来模拟内存里面的数据  <br />
-  <br />  Blob  <br />  表示一个二进制文件的数据内容
+Blob  <br />  表示一个二进制文件的数据内容
 
--  size
--  type
--  slice(start, end, contentType)
+-  size 
+-  type 
+-  slice(start, end, contentType) 
 
+File  <br />  代表一个文件，用来读写文件信息。它继承了 Blob 对象
 
-  <br />  File  <br />  代表一个文件，用来读写文件信息。它继承了 Blob 对象
+-  File.lastModified：最后修改时间 
+-  File.name：文件名或文件路径 
+-  File.size：文件大小（单位字节） 
+-  File.type：文件的 MIME 类型 
 
--  File.lastModified：最后修改时间
--  File.name：文件名或文件路径
--  File.size：文件大小（单位字节）
--  File.type：文件的 MIME 类型
+[FileList](https://wangdoc.com/javascript/bom/file.html#filelist-%E5%AF%B9%E8%B1%A1)
 
+[FileReader](https://wangdoc.com/javascript/bom/file.html#filereader-%E5%AF%B9%E8%B1%A1)  <br />  用于读取 File 对象或 Blob 对象所包含的文件内容
 
-  <br />  [FileList](https://wangdoc.com/javascript/bom/file.html#filelist-%E5%AF%B9%E8%B1%A1)  <br />
-  <br />  [FileReader](https://wangdoc.com/javascript/bom/file.html#filereader-%E5%AF%B9%E8%B1%A1)  <br />  用于读取 File 对象或 Blob 对象所包含的文件内容
+-  FileReader.error：读取文件时产生的错误对象 
+-  FileReader.readyState：整数，表示读取文件时的当前状态。0表示尚未加载任何数据，1表示数据正在加载，2表示加载完成。 
+-  FileReader.result：读取完成后的文件内容 
+-  FileReader.onabort：abort事件（用户终止读取操作）的监听函数。 
+-  FileReader.onerror：error事件（读取错误）的监听函数。 
+-  FileReader.onload：load事件（读取操作完成）的监听函数，通常在这个函数里面使用result属性，拿到文件内容。 
+-  FileReader.onloadstart：loadstart事件（读取操作开始）的监听函数。 
+-  FileReader.onloadend：loadend事件（读取操作结束）的监听函数。 
+-  FileReader.onprogress：progress事件（读取操作进行中）的监听函数。 
 
--  FileReader.error：读取文件时产生的错误对象
--  FileReader.readyState：整数，表示读取文件时的当前状态。0表示尚未加载任何数据，1表示数据正在加载，2表示加载完成。
--  FileReader.result：读取完成后的文件内容
--  FileReader.onabort：abort事件（用户终止读取操作）的监听函数。
--  FileReader.onerror：error事件（读取错误）的监听函数。
--  FileReader.onload：load事件（读取操作完成）的监听函数，通常在这个函数里面使用result属性，拿到文件内容。
--  FileReader.onloadstart：loadstart事件（读取操作开始）的监听函数。
--  FileReader.onloadend：loadend事件（读取操作结束）的监听函数。
--  FileReader.onprogress：progress事件（读取操作进行中）的监听函数。
+FormData
 
-
-  <br />  FormData
-
--  FormData.get(key)：获取指定键名对应的键值，参数为键名。
--  FormData.getAll(key)：返回一个数组，表示指定键名对应的所有键值。
--  FormData.set(key, value)：设置指定键名的键值，参数为键名。
--  FormData.delete(key)：删除一个键值对，参数为键名。
--  FormData.append(key, value)：添加一个键值对。如果键名重复，则会生成两个相同键名的键值对。
--  FormData.has(key)：返回一个布尔值，表示是否具有该键名的键值对。
--  FormData.keys()：返回一个遍历器对象，用于for...of循环遍历所有的键名。
--  FormData.values()：返回一个遍历器对象，用于for...of循环遍历所有的键值。
--  FormData.entries()：返回一个遍历器对象，用于for...of循环遍历所有的键值对。
-
-
+-  FormData.get(key)：获取指定键名对应的键值，参数为键名。 
+-  FormData.getAll(key)：返回一个数组，表示指定键名对应的所有键值。 
+-  FormData.set(key, value)：设置指定键名的键值，参数为键名。 
+-  FormData.delete(key)：删除一个键值对，参数为键名。 
+-  FormData.append(key, value)：添加一个键值对。如果键名重复，则会生成两个相同键名的键值对。 
+-  FormData.has(key)：返回一个布尔值，表示是否具有该键名的键值对。 
+-  FormData.keys()：返回一个遍历器对象，用于for...of循环遍历所有的键名。 
+-  FormData.values()：返回一个遍历器对象，用于for...of循环遍历所有的键值。 
+-  FormData.entries()：返回一个遍历器对象，用于for...of循环遍历所有的键值对。 
 
 <a name="IndexedDB"></a>
 ## IndexedDB
 
-  <br />  浏览器提供的本地数据库，它可以被网页脚本创建和操作。允许储存大量数据，提供查找接口，还能建立索引  <br />
-  <br />  **特点**  <br />
+浏览器提供的本地数据库，它可以被网页脚本创建和操作。允许储存大量数据，提供查找接口，还能建立索引
 
-1.  键值对储存
-1.  异步
-1.  支持事务
-1.  同源限制：每一个数据库对应创建它的域名。网页只能访问自身域名下的数据库，而不能访问跨域的数据库。
-1.  储存空间大
-1.  支持二进制储存
+**特点**
 
+1.  键值对储存 
+1.  异步 
+1.  支持事务 
+1.  同源限制：每一个数据库对应创建它的域名。网页只能访问自身域名下的数据库，而不能访问跨域的数据库。 
+1.  储存空间大 
+1.  支持二进制储存 
 
-  <br />  **indexedDB**
+**indexedDB**
 
--  indexedDB.open(databaseName, version);	打开数据库
--  indexedDB.deleteDatabase()
--  indexedDB.cmp()	比较两个值是否为 indexedDB 的相同的主键
+-  indexedDB.open(databaseName, version);	打开数据库 
+-  indexedDB.deleteDatabase() 
+-  indexedDB.cmp()	比较两个值是否为 indexedDB 的相同的主键 
 
+**数据库：IDBDatabase 对象**  <br />  每个域名都可以新建任意多个数据库。同一个时刻，只能有一个版本的数据库存在
 
-  <br />  **数据库：IDBDatabase 对象**  <br />  每个域名都可以新建任意多个数据库。同一个时刻，只能有一个版本的数据库存在  <br />
-  <br />  Property
+Property
 
--  IDBDatabase.name：数据库名称。
--  IDBDatabase.version：整数，数据库版本。
--  IDBDatabase.objectStoreNames：DOMStringList 对象（字符串的集合），包含当前数据的所有 object store 的名字。
--  IDBDatabase.onabort：指定 abort 事件（事务中止）的监听函数。
--  IDBDatabase.onclose：指定 close 事件（数据库意外关闭）的监听函数。
--  IDBDatabase.onerror：指定 error 事件（访问数据库失败）的监听函数。
--  IDBDatabase.onversionchange：数据库版本变化时触发（发生upgradeneeded事件，或调用indexedDB.deleteDatabase()）。
+-  IDBDatabase.name：数据库名称。 
+-  IDBDatabase.version：整数，数据库版本。 
+-  IDBDatabase.objectStoreNames：DOMStringList 对象（字符串的集合），包含当前数据的所有 object store 的名字。 
+-  IDBDatabase.onabort：指定 abort 事件（事务中止）的监听函数。 
+-  IDBDatabase.onclose：指定 close 事件（数据库意外关闭）的监听函数。 
+-  IDBDatabase.onerror：指定 error 事件（访问数据库失败）的监听函数。 
+-  IDBDatabase.onversionchange：数据库版本变化时触发（发生upgradeneeded事件，或调用indexedDB.deleteDatabase()）。 
 
+Method
 
-  <br />  Method
+-  IDBDatabase.close()：关闭数据库连接 
+-  IDBDatabase.createObjectStore()：创建存放数据的对象仓库。该方法只能在versionchange事件监听函数中调用。 
+-  IDBDatabase.deleteObjectStore()：删除指定的对象仓库。该方法只能在versionchange事件监听函数中调用。 
+-  IDBDatabase.transaction()：返回一个 IDBTransaction 事务对象。 
 
--  IDBDatabase.close()：关闭数据库连接
--  IDBDatabase.createObjectStore()：创建存放数据的对象仓库。该方法只能在versionchange事件监听函数中调用。
--  IDBDatabase.deleteObjectStore()：删除指定的对象仓库。该方法只能在versionchange事件监听函数中调用。
--  IDBDatabase.transaction()：返回一个 IDBTransaction 事务对象。
+**对象仓库：IDBObjectStore 对象**
 
+每个数据库包含若干个对象仓库。它类似于关系型数据库的表格。
 
-  <br />  **对象仓库：IDBObjectStore 对象**  <br />
-  <br />  每个数据库包含若干个对象仓库。它类似于关系型数据库的表格。  <br />
-  <br />  Property
+Property
 
--  IDBObjectStore.indexNames：返回一个类似数组的对象（DOMStringList），包含了当前对象仓库的所有索引。
--  IDBObjectStore.keyPath：返回当前对象仓库的主键。
--  IDBObjectStore.name：返回当前对象仓库的名称。
--  IDBObjectStore.transaction：返回当前对象仓库所属的事务对象。
--  IDBObjectStore.autoIncrement：布尔值，表示主键是否会自动递增。
+-  IDBObjectStore.indexNames：返回一个类似数组的对象（DOMStringList），包含了当前对象仓库的所有索引。 
+-  IDBObjectStore.keyPath：返回当前对象仓库的主键。 
+-  IDBObjectStore.name：返回当前对象仓库的名称。 
+-  IDBObjectStore.transaction：返回当前对象仓库所属的事务对象。 
+-  IDBObjectStore.autoIncrement：布尔值，表示主键是否会自动递增。 
 
+Method
 
-  <br />  Method
+-  IDBobjectStore.add(value, key) 
+-  IDBobjectStore.put(item, key)	更新某个主键对应的数据记录 
+-  IDBobjectStore.clear() 
+-  IDBobjectStore.delete(Key) 
+-  IDBObjectStore.count(key) 
+-  IDBObjectStore.getKey(key) 
+-  IDBObjectStore.get(key)	获取主键对应的数据记录 
+-  DBObjectStore.getAll([query, count])	获取对象仓库的记录 
+-  IDBObjectStore.getAllKeys([query, count])	获取所有符合条件的主键 
+-  IDBObjectStore.index(name) 
+-  IDBobjectStore.createIndex(indexName, keyPath, objectParameters) 
+-  IDBObjectStore.deleteIndex(indexName) 
+-  IDBObjectStore.openCursor() 
+-  IDBObjectStore.openKeyCursor()	获取一个主键指针对象。 
 
--  IDBobjectStore.add(value, key)
--  IDBobjectStore.put(item, key)	更新某个主键对应的数据记录
--  IDBobjectStore.clear()
--  IDBobjectStore.delete(Key)
--  IDBObjectStore.count(key)
--  IDBObjectStore.getKey(key)
--  IDBObjectStore.get(key)	获取主键对应的数据记录
--  DBObjectStore.getAll([query, count])	获取对象仓库的记录
--  IDBObjectStore.getAllKeys([query, count])	获取所有符合条件的主键
--  IDBObjectStore.index(name)
--  IDBobjectStore.createIndex(indexName, keyPath, objectParameters)
--  IDBObjectStore.deleteIndex(indexName)
--  IDBObjectStore.openCursor()
--  IDBObjectStore.openKeyCursor()	获取一个主键指针对象。
+**索引： IDBIndex 对象**  <br />  对象仓库保存的是数据记录。每条记录类似于关系型数据库的行，即主键和数据体两部分。
 
+Property
 
-  <br />  **索引： IDBIndex 对象**  <br />  对象仓库保存的是数据记录。每条记录类似于关系型数据库的行，即主键和数据体两部分。  <br />
-  <br />  Property
+-  IDBIndex.name：字符串，索引的名称。 
+-  IDBIndex.objectStore：索引所在的对象仓库。 
+-  IDBIndex.keyPath：索引的主键。 
+-  IDBIndex.multiEntry：布尔值，针对keyPath为数组的情况，如果设为true，创建数组时，每个数组成员都会有一个条目，否则每个数组都只有一个条目。 
+-  IDBIndex.unique：布尔值，表示创建索引时是否允许相同的主键。 
 
--  IDBIndex.name：字符串，索引的名称。
--  IDBIndex.objectStore：索引所在的对象仓库。
--  IDBIndex.keyPath：索引的主键。
--  IDBIndex.multiEntry：布尔值，针对keyPath为数组的情况，如果设为true，创建数组时，每个数组成员都会有一个条目，否则每个数组都只有一个条目。
--  IDBIndex.unique：布尔值，表示创建索引时是否允许相同的主键。
+Method
 
+-  IDBIndex.count()：用来获取记录的数量。 
+-  IDBIndex.get(key)：用来获取符合指定主键的数据记录。 
+-  IDBIndex.getKey(key)：用来获取指定的主键。 
+-  IDBIndex.getAll() 
+-  IDBIndex.getAllKeys() 
+-  IDBIndex.openCursor()：用来获取一个 IDBCursor 对象，用来遍历索引里面的所有条目。 
+-  IDBIndex.openKeyCursor() 
 
-  <br />  Method
+**事务： IDBTransaction 对象**  <br />  提供error、abort和complete三个事件，用来监听操作结果
 
--  IDBIndex.count()：用来获取记录的数量。
--  IDBIndex.get(key)：用来获取符合指定主键的数据记录。
--  IDBIndex.getKey(key)：用来获取指定的主键。
--  IDBIndex.getAll()
--  IDBIndex.getAllKeys()
--  IDBIndex.openCursor()：用来获取一个 IDBCursor 对象，用来遍历索引里面的所有条目。
--  IDBIndex.openKeyCursor()
+Property
 
+-  IDBTransaction.db：	当前事务所在的数据库对象 IDBDatabase。 
+-  IDBTransaction.error：返回当前事务的错误。如果事务没有结束，或者事务成功结束，或者被手动终止，该方法返回null。 
+-  IDBTransaction.mode：返回当前事务的模式，默认是readonly（只读），另一个值是readwrite。 
+-  IDBTransaction.objectStoreNames：返回一个类似数组的对象 DOMStringList，成员是当前事务涉及的对象仓库的名字。 
+-  IDBTransaction.onabort：指定abort事件（事务中断）的监听函数。 
+-  IDBTransaction.oncomplete：指定complete事件（事务成功）的监听函数。 
+-  IDBTransaction.onerror：指定error事件（事务失败）的监听函数。 
 
-  <br />  **事务： IDBTransaction 对象**  <br />  提供error、abort和complete三个事件，用来监听操作结果  <br />
-  <br />  Property
+Method
 
--  IDBTransaction.db：	当前事务所在的数据库对象 IDBDatabase。
--  IDBTransaction.error：返回当前事务的错误。如果事务没有结束，或者事务成功结束，或者被手动终止，该方法返回null。
--  IDBTransaction.mode：返回当前事务的模式，默认是readonly（只读），另一个值是readwrite。
--  IDBTransaction.objectStoreNames：返回一个类似数组的对象 DOMStringList，成员是当前事务涉及的对象仓库的名字。
--  IDBTransaction.onabort：指定abort事件（事务中断）的监听函数。
--  IDBTransaction.oncomplete：指定complete事件（事务成功）的监听函数。
--  IDBTransaction.onerror：指定error事件（事务失败）的监听函数。
+-  IDBTransaction.abort()：终止当前事务，回滚所有已经进行的变更。 
+-  IDBTransaction.objectStore(name)：返回指定名称的对象仓库 IDBObjectStore。 
 
+**操作请求：IDBRequest 对象**
 
-  <br />  Method
+-  IDBRequest.readyState：等于pending表示操作正在进行，等于done表示操作正在完成。 
+-  IDBRequest.result：返回请求的结果。 
+-  IDBRequest.error：请求失败时，返回错误对象。 
+-  IDBRequest.source：返回请求的来源（比如索引对象或 ObjectStore）。 
+-  IDBRequest.transaction：返回当前请求正在进行的事务，如果不包含事务，返回null。 
+-  IDBRequest.onsuccess：指定success事件的监听函数。 
+-  IDBRequest.onerror：指定error事件的监听函数。 
 
--  IDBTransaction.abort()：终止当前事务，回滚所有已经进行的变更。
--  IDBTransaction.objectStore(name)：返回指定名称的对象仓库 IDBObjectStore。
+**IDBOpenDBRequest 对象**	继承了 IDBRequest 对象
 
+-  IDBOpenDBRequest.onblocked：指定blocked事件（upgradeneeded事件触发时，数据库仍然在使用）的监听函数。 
+-  IDBOpenDBRequest.onupgradeneeded：upgradeneeded事件的监听函数。 
 
-  <br />  **操作请求：IDBRequest 对象**
+**指针： IDBCursor 对象**
 
--  IDBRequest.readyState：等于pending表示操作正在进行，等于done表示操作正在完成。
--  IDBRequest.result：返回请求的结果。
--  IDBRequest.error：请求失败时，返回错误对象。
--  IDBRequest.source：返回请求的来源（比如索引对象或 ObjectStore）。
--  IDBRequest.transaction：返回当前请求正在进行的事务，如果不包含事务，返回null。
--  IDBRequest.onsuccess：指定success事件的监听函数。
--  IDBRequest.onerror：指定error事件的监听函数。
+Property
 
+-  IDBCursor.source：返回正在遍历的对象仓库或索引。 
+-  IDBCursor.direction：字符串，表示指针遍历的方向。共有四个可能的值：next（从头开始向后遍历）、nextunique（从头开始向后遍历，重复的值只遍历一次）、prev（从尾部开始向前遍历）、prevunique（从尾部开始向前遍历，重复的值只遍历一次）。该属性通过IDBObjectStore.openCursor()方法的第二个参数指定，一旦指定就不能改变了。 
+-  IDBCursor.key：返回当前记录的主键。 
+-  IDBCursor.value：返回当前记录的数据值。 
+-  IDBCursor.primaryKey：返回当前记录的主键。 
 
-  <br />  **IDBOpenDBRequest 对象**	继承了 IDBRequest 对象
+Property
 
--  IDBOpenDBRequest.onblocked：指定blocked事件（upgradeneeded事件触发时，数据库仍然在使用）的监听函数。
--  IDBOpenDBRequest.onupgradeneeded：upgradeneeded事件的监听函数。
+-  IDBCursor.advance(n)：指针向前移动 n 个位置。 
+-  IDBCursor.continue()：指针向前移动一个位置。它可以接受一个主键作为参数，这时会跳转到这个主键。 
+-  IDBCursor.continuePrimaryKey()：该方法需要两个参数，第一个是key，第二个是primaryKey，将指针移到符合这两个参数的位置。 
+-  IDBCursor.delete()：删除当前位置的记录 
+-  IDBCursor.update()：更新当前位置的记录 
 
+**主键集合：IDBKeyRange 对象**  <br />  数据仓库（object store）里面的一组主键
 
-  <br />  **指针： IDBCursor 对象**  <br />
-  <br />  Property
+Property
 
--  IDBCursor.source：返回正在遍历的对象仓库或索引。
--  IDBCursor.direction：字符串，表示指针遍历的方向。共有四个可能的值：next（从头开始向后遍历）、nextunique（从头开始向后遍历，重复的值只遍历一次）、prev（从尾部开始向前遍历）、prevunique（从尾部开始向前遍历，重复的值只遍历一次）。该属性通过IDBObjectStore.openCursor()方法的第二个参数指定，一旦指定就不能改变了。
--  IDBCursor.key：返回当前记录的主键。
--  IDBCursor.value：返回当前记录的数据值。
--  IDBCursor.primaryKey：返回当前记录的主键。
+-  IDBKeyRange.lower：返回下限 
+-  IDBKeyRange.lowerOpen：布尔值，表示下限是否为开区间（即下限是否排除在范围之外） 
+-  IDBKeyRange.upper：返回上限 
+-  IDBKeyRange.upperOpen：布尔值，表示上限是否为开区间（即上限是否排除在范围之外） 
 
+Method
 
-  <br />  Property
+-  IDBKeyRange.lowerBound()：指定下限。 
+-  IDBKeyRange.upperBound()：指定上限。 
+-  IDBKeyRange.bound()：同时指定上下限。 
+-  IDBKeyRange.only()：指定只包含一个值。 
 
--  IDBCursor.advance(n)：指针向前移动 n 个位置。
--  IDBCursor.continue()：指针向前移动一个位置。它可以接受一个主键作为参数，这时会跳转到这个主键。
--  IDBCursor.continuePrimaryKey()：该方法需要两个参数，第一个是key，第二个是primaryKey，将指针移到符合这两个参数的位置。
--  IDBCursor.delete()：删除当前位置的记录
--  IDBCursor.update()：更新当前位置的记录
-
-
-  <br />  **主键集合：IDBKeyRange 对象**  <br />  数据仓库（object store）里面的一组主键  <br />
-  <br />  Property
-
--  IDBKeyRange.lower：返回下限
--  IDBKeyRange.lowerOpen：布尔值，表示下限是否为开区间（即下限是否排除在范围之外）
--  IDBKeyRange.upper：返回上限
--  IDBKeyRange.upperOpen：布尔值，表示上限是否为开区间（即上限是否排除在范围之外）
-
-
-  <br />  Method
-
--  IDBKeyRange.lowerBound()：指定下限。
--  IDBKeyRange.upperBound()：指定上限。
--  IDBKeyRange.bound()：同时指定上下限。
--  IDBKeyRange.only()：指定只包含一个值。
-
-
-  <br />  e.g  <br />
+e.g
 
 ```javascript
 // 新建/打开数据库
@@ -1353,7 +1238,7 @@ function add() {
 }
 
 
-// 遍历数据
+// 遍历数据 
 function readAll() {
   var objectStore = db.transaction('person').objectStore('person');
 
@@ -1373,39 +1258,35 @@ function readAll() {
 }
 ```
 
-
 <a name="7438130d"></a>
 ## Web Worker
 
-  <br />  为 JavaScript 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给后者运行  <br />
-  <br />  限制
+为 JavaScript 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给后者运行
 
--  同源限制
--  全局对象限制：Worker的全局对象WorkerGlobalScope，只定义了Navigator接口和Location接口。
--  通信联系：Worker 线程和主线程不在同一个上下文环境，它们不能直接通信，必须通过消息完成。
--  脚本限制：不能执行alert()方法和confirm()方法，但可用 XMLHttpRequest 对象发出 AJAX 请求。
--  文件限制：Worker 线程无法读取本地文件
+限制
 
+-  同源限制 
+-  全局对象限制：Worker的全局对象WorkerGlobalScope，只定义了Navigator接口和Location接口。 
+-  通信联系：Worker 线程和主线程不在同一个上下文环境，它们不能直接通信，必须通过消息完成。 
+-  脚本限制：不能执行alert()方法和confirm()方法，但可用 XMLHttpRequest 对象发出 AJAX 请求。 
+-  文件限制：Worker 线程无法读取本地文件 
 
-  <br />  **主线程**  <br />  `var myWorker = new Worker(jsUrl, options);`
+**主线程**  <br />  `var myWorker = new Worker(jsUrl, options);`
 
--  Worker.onerror：指定 error 事件的监听函数。
--  Worker.onmessage：指定 message 事件的监听函数，发送过来的数据在Event.data属性中。
--  Worker.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。
--  Worker.postMessage()：向 Worker 线程发送消息。
--  Worker.terminate()：立即终止 Worker 线程。
+-  Worker.onerror：指定 error 事件的监听函数。 
+-  Worker.onmessage：指定 message 事件的监听函数，发送过来的数据在Event.data属性中。 
+-  Worker.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。 
+-  Worker.postMessage()：向 Worker 线程发送消息。 
+-  Worker.terminate()：立即终止 Worker 线程。 
 
+**Worker 线程**
 
-  <br />  **Worker 线程**
-
--  self.name： Worker 的名字
--  self.onmessage：指定message事件的监听函数。
--  self.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。
--  self.close()：关闭 Worker 线程。
--  self.postMessage()：向产生这个 Worker 的线程发送消息。
--  self.importScripts()：加载 JS 脚本。
-
-
+-  self.name： Worker 的名字 
+-  self.onmessage：指定message事件的监听函数。 
+-  self.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。 
+-  self.close()：关闭 Worker 线程。 
+-  self.postMessage()：向产生这个 Worker 的线程发送消息。 
+-  self.importScripts()：加载 JS 脚本。 
 
 ```javascript
 // Worker 线程完成轮询
@@ -1440,12 +1321,12 @@ pollingWorker.onmessage = function () {
 pollingWorker.postMessage('init');
 ```
 
-
 <a name="1f3c2578"></a>
 # ——Asynchronous JavaScript And XML——
 
-  <br />  AJAX 是一种用于创建快速动态网页的技术。  <br />  通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。即在不重新加载整个网页的情况下，对网页的某部分进行更新。  <br />
-  <br />  [**XMLHttpRequest**](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest)
+AJAX 是一种用于创建快速动态网页的技术。  <br />  通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。即在不重新加载整个网页的情况下，对网页的某部分进行更新。
+
+[**XMLHttpRequest**](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest)
 
 | 方法 | 描述 |
 | --- | --- |
@@ -1477,7 +1358,7 @@ pollingWorker.postMessage('init');
 | [withCredentials](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/withCredentials) | [布尔值](https://developer.mozilla.org/zh-CN/docs/Web/API/Boolean)，用来指定跨域 Access-Control 请求是否应当带有授权信息，如 cookie 或授权 header 头 |
 
 
-  <br />  **XMLHttpRequest.readyState**
+**XMLHttpRequest.readyState**
 
 | 值 | 状态 | 描述 |
 | --- | --- | --- |
@@ -1486,7 +1367,6 @@ pollingWorker.postMessage('init');
 | 2 | HEADERS_RECEIVED | send 方法被调用，并且可以获取响应头部以及响应状态码 |
 | 3 | LOADING | 正在下载响应内容 |
 | 4 | DONE | 下载完成 |
-
 
 
 ```javascript
@@ -1517,7 +1397,6 @@ xhr.setRequestHeader('Accept', '*/*')
 // 发出请求
 xhr.send();
 ```
-
 
 ```javascript
 <!DOCTYPE html>
@@ -1560,7 +1439,7 @@ function myFunction()
 </html>
 ```
 
-  <br />  HTML5 将 XMLHttpRequest 纳入了规范，并在原来的基础上做了升级，提出了 XMLHttpRequest Level 2  <br />
+HTML5 将 XMLHttpRequest 纳入了规范，并在原来的基础上做了升级，提出了 XMLHttpRequest Level 2
 
 - 设置HTTP请求的超时时间
 ```javascript
@@ -1570,7 +1449,6 @@ xhr.ontimeout = function (e) {
 }
 ```
 
-
 - 通过 FormData 发送表单数据
 ```javascript
 var formData = new FormData()
@@ -1578,7 +1456,6 @@ var formData = new FormData()
 formData.append('username', 'whale')
 formData.append('age', '18')
 ```
-
 
 - 上传文件
 ```javascript
@@ -1588,10 +1465,9 @@ formData.append('files[]', files[i]);
 }
 ```
 
-
 - 支持跨域请求
 
-W3C 提出了[跨域资源共享](http://www.ruanyifeng.com/blog/2016/04/cors.html)（Cross-origin resource sharing，CORS）标准  <br />
+W3C 提出了[跨域资源共享](http://www.ruanyifeng.com/blog/2016/04/cors.html)（Cross-origin resource sharing，CORS）标准
 
 - 可以获取服务器端的二进制数据
 ```javascript
@@ -1601,7 +1477,6 @@ xhr.onload = function () {
   // 接下来对 arrayBuffer 做进一步处理...
 }
 ```
-
 
 - 可以获得数据传输的进度信息
 | 事件 | 描述 |
@@ -1615,30 +1490,26 @@ xhr.onload = function () {
 | onloadend | 获取完成（无论成功或失败） |
 
 
-
 <a name="154bfcdd"></a>
 # 同源政策 [same-origin policy](https://en.wikipedia.org/wiki/Same-origin_policy)
 
-  <br />  同源
+同源
 
--  协议相同
--  域名相同
--  端口相同
+-  协议相同 
+-  域名相同 
+-  端口相同 
 
-
-  <br />  限制范围
+限制范围
 
 1. 无法读取非同源网页的 Cookie、LocalStorage 和 IndexedDB。
 1. 无法接触非同源网页的 DOM。
 
+两个网页一级域名相同，只是次级域名不同，浏览器允许通过设置document.domain共享 Cookie
 
-  <br />  两个网页一级域名相同，只是次级域名不同，浏览器允许通过设置document.domain共享 Cookie  <br />
-  <br />  **跨域窗口的通信**
+**跨域窗口的通信**
 
--  片段识别符（fragment identifier）：URL 的#号后面的部分
--  跨文档通信API（Cross-document messaging）
-
-
+-  片段识别符（fragment identifier）：URL 的#号后面的部分 
+-  跨文档通信API（Cross-document messaging） 
 
 ```javascript
 // 父窗口打开一个子窗口
@@ -1653,7 +1524,7 @@ window.addEventListener('message', function (e) {
 },false);
 ```
 
-  <br />  LocalStorage
+LocalStorage
 ```javascript
 //主窗口写入 iframe 子窗口的localStorage
 window.onmessage = function(e) {
@@ -1673,20 +1544,19 @@ win.postMessage(
 );
 ```
 
-  <br />  JSONP  <br />
-  <br />  [JSON](https://baike.baidu.com/item/JSON) with Padding是JSON的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题  <br />  特点：简单易用，没有兼容性问题，但只支持GET  <br />
-  <br />  步骤
+JSONP
+
+[JSON](https://baike.baidu.com/item/JSON) with Padding是JSON的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题  <br />  特点：简单易用，没有兼容性问题，但只支持GET
+
+步骤
 
 1. 向服务器请求一个脚本，这不受同源政策限制，可以跨域请求。
 ```javascript
 <script src="http://api.foo.com?callback=bar"></script>
 ```
 
-
-2.  服务器收到请求后，拼接一个字符串，将 JSON 数据放在函数名里面，作为字符串返回（bar({...})）
-2.  客户端将服务器返回的字符串，作为代码解析，客户端只要定义了bar()函数，就能在该函数体内，拿到服务器返回的 JSON 数据。
-
-
+2.  服务器收到请求后，拼接一个字符串，将 JSON 数据放在函数名里面，作为字符串返回（bar({...})） 
+2.  客户端将服务器返回的字符串，作为代码解析，客户端只要定义了bar()函数，就能在该函数体内，拿到服务器返回的 JSON 数据。 
 
 ```javascript
 // 实例
@@ -1711,13 +1581,14 @@ foo({
 });
 ```
 
-
 <a name="1618607a"></a>
 ## [CORS ](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
 
-  <br />  跨域资源共享（Cross-origin resource sharing）是一个 W3C 标准。允许浏览器向跨域的服务器，发出XMLHttpRequest请求，从而克服了 AJAX 只能同源使用的限制。  <br />
-  <br />  **简单请求（simple request）**  <br />  浏览器直接发出 CORS 请求，在头信息之中，增加一个Origin字段。  <br />
-  <br />  满足条件
+跨域资源共享（Cross-origin resource sharing）是一个 W3C 标准。允许浏览器向跨域的服务器，发出XMLHttpRequest请求，从而克服了 AJAX 只能同源使用的限制。
+
+**简单请求（simple request）**  <br />  浏览器直接发出 CORS 请求，在头信息之中，增加一个Origin字段。
+
+满足条件
 
 - 请求方法：HEAD、GET、POST
 - HTTP 的头信息
@@ -1727,8 +1598,7 @@ foo({
    - Last-Event-ID
    - Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain
 
-
-  <br />  如果Origin指定的域名在许可范围内，服务器返回的响应，会多出几个头信息字段。
+如果Origin指定的域名在许可范围内，服务器返回的响应，会多出几个头信息字段。
 ```javascript
 Access-Control-Allow-Origin: http://api.bob.com
 Access-Control-Allow-Credentials: true    // 可选，是否允许发送 Cookie
@@ -1736,7 +1606,7 @@ Access-Control-Expose-Headers: FooBar
 Content-Type: text/html; charset=utf-8
 ```
 
-  <br />  **非简单请求**  <br />  “预检”请求（preflight）：浏览器发出CORS 请求，会在正式通信之前，增加一次 HTTP 查询请求。  <br />  一旦服务器通过了“预检”请求，以后每次浏览器正常的 CORS 请求，就都跟简单请求一样  <br />  ​
+**非简单请求**  <br />  “预检”请求（preflight）：浏览器发出CORS 请求，会在正式通信之前，增加一次 HTTP 查询请求。  <br />  一旦服务器通过了“预检”请求，以后每次浏览器正常的 CORS 请求，就都跟简单请求一样
 
 预检请求的 HTTP 头信息
 ```javascript
@@ -1750,7 +1620,7 @@ Connection: keep-alive
 User-Agent: Mozilla/5.0...
 ```
 
-  <br />  预检请求的回应
+预检请求的回应
 ```javascript
 HTTP/1.1 200 OK
 Date: Mon, 01 Dec 2008 01:15:39 GMT
@@ -1766,18 +1636,15 @@ Connection: Keep-Alive
 Content-Type: text/plain
 ```
 
-  <br />  请求头
+请求头
 
 - Access-Control-Allow-Origin: <origin> | *
 - Access-Control-Allow-Credentials: true
 - Access-Control-Allow-Methods: <method>[, <method>]*
 - Access-Control-Allow-Headers: <field-name>[, <field-name>]*
 
-
-
 <a name="6bd99046"></a>
 # [Fetch](https://wangdoc.com/webapi/fetch.html)
-
 
 ```javascript
 fetch(url, optionObj)
@@ -1785,20 +1652,18 @@ fetch(url, optionObj)
   .catch(...)
 ```
 
-  <br />  fetch与 XMLHttpRequest 基本相同，有三个主要的差异
+fetch与 XMLHttpRequest 基本相同，有三个主要的差异
 
 1. 使用 Promise，不使用回调函数，写起来更简洁。
 1. 采用模块化设计，API 分散在多个对象上（Response 对象、Request 对象、Headers 对象），更合理一些；
 1. 通过数据流（Stream 对象）处理数据，可以分块读取，有利于提高网站性能表现，减少内存占用，对于请求大文件或者网速慢的场景相当有用。
 
-
-
 ```javascript
 fetch('https://api.github.com/users/ruanyf')
   .then(response => response.json())
   .then(json => console.log(json))
-  .catch(err => console.log('Request Failed', err));
-
+  .catch(err => console.log('Request Failed', err)); 
+  
   // 等同，语义更清晰
 async function getJSON() {
   let url = 'https://api.github.com/users/ruanyf';
@@ -1811,7 +1676,7 @@ async function getJSON() {
 }
 ```
 
-  <br />  **定制 HTTP 请求**
+**定制 HTTP 请求**
 ```javascript
 const response = fetch(url, {
   method: "GET",
@@ -1833,7 +1698,7 @@ const response = fetch(url, {
 
 body
 // Json数据
-JSON.stringify({ name:  'John', surname:  'Smith'  })
+JSON.stringify({ name:  'John', surname:  'Smith'  })  
 // 表单
 new FormData(form)
 // 二进制
@@ -1842,32 +1707,28 @@ let blob = await new Promise(resolve =>
 )
 ```
 
-  <br />  cache
+cache
 
--  default：默认值，先在缓存里面寻找匹配的请求。
--  no-store：直接请求远程服务器，并且不更新缓存。
--  reload：直接请求远程服务器，并且更新缓存。
--  no-cache：将服务器资源跟本地缓存进行比较，有新的版本才使用服务器资源，否则使用缓存。
--  force-cache：缓存优先，只有不存在缓存的情况下，才请求远程服务器。
--  only-if-cached：只检查缓存，如果缓存里面不存在，将返回504错误。
+-  default：默认值，先在缓存里面寻找匹配的请求。 
+-  no-store：直接请求远程服务器，并且不更新缓存。 
+-  reload：直接请求远程服务器，并且更新缓存。 
+-  no-cache：将服务器资源跟本地缓存进行比较，有新的版本才使用服务器资源，否则使用缓存。 
+-  force-cache：缓存优先，只有不存在缓存的情况下，才请求远程服务器。 
+-  only-if-cached：只检查缓存，如果缓存里面不存在，将返回504错误。 
 
+mode	请求的模式
 
-  <br />  mode	请求的模式
-
--  cors：默认值，允许跨域请求。
--  same-origin：只允许同源请求。
+-  cors：默认值，允许跨域请求。 
+-  same-origin：只允许同源请求。 
 -  no-cors：请求方法只限于 GET、POST 和 HEAD，并且只能使用有限的几个简单标头，不能添加跨域的复杂标头，相当于提交表单、<script>加载脚本、<img>加载图片等传统的跨域请求方法。
-
-​
 
 credentials	是否发送 Cookie
 
--  same-origin：默认值，同源请求时发送 Cookie，跨域请求时不发送。
--  include：不管同源请求，还是跨域请求，一律发送 Cookie。
--  omit：一律不发送。
+-  same-origin：默认值，同源请求时发送 Cookie，跨域请求时不发送。 
+-  include：不管同源请求，还是跨域请求，一律发送 Cookie。 
+-  omit：一律不发送。 
 
-
-  <br />  **取消请求**
+**取消请求**
 ```javascript
 // 1秒后自动取消请求
 let controller = new AbortController();
@@ -1886,7 +1747,7 @@ try {
 }
 ```
 
-  <br />  [**Response**](https://developer.mozilla.org/en-US/docs/Web/API/Response)  <br />  [
+[**Response**](https://developer.mozilla.org/en-US/docs/Web/API/Response)  <br />  [
 
 ](https://developer.mozilla.org/en-US/docs/Web/API/Response)
 
@@ -1896,7 +1757,7 @@ try {
 - Response.url
 - Response.type
 - Response.redirected
-- Response.body	返回一个 ReadableStream
+- Response.body	返回一个 ReadableStream 
 - Response.headers
    - Headers.get()：根据指定的键名，返回键值。
    - Headers.has()： 返回一个布尔值，表示是否包含某个标头。
@@ -1915,13 +1776,12 @@ try {
 - Response.arrayBuffer()：得到二进制 ArrayBuffer 对象。
 - Response.clone()	副本
 
-
-
 <a name="WebSocket"></a>
 # WebSocket
 
-  <br />  一种在单个 TCP 连接上进行全双工（full-duplex）通讯的协议。  <br />
-  <br />  特点
+一种在单个 TCP 连接上进行全双工（full-duplex）通讯的协议。
+
+特点
 
 1. 建立在 TCP 协议之上，服务器端的实现比较容易。
 1. 与 HTTP 协议有着良好的兼容性。默认端口也是80和443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器。
@@ -1930,8 +1790,7 @@ try {
 1. 没有同源限制，客户端可以与任意服务器通信，完全可以取代 Ajax。
 1. 协议标识符是ws（如果加密，则为wss，对应 HTTPS 协议），服务器网址就是 URL。
 
-
-  <br />  WebSocket 握手请求
+WebSocket 握手请求
 ```http
 GET / HTTP/1.1
 Connection: Upgrade
@@ -1942,7 +1801,7 @@ Sec-WebSocket-Key: sN9cRrP/n9NdMgdcy2VJFQ==
 Sec-WebSocket-Version: 13
 ```
 
-  <br />  服务器的 WebSocket 回应
+服务器的 WebSocket 回应
 ```http
 HTTP/1.1 101 Switching Protocols
 Connection: Upgrade
@@ -1952,7 +1811,7 @@ Sec-WebSocket-Origin: null
 Sec-WebSocket-Location: ws://example.com/
 ```
 
-  <br />  示例
+示例
 ```javascript
 var ws = new WebSocket('wss://echo.websocket.org');
 
@@ -1971,7 +1830,7 @@ ws.onclose = function(evt) {
 };
 ```
 
-  <br />  **webSocket**  <br />
+**webSocket**
 
 - readyState
    - CONNECTING：值为0，表示正在连接。
@@ -1984,8 +1843,6 @@ ws.onclose = function(evt) {
 - send()：向服务器发送数据
 - bufferedAmount：表示还有多少字节的二进制数据没有发送出去。用来判断发送是否结束。
 - onerror：指定报错时的回调函数
-
-
 
 ```javascript
 ws.onclose = function(event) {
@@ -2003,12 +1860,12 @@ ws.addEventListener("close", function(event) {
 });
 ```
 
-
 <a name="0ebc34c9"></a>
 # [Geolocation](https://wangdoc.com/webapi/geolocation.html)
 
-  <br />  navigator.geolocation属性返回一个 Geolocation 对象  <br />
-  <br />  方法
+navigator.geolocation属性返回一个 Geolocation 对象
+
+方法
 
 - getCurrentPosition(success, error, options)：返回一个 Position 对象，表示用户的当前位置。
 - watchPosition(success[, error[, options]])：指定一个监听函数，每当用户的位置发生变化，就执行该监听函数。
@@ -2023,13 +1880,10 @@ ws.addEventListener("close", function(event) {
    - timeout：正整数，表示等待查询的最长时间，单位为毫秒。默认值为Infinity。
    - maximumAge：正整数，表示可接受的缓存最长时间，单位为毫秒。默认值为0，不返回缓存值，必须查询当前的实际位置
 
+Position 对象
 
-  <br />  Position 对象
-
--  Position.coords：一个 Coordinates 对象，表示当前位置的坐标。
--  Position.timestamp：当前时间戳。
-
-
+-  Position.coords：一个 Coordinates 对象，表示当前位置的坐标。 
+-  Position.timestamp：当前时间戳。 
 
 ```javascript
 var options = {
@@ -2040,7 +1894,7 @@ var options = {
 
 function success(pos) {
   var crd = pos.coords;
-
+  
   console.log(`经度：${crd.latitude}`);
   console.log(`纬度：${crd.longitude}`);
   console.log(`误差：${crd.accuracy} 米`);
@@ -2053,11 +1907,10 @@ function error(err) {
 navigator.geolocation.getCurrentPosition(success, error, options);
 ```
 
-
 <a name="edbef700"></a>
 # [Clipboard API](https://wangdoc.com/webapi/clipboard.html)
 
-  <br />  **Document.execCommand()**  <br />
+**Document.execCommand()**
 
 ```javascript
 // 复制或剪切操作
@@ -2073,20 +1926,18 @@ pasteText.focus();
 document.execCommand('paste');
 ```
 
-  <br />  **异步 Clipboard**  <br />
+**异步 Clipboard**
 
 ```javascript
 const clipboardObj = navigator.clipboard;
 ```
 
-  <br />  异步方法，返回 Promise 对象
+异步方法，返回 Promise 对象
 
--  Clipboard.readText()：复制剪贴板里面的文本数据。
--  Clipboard.read()：复制剪贴板里面的数据，可以是文本数据
--  Clipboard.writeText()：将文本内容写入剪贴板。
--  Clipboard.write()：将任意数据写入剪贴板，可以是文本数据或二进制数据
-
-
+-  Clipboard.readText()：复制剪贴板里面的文本数据。 
+-  Clipboard.read()：复制剪贴板里面的数据，可以是文本数据 
+-  Clipboard.writeText()：将文本内容写入剪贴板。 
+-  Clipboard.write()：将任意数据写入剪贴板，可以是文本数据或二进制数据 
 
 ```javascript
 async function getClipboardContents() {
@@ -2115,12 +1966,12 @@ async function copy() {
 }
 ```
 
-  <br />  **copy事件和paste事件**  <br />
+**copy事件和paste事件**
 
--  Event.clipboardData.setData(type, data)：修改剪贴板数据，需要指定数据类型。
--  Event.clipboardData..getData(type)：获取剪贴板数据，需要指定数据类型。
--  Event.clipboardData.clearData([type])：清除剪贴板数据，可以指定数据类型。如果不指定类型，将清除所有类型的数据。
--  Event.clipboardData.items：一个类似数组的对象，包含了所有剪贴项，不过通常只有一个剪贴项。
+-  Event.clipboardData.setData(type, data)：修改剪贴板数据，需要指定数据类型。 
+-  Event.clipboardData..getData(type)：获取剪贴板数据，需要指定数据类型。 
+-  Event.clipboardData.clearData([type])：清除剪贴板数据，可以指定数据类型。如果不指定类型，将清除所有类型的数据。 
+-  Event.clipboardData.items：一个类似数组的对象，包含了所有剪贴项，不过通常只有一个剪贴项。 
 ```javascript
 const source = document.querySelector('.source');
 
@@ -2131,43 +1982,37 @@ source.addEventListener('copy', (event) => {
 });
 ```
 
-
 <a name="ce281f2d"></a>
 # [notification](https://developer.mozilla.org/zh-CN/docs/Web/API/notification)
 ```javascript
 new Notification(title, options)
 ```
 
-  <br />  options
+options
 
--  dir : 文字的方向；它的值可以是 auto（自动）, ltr（从左到右）, or rtl（从右到左）
--  lang: 指定通知中所使用的语言。
--  body: 通知中额外显示的字符串
--  tag: 赋予通知一个ID，以便在必要的时候对通知进行刷新、替换或移除。
--  icon: 一个图片的URL，将被用于显示通知的图标。
+-  dir : 文字的方向；它的值可以是 auto（自动）, ltr（从左到右）, or rtl（从右到左） 
+-  lang: 指定通知中所使用的语言。 
+-  body: 通知中额外显示的字符串 
+-  tag: 赋予通知一个ID，以便在必要的时候对通知进行刷新、替换或移除。 
+-  icon: 一个图片的URL，将被用于显示通知的图标。 
 
+Notification.permission 只读
 
-  <br />  Notification.permission 只读
+-  denied (用户拒绝了通知的显示) 
+-  granted (用户允许了通知的显示) 
+-  default 
 
--  denied (用户拒绝了通知的显示)
--  granted (用户允许了通知的显示)
--  default
+事件处理
 
+-  Notification.onclick 
+-  Notification.onshow 
+-  Notification.onerror 
+-  Notification.onclose 
 
-  <br />  事件处理
+method
 
--  Notification.onclick
--  Notification.onshow
--  Notification.onerror
--  Notification.onclose
-
-
-  <br />  method
-
--  Notification.requestPermission()
--  Notification.close()
-
-
+-  Notification.requestPermission() 
+-  Notification.close() 
 
 ```javascript
 function notifyMe() {
@@ -2191,21 +2036,18 @@ function notifyMe() {
       }
     });
   }
-
+  
 }
 ```
-
 
 <a name="baea45bf"></a>
 # [FontFace](https://wangdoc.com/webapi/fontface.html)
 
-  <br />  控制字体加载  <br />  `new FontFace(family, source, descriptors) `
+控制字体加载  <br />  `new FontFace(family, source, descriptors) `
 
 - family：字符串，表示字体名，写法与 CSS 的@font-face的font-family属性相同。
 - source：字体文件的 URL（必须包括 CSS 的url()方法），或者是一个字体的 ArrayBuffer 对象。
 - descriptors：对象，用来定制字体文件。可选。
-
-​
 
 属性
 
@@ -2226,11 +2068,9 @@ function notifyMe() {
 - FontFace.loaded：返回一个 Promise 对象，字体加载成功或失败，会导致该 Promise 状态改变。该属性只读。
 
 
-
-
 [IntersectionObserver](https://wangdoc.com/webapi/intersectionObserver.html)
 
-  <br />  交叉观察器
+交叉观察器
 ```javascript
 var observer = new IntersectionObserver(callback [, options]);
 observer.observe(target);    // 开始观察
@@ -2238,16 +2078,14 @@ observer.unobserve(element);    // 停止观察
 observer.disconnect();    // 关闭观察器
 ```
 
-  <br />  IntersectionObserverEntry对象提供目标元素的信息
+IntersectionObserverEntry对象提供目标元素的信息
 
--  time：可见性发生变化的时间，是一个高精度时间戳，单位为毫秒
--  target：被观察的目标元素，是一个 DOM 节点对象
--  rootBounds：容器元素的矩形区域的信息，getBoundingClientRect()方法的返回值，如果没有容器元素（即直接相对于视口滚动），则返回null
--  boundingClientRect：目标元素的矩形区域的信息
--  intersectionRect：目标元素与视口（或容器元素）的交叉区域的信息
--  intersectionRatio：目标元素的可见比例，即intersectionRect占boundingClientRect的比例，完全可见时为1，完全不可见时小于等于0
-
-
+-  time：可见性发生变化的时间，是一个高精度时间戳，单位为毫秒 
+-  target：被观察的目标元素，是一个 DOM 节点对象 
+-  rootBounds：容器元素的矩形区域的信息，getBoundingClientRect()方法的返回值，如果没有容器元素（即直接相对于视口滚动），则返回null 
+-  boundingClientRect：目标元素的矩形区域的信息 
+-  intersectionRect：目标元素与视口（或容器元素）的交叉区域的信息 
+-  intersectionRatio：目标元素的可见比例，即intersectionRect占boundingClientRect的比例，完全可见时为1，完全不可见时小于等于0 
 
 ```javascript
 // 视频元素完全进入视口的时候自动播放，离开视口的时候自动暂停
@@ -2271,9 +2109,7 @@ observer.observe(video);
 ```
 
 
-
-# ​[Intl.RelativeTimeFormat](https://wangdoc.com/webapi/intl-relativetimeformat.html)
-
+# [Intl.RelativeTimeFormat](https://wangdoc.com/webapi/intl-relativetimeformat.html)
 
 ```javascript
 // 下面的配置对象，传入的都是默认值
@@ -2294,34 +2130,28 @@ rtf.format(1, 'week') // "in 1 week"
 ```
 
 
+# [Page Lifecycle API](https://wangdoc.com/webapi/page-lifecycle.html)
 
-# ​[Page Lifecycle API](https://wangdoc.com/webapi/page-lifecycle.html)
+![](https://www.wangbase.com/blogimg/asset/201811/bg2018110401.png#crop=0&crop=0&crop=1&crop=1&id=fHCkR&originHeight=491&originWidth=800&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
-  <br />  ![](https://www.wangbase.com/blogimg/asset/201811/bg2018110401.png#crop=0&crop=0&crop=1&crop=1&id=fHCkR&originHeight=491&originWidth=800&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />
-
--  Active 阶段：网页处于可见状态，且拥有输入焦点。
--  Passive 阶段：网页可见，但没有输入焦点，无法接受输入。UI 更新（比如动画）仍然在执行。只发生在桌面同时有多个窗口的情况。
--  Hidden 阶段：桌面被其他窗口占据，网页不可见，但尚未冻结。UI 更新不再执行。
--  Terminated 阶段：主动关闭窗口，或者在同一个窗口前往其他页面，导致当前页面开始被浏览器卸载并从内存中清除。
--  Frozen 阶段：网页处于 Hidden 阶段的时间过久，用户又不关闭网页，浏览器就可能冻结网页 。网页不会再被分配 CPU 计算资源。
--  Discarded 阶段：网页长时间处于 Frozen 阶段，用户又不唤醒页面， 浏览器会自动卸载网页，清除该网页的内存占用。
-
+-  Active 阶段：网页处于可见状态，且拥有输入焦点。 
+-  Passive 阶段：网页可见，但没有输入焦点，无法接受输入。UI 更新（比如动画）仍然在执行。只发生在桌面同时有多个窗口的情况。 
+-  Hidden 阶段：桌面被其他窗口占据，网页不可见，但尚未冻结。UI 更新不再执行。 
+-  Terminated 阶段：主动关闭窗口，或者在同一个窗口前往其他页面，导致当前页面开始被浏览器卸载并从内存中清除。 
+-  Frozen 阶段：网页处于 Hidden 阶段的时间过久，用户又不关闭网页，浏览器就可能冻结网页 。网页不会再被分配 CPU 计算资源。 
+-  Discarded 阶段：网页长时间处于 Frozen 阶段，用户又不唤醒页面， 浏览器会自动卸载网页，清除该网页的内存占用。 
 
 
+# [Page Visibility API](https://wangdoc.com/webapi/page-visibility.html)
 
-# ​[Page Visibility API](https://wangdoc.com/webapi/page-visibility.html)
+document.visibilityState
 
-  <br />  document.visibilityState  <br />
-
--  hidden：页面彻底不可见。
--  visible：页面至少一部分可见。
--  prerender：页面即将或正在渲染，处于不可见状态。
-
+-  hidden：页面彻底不可见。 
+-  visible：页面至少一部分可见。 
+-  prerender：页面即将或正在渲染，处于不可见状态。 
 
 
-
-# ​[Web Share API ](https://wangdoc.com/webapi/web-share-api.html)
-
+# [Web Share API ](https://wangdoc.com/webapi/web-share-api.html)
 
 ```javascript
 navigator.share({
@@ -2345,18 +2175,16 @@ if (navigator.canShare && navigator.canShare({ files: filesArray })) {
 }
 ```
 
-
 <a name="473e3014"></a>
 # ——jQuery——
 
-  <br />  **基础语法：$(selector).action()**
+**基础语法：$(selector).action()**
 
--  $定义 jQuery
--  选择符（selector）“查询”和“查找” HTML 元素
--  jQuery 的 action() 执行对元素的操作
+-  $定义 jQuery 
+-  选择符（selector）“查询”和“查找” HTML 元素 
+-  jQuery 的 action() 执行对元素的操作 
 
-
-  <br />  文档就绪函数：防止文档在完全加载（就绪）之前运行 jQuery 代码
+文档就绪函数：防止文档在完全加载（就绪）之前运行 jQuery 代码
 ```javascript
 $(document).ready(function(){
 
@@ -2370,21 +2198,21 @@ $(function () {
 });
 ```
 
-  <br />  示例
+示例
 ```javascript
 <!DOCTYPE html>
 <html>
 <head>
 <script src="/jquery/jquery-1.11.1.min.js"></script>
-<script>
+<script> 
 $(document).ready(function(){
   $("button").click(function(){
-    var div=$("div");
+    var div=$("div");  
     div.animate({left:'200px'},"slow");
     div.animate({fontSize:'4em'},"slow");
   });
 });
-</script>
+</script> 
 </head>
 
 <body>
@@ -2396,7 +2224,6 @@ $(document).ready(function(){
 </body>
 </html>
 ```
-
 
 
 ## 选择器
@@ -2561,7 +2388,7 @@ $(document).ready(function(){
 | [toggleClass()](https://www.w3school.com.cn/jquery/attributes_toggleclass.asp) | 从匹配的元素中添加或删除一个类。 |
 | [val()](https://www.w3school.com.cn/jquery/attributes_val.asp) | 设置或返回匹配元素的值。 |
 
-​  <br />
+
 
 ## CSS操作
 | CSS 属性 | 描述 |
@@ -2596,7 +2423,7 @@ $(document).ready(function(){
 | [.serialize()](https://www.w3school.com.cn/jquery/ajax_serialize.asp) | 将表单内容序列化为字符串。 |
 | [.serializeArray()](https://www.w3school.com.cn/jquery/ajax_serializearray.asp) | 序列化表单元素，返回 JSON 数据结构数据。 |
 
-​  <br />
+
 
 ## 遍历
 | 函数 | 描述 |
@@ -2647,7 +2474,7 @@ $(document).ready(function(){
 | [.removeData()](https://www.w3school.com.cn/jquery/data_removedata.asp) | 移除之前存放的数据。 |
 | [jQuery.removeData()](https://www.w3school.com.cn/jquery/data_jquery_removedata.asp) | 移除之前存放的数据。 |
 
-​  <br />
+
 
 ## DOM 元素方法
 | 函数 | 描述 |
@@ -2675,9 +2502,8 @@ $(document).ready(function(){
 | [jQuery.support](https://www.w3school.com.cn/jquery/prop_jquery_support.asp) | 表示不同浏览器特性或漏洞的属性集合（用于 jQuery 内部使用）。 |
 | [length](https://www.w3school.com.cn/jquery/prop_length.asp) | 包含 jQuery 对象中的元素数目。 |
 
-​
 
-**扩展$.fn**  <br />
+**扩展$.fn**
 
 ```javascript
 $.fn.highlight1 = function () {

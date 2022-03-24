@@ -1,8 +1,8 @@
 
 # ——MySQL——
-[MySQL](https://dev.mysql.com/)是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，属于 Oracle 旗下产品。  <br />  ​
+[MySQL](https://dev.mysql.com/)是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，属于 Oracle 旗下产品。
 
-2020-02-11T09:14:29.463543Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: cneMp3w,tsEg  <br />  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mysql2020';  <br />  ​
+2020-02-11T09:14:29.463543Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: cneMp3w,tsEg  <br />  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mysql2020';
 
 **mysql -uroot -pmysql2020**
 ```sql
@@ -44,14 +44,13 @@ default-storage-engine=INNODB
 #导出数据地址
 secure_file_priv = ''
 ```
-​
 
-MySQL Client的可执行程序是mysql，MySQL Server的可执行程序是mysqld。  <br />  ┌──────────────┐  SQL   ┌──────────────┐  <br />  │ MySQL Client             │───> │ MySQL Server            │  <br />  └──────────────┘  TCP   └──────────────┘  <br />  在MySQL Client中输入的SQL语句通过TCP连接发送到MySQL Server。  <br />  默认端口号是3306，即如果发送到本机MySQL Server，地址就是127.0.0.1:3306。  <br />  ​
+MySQL Client的可执行程序是mysql，MySQL Server的可执行程序是mysqld。  <br />  ┌──────────────┐  SQL   ┌──────────────┐  <br />  │ MySQL Client             │───> │ MySQL Server            │  <br />  └──────────────┘  TCP   └──────────────┘  <br />  在MySQL Client中输入的SQL语句通过TCP连接发送到MySQL Server。  <br />  默认端口号是3306，即如果发送到本机MySQL Server，地址就是127.0.0.1:3306。
 
 information_schema、mysql、performance_schema和sys是系统库  <br />  **官方文档：**[**https://dev.mysql.com/doc/**](https://dev.mysql.com/doc/)
 
 # 基本操作
-HELP 查询内容（可包含通配符“％”和“_”，效果与 LIKE 相同）  <br />  ​
+HELP 查询内容（可包含通配符“％”和“_”，效果与 LIKE 相同）
 
 **增删改查——CRUD：Create、Retrieve、Update、Delete**
 ```sql
@@ -96,9 +95,8 @@ show profile for query id;  --查看详情
 ```
 
 
-
 ## CREAT
-CREATE [TEMPORARY] TABLE [IF NOT EXISTS] [库名.]表名 ( 表的结构定义 )[表选项][分区选项];  <br />  ​
+CREATE [TEMPORARY] TABLE [IF NOT EXISTS] [库名.]表名 ( 表的结构定义 )[表选项][分区选项];
 
 字段名 数据类型 [NOT NULL | NULL] [DEFAULT default_value] [AUTO_INCREMENT] [UNIQUE | PRIMARY KEY] [COMMENT 'string']
 ```sql
@@ -138,8 +136,6 @@ SELECT {[=ALL | DISTINCT] <column_name [,···, function(column_name)]>}
 - 使用 ASC 或 DESC 关键字来设置查询结果是按升序或降序排列。 默认升序排列。
 - LIMIT设定为pageSize，OFFSET = pageSize * (pageIndex - 1)，N越大，效率越低。
 
-​
-
 having & where 
 
 -  where 在开始时执行检测数据，对原数据进行过滤； having 对筛选出的结果再次进行过滤。
@@ -147,8 +143,6 @@ having & where
 -  where 不可以使用字段的别名，having 可以。因为执行WHERE代码时，可能尚未确定列值。
 -  where 不可以使用聚合函数。一般需用聚合函数才会用 having
 -  SQL标准要求HAVING必须引用GROUP BY子句中的列或用于合计函数中的列。
-
-​
 
 case when ... then ... else ... end
 ```sql
@@ -280,7 +274,6 @@ mysql> SELECT * FROM tb_students_info WHERE name REGEXP 'e{2,}';
 ```
 
 
-
 ## UNION
 ```sql
 SELECT_statement
@@ -318,7 +311,6 @@ select * from fib;
 - max_execution_time
 - cte_max_recursion_depth
 
-​  <br />  
 
 ## INDEX
 一种特殊的数据库结构，由数据表中的一列或多列组合而成，用来快速查询数据表中有某一特定值的记录。
@@ -346,7 +338,8 @@ SHOW INDEX <index_name> FROM <table_name>[\G]
  --函数索引
  CREATE INDEX fun_idx ON table_name( (fun_name(column_name)) );
 ```
-隐藏索引不会被优化器使用，但仍然需要进行维护。  <br />  优化器默认情况是不可见隐藏索引的，但是可以通过配置开关来使之可见  <br />  ​  <br />  
+隐藏索引不会被优化器使用，但仍然需要进行维护。  <br />  优化器默认情况是不可见隐藏索引的，但是可以通过配置开关来使之可见
+
 
 ## EXPLAIN
 模拟优化器执行SQL查询语句，分析你的查询语句或是表结构的性能瓶颈。
@@ -358,8 +351,6 @@ id | select_type | table | partitions | type | possible_keys | key  | key_len | 
 - id相同，执行顺序由上至下；
 - id不同，如果是子查询，id的序号会递增，id值越大优先级越高，先被执行 ；
 
-​
-
 select_type
 
 1. SIMPLE：简单的select查询，查询中不包含子查询和union
@@ -369,9 +360,7 @@ select_type
 1. UNION：若第二个select出现在union之后，则被标记;
 1. UNION RESULT：从union表获取结果的select
 
-​
-
-table：当前执行的表  <br />  ​
+table：当前执行的表
 
 type
 
@@ -383,8 +372,6 @@ type
 1. range：表示查询语句中给出了查询范围，常见于 <、<=、>、>=、between 等操作符；
 1. index：表示对表中的索引进行了完整的扫描，MySQL 遍历整个索引来查询匹配的行；
 1. ALL：表示对表进行了完整的扫描，MySQL 遍历全表来找到匹配的行。
-
-​
 
 possible_keys：表示查询中可以使用的索引；  <br />  key：表示实际查询中使用到的索引；  <br />  key_len：表示索引字段的长度；  <br />  ref：表示使用哪个列或常数与索引一起来查询记录；  <br />  rows：表示查询的行数；  <br />  Extra：表示查询过程的附件信息。
 
@@ -464,7 +451,7 @@ ALTER TABLE <数据表名> ADD PRIMARY KEY(<字段名>);
 -- 删除
 ALTER TABLE <数据表名> DROP PRIMARY KEY;
 ```
-**​**
+
 
 **auto_increment 自动增长约束**
 
@@ -484,7 +471,6 @@ FOREIGN KEY(<列名>) REFERENCES <主表名> (<列名>);
 -- 删除
 ALTER TABLE <表名> DROP FOREIGN KEY <外键约束名>;
 ```
-​
 
 若不指定主表记录更改或更新时的动作，主表的操作会被拒绝  <br />  如果指定了 on update 或 on delete，可以选择：
 
@@ -492,7 +478,7 @@ ALTER TABLE <表名> DROP FOREIGN KEY <外键约束名>;
 - set null：主表数据被更新（主键值更新），从表的外键被设置为null。主表记录被删除，从表相关记录外键被设置成null。
 - restrict：拒绝父表删除和更新。
 
-**​**
+
 
 **唯一约束（Unique Key）**：所有记录中字段的值不能重复出现
 ```sql
@@ -500,7 +486,7 @@ ALTER TABLE <表名> DROP FOREIGN KEY <外键约束名>;
 ALTER TABLE <数据表名> ADD CONSTRAINT <唯一约束名> UNIQUE(<列名>);
 ALTER TABLE <表名> DROP INDEX <唯一约束名>;
 ```
-**​**
+
 
 **default 默认值属性**
 ```sql
@@ -515,7 +501,7 @@ CHANGE COLUMN <字段名> <字段名> <数据类型> DEFAULT NULL;
 
 create table tab ( add_time timestamp default current_timestamp );-- 表示将当前时间的时间戳设为默认值。
 ```
-**​**
+
 
 **非空约束（NOT NULL）**
 ```sql
@@ -527,7 +513,7 @@ CHANGE COLUMN <字段名> <字段名> <数据类型> NOT NULL;
 ALTER TABLE <数据表名>
 CHANGE COLUMN <字段名> <字段名> <数据类型> NULL;
 ```
-**​**
+
 
 **检查约束（CHECK）**
 ```sql
@@ -536,7 +522,7 @@ CHECK <表达式>
 ALTER TABLE <数据表名> ADD CONSTRAINT <检查约束名> CHECK(<检查约束>)
 ALTER TABLE <数据表名> DROP CONSTRAINT <检查约束名>;
 ```
-**​**
+
 
 **comment 注释**
 ```sql
@@ -555,20 +541,19 @@ SHOW CREATE VIEW view_name
 
 ALTER VIEW view_name [(column_list)] AS select_statement
 ```
--- 视图作用  <br />  1. 简化业务逻辑  <br />  2. 对客户端隐藏真实的表结构  <br />  ​
+-- 视图作用  <br />  1. 简化业务逻辑  <br />  2. 对客户端隐藏真实的表结构
 
--- 视图算法 (ALGORITHM)  <br />  MERGE ：将视图的查询语句，与外部查询需要先合并再执行！  <br />  TEMPTABLE：将视图执行完毕后，形成临时表，再做外层查询！  <br />  UNDEFINED：未定义(默认)，MySQL自主去选择相应的算法。  <br />  ​
+-- 视图算法 (ALGORITHM)  <br />  MERGE ：将视图的查询语句，与外部查询需要先合并再执行！  <br />  TEMPTABLE：将视图执行完毕后，形成临时表，再做外层查询！  <br />  UNDEFINED：未定义(默认)，MySQL自主去选择相应的算法。
 
 所有视图的定义存储在 information_schema 数据库下的 views 表中，可以在这个表中查看所有视图的详细信息
 ```sql
 SELECT * FROM information_schema.views;
 ```
 
-  <br />  
 
 
 # 事务（Transaction）
-一种机制、一个操作序列，包含了一组数据库操作命令  <br />  ​
+一种机制、一个操作序列，包含了一组数据库操作命令
 
 **ACID特性**
 
@@ -584,11 +569,11 @@ COMMIT [| ROLLBACK [WORK]]；
 --设置事务自动提交（开启和关闭）
 SET autocommit = 1|0|ON|OFF;
 ```
--- 事务的原理  <br />  利用InnoDB的自动提交(autocommit)特性  <br />  普通的MySQL执行语句后，当前的数据提交操作均可被其他客户端可见。  <br />  而事务是暂时关闭“自动提交”机制，需要commit提交持久化数据操作。  <br />  ​
+-- 事务的原理  <br />  利用InnoDB的自动提交(autocommit)特性  <br />  普通的MySQL执行语句后，当前的数据提交操作均可被其他客户端可见。  <br />  而事务是暂时关闭“自动提交”机制，需要commit提交持久化数据操作。
 
--- 注意  <br />  1. 数据定义语言（DDL）语句不能被回滚，比如创建或取消数据库的语句，和创建、取消或更改表或存储的子程序的语句。  <br />  2. 事务不能被嵌套  <br />  ​
+-- 注意  <br />  1. 数据定义语言（DDL）语句不能被回滚，比如创建或取消数据库的语句，和创建、取消或更改表或存储的子程序的语句。  <br />  2. 事务不能被嵌套
 
--- 保存点  <br />  SAVEPOINT 保存点名称 -- 设置一个事务保存点  <br />  ROLLBACK TO SAVEPOINT 保存点名称 -- 回滚到保存点  <br />  RELEASE SAVEPOINT 保存点名称 -- 删除保存点  <br />  nowait，skip locked  <br />  ​
+-- 保存点  <br />  SAVEPOINT 保存点名称 -- 设置一个事务保存点  <br />  ROLLBACK TO SAVEPOINT 保存点名称 -- 回滚到保存点  <br />  RELEASE SAVEPOINT 保存点名称 -- 删除保存点  <br />  nowait，skip locked
 
 **隔离级别**
 
@@ -637,7 +622,6 @@ ON <表名> FOR EACH Row <触发器主体>
 -- 删除
 DROP TRIGGER [schema_name.]trigger_name
 ```
-​
 
 所有触发器的信息都存在 information_schema 数据库的 triggers 表中
 ```sql
@@ -700,9 +684,10 @@ ALTER EVENT event_name
 - 显示宽度，如果某个数不够定义字段时设置的位数，则前面以0补填，zerofill 属性修改  <br />  例：int(5)    插入一个数'123'，补填后为'00123'
 - MySQL没有布尔类型，通过整型0和1表示。常用tinyint(1)表示布尔型。
 
-**​**
 
-** FLOAT[(M,D)] [UNSIGNED] [ZEROFILL]**  <br />  定义浮点型时，需指定总位数和小数位数。  不同于整型，前后均会补填0.  <br />      M表示总位数，D表示小数位数。  <br />      M和D的大小会决定浮点数的范围。不同于整型的固定范围。  <br />      M既表示总位数（不包括小数点和正负号），也表示显示宽度（所有显示符号均包括）。  <br />      支持科学计数法表示。  <br />      浮点数表示近似值。  <br />  ​  <br />  
+
+** FLOAT[(M,D)] [UNSIGNED] [ZEROFILL]**  <br />  定义浮点型时，需指定总位数和小数位数。  不同于整型，前后均会补填0.  <br />      M表示总位数，D表示小数位数。  <br />      M和D的大小会决定浮点数的范围。不同于整型的固定范围。  <br />      M既表示总位数（不包括小数点和正负号），也表示显示宽度（所有显示符号均包括）。  <br />      支持科学计数法表示。  <br />      浮点数表示近似值。
+
 
 ## 日期和时间类型
 | 类型 | 大小(字节) | 范围 | 格式 | 用途 |
@@ -739,11 +724,12 @@ varchar 的最大有效长度由最大行大小和使用的字符集确定。
 若一个表定义为 CREATE TABLE tb(c1 int, c2 char(30), c3 varchar(N)) charset=utf8; 问N的最大值是多少？
 答：(65535-1-2-4-30*3)/3
 ```
-**​**
 
-**枚举**  <br />  enum(val1, val2, val3...)  <br />  在已知的值中进行单选。最大数量为65535  <br />  枚举值在保存时，以2byte的整型(smallint)保存。每个枚举值，按保存的位置顺序，从1开始逐一递增。  <br />  表现为字符串类型，存储却是整型。  <br />  NULL值的索引是NULL。  <br />  空字符串错误值的索引值是0。  <br />  **​**
 
-**集合（set）**  <br />  set(val1, val2, val3...)  <br />  create table tab ( gender set('男', '女', '无') );  <br />  最多可以有64个不同的成员。以bigint存储，共8个字节。采取位运算的形式。  <br />  当创建表时，SET成员值的尾部空格将自动被删除。  <br />  ​  <br />  
+**枚举**  <br />  enum(val1, val2, val3...)  <br />  在已知的值中进行单选。最大数量为65535  <br />  枚举值在保存时，以2byte的整型(smallint)保存。每个枚举值，按保存的位置顺序，从1开始逐一递增。  <br />  表现为字符串类型，存储却是整型。  <br />  NULL值的索引是NULL。  <br />  空字符串错误值的索引值是0。
+
+**集合（set）**  <br />  set(val1, val2, val3...)  <br />  create table tab ( gender set('男', '女', '无') );  <br />  最多可以有64个不同的成员。以bigint存储，共8个字节。采取位运算的形式。  <br />  当创建表时，SET成员值的尾部空格将自动被删除。
+
 
 # 运算符
 
@@ -962,7 +948,7 @@ OVER (
     frame_clause <>
 )
 ```
-![](./assets/1643807412345-b887f2d6-a886-4663-9c19-ab144cc6e4b9.png)  <br />  
+![](./assets/1643807412345-b887f2d6-a886-4663-9c19-ab144cc6e4b9.png)
 
 
 # 备份还原
@@ -1003,7 +989,7 @@ lines   控制行格式
     LINES TERMINATED BY '\n'
     FROM test_table;
 ```
-**​**
+
 
 **mysqlimport**
 ```sql
@@ -1033,7 +1019,7 @@ LINES TERMINATED BY '\r\n' ]
 
 - 输出不能是一个已存在的文件，防止文件数据被篡改。
 
-**​**
+
 
 **mysqldump**
 
@@ -1075,7 +1061,6 @@ mysqladmin -uroot -p flush-logs
 - 通用查询日志（General Query Log）：记录 MySQL 服务器的启动和关闭信息、客户端的连接信息、更新、查询数据记录的 SQL 语句等。
 - 慢查询日志：记录执行事件超过指定时间的操作，通过工具分析慢查询日志可以定位 MySQL 服务器性能瓶颈所在。
 
-​  <br />  
 
 # 注释
 **单行注释：--，#**
@@ -1083,7 +1068,7 @@ mysqladmin -uroot -p flush-logs
 SELECT *    # This is a comment
 FROM users; -- This is a comment
 ```
--- 后应有控制字符(空格，制表符，换行符等)。  <br />  标准SQL在第二个破折号后不需要空白， MySQL使用空白来避免某些SQL构造的问题，如：SELECT 10--1;  <br />  **​**
+-- 后应有控制字符(空格，制表符，换行符等)。  <br />  标准SQL在第二个破折号后不需要空白， MySQL使用空白来避免某些SQL构造的问题，如：SELECT 10--1;
 
 **多行注释：/_ _/**
 ```sql
@@ -1109,9 +1094,9 @@ SELECT var_name := value [| statement]
 
 SELECT col_name[,...] INTO var_name[,...] table_expr [where...];
 ```
-​
 
-declare语句专门用于定义局部变量，初始化为null。  <br />  set语句是设置不同类型的变量，包括会话变量和全局变量  <br />  ​  <br />  
+declare语句专门用于定义局部变量，初始化为null。  <br />  set语句是设置不同类型的变量，包括会话变量和全局变量
+
 ```sql
 show [session] variables;
 show global variables
@@ -1202,7 +1187,6 @@ create function f1(name varchar(20),score int)
 - 存储过程可以返回多个值；函数只能有一个返回值
 - 存储过程一般独立的来执行；而函数可以作为其他SQL语句的组成部分来出现。
 
-​  <br />  
 
 # 流程控制
 
@@ -1371,8 +1355,6 @@ END;
 - SHOW ENGINE 引擎名 {LOGS|STATUS} -- 显示存储引擎的日志或状态信息
 - SET default_storage_engine = < 存储引擎名 >
 
-​
-
 MySQL支持的存储引擎
 
 - MyISAM
@@ -1381,7 +1363,7 @@ MySQL支持的存储引擎
 - CSV
 - Archive
 
-![](./assets/1643807412450-91d601c6-1248-4302-9987-335df6140a29.png)  <br />  
+![](./assets/1643807412450-91d601c6-1248-4302-9987-335df6140a29.png)
 
 
 # 用户管理
@@ -1395,7 +1377,7 @@ MySQL支持的存储引擎
 | User | char(32) | NO | 无 | 用户名 |
 | authentication_string | text | YES | 无 | 密码 |
 
-**​**
+
 
 **权限列**  <br />  字段类型 enum('N','Y')，默认值均 N
 
@@ -1483,7 +1465,6 @@ VALUES ('hostname', 'username', PASSWORD('password'), '', '', '');
 - PASSWORD ：表示使用哈希值设置密码，如果密码是一个普通的字符串，则不需要使用
 - 须拥有mysql数据库的全局CREATE USER权限，或拥有INSERT权限
 
-​  <br />  
 ```sql
 -- 删除用户
 DROP USER 用户名;
@@ -1641,12 +1622,9 @@ MySQL启动失败一般是路径错误
 - 注册表：HKEY_LOCAL_MACHINE ->SYSTEM -> CurrentControlSet -> services ->MySQL，ImagePath的路径
 - 检查安装目录中的配置文件my.ini里得路径
 
-​
+远程连接Mysql数据库的问题  <br />  ERROR 2003 (HY000): Can't connect to MySQL server on '192.168.0.19'  <br />  Mysql数据库的默认配置文件my.cnf（linux下，一般在/etc/mysql）中的bind-address默认为127.0.0.1，此时Mysql只接受localhost，所以需要把bind-address注释
 
-远程连接Mysql数据库的问题  <br />  ERROR 2003 (HY000): Can't connect to MySQL server on '192.168.0.19'  <br />  Mysql数据库的默认配置文件my.cnf（linux下，一般在/etc/mysql）中的bind-address默认为127.0.0.1，此时Mysql只接受localhost，所以需要把bind-address注释  <br />  **​**
+**无法导出问题**  <br />  The MySQL server is running with the --secure-file-priv option so it cannot execute this statement  <br />  show variables like '%secure%';
 
-**无法导出问题**  <br />  The MySQL server is running with the --secure-file-priv option so it cannot execute this statement  <br />  show variables like '%secure%';  <br />  ​
-
-​
 
 部分参考：[https://shockerli.net/post/1000-line-mysql-note/](https://shockerli.net/post/1000-line-mysql-note/)

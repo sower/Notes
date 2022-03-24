@@ -10,9 +10,7 @@ CDN(Content Delivery Network，内容分发网络) 一种透过互联网互相�
 
 Nginx（engine X）异步框架的网页服务器，用于反向代理、负载平衡器和HTTP缓存。
 
-​
-
-**SPA**（single-page application，**单页应用**）是一种[网络应用程序](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F)或[网站](https://zh.wikipedia.org/wiki/%E7%B6%B2%E7%AB%99)的模型，它通过动态重写当前页面来与用户交互，而非传统的从服务器重新加载整个新页面。  <br />  ​
+**SPA**（single-page application，**单页应用**）是一种[网络应用程序](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F)或[网站](https://zh.wikipedia.org/wiki/%E7%B6%B2%E7%AB%99)的模型，它通过动态重写当前页面来与用户交互，而非传统的从服务器重新加载整个新页面。
 
 这种方法避免了页面之间切换打断[用户体验](https://zh.wikipedia.org/wiki/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C)，使应用程序更像一个[桌面应用程序](https://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6)。在单页应用中，所有必要的代码（[HTML](https://zh.wikipedia.org/wiki/HTML)、[JavaScript](https://zh.wikipedia.org/wiki/JavaScript)和[CSS](https://zh.wikipedia.org/wiki/%E5%B1%82%E5%8F%A0%E6%A0%B7%E5%BC%8F%E8%A1%A8)）都通过单个页面的加载而检索，或者根据需要（通常是为响应用户操作）[动态装载](https://zh.wikipedia.org/wiki/%E5%8B%95%E6%85%8B%E8%A3%9D%E8%BC%89)适当的资源并添加到页面。
 
@@ -145,8 +143,6 @@ RPC 远程过程调用（面向方法）  <br />  SOAP 面向服务的架构（�
 
 ESB（Enterprise Service Bus，中文翻译为企业服务总线）：一个实现系统间集成和互联互通的重要技术架构  <br />  	一种消息和服务集成的中间件平台。
 
-​
-
 RESTful架构：一种[万维网](https://zh.wikipedia.org/wiki/%E4%B8%87%E7%BB%B4%E7%BD%91)[软件架构](https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84)风格，目的是便于不同软件/程序在网络中互相传递信息  <br />  符合REST原则
 
 路径又称"终点"（endpoint），表示API的具体网址  <br />  每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应
@@ -163,11 +159,10 @@ HTTP动词
 
 
 # 云计算
-​
 
 **云计算**（cloud computing，**网络计算**）一种基于[互联网](https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91)的计算方式，共享的软硬件资源和信息可以按需求提供给计算机各种终端和其他设备，使用服务商提供的电脑基建作计算和资源。
 
-**SaaS**（Software as a Service，**软件即服务**）一种[软件](https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6)交付模式。软件仅需通过网络，不须经过传统的安装步骤即可使用，软件及其相关的[数据](https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE)集中[托管](https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E6%89%98%E7%AE%A1%E6%9C%8D%E5%8A%A1)于[云端](https://zh.wikipedia.org/wiki/%E4%BA%91%E8%AE%A1%E7%AE%97)服务。用户通常使用[精简客户端](https://zh.wikipedia.org/wiki/%E7%B2%BE%E7%B0%A1%E5%AE%A2%E6%88%B6%E7%AB%AF)，一般即经由[网页浏览器](https://zh.wikipedia.org/wiki/%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88%E5%99%A8)来访问、访问软件即服务。  <br />  ​
+**SaaS**（Software as a Service，**软件即服务**）一种[软件](https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6)交付模式。软件仅需通过网络，不须经过传统的安装步骤即可使用，软件及其相关的[数据](https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE)集中[托管](https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E6%89%98%E7%AE%A1%E6%9C%8D%E5%8A%A1)于[云端](https://zh.wikipedia.org/wiki/%E4%BA%91%E8%AE%A1%E7%AE%97)服务。用户通常使用[精简客户端](https://zh.wikipedia.org/wiki/%E7%B2%BE%E7%B0%A1%E5%AE%A2%E6%88%B6%E7%AB%AF)，一般即经由[网页浏览器](https://zh.wikipedia.org/wiki/%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88%E5%99%A8)来访问、访问软件即服务。
 
 **PaaS**（platform as a service，**平台即服务**）是一种[云计算](https://zh.wikipedia.org/wiki/%E9%9B%B2%E7%AB%AF%E9%81%8B%E7%AE%97)服务，提供运算平台与解决方案服务。在云计算的典型层级中，PaaS层介于SaaS与IaaS之间。
 
@@ -188,7 +183,6 @@ openssl s_client -connect infinisign.com:443 -showcerts < /dev/null | openssl x5
 openssl dgst -sha256 -binary infinisign.der | openssl enc -base64
 wLgBEAGmLltnXbK6pzpvPMeOCTKZ0QwrWGem6DkNf6o=
 ```
-​
 
 获取移动端所需公钥  <br />  如果采用公钥锁定方式，则获取证书公钥的摘要hash，以[infinisign.com](https://www.infinisign.com/infinisign.com)为例
 ```shell

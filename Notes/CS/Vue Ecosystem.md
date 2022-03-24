@@ -1,8 +1,9 @@
 <a name="f8e253bf"></a>
 # [Vue CLI](https://cli.vuejs.org/zh/)
 
-  <br />  CLI (@vue/cli) 是一个全局安装的 npm 包，提供了终端里的 vue 命令  <br />  
-  <br />  CLI 服务 (@vue/cli-service) 是一个开发环境依赖。它是一个 npm 包，局部安装在每个 @vue/cli 创建的项目中。  <br />  
+CLI (@vue/cli) 是一个全局安装的 npm 包，提供了终端里的 vue 命令
+
+CLI 服务 (@vue/cli-service) 是一个开发环境依赖。它是一个 npm 包，局部安装在每个 @vue/cli 创建的项目中。
 
 ```javascript
 npm install -g @vue/cli
@@ -12,8 +13,9 @@ npm update -g @vue/cli
 npm install vue@next
 ```
 
-  <br />  preset：一个包含创建新项目所需预定义选项和插件的 JSON 对象，让用户无需在命令提示中选择它们。 (~/.vuerc)  <br />  
-  <br />  **vue  [options]**  <br />  
+preset：一个包含创建新项目所需预定义选项和插件的 JSON 对象，让用户无需在命令提示中选择它们。 (~/.vuerc)
+
+**vue  [options]**
 
 ```javascript
 Commands:
@@ -32,10 +34,7 @@ Commands:
   info                                       print debugging information about your environment
 ```
 
-
 - vue-cli-service serve
-
-
 
 ```javascript
 用法：vue-cli-service serve [options] [entry]
@@ -49,10 +48,7 @@ Commands:
   --https   使用 https (默认值：false)
 ```
 
-
 - vue-cli-service build
-
-
 
 ```javascript
 用法：vue-cli-service build [options] [entry|pattern]
@@ -69,12 +65,11 @@ Commands:
   --watch       监听文件变化
 ```
 
-
 - vue-cli-service inspect
 
+[模式和环境变量](https://cli.vuejs.org/zh/guide/mode-and-env.html)
 
-  <br />  [模式和环境变量](https://cli.vuejs.org/zh/guide/mode-and-env.html)  <br />  
-  <br />  在项目根目录中放置下列文件来指定环境变量：  <br />  
+在项目根目录中放置下列文件来指定环境变量：
 
 ```javascript
 .env                # 在所有的环境中被载入
@@ -88,13 +83,14 @@ FOO=bar
 VUE_APP_NOT_SECRET_CODE=some_value
 ```
 
-  <br />  只有 NODE_ENV，BASE_URL 和以 VUE_APP_ 开头的变量将通过 webpack.DefinePlugin 静态地嵌入到客户端侧的代码中。  <br />  
-  <br />  使用	process.env.VUE_APP_SECRET  <br />  
+只有 NODE_ENV，BASE_URL 和以 VUE_APP_ 开头的变量将通过 webpack.DefinePlugin 静态地嵌入到客户端侧的代码中。
+
+使用	process.env.VUE_APP_SECRET
 
 <a name="57eeae77"></a>
 # [Vue Router](https://next.router.vuejs.org/zh/)
 
-  <br />  HTML  <br />  
+HTML
 
 ```html
 <script src="https://unpkg.com/vue@3"></script>
@@ -115,7 +111,7 @@ VUE_APP_NOT_SECRET_CODE=some_value
 </div>
 ```
 
-  <br />  JavaScript  <br />  
+JavaScript
 
 ```javascript
 // 1. 定义路由组件.
@@ -146,9 +142,11 @@ app.use(router)
 app.mount('#app')
 ```
 
-  <br />  [动态路由匹配](https://next.router.vuejs.org/zh/guide/essentials/dynamic-matching.html)  <br />  
-  <br />  动态路径参数(dynamic segment)  <br />  
-  <br />  [path-to-regexp](https://github.com/pillarjs/path-to-regexp)  <br />  
+[动态路由匹配](https://next.router.vuejs.org/zh/guide/essentials/dynamic-matching.html)
+
+动态路径参数(dynamic segment)
+
+[path-to-regexp](https://github.com/pillarjs/path-to-regexp)
 
 ```javascript
 const User = {
@@ -173,7 +171,7 @@ const routes = [
   ]
 ```
 
-  <br />  [嵌套路由](https://next.router.vuejs.org/zh/guide/essentials/nested-routes.html)  <br />  
+[嵌套路由](https://next.router.vuejs.org/zh/guide/essentials/nested-routes.html)
 
 ```javascript
 const User = {
@@ -207,13 +205,12 @@ const routes = [
 ]
 ```
 
-  <br />  [编程式导航](https://next.router.vuejs.org/zh/guide/essentials/navigation.html)
+[编程式导航](https://next.router.vuejs.org/zh/guide/essentials/navigation.html)
 
 | 声明式 | 编程式 |
 | --- | --- |
 | <router-link :to="..."> | router.push(...) |
 | <router-link :to="..." replace> | router.replace(...) |
-
 
 
 ```javascript
@@ -232,7 +229,6 @@ router.push({ path: '/register', query: { plan: 'private' } })
 // 带 hash，结果是 /about#team
 router.push({ path: '/about', hash: '#team' })
 ```
-
 
 ```javascript
 // --替换当前位置
@@ -255,7 +251,7 @@ router.go(-100)
 router.go(100)
 ```
 
-  <br />  [命名路由](https://next.router.vuejs.org/zh/guide/essentials/named-routes.html)  <br />  
+[命名路由](https://next.router.vuejs.org/zh/guide/essentials/named-routes.html)
 
 ```javascript
 const routes = [
@@ -273,7 +269,7 @@ const routes = [
 router.push({ name: 'user', params: { username: 'erina' } })
 ```
 
-  <br />  [命名视图](https://next.router.vuejs.org/zh/guide/essentials/named-views.html)  <br />  
+[命名视图](https://next.router.vuejs.org/zh/guide/essentials/named-views.html)
 
 ```javascript
 const router = createRouter({
@@ -297,7 +293,7 @@ const router = createRouter({
 <router-view class="view right-sidebar" name="RightSidebar"></router-view>
 ```
 
-  <br />  [重定向和别名](https://next.router.vuejs.org/zh/guide/essentials/redirect-and-alias.html)  <br />  
+[重定向和别名](https://next.router.vuejs.org/zh/guide/essentials/redirect-and-alias.html)
 
 ```javascript
 // 重定向
@@ -337,7 +333,7 @@ const routes = [
 ]
 ```
 
-  <br />  [路由组件传参](https://next.router.vuejs.org/zh/guide/essentials/passing-props.html)  <br />  
+[路由组件传参](https://next.router.vuejs.org/zh/guide/essentials/passing-props.html)
 
 ```javascript
 // 当 props 为 true 时，route.params 将被设置为组件的 props。
@@ -358,9 +354,11 @@ const routes = [
 ]
 ```
 
-  <br />  [不同的历史记录模式](https://next.router.vuejs.org/zh/guide/essentials/history-mode.html)  <br />  
-  <br />  [导航守卫](https://next.router.vuejs.org/zh/guide/advanced/navigation-guards.html)  <br />  
-  <br />  导航解析流程  <br />  
+[不同的历史记录模式](https://next.router.vuejs.org/zh/guide/essentials/history-mode.html)
+
+[导航守卫](https://next.router.vuejs.org/zh/guide/advanced/navigation-guards.html)
+
+导航解析流程
 
 1.  导航被触发。 
 1.  在失活的组件里调用 beforeRouteLeave 守卫。 
@@ -375,10 +373,11 @@ const routes = [
 1.  触发 DOM 更新。 
 1.  调用 beforeRouteEnter 守卫中传给 next 的回调函数，创建好的组件实例会作为回调函数的参数传入。 
 
+[路由元信息](https://next.router.vuejs.org/zh/guide/advanced/meta.html)
 
-  <br />  [路由元信息](https://next.router.vuejs.org/zh/guide/advanced/meta.html)  <br />  
-  <br />  [数据获取](https://next.router.vuejs.org/zh/guide/advanced/data-fetching.html)  <br />  
-  <br />  [组合式 API](https://next.router.vuejs.org/zh/guide/advanced/composition-api.html)  <br />  
+[数据获取](https://next.router.vuejs.org/zh/guide/advanced/data-fetching.html)
+
+[组合式 API](https://next.router.vuejs.org/zh/guide/advanced/composition-api.html)
 
 ```javascript
 import { useRouter, useRoute } from 'vue-router'
@@ -400,8 +399,9 @@ export default {
 }
 ```
 
-  <br />  [过渡动效](https://next.router.vuejs.org/zh/guide/advanced/transitions.html)  <br />  
-  <br />  [滚动行为](https://next.router.vuejs.org/zh/guide/advanced/scroll-behavior.html)  <br />  
+[过渡动效](https://next.router.vuejs.org/zh/guide/advanced/transitions.html)
+
+[滚动行为](https://next.router.vuejs.org/zh/guide/advanced/scroll-behavior.html)
 
 ```javascript
 const router = createRouter({
@@ -416,7 +416,7 @@ const router = createRouter({
 })
 ```
 
-  <br />  [路由懒加载](https://next.router.vuejs.org/zh/guide/advanced/lazy-loading.html)  <br />  
+[路由懒加载](https://next.router.vuejs.org/zh/guide/advanced/lazy-loading.html)
 
 ```javascript
 // 动态导入
@@ -436,9 +436,10 @@ const UserDashboard = () =>
 const UserProfileEdit = () =>
   import(/* webpackChunkName: "group-user" */ './UserProfileEdit.vue')
 ```
-[扩展 RouterLink](https://next.router.vuejs.org/zh/guide/advanced/extending-router-link.html)  <br />  [导航故障](https://next.router.vuejs.org/zh/guide/advanced/navigation-failures.html)  <br />  [动态路由](https://next.router.vuejs.org/zh/guide/advanced/dynamic-routing.html)  <br />  
-  <br />  
-  <br />  **API**
+[扩展 RouterLink](https://next.router.vuejs.org/zh/guide/advanced/extending-router-link.html)  <br />  [导航故障](https://next.router.vuejs.org/zh/guide/advanced/navigation-failures.html)  <br />  [动态路由](https://next.router.vuejs.org/zh/guide/advanced/dynamic-routing.html)
+
+
+**API**
 
 - [<router-link> Props](https://next.router.vuejs.org/zh/api/#router-link-props)
    - [to](https://next.router.vuejs.org/zh/api/#to)	目标路由的链接
@@ -472,14 +473,11 @@ const UserProfileEdit = () =>
 | duplicated | 16 | 重复导航是指在启动时已经在同一位置失败的导航。 |
 
 
-
 - [START_LOCATION](https://next.router.vuejs.org/zh/api/#start-location)**	路由所在的初始路由地址**
 - [Composition API](https://next.router.vuejs.org/zh/api/#composition-api)
    - [onBeforeRouteLeave](https://next.router.vuejs.org/zh/api/#onbeforerouteleave)
    - [onBeforeRouteUpdate](https://next.router.vuejs.org/zh/api/#onbeforerouteupdate)
    - [useLink](https://next.router.vuejs.org/zh/api/#uselink)
-
-
 
 ```javascript
 import { RouterLink, useLink } from 'vue-router'
@@ -504,7 +502,6 @@ export default {
   },
 }
 ```
-
 
 - [useRoute](https://next.router.vuejs.org/zh/api/#useroute)
    - [useRouter](https://next.router.vuejs.org/zh/api/#userouter)
@@ -576,13 +573,12 @@ export default {
    - [type](https://next.router.vuejs.org/zh/api/#type)
 - [NavigationGuard](https://next.router.vuejs.org/zh/api/#navigationguard)
 
-
-
 <a name="34164fff"></a>
 # [Vuex](https://next.vuex.vuejs.org/zh/)
 
-  <br />  为 Vue.js 应用程序开发的状态管理模式。  <br />  
-  <br />  采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。  <br />  
+为 Vue.js 应用程序开发的状态管理模式。
+
+采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
 
 ```javascript
 <script src="/path/to/vue.js"></script>
@@ -592,12 +588,10 @@ npm install vuex --save
 npm install vuex@next --save
 ```
 
-
 -  状态存储是响应式的 
 -  改变 store 中的状态的唯一途径就是显式地提交 (commit) mutations 
 
-
-  <br />  ![](./assets/1646406430612-d4971b8e-4d7f-4462-8b32-8f9c873aa43a.png)  <br />  
+![](./assets/1646406430612-d4971b8e-4d7f-4462-8b32-8f9c873aa43a.png)
 
 ```javascript
 import Vimport { createApp } from 'vue'
@@ -631,11 +625,9 @@ const app = createApp({
 app.use(store)
 ```
 
-  <br />  **核心概念**  <br />  
+**核心概念**
 
 - State	获得 Vuex 状态
-
-
 
 ```javascript
 import { mapState } from 'vuex'
@@ -661,10 +653,7 @@ export default {
 }
 ```
 
-
 - Getter	派生状态，计算属性
-
-
 
 ```javascript
 const store = createStore({
@@ -710,10 +699,7 @@ export default {
 }
 ```
 
-
 - Mutation	更改状态
-
-
 
 ```javascript
 const store = createStore({
@@ -750,10 +736,7 @@ export default {
 }
 ```
 
-
 - Action	异步
-
-
 
 ```javascript
 const store = createStore({
@@ -812,10 +795,7 @@ export default {
 }
 ```
 
-
 - Module
-
-
 
 ```javascript
 const moduleA = {
@@ -846,7 +826,7 @@ store.state.a // -> moduleA 的状态
 store.state.b // -> moduleB 的状态
 ```
 
-  <br />  命名空间  <br />  
+命名空间
 
 ```javascript
 const store = createStore({
@@ -891,7 +871,7 @@ const store = createStore({
 })
 ```
 
-  <br />  简化使用  <br />  
+简化使用
 
 ```javascript
 computed: {
@@ -931,8 +911,9 @@ export default {
 }
 ```
 
-  <br />  require.context(directory, useSubdirectories, regExp, mode = 'sync')  <br />  
-  <br />  **API**
+require.context(directory, useSubdirectories, regExp, mode = 'sync')
+
+**API**
 
 - [Store](https://next.vuex.vuejs.org/zh/api/#store)
    - [createStore](https://next.vuex.vuejs.org/zh/api/#createstore)
@@ -968,8 +949,6 @@ export default {
 - [组合式函数](https://next.vuex.vuejs.org/zh/api/#%E7%BB%84%E5%90%88%E5%BC%8F%E5%87%BD%E6%95%B0)
    - [useStore](https://next.vuex.vuejs.org/zh/api/#usestore)
 
-
-
 ```javascript
 import { computed } from 'vue'
 import { useStore } from 'vuex'
@@ -995,7 +974,7 @@ export default {
 }
 ```
 
-  <br />  表单处理——双向绑定的计算属性  <br />  
+表单处理——双向绑定的计算属性
 
 ```javascript
 <input v-model="message">
@@ -1013,16 +992,15 @@ computed: {
 }
 ```
 
-
 <a name="cae0fa92"></a>
 # [Vue Loader](https://vue-loader.vuejs.org/zh/)
 
-  <br />  一个 [webpack](https://webpack.js.org/) 的 loader，它允许你以一种名为单文件组件 (SFCs)的格式撰写 Vue 组件  <br />  
+一个 [webpack](https://webpack.js.org/) 的 loader，它允许你以一种名为单文件组件 (SFCs)的格式撰写 Vue 组件
 
 <a name="ac2cd4e9"></a>
 ## Scoped CSS
 
-  <br />  当 <style> 标签有 scoped 属性时，它的 CSS 只作用于当前组件中的元素。父组件的样式将不会渗透到子组件中
+当 <style> 标签有 scoped 属性时，它的 CSS 只作用于当前组件中的元素。父组件的样式将不会渗透到子组件中
 ```html
 <style scoped>
 .example {
@@ -1035,7 +1013,7 @@ computed: {
 </template>
 ```
 
-  <br />  转换结果：  <br />  
+转换结果：
 
 ```html
 <style>
@@ -1049,7 +1027,7 @@ computed: {
 </template>
 ```
 
-  <br />  深度选择器  <br />  
+深度选择器
 
 ```javascript
 <style scoped>
@@ -1064,13 +1042,13 @@ computed: {
 </style>
 ```
 
-  <br />  编译成：  <br />  
+编译成：
 
 ```javascript
 .a[data-v-f3f3eg9] .b { /* ... */ }
 ```
 
-  <br />  **插槽选择器**  <br />  
+**插槽选择器**
 
 ```javascript
 <style scoped>
@@ -1080,7 +1058,7 @@ computed: {
 </style>
 ```
 
-  <br />  **全局选择器**  <br />  
+**全局选择器**
 
 ```javascript
 <style scoped>
@@ -1090,10 +1068,8 @@ computed: {
 </style>
 ```
 
-
 <a name="8b129b4b"></a>
 ## [CSS Modules](https://vue-loader.vuejs.org/zh/guide/css-modules.html)
-
 
 ```javascript
 <style module>
@@ -1105,7 +1081,6 @@ computed: {
 }
 </style>
 ```
-
 
 ```javascript
 <template>
@@ -1129,7 +1104,7 @@ export default {
 </script>
 ```
 
-  <br />  Vue SFC Style CSS 变量  <br />  
+Vue SFC Style CSS 变量
 
 ```javascript
 <template>
@@ -1158,21 +1133,20 @@ export default {
 </style>
 ```
 
-
 -  热重载 
 -  函数式组件 
 -  自定义块 
 -  CSS 提取 
 -  代码校验 (Linting) 
 
-
-
 <a name="1cf2ca4f"></a>
 # [项目配置](https://cli.vuejs.org/zh/config/)
 
-  <br />  [browserslist](https://github.com/browserslist/browserslist)  <br />  
-  <br />  vue.config.js  <br />  
-  <br />  一个可选的配置文件，在项目的根目录中  <br />  
+[browserslist](https://github.com/browserslist/browserslist)
+
+vue.config.js
+
+一个可选的配置文件，在项目的根目录中
 
 ```javascript
 // vue.config.js
@@ -1185,7 +1159,7 @@ module.exports = {
 }
 ```
 
-  <br />  **设置目录别名 alias**  <br />  
+**设置目录别名 alias**
 
 ```javascript
 const path = require('path')
@@ -1205,7 +1179,7 @@ module.exports = {
 }
 ```
 
-  <br />  **代理配置**  <br />  
+**代理配置**
 
 ```javascript
 module.exports = {
@@ -1225,7 +1199,7 @@ module.exports = {
 }
 ```
 
-  <br />  **环境配置**  <br />  
+**环境配置**
 
 ```javascript
 // .env.development
@@ -1248,7 +1222,7 @@ VUE_APP_FETCH_URL = 'https://production.com/'
 VUE_APP_PUBLIC_KEY = 'VUE_APP_PUBLIC_KEY'
 ```
 
-  <br />  **多页面**  <br />  
+**多页面**
 
 ```javascript
 module.exports = {
@@ -1276,14 +1250,11 @@ module.exports = {
 }
 ```
 
-
 <a name="3f3a4e00"></a>
 # —— 组件
 
-
 <a name="3a7d011f"></a>
 # [Vue I18n](https://vue-i18n.intlify.dev/)
-
 
 ```javascript
 <script src="https://unpkg.com/vue@next"></script>
@@ -1294,7 +1265,6 @@ module.exports = {
   <p>{{ t("message.hello") }}</p>  // for composition API
 </div>
 ```
-
 
 ```javascript
 // 1. Ready translated locale messages
@@ -1340,7 +1310,7 @@ app.use(i18n)
 app.mount('#app')
 ```
 
-  <br />  API
+API
 
 - [General](https://vue-i18n.intlify.dev/api/general)
    - [createI18n](https://vue-i18n.intlify.dev/api/general.html#createi18n)
@@ -1428,11 +1398,8 @@ app.mount('#app')
 - [Directives](https://vue-i18n.intlify.dev/api/directive)
 - [Component Injections](https://vue-i18n.intlify.dev/api/injection)
 
-
-
 <a name="50d03e1e"></a>
 # [Vue Test Utils](https://next.vue-test-utils.vuejs.org/)
-
 
 ```javascript
 import { mount } from '@vue/test-utils'
@@ -1455,7 +1422,7 @@ test('displays message', () => {
 })
 ```
 
-  <br />  API
+API
 
 - [mount](https://next.vue-test-utils.vuejs.org/api/#mount)
    - [attachTo](https://next.vue-test-utils.vuejs.org/api/#attachto)
@@ -1492,12 +1459,10 @@ test('displays message', () => {
 - [config](https://next.vue-test-utils.vuejs.org/api/#config)
    - [config.global](https://next.vue-test-utils.vuejs.org/api/#config-global)
 
-
-
 <a name="aa7b71a3"></a>
 # [SSR](https://v3.cn.vuejs.org/guide/ssr/introduction.html)
 
-  <br />  ![](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png#clientId=u9a034459-3792-4&crop=0&crop=0&crop=1&crop=1&id=yZjUA&originHeight=892&originWidth=1946&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ue8e28367-b99d-4946-909f-5f0119f31f9&title=)  <br />  
+![](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png#clientId=u9a034459-3792-4&crop=0&crop=0&crop=1&crop=1&id=yZjUA&originHeight=892&originWidth=1946&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ue8e28367-b99d-4946-909f-5f0119f31f9&title=)
 
 ```javascript
 const { createSSRApp } = require('vue')
@@ -1530,14 +1495,11 @@ server.get('*', async (req, res) => {
 server.listen(8080)
 ```
 
-
 <a name="c8c2f9b6"></a>
 # [nuxt.js](https://github.com/nuxt/nuxt.js)
 
-
 <a name="760c2490"></a>
 # [awesome-vue](https://github.com/vuejs/awesome-vue)
-
 
 <a name="49a19866"></a>
 # [vuepress](https://github.com/vuejs/vuepress)

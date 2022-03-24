@@ -1,6 +1,6 @@
 
 # —— [Node.js](https://nodejs.org/en/docs/) ——
-2009年，Ryan正式推出了基于JavaScript语言和V8引擎的开源Web服务器项目Node.js。  <br />  ​
+2009年，Ryan正式推出了基于JavaScript语言和V8引擎的开源Web服务器项目Node.js。
 
 [REPL](https://nodejs.org/api/repl.html#repl_repl)(Read Eval Print Loop，交互式解释器)
 ```javascript
@@ -269,8 +269,6 @@ npm（Node Package Manager）是Node.js默认的、用JavaScript编写的软件�
 - [npx](https://docs.npmjs.com/cli/v7/commands/npx)	Run a command from an npm package
 - npm help <command>		npm <command> -h
 
-​
-
 淘宝镜像
 ```javascript
 npm install -g cnpm --registry=https://registry.npm.taobao.org
@@ -309,8 +307,6 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
 
 - [package-lock.json](https://docs.npmjs.com/cli/v7/configuring-npm/package-lock-json)	A manifestation of the manifest
-
-​  <br />  
 
 - dependencies 和 devDependencies ：模块的依赖和开发环境依赖
 - peerDependencies	模块需要与宿主模块共享依赖（可能会用到某个模块，但不安装）
@@ -718,7 +714,7 @@ axios.post('/user/12345', {
 // 取消请求（message 参数是可选的）
 source.cancel('Operation canceled by the user.');
 ```
-[请求体编码](https://axios-http.com/zh/docs/urlencoded)  <br />  ​
+[请求体编码](https://axios-http.com/zh/docs/urlencoded)
 
 Jsonp 请求
 ```javascript
@@ -794,9 +790,9 @@ server.listen(3000, () => {
 ```
 
 # [Webpack](https://webpack.js.org/)
-模块打包器。将 JavaScript 文件打包在一起，打包后的文件用于在浏览器中使用，也能转换(transform)、打包(bundle)或包裹(package)任何资源(resource or asset)。  <br />  ​
+模块打包器。将 JavaScript 文件打包在一起，打包后的文件用于在浏览器中使用，也能转换(transform)、打包(bundle)或包裹(package)任何资源(resource or asset)。
 
-chunk  <br />  bundle  <br />  ​
+chunk  <br />  bundle
 
 配置  <br />  **入口[entry]**
 ```javascript
@@ -999,8 +995,6 @@ const iPhoneXR = puppeteer.devices['iPhone XR'];
    - devtools <[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type)> 是否为每个选项卡自动打开DevTools面板。如果这个选项是 true，headless 选项将会设置成 false。
    - pipe <[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type)> 通过管道而不是WebSocket连接到浏览器。默认是 false。
 - returns: <[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Browser](https://zhaoqize.github.io/puppeteer-api-zh_CN/#?product=Puppeteer&version=v8.0.0&show=api-class-browser)>> 浏览器实例支持 Promise。
-
-​
 
 [class: Puppeteer](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-puppeteer)
 
@@ -1427,9 +1421,9 @@ const puppeteer = require('puppeteer');
 ```
 
 # [Jest](https://github.com/facebook/jest/labels/good%20first%20issue)
-**UI**  <br />  [daisyui](https://github.com/saadeghi/daisyui)	Tailwind Components  <br />  [tailwindcss](https://github.com/tailwindlabs/tailwindcss)  <br />  ​
+**UI**  <br />  [daisyui](https://github.com/saadeghi/daisyui)	Tailwind Components  <br />  [tailwindcss](https://github.com/tailwindlabs/tailwindcss)
 
-[Chart.js](https://github.com/chartjs/Chart.js)  <br />  [echarts](https://github.com/apache/echarts)  <br />  ​
+[Chart.js](https://github.com/chartjs/Chart.js)  <br />  [echarts](https://github.com/apache/echarts)
 
 [anime](https://github.com/juliangarnier/anime)
 
@@ -1460,35 +1454,29 @@ Presentation
 
 tools  <br />  [Day.js](https://github.com/iamkun/dayjs)  <br />  [node-qrcode](https://github.com/soldair/node-qrcode)
 
-[i18next](https://github.com/i18next/i18next)  <br />  [Clipboard.js](https://clipboardjs.com/)  <br />  ​  <br />  
+[i18next](https://github.com/i18next/i18next)  <br />  [Clipboard.js](https://clipboardjs.com/)
 
 - [lodash](https://github.com/lodash/lodash)	delivering modularity, performance & extras
-
-​  <br />  
 
 - [Sortable](https://github.com/SortableJS/Sortable)	reorderable drag-and-drop lists
 - [color](https://github.com/Qix-/color)	color conversion and manipulation
 
-[sheetjs](https://github.com/SheetJS/sheetjs)  <br />  [flv.js](https://github.com/bilibili/flv.js)  <br />  [better-scroll](https://github.com/ustbhuangyi/better-scroll)  <br />  [cypress](https://github.com/cypress-io/cypress)  <br />  [marked](https://github.com/markedjs/marked)	A markdown parser and compiler  <br />  [jszip](https://github.com/Stuk/jszip)	creating, reading and editing .zip files  <br />  ​
+[sheetjs](https://github.com/SheetJS/sheetjs)  <br />  [flv.js](https://github.com/bilibili/flv.js)  <br />  [better-scroll](https://github.com/ustbhuangyi/better-scroll)  <br />  [cypress](https://github.com/cypress-io/cypress)  <br />  [marked](https://github.com/markedjs/marked)	A markdown parser and compiler  <br />  [jszip](https://github.com/Stuk/jszip)	creating, reading and editing .zip files
 
-​
 
-[awesome-javascript](https://github.com/sorrycc/awesome-javascript)  <br />  [awesome-nodejs](https://github.com/sindresorhus/awesome-nodejs)  <br />  [awesome-electron](https://github.com/sindresorhus/awesome-electron)  <br />  ​
+[awesome-javascript](https://github.com/sorrycc/awesome-javascript)  <br />  [awesome-nodejs](https://github.com/sindresorhus/awesome-nodejs)  <br />  [awesome-electron](https://github.com/sindresorhus/awesome-electron)
 
-​
 
-​  <br />  
+
 
 # —— [TypeScript](https://github.com/Microsoft/TypeScript) ——
-由微软开发的自由和开源的编程语言，JavaScript 的一个超集，提供了类型系统和对 ES6 的支持。  <br />  ​
+由微软开发的自由和开源的编程语言，JavaScript 的一个超集，提供了类型系统和对 ES6 的支持。
 
 TypeScript 增加了代码的可读性和可维护性
 
 - 类型系统实际上是最好的文档，大部分的函数看看类型的定义就可以知道如何使用了
 - 可以在编译阶段就发现大部分错误，这总比在运行时候出错好
 - 增强了编辑器和 IDE 的功能，包括代码补全、接口提示、跳转到定义、代码重构等
-
-​
 
 TypeScript 非常包容
 
@@ -1498,14 +1486,12 @@ TypeScript 非常包容
 - 即使 TypeScript 编译报错，也可以生成 JavaScript 文件
 - 兼容第三方库，即使第三方库不是用 TypeScript 写的，也可以编写单独的类型文件供 TypeScript 读取
 
-​
-
 安装
 ```javascript
 npm install -g typescript
 tsc test.ts  //将 TypeScript 转换为 JavaScript 代码
 ```
-约定使用 TypeScript 编写的文件以 .ts 为后缀，用 TypeScript 编写 React 时，以 .tsx 为后缀  <br />  ​
+约定使用 TypeScript 编写的文件以 .ts 为后缀，用 TypeScript 编写 React 时，以 .tsx 为后缀
 
 tsc [options] [file...]
 ```javascript
@@ -1525,7 +1511,7 @@ tsc [options] [file...]
 -d, --declaration	Generates corresponding '.d.ts' file.
 ```
 
-  <br />  **对象类型（Object types）**  <br />  空值（Void）  <br />  任意值（Any）	表示允许赋值为任意类型  <br />  undefined 和 null 是所有类型的子类型
+**对象类型（Object types）**  <br />  空值（Void）  <br />  任意值（Any）	表示允许赋值为任意类型  <br />  undefined 和 null 是所有类型的子类型
 ```javascript
 function alertName(): void {
     alert('Typescript');
@@ -1552,7 +1538,7 @@ let myFavoriteNumber: string | number;
 myFavoriteNumber = 'seven';
 myFavoriteNumber = 7;
 ```
-当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时，只能访问此联合类型的所有类型里共有的属性或方法  <br />  **​**
+当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时，只能访问此联合类型的所有类型里共有的属性或方法
 
 **接口（Interfaces）**：定义对象的类型
 
@@ -1571,7 +1557,7 @@ let tom: Person = {
     gender: 'male'
 };
 ```
-**​**
+
 
 **数组类型**
 ```javascript
@@ -1583,7 +1569,7 @@ interface IArguments {
     callee: Function;
 }
 ```
-**​**
+
 
 **函数**
 
@@ -1608,7 +1594,7 @@ mySearch = function(source: string, subString: string) {
     return source.search(subString) !== -1;
 }
 ```
-**​**
+
 
 **重载**
 ```javascript
@@ -1651,7 +1637,7 @@ function isFish(animal: Cat | Fish) {
 - 将任何一个类型断言为 any
 - 将 any 断言为一个具体的类型
 
-**​**
+
 
 **声明文件**
 
@@ -1669,8 +1655,6 @@ function isFish(animal: Cat | Fish) {
 - [declare global](https://ts.xcatliu.com/basics/declaration-files.html#declare-global) 扩展全局变量
 - [declare module](https://ts.xcatliu.com/basics/declaration-files.html#declare-module) 扩展模块
 - [/// <reference />](https://ts.xcatliu.com/basics/declaration-files.html#san-xie-xian-zhi-ling) 三斜线指令
-
-​
 
 **类型别名**
 ```javascript
@@ -1779,8 +1763,6 @@ interface Alarm {
     alert(s: string, n: number): string;
 }
 ```
-​
 
-​
 
 [TypeScript 入门教程](https://ts.xcatliu.com/)

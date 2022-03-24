@@ -344,7 +344,6 @@ app.component('my-title', {
 })
 app.mount('#app')
 ```
-​
 
 [生命周期钩子](https://v3.cn.vuejs.org/api/options-lifecycle-hooks.html)
 
@@ -434,7 +433,6 @@ createApp({
   }
 </script>
 ```
-​
 
 [杂项](https://v3.cn.vuejs.org/api/options-misc.html)
 
@@ -445,7 +443,7 @@ createApp({
 
 
 
-## ​[实例 property](https://v3.cn.vuejs.org/api/instance-properties.html)
+## [实例 property](https://v3.cn.vuejs.org/api/instance-properties.html)
 
 - [$data](https://v3.cn.vuejs.org/api/instance-properties.html#data)	组件实例正在侦听的数据对象
 - [$props](https://v3.cn.vuejs.org/api/instance-properties.html#props)	当前组件接收到的 props 对象
@@ -684,10 +682,13 @@ createApp({
 
 - v-model	在表单控件或者组件上创建双向绑定
 
-限制于：  <br />  <input>  <br />  <select>  <br />  <textarea>  <br />  components  <br />  修饰符：  <br />  
-  <br />  [.lazy](https://v3.cn.vuejs.org/guide/forms.html#lazy) - 监听 change 而不是 input 事件  <br />  
-  <br />  [.number](https://v3.cn.vuejs.org/guide/forms.html#number) - 输入字符串转为有效的数字  <br />  
-  <br />  [.trim](https://v3.cn.vuejs.org/guide/forms.html#trim) - 输入首尾空格过滤  <br />  
+限制于：  <br />  <input>  <br />  <select>  <br />  <textarea>  <br />  components  <br />  修饰符：
+
+[.lazy](https://v3.cn.vuejs.org/guide/forms.html#lazy) - 监听 change 而不是 input 事件
+
+[.number](https://v3.cn.vuejs.org/guide/forms.html#number) - 输入字符串转为有效的数字
+
+[.trim](https://v3.cn.vuejs.org/guide/forms.html#trim) - 输入首尾空格过滤
 
 ```javascript
 <span>Multiline message is:</span>
@@ -696,10 +697,7 @@ createApp({
 <textarea v-model="message" placeholder="add multiple lines"></textarea>
 ```
 
-
 - v-slot	提供具名插槽或需要接收 prop 的插槽
-
-
 
 ```javascript
 <!-- 具名插槽 -->
@@ -732,19 +730,13 @@ createApp({
 </mouse-position>
 ```
 
-
 - v-pre	跳过这个元素和它的子元素的编译过程。用来显示原始 Mustache 标签。跳过大量没有指令的节点会加快编译。
-
-
 
 ```html
 <span v-pre>{{ this will not be compiled }}</span>
 ```
 
-
 - v-cloak	保持在元素上直到关联组件实例结束编译
-
-
 
 ```html
 [v-cloak] {
@@ -758,15 +750,11 @@ createApp({
 <!-- div不会显示，直到编译结束。-->
 ```
 
-
 -  v-once	只渲染元素和组件一次 
 -  v-memo	记住一个模板的子树 
 
-
-
 <a name="5da1e5c2"></a>
 ### [自定义指令](https://vue3js.cn/docs/zh/guide/custom-directive.html)
-
 
 ```javascript
 const app = Vue.createApp({})
@@ -791,15 +779,11 @@ directives: {
 }
 ```
 
-
 <a name="21c3477a"></a>
 ## [特殊指令](https://v3.cn.vuejs.org/api/special-attributes.html)
 
-
 -  key 
 -  ref	给元素或子组件注册引用信息 
-
-
 
 ```html
 <!-- vm.$refs.p 会是 DOM 节点 -->
@@ -812,16 +796,12 @@ directives: {
 <child-component :ref="(el) => child = el"></child-component>
 ```
 
-
 - is	使用动态组件
-
-
 
 ```html
 <!-- 当 currentView 改变时组件就改变 -->
 <component :is="currentView"></component>
 ```
-
 
 <a name="2973bb67"></a>
 ## [内置组件](https://v3.cn.vuejs.org/api/built-in-components.html)
@@ -831,8 +811,7 @@ directives: {
 - [transition-group](https://v3.cn.vuejs.org/api/built-in-components.html#transition-group)	作为多个元素/组件的过渡效果
 - [keep-alive](https://v3.cn.vuejs.org/api/built-in-components.html#keep-alive)	缓存不活动的组件实例
 
-
-  <br />  动态组件  <br />  
+动态组件
 
 ```javascript
 <keep-alive>
@@ -840,12 +819,10 @@ directives: {
 </keep-alive>
 ```
 
-
 -  slot 
 -  teleport 
 
-
-  <br />  [异步组件](https://cn.vuejs.org/v2/guide/components-dynamic-async.html)  <br />  
+[异步组件](https://cn.vuejs.org/v2/guide/components-dynamic-async.html)
 
 ```javascript
 Vue.component('async-example', function (resolve, reject) {
@@ -858,15 +835,12 @@ Vue.component('async-example', function (resolve, reject) {
 })
 ```
 
-
 <a name="77ee32de"></a>
 ## [响应性 API](https://v3.cn.vuejs.org/api/reactivity-api.html)
 
-  <br />  [响应性基础 API](https://v3.cn.vuejs.org/api/basic-reactivity.html)  <br />  
+[响应性基础 API](https://v3.cn.vuejs.org/api/basic-reactivity.html)
 
 - reactive	返回对象的响应式副本
-
-
 
 ```javascript
 // 声明对象的格式
@@ -888,10 +862,7 @@ console.log(userInfo.name);
 userInfo.name = 'Petter';
 ```
 
-
 - readonly
-
-
 
 ```javascript
 const original = reactive({ count: 0 })
@@ -918,13 +889,9 @@ copy.count++ // 警告!
 - [shallowReactive](https://v3.cn.vuejs.org/api/basic-reactivity.html#shallowreactive)
 - [shallowReadonly](https://v3.cn.vuejs.org/api/basic-reactivity.html#shallowreadonly)
 
-​
-
 [Refs](https://v3.cn.vuejs.org/api/refs-api.html)
 
 - [ref](https://v3.cn.vuejs.org/api/refs-api.html#ref)
-
-
 
 ```typescript
 interface Ref<T> {
@@ -934,10 +901,7 @@ interface Ref<T> {
 function ref<T>(value: T): Ref<T>
 ```
 
-
 - unref	  isRef(val) ? val.value : val
-
-
 
 ```javascript
 function useFoo(x: number | Ref<number>) {
@@ -945,10 +909,7 @@ function useFoo(x: number | Ref<number>) {
 }
 ```
 
-
 - toRef
-
-
 
 ```typescript
 const state = reactive({
@@ -965,10 +926,7 @@ state.foo++
 console.log(fooRef.value) // 3
 ```
 
-
 - toRefs
-
-
 
 ```typescript
 const state = reactive({
@@ -999,8 +957,6 @@ console.log(state.foo) // 3
 - [shallowRef](https://v3.cn.vuejs.org/api/refs-api.html#shallowref)
 - [triggerRef](https://v3.cn.vuejs.org/api/refs-api.html#triggerref)
 
-​
-
 [Computed 与 watch](https://v3.cn.vuejs.org/api/computed-watch-api.html)
 
 - [computed](https://v3.cn.vuejs.org/api/computed-watch-api.html#computed)
@@ -1019,10 +975,7 @@ console.log(count.value) // 0
 plusOne.value++ // 错误
 ```
 
-
 - watchEffect	立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数。
-
-
 
 ```javascript
 const count = ref(0)
@@ -1036,10 +989,7 @@ setTimeout(() => {
 }, 100)
 ```
 
-
 - watch
-
-
 
 ```javascript
 // 直接侦听一个 ref 或 getter
@@ -1054,14 +1004,10 @@ watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
 })
 ```
 
-
 <a name="4a1d1ce7"></a>
 ## [组合式 API](https://v3.cn.vuejs.org/api/composition-api.html)
 
-
 - setup
-
-
 
 ```typescript
 interface Data {
@@ -1077,11 +1023,8 @@ interface SetupContext {
 function setup(props: Data, context: SetupContext): Data
 ```
 
-
 -  生命周期钩子 
 -  Provide / Inject 
-
-
 
 ```javascript
 import { InjectionKey, provide, inject } from 'vue'
@@ -1093,11 +1036,9 @@ provide(key, 'foo') // 若提供非字符串值将出错
 const foo = inject(key) // foo 的类型: string | undefined
 ```
 
-
 - getCurrentInstance
 
-
-  <br />  组合式示例  <br />  
+组合式示例
 
 ```javascript
 import { fetchUserRepositories } from '@/api/repositories'
@@ -1135,7 +1076,6 @@ setup (props) {
 }
 ```
 
-
 <a name="d41d8cd9"></a>
 ## [<script setup>](https://v3.cn.vuejs.org/api/sfc-script-setup.html)
 ```javascript
@@ -1162,11 +1102,10 @@ defineExpose({
 </script>
 ```
 
-
 <a name="cb3165de"></a>
 ## 组件（Component）
 
-  <br />  扩展 HTML 元素，封装可重用的代码  <br />  
+扩展 HTML 元素，封装可重用的代码
 
 ```javascript
 // 全局注册
@@ -1200,19 +1139,19 @@ export default {
 }
 ```
 
-  <br />  组件名  <br />  
+组件名
 
 -  kebab-case (短横线分隔命名) 	引用时使用 kebab-case 
 -  PascalCase (首字母大写命名) 	引用时两种命名法都可以。     
 
-
-
 <a name="f267f7da"></a>
 ### [Props](https://v3.cn.vuejs.org/guide/component-props.html)
 
-  <br />  在组件上注册的一些自定义 attribute  <br />  
-  <br />  单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。  <br />  
-  <br />  验证  <br />  
+在组件上注册的一些自定义 attribute
+
+单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。
+
+验证
 
 ```javascript
 app.component('my-component', {
@@ -1258,9 +1197,11 @@ app.component('my-component', {
 })
 ```
 
-  <br />  [非 Prop 的 Attribute](https://v3.cn.vuejs.org/guide/component-attrs.html)  <br />  
-  <br />  一个非 prop 的 attribute 是指传向一个组件，但是该组件并没有相应 [props](https://v3.cn.vuejs.org/guide/component-props) 或 emits 定义的 attribute。常见的示例包括 class、style 和 id 属性。  <br />  
-  <br />  [Attribute 继承](https://v3.cn.vuejs.org/guide/component-attrs.html#attribute-%E7%BB%A7%E6%89%BF)  <br />  
+[非 Prop 的 Attribute](https://v3.cn.vuejs.org/guide/component-attrs.html)
+
+一个非 prop 的 attribute 是指传向一个组件，但是该组件并没有相应 [props](https://v3.cn.vuejs.org/guide/component-props) 或 emits 定义的 attribute。常见的示例包括 class、style 和 id 属性。
+
+[Attribute 继承](https://v3.cn.vuejs.org/guide/component-attrs.html#attribute-%E7%BB%A7%E6%89%BF)
 
 ```javascript
 app.component('date-picker', {
@@ -1280,7 +1221,7 @@ app.component('date-picker', {
 </div>
 ```
 
-  <br />  [禁用 Attribute 继承](https://v3.cn.vuejs.org/guide/component-attrs.html#%E7%A6%81%E7%94%A8-attribute-%E7%BB%A7%E6%89%BF)  <br />  
+[禁用 Attribute 继承](https://v3.cn.vuejs.org/guide/component-attrs.html#%E7%A6%81%E7%94%A8-attribute-%E7%BB%A7%E6%89%BF)
 
 ```javascript
 app.component('date-picker', {
@@ -1301,11 +1242,10 @@ app.component('date-picker', {
 </div>
 ```
 
-  <br />  [多个根节点上的 Attribute 继承](https://v3.cn.vuejs.org/guide/component-attrs.html#%E5%A4%9A%E4%B8%AA%E6%A0%B9%E8%8A%82%E7%82%B9%E4%B8%8A%E7%9A%84-attribute-%E7%BB%A7%E6%89%BF)  <br />  
+[多个根节点上的 Attribute 继承](https://v3.cn.vuejs.org/guide/component-attrs.html#%E5%A4%9A%E4%B8%AA%E6%A0%B9%E8%8A%82%E7%82%B9%E4%B8%8A%E7%9A%84-attribute-%E7%BB%A7%E6%89%BF)
 
 <a name="a6c1bee9"></a>
 ### [自定义事件](https://v3.cn.vuejs.org/guide/component-custom-events.html)
-
 
 ```javascript
 <user-name
@@ -1333,10 +1273,7 @@ app.component('user-name', {
 })
 ```
 
-
 - 自定义修饰符
-
-
 
 ```javascript
 <div id="app">
@@ -1379,10 +1316,8 @@ app.component('my-component', {
 app.mount('#app')
 ```
 
-
 <a name="f8b8ced4"></a>
 ### [插槽](https://v3.cn.vuejs.org/guide/component-slots.html)
-
 
 - [插槽内容](https://v3.cn.vuejs.org/guide/component-slots.html#%E6%8F%92%E6%A7%BD%E5%86%85%E5%AE%B9)
    - 字符串
@@ -1394,18 +1329,13 @@ app.mount('#app')
 - [备用内容](https://v3.cn.vuejs.org/guide/component-slots.html#%E5%A4%87%E7%94%A8%E5%86%85%E5%AE%B9)
    - 在没有提供内容的时候被渲染
 
-
-
 ```javascript
 <button type="submit">
   <slot>Submit</slot>
 </button>
 ```
 
-
 - 具名插槽
-
-
 
 ```html
 // 定义  <slot> 元素有一个特殊的 attribute：name，可以用来定义额外的插槽
@@ -1452,11 +1382,8 @@ app.mount('#app')
 </div>
 ```
 
-
 -  作用域插槽 
 -  独占默认插槽的缩写语法 
-
-
 
 ```javascript
 <todo-list v-slot="slotProps">
@@ -1465,10 +1392,7 @@ app.mount('#app')
 </todo-list>
 ```
 
-
 - 解构插槽 Prop
-
-
 
 ```javascript
 <todo-list v-slot="{ item }">
@@ -1477,10 +1401,7 @@ app.mount('#app')
 </todo-list>
 ```
 
-
 - 动态插槽名
-
-
 
 ```javascript
 <base-layout>
@@ -1490,11 +1411,10 @@ app.mount('#app')
 </base-layout>
 ```
 
-
 <a name="6af5f6a1"></a>
 ### [Provide / Inject](https://v3.cn.vuejs.org/guide/component-provide-inject.html)
 
-  <br />  层次示例  <br />  
+层次示例
 
 ```javascript
 Root
@@ -1504,7 +1424,6 @@ Root
       ├─ ClearTodosButton
       └─ TodoListStatistics
 ```
-
 
 ```javascript
 const app = Vue.createApp({})
@@ -1552,7 +1471,7 @@ app.component('todo-list-statistics', {
 })
 ```
 
-  <br />  组合式  <br />  
+组合式
 
 ```javascript
 <!-- src/components/MyMap.vue -->
@@ -1607,11 +1526,10 @@ export default {
 </script>
 ```
 
-
 <a name="f909368a"></a>
 ### [动态组件 & 异步组件](https://v3.cn.vuejs.org/guide/component-dynamic-async.html)
 
-  <br />  动态  <br />  
+动态
 
 ```javascript
 <!-- 失活的组件将会被缓存！-->
@@ -1620,7 +1538,7 @@ export default {
 </keep-alive>
 ```
 
-  <br />  异步  <br />  
+异步
 
 ```javascript
 const { createApp, defineAsyncComponent } = Vue
@@ -1639,10 +1557,8 @@ const AsyncComp = defineAsyncComponent(
 app.component('async-example', AsyncComp)
 ```
 
-
 <a name="f5a845b3"></a>
 ### [模板引用](https://v3.cn.vuejs.org/guide/component-template-refs.html)
-
 
 ```javascript
 // 组件挂载后聚焦
@@ -1663,7 +1579,7 @@ app.component('base-input', {
 })
 ```
 
-  <br />  响应式[模板引用](https://v3.cn.vuejs.org/guide/composition-api-template-refs.html)  <br />  
+响应式[模板引用](https://v3.cn.vuejs.org/guide/composition-api-template-refs.html)
 
 ```javascript
 <template> 
@@ -1690,7 +1606,7 @@ app.component('base-input', {
 </script>
 ```
 
-  <br />  [v-for 中的用法](https://v3.cn.vuejs.org/guide/composition-api-template-refs.html#v-for-%E4%B8%AD%E7%9A%84%E7%94%A8%E6%B3%95)  <br />  
+[v-for 中的用法](https://v3.cn.vuejs.org/guide/composition-api-template-refs.html#v-for-%E4%B8%AD%E7%9A%84%E7%94%A8%E6%B3%95)
 
 ```javascript
 <template>
@@ -1721,21 +1637,21 @@ app.component('base-input', {
 </script>
 ```
 
-  <br />  [侦听模板引用](https://v3.cn.vuejs.org/guide/composition-api-template-refs.html#%E4%BE%A6%E5%90%AC%E6%A8%A1%E6%9D%BF%E5%BC%95%E7%94%A8)  <br />  
-  <br />  [处理边界情况](https://v3.cn.vuejs.org/guide/component-edge-cases.html)  <br />  
-  <br />  **过渡 & 动画**  <br />  
+[侦听模板引用](https://v3.cn.vuejs.org/guide/composition-api-template-refs.html#%E4%BE%A6%E5%90%AC%E6%A8%A1%E6%9D%BF%E5%BC%95%E7%94%A8)
+
+[处理边界情况](https://v3.cn.vuejs.org/guide/component-edge-cases.html)
+
+**过渡 & 动画**
 
 -  过渡 & 动画概述 
 -  进入过渡 & 离开过渡 
 -  列表过渡 
 -  状态过渡 
 
-
-
 <a name="6ce28aa7"></a>
 ## [过渡](https://cn.vuejs.org/v2/guide/transitions.html)
 
-  <br />  [过渡的类名](https://cn.vuejs.org/v2/guide/transitions.html#%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D)  <br />  
+[过渡的类名](https://cn.vuejs.org/v2/guide/transitions.html#%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D)
 
 1.  v-enter-from：定义进入过渡的开始状态。在元素被插入之前生效，在元素被插入之后的下一帧移除。 
 1.  v-enter-active：定义进入过渡生效时的状态。在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡/动画完成之后移除。这个类可以被用来定义进入过渡的过程时间，延迟和曲线函数。 
@@ -1744,9 +1660,9 @@ app.component('base-input', {
 1.  v-leave-active：定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。 
 1.  v-leave-to：离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 v-leave-from 被删除)，在过渡/动画完成之后移除。 
 
+![](https://v3.vuejs.org/images/transitions.svg#crop=0&crop=0&crop=1&crop=1&id=WZBuK&originHeight=150&originWidth=295&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
-  <br />  ![](https://v3.vuejs.org/images/transitions.svg#crop=0&crop=0&crop=1&crop=1&id=WZBuK&originHeight=150&originWidth=295&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  
-  <br />  ![](https://v3.vuejs.org/images/transitions.svg#crop=0&crop=0&crop=1&crop=1&id=mrrbS&originHeight=150&originWidth=295&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  
+![](https://v3.vuejs.org/images/transitions.svg#crop=0&crop=0&crop=1&crop=1&id=mrrbS&originHeight=150&originWidth=295&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 ```javascript
 <div id="example-1">
@@ -1783,7 +1699,7 @@ new Vue({
 }
 ```
 
-  <br />  [JavaScript 钩子](https://cn.vuejs.org/v2/guide/transitions.html#JavaScript-%E9%92%A9%E5%AD%90)  <br />  
+[JavaScript 钩子](https://cn.vuejs.org/v2/guide/transitions.html#JavaScript-%E9%92%A9%E5%AD%90)
 
 ```javascript
 <transition
@@ -1847,12 +1763,12 @@ methods: {
 }
 ```
 
-
 <a name="fa66863b"></a>
 ## [混入](https://vue3js.cn/docs/zh/guide/mixins.htm)(mixin)
 
-  <br />  当组件和混入对象含有同名选项时，数据对象在内部会进行递归合并，并在发生冲突时以组件数据优先。  <br />  
-  <br />  同名钩子函数将合并为一个数组，混入对象的钩子将在组件自身钩子**之前**调用。  <br />  
+当组件和混入对象含有同名选项时，数据对象在内部会进行递归合并，并在发生冲突时以组件数据优先。
+
+同名钩子函数将合并为一个数组，混入对象的钩子将在组件自身钩子**之前**调用。
 
 ```javascript
 const myMixin = {
@@ -1878,7 +1794,7 @@ const app = Vue.createApp({
 })
 ```
 
-  <br />  [全局混入](https://cn.vuejs.org/v2/guide/mixins.html#%E5%85%A8%E5%B1%80%E6%B7%B7%E5%85%A5)  <br />  
+[全局混入](https://cn.vuejs.org/v2/guide/mixins.html#%E5%85%A8%E5%B1%80%E6%B7%B7%E5%85%A5)
 
 ```javascript
 const app = Vue.createApp({
@@ -1906,16 +1822,14 @@ app.mount('#mixins-global')
 // => "hello from component!"
 ```
 
-
 <a name="613cf536"></a>
 ## 组件通信
 
-  <br />  父子组件通信  <br />  
-  <br />  props/v-model/ref 父到子	$emit 子到父  <br />  
+父子组件通信
+
+props/v-model/ref 父到子	$emit 子到父
 
 - props/emit
-
-
 
 ```javascript
 //Parent.vue
@@ -1971,10 +1885,7 @@ export default {
 </script>
 ```
 
-
 - v-model/emit
-
-
 
 ```javascript
 // Parent.vue
@@ -2001,10 +1912,13 @@ export default defineComponent({
 })
 ```
 
-  <br />  多层级父子组件通信  <br />  
-  <br />  provide、inject 父到子 或者 子到父  <br />  
-  <br />  非关系组件通信(EventBus, **事件总线**)  <br />  
-  <br />  [mitt](https://github.com/developit/mitt)  <br />  
+多层级父子组件通信
+
+provide、inject 父到子 或者 子到父
+
+非关系组件通信(EventBus, **事件总线**)
+
+[mitt](https://github.com/developit/mitt)
 
 ```javascript
 // main.js
@@ -2035,7 +1949,7 @@ export default {
   }
 ```
 
-  <br />  Vuex  <br />  
+Vuex
 
 ```javascript
 //store/count.js
@@ -2107,10 +2021,10 @@ export default {
 </script>
 ```
 
-  <br />  
-  <br />  [  <br />  ](https://github.com/vuejs/vuepress)  <br />  
-  <br />  
-  <br />  
-  <br />  
-  <br />  
+
+[  <br />  ](https://github.com/vuejs/vuepress)
+
+
+
+
 

@@ -1,6 +1,6 @@
 
 # [Windows Terminal](https://docs.microsoft.com/zh-cn/windows/terminal/)
-**​**
+
 
 **shortcuts**
 ```c
@@ -17,7 +17,7 @@
 { "command": "commandPalette", "keys": "ctrl+shift+p" }
 ```
 
-  <br />  **wt [options] [command ; ]**
+**wt [options] [command ; ]**
 
 - --maximized、-M	以最大化形式启动终端。
 - --fullscreen、-F	以全屏形式启动终端。
@@ -27,8 +27,6 @@
 - new-tab	创建新选项卡。
 - split-pane	-H, --horizontal、-V, --vertical	拆分新窗格。
 - focus-tab	--target, -t tab-index	聚焦于特定选项卡。
-
-​
 
 **setting.json**
 ```c
@@ -49,7 +47,6 @@
 "schemes": ["Tango Dark"],
 ```
 
-  <br />  
 
 
 # [VS Code](https://code.visualstudio.com/docs)
@@ -118,7 +115,6 @@ Navigation
 | Pause | F6 | workbench.action.debug.pause |
 | Step Into | F11 | workbench.action.debug.stepInto |
 
-​
 
 快速批量添加引号和逗号
 ```c
@@ -126,7 +122,6 @@ Navigation
 (.*?): (.*)  # 选中正则
 '$1': '$2', # 选中保留大小写  ^\s*(?=\r?$)\n
 ```
-
 
 
 ## CLI
@@ -149,9 +144,10 @@ code [options][paths...]
                                 distinct instances of Code.
 -h --help                         Print usage.
 ```
-​
 
-配置  <br />  C:\Users\<Username>\AppData\Roaming\Code\User\settings.json
+
+## 配置
+`C:\Users\<Username>\AppData\Roaming\Code\User\settings.json`
 ```json
 {
     "editor.fontSize": 18,
@@ -217,7 +213,26 @@ code [options][paths...]
     "python.defaultInterpreterPath": "D:\\Python\\python.exe"
 }
 ```
-​
+
+
+Snippets
+```json
+{
+  // Place your snippets for python here. Each snippet is defined under a snippet name and has a prefix, body and 
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+  // same ids are connected.
+  "Print to console": {
+    "prefix": "main",
+    "body": [
+      "if __name__ == '__main__':",
+      "    ${1:pass}",
+    ],
+    "description": "python–main"
+  }
+}
+```
+
 
 python输出中文乱码
 ```json
@@ -243,11 +258,9 @@ F1 键调出控制台，输入task,选择任务：配置任务运行程序,打�
 ```
 
 
-
 # Visual Studio 2019
-​
 
-**shortcut**  <br />  代码对齐：Ctrl + K + D  <br />  调转代码段头/尾：Shift+HOME / Shift+END  <br />  注释选中代码段：Ctrl + K + C  <br />  取消选中代码段的注释：Ctrl + K +U  <br />  快速创建当前项目的类：Ctrl+Shift+A  <br />  F10：逐过程调试  <br />  F11：逐语句调试  <br />  F12：转到定义，到变量或函数定义的地方，与ctrl+-配合使用非常方便  <br />  Ctrl+]：匹配选中的括号（大括号、小括号都行），在多层循环+判断语句时非常方便  <br />  Ctr + Space：代码补全  <br />  ​
+**shortcut**  <br />  代码对齐：Ctrl + K + D  <br />  调转代码段头/尾：Shift+HOME / Shift+END  <br />  注释选中代码段：Ctrl + K + C  <br />  取消选中代码段的注释：Ctrl + K +U  <br />  快速创建当前项目的类：Ctrl+Shift+A  <br />  F10：逐过程调试  <br />  F11：逐语句调试  <br />  F12：转到定义，到变量或函数定义的地方，与ctrl+-配合使用非常方便  <br />  Ctrl+]：匹配选中的括号（大括号、小括号都行），在多层循环+判断语句时非常方便  <br />  Ctr + Space：代码补全
 
 寻找
 
@@ -315,24 +328,19 @@ F1 键调出控制台，输入task,选择任务：配置任务运行程序,打�
 | 即时运算视窗- 清除缓冲区 | 输入cls |
 | 即时运算视窗- 列印值 | 输入?varname |
 
-**​**
+
 
 **C6031 返回值被忽略: "scanf".**
 
 - 原因：在ANSI C中没有scanf_s(),只有scanf()，但是scanf()在读取时不检查边界，所以可能会造成内存泄露。Microsoft在VS中提供了scanf_s()，如果想继续使用scanf这个不安全的函数以下方法可以解决
 - 方法一：在文件顶部添加代码：#pragma warning(disable:4996)
 - 方法二：错误提示的原因在与vs中的SDL检查；关闭步骤右键单击工程文件-->属性-------->  c/c++  ------>所有选项------------> SDL检查选项改为 否
-- ​  <br />  
+-   <br />  
 
-**对于调试程序是弹出xxx有未经处理的异常: 0xC00000FD: Stack overflow**  <br />  解决方案：将“项目属性->链接器->系统->堆栈保留大小”设大一点,比如1000000，此项的默认值是0；  <br />  ​
+**对于调试程序是弹出xxx有未经处理的异常: 0xC00000FD: Stack overflow**  <br />  解决方案：将“项目属性->链接器->系统->堆栈保留大小”设大一点,比如1000000，此项的默认值是0；
 
-**VC++ & GCC 的差异**  <br />  **VC 可能会自动 include 一些头文件，gcc 编译提示函数找不到。**  <br />  **使用 scanf 等函数会警告 not safe(warning 4996)，VC 推荐使用 scanf_s ，但是这个不属于 C / C++ 标准，gcc 没有。**  <br />  **gcc 也没有 itoa（数字转换为字符串的函数）。**  <br />  **gcc 上，模板类继承模板类，two phase name lookup，调用父类函数会提示找不到，需要用 this-> 调用。**  <br />  **​**
+**VC++ & GCC 的差异**  <br />  **VC 可能会自动 include 一些头文件，gcc 编译提示函数找不到。**  <br />  **使用 scanf 等函数会警告 not safe(warning 4996)，VC 推荐使用 scanf_s ，但是这个不属于 C / C++ 标准，gcc 没有。**  <br />  **gcc 也没有 itoa（数字转换为字符串的函数）。**  <br />  **gcc 上，模板类继承模板类，two phase name lookup，调用父类函数会提示找不到，需要用 this-> 调用。**
 
-**​**
-
-**​**
-
-**​**  <br />  
 
 # [WSL](https://docs.microsoft.com/zh-cn/windows/wsl/)
 Windows Subsystem for Linux
@@ -346,8 +354,8 @@ passwd
 sudo apt update && sudo apt upgrade
 ```
 
-  <br />  
-  <br />  **安装**
+
+**安装**
 ```shell
 wsl --install
 ```
@@ -357,8 +365,6 @@ wsl --install
 - 将 WSL 2 设置为默认值
 - 下载并安装 Ubuntu Linux 分发 (可能需要重新启动)
 
-​
-
 更改默认安装的 Linux 发行版
 ```shell
 查看可通过在线商店下载的可用 Linux 发行版列表
@@ -367,7 +373,7 @@ wsl --list --online 或 wsl -l -o
 在初始安装后安装其他 Linux 发行版
 wsl --install -d <Distribution Name>
 ```
-**​**
+
 
 **旧版安装**  <br />  1 启用适用于 Linux 的 Windows 子系统  <br />  管理员身份打开 PowerShell 并运行：
 ```shell
@@ -385,16 +391,14 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 ```shell
 wsl --set-default-version 2
 ```
-5 安装所选的 Linux 分发  <br />  Microsoft Store  <br />  ​
+5 安装所选的 Linux 分发  <br />  Microsoft Store
 
-​
 
 Linux GUI  <br />  更新重启
 ```shell
 wsl --update
 wsl --shutdown
 ```
-​
 
 建议不要跨操作系统使用文件
 
@@ -413,7 +417,7 @@ cd /mnt/<drive letter>/
 # 主目录
 wsl ~
 ```
-**​**
+
 
 [**互操作性**](https://docs.microsoft.com/zh-cn/windows/wsl/filesystems)  <br />  混合 Linux 和 Windows 命令
 ```shell
@@ -440,7 +444,6 @@ echo 0 > /proc/sys/fs/binfmt_misc/WSLInterop
 # 重新启用 Windows 二进制文件
 echo 1 > /proc/sys/fs/binfmt_misc/WSLInterop
 ```
-​
 
 Windows 与 WSL 之间的共享环境变量
 ```shell
@@ -453,7 +456,7 @@ WSLENV=HOME/w:GOPATH/l:TMPDIR/p …
 - /u - 指示仅当从 Win32 运行 WSL 时，才应包含此环境变量。
 - /w - 指示仅当从 WSL 运行 Win32 时，才应包含此环境变量。
 
-**​**
+
 
 **CLI**  <br />  `wsl [Argument] [Options...] [CommandLine]`
 
@@ -465,13 +468,9 @@ WSLENV=HOME/w:GOPATH/l:TMPDIR/p …
 - --import <分发版> <安装位置> <文件名> [选项]
 - --shutdown       立即终止所有正在运行的分发和 WSL 2 轻型工具虚拟机。
 
-​  <br />  
-
 - --status	显示适用于 Linux 的 Windows 子系统的状态。
 - --update [--rollback]		 WSL 2 内核将更新到最新版本 [还原到 WSL 2 内核的先前版本]
 - --list, -l [--all | --running]
-
-​  <br />  
 
 - --set-default, -s <分发版>
 - --set-default-version <版本>
@@ -479,11 +478,9 @@ WSLENV=HOME/w:GOPATH/l:TMPDIR/p …
 - --terminate, -t <分发版>       终止指定的分发。
 - --unregister <分发版>        注销分发。
 
-​
+ <DistributionName> config --default-user <Username>
 
- <DistributionName> config --default-user <Username>  <br />  ​
 
-​  <br />  
 
 # Virtual Machine
 
@@ -497,8 +494,7 @@ Start-VM | Stop-VM -Name <virtual machine name>	启动和关闭虚拟机
 - 进入/退出全屏 的快捷键	Ctr + Alt + Pause/Break
 - 鼠标释放快捷键			Ctr + Alt + Left ( 左方向键 )
 
-
-  <br />  **Hyper-V 中调整Ubuntu分辨率**
+**Hyper-V 中调整Ubuntu分辨率**
 
 - sudo vi /etc/default/grub
 - 找到GRUB_CMDLINE_LINUX_DEFAULT, 添加video=hyperv_fb:[the resolution you want]
@@ -506,15 +502,8 @@ Start-VM | Stop-VM -Name <virtual machine name>	启动和关闭虚拟机
 - 运行 sudo update-grub
 - 重启 sudo reboot
 
-**​**
 
-**​**
 
-**​**
-
-**​**
-
-**​**  <br />  
 
 # <windows.h>
 ```c

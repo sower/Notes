@@ -1,7 +1,6 @@
-​  <br />  
+
 
 # 数制
-​
 
 numerical system：使用一组[数字](https://zh.wikipedia.org/wiki/%E6%95%B8%E5%AD%97)符号来表示[数](https://zh.wikipedia.org/wiki/%E6%95%B0_(%E6%95%B0%E5%AD%A6))的体系
 
@@ -9,7 +8,6 @@ numerical system：使用一组[数字](https://zh.wikipedia.org/wiki/%E6%95%B8%
 | --- | --- | --- | --- | --- |
 | R进制 | R | 0 ~（R-1） | 逢R进一 |  |
 
-​
 
 常见进制
 
@@ -35,24 +33,22 @@ numerical system：使用一组[数字](https://zh.wikipedia.org/wiki/%E6%95%B8%
 
 
 
-
 **锁存器（latch）**  <br />  对脉冲电平敏感，在时钟脉冲的电平作用下改变状态 
 
-最简单的锁存器——SR锁存器  <br />  设定（Set），重设（Reset）  <br />  ![截图.png](./assets/1643641207060-38588aa3-1360-4c1e-a7e1-c1de7b1abc12.png)  <br />  ​
+最简单的锁存器——SR锁存器  <br />  设定（Set），重设（Reset）  <br />  ![截图.png](./assets/1643641207060-38588aa3-1360-4c1e-a7e1-c1de7b1abc12.png)
 
 触发器（Flip-Flop）  <br />  对脉冲边沿敏感，其状态只在时钟脉冲的上升沿或下降沿的瞬间改变 
 
-寄存器（Register）  <br />  [中央处理器](https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%A4%AE%E8%99%95%E7%90%86%E5%99%A8)内用来暂存指令、[数据](https://zh.wikipedia.org/wiki/%E6%95%B8%E6%93%9A)和[地址](https://zh.wikipedia.org/wiki/%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80)的[电脑存储器](https://zh.wikipedia.org/wiki/%E9%9B%BB%E8%85%A6%E8%A8%98%E6%86%B6%E9%AB%94)。寄存器的存贮容量有限，读写速度非常快  <br />  ​
+寄存器（Register）  <br />  [中央处理器](https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%A4%AE%E8%99%95%E7%90%86%E5%99%A8)内用来暂存指令、[数据](https://zh.wikipedia.org/wiki/%E6%95%B8%E6%93%9A)和[地址](https://zh.wikipedia.org/wiki/%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80)的[电脑存储器](https://zh.wikipedia.org/wiki/%E9%9B%BB%E8%85%A6%E8%A8%98%E6%86%B6%E9%AB%94)。寄存器的存贮容量有限，读写速度非常快
 
 计数器（Counter）  <br />  在时钟脉冲（Clock Pulse）激励下，能遍历预先规定好的状态序列的一种寄存器
 
 
 # 字符编码
-​
 
-**比特（BIT，Binary digit）**：二进制数字中的位，信息量的最小单位。  <br />  **字节（Byte）**：数据存储的基本单元，1byte = 8bit  <br />  **字符（Character）**：一个信息单位，它是各种文字和符号的统称  <br />  **字符集（Character Set）**：某个范围内字符的集合，不同的字符集规定了字符的个数  <br />  **字符码（Code Point）**：字符集中每个字符的数字编号  <br />  **字符编码（Character Encoding）**：将字符集中的字符码映射为字节流的一种具体实现方案  <br />  ​
+**比特（BIT，Binary digit）**：二进制数字中的位，信息量的最小单位。  <br />  **字节（Byte）**：数据存储的基本单元，1byte = 8bit  <br />  **字符（Character）**：一个信息单位，它是各种文字和符号的统称  <br />  **字符集（Character Set）**：某个范围内字符的集合，不同的字符集规定了字符的个数  <br />  **字符码（Code Point）**：字符集中每个字符的数字编号  <br />  **字符编码（Character Encoding）**：将字符集中的字符码映射为字节流的一种具体实现方案
 
-编码：将字符转换成字节流；解码的过程是将字节流解析为字符  <br />  ​
+编码：将字符转换成字节流；解码的过程是将字节流解析为字符
 
 **汉字编码（Chinese character encoding ）**
 
@@ -76,7 +72,6 @@ numerical system：使用一组[数字](https://zh.wikipedia.org/wiki/%E6%95%B8%
 | 20 0000 ~  <br />  3FF FFFF | 22~26 | **1111 10**XX  <br />  **10XX XX**XX  <br />  **10XX XX**XX  <br />  **10XX XX**XX  <br />  **10XX XX**XX | 5 |  |
 | 400 0000 ~  <br />  7FFF FFFF | 27~31 | **1111 110**X  <br />  **10XX XXX**X  <br />  **10XX XXX**X  <br />  **10XX XXX**X  <br />  **10XX XXX**X  <br />  **10XX XXX**X | 6 |  |
 
-​
 
 **UTF-8 Signature**	带有BOM(Byte Order Mark，字节流标记)， 让应用程序识别所用的编码
 
@@ -89,7 +84,7 @@ numerical system：使用一组[数字](https://zh.wikipedia.org/wiki/%E6%95%B8%
 
 
 
-**字节序 (Byte Order)**  <br />  ​
+**字节序 (Byte Order)**
 
 常见的 x86/x64, ARM 等处理器架构使用小端序（Little-endian）
 
@@ -101,15 +96,16 @@ numerical system：使用一组[数字](https://zh.wikipedia.org/wiki/%E6%95%B8%
 
 
 
-**字素(Grapheme)**：文本在书写时最小的单位  <br />  **字素簇(Grapheme Cluster)**：多个字符序列组合。如字母 é 可以用字母 e (U+0065) 加上重音符(U+0301) 组合而成  <br />  ​
+**字素(Grapheme)**：文本在书写时最小的单位  <br />  **字素簇(Grapheme Cluster)**：多个字符序列组合。如字母 é 可以用字母 e (U+0065) 加上重音符(U+0301) 组合而成
 
-Collation ：字符间的排序规则  <br />  ​
+Collation ：字符间的排序规则
+
 
 
 ## Base64
-一种基于64个可打印字符来表示二进制数据的方法，用于传输8Bit字节码的编码方式  <br />  ​
+一种基于64个可打印字符来表示二进制数据的方法，用于传输8Bit字节码的编码方式
 
-原理：将每3个8Bit的字节转换为4个6Bit的字节（3*8 = 4*6 = 24），然后把6Bit再添两位高位0，组成四个8Bit的字节。位数不足用0补全，再用=号补满4个字节。转换后的字符串理论上将要比原来的长1/3。  <br />  ​
+原理：将每3个8Bit的字节转换为4个6Bit的字节（3*8 = 4*6 = 24），然后把6Bit再添两位高位0，组成四个8Bit的字节。位数不足用0补全，再用=号补满4个字节。转换后的字符串理论上将要比原来的长1/3。
 
 特点
 
@@ -144,12 +140,12 @@ The Base64 Alphabet
 | 16 | **Q** | 33 | **h** | 50 | **y** |  |  |
 
 
-  <br />  **示例**  <br />  s13	（Ascii 115 49 51 [01110011 00110001 00110011]）  <br />  czEz （Base64 28 51 4 51 [**00**011100 **00**110011 **00**000100 **00**110011]）
+**示例**  <br />  s13	（Ascii 115 49 51 [01110011 00110001 00110011]）  <br />  czEz （Base64 28 51 4 51 [**00**011100 **00**110011 **00**000100 **00**110011]）
 
 
 ## UUID
 
-  <br />  **通用唯一识别码（Universally Unique Identifier）**一种软件建构的标准，由一组32位数的16进制数字(128位)所构成，理论总数为16^32  <br />  ​
+**通用唯一识别码（Universally Unique Identifier）**一种软件建构的标准，由一组32位数的16进制数字(128位)所构成，理论总数为16^32
 
 原理：基于当前时间、计数器（counter）和硬件标识（MAC）等数据计算生成的。UUID没有集中管理机构，可以被任何人独立创建，并按需发布。
 
@@ -303,7 +299,6 @@ The Base64 Alphabet
 
 
 # 加密算法 (Encryption algorithm)
-​
 
 **密码学**（Cryptography）分为古典密码学和现代密码学。
 
@@ -311,8 +306,9 @@ The Base64 Alphabet
 
 CA（Certificate Authority，证书颁发机构）：负责发放和管理数字证书的权威机构，并作为电子商务交易中受信任的第三方，承担公钥体系中公钥的合法性检验的责任。
 
-公钥基础设施（Public Key Infrastructure，PKI）  <br />  
-  <br />  ​  <br />  
+公钥基础设施（Public Key Infrastructure，PKI）
+
+
 
 ## 对称加密
 **对称密钥算法**（**Symmetric-key algorithm**）：加密和解密时使用相同的密钥，或用两个可以简单地相互推算的密钥。  <br />  加密和解密使用相同密钥的加密算法，用来对敏感数据等信息进行加密  <br />  特性：高速的加解密，使用长密钥时的难破解性
@@ -332,7 +328,6 @@ DES、3DES、DESX、Blowfish、IDEA、RC4、RC5、RC6和AES
 | AES | 128、192、256位 | 快 | 高 | 低 |
 
 
-  <br />  
 
 
 ## 非对称加密
@@ -354,22 +349,21 @@ RSA、ECC（移动设备用）、Diffie-Hellman、El Gamal、DSA
 | DSA | 高 | 高 | 慢 | 只能用于数字签名 |
 | ECC | 低 | 高 | 快 | 低(计算量小,存储空间占用小,带宽要求低) |
 
-​
 
-​
 
 **Hash算法**
 
-**散列函数**（Hash function）又称**散列算法**、**哈希函数**，一种单向算法，可以从任何一种数据中创建小的数字“指纹”的方法。  <br />  ​
+**散列函数**（Hash function）又称**散列算法**、**哈希函数**，一种单向算法，可以从任何一种数据中创建小的数字“指纹”的方法。
 
-散列函数把消息或数据压缩成摘要，使得数据量变小，将数据的格式固定下来。  <br />  散列值通常用一个短的随机字母和数字组成的字符串来代表。  <br />  常用在不可还原的密码存储、信息完整性校验等。  <br />  
-  <br />  MD2、MD4、MD5、HAVAL、SHA、SHA-1、HMAC、HMAC-MD5、HMAC-SHA1  <br />  
-  <br />  **MD5消息摘要算法（Message Digest Algorithm 5）**：RSA数据安全公司开发的一种单向散列算法，非可逆，相同的明文产生相同的密文。可以产生出一个128位（16[字节](https://zh.wikipedia.org/wiki/%E4%BD%8D%E5%85%83%E7%BB%84)）的散列值（hash value），用于确保信息传输完整一致。
+散列函数把消息或数据压缩成摘要，使得数据量变小，将数据的格式固定下来。  <br />  散列值通常用一个短的随机字母和数字组成的字符串来代表。  <br />  常用在不可还原的密码存储、信息完整性校验等。
+
+MD2、MD4、MD5、HAVAL、SHA、SHA-1、HMAC、HMAC-MD5、HMAC-SHA1
+
+**MD5消息摘要算法（Message Digest Algorithm 5）**：RSA数据安全公司开发的一种单向散列算法，非可逆，相同的明文产生相同的密文。可以产生出一个128位（16[字节](https://zh.wikipedia.org/wiki/%E4%BD%8D%E5%85%83%E7%BB%84)）的散列值（hash value），用于确保信息传输完整一致。
 
 **SHA（Secure Hash Algorithm，安全散列算法）**  <br />  一个[密码散列函数](https://baike.baidu.com/item/%E5%AF%86%E7%A0%81%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0)家族，包括[SHA-1](https://baike.baidu.com/item/SHA-1)、SHA-2（SHA-224、SHA-256、SHA-384、SHA-512），由[美国国家安全局](https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD%E5%9B%BD%E5%AE%B6%E5%AE%89%E5%85%A8%E5%B1%80)（NSA）所设计，并由美国国家标准与技术研究院（NIST）发布；是[FIPS](https://baike.baidu.com/item/FIPS)（联邦数据处理标准）所认证的安全[散列算法](https://baike.baidu.com/item/%E6%95%A3%E5%88%97%E7%AE%97%E6%B3%95)。能计算出一个数字消息所对应到的，长度固定的字符串（又称消息摘要）的算法。且若输入的消息不同，它们对应到不同字符串的机率很高。
 
-SHA-1可以生成一个被称为消息摘要的160[位](https://baike.baidu.com/item/%E4%BD%8D)（20[字节](https://baike.baidu.com/item/%E5%AD%97%E8%8A%82)）散列值，散列值通常的呈现形式为40个[十六进制](https://baike.baidu.com/item/%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6/4162457)数。  <br />  
-
+SHA-1可以生成一个被称为消息摘要的160[位](https://baike.baidu.com/item/%E4%BD%8D)（20[字节](https://baike.baidu.com/item/%E5%AD%97%E8%8A%82)）散列值，散列值通常的呈现形式为40个[十六进制](https://baike.baidu.com/item/%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6/4162457)数。
 
 | 名称 | 安全性 | 速度 |
 | --- | --- | --- |
@@ -383,19 +377,18 @@ SHA-1可以生成一个被称为消息摘要的160[位](https://baike.baidu.com/
 | 对称算法 | 比较难,不适合互联网,一般用于内部系统 | 中 | 快好几个数量级，适合大数据量的加解密处理 |
 | 非对称算法 | 密钥容易管理 | 高 | 慢,适合小数据量加解密或数据签名 |
 
-​
+
+
 
 
 # Time
-​
 
-**UTC**（英语：**C**oordinated **U**niversal **T**ime，法语：**T**emps **U**niversel **C**oordonné，**协调世界时**）是最主要的世界时间标准，其以[原子时](https://zh.wikipedia.org/wiki/%E5%8E%9F%E5%AD%90%E6%97%B6)秒长为基础，在时刻上尽量接近于[格林威治标准时间](https://zh.wikipedia.org/wiki/%E6%A0%BC%E6%9E%97%E5%A8%81%E6%B2%BB%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)  <br />  ​
+**UTC**（英语：**C**oordinated **U**niversal **T**ime，法语：**T**emps **U**niversel **C**oordonné，**协调世界时**）是最主要的世界时间标准，其以[原子时](https://zh.wikipedia.org/wiki/%E5%8E%9F%E5%AD%90%E6%97%B6)秒长为基础，在时刻上尽量接近于[格林威治标准时间](https://zh.wikipedia.org/wiki/%E6%A0%BC%E6%9E%97%E5%A8%81%E6%B2%BB%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)
 
-东八区	UTC+8  <br />  ​
+东八区	UTC+8
 
-**GMT**（**G**reenwich **M**ean **T**ime，**格林尼治平均时间**）：位于[英国](https://zh.wikipedia.org/wiki/%E8%8B%B1%E5%9C%8B)[伦敦](https://zh.wikipedia.org/wiki/%E5%80%AB%E6%95%A6)郊区的[皇家格林尼治天文台](https://zh.wikipedia.org/wiki/%E6%A0%BC%E6%9E%97%E5%B0%BC%E6%B2%BB%E5%A4%A9%E6%96%87%E5%8F%B0)当地的[平太阳时](https://zh.wikipedia.org/wiki/%E5%B9%B3%E5%A4%AA%E9%98%B3)，[本初子午线](https://zh.wikipedia.org/wiki/%E6%9C%AC%E5%88%9D%E5%AD%90%E5%8D%88%E7%B7%9A)被定义为通过那里的[经线](https://zh.wikipedia.org/wiki/%E7%B6%93%E7%B7%9A)。  <br />  ​
+**GMT**（**G**reenwich **M**ean **T**ime，**格林尼治平均时间**）：位于[英国](https://zh.wikipedia.org/wiki/%E8%8B%B1%E5%9C%8B)[伦敦](https://zh.wikipedia.org/wiki/%E5%80%AB%E6%95%A6)郊区的[皇家格林尼治天文台](https://zh.wikipedia.org/wiki/%E6%A0%BC%E6%9E%97%E5%B0%BC%E6%B2%BB%E5%A4%A9%E6%96%87%E5%8F%B0)当地的[平太阳时](https://zh.wikipedia.org/wiki/%E5%B9%B3%E5%A4%AA%E9%98%B3)，[本初子午线](https://zh.wikipedia.org/wiki/%E6%9C%AC%E5%88%9D%E5%AD%90%E5%8D%88%E7%B7%9A)被定义为通过那里的[经线](https://zh.wikipedia.org/wiki/%E7%B6%93%E7%B7%9A)。
 
-​
 
 常用日期/时间格式表示
 
@@ -432,9 +425,8 @@ Unix时间戳（Unix epoch, Unix time, POSIX time 或 Unix timestamp）[UNIX](ht
 | [靛色](https://zh.wikipedia.org/wiki/%E9%9D%9B%E8%89%B2) | **约440—485 nm** | **约680—620 THz** |
 | [紫色](https://zh.wikipedia.org/wiki/%E7%B4%AB%E8%89%B2) | **约380—440 nm** | **约790—680 THz** |
 
-一个弥散地反射所有波长的光的表面是[白色](https://zh.wikipedia.org/wiki/%E7%99%BD%E8%89%B2)的，而一个吸收所有波长的光的表面是[黑色](https://zh.wikipedia.org/wiki/%E9%BB%91%E8%89%B2)的。  <br />  ​
+一个弥散地反射所有波长的光的表面是[白色](https://zh.wikipedia.org/wiki/%E7%99%BD%E8%89%B2)的，而一个吸收所有波长的光的表面是[黑色](https://zh.wikipedia.org/wiki/%E9%BB%91%E8%89%B2)的。
 
-​
 
 原色：不能透过其他颜色的混合调配而得出的“基本色”。
 
@@ -443,8 +435,6 @@ Unix时间戳（Unix epoch, Unix time, POSIX time 或 Unix timestamp）[UNIX](ht
 叠加型原色  <br />  ![stickPicture.png](./assets/1643641639446-4d59757f-7fce-422e-bde6-37207b930ef2.png)  <br />  红色+绿色=黄色  <br />  绿色+蓝色=青色  <br />  红色+蓝色=品红  <br />  红色+绿色+蓝色=白色
 
 256³色
-
-​
 
 **印刷四分色模式（CMYK）**  <br />  彩色印刷时采用的一种套色模式，利用色料的三原色混色原理，加上黑色油墨，共计四种颜色混合叠加，形成所谓“全彩印刷”。
 
@@ -461,29 +451,30 @@ Unix时间戳（Unix epoch, Unix time, POSIX time 或 Unix timestamp）[UNIX](ht
 
 101³色（0～100%模式）
 
-**HSL & HSV**  <br />  一种将RGB色彩模型中的点在圆柱坐标系中的表示法  <br />  ​  <br />  
+**HSL & HSV**  <br />  一种将RGB色彩模型中的点在圆柱坐标系中的表示法
 
 - 色相（Hue）：色彩的基本属性，就是平常所说的颜色名称，如红色、黄色等。
 - 饱和度（Saturation）：色彩的纯度，越高色彩越纯，低则逐渐变灰，取0-100%的数值。
 - 亮度（Lightness），明度（Value，Brightness）：取0-100%。
 
-
-  <br />  ![stickPicture.png](./assets/1643641730114-20efff32-d693-4942-a55c-eba2af611589.png)
+![stickPicture.png](./assets/1643641730114-20efff32-d693-4942-a55c-eba2af611589.png)
 
 **Alpha合成（alpha compositing，透明合成）**：一种将图像与背景结合的过程，结合后可以产生部分透明或全透明的视觉效果。
 
 **常用色系**  <br />  ![截图.png](./assets/1643641775492-d83b23e6-f082-4aca-b1b2-94e3fbb1cfd5.png)
 
-**无彩色系**  <br />  ![截图.png](./assets/1643641795655-80d73371-aa2e-43a7-8b33-1efb6a5638d9.png)  <br />  ​
+**无彩色系**  <br />  ![截图.png](./assets/1643641795655-80d73371-aa2e-43a7-8b33-1efb6a5638d9.png)
 
-**知识共享许可协议**  <br />  创用**CC**许可（**C**reative **C**ommons license）是一种[公共著作权许可协议](https://zh.wikipedia.org/w/index.php?title=%E5%85%AC%E5%85%B1%E7%89%88%E6%9D%83%E6%8E%88%E6%AC%8A%E6%A2%9D%E6%AC%BE&action=edit&redlink=1)，其允许分发受著作权保护的作品。一个创作共享许可用于一个作者想给他人分享，使用，甚至创作派生作品的权利。  <br />  ​  <br />  
+
+
+**知识共享许可协议**  <br />  创用**CC**许可（**C**reative **C**ommons license）是一种[公共著作权许可协议](https://zh.wikipedia.org/w/index.php?title=%E5%85%AC%E5%85%B1%E7%89%88%E6%9D%83%E6%8E%88%E6%AC%8A%E6%A2%9D%E6%AC%BE&action=edit&redlink=1)，其允许分发受著作权保护的作品。一个创作共享许可用于一个作者想给他人分享，使用，甚至创作派生作品的权利。
 
 | 标志 | 权利 | 备注 |
 | --- | --- | --- |
 | ![image.png](./assets/1643641814402-e87a9321-5d94-4d37-a07f-7e9da45cb7be.png) | **署名**（Attribution，**by**） | 您（用户）可以复制、发行、展览、表演、放映、广播或通过信息网络传播本作品；您必须按照作者或者许可人指定的方式对作品进行署名。 |
-|  | [相同方式共享](https://zh.wikipedia.org/wiki/%E7%9B%B8%E5%90%8C%E6%96%B9%E5%BC%8F%E5%85%B1%E4%BA%AB)（**S**hare**A**like，**sa**） | 您可以自由复制、散布、展示及演出本作品；若您改变、转变或更改本作品，仅在遵守与本作品相同的许可条款下，您才能散布由本作品产生的派生作品。（参见[copyleft](https://zh.wikipedia.org/wiki/Copyleft)）。 |
-|  | **非商业性使用**（**N**on**c**ommercial,**nc** ） | 您可以自由复制、散布、展示及演出本作品；您不得为[商业](https://zh.wikipedia.org/wiki/%E5%95%86%E4%B8%9A)目的而使用本作品。 |
-|  | **禁止演绎**（**N**o **D**erivative Works，**nd**) | 您可以自由复制、散布、展示及演出本作品；您不得改变、转变或更改本作品。 |
+|   <br />   | [相同方式共享](https://zh.wikipedia.org/wiki/%E7%9B%B8%E5%90%8C%E6%96%B9%E5%BC%8F%E5%85%B1%E4%BA%AB)（**S**hare**A**like，**sa**） | 您可以自由复制、散布、展示及演出本作品；若您改变、转变或更改本作品，仅在遵守与本作品相同的许可条款下，您才能散布由本作品产生的派生作品。（参见[copyleft](https://zh.wikipedia.org/wiki/Copyleft)）。 |
+|   <br />   | **非商业性使用**（**N**on**c**ommercial,**nc** ） | 您可以自由复制、散布、展示及演出本作品；您不得为[商业](https://zh.wikipedia.org/wiki/%E5%95%86%E4%B8%9A)目的而使用本作品。 |
+|   <br />   | **禁止演绎**（**N**o **D**erivative Works，**nd**) | 您可以自由复制、散布、展示及演出本作品；您不得改变、转变或更改本作品。 |
 
 
 
@@ -498,7 +489,7 @@ Unix时间戳（Unix epoch, Unix time, POSIX time 或 Unix timestamp）[UNIX](ht
 
 # 开源协议
 
-  <br />  ![](./assets/1643640924394-befdd145-202d-4efc-abc3-118ceb71ec95.png)
+![](./assets/1643640924394-befdd145-202d-4efc-abc3-118ceb71ec95.png)
 
 **GNU GPL（GNU General Public License，GNU通用公共许可证）**
 

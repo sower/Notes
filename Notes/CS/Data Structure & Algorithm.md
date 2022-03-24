@@ -1,4 +1,3 @@
-​
 
 数据结构（Data Structure）：相互之间存在一种或多种特定关系的数据元素的集合。  <br />  ![](./assets/1643807394113-3ed0ccfd-1bf0-4a74-bb06-607fbd267ed9.png)
 
@@ -8,25 +7,25 @@
 - 散列存储结构——地址与散列函数之间建立的一种映射
 
 
-  <br />  
-
 
 # 基本数据结构
-​  <br />  
+
 
 ## 数组（Array）
 
-  <br />  由相同类型的元素（element）的集合所组成的数据结构，分配一块连续的内存来存储。  <br />  利用元素的索引（index）可以计算出该元素对应的存储地址。  <br />  数组第一个元素的存储器地址称为第一地址或基础地址。  <br />  
+由相同类型的元素（element）的集合所组成的数据结构，分配一块连续的内存来存储。  <br />  利用元素的索引（index）可以计算出该元素对应的存储地址。  <br />  数组第一个元素的存储器地址称为第一地址或基础地址。
 
 
 ## 链表（Linked list）
-一种线性表，在每一个节点里存到下一个节点的指针(Pointer)  <br />  
-  <br />  链表结构可以克服数组链表需要预先知道数据大小的缺点，充分利用计算机内存空间，实现灵活的内存动态管理。但是链表失去了数组随机读取的优点，同时链表由于增加了结点的指针域，空间开销比较大。  <br />  
+一种线性表，在每一个节点里存到下一个节点的指针(Pointer)
+
+链表结构可以克服数组链表需要预先知道数据大小的缺点，充分利用计算机内存空间，实现灵活的内存动态管理。但是链表失去了数组随机读取的优点，同时链表由于增加了结点的指针域，空间开销比较大。
 
 
 ### 单项链表
-包含信息域和指针域。这个链接指向列表中的下一个节点，而最后一个节点则指向一个空值  <br />  ![](./assets/1644580501032-f786b5ef-d0cb-408d-8cf0-6a081d0d8437.png)  <br />  
-  <br />  **数组方式**
+包含信息域和指针域。这个链接指向列表中的下一个节点，而最后一个节点则指向一个空值  <br />  ![](./assets/1644580501032-f786b5ef-d0cb-408d-8cf0-6a081d0d8437.png)
+
+**数组方式**
 ```c
 typedef int Position;
 typedef struct LNode *List;
@@ -163,23 +162,20 @@ bool Delete( List L, Position P )
 }
 ```
 
-  <br />  
 
 
 ### 双向链表
-双向链表有数据域和指针域。指针域有左右（或上一个、下一个）之分，用来连接上一个结点、当前结点、下一个结点。  <br />  ![](./assets/1644384035905-98456db8-ab4b-4e2e-b901-2bfc0cc0f76b.svg)  <br />  
+双向链表有数据域和指针域。指针域有左右（或上一个、下一个）之分，用来连接上一个结点、当前结点、下一个结点。  <br />  ![](./assets/1644384035905-98456db8-ab4b-4e2e-b901-2bfc0cc0f76b.svg)
 
 
 ### 循环链表
-首节点和末节点被连接在一起  <br />  ![](./assets/1644384228124-78607de1-76dd-45ea-84cb-887f4cf0e78b.png)  <br />  
-  <br />  
-  <br />  
+首节点和末节点被连接在一起  <br />  ![](./assets/1644384228124-78607de1-76dd-45ea-84cb-887f4cf0e78b.png)
+
+
 
 
 ## Stack
-只允许在有序的线性资料集合的一端（栈顶端，top）进行加入数据（压栈，push）和移除数据（弹栈，pop）的运算。  <br />  按照后进先出（LIFO, Last In First Out）的原理运作  <br />  ![](./assets/1644580552716-3b3b9026-6c48-4d1a-a7d5-b18c409a0567.png)  <br />  **​**
-
-**​**
+只允许在有序的线性资料集合的一端（栈顶端，top）进行加入数据（压栈，push）和移除数据（弹栈，pop）的运算。  <br />  按照后进先出（LIFO, Last In First Out）的原理运作  <br />  ![](./assets/1644580552716-3b3b9026-6c48-4d1a-a7d5-b18c409a0567.png)
 
 **数组方式**
 ```c
@@ -286,9 +282,9 @@ ElementType Pop( Stack S )
 ```
 
 ## Queue
-**​**
 
-先进先出（FIFO, First-In-First-Out）的线性表。  <br />  只允许在后端（rear）进行插入操作，在前端（front）进行删除操作。  <br />  ![](./assets/1644384402290-f31ff122-c8bf-4df9-9fa8-28fef1e48303.svg)  <br />  **​**
+
+先进先出（FIFO, First-In-First-Out）的线性表。  <br />  只允许在后端（rear）进行插入操作，在前端（front）进行删除操作。  <br />  ![](./assets/1644384402290-f31ff122-c8bf-4df9-9fa8-28fef1e48303.svg)
 
 **数组方式**
 ```c
@@ -388,7 +384,6 @@ ElementType DeleteQ( Queue Q )
 ```
 
 
-
 ### 循环队列
 ```cpp
 class MyCircularQueue {
@@ -462,7 +457,6 @@ public:
 };
 ```
 
-  <br />  
 
 
 ### 优先队列 PriorityQueue
@@ -615,10 +609,9 @@ int main()
 }
 ```
 
-  <br />  
-  <br />  ​
 
-​  <br />  
+
+
 
 # Resource
 
@@ -626,8 +619,7 @@ int main()
 - [labuladong 的算法小抄](https://labuladong.gitee.io/algo/)
 - [CS-Xmind-Note](https://github.com/SSHeRun/CS-Xmind-Note)
 
-
-  <br />  可视化
+可视化
 
 - [visualising data structures and algorithms through animation](https://visualgo.net/en)
 - [Data Structure Visualization](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)

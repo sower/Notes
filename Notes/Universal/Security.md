@@ -1,6 +1,4 @@
-​
 
-​
 
 resource
 
@@ -12,7 +10,7 @@ resource
 
 
 # 认证机制
-​  <br />  
+
 
 ## SSO
 单点登录(SingleSignOn)：通过用户的一次性鉴别登录。当用户在身份认证服务器上登录一次以后，即可获得访问单点登录系统中其他关联系统和应用软件的权限
@@ -29,7 +27,7 @@ resource
 
 
 
-## ​[JWT](https://jwt.io/)
+## [JWT](https://jwt.io/)
 Json web token：在网络应用环境间传递声明的一种基于JSON的开放标准
 ```http
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
@@ -64,7 +62,6 @@ jti (JWT ID)：编号
 
 特点  <br />  （1）JWT 默认是不加密，但也是可以加密的。生成原始 Token 以后，可以用密钥再加密一次。  <br />  （2）JWT 不加密的情况下，不能将秘密数据写入 JWT。  <br />  （3）JWT 不仅可以用于认证，也可以用于交换信息。有效使用 JWT，可以降低服务器查询数据库的次数。  <br />  （4）JWT 的最大缺点是，由于服务器不保存 session 状态，因此无法在使用过程中废止某个 token，或者更改 token 的权限。也就是说，一旦 JWT 签发了，在到期之前就会始终有效，除非服务器部署额外的逻辑。  <br />  （5）JWT 本身包含了认证信息，一旦泄露，任何人都可以获得该令牌的所有权限。为了减少盗用，JWT 的有效期应该设置得比较短。对于一些比较重要的权限，使用时应该再次对用户进行认证。  <br />  （6）为了减少盗用，JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。
 
-​  <br />  
 
 ## OAuth
 **开放授权**：一个关于授权（authorization）的开放网络标准。在客户端与服务端之间，设置了一个授权层（authorization layer）
@@ -76,11 +73,7 @@ jti (JWT ID)：编号
 - 密码模式（resource owner password credentials）：用户向客户端提供自己的用户名和密码
 - 客户端模式（client credentials）：客户端以自己的名义，而不是以用户的名义，向服务端进行认证。
 
-​
-
 更新令牌  <br />  网站颁发令牌的时候，一次性颁发两个令牌，一个用于获取数据，另一个用于获取新的令牌（refresh token 字段）。令牌到期前，用户使用 refresh token 发一个请求，去更新令牌。
-
-​
 
 SAML (Security Assertion Markup Language，安全断言标记语言) 一种xXML格式的语言，使用XML格式交互，来完成SSO的功能。  <br />  涉及角色：服务提供者(SP)、认证服务(IDP)、用户(Client)  <br />  流程
 
@@ -95,20 +88,15 @@ SAML (Security Assertion Markup Language，安全断言标记语言) 一种xXML�
 
 
 
-​
-
 2FA  <br />  双因素认证（Two-factor authentication ）
 
 TOTP 的全称是"基于时间的一次性密码"（Time-based One-time Password）。
 
-​
-
-​  <br />  
 
 # 漏洞攻防
-​
 
-**代码注入**（Code injection）是一种肇因于处理非法资料的电脑臭虫应用。  <br />  ​  <br />  
+**代码注入**（Code injection）是一种肇因于处理非法资料的电脑臭虫应用。
+
 
 # SQL注入
 
@@ -125,14 +113,12 @@ TOTP 的全称是"基于时间的一次性密码"（Time-based One-time Password
 
 
 ## XSS
-**跨站脚本**（Cross-site scripting）是一种网站应用程序的安全漏洞攻击，是[代码注入](https://zh.wikipedia.org/wiki/%E4%BB%A3%E7%A2%BC%E6%B3%A8%E5%85%A5)的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了[HTML](https://zh.wikipedia.org/wiki/HTML)以及用户端[脚本语言](https://zh.wikipedia.org/wiki/%E8%85%B3%E6%9C%AC%E8%AA%9E%E8%A8%80)。  <br />  ​
+**跨站脚本**（Cross-site scripting）是一种网站应用程序的安全漏洞攻击，是[代码注入](https://zh.wikipedia.org/wiki/%E4%BB%A3%E7%A2%BC%E6%B3%A8%E5%85%A5)的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了[HTML](https://zh.wikipedia.org/wiki/HTML)以及用户端[脚本语言](https://zh.wikipedia.org/wiki/%E8%85%B3%E6%9C%AC%E8%AA%9E%E8%A8%80)。
 
 分类
 
 - **反射型：**通常出现在搜索等功能中，需要被攻击者点击对应的链接才能触发，且受到XSS Auditor、NoScript等防御手段的影响较大
 - **储存型：**把攻击载荷存入服务器的数据库中，造成持久化的攻击。
-
-​
 
 **危害**
 
@@ -142,8 +128,6 @@ TOTP 的全称是"基于时间的一次性密码"（Time-based One-time Password
 - 在页面中生成浮窗广告。
 
 
-
-​
 
 **内容安全策略**（**Content Security Policy**，**CSP**）是一种[计算机安全](https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8)标准，旨在防御[跨站脚本](https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC)、[点击劫持](https://zh.wikipedia.org/wiki/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81)等[代码注入](https://zh.wikipedia.org/wiki/%E4%BB%A3%E7%A2%BC%E6%B3%A8%E5%85%A5)攻击，阻止恶意内容在受信[网页](https://zh.wikipedia.org/wiki/%E7%BD%91%E9%A1%B5)环境中执行。
 
@@ -159,8 +143,8 @@ TOTP 的全称是"基于时间的一次性密码"（Time-based One-time Password
 - 避免全站通用的Cookie，严格设置Cookie的域
 
 
-## SSRF​
-服务端请求伪造（Server Side Request Forgery）：攻击者在未能取得服务器所有权限时，利用服务器漏洞以服务器的身份发送一条构造好的请求给服务器所在内网。  <br />  ​
+## SSRF
+服务端请求伪造（Server Side Request Forgery）：攻击者在未能取得服务器所有权限时，利用服务器漏洞以服务器的身份发送一条构造好的请求给服务器所在内网。
 
 **防御方式**
 
@@ -171,8 +155,6 @@ TOTP 的全称是"基于时间的一次性密码"（Time-based One-time Password
 - 对DNS Rebinding，考虑使用DNS缓存或者Host白名单
 
 
-
-​
 
 DoS（Denial of Service）指拒绝服务，是一种常用来使服务器或网络瘫痪的网络攻击手段。
 

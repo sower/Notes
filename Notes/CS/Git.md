@@ -1,11 +1,14 @@
 **概览**  <br />  ![](http://assets.processon.com/chart_image/5e4bf29ae4b00aefb7e7333a.png#crop=0&crop=0&crop=1&crop=1&id=R8BaA&originHeight=5390&originWidth=2204&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 # —— Git ——
-分布式版本控制系统（Distributed Version Control System，DVCS）  <br />  C语言开发  <br />  ​
+分布式版本控制系统（Distributed Version Control System，DVCS）  <br />  C语言开发
 
-Git 保存的不是文件的变化或者差异，而是一系列不同时刻的 快照  <br />  本质：一个内容寻址（content-addressable）文件系统  <br />  底层（plumbing）命令  <br />  上层（porcelain）命令  <br />  **​**
+Git 保存的不是文件的变化或者差异，而是一系列不同时刻的 快照  <br />  本质：一个内容寻址（content-addressable）文件系统
 
-[**Documentation**](https://git-scm.com/doc)
+- 底层（plumbing）命令
+- 上层（porcelain）命令
+
+
 
 # [Glossary](https://git-scm.com/docs/gitglossary)
 ![](http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png#crop=0&crop=0&crop=1&crop=1&id=Bqtsv&originHeight=340&originWidth=1172&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
@@ -15,7 +18,7 @@ Git 保存的不是文件的变化或者差异，而是一系列不同时刻的�
 - Repository：仓库区：Git 用来保存项目的元数据和对象数据库的地方
 - Remote：远程仓库
 
-**​**
+
 
 **文件状态**
 
@@ -26,7 +29,17 @@ Git 保存的不是文件的变化或者差异，而是一系列不同时刻的�
 - Untracked（未追踪的）
 - Ignored（被忽略的）
 
-​
+```git
+# 展示所有 tracked 的文件
+git ls-files -t
+
+# 展示所有 untracked 的文件
+git ls-files --others
+
+# 展示所有忽略的文件
+git ls-files --others -i --exclude-standard
+```
+
 
 .git 目录
 ```shell
@@ -41,9 +54,9 @@ Git 保存的不是文件的变化或者差异，而是一系列不同时刻的�
 |-- objects/     # 存储所有数据内容，Git本地仓库的所有对象 (commits, trees, blobs, tags)
 `-- refs/        # 存储指向数据（分支、远程仓库和标签等）的提交对象的指针
 ```
-**​**
+  <br />  
 
-**.gitignore**
+## .gitignore
 
 - 级联性，即影响该目录及其子目录
 - 注释必须以#开头
@@ -60,7 +73,7 @@ build/       # 忽略任何目录下名为 build 的文件夹
 doc/*.txt    # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
 doc/**/*.pdf # 忽略 doc/ 目录及其所有子目录下的 .pdf 文件
 ```
-.gitignore templates：[https://github.com/github/gitignore](https://github.com/github/gitignore)  <br />  **​**
+.gitignore templates：[https://github.com/github/gitignore](https://github.com/github/gitignore)
 
 **对象(object)**
 
@@ -69,16 +82,16 @@ doc/**/*.pdf # 忽略 doc/ 目录及其所有子目录下的 .pdf 文件
 - commit：指向一个"tree"，它用来标记项目某一个特定时间点的状态
 - tag：标记某一个提交(commit) 的方法
 
-​
 
-引用（reference）：一个SHA1散列值，指向Git对象库中的对象  <br />  符号引用（symbolic reference）：间接指向Git对象
+## 引用（reference）
+一个SHA1散列值，指向Git对象库中的对象
+
+符号引用（symbolic reference）：一个指向其他引用的指针，间接指向Git对象
 
 - HEAD——指向当前分支的最近提交
 - ORIG_HEAD——可用来恢复或回滚到之前的状态
 - FETCH_HEAD
 - MERGE_HEAD
-
-​
 
 引用规范（refspec）：
 ```shell
@@ -86,9 +99,15 @@ doc/**/*.pdf # 忽略 doc/ 目录及其所有子目录下的 .pdf 文件
 	url = https://github.com/schacon/simplegit-progit
 	fetch = +refs/heads/*:refs/remotes/origin/*
 ```
-^	选择不同的父提交  <br />  ~	选择上一代提交  <br />  ..	X..Y  等同  ^X Y  <br />  ...	对称差（并集-交集）  <br />  ![](./assets/1643807402950-343ced22-cfbb-4e32-8018-52fc03cb6f0c.png)  <br />  快进（fast-forward）：合并分支时， 如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候， 只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧  <br />  **​**
 
-**​**
+操作符
+
+- `^`	选择不同的父提交
+- `~`	选择上一代提交
+- `..`	X..Y  等同  ^X Y
+- `...`	对称差（并集-交集）
+
+![](./assets/1643807402950-343ced22-cfbb-4e32-8018-52fc03cb6f0c.png)  <br />  快进（fast-forward）：合并分支时， 如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候， 只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧
 
 **CLI**
 
@@ -129,7 +148,6 @@ collaborate (see also: git help workflows)
    pull      Fetch from and integrate with another repository or a local branch
    push      Update remote refs along with associated objects
 ```
-
 
 
 # —— [Reference](https://git-scm.com/docs)
@@ -217,8 +235,11 @@ merge.tool vimdiff    # 差异化分析工具
 
 
 
+# 设置 git 命令行输出为彩色
+git config --global color.ui auto
+
 # 查看所有的配置以及它们所在的文件
-git config --list --show-origin
+git config [location] --list --show-origin
 
 # 配置代理
 git config --global https.proxy  http://127.0.0.1:1087
@@ -233,7 +254,6 @@ git config --global credential.helper "" # mac linux
 git config --global --unset credential.helper # 或者 mac linux
 
 
-
 命令别名配置
 # 设置别名，如果之前添加过，需要添加 --replace-all 进行覆盖
 git config --global alias.[别名] [原命令] [--replace-all]
@@ -246,11 +266,11 @@ git config --global alias.[别名] '!echo hello';
 git config --global --unset alias.[别名]
 ```
 
+**配置文件**  <br />  Repository 配置文件路径 [--local]  <br />  `<repo>/.git/config `  <br />  用户全局配置文件路径 [--global]  <br />  `~/.gitconfig `  <br />  系统配置文件路径 [--system]  <br />  `/etc/gitconfig`
 
 
 ## [bugreport](https://git-scm.com/docs/git-bugreport)
 
-  <br />  
 
 
 # Getting and Creating Projects
@@ -303,7 +323,6 @@ git clone --depth=1 协议
 ```
 
 
-
 # Basic Snapshotting
 
 ## [add](https://git-scm.com/docs/git-add)
@@ -353,7 +372,7 @@ git commit [-a, --all | --interactive | -p, --patch] [-s] [-v] [-u<mode>] [--ame
        [-F <file> | -m, --message <message>] [--reset-author] [--allow-empty]
        [--allow-empty-message] [-n, --no-verify] [-e, --edit] [--author=<author>]
        [--date=<date>] [--cleanup=<mode>] [--[no-]status]
-       [-i, --include | -o, --only] [-S, --gpg-sign[=<key-id>]] [--] [-t, --template <file>…​]
+       [-i, --include | -o, --only] [-S, --gpg-sign[=<key-id>]] [--] [-t, --template <file>…]
 
 # 提交暂存区到仓库区
 $ git commit -m [message]
@@ -394,7 +413,7 @@ git restore [<options>] [--source=<tree>] [--staged] [--worktree] [--] <pathspec
     -m, --merge           perform a 3-way merge with the new branch
     
     
-# 从暂 不包括新建文件
+# 撤销工作区的修改，不包括新建文件
 git restore [--worktree] [file]
 
 # 将文件从暂存区撤出，但不会撤销文件的更改
@@ -448,21 +467,24 @@ git mv [-v] [-f] [-n] [-k] <source> <destination>
 ```
 
 
-
 # Branching and Merging
 
 ## [branch](https://git-scm.com/docs/git-branch)
 ```shell
-git branch 
+git branch [--color[=<when>] | --no-color] [--show-current]
+	[-v [--abbrev=<n> | --no-abbrev]]
+	[--column[=<options>] | --no-column] [--sort=<key>]
+	[--merged [<commit>]] [--no-merged [<commit>]]
+	[--contains [<commit>]] [--no-contains [<commit>]]
+	[--points-at <object>] [--format=<format>]
+	[(-r | --remotes) | (-a | --all)]
+	[--list] [<pattern>…]
+  
     -a, --all             list both remote-tracking and local branches
     -r, --remotes         act on remote-tracking branches
     --contains <commit>   print only branches that contain the commit
     --no-contains <commit>
                           print only branches that don't contain the commit
-    -d, --delete          delete fully merged branch
-    -D                    delete branch (even if not merged)
-    -m, --move            move/rename a branch and its reflog
-    -M                    move/rename a branch, even if target exists
     -c, --copy            copy a branch and its reflog
     -C                    copy a branch, even if target exists
     -l, --list            list branch names
@@ -498,15 +520,22 @@ git reflog show --date=iso master
 $ git branch --track [branch] [remote-branch]
 
 # 建立追踪关系，在现有分支与指定的远程分支之间
-$ git branch --set-upstream [branch] [remote-branch]
+git branch (--set-upstream-to=<upstream> | -u <upstream>) [<branch>]
+git branch --unset-upstream [<branchname>]
 
 # 强制修改分支位置
 git branch -f master HEAD~3
 
 
-# 删除远程分支
-$ git push origin --delete [branch-name]
-$ git branch -dr [remote/branch]
+# 删除分支
+git branch (-d | -D) [-r] <branchname>…
+    -d, --delete          delete fully merged branch
+    -D                    delete branch (even if not merged)
+
+# 重命名分支
+git branch (-m | -M) [<oldbranch>] <newbranch>
+    -m, --move            move/rename a branch and its reflog
+    -M                    move/rename a branch, even if target exists
 
 # 重命名远程分支
 git branch -m <branchName>	 # 修改分支名称
@@ -538,8 +567,10 @@ git checkout [<options>] [<branch>] -- <file>...
     
 # 恢复暂存区的指定文件到工作区
 $ git checkout [file]
+
 # 恢复某个commit的指定文件到暂存区和工作区
 $ git checkout [commit] [file]
+
 # 切换到上一个分支
 $ git checkout -
 ```
@@ -583,8 +614,16 @@ git merge [-n] [--stat] [--no-commit] [--squash] [--[no-]edit]
 	[--[no-]allow-unrelated-histories]
 	[--[no-]rerere-autoupdate] [-m <msg>] [-F <file>] [<commit>…]
 git merge (--continue | --abort | --quit)
+
 # 合并指定分支到当前分支
-git merge [--no-ff -m "merge with no-ff"] [branch]
+git merge branch
+
+# fast-forward 是否快速向前，可能不会产生新的commit
+--[no-]ff
+
+# 合并指定分支到当前分支，但不产生任何提交
+git merge --squash branch
+
 # 退出合并，恢复到合并之前的状态
 git merge --abort
 ```
@@ -605,7 +644,7 @@ git stash save [-p|--patch] [-k|--[no-]keep-index] [-q|--quiet]
          [-u|--include-untracked] [-a|--all] [<message>]
 git stash [push [-p|--patch] [-k|--[no-]keep-index] [-q|--quiet]
          [-u|--include-untracked] [-a|--all] [-m|--message <message>]]
-         [--] [<pathspec>…​]]
+         [--] [<pathspec>…]]
 # 清空所有保存
 git stash clear
 git stash create [<message>]
@@ -613,7 +652,7 @@ git stash store [-m|--message <message>] [-q|--quiet] <commit>
 
 
 # 保存当前修改工作区内容
-git stash
+git stash 
 
 # 保存时添加注释
 git stash save "comment"
@@ -629,7 +668,7 @@ git stash pop --index # 恢复最近一次保存内容到工作区, 但如果是
 # 与 pop 命令一致, 唯一不同的是不会移除保存列表
 git stash apply
 
-# 清空指定 stash id, 如果 drop 后面不指定id清除最近的一次
+# 清空指定 stash id, 若 drop 后面不指定id清除最近的一次
 git stash drop stash@{0}
 git stash drop  # 清除最近一次
 ```
@@ -686,9 +725,6 @@ $ git push origin :refs/tags/[tagName]
 # 查看tag信息
 $ git show [tag]
 
-# 查看最近的标签
-git describe <ref>
-
 # 提交指定tag
 $ git push [remote] [tag]
 
@@ -699,13 +735,10 @@ $ git push [remote] --tags
 - 轻量标签（lightweight）：某个特定提交的引用
 - 附注标签（annotated）：存储在 Git 数据库中的一个完整对象， 是可以被校验的，包含打标签者的名字、电子邮件地址、日期时间， 一个标签信息，可以使用 GNU Privacy Guard （GPG）签名并验证。
 
-​
-
 分离头指针（detached HEAD）的状态
 
 ## [worktree](https://git-scm.com/docs/git-worktree)
 
-  <br />  
 
 
 # Sharing and Updating Projects
@@ -715,6 +748,7 @@ Manage set of tracked repositories
 ```shell
 # 显示所有远程仓库
 git remote [-v | --verbose]
+
 # 增加一个新的远程仓库，并命名
 git remote add [-t <branch>] [-m <master>] [-f] [--[no-]tags] [--mirror=<fetch|push>] <name> <url>
 git remote rename <old> <new>    # 重命名远程仓库
@@ -726,7 +760,9 @@ git remote set-url [--push] <name> <newurl> [<oldurl>]
 git remote set-url --add [--push] <name> <newurl>
 git remote set-url --delete [--push] <name> <url>
 git remote [-v | --verbose] show [-n] <name>…    # 显示某个远程仓库的信息
-git remote prune [-n | --dry-run] <name>…    # Deletes stale references associated with <name>
+
+# 远程删除了分支本地也删除
+git remote prune [-n | --dry-run] <name>… 
 git remote [-v | --verbose] update [-p | --prune] [(<group> | <remote>)…]
 ```
 
@@ -770,7 +806,7 @@ $ git fetch [remote]
 ```
 
 ## [pull](https://git-scm.com/docs/git-pull)
-Fetch from and integrate with another repository or a local branch
+Fetch from and integrate with another repository or a local branch  <br />  `git pull = git fetch + git merge FETCH_HEAD`
 ```shell
 git pull [<options>] [<repository> [<refspec>…]]
     -r, --rebase[=(false|true|merges|preserve|interactive)]
@@ -799,7 +835,7 @@ git pull [<options>] [<repository> [<refspec>…]]
 # 取回远程仓库的变化，并与本地分支合并
 git pull [--rebase] <远程主机名> <远程分支名>:<本地分支名>
 ```
-git pull = git fetch + git merge FETCH_HEAD
+
 
 ## [push](https://git-scm.com/docs/git-push)
 Update remote refs along with associated objects
@@ -813,8 +849,10 @@ git push [--all | --mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run]
      
 # 上传本地指定分支到远程仓库
 git push <远程主机名> <本地分支名>:<远程分支名>
+
 # 推送所有分支到远程仓库
 $ git push [remote] --all
+
 # 删除远程分支，原理是将空分支推送到远程分支
 $ git push [主机名] :[远程分支名]
 $ git push [主机名] --delete [远程分支名]
@@ -822,7 +860,6 @@ $ git push [主机名] --delete [远程分支名]
 
 ## [submodule](https://git-scm.com/docs/git-submodule)
 
-  <br />  
 
 
 # Inspection and Comparison
@@ -831,10 +868,13 @@ $ git push [主机名] --delete [远程分支名]
 Show various types of objects
 ```shell
 git show [<options>] [<object>…]
+
 # 显示某次提交的元数据和内容变化
 $ git show [commit]
+
 # 显示某次提交发生变化的文件
 $ git show --name-only [commit]
+
 # 显示某次提交时，某个文件的内容
 $ git show [commit]:[filename]
 ```
@@ -842,7 +882,7 @@ $ git show [commit]:[filename]
 ## [log](https://git-scm.com/docs/git-log)
 Show commit logs
 ```shell
-git log [<options>] [<revision range>] [[--] <path>…​]
+git log [<options>] [<revision range>] [[--] <path>…]
     -<n>	仅显示最近的 n 条提交。
     --since, --after	仅显示指定时间之后的提交。
     --until, --before	仅显示指定时间之前的提交。
@@ -861,8 +901,8 @@ git log [<options>] [<revision range>] [[--] <path>…​]
     --oneline	--pretty=oneline --abbrev-commit 合用的简写。
     --author [贡献者名字]    查看指定贡献者的提交记录
     
-# 查看某分支的提交历史，不写分支名查看当前所在分支
-$ git log [分支名] 
+# 查看某分支的提交历史，默认查看当前所在分支
+$ git log [branch] 
 
 # 显示指定文件每次提交所引入的差异
 $ git log -p | --patch [file]
@@ -882,22 +922,31 @@ $ git log [tag] HEAD --grep feature
 # 显示某个文件的版本历史，包括文件改名
 $ git log --follow [file]
 $ git whatchanged [file]
+
+# 显示远程 <remote/master> 分支与远程 <origin/master> 分支提交记录的差集
+$ git log --oneline <origin/master>..<remote/master> --left-right
 ```
 
 ## [diff](https://git-scm.com/docs/git-diff)
 Show changes between commits, commit and working tree, etc
 ```shell
 git diff [<options>] [<commit>] [--] [<path>…]
+
 # 显示暂存区和工作区的差异
 $ git diff
+
 # 显示暂存区和上一个commit的差异
 $ git diff --cached [file]
+
 # 显示工作区与当前分支最新commit之间的差异
 $ git diff HEAD
+
 # 显示两次提交之间的差异
 $ git diff [first-branch]...[second-branch]
+
 # 显示今天你写了多少行代码
 $ git diff --shortstat "@{0 day ago}"
+
 # 显示当前分支的最近几次提交
 $ git reflog
 ```
@@ -916,6 +965,7 @@ git log --pretty=short | git shortlog [<options>]
     
 # 显示所有提交过的用户，按提交次数排序
 $ git shortlog -sn
+
 # 采用邮箱格式化的方式进行查看贡献度
 git shortlog -e
 ```
@@ -924,6 +974,9 @@ git shortlog -e
 Give an object a human readable name based on an available ref
 ```shell
 git describe [--all] [--tags] [--contains] [--abbrev=<n>] [<commit-ish>…]
+
+# 查看最近的标签
+git describe <ref>
 ```
 
 # Patching
@@ -947,7 +1000,8 @@ Apply the changes introduced by some existing commits
 git cherry-pick [--edit] [-n] [-m parent-number] [-s] [-x] [--ff]
 		  [-S[<keyid>]] <commit>…
 git cherry-pick (--continue | --skip | --abort | --quit)
-# 选择一个commit，合并进当前分支
+
+# 合并一个commit进当前分支
 $ git cherry-pick [commit]...
 ```
 
@@ -959,10 +1013,13 @@ git rebase [-i | --interactive] [<options>] [--exec <cmd>]
 git rebase [-i | --interactive] [<options>] [--exec <cmd>] [--onto <newbase>]
 	--root [<branch>]
 git rebase (--continue | --skip | --abort | --quit | --edit-todo | --show-current-patch)
-# 操作最近4次提交，将多个commit记录合并为一条
-git rebase -i HEAD~4
-# 或者以 commit_id 进行操作
-git rebase -i commit_id
+
+# 操作最近n次提交，将多个commit记录合并为一条
+git rebase -i HEAD~n
+
+# 将某一段commit粘贴到另一个分支上
+git rebase [startpoint] [endpoint] --onto [branchName]
+
 # 放弃 git rebase 操作
 git rebase --abort
 ```
@@ -972,11 +1029,11 @@ Revert some existing commits
 ```shell
 git revert [--[no-]edit] [-n] [-m parent-number] [-s] [-S[<keyid>]] <commit>…
 git revert (--continue | --skip | --abort | --quit)
+
 # 新建一个commit，用来撤销指定commit
 # 后者的所有变化都将被前者抵消，并且应用到当前分支
 $ git revert [commit]
 ```
-
 
 
 # Debugging
@@ -1005,15 +1062,20 @@ git blame [-c] [-b] [-l] [--root] [-t] [-f] [-n] [-s] [-e] [-p] [-w] [--incremen
 	    [--ignore-rev <rev>] [--ignore-revs-file <file>]
 	    [--progress] [--abbrev=<n>] [<rev> | --contents <file> | --reverse <rev>..<rev>]
 	    [--] <file>
+      
 # 显示指定文件修改历史记录，包括时间、作者以及内容
 $ git blame [file]
+
 # 查看谁改动了文件的 n行-m行
 git blame -L n,m file
 git blame -L n file   # 查看第n行以后
+
 # 显示完整的 hash 值
 git blame -l file
+
 # 显示修改的行数
 git blame -n file
+
 # 显示作者邮箱
 git blame -e file
 ```
@@ -1041,12 +1103,16 @@ git grep [-a | --text] [-I] [--textconv] [-i | --ignore-case] [-w | --word-regex
 	   [--recurse-submodules] [--parent-basename <basename>]
 	   [ [--[no-]exclude-standard] [--cached | --no-index | --untracked] | <tree>…]
 	   [--] [<pathspec>…]
+     
+
+# 从当前目录的所有文件中查找文本内容
+git grep "Hello"
 ```
 
 # 其他
 ```shell
 # 生成一个可供发布的压缩包
-$ git archive
+git archive
 
 # Windows下更新
 git update-git-for-windows
@@ -1054,21 +1120,22 @@ git update-git-for-windows
 # 列出没有被 .gitignore 忽略的文件列表
 git ls-files
 ```
-​
 
 美化 git log
 ```shell
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
 git config --global alias.lg "log --graph --pretty=format:'%Cred%h - %Cgreen[%an]%Creset -%C(yellow)%d%Creset %s %C(yellow)<%cr>%Creset' --abbrev-commit --date=relative"
+
 git config --global alias.his "log --graph --decorate --oneline --pretty=format:'%Creset %s %C(magenta)in %Cred%h %C(magenta)commited by %Cgreen%cn %C(magenta)on %C(yellow) %cd %C(magenta)from %Creset %C(yellow)%d' --abbrev-commit --date=format:'%Y-%m-%d %H:%M:%S'"
+
 git config --global alias.hist "log --graph --decorate --oneline --pretty=format:'%Cred%h - %C(bold white) %s %Creset %C(yellow)%d  %C(cyan) <%cd> %Creset %Cgreen(%cn)' --abbrev-commit --date=format:'%Y-%m-%d %H:%M:%S'"
 ```
-**​**
 
-**​**  <br />  
+
 
 # 规范
-**​**
+
 
 **命名规则**
 
@@ -1079,7 +1146,7 @@ git config --global alias.hist "log --graph --decorate --oneline --pretty=format
 - 创建标签，名称要以tag/开头，加上发布版本号
 - 合并分支时必须使用--no-ff参数，以保留合并历史轨迹
 
-**​**
+
 
 **Commit Standard**  <br />  [Commit Message Guidelines](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits)
 ```shell
@@ -1105,25 +1172,23 @@ git config --global alias.hist "log --graph --decorate --oneline --pretty=format
    - 第一个字母小写
    - 结尾不加句号（.）
 
-​
-
 **Body**  <br />  对本次 commit 的详细描述，可以分成多行。下面是一个范例。
 
 - 使用第一人称现在时
 - 永远别忘了第2行是空行
 - 应该说明代码变动的动机，以及与以前行为的对比。
 
-​
-
 **Footer**
 
 - 不兼容变动：如果当前代码与上一个版本不兼容，以BREAKING CHANGE开头，后面是对变动的描述、以及变动理由和迁移方法。
 - 关闭 Issue：如果当前 commit 针对某个issue，那么可以在 Footer 部分关闭这个 issue 。
 
-**Revert**  <br />  当前 commit 用于撤销以前的 commit，则必须以revert:开头，后面跟着被撤销 Commit 的 Header。  <br />  ​  <br />  
+**Revert**  <br />  当前 commit 用于撤销以前的 commit，则必须以revert:开头，后面跟着被撤销 Commit 的 Header。
+
+
 
 # Git服务器
-远程仓库通常只是一个裸仓库（bare repository）——即一个没有当前工作目录的仓库。 工程目录内的 .git 子目录内容  <br />  ​
+远程仓库通常只是一个裸仓库（bare repository）——即一个没有当前工作目录的仓库。 工程目录内的 .git 子目录内容
 
 Protocol
 
@@ -1132,33 +1197,28 @@ Protocol
 - SSH协议	ssh://[user@]server/project.git	不支持匿名访问 Git 仓库
 - Git 协议	最快的	缺乏授权机制	难架设
 
-​
-
 **步骤**  <br />  1 安装git
 ```shell
 $ sudo apt-get install git
 ```
-​
 
 2 创建一个git用户，用来运行git服务
 ```shell
 $ sudo adduser git
 ```
-​
 
-3 创建证书登录  <br />  收集所有需要登录的用户的公钥(id_rsa.pub)，导入到/home/git/.ssh/authorized_keys文件里，一行一个。  <br />  ​
+3 创建证书登录  <br />  收集所有需要登录的用户的公钥(id_rsa.pub)，导入到/home/git/.ssh/authorized_keys文件里，一行一个。
 
 4 初始化Git仓库  <br />  先选定一个目录作为Git仓库，假定是/srv/sample.git，在/srv目录下输入命令
 ```shell
 $ sudo git init --bare sample.git
 ```
-Git就会创建一个裸仓库，裸仓库没有工作区，服务器上的Git仓库通常都以.git结尾。  <br />  ​
+Git就会创建一个裸仓库，裸仓库没有工作区，服务器上的Git仓库通常都以.git结尾。
 
 5 把owner改为git
 ```shell
 $ sudo chown -R git:git sample.git
 ```
-​
 
 6 禁用shell登录
 ```shell
@@ -1168,16 +1228,15 @@ git:x:1001:1001:,,,:/home/git:/bin/bash
 +
 git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
 ```
-​
 
 7 克隆远程仓库
 ```shell
 $ git clone git@server:/srv/sample.git
 ```
 
-  <br />  
 
 
 # Resocurse
 
-  <br />  Git 练习	[https://learngitbranching.js.org/?locale=zh_CN](https://learngitbranching.js.org/?locale=zh_CN)
+- Git 练习	[https://learngitbranching.js.org/?locale=zh_CN](https://learngitbranching.js.org/?locale=zh_CN)
+- [awesome-git-hooks](https://github.com/CompSciLauren/awesome-git-hooks)
