@@ -69,6 +69,8 @@ struct TNode{ /* 树结点定义 */
 
 ### Traversal
 
+![](./assets/1649142889477-cd6cf366-5de7-4a32-a16c-7fe03edff4b6.jpeg)
+
 先序遍历
 ```c
 // 递归实现

@@ -12,15 +12,17 @@
 
 
 # 算法的复杂度
+**时间复杂度**
 
-- 时间复杂度
-   - 用来衡量算法随着问题规模增大，算法执行时间增长的快慢；
-   - 是问题规模的函数：T(n)是时间规模函数 时间复杂度主要分析T(n)的数量级
-   - T(n)=O(f(n)) f(n)是算法中基本运算的频度 一般我们考虑最坏情况下的时间复杂度
-- 空间复杂度
-   - 用来衡量算法随着问题规模增大，算法所需空间的快慢；
-   - 是问题规模的函数：S(n)=O(g(n)) ；算法所需空间的增长率和g(n)的增长率相同。
+- 用来衡量算法随着问题规模增大，算法执行时间增长的快慢；
+- 大 O 表示法 T(n)=O(f(n)) f(n)，一般考虑最坏情况下的时间复杂度
 
+![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20220320160627.png#crop=0&crop=0&crop=1&crop=1&from=url&id=zEvwm&margin=%5Bobject%20Object%5D&originHeight=271&originWidth=843&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+**空间复杂度**
+
+- 用来衡量算法随着问题规模增大，算法所需空间的快慢；
+- 问题规模的函数 S(n)=O(g(n)) 
 
 
 
@@ -624,7 +626,7 @@ int binary_search(const int arr[], int start, int end, int key) {
 ## Hash
 散列表（Hash table，哈希表），是根据键（Key）而直接访问在内存储存位置的数据结构  <br />  ![](./assets/1644413733217-ff4a738d-1aff-48ad-9688-9f2b985e21d9.svg)
 
-**冲突**：不同的关键字会映射到同一个散列地址上
+装载因子（load factor）= 填入表中的元素个数 / 哈希表的长度  <br />  **冲突**：不同的关键字会映射到同一个散列地址上
 
 
 ### 散列函数
@@ -928,6 +930,7 @@ int main()
 1. 对每一子问题求解，得到子问题的局部最优解。
 1. 把子问题的解局部最优解合成原来解问题的一个解。
 
+
 ## 分治法 Divide and conquer
 把问题分解成若干个（相同或相似）子问题，直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。  <br />  循环递归
 
@@ -935,8 +938,10 @@ int main()
 - 解决：若子问题规模较小且易于解决时，则直接解。否则，递归地解决各子问题。
 - 合并：将各子问题的解合并为原问题的解。
 
+
 ## 回溯法 Backtracking
 一种暴力搜索，采用[试错](https://zh.wikipedia.org/wiki/%E8%AF%95%E9%94%99)的思想，它尝试分步的去解决一个问题
+
 
 ## 指针法
 

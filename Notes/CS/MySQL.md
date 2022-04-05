@@ -2,9 +2,6 @@
 # ——MySQL——
 [MySQL](https://dev.mysql.com/)是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，属于 Oracle 旗下产品。
 
-2020-02-11T09:14:29.463543Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: cneMp3w,tsEg  <br />  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mysql2020';
-
-**mysql -uroot -pmysql2020**
 ```sql
 --安装数据库
 mysqld -install
@@ -14,7 +11,7 @@ mysqld -remove
 mysqld --initialize-insecure [--user=mysq]    --默认用户名root，密码为空
 
 
-/* 启动或关闭MySQL服务器 */
+/* windows启动或关闭MySQL服务器 */
 (net | sc) <start | stop> mysql  -- 以管理员身份
 
 /* 连接服务器 */
@@ -32,9 +29,9 @@ default-character-set = utf8
 # 设置3306端口
 port = 3306
 # 设置mysql的安装目录
-basedir=D:\\Portable\\Programming\\mysql-8.0.19
+basedir=D:\\mysql-8.0.19
 # 设置 mysql数据库的数据的存放目录，MySQL 8+ 不需要以下配置，系统自己生成即可，否则有可能报错
-# datadir=E:\\BaiduDownload
+# datadir=E:\\data
 # 允许最大连接数
 max_connections = 20
 # 服务端使用的字符集默认为8bit编码的latin1字符集
@@ -47,7 +44,7 @@ secure_file_priv = ''
 
 MySQL Client的可执行程序是mysql，MySQL Server的可执行程序是mysqld。  <br />  ┌──────────────┐  SQL   ┌──────────────┐  <br />  │ MySQL Client             │───> │ MySQL Server            │  <br />  └──────────────┘  TCP   └──────────────┘  <br />  在MySQL Client中输入的SQL语句通过TCP连接发送到MySQL Server。  <br />  默认端口号是3306，即如果发送到本机MySQL Server，地址就是127.0.0.1:3306。
 
-information_schema、mysql、performance_schema和sys是系统库  <br />  **官方文档：**[**https://dev.mysql.com/doc/**](https://dev.mysql.com/doc/)
+系统库：information_schema、mysql、performance_schema和sys是  <br />  [  <br />  ](https://dev.mysql.com/doc/)
 
 # 基本操作
 HELP 查询内容（可包含通配符“％”和“_”，效果与 LIKE 相同）
@@ -158,7 +155,7 @@ from score;
 INSERT INTO table_name ( field1, field2,...fieldN )
     VALUES  ( value1, value2,...valueN ) [,···];
     
-REPLACE 等同于 INSERT 
+-- REPLACE 等同于 INSERT 
 
 INSERT [INTO] 表名 SET 字段名=值[, 字段名=值, ...]    
 INSERT INTO table_name [(filed)] SELECT_statement;

@@ -35,6 +35,8 @@
 零宽度断言（前后预查）  <br />  先行断言和后发断言都属于非捕获簇（不捕获文本 ，也不针对组合计进行计数）。 先行断言用于判断所匹配的格式是否在另一个确定的格式之前，匹配结果不包含该确定格式（仅作为约束）。  <br />  正向肯定预查："Windows(?=7|10)"能匹配"Windows10"中的"Windows"，但不能匹配"Windows8"中的"Windows"  <br />  反向肯定预查："(?<=7|10)Windows"能匹配"10Windows"中的"Windows"，但不能匹配"8Windows"  <br />  简写字符集
 
 
+
+等价字符
 | **\\b** | 匹配一个单词边界，也就是指单词和空格间的位置 |
 | --- | --- |
 | **\\B** | 匹配非单词边界  <br />  'er\\B' 能匹配 "verb" 中的 'er'，但不能匹配 "never" 中的 'er'。 |
@@ -73,6 +75,16 @@
 
 "/The/gi" => **The** fat cat sat on **the** mat.  <br />  贪婪匹配与惰性匹配 (Greedy vs lazy matching)  <br />  正则表达式默认采用贪婪匹配模式，会匹配尽可能长的子串。可以使用 ? 将贪婪匹配模式转化为惰性匹配模式。  <br />  "/(.*at)/" => The fat cat sat on the mat   <br />  "/(.*?at)/" => The fat cat sat on the mat
 
+
+
+
+# 实用正则表达式
+
+校验中文	`^[\u4e00-\u9fa5]+$`
+
+
+
+  <br />  
 
 # Replace Operation
 $1 ~ $999  <br />  Stands for what a certain group captured. If the number is larger than the max group number, DEELX will use less digitals, till the number is smaller than or equal to the max group number.  <br />  For example:  <br />  If the max group number is 20, "$999" means "$9" and common string "99", while "$15" means the 15th group. If you need "$1" and common string "5", you can use $0015 , DEELX at most recognize 3 digitals as number.

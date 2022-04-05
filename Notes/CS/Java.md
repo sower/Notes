@@ -58,7 +58,7 @@ JRE：Java Runtime Environment
 /**
  * 自动创建文档的注释
  * 
- * @auther liaoxuefeng
+ * @auther someone
  */
 ```
 
@@ -86,7 +86,9 @@ Javadoc标签
 
 
 
-**注解（Annotation）**  <br />  放在Java源码的类、方法、字段、参数前的一种特殊“注释”  <br />  注解则可以被编译器打包进入class文件，因此，注解是一种用作标注的“元数据”。
+
+## 注解（Annotation）
+放在Java源码的类、方法、字段、参数前的一种特殊“注释”  <br />  注解则可以被编译器打包进入class文件，因此，注解是一种用作标注的“元数据”。
 
 基本 Annotation  <br />  在 java.lang 包下
 
@@ -152,6 +154,7 @@ void check(Person person) throws IllegalArgumentException, ReflectiveOperationEx
     }
 }
 ```
+
 
 # 标识符 & 关键字
 **标识符（identifier）**
@@ -225,6 +228,21 @@ void check(Person person) throws IllegalArgumentException, ReflectiveOperationEx
 |  | const | 是关键字，但不能使用 |
 |  | null | 空 |
 
+
+非访问修饰符
+
+- static 用来创建类方法和类变量，类方法不能访问的实例变量
+- final 用来修饰类、方法和变量，final 修饰的类不能够被继承，修饰的方法不能被继承类重新定义，修饰的变量为常量，不可修改
+- abstract 用来创建抽象类、抽象方法
+- synchronized 修饰的方法、代码块在同一时间只能被一个线程访问，不能修饰构造器、成员变量等
+- volatile 修饰的成员变量在每次被线程访问时，都强迫从共享内存中重读该成员变量的值；并且，当成员变量发生变化时，强迫线程将变化值回写到共享内存（保证了线程操作时变量的可见性，即一个线程修改了某个变量的值，这新值对其它线程来说是立即可见的）（只能保证内存可见性，无法保证操作的原子性）
+- transient 序列化的对象包含被 transient 修饰的成员变量时，JVM 跳过该特定的变量
+- native 修饰的方法通常采用 C/C++ 语言来实现
+
+
+
+
+
 var 自动推断
 ```java
 var sb = new StringBuilder();
@@ -235,7 +253,8 @@ var sb = new StringBuilder();
 - final 定义的变量
 
 # 数据类型
-**基本类型**
+
+## 基本类型
 
 - 整数类型：byte，short，int，long（ l | L ）
 - 浮点数类型：float（ f | F ），double
@@ -279,8 +298,8 @@ double d3 = -1.0 / 0; // -Infinity，负无穷大
 
 ## 引用类型
 
-- 对象、数组、字符串都是引用数据类型。
-- 一个引用变量可以用来引用任何与之兼容的类型。
+- 对象、数组、字符串
+- 一个引用变量可以用来引用任何与之兼容的类型
 
 相等判断  <br />  == ：表示引用相等  <br />  equals()方法：引用类型的变量内容相等
 
@@ -294,7 +313,7 @@ double d3 = -1.0 / 0; // -Infinity，负无穷大
 
 public final class **String**  <br />  extends Object  <br />  implements Serializable, Comparable, CharSequence
 
-"""...""" 表示多行字符串（Text Blocks）  <br />  常用构造器  <br />  String(byte[] bytes, int offset, int length, String charsetName)：使用指定的字符集将 byte[] 数组从 offset 开始、长度为 length 的子数组解码成字符串（构造器声明上抛出了异常）  <br />  String(char[] value, int offset, int count)：将字符数组从 offset 开始、长度为 count 的字符元素连缀成字符串  <br />  实例方法
+`"""..."""`表示多行字符串（Text Blocks）  <br />  构造器  <br />  String(byte[] bytes, int offset, int length, String charsetName)：使用指定的字符集将 byte[] 数组从 offset 开始、长度为 length 的子数组解码成字符串（构造器声明上抛出了异常）  <br />  String(char[] value, int offset, int count)：将字符数组从 offset 开始、长度为 count 的字符元素连缀成字符串  <br />  实例方法
 
 - byte[] getBytes()：使用平台的默认字符集将此 String 编码为 byte 数组
 - byte[] getBytes(String charsetName)：使用指定的字符集将此 String 编码为 byte 数组（方法声明上抛出了异常）
@@ -336,10 +355,12 @@ public final class **String**  <br />  extends Object  <br />  implements Serial
 - void setLength(int newLength)：设置字符序列的长度
 
 
-**regex**
+
+#### regex
 ```java
 // 将一个字符串编译成 Pattern 对象
 Pattern p = Pattern.compile("a*b");
+
 // 使用 Pattern 对象创建 Matcher 对象
 Matcher m = p.matcher("aaaaab");
 boolean b = m.matches(); // 返回 true
@@ -448,26 +469,27 @@ java.math.BigDecimal：表示一个任意大小且精度完全准确的浮点数
 - BigDecimal setScale(int newScale, RoundingMode roundingMode), BigDecimal setScale(int newScale, int roundingMode)：返回一个 BigDecimal，要保留的小数位数 newScale，舍入模式 roundingMode
 - BigDecimal stripTrailingZeros()：返回的 BigDecimal，其数值上等于此小数，但从该表示形式移除所有尾部零
 
+
 # 流程控制
 **条件**
 ```java
-if(布尔表达式 1){
-   //如果布尔表达式 1的值为true执行代码
-}else if(布尔表达式 2){
-   //如果布尔表达式 2的值为true执行代码
+if (condition1) {
+  // block of code to be executed if condition1 is true
+} else if (condition2) {
+  // block of code to be executed if the condition1 is false and condition2 is true
+} else {
+  // block of code to be executed if the condition1 is false and condition2 is false
 }
-···
-else {
-   //如果以上布尔表达式都不为true执行代码
+
+switch(expression) {
+  case value:
+    // code block
+    break;  // optional
+// ...
+  default:
+    // code block
 }
-switch(expression){
-    case value :
-       //语句
-       break; //可选
-    ···
-    default : //可选
-       //语句
-}
+
 // switch新特性
  int opt = switch (fruit) {
             case "apple" -> 1;
@@ -477,19 +499,23 @@ switch(expression){
 ```
 **循环**
 ```java
-while( 布尔表达式 ) {
-  //循环内容
+while (condition) {
+  // code block to be executed
 }
+
 do {
-       //代码语句
-}while(布尔表达式);
+  // code block to be executed
+}
+while (condition);
+
 for(初始化; 布尔表达式; 更新) {
-    //代码语句
+    //代码
 }
-for(声明语句 : 表达式)
-{
-   //代码句子
+
+for(声明语句 : 表达式){
+   //代码
 }
+
 break [lable];
 continue [lable];
 ```
@@ -501,6 +527,7 @@ for (Iterator<String> it = list.iterator(); it.hasNext(); ) {
      System.out.println(s);
 }
 ```
+
 
 # OOP
 面向对象编程——Object Oriented Programming，是一种程序设计思想。OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。
@@ -519,10 +546,19 @@ public class Person {
     private String name;
     private int age;
     
-    // 类的构造
-    Person(int age,String name) {
-        this.age = age;
+    /* 默认构造器（编译器产生的）
+    public Person() {}
+    */
+    
+    // 构造器
+    public Person(String name) {
+        this(name, 0);
+    }
+
+    // 创建对象，初始化 name 和 age
+    public Person(String name, int age) {
         this.name = name;
+        this.age = age;
     }
     
     public String getName() { return this.name; }
@@ -536,11 +572,16 @@ public class Person {
 ```
 
 
-**JavaBean**：一种符合命名规范的class，它通过getter和setter来定义属性；  <br />  使用Introspector.getBeanInfo()可以获取属性列表。
 
-**this变量**  <br />  在方法内部，有一个隐含的变量this，它始终指向当前实例。  <br />  如果没有命名冲突，可以省略this。如果有局部变量和字段重名，那么局部变量优先级更高，须加上this
+**this**
 
-一个构造方法可以调用其他构造方法，语法是this(…)
+- 构造器重载时的互调 this([参数]);
+- 解决实例方法中成员变量和参数（局部变量）之间的二义性，必须使用
+- 同类中实例方法间互调（调用者是 this，不建议省略）
+- 实例方法将 this 作为参数传递给另一个方法
+- 将 this 作为方法的返回值（链式方法编程）
+
+
 
 **访问控制修饰符**
 
@@ -584,6 +625,7 @@ class Student extends Person {
 
 可以安全地向上转型为更抽象的类型；  <br />  可以强制向下转型，借助instanceof判断；
 :::
+代码执行顺序：**父类静态代码块 -> 子类静态代码块 -> 父类非静态代码块 -> 父类构造方法 -> 子类非静态代码块 -> 子类构造方法**
 
 
 ## Object
@@ -745,9 +787,10 @@ public abstract class Hero {
 
 **接口（Interface）**
 
-- 定义的所有方法默认都是public abstract的
-- 是数据类型，适用于向上转型和向下转型；
-- 只有静态字段的，且为final类型，修饰符可省略
+- 没有构造器，不能实例化
+- 成员变量默认都使用 `public static final` 修饰，全局静态常量
+- 抽象方法默认都使用 `public abstract` 修饰，公共的抽象方法
+- 内部类默认都使用 public static 修饰，公共的静态内部类
 ```java
 interface Person {
     String getName();
@@ -822,6 +865,83 @@ public class App implements Task
 }
 ```
 
+
+
+## JavaBean
+一种符合命名规范的class
+
+1. 类使用 public 修饰
+1. 有 public 修饰的无参构造器
+1. 包含属性的操作方法，即有 public 修饰的 getter/setter 方法
+
+
+**class Introspector**  <br />  通过分别分析 bean 的类和父类，寻找显式或隐式信息，使用这些信息构建一个全面描述目标 bean 的 BeanInfo 对象  <br />  类方法
+
+- BeanInfo getBeanInfo(Class<?> beanClass)：在 JavaBean 上进行内省，获取其所有成员信息（包括继承的）
+- BeanInfo getBeanInfo(Class<?> beanClass, Class<?> stopClass)：在给定的“断”点之下，在 JavaBean 上进行内省，获取其所有成员信息
+- String decapitalize(String name)：获得一个字符串并将它转换成普通 Java 变量名称大写形式
+
+interface BeanInfo
+
+- PropertyDescriptor[] getPropertyDescriptors()：获取其中的属性描述器
+- MethodDescriptor[] getMethodDescriptors()：获取其中的方法描述器
+
+class PropertyDescriptor 
+
+- Class<?> getPropertyType()：获得属性的类型的 Class 对象
+- String getName()：获取此属性名
+- Method getReadMethod()：获取属性值的 get 方法
+- Method getWriteMethod()：获取属性值的 set 方法
+```java
+// JavaBean 和 Map 之间的相互转换
+public class BeanMapUtils {
+    // 把一个 Map 对象转换为一个 JavaBean 对象
+    public static <T> T map2bean(Map<String, Object> map, Class<T> beanType) throws Exception {
+        T obj = beanType.newInstance();
+        BeanInfo beanInfo = Introspector.getBeanInfo(beanType, Object.class);
+        PropertyDescriptor[] pds = beanInfo.getPropertyDescriptors();
+        for (PropertyDescriptor pd : pds) {
+            Object value = map.get(pd.getName());
+            pd.getWriteMethod().invoke(obj, value);
+        }    
+        return obj;
+    }
+    
+    // 把一个 JavaBean 对象转换为以一个 Map 对象
+    public static Map<String, Object> bean2map(Object bean) throws Exception {
+        Map<String, Object> map = new HashMap<>();
+        BeanInfo beanInfo = Introspector.getBeanInfo(bean.getClass(), Object.class);
+        PropertyDescriptor[] pds = beanInfo.getPropertyDescriptors();
+        for (PropertyDescriptor pd : pds) {
+            String name = pd.getName();
+            Object value = pd.getReadMethod().invoke(bean);
+            map.put(name, value);
+        }
+        return map;
+    }
+}
+```
+
+
+# Package
+```java
+// package 包名.子包名.子子包;
+// 必须把该语句作为 Java 文件中的第一条非注释性语句
+package com.example.demo;
+```
+
+**import**
+
+- 类的全限定名：包名.类名 java.util.Arrays
+- 在一个类中使用非同包的类和非 java.lang 包下的类，要使用类的全限定名
+- 使用 import 可以省略写包名；而使用 import static 则可以连类名都省略
+- import 语句应该出现在 package 语句（如果有的话）之后、类定义之前
+```java
+import java.util.Arrays; // 导入 java.util 包下的 Arrays 类
+import java.util.*; // 导入 java.util 包下所有被当前类使用到的类
+```
+
+
 # 泛型（Generic）
 ```java
 public class Pair<T> {
@@ -854,11 +974,11 @@ public class Pair<T, K> {
 ```
 Java泛型实现方式：擦拭法（Type Erasure）—— 虚拟机对泛型一无所知，所有的工作都是编译器做的（将T替换成Object）
 
-擦拭法决定了泛型<T>：
+擦拭法决定了泛型`<T>`：
 
 - 不能是基本类型，例如：int；
-- 不能获取带泛型类型的Class，例如：Pair<String>.class；
-- 不能判断带泛型类型的类型，例如：x instanceof Pair<String>；
+- 不能获取带泛型类型的Class，例如：`Pair<String>.class`；
+- 不能判断带泛型类型的类型，例如：`x instanceof Pair<String>`；
 - 不能实例化T类型，例如：new T()。
 ```java
 // 实例化T类型，须借助额外的Class<T>参数：
@@ -884,10 +1004,10 @@ public class Pair<T> {
 }
 ```
 
-<? extends T> & <? super T>
+`<? extends T>` & `<? super T>`
 
-- <? extends T>允许调用读方法T get()获取T的引用，但不允许调用写方法set(T)传入T的引用（传入null除外）；
-- <? super T>允许调用写方法set(T)传入T的引用，但不允许调用读方法T get()获取T的引用（获取Object除外）。
+- `<? extends T>`允许调用读方法T get()获取T的引用，但不允许调用写方法set(T)传入T的引用（传入null除外）；
+- `<? super T>`允许调用写方法set(T)传入T的引用，但不允许调用读方法T get()获取T的引用（获取Object除外）。
 ```python
 public class Collections {
     // 把src的每个元素复制到dest中:
@@ -900,11 +1020,11 @@ public class Collections {
 }
 ```
 
-<?>通配符特点
+`<?>`通配符
 
-- 不允许调用set(T)方法并传入引用（null除外）；
-- 不允许调用T get()方法并获取T引用（只能获取Object引用）。
-- Pair<?>是所有Pair<T>的超类
+- 不允许调用`set(T)`方法并传入引用（`null`除外）；
+- 不允许调用`T get()`方法并获取`T`引用（只能获取Object引用）。
+- `Pair<?>`是所有`Pair<T>`的超类
 
 
 可以声明带泛型的数组，但不能直接创建带泛型的数组，必须强制转型；
@@ -926,13 +1046,195 @@ String[] ss = ArrayHelper.asArray("a", "b", "c");
 Integer[] ns = ArrayHelper.asArray(1, 2, 3);
 ```
 
+
 # IO
 
-## System.out
+## BIO
+blocking IO，阻塞 IO，面向流(Stream oriented)  <br />  ![](./assets/1648563152531-0080aa0c-1dca-44d6-b358-fdb229662dc3.png)
 
-- System.out.print() —— 输出
-- System.out.println() ——输出并换行
-- System.out.printf()——格式化输出；
+
+### 字节流
+```java
+public class FileStreamDemo {
+
+    private static final String FILEPATH = "temp.log";
+
+    public static void main(String[] args) throws Exception {
+        write(FILEPATH);
+        read(FILEPATH);
+    }
+
+    public static void write(String filepath) throws IOException {
+        // 第1步、使用File类找到一个文件
+        File f = new File(filepath);
+
+        // 第2步、通过子类实例化父类对象
+        OutputStream out = new FileOutputStream(f);
+        // 实例化时，默认为覆盖原文件内容方式；如果添加true参数，则变为对原文件追加内容的方式。
+        // OutputStream out = new FileOutputStream(f, true);
+
+        // 第3步、进行写操作
+        String str = "Hello World\n";
+        byte[] bytes = str.getBytes();
+        out.write(bytes);
+
+        // 第4步、关闭输出流
+        out.close();
+    }
+
+    public static void read(String filepath) throws IOException {
+        // 第1步、使用File类找到一个文件
+        File f = new File(filepath);
+
+        // 第2步、通过子类实例化父类对象
+        InputStream input = new FileInputStream(f);
+
+        // 第3步、进行读操作
+        byte[] bytes = new byte[(int) f.length()];
+        int len = input.read(bytes); // 读取内容
+        System.out.println("读入数据的长度：" + len);
+
+        // 第4步、关闭输入流
+        input.close();
+        System.out.println("内容为：\n" + new String(bytes));
+    }
+
+}
+```
+
+
+### 字符流
+```java
+public class FileReadWriteDemo {
+
+    private static final String FILEPATH = "temp.log";
+
+    public static void main(String[] args) throws IOException {
+        write(FILEPATH);
+        System.out.println("内容为：" + new String(read(FILEPATH)));
+    }
+
+    public static void write(String filepath) throws IOException {
+        // 1.使用 File 类绑定一个文件
+        File f = new File(filepath);
+
+        // 2.把 File 对象绑定到流对象上
+        Writer out = new FileWriter(f);
+        // Writer out = new FileWriter(f, true); // 追加内容方式
+
+        // 3.进行读或写操作
+        String str = "Hello World!!!\r\n";
+        out.write(str);
+
+        // 4.关闭流
+        // 字符流操作时使用了缓冲区，并在关闭字符流时会强制将缓冲区内容输出
+        // 如果不关闭流，则缓冲区的内容是无法输出的
+        // 如果想在不关闭流时，将缓冲区内容输出，可以使用 flush 强制清空缓冲区
+        out.flush();
+        out.close();
+    }
+
+    public static char[] read(String filepath) throws IOException {
+        // 1.使用 File 类绑定一个文件
+        File f = new File(filepath);
+
+        // 2.把 File 对象绑定到流对象上
+        Reader input = new FileReader(f);
+
+        // 3.进行读或写操作
+        int temp = 0; // 接收每一个内容
+        int len = 0; // 读取内容
+        char[] c = new char[1024];
+        while ((temp = input.read()) != -1) {
+            // 如果不是-1就表示还有内容，可以继续读取
+            c[len] = (char) temp;
+            len++;
+        }
+        System.out.println("文件字符数为：" + len);
+
+        // 4.关闭流
+        input.close();
+
+        return c;
+    }
+
+}
+```
+字节流转换成字符流
+
+- InputStreamReader(InputStream in, String charsetName)
+- OutputStreamWriter(OutputStream out, String charsetName)
+
+
+
+## NIO
+non-blocking IO，非阻塞 IO，面向缓冲区(Buffer oriented)，以块（block）为基本单位处理数据
+
+缓冲区（Buffer）：一块连续的内存块，是 NIO 读写数据的缓冲  <br />  通道（Channel）：缓冲数据的源头或者目的地，用于读取缓冲或者写入数据，是访问缓冲的接口。
+
+- FileChannel：从文件中读写数据；
+- DatagramChannel：通过 UDP 读写网络中数据；
+- SocketChannel：通过 TCP 读写网络中数据；
+- ServerSocketChannel：可以监听新进来的 TCP 连接，对每一个新进来的连接都会创建一个 SocketChannel。
+
+Selector（选择器）：用于检查一个或多个 NIO Channel 的状态是否处于可读、可写
+
+```java
+public static void fastCopy(String src, String dist) throws IOException {
+
+    /* 获得源文件的输入字节流 */
+    FileInputStream fin = new FileInputStream(src);
+
+    /* 获取输入字节流的文件通道 */
+    FileChannel fcin = fin.getChannel();
+
+    /* 获取目标文件的输出字节流 */
+    FileOutputStream fout = new FileOutputStream(dist);
+
+    /* 获取输出字节流的通道 */
+    FileChannel fcout = fout.getChannel();
+
+    /* 为缓冲区分配 1024 个字节 */
+    ByteBuffer buffer = ByteBuffer.allocateDirect(1024);
+
+    while (true) {
+
+        /* 从输入通道中读取数据到缓冲区中 */
+        int r = fcin.read(buffer);
+
+        /* read() 返回 -1 表示 EOF */
+        if (r == -1) {
+            break;
+        }
+
+        /* 切换读写 */
+        buffer.flip();
+
+        /* 把缓冲区的内容写入输出文件中 */
+        fcout.write(buffer);
+
+        /* 清空缓冲区 */
+        buffer.clear();
+    }
+}
+```
+
+
+## AIO
+Asynchronous IO，异步非阻塞 IO
+
+
+
+## IO 工具类
+
+### System
+
+- System.out - 一个 PrintStream 流。一般会把你写到其中的数据输出到控制台上
+   - System.out.print() —— 输出
+   - System.out.println() ——输出并换行
+   - System.out.printf()——格式化输出；
+- System.err
+- System.in - 一个典型的连接控制台程序和键盘输入的 InputStream 流
 | 占位符 | 说明 |
 | --- | --- |
 | %d | 格式化输出整数 |
@@ -943,46 +1245,9 @@ Integer[] ns = ArrayHelper.asArray(1, 2, 3);
 | %n | 换行 |
 
 
-[PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html)
 
-| 构造器 | 描述 |
-| --- | --- |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#%3Cinit%3E(java.io.File))([File](https://www.apiref.com/java11-zh/java.base/java/io/File.html) file) | 使用指定的文件创建没有自动行刷新的新打印流。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#%3Cinit%3E(java.io.File,java.lang.String))([File](https://www.apiref.com/java11-zh/java.base/java/io/File.html) file, [String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) csn) | 使用指定的文件和字符集创建一个没有自动行刷新的新打印流。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#%3Cinit%3E(java.io.File,java.nio.charset.Charset))([File](https://www.apiref.com/java11-zh/java.base/java/io/File.html) file, [Charset](https://www.apiref.com/java11-zh/java.base/java/nio/charset/Charset.html) charset) | 使用指定的文件和字符集创建一个没有自动行刷新的新打印流。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#%3Cinit%3E(java.io.OutputStream))([OutputStream](https://www.apiref.com/java11-zh/java.base/java/io/OutputStream.html) out) | 创建新的打印流。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#%3Cinit%3E(java.io.OutputStream,boolean))([OutputStream](https://www.apiref.com/java11-zh/java.base/java/io/OutputStream.html) out, boolean autoFlush) | 创建新的打印流。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#%3Cinit%3E(java.io.OutputStream,boolean,java.lang.String))([OutputStream](https://www.apiref.com/java11-zh/java.base/java/io/OutputStream.html) out, boolean autoFlush, [String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) encoding) | 创建新的打印流。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#%3Cinit%3E(java.io.OutputStream,boolean,java.nio.charset.Charset))([OutputStream](https://www.apiref.com/java11-zh/java.base/java/io/OutputStream.html) out, boolean autoFlush, [Charset](https://www.apiref.com/java11-zh/java.base/java/nio/charset/Charset.html) charset) | 创建一个新的打印流，具有指定的OutputStream，自动行刷新和字符集。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#%3Cinit%3E(java.lang.String))([String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) fileName) | 使用指定的文件名创建没有自动行刷新的新打印流。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#%3Cinit%3E(java.lang.String,java.lang.String))([String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) fileName, [String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) csn) | 使用指定的文件名和字符集创建一个没有自动行刷新的新打印流。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#%3Cinit%3E(java.lang.String,java.nio.charset.Charset))([String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) fileName, [Charset](https://www.apiref.com/java11-zh/java.base/java/nio/charset/Charset.html) charset) | 使用指定的文件名和字符集创建一个没有自动行刷新的新打印流。 |
-
-| 变量和类型 | 方法 | 描述 |
-| --- | --- | --- |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html) | [append](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#append(char))(char c) | 将指定的字符追加到此输出流。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html) | [append](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#append(java.lang.CharSequence))([CharSequence](https://www.apiref.com/java11-zh/java.base/java/lang/CharSequence.html) csq) | 将指定的字符序列追加到此输出流。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html) | [append](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#append(java.lang.CharSequence,int,int))([CharSequence](https://www.apiref.com/java11-zh/java.base/java/lang/CharSequence.html) csq, int start, int end) | 将指定字符序列的子序列追加到此输出流。 |
-| boolean | [checkError](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#checkError())() | 刷新流并检查其错误状态。 |
-| protected void | [clearError](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#clearError())() | 清除此流的内部错误状态。 |
-| void | [close](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#close())() | 关闭流。 |
-| void | [flush](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#flush())() | 刷新流。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html) | [format](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#format(java.lang.String,java.lang.Object...))([String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) format, [Object](https://www.apiref.com/java11-zh/java.base/java/lang/Object.html)... args) | 使用指定的格式字符串和参数将格式化字符串写入此输出流。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html) | [format](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#format(java.util.Locale,java.lang.String,java.lang.Object...))([Locale](https://www.apiref.com/java11-zh/java.base/java/util/Locale.html) l, [String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) format, [Object](https://www.apiref.com/java11-zh/java.base/java/lang/Object.html)... args) | 使用指定的格式字符串和参数将格式化字符串写入此输出流。 |
-| void | [print](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#print(boolean))(boolean b) | 打印一个布尔值。 |
-| void | [print](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#print(java.lang.Object))([Object](https://www.apiref.com/java11-zh/java.base/java/lang/Object.html) obj) | 打印一个对象。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html) | [printf](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#printf(java.lang.String,java.lang.Object...))([String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) format, [Object](https://www.apiref.com/java11-zh/java.base/java/lang/Object.html)... args) | 使用指定的格式字符串和参数将格式化字符串写入此输出流的便捷方法。 |
-| [PrintStream](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html) | [printf](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#printf(java.util.Locale,java.lang.String,java.lang.Object...))([Locale](https://www.apiref.com/java11-zh/java.base/java/util/Locale.html) l, [String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) format, [Object](https://www.apiref.com/java11-zh/java.base/java/lang/Object.html)... args) | 使用指定的格式字符串和参数将格式化字符串写入此输出流的便捷方法。 |
-| void | [println](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#println())() | 通过写行分隔符字符串来终止当前行。 |
-| void | [println](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#println(boolean))(boolean x) | 打印一个布尔值，然后终止该行。 |
-| void | [println](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#println(java.lang.Object))([Object](https://www.apiref.com/java11-zh/java.base/java/lang/Object.html) x) | 打印一个对象，然后终止该行。 |
-| protected void | [setError](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#setError())() | 将流的错误状态设置为 true 。 |
-| void | [write](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#write(byte%5B%5D,int,int))(byte[] buf, int off, int len) | 将从偏移量为 off的指定字节数组中的 len字节写入此流。 |
-| void | [write](https://www.apiref.com/java11-zh/java.base/java/io/PrintStream.html#write(int))(int b) | 将指定的字节写入此流。 |
-
-
-
-## Scanner
+### Scanner
+获取用户的输入，并对数据进行校验
 ```java
 import java.util.Scanner;
 public class Main {
@@ -996,29 +1261,17 @@ public class Main {
     }
 }
 ```
-| 构造器 | 描述 |
-| --- | --- |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.io.File))([File](https://www.apiref.com/java11-zh/java.base/java/io/File.html) source) | 构造一个新的 Scanner ，它生成从指定文件扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.io.File,java.lang.String))([File](https://www.apiref.com/java11-zh/java.base/java/io/File.html) source, [String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) charsetName) | 构造一个新的 Scanner ，它生成从指定文件扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.io.File,java.nio.charset.Charset))([File](https://www.apiref.com/java11-zh/java.base/java/io/File.html) source, [Charset](https://www.apiref.com/java11-zh/java.base/java/nio/charset/Charset.html) charset) | 构造一个新的 Scanner ，它生成从指定文件扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.io.InputStream))([InputStream](https://www.apiref.com/java11-zh/java.base/java/io/InputStream.html) source) | 构造一个新的 Scanner ，它生成从指定输入流扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.io.InputStream,java.lang.String))([InputStream](https://www.apiref.com/java11-zh/java.base/java/io/InputStream.html) source, [String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) charsetName) | 构造一个新的 Scanner ，它生成从指定输入流扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.io.InputStream,java.nio.charset.Charset))([InputStream](https://www.apiref.com/java11-zh/java.base/java/io/InputStream.html) source, [Charset](https://www.apiref.com/java11-zh/java.base/java/nio/charset/Charset.html) charset) | 构造一个新的 Scanner ，它生成从指定输入流扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.lang.Readable))([Readable](https://www.apiref.com/java11-zh/java.base/java/lang/Readable.html) source) | 构造一个新的 Scanner ，它生成从指定源扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.lang.String))([String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) source) | 构造一个新的 Scanner ，它生成从指定字符串扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.nio.channels.ReadableByteChannel))([ReadableByteChannel](https://www.apiref.com/java11-zh/java.base/java/nio/channels/ReadableByteChannel.html) source) | 构造一个新的 Scanner ，它可以生成从指定通道扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.nio.channels.ReadableByteChannel,java.lang.String))([ReadableByteChannel](https://www.apiref.com/java11-zh/java.base/java/nio/channels/ReadableByteChannel.html) source, [String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) charsetName) | 构造一个新的 Scanner ，它可以生成从指定通道扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.nio.channels.ReadableByteChannel,java.nio.charset.Charset))([ReadableByteChannel](https://www.apiref.com/java11-zh/java.base/java/nio/channels/ReadableByteChannel.html) source, [Charset](https://www.apiref.com/java11-zh/java.base/java/nio/charset/Charset.html) charset) | 构造一个新的 Scanner ，它可以生成从指定通道扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.nio.file.Path))([Path](https://www.apiref.com/java11-zh/java.base/java/nio/file/Path.html) source) | 构造一个新的 Scanner ，它生成从指定文件扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.nio.file.Path,java.lang.String))([Path](https://www.apiref.com/java11-zh/java.base/java/nio/file/Path.html) source, [String](https://www.apiref.com/java11-zh/java.base/java/lang/String.html) charsetName) | 构造一个新的 Scanner ，它生成从指定文件扫描的值。 |
-| [Scanner](https://www.apiref.com/java11-zh/java.base/java/util/Scanner.html#%3Cinit%3E(java.nio.file.Path,java.nio.charset.Charset))([Path](https://www.apiref.com/java11-zh/java.base/java/nio/file/Path.html) source, [Charset](https://www.apiref.com/java11-zh/java.base/java/nio/charset/Charset.html) charset) | 构造一个新的 Scanner ，它生成从指定文件扫描的值。 |
 
 
+### File
 
-## File
+- 全局静态常量
+   1. 路径分隔符：char pathSeparatorChar、String pathSeparator
+   1. 文件名称分隔符：char separatorChar、String separator
+
 **访问文件名**
 
-- File file = new File("C:/abc/123.txt");
+- File file = new File(String filepath);
 - String getName()：返回此 File 对象所表示的**文件名**或**目录名**，123.txt
 - String getPath()：返回此 File 对象所对应的**路径名**，C:/abc/123.txt
 - File getAbsoluteFile()：返回此 File 对象的**绝对路径**
@@ -1104,40 +1357,15 @@ public class Main {
 }
 ```
 
-## Path
 
 
-![](https://www.runoob.com/wp-content/uploads/2013/12/iostream2xx.png#crop=0&crop=0&crop=1&crop=1&id=EkdDe&originHeight=763&originWidth=687&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
-```java
-public static void main(String[] args) throws IOException {
-        File f = new File("D:/Code/dark.txt");
-        StringBuffer sb = new StringBuffer();
-        int n;
-        // 读文件--去注释（//）
-        try (FileReader fr = new FileReader(f);
-                BufferedReader br = new BufferedReader(fr)) {
-            while (true) {
-                String line = br.readLine();
-                if (line == null)
-                    break;
-                if ((n = line.indexOf("//")) != -1)
-                    line = line.substring(0, n);
-                sb.append(line).append("\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //FileWriter一new,这个文件就清空了，加上true属性，文件后面添加内容
-        try(FileWriter fw=new FileWriter(f);
-                PrintWriter pw = new PrintWriter(fw)) {
-            pw.write(sb.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-```
-Files & Paths  <br />  读
+### Paths & Files
+
+- Paths 中的类方法  <br />  Path get(String first, String... more)
+- Files 中的用于文件拷贝的类方法  <br />  Path copy(Path source, Path target, CopyOption... options)  <br />  long copy(InputStream in, Path target, CopyOption... options)  <br />  long copy(Path source, OutputStream out)
+- Files 中其它的类方法：isHidden、exists、createFile、move、deleteIfExists、newBufferedReader、newBufferedWriter、readAllLines、lines、size、write、list、walk、find、probeCon
+
+读
 ```java
 // 默认使用UTF-8编码读取:
 String content1 = Files.readString(Paths.get("/path/to/file.txt"));
@@ -1157,6 +1385,7 @@ Files.writeString(Paths.get("/path/to/file.txt"), "文本内容...", StandardCha
 List<String> lines = ...
 Files.write(Paths.get("/path/to/file.txt"), lines);
 ```
+
 
 # 异常（Exception）
 ![](https://images2017.cnblogs.com/blog/858860/201709/858860-20170911125844719-1230755033.png#crop=0&crop=0&crop=1&crop=1&id=fUCkL&originHeight=458&originWidth=718&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
@@ -1223,11 +1452,14 @@ assert expression [ : "message" ];
 断言失败时会抛出AssertionError，导致程序结束退出，用于开发和测试阶段。
 
 # 函数式编程（Functional Programming）
-**Lambda表达式**
+
+## Lambda表达式
 ```java
-(argument,···) -> { ··· }
+(parameters) -> expression
+// 或 
+(parameters) -> { statements; }
 ```
-参数类型可以省略，编译器可以自动推断。
+参数类型可以省略，编译器可以自动推断。  <br />  在 Lambda 主体中引用的局部变量必须使用 final 修饰或事实上最终的（类似匿名内部类）
 
 排序函数
 ```java
@@ -1265,7 +1497,10 @@ List list2 = getList(()->new ArrayList());
 //引用构造器
 List list3 = getList(ArrayList::new);
 ```
-_@_FunctionalInterface  <br />  只定义了单方法的接口
+
+
+## 函数式接口
+`_@_FunctionalInterface`  <br />  只定义了单方法的接口
 ```java
 @FunctionalInterface
 public interface Callable<V> {
@@ -1273,26 +1508,42 @@ public interface Callable<V> {
 }
 ```
 
+Built-in Functional Interfaces(内置函数接口)
 
-java.util.stream.Stream
+| 函数式接口 | 抽象方法 | 函数描述符 | 默认方法 | 静态方法 |
+| --- | --- | --- | --- | --- |
+| Comparator<T> | int compare(T o1, T o2) | (T,T) -> int | reversed,  <br />  thenComparing | naturalOrder,  <br />  comparing,  <br />  comparingInt,  <br />  comparingLong,  <br />  comparingDouble,  <br />  reverseOrder,  <br />  nullsFirst,  <br />  nullsLast |
+| Runnable | void run() | () -> void |  |  |
+| Callable<V> | V call() | () -> V |  |  |
+| Predicate<T> | boolean test(T t) | T -> boolean | and, or, negate |  |
+| BiPredicate<T, U> | boolean test(T t, U u) | (T,U) -> boolean |  |  |
+| Consumer<T> | void accept(T t) | T -> void | andThen |  |
+| BiConsumer<T, U> | void accept(T t, U u) | (T,U) -> void |  |  |
+| Supplier<T> | T get() | () -> T |  |  |
+| Function<T,R> | R apply(T t) | T -> R | andThen, compose | identity |
+| BiFunction<T, U, R> | R apply(T t, U u) | (T,U) -> R |  |  |
+| UnaryOperator<T> | T apply(T t) | T -> T |  |  |
+| BinaryOperator<T> | Tt apply(T t1, T t2) | (T,T) -> T |  | minBy, maxBy |
 
-### 筛选
 
-- Stream<T> filter(Predicate<T> predicate)：用谓词筛选，返回一个包括所有符合谓词的元素的流
-- Stream<T> distinct()：返回一个元素各异（根据流所生成元素的 **hashCode 和 equals 方法**实现）的流
 
-### 切片
+## Stream
+**筛选**
 
-- Stream<T> limit(long maxSize)：返回一个不超过给定长度的流
-- Stream<T> skip(long n)：返回一个扔掉了前 n 个元素的流
+- `Stream<T> filter(Predicate<T> predicate)`：用谓词筛选，返回一个包括所有符合谓词的元素的流
+- `Stream<T> distinct()`：返回一个元素各异（根据流所生成元素的 **hashCode 和 equals 方法**实现）的流
 
-### 映射
-提取或转换流中的元素
+**切片**
 
-- Stream<R> map(Function<T, R> mapper)：对流中每一个元素应用函数（元素映射为新元素）
-- Stream<R> flatMap(Function<T, Stream<R>> mapper)：把一个流中的每个元素都换成另一个**流**，然后把所有转换的流**连接**起来成为一个流（流的扁平化）（元素映射为流）
+- `Stream<T> limit(long maxSize)`：返回一个不超过给定长度的流
+- `Stream<T> skip(long n)`：返回一个扔掉了前 n 个元素的流
 
-### 查找和匹配
+**映射**  <br />  提取或转换流中的元素
+
+- `Stream<R> map(Function<T, R> mapper)`：对流中每一个元素应用函数（元素映射为新元素）
+- `Stream<R> flatMap(Function<T, Stream<R>> mapper)`：把一个流中的每个元素都换成另一个**流**，然后把所有转换的流**连接**起来成为一个流（流的扁平化）（元素映射为流）
+
+**查找和匹配**
 
 - boolean allMatch(Predicate<T> predicate)：流中的元素是否都能匹配给定的谓词
 - boolean anyMatch(Predicate<T> predicate)：流中是否有一个元素能匹配给定的谓词
@@ -1300,8 +1551,7 @@ java.util.stream.Stream
 - Optional<T> findAny()：返回当前流中的任意元素
 - Optional<T> findFirst()：返回当前流中的第一个元素
 
-### 归约
-将流中所有的元素迭代合并成一个结果
+**归约**  <br />  将流中所有的元素迭代合并成一个结果
 
 - Optional<T> reduce(BinaryOperator<T> accumulator)
 - T reduce(T identity, BinaryOperator<T> accumulator)：初始值 identity，accumulator 将两个流元素结合起来并产生一个新值（适用于不可变的归约）
@@ -1344,6 +1594,31 @@ public class Main {
     }
 }
 ```
+
+
+
+## Optional<T>
+
+- 一个容器类，代表一个值存在或不存在
+- 基本类型的 Optional 对象：OptionalInt、OptionalLong、OptionalDouble
+
+静态方法
+
+- Optional<T> empty()：返回一个空的 Optional 实例
+- Optional<T> of(T value)：返回具有指定非空值的 Optional 实例，如果该值为 null，则抛出一个 NullPointerException 异常
+- Optional<T> ofNullable(T value)：返回一个指定值的 Optional，如果值为 null，则返回一个空的 Optional
+
+实例方法
+
+- boolean isPresent()：在值存在时就返回 true，否则返回 false
+- void ifPresent(Consumer<T> block)：在值存在的时候执行给定的代码块，否则什么也不做
+- Optional<U> map(Function<T, U> mapper)：如果值存在，就对该值执行提供的 mapping 函数调用，否则返回一个空的 Optional 对象
+- Optional<U> flatMap(Function<T, Optional<U>> mapper)：如果值存在，就对该值执行提供的 mapping 函数调用，返回一个 Optional 类型的值，否则就返回一个空的 Optional 对象（将两层的 Optional 对象转换为单一 Optional 对象）
+- Optional<T> filter(Predicate<T> predicate)：如果值存在并且满足提供的谓词，就返回**包含该值**的 Optional 对象；否则返回一个空的 Optional 对象
+- T get()：有值则返回值，否则抛出一个 NoSuchElementException 异常
+- T orElse(T other)：有值则返回值，否则返回 other
+- T orElseGet(Supplier<T> other)：有值则返回值，否则调用 other 并返回该调用的结果
+- T orElseThrow(Supplier<X> exceptionSupplier)：有值则返回值，否则抛出由 exceptionSupplier 创建的异常
 
 
 # 反射（Reflection）
@@ -1417,665 +1692,6 @@ JVM总是动态加载class，可以在运行期根据条件来控制加载class�
 - T cast(Object obj)：将一个对象强制转换成此 Class 对象所表示的类或接口
 - Type getGenericSuperclass()：返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type
 - Class<?> getComponentType()：返回数组元素类型的 Class
-
-
-
-# **线程（Thread）**
-
-**Thread**
-
-类方法
-
-- Thread currentThread()：返回当前正在执行的线程对象
-- void sleep(long millis)：让当前正在执行的线程暂停 millis 毫秒，并进入阻塞状态（线程睡眠）
-- void yield()：暂停当前正在执行的线程对象，转入就绪状态（线程让步）
-
-实例方法
-
-- void start()：使该线程开始执行，Java 虚拟机调用该线程的 run 方法，只能被处于新建状态的线程调用，否则会引发 IllegalThreadStateException 异常
-- void run()：如果该线程是使用独立的 Runnable 运行对象构造的，则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回
-- void setName(String name)：为线程设置名字，在默认情况下，主线程的名字为 main，用户启动的多个线程的名字依次为 Thread-0、Thread-1、Thread-2、...、Thread-n 等
-- String getName()：返回调用该方法的线程名字
-- void join()：等待调用该方法的线程执行完成，而当前正在执行的线程进入阻塞状态（联合线程）（该方法声明抛出了 InterruptedException 异常）
-- void setDaemon(boolean on)：on 为"true"时，将该线程设置成守护线程（程序退出时会被回收），该方法必须在 start() 之前调用，否则会引发 IllegalThreadStateException 异常
-- boolean isDaemon()：判断该线程是否为守护线程
-- int getPriority()：返回线程的优先级
-- void setPriority(int newPriority)：更改线程的优先级（范围是 1~10 之间）
-- boolean isAlive()：测试线程是否处于活动状态
-| 变量和类型 | 字段 | 描述 |
-| --- | --- | --- |
-| static int | [MAX_PRIORITY](https://www.apiref.com/java11-zh/java.base/java/lang/Thread.html#MAX_PRIORITY) | 线程可以拥有的最大优先级。 |
-| static int | [MIN_PRIORITY](https://www.apiref.com/java11-zh/java.base/java/lang/Thread.html#MIN_PRIORITY) | 线程可以拥有的最低优先级。 |
-| static int | [NORM_PRIORITY](https://www.apiref.com/java11-zh/java.base/java/lang/Thread.html#NORM_PRIORITY) | 分配给线程的默认优先级。 |
-
-
-
-
-## 线程的创建和启动
-实现多线程
-
-- 继承 `Thread`类或 `Runnable`接口，实现`run`方法
-```java
-// 定义 Thread 类的子类
-public class MyThread extends Thread {
-    // 重写 Thread 类中的 run() 方法，线程执行体
-    public void run() {
-    }
-}
-
-// 定义 Runnable 接口的实现类
-public class MyRunnable implements Runnable {
-    // 重写 Runnable 接口中的 run() 方法，线程执行体
-    public void run() {
-    }
-}
-
-public class Demo {
-    public static void main(String[] args) {                
-        Thread mt = new MyThread(); // 创建 Thread 子类的对象
-        Thread mr = new Thread(new MyRunnable(), "线程名"); // 将 target 作为运行目标来创建创建 Thread 类的对象
-        mt.start(); // 调用线程对象的 start() 方法来启动该线程
-        mr.start();
-        
-        // 使用匿名内部类的方式创建
-        new Thread() {
-            public void run() {
-            }
-        }.start();
-        
-        // 使用匿名内部类的方式创建
-        new Thread(new Runnable() {
-            public void run() {
-            }
-        }).start();
-    }
-}
-```
-
-
-`interface Callable<V>`  <br />  提供了一个 call() 方法（可以有返回值，可以声明抛出异常）作为**线程执行体**
-
-- V call()：计算结果，如果无法计算结果，则抛出一个异常
-```java
-class Task implements Callable<String> {
-    public String call() throws Exception {
-        return longTimeCalculation(); 
-    }
-}
-```
-
-`interface Future<V>`  <br />  Future接口代表 Callable 接口里 call() 方法的返回值，表示异步计算的结果  <br />  常用方法
-
-- V get()：返回 Callable 任务里 call() 方法的返回值，如果计算时抛出异常将会抛出 ExecutionException 异常，如果当前的线程在等待时被中断将会抛出 InterruptedException 异常（调用该方法将导致程序阻塞，必须等到子线程结束后才会得到返回值）
-- V get(long timeout, TimeUnit unit)：返回 Callable 任务里 call() 方法的返回值，该方法让程序最多阻塞 timeout 和 unit 指定的时间，如果经过指定时间后 Callable 任务依然没有返回值，将会抛出 TimeoutException 异常
-- boolean cancel(boolean maylnterruptlfRunning)：试图取消该 Future 里关联的 Callable 任务
-- boolean isCancelled()：如果在 Callable 任务正常完成前被取消，则返回 true
-- boolean isDone()：如果 Callable 任务已完成（由于正常终止、异常或取消），则返回 true
-```java
-ExecutorService executor = Executors.newFixedThreadPool(4); 
-// 定义任务:
-Callable<String> task = new Task();
-// 提交任务并获得Future:
-Future<String> future = executor.submit(task);
-// 从Future获取异步执行返回的结果:
-String result = future.get(); // 可能阻塞
-```
-
-**CompletableFuture**  <br />  可以传入回调对象，当异步任务完成或者发生异常时，自动调用回调对象的回调方法
-```java
-public class Main {
-    public static void main(String[] args) throws Exception {
-        // 创建异步执行任务:
-        CompletableFuture<Double> cf = CompletableFuture.supplyAsync(Main::fetchPrice);
-        // 如果执行成功:
-        cf.thenAccept((result) -> {
-            System.out.println("price: " + result);
-        });
-        // 如果执行异常:
-        cf.exceptionally((e) -> {
-            e.printStackTrace();
-            return null;
-        });
-        // 主线程不要立刻结束，否则CompletableFuture默认使用的线程池会立刻关闭:
-        Thread.sleep(200);
-    }
-
-    static Double fetchPrice() {
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-        }
-        if (Math.random() < 0.3) {
-            throw new RuntimeException("fetch price failed!");
-        }
-        return 5 + Math.random() * 20;
-    }
-}
-```
-
-class `FutureTask<V>`  <br />  FutureTask类实现了` RunnableFuture<V>` 接口（`RunnableFuture<V>` 接口继承了`Runnable` 接口和`Future<V> `接口）  <br />  构造器：FutureTask(Callable<V> callable)、FutureTask(Runnable runnable, V result)（指定成功完成时 get 返回给定的结果为 result）
-
-
-
-**创建线程的三种方式对比**
-
-- 继承 Thread 类
-   1. 线程类已经继承了 Thread 类，不能再继承其它父类
-   1. 访问当前线程直接使用 this
-   1. 多个线程之间**无法共享线程类中的实例变量**
-- 实现 Runnable、Callable 接口的方式创建多线程
-   1. 线程类只是实现了 Runnable 接口，还可以继承其它类
-   1. 访问当前线程须使用 Thread. currentThread() 方法
-   1. 所创建的 Runnable 对象只是**线程的 target**，而多个线程**可以共享同一个 target 对象的实例变量**，所以适合多个相同线程来处理同一份资源的情况
-
-
-
-## 线程同步
-原子操作（atomic operation）：不可被中断的一个或一系列操作
-
-- 同步方法：使用 `synchronized`关键字来修饰某个方法，就相当于**给调用该方法的对象**加了锁
-
-`synchronized`是Java语言层面提供的语法，不需要考虑异常
-
-- 同步锁：java.util.concurrent.locks 包中，Lock 可替代 synchronized 方法和语句的使用
-```java
-public void add(int n) {
-    synchronized(this) { // 锁住this
-        count += n;
-    } // 解锁
-}
-
-// equal to
-
-public synchronized void add(int n) { // 锁住this
-    count += n;
-} // 解锁
-
-
-
-public class Counter {
-    private final Lock lock = new ReentrantLock();
-    private int count;
-
-    public void add(int n) {
-        lock.lock();
-        try {
-            count += n;
-        } finally {
-            lock.unlock();
-        }
-    }
-}
-
-if (lock.tryLock(1, TimeUnit.SECONDS)) {
-    try {
-        ...
-    } finally {
-        lock.unlock();
-    }
-}
-```
-
-**ReentrantReadWriteLock**	可重入读写锁，使用同ReentrantLock
-
-- 只允许一个线程写入；允许多个线程在没有写入时同时读取
-- 适合读多写少的场景
-
-**StampedLock**	把读锁细分为乐观读和悲观读，进一步提升并发效率
-
-- 支持三种模式：写锁、悲观读锁、乐观读
-- 是不可重入锁
-```java
-public class Point {
-    private final StampedLock stampedLock = new StampedLock();
-
-    private double x;
-    private double y;
-
-    public void move(double deltaX, double deltaY) {
-        long stamp = stampedLock.writeLock(); // 获取写锁
-        try {
-            x += deltaX;
-            y += deltaY;
-        } finally {
-            stampedLock.unlockWrite(stamp); // 释放写锁
-        }
-    }
-
-    public double distanceFromOrigin() {
-        long stamp = stampedLock.tryOptimisticRead(); // 获得一个乐观读锁
-        // 注意下面两行代码不是原子操作
-        // 假设x,y = (100,200)
-        double currentX = x;
-        // 此处已读取到x=100，但x,y可能被写线程修改为(300,400)
-        double currentY = y;
-        // 此处已读取到y，如果没有写入，读取是正确的(100,200)
-        // 如果有写入，读取是错误的(100,400)
-        if (!stampedLock.validate(stamp)) { // 检查乐观读锁后是否有其他写锁发生
-            stamp = stampedLock.readLock(); // 获取一个悲观读锁
-            try {
-                currentX = x;
-                currentY = y;
-            } finally {
-                stampedLock.unlockRead(stamp); // 释放悲观读锁
-            }
-        }
-        return Math.sqrt(currentX * currentX + currentY * currentY);
-    }
-}
-```
-
-
-## 线程通信
-
-**Object 类**中用于操作线程通信的实例方法
-
-1. wait()：调用该方法的当前线程会**释放**对**该同步监视器**（调用者）的锁定，JVM 把该线程存放到**等待池**中，等待其他的线程唤醒该线程（该方法声明抛出了 InterruptedException 异常）（为了防止虚假唤醒，此方法**应始终在循环中使用**，即被唤醒后需要再次判断是否满足唤醒条件）
-1. notify()：调用该方法的当前线程唤醒在等待池中的任意一个线程，并把该线程转到**锁池**中等待获取锁
-1. notifyAll()：调用该方法的当前线程唤醒在等待池中的所有线程，并把该线程转到**锁池**中等待获取锁
-:::warning
-这些方法必须在**同步块**中使用，且只能被同步监视器对象来调用，否则会引发 IllegalMonitorStateException 异常
-:::
-
-java.util.concurrent.locks 包中，Condition 接口中的 await()、signal()、signalAll() 方法替代了 Object 监视器方法的使用
-```java
-class TaskQueue {
-    Queue<String> queue = new LinkedList<>();
-
-    public synchronized void addTask(String s) {
-        this.queue.add(s);
-        this.notifyAll();
-    }
-
-    public synchronized String getTask() throws InterruptedException {
-        while (queue.isEmpty()) {
-            this.wait();
-        }
-        return queue.remove();
-    }
-}
-
-
-class TaskQueue {
-    private final Lock lock = new ReentrantLock();
-    // 获得一个绑定了Lock实例的Condition实例
-    private final Condition condition = lock.newCondition();
-    private Queue<String> queue = new LinkedList<>();
-
-    public void addTask(String s) {
-        lock.lock();
-        try {
-            queue.add(s);
-            condition.signalAll();
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    public String getTask() {
-        lock.lock();
-        try {
-            while (queue.isEmpty()) {
-                condition.await();
-            }
-            return queue.remove();
-        } finally {
-            lock.unlock();
-        }
-    }
-}
-
-
-if (condition.await(1, TimeUnit.SECOND)) {
-    // 被其他线程唤醒
-} else {
-    // 指定时间内没有被其他线程唤醒
-}
-```
-
-
-java.util.concurrent
-
-| interface | non-thread-safe | thread-safe |
-| --- | --- | --- |
-| List | ArrayList | CopyOnWriteArrayList |
-| Map | HashMap | ConcurrentHashMap |
-| Set | HashSet / TreeSet | CopyOnWriteArraySet |
-| Queue | ArrayDeque / LinkedList | ArrayBlockingQueue / LinkedBlockingQueue |
-| Deque | ArrayDeque / LinkedList | LinkedBlockingDeque |
-
-
-
-java.util.concurrent.atomic
-
-- 增加值并返回新值：int addAndGet(int delta)
-- 加1后返回新值：int incrementAndGet()
-- 获取当前值：int get()
-- 用CAS方式设置：int compareAndSet(int expect, int update)
-
-原理：CAS（Compare and Swap，**比较并替换**）
-```java
-// 如果AtomicInteger的当前值是prev，那么就更新为next，否则就什么也不干
-public int incrementAndGet(AtomicInteger var) {
-    int prev, next;
-    do {
-        prev = var.get();
-        next = prev + 1;
-    } while ( ! var.compareAndSet(prev, next));
-    return next;
-}
-```
-
-
-
-
-## 锁
-
-- 乐观锁：一种乐观思想，即认为**读多写少**，遇到并发写的可能性低，每次去**拿数据**的时候都认为别人不会修改，所以**不会上锁**，但是**在更新的时候会判断**一下在此期间别人有没有去更新这个数据：采取**在写时**先读出当前版本号，然后加锁操作（比较跟上一次的版本号，如果一样则更新），如果失败则要重复读-比较-写的操作
-- 悲观锁：悲观思想，即认为**写多**，遇到并发写的可能性高，每次去拿数据的时候都认为别人会修改，所**以每次在读写数据的时候都会上锁**，这样别人想读写这个数据就会 block 直到拿到锁
-
-
-**生产者与消费者模式**  <br />  **管程法**
-```java
-public class Test{
-	public static void main(String[] args) {
-		BufferContainer container=new BufferContainer(15);
-		new Productor(container).start();
-		new Consumer(container).start();
-		System.out.println("Program End");
-	}
-}
-
-class Productor extends Thread{
-	BufferContainer container;
-	
-	public Productor(BufferContainer container) {
-		this.container = container;
-	}
-    
-	@Override
-	public void run() {
-		for(int i=1;i<50;++i) {
-			container.push(new Food(i));
-			System.out.println("生产："+i+"食品");
-		}
-	}
-}
-
-class Consumer extends Thread{
-	BufferContainer container;
-	
-	public Consumer(BufferContainer container) {
-		this.container = container;
-	}
-    
-	@Override
-	public void run() {
-		for(int i=1;i<50;++i) {
-			System.out.println("消费："+container.pop().id+"食品");
-		}
-	}
-}
-
-class BufferContainer{
-	int size,num=0;
-	Food[] food;
-    
-	public BufferContainer(int size) {
-		this.size = size;
-		food=new Food[size];
-	}
-	
-	synchronized void push(Food a){
-		if (num>=size) {
-			try {
-				this.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		food[num]=a;
-		this.notify();
-		num++;
-	}
-    
-	synchronized Food pop(){
-		if(num==0)
-			try {
-				this.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		num--;
-		this.notify();
-		return food[num];
-	}
-}
-
-class Food{
-	int id;
-	public Food(int id) {
-		this.id = id;
-	}
-}
-```
-**信号灯法**
-```java
-public class Test{
-	public static void main(String[] args) {
-		Light light=new Light();
-		new Man(light).start();
-		new Car(light).start();
-	}
-}
-
-class Man extends Thread{
-	Light light;
-	
-	public Man(Light light) {
-		this.light = light;
-	}
-    
-	@Override
-	public void run() {
-		for(int i=0;i<20;++i)
-			light.green();
-	}
-}
-
-class Car extends Thread{
-	Light light;
-	public Car(Light light) {
-		this.light = light;
-	}
-    
-	@Override
-	public void run() {
-		for(int i=0;i<20;++i)
-			light.red();
-	}
-}
-
-class Light{
-	boolean color=false;// 红灯false，绿灯true
-	
-	synchronized void red(){
-		if(color)
-			try {
-				this.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		System.out.println("Car pass");
-		color=!color;
-		this.notify();
-	}
-	
-	synchronized void green() {
-		if(!color)
-			try {
-				this.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		System.out.println("Man pass");
-		color=!color;
-		this.notify();
-	}
-}
-```
-
-
-
-## 线程池
-
-创建线程池的静态方法
-
-- ExecutorService newCachedThreadPool()：一个具有缓存功能的线程池，系统根据需要创建线程（**无界线程池**，已有 60 秒钟未被使用的线程会被终止并从缓存中移除）  <br />  `new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue<Runnable>())`
-- ExecutorService newFixedThreadPool(int nThreads)：一个可重用的、**具有固定核心线程数的线程池**  <br />  （使用无界队列，**队列堆积太多**数据导致 OOM）  <br />  `new ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>())`
-- ExecutorService newSingleThreadExecutor()：一个**只有单线程的线程池**  <br />  `new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>()`)
-- ScheduledExecutorService newScheduledThreadPool(int corePoolSize)：一个线程池，可在指定延迟后执行或定期执行线程任务  <br />  `new ThreadPoolExecutor(corePoolSize, Integer.MAX_VALUE, 0, NANOSECONDS, new DelayedWorkQueue())`
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        // 创建一个固定大小的线程池:
-        ExecutorService es = Executors.newFixedThreadPool(4);
-        for (int i = 0; i < 6; i++) {
-            es.submit(new Task("" + i));
-        }
-        // 关闭线程池:
-        es.shutdown();
-    }
-}
-
-class Task implements Runnable {
-    private final String name;
-
-    public Task(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public void run() {
-        System.out.println("start task " + name);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-        }
-        System.out.println("end task " + name);
-    }
-}
-```
-
-**ExecutorService 线程池接口**  <br />  Executor 的子接口，代表尽快执行线程的线程池（只要线程池中有空闲线程，就立即执行线程任务）
-
-- void execute(Runnable command)：在未来某个时间执行给定的命令
-- `Future<?> submit(Runnable task)`：将一个 Runnable 对象提交给指定的线程池，线程池将在有空闲线程时执行 Runnable 对象代表的任务，其中 Future 对象代表 Runnable 任务的返回值——但 run () 方法没有返回值，所以 Future 对象将在 run() 方法执行结束后返回 null，但可以调用 Future 的 isDone()、isCancelled() 方法来获得 Runnable 对象的执行状态
-- `Future<T> submit(Runnable task, T result)`：将一个 Runnable 对象提交给指定的线程池，线程池将在有空闲线程时执行 Runnable 对象代表的任务，其中 result 显式指定线程执行结束后的返回值，所以 Future 对象将在 run() 方法执行结束后返回 result
-- `Future<T> submit(Callable<T> task)`：将一个 Callable 对象提交给指定的线程池，线程池将在有空闲线程时执行 Callable 对象代表的任务，其中 Future 代表 Callable 对象里 call() 方法的返回值（调用 AbstractExecutorService#submit 方法，**将 Callable 对象包装成 FutureTask 对象**，再调用 ThreadPoolExecutor#execute 方法 → ThreadPoolExecutor.Worker#run）
-- `List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks)`：执行给定的任务，当所有任务完成时，返回保持任务状态和结果的 Future 列表
-- `T invokeAny(Collection<? extends Callable<T>> tasks)`：执行给定的任务，如果某个任务已成功完成（也就是未抛出异常），则返回其结果
-- void shutdown()：启动线程池的关闭序列，调用该方法后的线程池不再接收新任务，但**会将以前所有已提交任务执行完成**，当线程池中的所有任务都执行完成后，池中的所有线程都会死亡
-- `List<Runnable> shutdownNow()`：试图停止所有正在执行的活动任务，暂停处理正在等待的任务，并返回等待执行的任务列表
-- boolean awaitTermination(long timeout, TimeUnit unit)：**阻塞**，直到所有任务完成执行
-
-**ScheduledExecutorService 接口**  <br />  ExecutorService 的子接口，代表可在指定延迟后或周期性地执行线程任务的线程池
-
-- `ScheduledFuture<V> schedule(Callable<V> callable, long delay, TimeUnit unit)`：指定 callable 任务将在 delay 延迟后执行
-- `ScheduledFuture<?> schedule(Runnable command, long delay, TimeUnit unit)`：指定 command 任务将在 delay 延迟后执行
-- `ScheduledFuture<?> scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)`：指定 command 任务将在 delay 延迟后执行，而且以设定频率重复执行（在 initialDelay 后开始执行，依次在 initialDelay+period、initialDelay+2*period… 处重复执行；如果当前任务耗时较多，超过定时周期 period，则当前任务结束后会立即执行）
-- `ScheduledFuture<?> scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)`：创建并执行一个在给定初始延迟后首次启用的定期操作，随后在每一次执行终止和下一次执行开始之间都存在给定的延迟（如果任务在任一次执行时遇到异常，就会取消后续执行；否则，只能通过程序来显式取消或终止该任务）
-
-
-**ThreadPoolExecutor**
-
-
-
-ForkJoinPool  <br />  线程池的实现类，将一个任务拆分成多个“小任务”并行计算，再把多个“小任务”的结果合成总的计算结果
-```java
-public class Main {
-    public static void main(String[] args) throws Exception {
-        // 创建2000个随机数组成的数组:
-        long[] array = new long[2000];
-        long expectedSum = 0;
-        for (int i = 0; i < array.length; i++) {
-            array[i] = random();
-            expectedSum += array[i];
-        }
-        System.out.println("Expected sum: " + expectedSum);
-        // fork/join:
-        ForkJoinTask<Long> task = new SumTask(array, 0, array.length);
-        long startTime = System.currentTimeMillis();
-        Long result = ForkJoinPool.commonPool().invoke(task);
-        long endTime = System.currentTimeMillis();
-        System.out.println("Fork/join sum: " + result + " in " + (endTime - startTime) + " ms.");
-    }
-
-    static Random random = new Random(0);
-
-    static long random() {
-        return random.nextInt(10000);
-    }
-}
-
-class SumTask extends RecursiveTask<Long> {
-    static final int THRESHOLD = 500;
-    long[] array;
-    int start;
-    int end;
-
-    SumTask(long[] array, int start, int end) {
-        this.array = array;
-        this.start = start;
-        this.end = end;
-    }
-
-    @Override
-    protected Long compute() {
-        if (end - start <= THRESHOLD) {
-            // 如果任务足够小,直接计算:
-            long sum = 0;
-            for (int i = start; i < end; i++) {
-                sum += this.array[i];
-                // 故意放慢计算速度:
-                try {
-                    Thread.sleep(1);
-                } catch (InterruptedException e) {
-                }
-            }
-            return sum;
-        }
-        // 任务太大,一分为二:
-        int middle = (end + start) / 2;
-        System.out.println(String.format("split %d~%d ==> %d~%d, %d~%d", start, end, start, middle, middle, end));
-        SumTask subtask1 = new SumTask(this.array, start, middle);
-        SumTask subtask2 = new SumTask(this.array, middle, end);
-        invokeAll(subtask1, subtask2);
-        Long subresult1 = subtask1.join();
-        Long subresult2 = subtask2.join();
-        Long result = subresult1 + subresult2;
-        System.out.println("result = " + subresult1 + " + " + subresult2 + " ==> " + result);
-        return result;
-    }
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-`ThreadLocal<T>`
 
 
 
@@ -2365,6 +1981,7 @@ public class Client {
     }
 }
 ```
+
 **RMI（Remote Method Invocation，远程调用）**  <br />  一个JVM中的代码可以通过网络实现远程调用另一个JVM的某个方法  <br />  RMI要求服务器和客户端共享同一个接口
 ```java
 import java.rmi.Remote
@@ -2412,8 +2029,33 @@ public class Client {
 }
 ```
 
+
 # Web
-Servlet
+
+## Servlet
+Server Applet，即小服务程序或服务连接器。Servlet 是 Java 编写的服务器端程序，具有独立于平台和协议的特性，主要功能在于交互式地浏览和生成数据，生成动态 Web 内容。
+```java
+public interface Servlet {
+    void init(ServletConfig var1) throws ServletException;
+
+    ServletConfig getServletConfig();
+
+    void service(ServletRequest var1, ServletResponse var2) throws ServletException, IOException;
+
+    String getServletInfo();
+
+    void destroy();
+}
+```
+Servlet 生命周期
+
+1. **加载** - 第一个到达服务器的 HTTP 请求被委派到 Servlet 容器。容器通过类加载器使用 Servlet 类对应的文件加载 servlet；
+1. **初始化** - Servlet 通过调用 **init ()** 方法进行初始化。
+1. **服务** - Servlet 调用 **service()** 方法来处理客户端的请求。
+1. **销毁** - Servlet 通过调用 **destroy()** 方法终止（结束）。
+1. **卸载** - Servlet 是由 JVM 的垃圾回收器进行垃圾回收的。
+
+示例
 
 - Servlet实例必须由Servlet容器自动创建，并给每个Servlet类创建唯一实例；
 - Servlet容器会使用多线程执行doGet()或doPost()方法
@@ -2434,54 +2076,176 @@ public class HelloServlet extends HttpServlet {
 }
 ```
 
-# API
-| [java.beans](https://www.matools.com/file/manual/jdk_api_1.8_google/java/beans/package-summary.html) | 包含与开发 _bean_相关的类 - 基于JavaBeans架构的组件。 |
-| --- | --- |
-| [java.beans.beancontext](https://www.matools.com/file/manual/jdk_api_1.8_google/java/beans/beancontext/package-summary.html) | 提供与bean上下文相关的类和接口。 |
-| [java.io](https://www.matools.com/file/manual/jdk_api_1.8_google/java/io/package-summary.html) | 通过数据流，序列化和文件系统提供系统输入和输出。 |
-| [java.lang](https://www.matools.com/file/manual/jdk_api_1.8_google/java/lang/package-summary.html) | 提供对Java编程语言设计至关重要的类。 |
-| [java.lang.annotation](https://www.matools.com/file/manual/jdk_api_1.8_google/java/lang/annotation/package-summary.html) | 为Java编程语言注释工具提供库支持。 |
-| [java.math](https://www.matools.com/file/manual/jdk_api_1.8_google/java/math/package-summary.html) | 提供执行任意精度整数运算（ BigInteger ）和任意精度十进制运算（ BigDecimal ）的类。 |
-| [java.net](https://www.matools.com/file/manual/jdk_api_1.8_google/java/net/package-summary.html) | 提供实现网络应用程序的类。 |
-| [java.nio](https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/package-summary.html) | 定义缓冲区，它们是数据容器，并提供其他NIO包的概述。 |
 
-System
+**HttpServletRequest**
 
-- void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)：从 源数组 src 的 srcPos 位置 复制元素到 目标数组 dest 的 destPos 位置，复制的数组元素的个数为 length
-- long currentTimeMillis()：获取系统当前时间（毫秒）（距离 1970 年 1 月 1 日 00:00:00 GMT）
-- Properties getProperties()：获取当前的系统属性
-- String getProperty(String key)：获取指定键指示的系统属性
-- int identityHashCode(Object x)：返回给定对象的哈希码
-- void exit(int status)：终止 JVM（非 0 的状态码表示异常终止）（底层调用 Runtime 类中的方法）
-- void gc()：运行 GC（底层调用 Runtime 类中的方法）
+1. 获取请求行信息  <br />  String getMethod()：获取请求方式  <br />  String getRequestURI()：获取请求的 URI，从协议名称一直到查询字符串的那一部分，即返回请求行中的资源名，包括上下文路径，如 /test/index.html  <br />  StringBuffer getRequestURL()：获取请求的 URL，包含协议、服务器名、端口号、资源路径信息，不包含查询字符串参数，即浏览器地址栏的内容  <br />  public String getQueryString()：获取包含在请求 URL 中路径后面的查询字符串，即`?`后的字符串  <br />  String getContextPath()：获取上下文路径，即 `<Context />` 元素的 path 属性值
+1. 获取请求头信息  <br />  String getHeader(String name)：获取指定请求头的值  <br />  Enumeration<String> getHeaderNames()：获取所有请求头的名称  <br />  Enumeration<String> getHeaders(String name)：获取指定请求头的多个值  <br />  int getIntHeader(String name)：获取指定请求头的值，并将该值转为整数值  <br />  Locale getLocale()：根据 **Accept-Language** 请求头返回客户端将在其中接受内容的**首选 Locale**，如果客户端请求未提供 Accept-Language 请求头，则返回服务器的默认语言环境  <br />  Enumeration<Locale> getLocales()
+1. 获取请求参数  <br />  String getParameter(String paramName)：根据参数名称，获取对应请求参数的值  <br />  String[] getParameterValues(String paramName)：根据参数名称，获取对应请求参数的多个所组成的数组  <br />  Map getParameterMap()：获取所有请求参数名和参数值所组成的 Map 对象  <br />  Enumeration<String> getParameterNames()：获取所有请求参数名所组成的 Enumeration 对象
+1. 操作 request 范围的属性  <br />  setAttribute(String attrName, Object value)、getAttribute(String attrName)
+1. 执行请求转发（forward）或请求包含（include）
+   - HttpServletRequest 类提供了一个 getRequestDispatcher (String path) 方法（获取请求分发器），其中 path 就是希望 forward 或者 include 的目标路径（以斜线开头表示当前 web 应用的根路径，不以斜线开头表示相对路径），该方法返回 **RequestDispatcher**，该对象提供了如下两个方法：
+      1. void forward(ServletRequest request, ServletResponse response)：执行 forward
+      1. void include(ServletRequest request, ServletResponse response)：执行 include
+   - forward 用户请求时，请求参数和 request 范围的属性都不会丢失
+6. 获取网络信息  <br />  String getRemoteAddr()：返回发出请求的客户机的 IP 地址
+6. 其它  <br />  ServletInputStream getInputStream()：以二进制数据形式获取请求正文，返回输入流  <br />  BufferedReader getReader()：获取请求正文
 
-**Runtime**  <br />  类方法
 
-- Runtime getRuntime()：获取与当前 Java 应用程序相关的运行时对象（单例模式）
+**HttpServletResponse**  <br />  常用方法
 
-实例方法
-
-- Process exec(String command)：在单独的进程中执行指定的字符串命令，返回一个新的 Process 对象
-- void exit(int status)：终止 JVM（非 0 的状态码表示异常终止）
-- void gc()：运行 GC
-- void addShutdownHook(Thread hook)：注册虚拟机关闭钩子（一个已初始化但尚未启动的线程）
-- int availableProcessors()：返回虚拟机可用处理器的数目
+- void setCharacterEncoding(String charset)：设置将发送到客户端的响应的字符编码
+- void setContentType(String type)：设置将发送到客户端的响应的内容类型（MIME 类型、编码方式），如 "text/html; charset=UTF-8"、"application/x-msdownload"
+- void setHeader(String name, String value)：用给定名称和值设置响应头
+- void setStatus(int sc)：设置此响应的状态代码
+- ServletOutputStream getOutputStream()：获取响应输出字节流，可用于文件下载
+- PrintWriter getWriter()：获取可将字符文本发送到客户端的字符输出流
+- void sendRedirect(String path)：重新向 path 资源发送请求，path 需加上上下文路径（当以 http 开头时，表示重定向到外部的一个资源）
+- String encodeURL(String url)：通过将会话 ID 包含在指定 URL 中对该 URL 进行编码，如果不需要编码，则返回未更改的 URL（URL 重写，用于不支持 cookie 的浏览器）
 
 
 
-Collections
+## Filter
+对用户请求进行预处理，也可以对 HttpServletResponse 进行后处理
+```java
+@WebFilter(filterName = "CharsetFilter",
+        urlPatterns = "/*",  //对所有的web资源进行拦截
+        initParams = {
+                @WebInitParam(name = "charset", value = "utf-8") // 初始化的参数
+        })
+public class CharsetFilter implements Filter {
+    private String filterName;
+    private String charset;
 
-- boolean add(T e)	向集合中添加一个元素，如果集合对象被添加操作改变了，则返回 true
-- boolean addAll(Collection c)	向集合中添加集合 c 中的所有元素
-- void clear()	清除集合中的所有元素，将集合长度变为 0。
-- boolean contains(Object o)	判断集合中是否存在指定元素
-- boolean containsAll(Collection c)	判断集合中是否包含集合 c 中的所有元素
-- boolean isEmpty()	判断集合是否为空
-- Iterator<E>iterator()	返回一个 Iterator 对象，用于遍历集合中的元素
-- boolean remove(Object o)	从集合中删除**一个**指定元素
-- boolean removeAll(Collection c)	从集合中删除所有在集合 c 中出现的元素
-- boolean retainAll(Collection c)	从集合中删除集合 c 里不包含的元素
-- int size()	返回集合中元素的个数
-- Object[] toArray()	把集合转换为一个数组，所有的集合元素变成对应的数组元素。
+    public void init(FilterConfig config) throws ServletException {
+        filterName = config.getFilterName();
+        charset = config.getInitParameter("charset");
+
+        System.out.println("过滤器名称：" + filterName);
+        System.out.println("字符集编码：" + charset);
+    }
+
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
+        // 对request和response进行一些处理，然后交给下一个过滤器或Servlet处理
+		System.out.println(filterName + "doFilter()");
+        req.setCharacterEncoding(charset);
+        resp.setCharacterEncoding(charset);
+        chain.doFilter(req, resp);
+    }
+
+    public void destroy() {
+        System.out.println(filterName + "销毁");
+    }
+}
+```
+
+
+## Listener
+监听 Web 应用的内部事件
+
+- ServletContextListener：用于监听 Web 应用的启动和关闭
+- ServletContextAttributeListener：用于监听 application 内属性的改变（被添加、删除、替换）
+- ServletRequestListener：用于监听用户请求的初始化和销毁
+- ServletRequestAttributeListener：用于监听 request 内属性的改变（被添加、删除、替换）
+- HttpSessionListener：用于监听 session 的创建和销毁（可以通过该监听器监听系统的在线用户）
+- HttpSessionAttributeListener：用于监听 session 内属性的改变（被添加、删除、替换）
+```java
+@WebListener(value = "servletContextListener")
+public class ContextListener implements ServletContextListener, ServletContextAttributeListener {
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        /*servletContext创建时调用*/
+        System.out.println("项目启动了");
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        /*servletContext销毁时调用*/
+        System.out.println("项目停止了");
+    }
+    
+    @Override
+    public void attributeAdded(ServletContextAttributeEvent scae) {
+        /* 添加属性时调用 */
+        System.out.println("新增的属性："+scae.getName()+":"+scae.getValue());
+    }
+
+    @Override
+    public void attributeRemoved(ServletContextAttributeEvent scae) {
+        /*属性移除时调用*/
+        System.out.println("移除的属性："+scae.getName()+":"+scae.getValue());
+    }
+
+    @Override
+    public void attributeReplaced(ServletContextAttributeEvent scae) {
+        /*属性替换时调用（修改值）*/
+        System.out.println("替换的属性："+scae.getName()+":"+scae.getValue());
+    }
+}
+```
+
+
+
+
+
+
+
+
+# 国际化
+
+定义不同语种的模板  <br />  Java 中将多语言文本存储在格式为 properties 的资源文件中，在`src/main/resources/locales` 路径下  <br />  `<资源名>_<语言代码>_<国家/地区编码>.properties`
+
+JDK 的 bin 目录下有一个将非 ASCII 字符转为 Unicode 编码的工具：**native2ascii**。  <br />  `native2ascii [-reverse] [-encoding 编码] [输入文件 [输出文件]]`
+
+java.util.Locale 对象表示了特定的地理、政治和文化地区
+```java
+// 初始化一个通用英语的locale.
+Locale locale1 = new Locale("en");
+// 初始化一个加拿大英语的locale.
+Locale locale2 = new Locale("en", "CA");
+// 初始化一个美式英语变种硅谷英语的locale
+Locale locale3 = new Locale("en", "US", "SiliconValley");
+// 根据Locale常量初始化一个简体中文
+Locale locale4 = Locale.SIMPLIFIED_CHINESE;
+```
+
+java.util.ResourceBoundle	加载本地化资源文件的工具类
+```java
+String baseName = "realpath/bundleName";
+
+// 根据语言+地区编码初始化
+ResourceBundle rbUS = ResourceBundle.getBundle(baseName, new Locale("en", "US"));
+// 根据Locale常量初始化
+ResourceBundle rbZhCN = ResourceBundle.getBundle(baseName, Locale.SIMPLIFIED_CHINESE);
+// 获取本地系统默认的Locale初始化
+ResourceBundle rbDefault = ResourceBundle.getBundle(baseName);
+//等价 ResourceBundle rbDefault =ResourceBundle.getBundle(baseName, Locale.getDefault());
+
+
+System.out.println("us-US:" + String.format(rbUS.getString("time"), "08:00"));
+System.out.println("zh-CN：" + rbZhCN.getString("key"));
+```
+
+**支持本地化的工具类**  <br />  NumberFormat
+```java
+double num = 123456.78;
+NumberFormat format = NumberFormat.getCurrencyInstance(Locale.SIMPLIFIED_CHINESE);
+System.out.format("%f 的本地化（%s）结果: %s", num, Locale.SIMPLIFIED_CHINESE, format.format(num));
+```
+DateFormat
+```java
+Date date = new Date();
+DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.SIMPLIFIED_CHINESE);
+System.out.format("%s 的本地化（%s）结果: %s\n", date, Locale.SIMPLIFIED_CHINESE, df.format(date));
+```
+Messageformat 提供一种与语言无关的拼接消息的方式
+```java
+String pattern = "{0}，你好！你于  {1} 消费  {2} 元。";
+Object[] params = {"Jack", new GregorianCalendar().getTime(), 8888};
+MessageFormat mf = new MessageFormat(pattern, Locale.SIMPLIFIED_CHINESE);
+String msg = mf.format(params);
+System.out.println(msg);
+```
+
 
 

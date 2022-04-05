@@ -1014,14 +1014,14 @@ git rebase [-i | --interactive] [<options>] [--exec <cmd>] [--onto <newbase>]
 	--root [<branch>]
 git rebase (--continue | --skip | --abort | --quit | --edit-todo | --show-current-patch)
 
-# 操作最近n次提交，将多个commit记录合并为一条
-git rebase -i HEAD~n
+# 将多个commit记录合并为一条，前开后闭
+git rebase -i  [startpoint]  [endpoint]
 
 # 将某一段commit粘贴到另一个分支上
-git rebase [startpoint] [endpoint] --onto [branchName]
-
-# 放弃 git rebase 操作
-git rebase --abort
+git rebase [startpoint] [endpoint] --onto [branch]
+# 执行后，HEAD处于游离状态，需要将分支所指向的提交id设置为当前HEAD所指向的提交id
+git switch <branch>
+git reset --hard  <commit_id>
 ```
 
 ## [revert](https://git-scm.com/docs/git-revert)
@@ -1030,8 +1030,7 @@ Revert some existing commits
 git revert [--[no-]edit] [-n] [-m parent-number] [-s] [-S[<keyid>]] <commit>…
 git revert (--continue | --skip | --abort | --quit)
 
-# 新建一个commit，用来撤销指定commit
-# 后者的所有变化都将被前者抵消，并且应用到当前分支
+# 新建一个commit，用来撤销指定commit，后者的所有变化都将被前者抵消，并且应用到当前分支
 $ git revert [commit]
 ```
 

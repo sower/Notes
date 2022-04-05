@@ -19,6 +19,8 @@
   - #### [PyPI](./Notes/CS/PyPI.md)  
   - #### [Py Web](./Notes/CS/Py%20Web.md)  
 - ### [Java](./Notes/CS/Java.md)  
+  - #### [Java Advance](./Notes/CS/Java%20Advance.md)  
+  - #### [Spring](./Notes/CS/Spring.md)  
   - #### [Java Framework](./Notes/CS/Java%20Framework.md)  
   - #### [Java API](./Notes/CS/Java%20API.md)  
   - #### [Design Patterns](./Notes/CS/Design%20Patterns.md)  
@@ -50,16 +52,8 @@
   - #### [NoSQL](./Notes/CS/NoSQL.md)  
 
   <br />  
-## Software  
-- ### [Application](./Notes/Software/Application.md)  
-- ### [API Collections](./Notes/Software/API%20Collections.md)  
-- ### [Chrome](./Notes/Software/Chrome.md)  
-- ### [Micro Office](./Notes/Software/Micro%20Office.md)  
-- ### [FFmpeg](./Notes/Software/FFmpeg.md)  
-- ### [Adobe](./Notes/Software/Adobe.md)  
-
-  <br />  
 ## Universal  
+- ### [UML](./Notes/Universal/UML.md)  
 - ### [Markdown](./Notes/Universal/Markdown.md)  
 - ### [Regular expression](./Notes/Universal/Regular%20expression.md)  
 - ### [Basic](./Notes/Universal/Basic.md)  
@@ -69,5 +63,14 @@
 - ### [Programming paradigm](./Notes/Universal/Programming%20paradigm.md)  
 - ### [Security](./Notes/Universal/Security.md)  
 - ### [Big Data](./Notes/Universal/Big%20Data.md)  
+
+  <br />  
+## Software  
+- ### [Application](./Notes/Software/Application.md)  
+- ### [API Collections](./Notes/Software/API%20Collections.md)  
+- ### [Chrome](./Notes/Software/Chrome.md)  
+- ### [Micro Office](./Notes/Software/Micro%20Office.md)  
+- ### [FFmpeg](./Notes/Software/FFmpeg.md)  
+- ### [Adobe](./Notes/Software/Adobe.md)  
 
   <br />  
