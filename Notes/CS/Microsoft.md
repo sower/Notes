@@ -51,14 +51,18 @@
 
 # [VS Code](https://code.visualstudio.com/docs)
 
+[awesome-vscode](https://github.com/viatsko/awesome-vscode)
+
 ## Extension
 
 - One Dark Pro
 - Chinese (Simplified) Language
 - indent-rainbow
-- C/C++
-- Python
 - Code Runner
+- [Toggle Quotes](https://marketplace.visualstudio.com/items?itemName=BriteSnow.vscode-toggle-quotes)
+- [Surround](https://marketplace.visualstudio.com/items?itemName=yatki.vscode-surround)
+- [Vscode Google Translate](https://marketplace.visualstudio.com/items?itemName=funkyremi.vscode-google-translate)
+
 
 ## Default Keyboard Shortcuts
 **Basic Editing**
@@ -146,7 +150,7 @@ code [options][paths...]
 ```
 
 
-## 配置
+## Settings
 `C:\Users\<Username>\AppData\Roaming\Code\User\settings.json`
 ```json
 {
@@ -159,6 +163,7 @@ code [options][paths...]
     "editor.formatOnType": true,
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
+    "editor.linkedEditing": true,
     "editor.suggest.maxVisibleSuggestions": 10,
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.fontSize": 15,

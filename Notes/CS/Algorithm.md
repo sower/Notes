@@ -12,6 +12,8 @@
 
 
 # 算法的复杂度
+[Big O Cheat Sheet](http://bigocheatsheet.com/)
+
 **时间复杂度**
 
 - 用来衡量算法随着问题规模增大，算法执行时间增长的快慢；
@@ -895,32 +897,235 @@ int main()
 }
 ```
 
+
+
+# Miscellaneous
+
+## [位运算](https://github.com/trekhleb/javascript-algorithms/blob/master/src/algorithms/math/bits)
+[Bit Twiddling Hacks](https://graphics.stanford.edu/~seander/bithacks.html)
+```java
+利用或操作 | 和空格将英文字符转换为小写
+('a' | ' ') = 'a'
+('A' | ' ') = 'a'
+    
+利用与操作 & 和下划线将英文字符转换为大写
+('b' & '_') = 'B'
+('B' & '_') = 'B'
+
+利用异或操作 ^ 和空格进行英文字符大小写互换
+('d' ^ ' ') = 'D'
+('D' ^ ' ') = 'd'
+
+
+判断两个数是否异号
+int x = -1, y = 2, z = 3;
+boolean f = ((x ^ y) < 0); // true
+boolean f = ((z ^ y) < 0); // false
+
+
+不用临时变量交换两个数
+int a = 1, b = 2;
+a ^= b;
+b ^= a;
+a ^= b;
+// a = 2, b = 1
+```
+消除数字 n 的二进制表示中的最后一个 1  <br />  `n &= (n-1)`  <br />  ![](./assets/1651979498161-7d56e1c3-b58f-4eec-8c7c-9084b5b36627.png)
+
+
+
+
+
+## LRU（Least Recently Used）
+根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”。
+
+时间复杂度：put 和 get 都是 `O(1)`  <br />  实现：哈希表 + 双向链表
+
+- 双向链表：按照被使用的顺序存储了这些键值对，靠近头部的键值对是最近使用的，而靠近尾部的键值对是最久未使用的。
+- 哈希表（HashMap）：通过缓存数据的键映射到其在双向链表中的位置。
+```java
+class LRUCache {
+    int cap;
+    LinkedHashMap<Integer, Integer> cache = new LinkedHashMap<>();
+    public LRUCache(int capacity) { 
+        this.cap = capacity;
+    }
+    
+    public int get(int key) {
+        if (!cache.containsKey(key)) {
+            return -1;
+        }
+        // 将 key 变为最近使用
+        makeRecently(key);
+        return cache.get(key);
+    }
+    
+    public void put(int key, int val) {
+        if (cache.containsKey(key)) {
+            // 修改 key 的值
+            cache.put(key, val);
+            // 将 key 变为最近使用
+            makeRecently(key);
+            return;
+        }
+        
+        if (cache.size() >= this.cap) {
+            // 链表头部就是最久未使用的 key
+            int oldestKey = cache.keySet().iterator().next();
+            cache.remove(oldestKey);
+        }
+        // 将新的 key 添加链表尾部
+        cache.put(key, val);
+    }
+    
+    private void makeRecently(int key) {
+        int val = cache.get(key);
+        // 删除 key，重新插入到队尾
+        cache.remove(key);
+        cache.put(key, val);
+    }
+}
+```
+
+
+
+## LFU（Least Frequently Used）
+根据数据的历史访问频率来淘汰数据，其核心思想是“如果数据过去被访问多次，那么将来被访问的频率也更高”。
+
+时间复杂度：put 和 get 都是 `O(1)`
+
+```java
+class LFUCache {
+    // key 到 val 的映射，我们后文称为 KV 表
+    HashMap<Integer, Integer> keyToVal;
+    // key 到 freq 的映射，我们后文称为 KF 表
+    HashMap<Integer, Integer> keyToFreq;
+    // freq 到 key 列表的映射，我们后文称为 FK 表
+    HashMap<Integer, LinkedHashSet<Integer>> freqToKeys;
+    // 记录最小的频次
+    int minFreq;
+    // 记录 LFU 缓存的最大容量
+    int cap;
+
+    public LFUCache(int capacity) {
+        keyToVal = new HashMap<>();
+        keyToFreq = new HashMap<>();
+        freqToKeys = new HashMap<>();
+        this.cap = capacity;
+        this.minFreq = 0;
+    }
+
+    public int get(int key) {
+        if (!keyToVal.containsKey(key)) {
+            return -1;
+        }
+        // 增加 key 对应的 freq
+        increaseFreq(key);
+        return keyToVal.get(key);
+    }
+
+    public void put(int key, int val) {
+        if (this.cap <= 0) return;
+
+        /* 若 key 已存在，修改对应的 val 即可 */
+        if (keyToVal.containsKey(key)) {
+            keyToVal.put(key, val);
+            // key 对应的 freq 加一
+            increaseFreq(key);
+            return;
+        }
+
+        /* key 不存在，需要插入 */
+        /* 容量已满的话需要淘汰一个 freq 最小的 key */
+        if (this.cap <= keyToVal.size()) {
+            removeMinFreqKey();
+        }
+
+        /* 插入 key 和 val，对应的 freq 为 1 */
+        // 插入 KV 表
+        keyToVal.put(key, val);
+        // 插入 KF 表
+        keyToFreq.put(key, 1);
+        // 插入 FK 表
+        freqToKeys.putIfAbsent(1, new LinkedHashSet<>());
+        freqToKeys.get(1).add(key);
+        // 插入新 key 后最小的 freq 肯定是 1
+        this.minFreq = 1;
+    }
+
+    private void removeMinFreqKey() {
+        // freq 最小的 key 列表
+        LinkedHashSet<Integer> keyList = freqToKeys.get(this.minFreq);
+        // 其中最先被插入的那个 key 就是该被淘汰的 key
+        int deletedKey = keyList.iterator().next();
+        /* 更新 FK 表 */
+        keyList.remove(deletedKey);
+        if (keyList.isEmpty()) {
+            freqToKeys.remove(this.minFreq);
+            // 问：这里需要更新 minFreq 的值吗？
+        }
+        /* 更新 KV 表 */
+        keyToVal.remove(deletedKey);
+        /* 更新 KF 表 */
+        keyToFreq.remove(deletedKey);
+    }
+    
+    private void increaseFreq(int key) {
+        int freq = keyToFreq.get(key);
+        /* 更新 KF 表 */
+        keyToFreq.put(key, freq + 1);
+        /* 更新 FK 表 */
+        // 将 key 从 freq 对应的列表中删除
+        freqToKeys.get(freq).remove(key);
+        // 将 key 加入 freq + 1 对应的列表中
+        freqToKeys.putIfAbsent(freq + 1, new LinkedHashSet<>());
+        freqToKeys.get(freq + 1).add(key);
+        // 如果 freq 对应的列表空了，移除这个 freq
+        if (freqToKeys.get(freq).isEmpty()) {
+            freqToKeys.remove(freq);
+            // 如果这个 freq 恰好是 minFreq，更新 minFreq
+            if (freq == this.minFreq) {
+                this.minFreq++;
+            }
+        }
+    }
+}
+```
+
+
+
 # 思想
 
 **常用实现方法**
 
-枚举（Enumerate） 基于已有知识来猜测答案的一种问题求解策略。  <br />  枚举的思想是不断地猜测，从可能的集合中一一尝试，然后再判断题目的条件是否成立。  <br />  递归（Recursion）：重复将问题分解为同类的子问题而解决问题的方法。  <br />  **迭代**（iteration）：重复[反馈](https://wiwiki.kfd.me/wiki/%E5%8F%8D%E9%A6%88)过程的活动，其目的通常是为了接近并到达所需的目标或结果。  <br />  分治（Divide and Conquer）：分而治之，把一个复杂的问题分成两个或更多的相同或相似的子问题，直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。
+- 枚举（Enumerate） 基于已有知识来猜测答案的一种问题求解策略。
+- 枚举的思想是不断地猜测，从可能的集合中一一尝试，然后再判断题目的条件是否成立。
+- 递归（Recursion）：重复将问题分解为同类的子问题而解决问题的方法。
+- **迭代**（iteration）：重复[反馈](https://wiwiki.kfd.me/wiki/%E5%8F%8D%E9%A6%88)过程的活动，其目的通常是为了接近并到达所需的目标或结果。
+- 分治（Divide and Conquer）：分而治之，把一个复杂的问题分成两个或更多的相同或相似的子问题，直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。
 
 顺序计算、并行计算和分布式计算：顺序计算就是把形式化算法用编程语言进行单线程序列化后执行。  <br />  确定性算法和非确定性算法  <br />  精确求解和近似求解
 
-**常用设计模式**  <br />  完全遍历法和不完全遍历法：在问题的解是有限离散解空间，且可以验证正确性和最优性时，最简单的算法就是把解空间的所有元素完全遍历一遍，逐个检测元素是否是我们要的解。当解空间特别庞大时，可以利用不完全遍历方法——例如各种搜索法和规划法——来减少计算量。
+**常用设计方式**
 
-线性规划（Linear Programming，简称LP）特指目标函数和约束条件皆为线性的最优化问题。
-
-简并法：把一个问题通过逻辑或数学推理，简化成与之等价或者近似的、相对简单的模型，进而求解的方法。
+- 完全遍历法和不完全遍历法：在问题的解是有限离散解空间，且可以验证正确性和最优性时，最简单的算法就是把解空间的所有元素完全遍历一遍，逐个检测元素是否是我们要的解。当解空间特别庞大时，可以利用不完全遍历方法——例如各种搜索法和规划法——来减少计算量。
+- 线性规划（Linear Programming，简称LP）特指目标函数和约束条件皆为线性的最优化问题。
+- 简并法：把一个问题通过逻辑或数学推理，简化成与之等价或者近似的、相对简单的模型，进而求解的方法。
 
 
 
 ## 动态规划 Dynamic programming
 问题的最优解如果可以由子问题的最优解推导得到，则可以先求解子问题的最优解，再构造原问题的最优解  <br />  全局最优解，可回退
 
-适用于有重叠子问题和最优子结构性质的问题
+**状态转移方程**
 
 特性
 
-- 最优子结构性质：如果问题的最优解所包含的子问题的解也是最优的，我们就称该问题具有最优子结构性质（即满足最优化原理）。最优子结构性质为动态规划算法解决问题提供了重要线索。
+- 最优子结构：问题的最优解所包含的子问题的解也是最优的，子问题间必须互相独立
 - 无后效性：即子问题的解一旦确定，就不再改变，不受在这之后、包含它的更大的问题的求解决策影响。
-- 子问题重叠性质：子问题重叠性质是指在用递归算法自顶向下对问题进行求解时，每次产生的子问题并不总是新问题，有些子问题会被重复计算多次。对每一个子问题只计算一次，然后将其计算结果保存在一个表格中，当再次需要计算已经计算过的子问题时，只是在表格中简单地查看一下结果，从而获得较高的效率。
+- 重叠子问题：指在用递归算法自顶向下对问题进行求解时，每次产生的子问题并不总是新问题，有些子问题会被重复计算多次。对每一个子问题只计算一次，然后将其计算结果保存在一个表格中，当再次需要计算已经计算过的子问题时，只是在表格中简单地查看一下结果，从而获得较高的效率。
+
+
 
 ## 贪心算法 Greedy algorithm
 在对问题求解时，总是做出在当前看来是最好的选择  <br />  局部最优解，不可回退  <br />  基本步骤
@@ -941,9 +1146,44 @@ int main()
 
 ## 回溯法 Backtracking
 一种暴力搜索，采用[试错](https://zh.wikipedia.org/wiki/%E8%AF%95%E9%94%99)的思想，它尝试分步的去解决一个问题
+```java
+def backtrack(...):
+    for select in select_list:
+        do select
+        backtrack(...)
+        undo select
+```
 
 
 ## 指针法
 
-- 快慢指针：循环列表
-- 对撞指针：判断回文
+滑动窗口
+
+**左右指针（**对撞指针**）**
+
+- 二分查找
+- 反转数组
+- 回文串判断
+
+
+**快慢指针**
+
+- 循环列表
+- 有序数组/链表中去重
+
+- 单链表的倒数第 k 个节点
+> 先让一个指针 p1 指向链表的头节点 head，然后走 k 步（链表长度设为n，则 p1只要再走 n - k 步，就能走到链表末尾的空指针了），再用一个指针 p2 指向链表头节点 head；
+> 让 p1 和 p2 同时向前走，p1 走到链表末尾的空指针时前进了 n - k 步，p2 也从 head 开始前进了 n - k 步，停留在第 n - k + 1 个节点上，即恰好停链表的倒数第 k 个节点上
+
+
+- 单链表的中点
+> 让两个指针 slow 和 fast 分别指向链表头结点 head。
+> 每当慢指针 slow 前进一步，快指针 fast 就前进两步，这样，当 fast 走到链表末尾时，slow 就指向了链表中点
+
+
+- 判断链表是否包含环
+> 每当慢指针 slow 前进一步，快指针 fast 就前进两步。
+> 如果 fast 最终遇到空指针，说明链表中没有环；如果 fast 最终和 slow 相遇，那肯定是 fast 超过了 slow 一圈，说明链表中含有环。
+
+
+

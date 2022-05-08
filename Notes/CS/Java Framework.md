@@ -137,6 +137,21 @@ my-project
 
 
 
+# [Lombok](https://projectlombok.org/features/all)
+
+- `@Setter` 注解在类或字段，注解在类时为所有字段生成setter方法，注解在字段上时只为该字段生成setter方法。
+- `@Getter` 使用方法同上，区别在于生成的是getter方法。
+- `@ToString` 注解在类，添加toString方法。
+- `@EqualsAndHashCode` 注解在类，生成hashCode和equals方法。
+- `@NoArgsConstructor` 注解在类，生成无参的构造方法。
+- `@RequiredArgsConstructor` 注解在类，为类中需要特殊处理的字段生成构造方法，比如final和被`@NonNull`注解的字段。
+- `@AllArgsConstructor` 注解在类，生成包含类中所有字段的构造方法。
+- `@Data` 注解在类，生成setter/getter、equals、canEqual、hashCode、toString方法，如为final属性，则不会为该属性生成setter方法。
+- `@Slf4j` 注解在类，生成log变量，严格意义来说是常量
+
+
+
+
 # Log4j2
 **Maven导入**
 ```xml
@@ -204,7 +219,7 @@ my-project
 | WARN | 指定具有潜在危害的情况 |
 
 **程序示例**
-```xml
+```java
 import org.apache.logging.log4j.*；
 public class Test {
 	static Logger logger= LogManager.getLogger(Test.class.getName());
@@ -483,7 +498,6 @@ void testCapitalize(String input, String result) {
 
 
 ## [Jacson](https://github.com/FasterXML/jackson)
-
 ```java
 ObjectMapper mapper = new ObjectMapper();
 
@@ -497,7 +511,6 @@ Object bean = mapper.readValue(jsonString, Object.class);
 
 
 ## [Fastjson](https://github.com/alibaba/fastjson)
-
 ```java
 // 序列化
 String jsonString = JSON.toJSONString(obj);
@@ -506,7 +519,7 @@ String jsonString = JSON.toJSONString(obj);
 Object bean = JSON.parseObject(jsonString, Object.class);
 Object[] beans = JSON.parseArray(jsonStringArray, Object.class);
 ```
-注解 @JSONField  <br />  配置在属性（setter、getter）和字段（必须是 public field）上
+注解 `@JSONField`  <br />  配置在属性（setter、getter）和字段（必须是 public field）上
 ```java
 // 设置字段名
 @JSONField(name="ID")

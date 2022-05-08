@@ -109,6 +109,9 @@ doc/**/*.pdf # 忽略 doc/ 目录及其所有子目录下的 .pdf 文件
 
 ![](./assets/1643807402950-343ced22-cfbb-4e32-8018-52fc03cb6f0c.png)  <br />  快进（fast-forward）：合并分支时， 如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候， 只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧
 
+
+
+
 **CLI**
 
 - Git Bash：Unix与Linux风格的命令行
@@ -737,8 +740,19 @@ $ git push [remote] --tags
 
 分离头指针（detached HEAD）的状态
 
-## [worktree](https://git-scm.com/docs/git-worktree)
 
+## [worktree](https://git-scm.com/docs/git-worktree)
+Manage multiple working trees
+```java
+git worktree add [-f] [--detach] [--checkout] [--lock [--reason <string>]] [-b <new-branch>] <path> [<commit-ish>]
+git worktree list [-v | --porcelain]
+git worktree lock [--reason <string>] <worktree>
+git worktree move <worktree> <new-path>
+git worktree prune [-n] [-v] [--expire <expire>]
+git worktree remove [-f] <worktree>
+git worktree repair [<path>…]
+git worktree unlock <worktree>
+```
 
 
 # Sharing and Updating Projects
@@ -981,6 +995,30 @@ git describe <ref>
 
 # Patching
 
+**patch（补丁）**
+```git
+# 生成patch文件
+git format-patch <old-commit-sha>...<new-commit-sha> -o <patch-file>
+# or
+git diff <old-commit-sha> <new-commit-sha>  >  <patch-file>
+
+
+# 检查patch文件
+git apply --stat <patch-file>
+
+# 检查是否能应用成功
+git apply --check <patch-file>
+
+
+# 打上path
+# 适于git diff生成的patch，会将commit message等打上去，打完patch后需要重新git add和git commit
+git apply <patch-file>
+
+# 适于git format-patch生成的patch，不用再git add和git commit，author也是patch的author
+git am <patch-file>
+```
+
+
 ## [apply](https://git-scm.com/docs/git-apply)
 Apply a patch to files and/or to the index
 ```shell
@@ -993,6 +1031,38 @@ git apply [--stat] [--numstat] [--summary] [--check] [--index | --intent-to-add]
 	  [--exclude=<path>] [--include=<path>] [--directory=<root>]
 	  [--verbose] [--unsafe-paths] [<patch>…]
 ```
+
+
+
+## [am](https://git-scm.com/docs/git-am)
+Apply a series of patches from a mailbox
+```git
+git am [--signoff] [--keep] [--[no-]keep-cr] [--[no-]utf8]
+	 [--[no-]3way] [--interactive] [--committer-date-is-author-date]
+	 [--ignore-date] [--ignore-space-change | --ignore-whitespace]
+	 [--whitespace=<option>] [-C<n>] [-p<n>] [--directory=<dir>]
+	 [--exclude=<path>] [--include=<path>] [--reject] [-q | --quiet]
+	 [--[no-]scissors] [-S[<keyid>]] [--patch-format=<format>]
+	 [--quoted-cr=<action>]
+	 [--empty=(stop|drop|keep)]
+	 [(<mbox> | <Maildir>)…]
+git am (--continue | --skip | --abort | --quit | --show-current-patch[=(diff|raw)] | --allow-empty)
+```
+
+
+## [format-patch](https://git-scm.com/docs/git-format-patch)
+Prepare patches for e-mail submission
+
+
+## [send-email](https://git-scm.com/docs/git-send-email)
+Send a collection of patches as emails
+```git
+git send-email [<options>] <file|directory>…
+git send-email [<options>] <format-patch options>
+git send-email --dump-aliases
+```
+
+
 
 ## [cherry-pick](https://git-scm.com/docs/git-cherry-pick)
 Apply the changes introduced by some existing commits
@@ -1132,6 +1202,16 @@ git config --global alias.hist "log --graph --decorate --oneline --pretty=format
 ```
 
 
+
+# [Hooks](https://git-scm.com/docs/githooks)
+在特定事件发生之前或之后执行特定脚本代码功能  <br />  位置：`.git/hooks`
+
+分类
+
+- 本地Hooks，触发事件如commit、merge等。
+- 服务端Hooks，触发事件如receive等。
+
+  <br />  
 
 # 规范
 

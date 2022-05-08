@@ -412,6 +412,29 @@ int[][] arr = new int[3][]; // 等同于 int[][] arr = {null, null, null};
 - Object[] copyOf(Object[] original, int newLength)：复制 original 数组，截取或用 0（数值类型）、false（布尔类型）或者 null（引用类型）填充，以使新数组的长度为 newLength
 - List asList(T... a)：把一个引用类型的数组或指定个数的对象转换成固定长度的 List，只读数组
 
+`List＜Integer＞`、`int[ ]`、`Integer[ ]`相互转换
+```java
+// int[ ] 转 Integer[ ]
+Integer[] integers = Arrays.stream(ints).boxed().toArray(Integer[]::new);
+
+// Integer[ ] 转 int[ ]
+int[] ints = Arrays.stream(integers).mapToInt(Integer::valueOf).toArray();
+
+
+// int[ ] 转 List<Integer>
+ List<Integer> list = Arrays.stream(ints).boxed().collect(Collectors.toList());
+
+// Integer[ ] 转 List< Integer >
+List<Integer> list = Arrays.asList(integers);  // 不可变
+List<Integer> list = new ArrayList<>(Arrays.asList(integers)); 
+
+// List< Integer > 转 int[ ]
+int[] ints = list.stream().mapToInt(Integer::valueOf).toArray();
+
+// List< Integer > 转 Integer[ ]
+Integer[] integers = list.toArray(new Integer[list.size()]);
+```
+
 
 ### 枚举类
 

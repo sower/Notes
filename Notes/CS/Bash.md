@@ -462,9 +462,9 @@ somecommand |xargs -item  command
 
 - -a file 从文件中读入作为sdtin
 - -e flag ，有时是-E，flag必须是一个以空格分隔的标志，当xargs分析到含有flag这个标志的时候就停止。
-- -p 当每次执行一个argument的时候询问一次用户。
+- -p 打印要执行的命令，每次执行时询问用户。
 - -n num 后面加次数，表示命令在执行的时候一次用的argument的个数，默认是用所有的。
-- -t 表示先打印命令，然后再执行。
+- -t 表示先打印命令，然后再执行
 - -r no-run-if-empty 当xargs的输入为空的时候则停止xargs，不用再去执行了。
 - -s num 命令行的最大字符数，指的是 xargs 后面那个命令的最大命令行字符数。
 - -L num 从标准输入一次读取 num 行送给 command 命令。

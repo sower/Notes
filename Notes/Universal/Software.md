@@ -11,8 +11,6 @@
 - [免费软件](https://zh.wikipedia.org/wiki/%E5%85%8D%E8%B2%BB%E8%BB%9F%E9%AB%94)：可免费的获取和散布，但并不提供源码，也无法修改。
 - [公共软件](https://zh.wikipedia.org/wiki/%E5%85%AC%E6%9C%89%E9%A0%98%E5%9F%9F)：原作者已放弃权利，[著作权](https://zh.wikipedia.org/wiki/%E8%91%97%E4%BD%9C%E6%AC%8A)过期，或作者已不可考的软件。使用上无任何限制。
 
-
-
 **绿色软件**（portable software，**便携软件**）一类小型[软件](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94)，多数为[免费软件](https://zh.wikipedia.org/wiki/%E5%85%8D%E8%B2%BB%E8%BB%9F%E9%AB%94)，最大特点是软件无需安装便可使用，可存放于可移除式存储媒体中，移除后也不会将任何纪录（[注册表](https://zh.wikipedia.org/wiki/%E6%B3%A8%E5%86%8C%E8%A1%A8)消息等）留在本机电脑上。
 
 
@@ -31,6 +29,9 @@
 
 ![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090303.png#crop=0&crop=0&crop=1&crop=1&id=d7Goo&originHeight=511&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
+##   <br />  
+
+
 ## 事件驱动架构（event-driven architecture）
 通过事件进行通信的软件架构。  <br />  事件（event）是状态发生变化时，软件发出的通知。
 
@@ -41,8 +42,16 @@
 
 ![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090304.png#crop=0&crop=0&crop=1&crop=1&id=JUJDi&originHeight=578&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
+##   <br />  
+
+##   <br />  
+
 ## 微核架构（microkernel architecture）
 又称为"插件架构"（plug-in architecture），软件的内核相对较小，主要功能和业务逻辑都通过插件实现。  <br />  内核（core）通常只包含系统运行的最小功能。插件则是互相独立的，插件之间的通信，应该减少到最低，避免出现互相依赖的问题。  <br />  ![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090306.png#crop=0&crop=0&crop=1&crop=1&id=eAuUP&originHeight=487&originWidth=722&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+##   <br />  
+
+##   <br />  
 
 ## 微服务架构（microservices architecture）
 是服务导向架构（service-oriented architecture，缩写 SOA）的升级。  <br />  每一个服务就是一个独立的部署单元（separately deployed unit）。这些单元都是分布式的，互相解耦，通过远程通信协议（比如REST、SOAP）联系  <br />  ![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090307.png#crop=0&crop=0&crop=1&crop=1&id=kXDwk&originHeight=460&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  实现模式。
@@ -50,6 +59,8 @@
 - RESTful API 模式：服务通过 API 提供，云服务就属于这一类
 - RESTful 应用模式：服务通过传统的网络协议或者应用协议提供，背后通常是一个多功能的应用程序，常见于企业内部
 - 集中消息模式：采用消息代理（message broker），可以实现消息队列、负载均衡、统一日志和异常处理，缺点是会出现单点失败，消息代理可能要做成集群
+
+##   <br />  
 
 ## 云结构（cloud architecture）
 主要解决扩展性和并发的问题，是最容易扩展的架构
@@ -63,7 +74,28 @@
 
 ![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090311.png#crop=0&crop=0&crop=1&crop=1&id=cVtlo&originHeight=402&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
+
+
+
+
 # 开源协议
+
+**知识共享许可协议**  <br />  创用**CC**许可（**C**reative **C**ommons license）是一种[公共著作权许可协议](https://zh.wikipedia.org/w/index.php?title=%E5%85%AC%E5%85%B1%E7%89%88%E6%9D%83%E6%8E%88%E6%AC%8A%E6%A2%9D%E6%AC%BE&action=edit&redlink=1)，其允许分发受著作权保护的作品。一个创作共享许可用于一个作者想给他人分享，使用，甚至创作派生作品的权利。
+
+| 标志 | 权利 | 备注 |
+| --- | --- | --- |
+| [![image.png](./assets/1651321228013-87b608cf-7a43-496f-b169-06c78447d0d4.png) | **署名**（Attribution，**by**） | 您（用户）可以复制、发行、展览、表演、放映、广播或通过信息网络传播本作品；您必须按照作者或者许可人指定的方式对作品进行署名。 |
+| [![image.png](./assets/1651321227978-a9d06ba2-d0d0-4691-80fb-5a4133b1496b.png)  <br />  （**S**hare**A**like，**sa**） | 您可以自由复制、散布、展示及演出本作品；若您改变、转变或更改本作品，仅在遵守与本作品相同的许可条款下，您才能散布由本作品产生的派生作品。 |
+| [![image.png](./assets/1651321227985-f31fccec-826b-40f6-ac8d-a04ee1fe5d94.png)  <br />  目的而使用本作品。 |
+| [![image.png](./assets/1651321227980-f08630fb-3237-446c-b7e0-105f708ff968.png) | 您可以自由复制、散布、展示及演出本作品；您不得改变、转变或更改本作品。 |
+
+
+公共领域（public domain）：如果一种开源许可证没有任何使用条件，保留作者信息都不需要，等同于放弃版权了  <br />  宽松式许可证（permissive license）：最基本的类型，对用户几乎没有限制。用户可以修改代码后闭源。  <br />  Copyleft 许可证
+
+- 如果分发二进制格式，必须提供源码
+- 修改后的源码，必须与修改前保持许可证一致
+- 不得在原始许可证以外，附加其他限制
+
 
 **GNU GPL（GNU General Public License，GNU通用公共许可证）**  <br />  只要软件中包含了遵循 GPL 协议的产品或代码，该软件就必须也遵循 GPL 许可协议，也就是必须开源免费，不能闭源收费，因此这个协议并不适合商用软件。
 
@@ -74,14 +106,11 @@
 | 收费传播 | 允许在各种媒介上出售该软件，但必须提前让买家知道这个软件是可以免费获得的；因此，一般来讲，开源软件都是通过为用户提供有偿服务的形式来盈利的。 |
 | 修改自由 | 允许开发人员增加或删除软件的功能，但软件修改后必须依然基于GPL许可协议授权。 |
 
-
-
-**BSD（Berkeley Software Distribution，伯克利软件发布版）协议**
+  <br />  **BSD（Berkeley Software Distribution，伯克利软件发布版）协议**
 
 - 如果再发布的软件中包含源代码，则源代码必须继续遵循 BSD 许可协议。
 - 如果再发布的软件中只有二进制程序，则需要在相关文档或版权文件中声明原始代码遵循了 BSD 协议。
 - 不允许用原始软件的名字、作者名字或机构名称进行市场推广。
-
 
 **Apache 许可证版本（Apache License Version）协议**
 
@@ -89,7 +118,6 @@
 - 如果修改了程序源代码，需要在文档中进行声明。
 - 若软件是基于他人的源代码编写而成的，则需要保留原始代码的协议、商标、专利声明及其他原作者声明的内容信息。
 - 如果再发布的软件中有声明文件，则需在此文件中标注 Apache 许可协议及其他许可协议。
-
 
 **MIT（Massachusetts Institute of Technology）协议**  <br />  目前限制最少的开源许可协议之一（比 BSD 和 Apache 的限制都少），只要程序的开发者在修改后的源代码中保留原作者的许可信息即可，因此普遍被商业软件所使用。
 

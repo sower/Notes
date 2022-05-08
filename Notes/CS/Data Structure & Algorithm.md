@@ -1,4 +1,3 @@
-
 数据结构（Data Structure）：相互之间存在一种或多种特定关系的数据元素的集合。  <br />  ![](./assets/1643807394113-3ed0ccfd-1bf0-4a74-bb06-607fbd267ed9.png)
 
 - 顺序存储结构——借助元素在存储器中的相对位置来表示数据元素间的逻辑关系
@@ -16,13 +15,82 @@
 由相同类型的元素（element）的集合所组成的数据结构，分配一块连续的内存来存储。  <br />  利用元素的索引（index）可以计算出该元素对应的存储地址。  <br />  数组第一个元素的存储器地址称为第一地址或基础地址。
 
 
+
+### 前缀和数组
+> 数列的前n项的和
+
+适用：原始数组不会被修改的情况下，频繁查询某个区间的累加和
+```java
+class NumArray {
+    // 前缀和数组
+    private int[] preSum;
+
+    /* 输入一个数组，构造前缀和 */
+    public NumArray(int[] nums) {
+        // preSum[0] = 0，便于计算累加和
+        preSum = new int[nums.length + 1];
+        // 计算 nums 的累加和
+        for (int i = 1; i < preSum.length; i++) {
+            preSum[i] = preSum[i - 1] + nums[i - 1];
+        }
+    }
+    
+    /* 查询闭区间 [left, right] 的累加和 */
+    public int sumRange(int left, int right) {
+        return preSum[right + 1] - preSum[left];
+    }
+}
+```
+
+
+### 差分数组
+适用：频繁对原始数组的某个区间的元素进行增减
+```javascript
+class Difference {
+    // 差分数组
+    private int[] diff;
+    
+    /* 输入一个初始数组，区间操作将在这个数组上进行 */
+    public Difference(int[] nums) {
+        assert nums.length > 0;
+        diff = new int[nums.length];
+        // 根据初始数组构造差分数组
+        diff[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            diff[i] = nums[i] - nums[i - 1];
+        }
+    }
+
+    /* 给闭区间 [i, j] 增加 val（可以是负数）*/
+    public void increment(int i, int j, int val) {
+        diff[i] += val;
+        if (j + 1 < diff.length) {
+            diff[j + 1] -= val;
+        }
+    }
+
+    /* 返回结果数组 */
+    public int[] result() {
+        int[] res = new int[diff.length];
+        // 根据差分数组构造结果数组
+        res[0] = diff[0];
+        for (int i = 1; i < diff.length; i++) {
+            res[i] = res[i - 1] + diff[i];
+        }
+        return res;
+    }
+}
+```
+
+
+
 ## 链表（Linked list）
 一种线性表，在每一个节点里存到下一个节点的指针(Pointer)
 
 链表结构可以克服数组链表需要预先知道数据大小的缺点，充分利用计算机内存空间，实现灵活的内存动态管理。但是链表失去了数组随机读取的优点，同时链表由于增加了结点的指针域，空间开销比较大。
 
 
-### 单项链表
+### 单向链表
 包含信息域和指针域。这个链接指向列表中的下一个节点，而最后一个节点则指向一个空值  <br />  ![](./assets/1644580501032-f786b5ef-d0cb-408d-8cf0-6a081d0d8437.png)
 
 **数组方式**
@@ -174,7 +242,7 @@ bool Delete( List L, Position P )
 
 
 
-## Stack
+## 栈（Stack）
 只允许在有序的线性资料集合的一端（栈顶端，top）进行加入数据（压栈，push）和移除数据（弹栈，pop）的运算。  <br />  按照后进先出（LIFO, Last In First Out）的原理运作  <br />  ![](./assets/1644580552716-3b3b9026-6c48-4d1a-a7d5-b18c409a0567.png)
 
 **数组方式**
@@ -281,7 +349,17 @@ ElementType Pop( Stack S )
 }
 ```
 
-## Queue
+
+
+### 单调栈
+单调递增栈：数据从栈顶到栈底单调递增  <br />  单调递减栈：数据从栈顶到栈底单调递减
+
+（单调递增）入栈：栈为空或入栈元素值小于栈顶元素，直接入栈；否则，需要把比入栈元素小的元素全部出栈，再入栈
+
+
+
+
+## 队列（Queue）
 
 
 先进先出（FIFO, First-In-First-Out）的线性表。  <br />  只允许在后端（rear）进行插入操作，在前端（front）进行删除操作。  <br />  ![](./assets/1644384402290-f31ff122-c8bf-4df9-9fa8-28fef1e48303.svg)
@@ -610,14 +688,44 @@ int main()
 ```
 
 
+### 单调队列
 
+适用：需要得到当前的某个范围内的最小值或最大值
+```java
+class MonotonicQueue {
+    LinkedList<Integer> maxq = new LinkedList<>();
+    public void push(int n) {
+        // 将小于 n 的元素全部删除
+        while (!maxq.isEmpty() && maxq.getLast() < n) {
+            maxq.pollLast();
+        }
+        // 然后将 n 加入尾部
+        maxq.addLast(n);
+    }
+    
+    public int max() {
+        return maxq.getFirst();
+    }
+    
+    public void pop(int n) {
+        if (n == maxq.getFirst()) {
+            maxq.pollFirst();
+        }
+    }
+}
+```
 
 
 # Resource
 
 - [The Algorithms](https://github.com/TheAlgorithms)
+- [OI Wiki](https://oi-wiki.org/)
 - [labuladong 的算法小抄](https://labuladong.gitee.io/algo/)
-- [CS-Xmind-Note](https://github.com/SSHeRun/CS-Xmind-Note)
+- [awesome-algorithms](https://github.com/tayllan/awesome-algorithms)
+- [Algorithms](https://github.com/williamfiset/Algorithms)  （Java）
+- [algorithms](https://github.com/keon/algorithms) （Python）
+- [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms)
+
 
 可视化
 

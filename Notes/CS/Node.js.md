@@ -242,7 +242,6 @@ npm（Node Package Manager）是Node.js默认的、用JavaScript编写的软件�
    - npm config edit
    - npm set <key>=<value> [<key>=<value> ...]
    - npm get [<key> [<key> ...]]
-   - alias: c
 - [npm init](https://docs.npmjs.com/cli/v7/commands/npm-init)	Create a package.json file
 - [npm install](https://docs.npmjs.com/cli/v7/commands/npm-install)	Install a package
    - aliases: npm i, npmadd
@@ -255,6 +254,7 @@ npm（Node Package Manager）是Node.js默认的、用JavaScript编写的软件�
 - [npm link](https://docs.npmjs.com/cli/v7/commands/npm-link)	Symlink a package folder
 - [npm ls](https://docs.npmjs.com/cli/v7/commands/npm-ls)	List installed packages
    - --depth=0
+- [npm ping](https://docs.npmjs.com/cli/v7/commands/npm-ping)	Ping npm registry
 - [npm search](https://docs.npmjs.com/cli/v7/commands/npm-search)	Search for packages
    - [-l|--long] [--json] [--parseable] [--no-description] [search terms ...]
    - aliases: s, se, find
@@ -954,28 +954,37 @@ const iPhoneXR = puppeteer.devices['iPhone XR'];
             '--window-size=1280,960'
         ],
     });
-  const page = await browser.newPage();
+  const page = (await browser.pages())[0];
   await page.emulate(iPhoneXR);
   await page.goto('https://www.baidu.com', { waitUntil: ['load'] });
-  const dimensions = await page.evaluate(() => {
-        return {
-            width: document.documentElement.clientWidth,
-            height: document.documentElement.clientHeight,
-            deviceScaleFactor: window.devicePixelRatio
-        };
-    });
-
-    console.log('Dimensions:', dimensions);
+  
+  await page.waitForSelector('#username');
+  await (await page.$('#username')).type(email);
+  await page.type('#password', pw);
+  let btn = await page.$('[type="submit"]');
+  await btn.click();
+  await page.waitForNavigation();
+  
+  page.on('request', request => {
+    if (request.url().includes('api/v2/info')) {
+      console.log(request.headers());
+      session = request.headers()['session_id'];
+    }
+  });
+  
+  let token = await page.evaluate(() => JSON.parse(window.localStorage.getItem('AccessToken')))
+  
+  await page.close();
   await browser.close();
 })();
 ```
 **puppeteer.launch([options])**
 
-- options <[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> 在浏览器上设置的一组可配置选项。 有以下字段：
-   - ignoreHTTPSErrors <[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type)> 是否在导航期间忽略 HTTPS 错误. 默认是 false。
+- options <[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> 在浏览器上设置的一组可配置选项。 
+   - ignoreHTTPSErrors <[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type)> 是否在导航期间忽略 HTTPS 错误，默认是 false。
    - headless <[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type)> 是否以 [无头模式](https://developers.google.com/web/updates/2017/04/headless-chrome) 运行浏览器。默认是 true，除非 devtools 选项是 true。
    - executablePath <[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type)> 可运行 Chromium 或 Chrome 可执行文件的路径，而不是绑定的 Chromium。如果 executablePath 是一个相对路径，那么他相对于 [当前工作路径](https://nodejs.org/api/process.html#process_process_cwd) 解析。
-   - slowMo <[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type)> 将 Puppeteer 操作减少指定的毫秒数。这样你就可以看清发生了什么，这很有用。
+   - slowMo <[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type)> 将 Puppeteer 操作减少指定的毫秒数。这样你就可以看清发生了什么
    - defaultViewport <?[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> 为每个页面设置一个默认视口大小。默认是 800x600。如果为 null 的话就禁用视图口。
       - width <[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type)> 页面宽度像素。
       - height <[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type)> 页面高度像素。
@@ -996,431 +1005,28 @@ const iPhoneXR = puppeteer.devices['iPhone XR'];
    - pipe <[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type)> 通过管道而不是WebSocket连接到浏览器。默认是 false。
 - returns: <[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Browser](https://zhaoqize.github.io/puppeteer-api-zh_CN/#?product=Puppeteer&version=v8.0.0&show=api-class-browser)>> 浏览器实例支持 Promise。
 
-[class: Puppeteer](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-puppeteer)
 
-- [puppeteer.clearCustomQueryHandlers()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteerclearcustomqueryhandlers)
-- [puppeteer.connect(options)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteerconnectoptions)
-- [puppeteer.createBrowserFetcher([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteercreatebrowserfetcheroptions)
-- [puppeteer.customQueryHandlerNames()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteercustomqueryhandlernames)
-- [puppeteer.defaultArgs([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteerdefaultargsoptions)
-- [puppeteer.devices](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteerdevices)
-- [puppeteer.errors](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteererrors)
-- [puppeteer.executablePath()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteerexecutablepath)
-- [puppeteer.launch([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteerlaunchoptions)
-- [puppeteer.networkConditions](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteernetworkconditions)
-- [puppeteer.product](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteerproduct)
-- [puppeteer.registerCustomQueryHandler(name, queryHandler)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteerregistercustomqueryhandlername-queryhandler)
-- [puppeteer.unregisterCustomQueryHandler(name)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteerunregistercustomqueryhandlername)
 
-[class: BrowserFetcher](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-browserfetcher)
+# [Jest](https://github.com/facebook/jest)
 
-- [browserFetcher.canDownload(revision)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserfetchercandownloadrevision)
-- [browserFetcher.download(revision[, progressCallback])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserfetcherdownloadrevision-progresscallback)
-- [browserFetcher.host()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserfetcherhost)
-- [browserFetcher.localRevisions()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserfetcherlocalrevisions)
-- [browserFetcher.platform()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserfetcherplatform)
-- [browserFetcher.product()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserfetcherproduct)
-- [browserFetcher.remove(revision)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserfetcherremoverevision)
-- [browserFetcher.revisionInfo(revision)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserfetcherrevisioninforevision)
-
-[class: Browser](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-browser)
-
-- [event: 'disconnected'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-disconnected)
-- [event: 'targetchanged'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-targetchanged)
-- [event: 'targetcreated'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-targetcreated)
-- [event: 'targetdestroyed'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-targetdestroyed)
-- [browser.browserContexts()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserbrowsercontexts)
-- [browser.close()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserclose)
-- [browser.createIncognitoBrowserContext()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsercreateincognitobrowsercontext)
-- [browser.defaultBrowserContext()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserdefaultbrowsercontext)
-- [browser.disconnect()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserdisconnect)
-- [browser.isConnected()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserisconnected)
-- [browser.newPage()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsernewpage)
-- [browser.pages()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserpages)
-- [browser.process()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserprocess)
-- [browser.target()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsertarget)
-- [browser.targets()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsertargets)
-- [browser.userAgent()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browseruseragent)
-- [browser.version()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserversion)
-- [browser.waitForTarget(predicate[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserwaitfortargetpredicate-options)
-- [browser.wsEndpoint()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserwsendpoint)
-
-[class: BrowserContext](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-browsercontext)
-
-- [event: 'targetchanged'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-targetchanged-1)
-- [event: 'targetcreated'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-targetcreated-1)
-- [event: 'targetdestroyed'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-targetdestroyed-1)
-- [browserContext.browser()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsercontextbrowser)
-- [browserContext.clearPermissionOverrides()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsercontextclearpermissionoverrides)
-- [browserContext.close()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsercontextclose)
-- [browserContext.isIncognito()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsercontextisincognito)
-- [browserContext.newPage()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsercontextnewpage)
-- [browserContext.overridePermissions(origin, permissions)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsercontextoverridepermissionsorigin-permissions)
-- [browserContext.pages()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsercontextpages)
-- [browserContext.targets()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsercontexttargets)
-- [browserContext.waitForTarget(predicate[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browsercontextwaitfortargetpredicate-options)
-
-[class: Page](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-page)
-
-- [event: 'close'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-close)
-- [event: 'console'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-console)
-- [event: 'dialog'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-dialog)
-- [event: 'domcontentloaded'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-domcontentloaded)
-- [event: 'error'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-error)
-- [event: 'frameattached'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-frameattached)
-- [event: 'framedetached'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-framedetached)
-- [event: 'framenavigated'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-framenavigated)
-- [event: 'load'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-load)
-- [event: 'metrics'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-metrics)
-- [event: 'pageerror'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-pageerror)
-- [event: 'popup'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-popup)
-- [event: 'request'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-request)
-- [event: 'requestfailed'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-requestfailed)
-- [event: 'requestfinished'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-requestfinished)
-- [event: 'response'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-response)
-- [event: 'workercreated'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-workercreated)
-- [event: 'workerdestroyed'](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#event-workerdestroyed)
-- [page.$(selector)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageselector)
-- [page.$$(selector)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageselector-1)
-- [page.$$eval(selector, pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageevalselector-pagefunction-args)
-- [page.$eval(selector, pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageevalselector-pagefunction-args-1)
-- [page.$x(expression)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagexexpression)
-- [page.accessibility](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageaccessibility)
-- [page.addScriptTag(options)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageaddscripttagoptions)
-- [page.addStyleTag(options)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageaddstyletagoptions)
-- [page.authenticate(credentials)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageauthenticatecredentials)
-- [page.bringToFront()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagebringtofront)
-- [page.browser()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagebrowser)
-- [page.browserContext()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagebrowsercontext)
-- [page.click(selector[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageclickselector-options)
-- [page.close([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagecloseoptions)
-- [page.content()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagecontent)
-- [page.cookies([...urls])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagecookiesurls)
-- [page.coverage](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagecoverage)
-- [page.deleteCookie(...cookies)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagedeletecookiecookies)
-- [page.emulate(options)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageemulateoptions)
-- [page.emulateIdleState(overrides)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageemulateidlestateoverrides)
-- [page.emulateMediaFeatures(features)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageemulatemediafeaturesfeatures)
-- [page.emulateMediaType(type)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageemulatemediatypetype)
-- [page.emulateNetworkConditions(networkConditions)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageemulatenetworkconditionsnetworkconditions)
-- [page.emulateTimezone(timezoneId)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageemulatetimezonetimezoneid)
-- [page.emulateVisionDeficiency(type)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageemulatevisiondeficiencytype)
-- [page.evaluate(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageevaluatepagefunction-args)
-- [page.evaluateHandle(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageevaluatehandlepagefunction-args)
-- [page.evaluateOnNewDocument(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageevaluateonnewdocumentpagefunction-args)
-- [page.exposeFunction(name, puppeteerFunction)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageexposefunctionname-puppeteerfunction)
-- [page.focus(selector)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagefocusselector)
-- [page.frames()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageframes)
-- [page.goBack([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagegobackoptions)
-- [page.goForward([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagegoforwardoptions)
-- [page.goto(url[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagegotourl-options)
-- [page.hover(selector)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagehoverselector)
-- [page.isClosed()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageisclosed)
-- [page.isJavaScriptEnabled()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageisjavascriptenabled)
-- [page.keyboard](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagekeyboard)
-- [page.mainFrame()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagemainframe)
-- [page.metrics()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagemetrics)
-- [page.mouse](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagemouse)
-- [page.pdf([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagepdfoptions)
-- [page.queryObjects(prototypeHandle)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagequeryobjectsprototypehandle)
-- [page.reload([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagereloadoptions)
-- [page.screenshot([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagescreenshotoptions)
-- [page.select(selector, ...values)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageselectselector-values)
-- [page.setBypassCSP(enabled)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetbypasscspenabled)
-- [page.setCacheEnabled([enabled])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetcacheenabledenabled)
-- [page.setContent(html[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetcontenthtml-options)
-- [page.setCookie(...cookies)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetcookiecookies)
-- [page.setDefaultNavigationTimeout(timeout)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetdefaultnavigationtimeouttimeout)
-- [page.setDefaultTimeout(timeout)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetdefaulttimeouttimeout)
-- [page.setExtraHTTPHeaders(headers)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetextrahttpheadersheaders)
-- [page.setGeolocation(options)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetgeolocationoptions)
-- [page.setJavaScriptEnabled(enabled)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetjavascriptenabledenabled)
-- [page.setOfflineMode(enabled)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetofflinemodeenabled)
-- [page.setRequestInterception(value)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetrequestinterceptionvalue)
-- [page.setUserAgent(userAgent)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetuseragentuseragent)
-- [page.setViewport(viewport)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetviewportviewport)
-- [page.tap(selector)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagetapselector)
-- [page.target()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagetarget)
-- [page.title()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagetitle)
-- [page.touchscreen](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagetouchscreen)
-- [page.tracing](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagetracing)
-- [page.type(selector, text[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagetypeselector-text-options)
-- [page.url()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageurl)
-- [page.viewport()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageviewport)
-- [page.waitFor(selectorOrFunctionOrTimeout[, options[, ...args]])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagewaitforselectororfunctionortimeout-options-args)
-- [page.waitForFileChooser([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagewaitforfilechooseroptions)
-- [page.waitForFunction(pageFunction[, options[, ...args]])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagewaitforfunctionpagefunction-options-args)
-- [page.waitForNavigation([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagewaitfornavigationoptions)
-- [page.waitForRequest(urlOrPredicate[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagewaitforrequesturlorpredicate-options)
-- [page.waitForResponse(urlOrPredicate[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagewaitforresponseurlorpredicate-options)
-- [page.waitForSelector(selector[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagewaitforselectorselector-options)
-- [page.waitForTimeout(milliseconds)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagewaitfortimeoutmilliseconds)
-- [page.waitForXPath(xpath[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagewaitforxpathxpath-options)
-- [page.workers()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pageworkers)
-- [GeolocationOptions](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#geolocationoptions)
-- [WaitTimeoutOptions](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#waittimeoutoptions)
-
-[class: WebWorker](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-webworker)
-
-- [webWorker.evaluate(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#webworkerevaluatepagefunction-args)
-- [webWorker.evaluateHandle(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#webworkerevaluatehandlepagefunction-args)
-- [webWorker.executionContext()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#webworkerexecutioncontext)
-- [webWorker.url()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#webworkerurl)
-
-[class: Accessibility](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-accessibility)
-
-- [accessibility.snapshot([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#accessibilitysnapshotoptions)
-
-[class: Keyboard](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-keyboard)
-
-- [keyboard.down(key[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#keyboarddownkey-options)
-- [keyboard.press(key[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#keyboardpresskey-options)
-- [keyboard.sendCharacter(char)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#keyboardsendcharacterchar)
-- [keyboard.type(text[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#keyboardtypetext-options)
-- [keyboard.up(key)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#keyboardupkey)
-
-[class: Mouse](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-mouse)
-
-- [mouse.click(x, y[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#mouseclickx-y-options)
-- [mouse.down([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#mousedownoptions)
-- [mouse.move(x, y[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#mousemovex-y-options)
-- [mouse.up([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#mouseupoptions)
-- [mouse.wheel([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#mousewheeloptions)
-
-[class: Touchscreen](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-touchscreen)
-
-- [touchscreen.tap(x, y)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#touchscreentapx-y)
-
-[class: Tracing](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-tracing)
-
-- [tracing.start([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#tracingstartoptions)
-- [tracing.stop()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#tracingstop)
-
-[class: FileChooser](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-filechooser)
-
-- [fileChooser.accept(filePaths)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#filechooseracceptfilepaths)
-- [fileChooser.cancel()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#filechoosercancel)
-- [fileChooser.isMultiple()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#filechooserismultiple)
-
-[class: Dialog](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-dialog)
-
-- [dialog.accept([promptText])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#dialogacceptprompttext)
-- [dialog.defaultValue()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#dialogdefaultvalue)
-- [dialog.dismiss()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#dialogdismiss)
-- [dialog.message()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#dialogmessage)
-- [dialog.type()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#dialogtype)
-
-[class: ConsoleMessage](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-consolemessage)
-
-- [consoleMessage.args()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#consolemessageargs)
-- [consoleMessage.location()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#consolemessagelocation)
-- [consoleMessage.stackTrace()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#consolemessagestacktrace)
-- [consoleMessage.text()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#consolemessagetext)
-- [consoleMessage.type()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#consolemessagetype)
-
-[class: Frame](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-frame)
-
-- [frame.$(selector)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameselector)
-- [frame.$$(selector)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameselector-1)
-- [frame.$$eval(selector, pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameevalselector-pagefunction-args)
-- [frame.$eval(selector, pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameevalselector-pagefunction-args-1)
-- [frame.$x(expression)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framexexpression)
-- [frame.addScriptTag(options)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameaddscripttagoptions)
-- [frame.addStyleTag(options)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameaddstyletagoptions)
-- [frame.childFrames()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framechildframes)
-- [frame.click(selector[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameclickselector-options)
-- [frame.content()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framecontent)
-- [frame.evaluate(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameevaluatepagefunction-args)
-- [frame.evaluateHandle(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameevaluatehandlepagefunction-args)
-- [frame.executionContext()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameexecutioncontext)
-- [frame.focus(selector)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framefocusselector)
-- [frame.goto(url[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framegotourl-options)
-- [frame.hover(selector)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framehoverselector)
-- [frame.isDetached()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameisdetached)
-- [frame.name()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framename)
-- [frame.parentFrame()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameparentframe)
-- [frame.select(selector, ...values)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameselectselector-values)
-- [frame.setContent(html[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framesetcontenthtml-options)
-- [frame.tap(selector)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frametapselector)
-- [frame.title()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frametitle)
-- [frame.type(selector, text[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frametypeselector-text-options)
-- [frame.url()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#frameurl)
-- [frame.waitFor(selectorOrFunctionOrTimeout[, options[, ...args]])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framewaitforselectororfunctionortimeout-options-args)
-- [frame.waitForFunction(pageFunction[, options[, ...args]])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framewaitforfunctionpagefunction-options-args)
-- [frame.waitForNavigation([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framewaitfornavigationoptions)
-- [frame.waitForSelector(selector[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framewaitforselectorselector-options)
-- [frame.waitForTimeout(milliseconds)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framewaitfortimeoutmilliseconds)
-- [frame.waitForXPath(xpath[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#framewaitforxpathxpath-options)
-
-[class: ExecutionContext](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-executioncontext)
-
-- [executionContext.evaluate(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#executioncontextevaluatepagefunction-args)
-- [executionContext.evaluateHandle(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#executioncontextevaluatehandlepagefunction-args)
-- [executionContext.frame()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#executioncontextframe)
-- [executionContext.queryObjects(prototypeHandle)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#executioncontextqueryobjectsprototypehandle)
-
-[class: JSHandle](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-jshandle)
-
-- [jsHandle.asElement()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#jshandleaselement)
-- [jsHandle.dispose()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#jshandledispose)
-- [jsHandle.evaluate(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#jshandleevaluatepagefunction-args)
-- [jsHandle.evaluateHandle(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#jshandleevaluatehandlepagefunction-args)
-- [jsHandle.executionContext()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#jshandleexecutioncontext)
-- [jsHandle.getProperties()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#jshandlegetproperties)
-- [jsHandle.getProperty(propertyName)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#jshandlegetpropertypropertyname)
-- [jsHandle.jsonValue()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#jshandlejsonvalue)
-
-[class: ElementHandle](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-elementhandle)
-
-- [elementHandle.$(selector)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleselector)
-- [elementHandle.$$(selector)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleselector-1)
-- [elementHandle.$$eval(selector, pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleevalselector-pagefunction-args)
-- [elementHandle.$eval(selector, pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleevalselector-pagefunction-args-1)
-- [elementHandle.$x(expression)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandlexexpression)
-- [elementHandle.asElement()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleaselement)
-- [elementHandle.boundingBox()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleboundingbox)
-- [elementHandle.boxModel()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleboxmodel)
-- [elementHandle.click([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleclickoptions)
-- [elementHandle.contentFrame()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandlecontentframe)
-- [elementHandle.dispose()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandledispose)
-- [elementHandle.evaluate(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleevaluatepagefunction-args)
-- [elementHandle.evaluateHandle(pageFunction[, ...args])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleevaluatehandlepagefunction-args)
-- [elementHandle.executionContext()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleexecutioncontext)
-- [elementHandle.focus()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandlefocus)
-- [elementHandle.getProperties()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandlegetproperties)
-- [elementHandle.getProperty(propertyName)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandlegetpropertypropertyname)
-- [elementHandle.hover()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandlehover)
-- [elementHandle.isIntersectingViewport()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleisintersectingviewport)
-- [elementHandle.jsonValue()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandlejsonvalue)
-- [elementHandle.press(key[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandlepresskey-options)
-- [elementHandle.screenshot([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandlescreenshotoptions)
-- [elementHandle.select(...values)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleselectvalues)
-- [elementHandle.tap()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandletap)
-- [elementHandle.toString()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandletostring)
-- [elementHandle.type(text[, options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandletypetext-options)
-- [elementHandle.uploadFile(...filePaths)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#elementhandleuploadfilefilepaths)
-
-[class: HTTPRequest](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-httprequest)
-
-- [httpRequest.abort([errorCode])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequestaborterrorcode)
-- [httpRequest.continue([overrides])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequestcontinueoverrides)
-- [httpRequest.failure()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequestfailure)
-- [httpRequest.frame()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequestframe)
-- [httpRequest.headers()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequestheaders)
-- [httpRequest.isNavigationRequest()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequestisnavigationrequest)
-- [httpRequest.method()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequestmethod)
-- [httpRequest.postData()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequestpostdata)
-- [httpRequest.redirectChain()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequestredirectchain)
-- [httpRequest.resourceType()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequestresourcetype)
-- [httpRequest.respond(response)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequestrespondresponse)
-- [httpRequest.response()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequestresponse)
-- [httpRequest.url()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httprequesturl)
-
-[class: HTTPResponse](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-httpresponse)
-
-- [httpResponse.buffer()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponsebuffer)
-- [httpResponse.frame()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponseframe)
-- [httpResponse.fromCache()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponsefromcache)
-- [httpResponse.fromServiceWorker()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponsefromserviceworker)
-- [httpResponse.headers()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponseheaders)
-- [httpResponse.json()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponsejson)
-- [httpResponse.ok()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponseok)
-- [httpResponse.remoteAddress()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponseremoteaddress)
-- [httpResponse.request()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponserequest)
-- [httpResponse.securityDetails()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponsesecuritydetails)
-- [httpResponse.status()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponsestatus)
-- [httpResponse.statusText()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponsestatustext)
-- [httpResponse.text()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponsetext)
-- [httpResponse.url()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#httpresponseurl)
-
-[class: SecurityDetails](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-securitydetails)
-
-- [securityDetails.issuer()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#securitydetailsissuer)
-- [securityDetails.protocol()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#securitydetailsprotocol)
-- [securityDetails.subjectAlternativeNames()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#securitydetailssubjectalternativenames)
-- [securityDetails.subjectName()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#securitydetailssubjectname)
-- [securityDetails.validFrom()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#securitydetailsvalidfrom)
-- [securityDetails.validTo()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#securitydetailsvalidto)
-
-[class: Target](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-target)
-
-- [target.browser()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#targetbrowser)
-- [target.browserContext()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#targetbrowsercontext)
-- [target.createCDPSession()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#targetcreatecdpsession)
-- [target.opener()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#targetopener)
-- [target.page()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#targetpage)
-- [target.type()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#targettype)
-- [target.url()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#targeturl)
-- [target.worker()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#targetworker)
-
-[class: CDPSession](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-cdpsession)
-
-- [cdpSession.detach()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#cdpsessiondetach)
-- [cdpSession.send(method[, ...paramArgs])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#cdpsessionsendmethod-paramargs)
-
-[class: Coverage](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-coverage)
-
-- [coverage.startCSSCoverage([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#coveragestartcsscoverageoptions)
-- [coverage.startJSCoverage([options])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#coveragestartjscoverageoptions)
-- [coverage.stopCSSCoverage()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#coveragestopcsscoverage)
-- [coverage.stopJSCoverage()](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#coveragestopjscoverage)
-
-[class: TimeoutError](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-timeouterror)  <br />  [class: EventEmitter](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#class-eventemitter)  <br />  [eventEmitter.addListener(event, handler)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#eventemitteraddlistenerevent-handler)  <br />  [eventEmitter.emit(event, [eventData])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#eventemitteremitevent-eventdata)  <br />  [eventEmitter.listenerCount(event)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#eventemitterlistenercountevent)  <br />  [eventEmitter.off(event, handler)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#eventemitteroffevent-handler)  <br />  [eventEmitter.on(event, handler)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#eventemitteronevent-handler)  <br />  [eventEmitter.once(event, handler)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#eventemitteronceevent-handler)  <br />  [eventEmitter.removeAllListeners([event])](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#eventemitterremovealllistenersevent)  <br />  [eventEmitter.removeListener(event, handler)](https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#eventemitterremovelistenerevent-handler)
 ```javascript
-let page = await browser.newPage();
-await page.goto(url);
-let btn = await page.waitForSelector('#btn');
-//在点击按钮之前，事先定义一个 Promise，用于返回新 tab 的 Page 对象
-const newPagePromise = new Promise(res => 
-  browser.once('targetcreated', 
-    target => res(target.page())
-  )
-);
-await btn.click();
-//点击按钮后，等待新tab对象
-let newPage = await newPagePromise;
-```
-```javascript
-const puppeteer = require('puppeteer');
+test('two plus two', () => {
+  const value = 2 + 2;
+  expect(value).toBeGreaterThan(3);
+  expect(value).toBeGreaterThanOrEqual(3.5);
+  expect(value).toBeLessThan(5);
+  expect(value).toBeLessThanOrEqual(4.5);
 
-(async () => {
-    const browser = await puppeteer.launch({
-        headless: false, slowMo: 100,
-        defaultViewport: { width: 1280, height: 720 }
-    });
-    const page = await browser.newPage();
-    // await page.emulate(iPhone);
-    await page.goto('https://dev.exmaple.com', { waitUntil: ['load'] });
-    await (await page.$('#UserName')).type('sds');
-    await (await page.$('#Password')).type('***');
-    let btn = await page.$('#signIn');
-    await btn.click();
-    await page.waitForNavigation();
-
-    await (await page.$('#residents-tab')).click();
-    await page.waitForTimeout(3000);
-    await (await page.$('.flaticon-hr')).click();
-    let options = await page.$$('.checkmark');
-    await options[3].click();
-    let rz = await page.$('.rz-pointer-min');
-    let position = await rz.boundingBox();
-
-    await page.mouse.move(position.x, position.y);
-    await page.mouse.down();
-    await page.mouse.move(position.x + 15, position.y);
-    await page.waitForTimeout(2000);
-    await page.mouse.move(position.x - 35, position.y);
-    await page.mouse.up();
-
-    await rz.click();
-    for (let i = 0; i < ' World'.length; i++) 
-        await page.keyboard.press('ArrowLeft');
-
-    await browser.close();
-})();
+  // toBe and toEqual are equivalent for numbers
+  expect(value).toBe(4);
+  expect(value).toEqual(4);
+});
 ```
 
-# [Jest](https://github.com/facebook/jest/labels/good%20first%20issue)
+
+# Others
+
+
 **UI**  <br />  [daisyui](https://github.com/saadeghi/daisyui)	Tailwind Components  <br />  [tailwindcss](https://github.com/tailwindlabs/tailwindcss)
 
 [Chart.js](https://github.com/chartjs/Chart.js)  <br />  [echarts](https://github.com/apache/echarts)
