@@ -1063,17 +1063,32 @@ git send-email --dump-aliases
 ```
 
 
-
 ## [cherry-pick](https://git-scm.com/docs/git-cherry-pick)
 Apply the changes introduced by some existing commits
 ```shell
-git cherry-pick [--edit] [-n] [-m parent-number] [-s] [-x] [--ff]
+git cherry-pick [-e | --edit] [-n | --no-commit] [-m parent-number] [-s] [-x] [--ff]
 		  [-S[<keyid>]] <commit>…
 git cherry-pick (--continue | --skip | --abort | --quit)
 
+
+-n，--no-commit
+只更新工作区和暂存区，不产生新的提交
+
+-x
+在提交信息的末尾追加一行(cherry picked from commit ...)，方便以后查到这个提交是如何产生的
+
 # 合并一个commit进当前分支
-$ git cherry-pick [commit]...
+git cherry-pick [commit]...
+
+# 一次转移多个提交
+git cherry-pick A^..B 
+
+# 合并另一个仓库的指定提交 - 将该库加为远程仓库 => 抓取到本地 => 转移提交
+git remote add target git://gitUrl
+git fetch target
+git cherry-pick <commitHash>
 ```
+
 
 ## [rebase](https://git-scm.com/docs/git-rebase)
 Reapply commits on top of another base tip

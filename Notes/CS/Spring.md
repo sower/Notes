@@ -2,37 +2,29 @@
 # —— [Spring](https://spring.io/) ——
 
 
-
 # Core
-IoC（Inverse of Control，控制反转）：依赖注入（Dependency Injection，DI）  <br />  AOP（Aspect Oriented Programming，面向切面编程）：横向抽取机制，取代了传统纵向继承体系的重复性代码，其应用主要体现在事务处理、日志管理、权限控制、异常处理等方面。  <br />  ![](./assets/1648975394639-fa7ee6c7-1b21-40cf-abc1-095e7034bd7e.gif)
+IoC（Inverse of Control，控制反转）：依赖注入（Dependency Injection，DI）。Spring 通过 IoC 容器来管理所有 Java 对象的实例化和初始化，控制对象与对象之间的依赖关系  <br />  AOP（Aspect Oriented Programming，面向切面编程）：横向抽取机制，取代了传统纵向继承体系的重复性代码，其应用主要体现在事务处理、日志管理、权限控制、异常处理等方面。  <br />  ![](./assets/1648975394639-fa7ee6c7-1b21-40cf-abc1-095e7034bd7e.gif)
 
-1. Data Access/Integration（数据访问／集成）
-- JDBC 模块：提供了一个 JDBC 的抽象层，大幅度减少了在开发过程中对数据库操作的编码。
-- ORM 模块：对流行的对象关系映射 API，包括 JPA、JDO、Hibernate 和 iBatis 提供了的集成层。
-- OXM 模块：提供了一个支持对象/XML 映射的抽象层实现，如 JAXB、Castor、XMLBeans、JiBX 和 XStream。
-- JMS 模块：指 Java 消息服务，包含的功能为生产和消费的信息。
-- Transactions 事务模块：支持编程和声明式事务管理实现特殊接口类，并为所有的 POJO。
-2. Web 模块
-- Web 模块：提供了基本的 Web 开发集成特性，例如多文件上传功能、使用的 Servlet 监听器的 IoC 容器初始化以及 Web 应用上下文。
-- Servlet模块：包括 Spring 模型—视图—控制器（MVC）实现 Web 应用程序。
-- Struts 模块：包含支持类内的 Spring 应用程序，集成了经典的 Struts Web 层。
-- Portlet 模块：提供了在 Portlet 环境中使用 MV C实现，类似 Web-Servlet 模块的功能。
-3. Core Container（核心容器）
-
-Spring 的核心容器是其他模块建立的基础
-
-- Beans 模块：提供了 BeanFactory，是工厂模式的经典实现，Spring 将管理对象称为 Bean。
-- Core 核心模块：提供了 Spring 框架的基本组成部分，包括 IoC 和 DI 功能。
-- Context 上下文模块：建立在核心和 Beans 模块的基础之上，它是访问定义和配置任何对象的媒介。ApplicationContext 接口是上下文模块的焦点。
-- Expression Language 模块：是运行时查询和操作对象图的强大的表达式语言。
-4. 其他模块
-- AOP 模块：提供了面向切面编程实现，允许定义方法拦截器和切入点，将代码按照功能进行分离，以降低耦合性。
-- Aspects 模块：提供与 AspectJ 的集成，是一个功能强大且成熟的面向切面编程（AOP）框架。
-- Instrumentation 模块：提供了类工具的支持和类加载器的实现，可以在特定的应用服务器中使用。
-- Test 模块：支持 Spring 组件，使用 JUnit 或 TestNG 框架的测试。
 
 ## IoC
-设值注入（Setter Injection）  <br />  构造注入（Constructor Injection）
+
+- 设值注入（**Setter** Injection）：IoC 容器首先会调用默认的构造方法（无参构造方法）实例化 Bean（Java 对象），然后通过 Java 的反射机制调用这个 Bean 的 setXxx() 方法，将属性值注入到 Bean 中
+- 构造注入（**Constructor** Injection）：通过 Bean 的带参构造函数，以实现 Bean 的属性注入
+
+
+**Spring 容器**  <br />  **BeanFactory 接口**  <br />  负责配置、创建、管理 Bean。在初始化容器时，并未实例化 Bean，直到第一次访问某个 Bean 时才实例化目标 Bean
+
+常用方法
+
+- boolean containsBean(String name)：判断 Spring 容器是否包含 id 为 name 的 Bean 实例
+- T getBean(Class<T> requiredType)：获取 Spring 容器中属于 requiredType 类型的、唯一的 Bean 实例
+- Object getBean(String name)：返回容器 id 为 name 的 Bean 实例
+- T getBean(String name, Class requiredType)：返回容器中 id 为 name，并且类型为 requiredType 的 Bean
+- `Class<?> getType(String name)`：返回容器中 id 为 name 的 Bean 实例的类型
+
+
+**ApplicationContext 接口**  <br />  Spring 上下文，BeanFactory 的子接口。在初始化应用上下文时就实例化所有单实例的 Bean  <br />  常用实现类：FileSystemXmlApplicationContext、ClassPathXmlApplicationContext 和 AnnotationConfigApplicationContext
+
 
 **XML装配Bean**  <br />  配置 applicationContext.xml
 ```xml
@@ -42,20 +34,86 @@ Spring 的核心容器是其他模块建立的基础
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
   
-    <!-- 使用设值注入方式装配Person实例 -->
+    <bean id="mailService" class="com.MailService" />
+  
+    <!-- 使用设值注入方式装配实例 -->
 		<bean id="userService" class="com.UserService">
         <property name="username" value="root" />
         <property name="mailService" ref="mailService" />
     </bean>
 
-    <bean id="mailService" class="com.MailService" />
-  
-    <!-- 使用构造方法装配Person实例 -->
-    <bean id="类别名2" class="包名.类名">
-        <constructor-arg index="0" value="lisi" />
-        <constructor-arg index="1" value="21" />
+    <!-- 使用构造注入装配实例 -->
+    <bean id="user" class="com.UserService">
+        <constructor-arg index="0" value="snow" />
+        <constructor-arg index="1" ref="mailService" />
     </bean>
-	
+  
+ 
+  // 短命名空间注入  需要在头文件中加入约束文件
+  // p 命名空间
+  <bean id="userService" class="com.UserService" p:username="root" 
+        p:mailService-ref="mailService"></bean>
+  // c 命名空间
+  <bean id="user" class="com.UserService" c:username="snow" 
+        c:mailService-ref="mailService"></bean>
+  
+  // 注入集合
+  <bean id="javaCollection" class="com.JavaCollection">
+    <!--数组类型-->
+    <property name="users">
+      <array>
+        <ref bean="userService"></ref>
+        <ref bean="user"></ref>
+        <null/>
+      </array>
+    </property>
+    <!--List 类型-->
+    <property name="list">
+      <list>
+        <value>张三</value>
+        <value>李四</value>
+        <value>王五</value>
+        <value>赵六</value>
+      </list>
+    </property>
+    <!--Map 类型-->
+    <property name="maps">
+      <map>
+        <entry key="JAVA" value="java"></entry>
+        <entry key="PHP" value="php"></entry>
+      </map>
+    </property>
+    <!--Set 类型-->
+    <property name="sets">
+      <set>
+        <value>MySQL</value>
+        <value>Redis</value>
+      </set>
+    </property>
+  </bean>
+  
+  // 注入内部Bean
+  <bean id="employee" class="net.Employee">
+    <property name="empNo" value="001"></property>
+    <property name="empName" value="小王"></property>
+    <property name="dept">
+      <!--内部 Bean-->
+      <bean class="net.Dept">
+        <property name="deptNo" value="004"></property>
+        <property name="deptName" value="技术部"></property>
+      </bean>
+    </property>
+  </bean>
+  
+  // Bean继承  子Bean可以继承父 Bean 的配置数据，也可重写或添加属于自己的配置信息
+  <!--父Bean-->
+  <bean id="parentBean" class="xxx.ParentBean" >
+      <property name="age" value="45"></property>
+      <property name="sex" value="m"></property>
+  </bean> 
+  <!--子Bean--> 
+  <bean id="childBean" class="xxx.ChildBean" parent="parentBean"></bean>
+  
 </beans>
 ```
 使用
@@ -64,30 +122,20 @@ public class App {
     public static void main(String[] args) { 
         ApplicationContext context = new ClassPathXmlApplicationContext( "applicationContext.xml"); 
                                 // = new FileSystemXmlApplicationContext(String configLocation);
-        // 获取Bean:
-        UserService userService = context.getBean(UserService.class);
-        // 正常调用:
-        User user = userService.login("bob@example.com", "password");
+        // 获取Bean
+        UserService userService = context.getBean("UserService", UserService.class);
+        // 正常调用
+        System.out.println(userService.getUserName());  // root
+        //手动销毁 Bean
+        context.close();
     } 
 }
 ```
-  <br />  
 
-| **Property** | **Explained in…** |
-| --- | --- |
-| Class | [Instantiating Beans](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-class) |
-| Name | [Naming Beans](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-beanname) |
-| Scope | [Bean Scopes](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-scopes) |
-| Constructor arguments | [Dependency Injection](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-collaborators) |
-| Properties | [Dependency Injection](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-collaborators) |
-| Autowiring mode | [Autowiring Collaborators](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-autowire) |
-| 延迟初始化模式 | [Lazy-initialized Beans](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-lazy-init) |
-| Initialization method | [Initialization Callbacks](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-lifecycle-initializingbean) |
-| Destruction method | [Destruction Callbacks](https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference/core.html#beans-factory-lifecycle-disposablebean) |
 
 | 属性名称 | 描述 |
 | --- | --- |
-| id | Bean 的唯一标识符，Spring IoC 容器对 Bean 的配置和管理都通过该属性完成。 |
+| id | Bean 的唯一标识符，Spring IoC 容器对 Bean 的配置和管理通过该属性完成。 |
 | name | Bean 的名称，通过 name 属性为同一个 Bean 同时指定多个名称，每个名称之间用逗号或分号隔开。Spring 容器可以通过 name 属性配置和管理容器中的 Bean。 |
 | class |  Bean 的具体实现类，它必须是一个完整的类名，即类的全限定名。 |
 | scope |  Bean 的作用域，属性值可以为 singleton（单例）、prototype（原型）、request、session 和 global Session。默认值是 singleton。 |
@@ -104,6 +152,14 @@ public class App {
 | lazy-init | 懒加载，值为 true，容器在首次请求时才会创建 Bean 实例；值为 false，容器在启动时创建 Bean 实例。该方法只在 scope=singleton 时有效 |
 
 
+**后置处理器**
+
+- BeanPostProcessor	Bean 后置处理器
+   - postProcessBeforeInitialization（初始化前执行）
+   - postProcessAfterInitialization（初始化后执行）
+- BeanFactoryPostProcessor	容器后置处理器
+
+
 **自动装配	autowired**
 
 | 名称 | 说明 |
@@ -116,28 +172,36 @@ public class App {
 
 ```xml
 ···
-    <bean id="personDao" class="com.mengma.PersonDaoImpl" />
-    <bean id="personService" class="com.mengma.PersonServiceImpl"
-        autowire="byName" />
-    ···
+    <bean id="mailService" class="com.MailService" />
+  
+		<bean id="userService" class="com.UserService" autowire="byName">
+        <property name="username" value="root" />
+        <!-- property name="mailService" ref="mailService" / -->
+    </bean>
+···
 ```
 
 
-**Annotation装配Bean**
+**Annotation装配Bean**  <br />  定义 Bean
 
 - @Component：描述 Spring 中的 Bean，表示一个组件（Bean），可以作用在任何层次
 - @Repository：用于将数据访问层（DAO层）的类标识为 Spring 中的 Bean，功能同 _@_Component   
 - @Service：通常作用在业务层（Service 层）
 - @Controller：通常作用在控制层
-- @Primary：@Autowired 自动装配找到多个匹配的 Bean时，首选该 Bean
+
+依赖注入
+
 - @Autowired：对 Bean 的属性变量、属性的 Set 方法及构造函数进行标注，配合对应的注解处理器完成 Bean 的自动配置工作。默认按照 Bean 的**类型**进行装配。
 - @Resource：与 @Autowired 一样，默认按照 Bean **实例名**称进行装配。
+
 - @Qualifier：与 _@_Autowired  注解配合使用，会将默认的按 Bean 类型装配修改为按 Bean 的实例名称装配，Bean 的实例名称由 _@_Qualifier  注解的参数指定。 
-- 指定 Bean 的作用域、代理方式，如 @Scope(value = "prototype", proxyMode = ScopedProxyMode.DEFAULT)
-- 指定 Bean 的加载顺序，如 @Order(1)（值越大优先级反而越低）
+- @Primary：@Autowired 自动装配找到多个匹配的 Bean时，首选该 Bean
+- @Scope(value = "prototype", proxyMode = ScopedProxyMode.DEFAULT) ：指定 Bean 的作用域、代理方式
+-  @Order(1)：指定 Bean 的加载顺序，值越小优先级越高
 - 标注方法
    - @PostConstruct：指定 Bean 的初始化方法
    - @PreDestroy：指定 Bean 销毁之前的方法
+- @Value：属性占位符需要放到 ${key:defaultValue} 之中，SpEL 表达式要放到 #{ ... } 之中
 
 配置 applicationContext.xml
 ```xml
@@ -200,6 +264,7 @@ public class AppConfig {
     }
 }
 ```
+
   <br />  
 
 ## AOP
@@ -475,12 +540,75 @@ public class UserDao {
 
 
 
+## SpEL
+Spring Expression Language 是一种功能强大的表达式语言，支持运行时查询和操作对象图 。
+```java
+// 构造解析器
+ExpressionParser parser = new SpelExpressionParser();
+// 解析器解析字符串表达式
+Expression exp = parser.parseExpression("new String('hello spel').toUpperCase()");
+// 获取表达式的值
+String message = exp.getValue(String.class);
+System.out.println(message); // HELLO SPEL
+```
+
+
+## Application Event
+
+**内置事件**
+
+- 上下文更新事件（ContextRefreshedEvent）：在调用ConfigurableApplicationContext 接口中的refresh()方法时被触发。
+- 上下文开始事件（ContextStartedEvent）：当容器调用ConfigurableApplicationContext的Start()方法开始/重新开始容器时触发该事件。
+- 上下文停止事件（ContextStoppedEvent）：当容器调用ConfigurableApplicationContext的Stop()方法停止容器时触发该事件。
+- 上下文关闭事件（ContextClosedEvent）：当ApplicationContext被关闭时触发该事件。容器被关闭时，其管理的所有单例Bean都被销毁。
+- 请求处理事件（RequestHandledEvent）：在Web应用中，当一个http请求（request）结束触发该事件。
+
+1 自定义事件，继承 ApplicationEvent
+```java
+@Data
+public class DemoEvent extends ApplicationEvent {
+
+    private String msg;
+
+    public DemoEvent(Object source,String msg) {
+        super(source);
+        this.msg = msg;
+    }
+}
+```
+2 定义监听器，实现 ApplicationListener 或者通过 @EventListener 注解到方法上
+```java
+@Component
+public class DemoListener {
+    //使用onApplicationEvent方法对消息进行接受处理
+    @EventListener
+    public void onApplicationEvent(DemoEvent event) {
+        String msg = event.getMsg();
+        System.out.println("DemoListener获取到了监听消息:"+msg);
+
+    }
+}
+```
+3 定义发布者，通过 ApplicationEventPublisher
+```java
+@Component
+public class DemoPublisher  {
+    @Autowired
+    private ApplicationContext applicationContext;
+
+    public void publish(String msg){
+        applicationContext.publishEvent(new DemoEvent(this,msg));//使用ApplicationContext对象的publishEvent发布事件
+    }
+}
+```
+
+
 
 ## Utils
 
 ### StringUtils
 
-- boolean isEmpty(Object str)：字符串是否为空或者空字符串
+- boolean ~~isEmpty~~(Object str)：字符串是否为空或者空字符串
 - boolean hasLength(CharSequence str)：字符串是否为空，或者长度为 0
 - boolean hasText(String str)：字符串是否有内容（不为空，且不全为空格）
 - boolean containsWhitespace(String str)：字符串是否包含空格
@@ -556,9 +684,9 @@ public class UserDao {
 
 **MVC**
 
-- **模型(Model)**封装了应用程序数据，通常它们将由POJO类组成。
-- **视图(View)**负责渲染模型数据，一般来说它生成客户端浏览器可以解释HTML输出。
-- **控制器(Controller)**负责处理用户请求并构建适当的模型，并将其传递给视图进行渲染。
+- **模型(Model)	**封装了应用程序数据，通常它们将由POJO类组成。
+- **视图(View)	**负责渲染模型数据，一般来说它生成客户端浏览器可以解释HTML输出。
+- **控制器(Controller)	**负责处理用户请求并构建适当的模型，并将其传递给视图进行渲染。
 
 执行流程  <br />  ![](./assets/1647764006879-b912438c-b849-4985-bd53-8179202216c1.png)
 
@@ -584,7 +712,6 @@ public class UserDao {
    - 最长匹配原则：存在多个路径匹配模式时，Spring MVC 会以最长符合路径模式来匹配一个路径
 
 `@RequestParam`：用于将指定的请求参数设置到方法参数  <br />  属性：name、required（默认 true）、defaultValue  <br />  `@PathVariable`：用于将 REST 风格的请求 URL 中的动态参数设置到方法参数，属性 value 省略则默认绑定同名参数  <br />  `@CrossOrigin`：可用于类或方法，**设置跨域行为**，常用属性：origins（允许域名）、methods、allowedHeaders、exposedHeaders、allowCredentials（是否允许发送 Cookie，**启用后允许域名不能设置为 '*'**）、maxAge（本次预检请求的有效期，单位为秒）
-
 
 ```java
 @RestController
@@ -766,8 +893,7 @@ public String downloads(HttpServletResponse response ,HttpServletRequest request
 
 # [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/)
 
-
-
+依赖配置
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -827,15 +953,16 @@ public class DemoApplication {
 }
 ```
 
+@SpringBootApplication：修饰启动类，组合了以下注解：
 
-
-
+- @Configuration：用于声明当前类是一个配置类
+- @EnableAutoConfiguration：让 Spring Boot 根据类路径中的 jar 包依赖为当前项目进行自动配置，可以通过使用 exclude 属性关闭特定的自动配置
+- @ComponentScan：组件扫描，可自动发现和装配 Bean
 
 定制 Banner
 
 - 关闭 banner：spring.main.banner-mode=off
 - 自定义 Banner，banner.txt 或 banner.gif(jpg or png can also be used)
-
 
 
 
@@ -859,6 +986,49 @@ starter 中整合了该场景下各种可能用到的依赖，只需要在 Maven
 - spring-boot-starter-amqp：用于使用 Spring AMQP 和 RabbitMQ
 
 spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 Spring Boot 的版本仲裁中心，可以对项目内的部分常用依赖进行统一管理。
+
+
+## 注解
+配置类
+
+- @Configuration：用于声明当前类是一个配置类
+- @Import：修饰配置类，用于向当前配置类中导入其它配置类，以及 ImportSelector、 DeferredImportSelector 或 ImportBeanDefinitionRegistrar 的实现类
+- @ImportResource：修饰配置类，用于导入指定的 XML 配置文件
+- @PropertySource：修饰配置类，用于加载指定的资源配置文件
+- @PropertySources：修饰配置类，用于同时加载多个的资源配置文件
+- @ComponentScan：修饰配置类，相当于 <context:component-scan base-package="..."/>，默认扫描当前包以及子包下所有使用 @Service @Components @Repository @Controller 的类，并注册为 Bean。属性：basePackages、lazyInit
+- @ConfigurationProperties：修饰配置类或其内部的 @Bean 方法，用于将**配置文件**的某类名下所有的参数值赋给配置类的属性
+- @Profile：修饰配置类或方法，设定当前 context 需要使用的配置环境，可达到在不同情况下选择实例化不同的 Bean
+- @AutoConfigureAfter：在指定的配置类初始化后再加载
+- @AutoConfigureBefore：在指定的配置类初始化前加载
+- @AutoConfigureOrder：数越小越先初始化
+
+属性注解
+
+- @Value：修饰属性、方法或构造器函数，通过使用属性占位符从资源配置文件中加载一个参数值
+- @Bean：修饰方法，将该方法的返回值定义成容器中的一个 Bean
+- @Scope：修饰属性或方法，指定该方法对应的 Bean 的生命域
+- @Lazy：修饰属性、方法或 Bean 类，指定该属性延迟到调用此属性时才注入属性值，或该方法对应的 Bean 延迟初始化（可用来解决循环依赖）
+- @DependsOn：修饰方法，指定在初始化该方法对应的 Bean 之前初始化指定的 Bean
+- @Conditional：满足某个特定的条件才创建该一个特定的 Bean，其属性 value 的类型是 Class<? extends Condition>[]
+- @Scheduled：修饰方法，用于声明该方法是一个计划任务
+
+- @EnableTransactionManagement：开启注解式事务的支持，Spring 容器会自动扫描注解 
+- @EnableScheduling：开启计划任务的支持，再在执行计划任务的 Bean 的方法上使用 @Scheduled 声明这是一个计划任务
+- @EnableAsync：开启对异步任务的支持，再通过在实际执行的 Bean 的方法中使用 @Async 注解来声明其是一个异步任务
+
+条件注解
+
+- @Conditional
+- @ConditionalOnBean：当容器里有指定的 Bean 的条件下
+- @ConditionalOnMissingBean：当容器里没有指定 Bean 的情况下
+- @ConditionalOnClass：当类路径下有指定的类的条件下
+- @ConditionalOnMissingClass：当类路径下没有指定的类的条件下
+- @ConditionalOnProperty：基于属性作为判断条件
+- @ConditionalOnResource
+- @ConditionalOnExpression：基于 SpEL 表达式作为判断条件
+- @ConditionalOnWebApplication：当前项目是 Web 项目的条件下
+- @ConditionalOnNotWebApplication：当前项目不是 Web 项目的条件下
 
 
 
@@ -893,12 +1063,33 @@ ConfigurableApplicationContext context = new SpringApplicationBuilder(TestDefaul
 - 通过 `@..@` 占位符引用 Maven 项目的属性，通过`${..}`占位符引用 Gradle 项目的属性
 
 
+全注解的方式加载 Spring 配置
+```java
+/**
+* @Configuration 注解用于定义一个配置类，相当于 Spring 的配置文件
+* 配置类中包含一个或多个被 @Bean 注解的方法，该方法相当于 Spring 配置文件中的 <bean> 标签定义的组件。
+*/
+@Configuration
+public class MyAppConfig {
+    /**
+     * 与 <bean id="personService" class="PersonServiceImpl"></bean> 等价
+     * 该方法返回值以组件的形式添加到容器中
+     * 方法名是组件 id（相当于 <bean> 标签的属性 id)
+     */
+    @Bean
+    public PersonService personService() {
+        System.out.println("在容器中添加了一个组件:peronService");
+        return new PersonServiceImpl();
+    }
+}
+```
+
 
 ### 属性绑定
 把配置文件中的值与 JavaBean 中对应的属性进行绑定
 
-- `@ConfigurationProperties`：标注在 JavaBean 的类名上，将 properties 属性和一个 Bean 及其属性关联，**松散绑定**
-- `@Value("${app.name}")`：标注在 JavaBean 的属性上，直接将**非静态属性**值注入到 **Bean** 中
+- `@ConfigurationProperties`：标注在 JavaBean 的**类名**上，将 properties 属性和一个 Bean 及其属性关联，**松散绑定**
+- `@Value("${app.name}")`：标注在 JavaBean 的**属性**上，直接将**非静态属性**值注入到 **Bean** 中
 - `@PropertySource`** ：**加载指定的配置文件
 
 ```properties
@@ -914,10 +1105,10 @@ person.dog.age=2
 ```
 ```yaml
 person:
-  name: qinjiang
+  name: sword
   age: 3
   birth: 2000/01/01
-  maps: {k1: v1,k2: v2}
+  maps: {k1: v1, k2: v2}
   lists:
    - code
    - girl
@@ -1291,13 +1482,10 @@ public class MessageUtils
 
 
 
-
-
-## JPA
+# [JPA](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
 Java Persistence API（Java 持久化 API）：定义了对象关系映射（ORM）以及实体对象持久化的标准接口  <br />  Spirng Data JPA 是 Spring 提供的一套简化 JPA 开发的框架，可以理解为对 JPA 规范的再次封装抽象，底层还是使用了 Hibernate 的 JPA 技术实现
 
-
-### 注解
+## 注解
 **javax.persistence**
 
 - 实体
@@ -1320,9 +1508,10 @@ Java Persistence API（Java 持久化 API）：定义了对象关系映射（ORM
 
 spring-data-commons
 
-- @Id
+- `@Query`：自定义语句查询
+- `@Modifying`：自定义语句查询涉及到修改、删除时需要加上此注解
+- `@Transient`：属性不被持久化
 - @CreatedBy、@CreatedDate、@LastModifiedBy、@LastModifiedDate
-- @Transient：属性不被持久化
 
 Hibernate
 
@@ -1331,17 +1520,85 @@ Hibernate
 - @Type(type、parameters)
 
 
-
-### 使用 JPA（Hibernate）操作数据
+## 操作数据
 
 - 添加依赖 spring-boot-starter-data-jpa
 - @EnableJpaRepositories：启用 JPA 编程
 - @EntityScan
 - 继承 JpaRepository<T, ID>
-- 按照一定[规则(opens new window)](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-keywords)命名的方法也可以在不写接口实现的情况下完成逻辑（JPA 会根据方法命名生成 SQL）
+```java
+public interface JpaRepository<T, ID> extends PagingAndSortingRepository<T, ID>, QueryByExampleExecutor<T> {
+  List<T> findAll();
+
+  List<T> findAll(Sort var1);
+
+  List<T> findAllById(Iterable<ID> var1);
+
+  <S extends T> List<S> saveAll(Iterable<S> var1);
+
+  void flush();
+
+  <S extends T> S saveAndFlush(S var1);
+
+  void deleteInBatch(Iterable<T> var1);
+
+  void deleteAllInBatch();
+
+  T getOne(ID var1);
+
+  <S extends T> List<S> findAll(Example<S> var1);
+
+  <S extends T> List<S> findAll(Example<S> var1, Sort var2);
+}
+```
+
+- 按照一定[规则](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-keywords)命名的方法可以在不写接口实现的情况下完成逻辑（JPA 会根据方法命名生成 SQL）
+
+[Query Methods](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods)
+
+| **Keyword** | **Sample** | **JPQL snippet** |
+| --- | --- | --- |
+| Distinct | findDistinctByLastnameAndFirstname | select distinct … where x.lastname = ?1 and x.firstname = ?2 |
+| And | findByLastnameAndFirstname | … where x.lastname = ?1 and x.firstname = ?2 |
+| Or | findByLastnameOrFirstname | … where x.lastname = ?1 or x.firstname = ?2 |
+| Is, Equals | findByFirstname,findByFirstnameIs,findByFirstnameEquals | … where x.firstname = ?1 |
+| Between | findByStartDateBetween | … where x.startDate between ?1 and ?2 |
+| LessThan | findByAgeLessThan | … where x.age < ?1 |
+| LessThanEqual | findByAgeLessThanEqual | … where x.age <= ?1 |
+| GreaterThan | findByAgeGreaterThan | … where x.age > ?1 |
+| GreaterThanEqual | findByAgeGreaterThanEqual | … where x.age >= ?1 |
+| After | findByStartDateAfter | … where x.startDate > ?1 |
+| Before | findByStartDateBefore | … where x.startDate < ?1 |
+| IsNull, Null | findByAge(Is)Null | … where x.age is null |
+| IsNotNull, NotNull | findByAge(Is)NotNull | … where x.age not null |
+| Like | findByFirstnameLike | … where x.firstname like ?1 |
+| NotLike | findByFirstnameNotLike | … where x.firstname not like ?1 |
+| StartingWith | findByFirstnameStartingWith | … where x.firstname like ?1 (parameter bound with appended %) |
+| EndingWith | findByFirstnameEndingWith | … where x.firstname like ?1 (parameter bound with prepended %) |
+| Containing | findByFirstnameContaining | … where x.firstname like ?1 (parameter bound wrapped in %) |
+| OrderBy | findByAgeOrderByLastnameDesc | … where x.age = ?1 order by x.lastname desc |
+| Not | findByLastnameNot | … where x.lastname <> ?1 |
+| In | findByAgeIn(Collection<Age> ages) | … where x.age in ?1 |
+| NotIn | findByAgeNotIn(Collection<Age> ages) | … where x.age not in ?1 |
+| True | findByActiveTrue() | … where x.active = true |
+| False | findByActiveFalse() | … where x.active = false |
+| IgnoreCase | findByFirstnameIgnoreCase | … where UPPER(x.firstname) = UPPER(?1) |
 
 
-数据库基础配置
+**Query subject keywords**
+
+| **Keyword** | **Description** |
+| --- | --- |
+| find…By, read…By,   <br />  get…By, query…By, search…By, stream…By | General query method returning typically the repository type, a Collection or Streamable subtype or a result wrapper such as Page, GeoResults or any other store-specific result wrapper. Can be used as findBy…, findMyDomainTypeBy… or in combination with additional keywords. |
+| exists…By | Exists projection, returning typically a boolean result. |
+| count…By | Count projection returning a numeric result. |
+| delete…By, remove…By | Delete query method returning either no result (void) or the delete count. |
+| …First<number>…, …Top<number>… | Limit the query results to the first <number> of results. This keyword can occur in any place of the subject between find (and the other keywords) and by. |
+| …Distinct… | Use a distinct query to return only unique results. Consult the store-specific documentation whether that feature is supported. This keyword can occur in any place of the subject between find (and the other keywords) and by. |
+
+
+
+**示例**  <br />  数据库基础配置
 ```yaml
 spring:
   jpa:
@@ -1357,7 +1614,6 @@ spring:
     password: 123qwe
     
     
-
 logging:
   level:
     org.springframework.security:
@@ -1428,8 +1684,7 @@ public void getBooksPageable()
  
     //数据列表
     List<Book> BookList = Books.getContent();
-    for (Book book : BookList)
-    {
+    for (Book book : BookList){
         System.out.println(book.toString());
     }
     //分页信息
@@ -1442,6 +1697,67 @@ public void getBooksPageable()
 ```
 
 
+## 审计 Auditing
+启用Jpa审计功能：在Spring Boot启动类上添加`@EnableJpaAuditing`注解用于启用Jpa的审计功能
+```java
+// 实体类
+@Entity
+@EntityListeners(AuditingEntityListener.class)
+@Table(name = "tb_user")
+@Data
+public class User {
+
+    @Id
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @GeneratedValue(generator = "idGenerator")
+    private String id;
+
+    @Column(name = "username", unique = true, nullable = false, length = 64)
+    private String username;
+
+    @Column(name = "password", nullable = false, length = 64)
+    private String password;
+
+    @Column(name = "email", unique = true, length = 64)
+    private String email;
+
+    @ManyToMany(targetEntity = Role.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "tb_user_role", joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
+    private Set<Role> roles;
+
+    @CreatedDate
+    @Column(name = "created_date", updatable = false)
+    private Date createdDate;
+
+    @CreatedBy
+    @Column(name = "created_by", updatable = false, length = 64)
+    private String createdBy;
+
+    @LastModifiedDate
+    @Column(name = "updated_date")
+    private Date updatedDate;
+
+    @LastModifiedBy
+    @Column(name = "updated_by", length = 64)
+    private String updatedBy;
+}
+
+
+// 实现AuditorAware接口
+@Component
+public class AuditorAwareImpl implements AuditorAware<String> {
+
+    @Override
+    public Optional<String> getCurrentAuditor() {
+        return Optional.of("admin");
+    }
+}
+```
+
+
+
+
 
 
 # Spring Cloud
@@ -1450,6 +1766,75 @@ public void getBooksPageable()
 
 
 
+
+
+# [Spring security](https://docs.spring.io/spring-security/reference/index.html)
+
+默认用户名、密码和权限在 application.yaml 中配置
+```yaml
+spring:
+  security:
+    user:
+      name: ming
+      password: 123456
+      roles: admin
+```
+```java
+@Configuration
+@EnableWebSecurity
+// 开启注解设置权限
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    // 配置密码加密器
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    // 配置认证管理器
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("admin")
+                .password(passwordEncoder().encode("123")).roles("admin")
+                .and()
+                .withUser("user")
+                .password(passwordEncoder().encode("456")).roles("user");
+    }
+    
+    // 配置安全策略
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        // 配置认证
+        http.formLogin()
+                // 哪个URL为登录页面
+                .loginPage("/")
+                // 当发现什么URL时执行登录逻辑
+                .loginProcessingUrl("/login")
+                // 成功后跳转到哪里
+                .successForwardUrl("/success")
+                // 失败后跳转到哪里
+                .failureForwardUrl("/fail");
+
+        // 设置URL的授权问题
+        // 多个条件取交集
+        http.authorizeRequests()
+                // 匹配 / 控制器  permitAll() 不需要被认证就可以访问
+                .antMatchers("/").permitAll()
+                // anyRequest() 所有请求   authenticated() 必须被认证
+                .anyRequest().authenticated();
+
+        //开启记住我功能   cookie  默认保存时间14天
+        //自定义接收前端参数，remember为表单中的名字
+        http.rememberMe().rememberMeParameter("remember");
+        
+        // 关闭csrf
+        http.csrf().disable();
+    }
+}
+
+```
 
 
 # —— ORM ——

@@ -21,6 +21,7 @@ WindowTabs
 - [Everything](https://www.voidtools.com/zh-cn/)
 - Listary
 - FileLocator Pro
+- [AnyTXT Searcher](https://anytxt.net/)
 
 **Compression**
 
@@ -35,7 +36,7 @@ WindowTabs
 **Text reading**
 
 - Calibre
-- Cajviewer
+
 
 **Text-Editor**
 
@@ -69,7 +70,7 @@ Others  <br />  BulkRenameUtility  <br />  ExtractIcon  <br />  FastCopy	  <br /
 
 ## Practical
 
-**mouse gesture**  <br />  [MouseInc](https://shuax.com/project/mouseinc/)  <br />  [MouseInc.json](https://www.yuque.com/attachments/yuque/0/2022/json/5360088/1646459893929-1fd34298-8ec0-4dc6-86cc-9ede110c23bd.json?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2022%2Fjson%2F5360088%2F1646459893929-1fd34298-8ec0-4dc6-86cc-9ede110c23bd.json%22%2C%22name%22%3A%22MouseInc.json%22%2C%22size%22%3A28587%2C%22type%22%3A%22application%2Fjson%22%2C%22ext%22%3A%22json%22%2C%22status%22%3A%22done%22%2C%22taskId%22%3A%22ub627aad8-49f5-4d6e-aa54-a2d28f5b075%22%2C%22taskType%22%3A%22upload%22%2C%22id%22%3A%22u3d957e34%22%2C%22card%22%3A%22file%22%7D)
+**mouse gesture**  <br />  [MouseInc](https://shuax.com/project/mouseinc/)  <br />  [MouseInc.json](https://www.yuque.com/attachments/yuque/0/2022/json/5360088/1652800308885-bfd08267-e3c7-4aaf-a78b-1404379f4957.json?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2022%2Fjson%2F5360088%2F1652800308885-bfd08267-e3c7-4aaf-a78b-1404379f4957.json%22%2C%22name%22%3A%22MouseInc.json%22%2C%22size%22%3A28587%2C%22type%22%3A%22application%2Fjson%22%2C%22ext%22%3A%22json%22%2C%22status%22%3A%22done%22%2C%22taskId%22%3A%22u0c9df56f-90cf-474c-810d-d15b1e0ef8e%22%2C%22taskType%22%3A%22upload%22%2C%22id%22%3A%22u6ff62be4%22%2C%22card%22%3A%22file%22%7D)
 
 护眼
 
@@ -152,6 +153,7 @@ Preview
    - [tampermonkey-script](https://github.com/barrer/tampermonkey-script)	划词翻译
    - [CSDNGreener](https://github.com/adlered/CSDNGreener)
    - [toc-bar-userscript](https://github.com/hikerpig/toc-bar-userscript)
+   - [starpassword](https://github.com/syhyz1990/starpassword)	星号密码显示助手
 - Adblock Plus
 - SwitchyOmega
 - [ext-saladict](https://github.com/crimx/ext-saladict)
@@ -161,9 +163,7 @@ Preview
 - Distill Web Monitor
 - Video DownloadHelper
 - Video-Speed-Controller
-- Wildfire[
-
-](https://www.runningcheese.com/firefox)
+- Wildfire[  <br />  ](https://www.runningcheese.com/firefox)
 
 **Downloader**
 

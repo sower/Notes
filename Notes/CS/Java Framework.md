@@ -1,33 +1,131 @@
 
-# —— [Tomcat](https://tomcat.apache.org/) ——
 
-
-**启动**  <br />  在tomcat的bin中运行startup.bat  <br />  [http://127.0.0.1:8080](http://127.0.0.1:8080)  <br />  tomcat9启动后控制台乱码：
-
-- 打开“/apache-tomcat-9.0.20/conf/logging.properties”文件
-- 定位java.util.logging.ConsoleHandler.encoding，将UTF-8 改成 GBK
-```xml
-修改默认端口8080
-<Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8543" />
-```
-
-
-
-# —— [Maven](https://maven.apache.org/) ——
-管理和构建工具
+# [Maven](https://maven.apache.org/)
+管理和构建工具  <br />  约定优于配置（Convention Over Configuration）
 ```shell
 a-maven-project
-├── pom.xml
+├── pom.xml  核心配置文件
 ├── src
 │   ├── main
-│   │   ├── java
-│   │   └── resources
+│   │   ├── java  源代码
+│   │   └── resources  资源文件
 │   └── test
-│       ├── java
+│       ├── java  测试代码
 │       └── resources
-└── target
+└── target  打包输出文件
 ```
 
+POM（Project Object Model，项目对象模型）是 Maven 的基本组件，它是以 xml 文件的形式存放在项目的根目录下
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+  
+    <!-- The Basics -->
+    <groupId>com.example</groupId>
+    <artifactId>helloMaven</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>helloMaven</name>
+    <url>http://maven.apache.org</url>
+  
+    <!--从父模块中继承  -->
+    <parent>
+        <groupId>net.father</groupId>
+        <artifactId>Root</artifactId>
+        <version>1.0</version>
+        <relativePath>../Root</relativePath>
+    </parent>
+  
+    <properties>
+        <!-- 定义一些 maven 变量 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <junit.version>4.9</junit.version>
+    </properties>
+  
+  
+    <!--添加插件管理-->
+    <build>
+        <pluginManagement>
+          ...
+        </pluginManagement>
+         
+        <!-- 声明使用 maven-source-plugin 插件 -->
+        <plugins>
+            <!--添加site 插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+        </plugins>
+    </build>
+  
+  
+    <!--dependencyManagement 标签用于控制子模块的依赖版本等信息 -->
+    <!-- 该标签只用来控制版本，不能将依赖引入 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <!--引用的properties标签中定义的属性 -->
+                <version>1.2.17</version>
+            </dependency>
+     </dependencyManagement>
+    
+    <!--声明依赖-->
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+      
+        <dependency>
+            <groupId>cn.book</groupId>
+            <artifactId>book</artifactId>
+            <scope>system</scope>
+            <version>1.0-SNAPSHOT</version>
+            <systemPath>D:\maven\book\target\book-1.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+    </dependencies>
+      
+    <!--添加需要聚合的模块-->
+    <modules>
+        <module>../App-Core-lib</module>
+        <module>../App-Data-lib</module>
+        <module>../App-UI-WAR</module>
+    </modules>
+      
+    <!-- More Project Information -->
+    <name>...</name>
+    <description>...</description>
+    <url>...</url>
+    <inceptionYear>...</inceptionYear>
+    <licenses>...</licenses>
+    <organization>...</organization>
+    <developers>...</developers>
+    <contributors>...</contributors>
+
+    <!-- Environment Settings -->
+    <issueManagement>...</issueManagement>
+    <ciManagement>...</ciManagement>
+    <mailingLists>...</mailingLists>
+    <scm>...</scm>
+    <prerequisites>...</prerequisites>
+    <repositories>...</repositories>
+    <pluginRepositories>...</pluginRepositories>
+    <distributionManagement>...</distributionManagement>
+    <profiles>...</profiles>
+      
+</project>
+```
 唯一ID  <br />  对于某个依赖，Maven只需要3个变量即可唯一确定某个jar包：
 
 - groupId：组织的名称，类似Java的包名
@@ -43,19 +141,66 @@ a-maven-project
 | runtime | 编译时不需要，但运行时需要用到 | mysql |
 | provided | 编译时需要用到，但运行时由JDK或某个服务器提供 | servlet-api |
 
-配置镜像仓库 (settings.xml)
+
+可选依赖（Optional Dependencies）：控制当前依赖是否向下传递成为间接依赖
 ```xml
-<mirrors>
-        <mirror>
-            <id>aliyun</id>
-            <name>aliyun</name>
-            <mirrorOf>central</mirrorOf>
-            <!-- 国内推荐阿里云的Maven镜像 -->
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </mirror>
-</mirrors>
-修改仓库位置
-<localRepository>D:\Code\repository</localRepository>
+<dependency>
+  <groupId>net.abc</groupId>
+  <artifactId>X</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <!--设置可选依赖  -->
+  <optional>true</optional>
+</dependency>
+```
+排除依赖（Dependency Exclusions）：控制当前项目是否使用其直接依赖传递下来的间接依赖
+```xml
+<dependency>
+  <groupId>net.biancheng.www</groupId>
+  <artifactId>B</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <exclusions>
+    <!-- 设置排除 -->
+    <!-- 排除依赖必须基于直接依赖中的间接依赖设置为可以依赖为 false -->
+    <!-- 设置当前依赖中是否使用间接依赖 -->
+    <exclusion>
+      <!--设置具体排除-->
+      <groupId>net.sth</groupId>
+      <artifactId>uu</artifactId>
+    </exclusion>
+  </exclusions>
+</dependency>
+```
+
+全局配置文件 (settings.xml)
+
+- 全局配置 - `${maven.home}/conf/settings.xml`
+- 用户配置 - `${user.home}/.m2/settings.xml`
+```xml
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                          https://maven.apache.org/xsd/settings-1.0.0.xsd">
+  
+  <localRepository>D:\Code\repository</localRepository>
+  <interactiveMode/>
+  <usePluginRegistry/>
+  <offline/>
+  <pluginGroups/>
+  <servers/>
+  <mirrors>
+    <mirror>
+      <id>aliyun</id>
+      <name>aliyun</name>
+      <mirrorOf>central</mirrorOf>
+      <!-- 国内推荐阿里云的Maven镜像 -->
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+    </mirror>
+  </mirrors>
+  <proxies/>
+  <!-- 根据环境参数来调整构建配置的列表 -->
+  <profiles/>
+  <activeProfiles/>
+</settings>
 ```
 
 搜索第三方组件  <br />  [search.maven.org](https://search.maven.org/)  <br />  生命周期（default为例）phase：
@@ -96,6 +241,7 @@ CLI
 **Reference**
 
 - [POM Reference](https://maven.apache.org/pom.html)
+   - POM（Project Object Model，项目对象模型）是 Maven 的基本组件，它是以 xml 文件的形式存放在项目的根目录下
 - [Settings Reference](https://maven.apache.org/settings.html)
 - [Run](https://maven.apache.org/run.html)
 - [Configure](https://maven.apache.org/configure.html)
@@ -149,6 +295,93 @@ my-project
 - `@Data` 注解在类，生成setter/getter、equals、canEqual、hashCode、toString方法，如为final属性，则不会为该属性生成setter方法。
 - `@Slf4j` 注解在类，生成log变量，严格意义来说是常量
 
+
+
+# [Apache Commons](https://commons.apache.org/)
+
+## [commons-lang](https://github.com/apache/commons-lang)
+
+[StringUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/StringUtils.html)
+
+- **IsEmpty/IsBlank** - checks if a String contains text
+- **Trim/Strip** - removes leading and trailing whitespace
+- **Equals/Compare** - compares two strings in a null-safe manner
+- **startsWith** - check if a String starts with a prefix in a null-safe manner
+- **endsWith** - check if a String ends with a suffix in a null-safe manner
+- **IndexOf/LastIndexOf/Contains** - null-safe index-of checks
+- **IndexOfAny/LastIndexOfAny/IndexOfAnyBut/LastIndexOfAnyBut** - index-of any of a set of Strings
+- **ContainsOnly/ContainsNone/ContainsAny** - checks if String contains only/none/any of these characters
+- **Substring/Left/Right/Mid** - null-safe substring extractions
+- **SubstringBefore/SubstringAfter/SubstringBetween** - substring extraction relative to other strings
+- **Split/Join** - splits a String into an array of substrings and vice versa
+- **Remove/Delete** - removes part of a String
+- **Replace/Overlay** - Searches a String and replaces one String with another
+- **Chomp/Chop** - removes the last part of a String
+- **AppendIfMissing** - appends a suffix to the end of the String if not present
+- **PrependIfMissing** - prepends a prefix to the start of the String if not present
+- **LeftPad/RightPad/Center/Repeat** - pads a String
+- **UpperCase/LowerCase/SwapCase/Capitalize/Uncapitalize** - changes the case of a String
+- **CountMatches** - counts the number of occurrences of one String in another
+- **IsAlpha/IsNumeric/IsWhitespace/IsAsciiPrintable** - checks the characters in a String
+- **DefaultString** - protects against a null input String
+- **Rotate** - rotate (circular shift) a String
+- **Reverse/ReverseDelimited** - reverses a String
+- **Abbreviate** - abbreviates a string using ellipses or another given String
+- **Difference** - compares Strings and reports on their differences
+- **LevenshteinDistance** - the number of changes needed to change one String into another
+
+[ArrayUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ArrayUtils.html)  <br />  全局静态常量：EMPTY_*_ARRAY（根据 * 处的类型，返回对应的长度为 0 的空数组）
+
+- String toString(Object array, String stringIfNull)：如果为空，返回 stringIfNull
+- String[] toStringArray(Object[] array, String valueForNullElements)：将 Object 数组转换成 String 数组，元素中的 null 值使用 valueForNullElements
+- int hashCode(Object array)：使用 HashCodeBuilder 返回数组的 hashcode（相同个数、相同顺序的数组 hashCode 也相同）
+- boolean isEquals(Object array1, Object array2)：用 EqualsBuilder 返回两个数组比较的结果，相当于 Arrays.deepEquals(Object[] a1, Object[] a2)
+- Map<Object, Object> toMap(Object[] array)：作为参数的数组有两个选择：一是成员为 Map.Entry，然后通过遍历该数组，把 Map.Entry 拆分并分别放入新生成 Map 的 Key 和 Value 中；二是成员为长度大于等于 2 的数组，位置 0 的元素作为 key，位置 1 的元素作为 value
+- T[] toArray(T... items)
+- int[] toPrimitive(Integer[] array)：将包装类型数组转为基本类型数组
+- Integer[] toObject(int[] array)：将基本类型数组转为包装类型数组
+- xxx[] clone(xxx[] array)：如果不为空，则使用参数自己的 clone 方法处理
+- Object[] subarray(Object[] array, int startIndexInclusive, int endIndexExclusive)：数组拷贝
+- void reverse(Object[] array, int startIndexInclusive, int endIndexExclusive)：数组元素反转（从数组前后两个坐标 i, j 开始，交换数据，并向中间移动，当 i>j 时停止）
+- int indexOf(Object[] array, Object objectToFind, int startIndex)：查找数组元素位置，return -1 if not found or null array input
+- boolean contains(Object[] array, Object objectToFind)：查找元素是否存在数组中
+- boolean isEmpty(Object[] array)：判断是否为空，length=0 或 null 都属于空
+- Object[] addAll(Object[] array1, Object... array2)：并集操作，合并数组
+
+
+[DateUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html)
+
+1. 全局静态常量：MILLIS_PER_SECOND、MILLIS_PER_SECOND、MILLIS_PER_MINUTE、MILLIS_PER_HOUR、MILLIS_PER_DAY
+1. 日期比较  <br />  boolean isSameDay(Date date1, Date date2)  <br />  boolean isSameDay(Calendar cal1, Calendar cal2)：比较日期是否相同，忽略 time（通过比较 Calendar.ERA、YEAR、DAY_OF_YEAR 三个属性判断给定日期是否相同）
+1. 时间比较  <br />  boolean isSameInstant(Date date1, Date date2)  <br />  boolean isSameInstant(Calendar cal1, Calendar cal2)：比较时间是否相同（通过 Date 类中的 getTime() 方法）
+1. add 族  <br />  Date addYears(Date date, int amount)：在给定日期 date 的基础上添加 amount 年，返回新的对象  <br />  Date addMonths(Date date, int amount)：添加月  <br />  Date addWeeks(Date date, int amount)：添加周  <br />  Date addDays(Date date, int amount)：添加日  <br />  Date addHours(Date date, int amount)：添加小时  <br />  Date addMinutes(Date date, int amount)：添加分钟  <br />  Date addSeconds(Date date, int amount)：添加秒  <br />  Date addMilliseconds(Date date, int amount)：添加毫秒
+1. set 族  <br />  Date setYears(Date date, int amount)：为 date 设置新的年份信息，并返回一个新的对象  <br />  Date setMonths(Date date, int amount)：设置月份  <br />  Date setDays(Date date, int amount)：设置日期  <br />  Date setHours(Date date, int amount)：设置小时  <br />  Date setMinutes(Date date, int amount)：设置分钟  <br />  Date setSeconds(Date date, int amount)：设置秒  <br />  Date setMilliseconds(Date date, int amount)：设置毫秒
+1. round 族、truncate 族、ceil 族：日期取整（日期精度调节，如调节至秒/分等）
+
+Date round(Date date, int field)：相当于数学中的四舍五入法取整  <br />  Date truncate(Date date, int field)：相当于去余法取整  <br />  Date ceiling(Date date, int field)：相当于向上取整
+
+- [BooleanUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/BooleanUtils.html)
+- [CharUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/CharUtils.html)
+- [NumberUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/math/NumberUtils.html)
+- [RegExUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/RegExUtils.html)
+- [RandomStringUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/RandomStringUtils.html)
+- [SystemUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/SystemUtils.html)
+- [ThreadUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ThreadUtils.html)
+
+
+## commons-io
+
+- [FilenameUtils](https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FilenameUtils.html)
+- [FileUtils](https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FileUtils.html)
+- [IOUtils](https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/IOUtils.html)
+
+
+
+# [guava](https://github.com/google/guava)
+
+
+# [hutool](https://github.com/dromara/hutool)
+  <br />   
 
 
 
@@ -468,28 +701,7 @@ void testCapitalize(String input, String result) {
 
 
 
-
-# RabbitMQ
-
-
-
-
-
-
-# Kafka
-
-
-
-
-# [Apache ZooKeeper](https://zookeeper.apache.org/)
-
-
-
-
-# [Elasticsearch](https://www.elastic.co/)
-
-
-# [JavaFX](https://wiki.openjdk.java.net/display/OpenJFX/Main)
+# [okhttp](https://github.com/square/okhttp)  <br />   
 
 
 
@@ -552,10 +764,50 @@ Object bean = gson.fromJson(jsonString, Object.class)
 
 
 
+# [Tomcat](https://tomcat.apache.org/) 
+Tomcat 是由 Apache 开发的一个 Servlet 容器，实现了对 Servlet 和 JSP 的支持，并提供了作为 Web 服务器的一些特有功能，如 Tomcat 管理和控制平台、安全域管理和 Tomcat 阀等
+
+目录
+
+- /bin - Tomcat 脚本存放目录
+- /conf - Tomcat 配置文件目录
+- /logs - Tomcat 默认日志目录
+- /webapps - webapp 运行的目录
+
+
+tomcat9启动后控制台乱码：
+
+- 打开“/apache-tomcat-9.0.20/conf/logging.properties”文件
+- 定位java.util.logging.ConsoleHandler.encoding，将UTF-8 改成 GBK
+```xml
+修改默认端口8080
+<Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8543" />
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+# [JavaFX](https://wiki.openjdk.java.net/display/OpenJFX/Main)
+
+
+
+
 # **—— **[IntelliJ IDEA](https://www.423down.com/10850.html)** ——**
 
 
 ## [Shortcuts](https://www.jetbrains.com/help/idea/reference-keymap-win-default.html)
+
+**Live Templates**
+> File | Settings | Editor | Live Templates
 
 psvm	main方法  <br />  fori	for循环  <br />  sout	System.out  <br />  user.for+Tab	for(User user : users)  <br />  user.getBirthday().var+Tab	Date birthday = user.getBirthday()
 
@@ -838,14 +1090,35 @@ insert	插入/改写模式
 | Show Commit window | Alt+0 |
 | Show Terminal window | Alt+F12 |
 
-**Settings**  <br />  方法分隔符  <br />  Settings -> Editor -> General -> Appearance  <br />  勾选 show method separators  <br />  忽略大小写字母  <br />  Settings -> Editor -> General -> Code Completion  <br />  关闭 Match case  <br />  多行显示Tab  <br />  Editor Tabs  <br />  勾选 Show tabs in one row  <br />  编码字符集  <br />  Settings -> Editor -> General -> File Encodings
+  <br />  
 
-**plugin**
+## Settings
+方法分隔符  <br />  Settings -> Editor -> General -> Appearance  <br />  勾选 show method separators
 
-- RestfulToolkit—RESTful服务开发
-- Key Promoter X—快捷键
-- Codota—代码智能提示
-- GsonFormat+RoboPOJOGenerator—JSON转类对象
-- Statistic—项目信息统计
-- Translation-必备的翻译插件
+忽略大小写字母  <br />  Settings -> Editor -> General -> Code Completion  <br />  关闭 Match case
+
+多行显示Tab  <br />  Editor Tabs  <br />  勾选 Show tabs in one row
+
+编码字符集  <br />  Settings -> Editor -> General -> File Encodings
+
+Google style  <br />  [intellij-java-google-style.xml](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml)  <br />  Settings -> Editor -> General -> Code Style | Java
+
+
+## plugin
+
+- Maven Helper	依赖分析
+- Codota	代码智能提示
+- Tabnine	基于 AI 的代码提示
+- Rainbow Brackets	彩虹括号
+- One Dark theme
+
+- RestfulToolkit	RESTful服务开发
+- Key Promoter X	快捷键
+- GsonFormat+RoboPOJOGenerator	JSON转类对象
+- Statistic	项目信息统计
+- Translation	必备的翻译插件
 - CamelCase-多种命名格式之间切换
+
+
+
+
