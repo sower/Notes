@@ -209,20 +209,20 @@ USERCTL=no	# 不允许非root用户控制此网卡
 ```
 可通过修改该文件来设置IP
 
-主机名文件  <br />  /etc/sysconfig/network
+**Host**  <br />  主机名文件 `/etc/hostname		永久修改主机名`  <br />  `hostname [主机名]	查看与临时设置主机名命令`
+
+hosts文件	`/etc/hosts`
+
+
+DNS配置文件	`/etc/resolv.conf`
 ```shell
-NETWORKING=yes
-HOSTNAME-localhost.localdomain
-```
-```shell
-hostname [主机名]	#查看与临时设置主机名命令
+# Google DNS
+nameserver 8.8.8.8
+nameserver 8.8.4.4
 ```
 
-DNS配置文件  <br />  /etc/resolv.conf
-```shell
-nameserver 202.106.0.20
-search localhost
-```
+
+route  [add|del] [-net|-host] target [netmask Nm] [gw Gw] [[dev] If]
 
 Ubuntu  <br />  重启网卡
 ```shell
@@ -605,23 +605,21 @@ getenforce	查询SELinux的工作模式  <br />  sestatus	查看策略
 
 
 
-# 操作
-光标移动
+# Hot Key
 
-| 按键 | 行动 |
+| Ctrl+R | 搜索历史命令 |
 | --- | --- |
-| Ctrl+A | 移动光标到行首。 |
-| Ctrl+E | 移动光标到行尾。 |
-| Ctrl+F | 光标前移一个字符；和右箭头作用一样。 |
-| Ctrl+B | 光标后移一个字符；和左箭头作用一样。 |
-| Alt+F | 光标前移一个字。 |
-| Alt+B | 光标后移一个字。 |
+| Ctrl+A | 移动光标到行首 |
+| Ctrl+E | 移动光标到行尾 |
+| Ctrl + W | 剪切一个单词 |
+| Ctrl + U | 剪切光标位置到行首的字符 |
+| Ctrl + K | 剪切光标位置到行尾的字符 |
+| Ctrl + Y | 粘贴命令行剪切的内容 |
 
 命令控制
 
-| 按键 | 行动 |
-| --- | --- |
 | Ctrl + L | 清屏 |
+| --- | --- |
 | Ctrl + O | 执行当前命令，并选择上一条命令 |
 | Ctrl + S | 阻止屏幕输出 |
 | Ctrl + Q | 允许屏幕输出 |
@@ -636,7 +634,7 @@ getenforce	查询SELinux的工作模式  <br />  sestatus	查看策略
 
 vi - Visual Interface  <br />  [vim](http://vimdoc.sourceforge.net/htmldoc/quickref.html) - Vi IMproved, a programmer's text editor
 
-- vim-tiny：功能比较少（+表示拥有的功能），体积小，速度快。
+- vim-tiny：功能比较少，体积小，速度快。
 - vim-basic：完整版的vim，没有图形界面，没有菜单
 
 resource

@@ -1,3 +1,5 @@
+[openjdk](https://github.com/openjdk)/[jdk](https://github.com/openjdk/jdk)
+
 
 # API
 | [java.beans](https://www.matools.com/file/manual/jdk_api_1.8_google/java/beans/package-summary.html) | 包含与开发 _bean_相关的类 - 基于JavaBeans架构的组件。 |
@@ -10,28 +12,6 @@
 | [java.net](https://www.matools.com/file/manual/jdk_api_1.8_google/java/net/package-summary.html) | 提供实现网络应用程序的类。 |
 | [java.nio](https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/package-summary.html) | 定义缓冲区，它们是数据容器，并提供其他NIO包的概述。 |
 
-
-# System
-
-- void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)：从 源数组 src 的 srcPos 位置 复制元素到 目标数组 dest 的 destPos 位置，复制的数组元素的个数为 length
-- long currentTimeMillis()：获取系统当前时间（毫秒）（距离 1970 年 1 月 1 日 00:00:00 GMT）
-- Properties getProperties()：获取当前的系统属性
-- String getProperty(String key)：获取指定键指示的系统属性
-- int identityHashCode(Object x)：返回给定对象的哈希码
-- void exit(int status)：终止 JVM（非 0 的状态码表示异常终止）（底层调用 Runtime 类中的方法）
-- void gc()：运行 GC（底层调用 Runtime 类中的方法）
-
-**Runtime**  <br />  类方法
-
-- Runtime getRuntime()：获取与当前 Java 应用程序相关的运行时对象（单例模式）
-
-实例方法
-
-- Process exec(String command)：在单独的进程中执行指定的字符串命令，返回一个新的 Process 对象
-- void exit(int status)：终止 JVM（非 0 的状态码表示异常终止）
-- void gc()：运行 GC
-- void addShutdownHook(Thread hook)：注册虚拟机关闭钩子（一个已初始化但尚未启动的线程）
-- int availableProcessors()：返回虚拟机可用处理器的数目
 
 
 
@@ -226,8 +206,147 @@ TreeSet  <br />  根据红黑树结构确定元素的存储位置  <br />  查�
 
 # Time
 
+- Temporal 的实现类
+   - Instant（代表一个具体的时刻）
+   - LocalDate（代表不带时区的日期）
+   - LocalTime（代表不带时区的时间）
+   - LocalDateTime（代表不带时区的日期、时间）
+   - Year（代表年）
+   - YearMonth（代表年月）
+   - ZonedDateTime（代表带相对于指定时区的日期、时间）
+- TemporalAmount 的实现类
+   - Duration（代表以秒和纳秒衡量的时长，格式 PnDTnHnMn.nS）
+   - Period（代表以年、月、日衡量的时长，格式 PnYnMnD）
+- ZoneId（代表一个时区）
+   - ZoneOffset（ZoneId 的子类，代表与 UTC/格林尼治时间的绝对偏差）
+- Clock（用于获取指定时区的当前日期、时间）
+- DayOfWeek（星期枚举类）、Month（月份枚举类）
+- ChronoUnit（时间单位枚举类）：YEARS、MONTHS、WEEKS、DAYS、HOURS、MINUTES、SECONDS、NANOS 等
+```java
+// 获取当前时间
+LocalDateTime now = LocalDateTime.now();
+// 设置时间
+LocalDateTime dateTime = LocalDateTime.of(2022, 6, 1, 23, 59, 59);
+
+// 获取年、月、日、时、分、秒
+dateTime.getYear(); // dateTime.get(ChronoField.YEAR);
+dateTime.getMonth().getValue(); // dateTime.get(ChronoField.MONTH_OF_YEAR);
+dateTime.getDayOfMonth(); // dateTime.get(ChronoField.DAY_OF_MONTH);
+dateTime.getHour();
+dateTime.getMinute();
+dateTime.getSecond();
+
+// 调整日期/时间，返回修改了属性的新对象
+dateTime.withDayOfMonth(25); // dateTime.with(ChronoField.DAY_OF_MONTH, 25)
+// 当月的最后一天
+dateTime.with(TemporalAdjusters.lastDayOfMonth());
+
+// 比较先后
+dateTime.isAfter(now);
+dateTime.isBefore(now);
+
+// 加减时间
+dateTime.plusDays(1); // dateTime.plus(1, ChronoUnit.DAYS);
+dateTime.minusDays(1);
+
+// 格式化
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+// LocalDateTime 转 String
+formatter.format(dateTime); // dateTime.format(formatter);
+// String 转 LocalDateTime
+LocalDateTime.parse("2018-10-01 23:59:59", formatter);
+
+// LocalDateTime 转 LocalDate、LocalTime
+LocalDate localDate = dateTime.toLocalDate();
+LocalTime localTime = dateTime.toLocalTime();
+
+// LocalDate、LocalTime 转 LocalDateTime
+dateTime = localDate.atStartOfDay(); // 一天的开始时间
+localDate.atTime(LocalTime.MIDNIGHT); // 00:00:00.000000000
+localDate.atTime(LocalTime.MIN);      // 00:00:00.000000000
+localDate.atTime(LocalTime.NOON);     // 12:00:00.000000000
+localDate.atTime(LocalTime.MAX);      // 23:59:59.999999999
+dateTime = LocalDateTime.of(localDate, localTime);
+
+// 获取当前时间戳
+long millisecond = Instant.now().toEpochMilli(); // 转换当前时间的毫秒值
+long second = Instant.now().getEpochSecond(); // 获取当前时间的秒数
+Instant.ofEpochMilli(millisecond); // 毫秒值转 Instant
+
+// 将此日期转换为从 1970-01-01 开始的天数
+dateTime.toEpochDay();
+// 将此日期时间转换为从 1970-01-01T00：00：00Z 开始的毫秒数
+dateTime.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+
+// LocalDateTime 转换为 ZonedDateTime，再转换为 Instant，再转换为 Date
+Date date = Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant());
+// Date 转换为 Instant，再转换为 LocalDateTime
+LocalDateTime dateTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+
+// 获取相差时间间隔（不能使用 Period.between() 返回的是两个日期差几年零几月零几天）
+amount = start.until(end, ChronoUnit.DAYS); // end.toEpochDay() - start.toEpochDay()
+amount = ChronoUnit.DAYS.between(start, end);
+
+// 时间长度：Duration、Period
+Duration d1 = Duration.between(time1, time2);
+Duration d1 = Duration.between(dateTime1, dateTime2);
+Duration d2 = Duration.between(instant1, instant2);
+// Obtains a Period consisting of the number of years, months, and days between two dates.
+Period tenDays = Period.between(date1, date2);
+
+Period sixMonths = Period.ofMonths(6);
+Duration sixSeconds = Duration.ofSeconds(6);
+dateTime.plus(sixMonths);
+dateTime.plus(sixSeconds);
+
+// 时区 ID
+ZoneId zoneId = ZoneId.systemDefault();
+// ZoneId zoneId = TimeZone.getDefault().toZoneId();
+// ZoneId romeZone = ZoneId.of("Asia/Shanghai");
+zoneId.getId(); // 时区 ID：Asia/Shanghai
+zoneId.getRules(); // 时区规则：ZoneRules[currentStandardOffset=+08:00]
+
+// ZonedDateTime 有 LocalDateTime 几乎相同的方法，不同的是它可以设置时区
+ZoneId zoneId = ZoneId.of("UTC+8"); // ZoneId.of("+8")
+ZonedDateTime zonedDateTime = ZonedDateTime.of(2018, 10, 1, 23, 59, 59, 1234, zoneId);
+
+// 为时间点添加时区信息
+ZonedDateTime zdt1 = date.atStartOfDay(zoneId); // 时间为 00:00:00
+ZonedDateTime zdt2 = dateTime.atZone(zoneId);
+ZonedDateTime zdt3 = instant.atZone(zoneId);
 
 
+ZoneId zoneId = ZoneId.of("-5");
+ZonedDateTime zdt = ZonedDateTime.now(); // 2020-12-17T15:31:27.870+08:00[Asia/Shanghai]
+// 获取当前时刻对应的 ZonedDateTime
+ZonedDateTime zdt1 = ZonedDateTime.now(zoneId); // 2020-12-17T02:31:27.870-05:00
+// 通过给 LocalDateTime 附加一个 ZoneId，变成 ZonedDateTime
+ZonedDateTime zdt2 = ZonedDateTime.of(now, zoneId); // 2020-12-17T15:31:27.870-05:00
+ZonedDateTime zdt2 = now.atZone(zoneId); // 2020-12-17T15:31:27.870-05:00
+
+// 时区转换
+// 1. 转换为相同时刻对应的 ZonedDateTime
+ZonedDateTime zdt1 = zdt.withZoneSameInstant(zoneId);// 2020-12-17T02:31:27.870-05:00
+// 2. 转换为相同日期时间对应的 ZonedDateTime
+ZonedDateTime zdt2 = zdt.withZoneSameLocal(zoneId);// 2020-12-17T15:31:27.870-05:00
+```
+
+TemporalAdjusters 工厂类中返回 TemporalAdjuster（调整器）实例的静态方法
+
+- firstDayOfMonth()：当月的第一天
+- lastDayOfMonth()：当月的最后一天
+- firstDayOfNextMonth()：下月的第一天
+- lastInMonth(DayOfWeek dayOfWeek)：下月的最后一天
+- firstDayOfNextYear()：明年的第一天
+- firstDayOfYear()：当年的第一天
+- lastDayOfYear()：今年的最后一天
+- dayOfWeekInMonth(int ordinal, DayOfWeek dayOfWeek)：同一个月中，第几个符合星期几要求的值
+- firstInMonth(DayOfWeek dayOfWeek)：同一个月中，第一个符合星期几要求的值
+- lastInMonth(DayOfWeek dayOfWeek)：同一个月中，最后一个符合星期几要求的值
+- previous(DayOfWeek dayOfWeek)：在当前日期之前第一个符合指定星期几要求的日期
+- next(DayOfWeek dayOfWeek)：在当前日期之后第一个符合指定星期几要求的日期
+- previousOrSame(DayOfWeek dayOfWeek)：在当前日期之后第一个符合指定星期几要求的日期，如果当前日期已经符合要求，直接返回该对象
+- nextOrSame(DayOfWeek dayOfWeek)：在当前日期之后第一个符合指定星期几要求的日期，如果当前日期已经符合要求，直接返回该对象
 
 
 
@@ -270,3 +389,630 @@ TreeSet  <br />  根据红黑树结构确定元素的存储位置  <br />  查�
 - int nextInt(int n)：返回一个伪随机数，[0, n)
 - IntStream ints(int randomNumberOrigin, int randomNumberBound)
 - IntStream ints(long streamSize, int randomNumberOrigin, int randomNumberBound)：返回一个流，生成 streamSize 个 [randomNumberOrigin, randomNumberBound) 范围内的 int 值
+
+
+
+# Process
+
+## Runtime
+类方法
+
+- Runtime getRuntime()：获取与当前 Java 应用程序相关的运行时对象（单例模式）
+
+实例方法
+
+- Process exec(String command)：在单独的进程中执行指定的字符串命令，返回一个新的 Process 对象
+- Process exec(String command, String[] envp, File dir)：command从dir目录中执行带有指定环境变量
+- Process exec(String cmdArray[])：以字符串数组的形式执行命令
+- Process exec(String cmdarray[], String[] envp, File dir)：从dir目录中执行带有指定环境变量的命令
+- void exit(int status)：终止 JVM（非 0 的状态码表示异常终止）
+- void gc()：运行 GC
+- void addShutdownHook(Thread hook)：注册虚拟机关闭钩子（一个已初始化但尚未启动的线程）
+- int availableProcessors()：返回虚拟机可用处理器的数目
+
+
+## ProcessBuilder
+
+- command()：返回此进程生成器的操作系统程序和参数。
+- command(List<String> command)：设置此进程生成器的操作系统程序和参数。
+- command(String… command)：设置此进程生成器的操作系统程序和参数。
+- directory()：返回此进程生成器的工作目录。
+- directory(File directory)：设置此进程生成器的工作目录。
+- environment()：返回此进程生成器环境的字符串映射视图。可以修改环境变量
+- redirectErrorStream()
+- redirectErrorStream(boolean redirectErrorStream)：通知进程生成器是否合并标准错误和标准输出。
+- start()：使用此进程生成器的属性启动一个新进程。
+
+```java
+String command = "ping 127.0.0.1";
+
+Runtime runtime = Runtime.getRuntime();
+Process process1 = runtime.exec(command);
+printResult(process1.getInputStream());
+
+ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
+processBuilder.redirectErrorStream(true);
+Process process2 = processBuilder.start();
+printResult(process2.getInputStream());
+
+public static void printResult(InputStream inputStream) throws IOException {
+  BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream,"gbk"));
+  String s;
+  while ((s = reader.readLine())!= null) {
+    System.out.println(s);
+  }
+}
+```
+
+
+
+# JDBC
+Java DataBase Connectivity（Java 数据库连接），一组可以执行 SQL 语句的 Java API（Java 数据库的统一访问接口）
+
+**Connection**  <br />  代表数据库连接对象（一个物理连接会话）
+
+- 创建语句对象  <br />  Statement createStatement()：创建一个 Statement 对象  <br />  PreparedStatement prepareStatement(String sql)：创建一个 PreparedStatement 对象  <br />  PreparedStatement prepareStatement(String sql, int autoGeneratedKeys)：创建一个 PreparedStatement 对象，并设置该对象是否能**获取自动生成的主键**（int 常量：Statement.RETURN_GENERATED_KEYS）
+- 控制事务  <br />  void setAutoCommit(boolean autoCommit)：false 为关闭自动提交，开启事务（MySQL 默认打开自动提交）  <br />  void commit()：提交事务，并释放所持有的数据库锁  <br />  void rollback()：回滚事务，并释放所持有的数据库锁（**在 catch 块中**回滚事务）
+
+**Statement**  <br />  用于执行静态 SQL 语句（将 SQL 语句发送到数据库）
+
+- int 常量：RETURN_GENERATED_KEYS、NO_GENERATED_KEYS
+- 执行语句  <br />  int executeUpdate(String sql)：执行 DML 语句时返回受影响的行数；执行 DDL 语句时返回 0  <br />  int executeUpdate(String sql, int autoGeneratedKeys)：执行给定的 DML 语句，并设置此 Statement 生成的自动生成键是否能用于获取  <br />  ResultSet executeQuery(String sql)：执行 DQL 语句，并返回查询结果对应的 ResultSet 对象
+- 批量更新  <br />  void addBatch(String sql)：将给定的 SQL 命令添加到此 Statement 对象的当前命令列表中  <br />  int[] executeBatch()、long[] executeLargeBatch()：将**一批命令**（DDL、DML 语句）提交给数据库来执行，如果全部命令执行成功，则返回影响行数组成的数组  <br />  void clearBatch()：清空此 Statement 对象的当前 SQL 命令列表
+- 获取自动生成主键  <br />  ResultSet getGeneratedKeys()：获取由于执行此 Statement 对象而创建的**所有**自动生成的主键
+
+**PreparedStatement **  <br />  Statement 的子接口，用于执行带占位符（?）参数的 SQL 语句
+
+- 给参数设值即添加到批处理  <br />  viod setXxx(int parameterIndex, Xxx value)：根据索引（从 1 开始）将 SQL 语句中指定位置的参数设置为 value 值，如果不清楚预编译 SQL 语句中各参数的类型，可以使用 setObject() 方法来传入参数  <br />  void setBlob(int parameterIndex, InputStream inputStream)：将指定参数设置为输入流对象  <br />  void addBatch()：将**一组参数**添加到此 PreparedStatement 对象的批处理命令中（调用前需先为参数设置）
+- 执行语句  <br />  int executeUpdate()：执行 DML 语句或 DDL 语句（无须接收 SQL 字符串）  <br />  ResultSet executeQuery()：执行 DQL 语句（无须接收 SQL 字符串）
+
+**ResultSet**  <br />  结果集对象  <br />  boolean next()：将光标从当前行移动到下一行（光标的初始位置是第一行之前）  <br />  Xxx getXxx(int columnIndex)：获取当前行中的指定列索引（从 1 开始）的数据  <br />  Xxx getXxx(String columnName)：获取当前行中的指定列名的数据
+
+
+maven引入
+```java
+<dependency>
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+  <version>8.0.19</version>
+</dependency>
+```
+```java
+import java.sql.*;
+ 
+public class MySQLDemo {
+ 
+    // MySQL 8.0 以下版本 - JDBC 驱动名及数据库 URL
+    // static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+    //static final String DB_URL = "jdbc:mysql://localhost:3306/RUNOOB";
+ 
+    // MySQL 8.0 以上版本 - JDBC 驱动名及数据库 URL
+    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";  
+    static final String DB_URL = "jdbc:mysql://localhost:3306/RUNOOB?useSSL=false&serverTimezone=UTC";
+ 
+    // 数据库的用户名与密码，需要根据自己的设置
+    static final String USER = "root";
+    static final String PASS = "password";
+ 
+    public static void main(String[] args) {
+        Connection conn = null;
+        Statement stmt = null;
+        try{
+            // 注册 JDBC 驱动
+            Class.forName(JDBC_DRIVER);
+        
+            // 打开链接
+            System.out.println("连接数据库...");
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+        
+            // 执行查询
+            System.out.println(" 实例化Statement对象...");
+            stmt = conn.createStatement();
+            String sql;
+            sql = "SELECT id, name, url FROM websites";
+            ResultSet rs = stmt.executeQuery(sql);
+        
+            // 展开结果集数据库
+            while(rs.next()){
+                int id  = rs.getInt("id");// 可以使用字段名
+                String name = rs.getString(2);// 也可以使用字段的顺序，从1开始
+                String url = rs.getString("url");
+    
+                // 输出数据
+                System.out.print("ID: " + id + ", 站点名称: " + name) + ", 站点 URL: " + url);
+            }
+            // 完成后关闭
+            rs.close();
+            stmt.close();
+            conn.close();
+        }catch(SQLException se){
+            // 处理 JDBC 错误
+            se.printStackTrace();
+        }catch(Exception e){
+            // 处理 Class.forName 错误
+            e.printStackTrace();
+        }finally{
+            // 关闭资源
+            try{
+                if(stmt!=null) stmt.close();
+            }catch(SQLException se2){
+            }// 什么都不做
+            try{
+                if(conn!=null) conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        System.out.println("Goodbye!");
+    }
+}
+```
+| SQL数据类型 | Java数据类型 |
+| --- | --- |
+| BIT, BOOL | boolean |
+| INTEGER | int |
+| BIGINT | long |
+| REAL | float |
+| FLOAT, DOUBLE | double |
+| CHAR, VARCHAR | String |
+| DECIMAL | BigDecimal |
+| DATE | java.sql.Date, LocalDate |
+| TIME | java.sql.Time, LocalTime |
+
+
+**prepareStatement + batch**
+```java
+public static void main(String[] agr) throws ClassNotFoundException {
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+            String[] web=new String[] {"baidu","google","yahoo"};
+		String sql = "insert into site value(null,?,?,?)";
+		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/web
+                  ?useSSL=true&serverTimezone=GMT", "root", "password");
+		PreparedStatement ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
+			for(int i=0;i<web.length;++i) {
+				ps.setInt(1,i);
+				ps.setString(2, web[i]);
+				ps.setString(3, fun(web[i]));
+				ps.addBatch();
+			}
+			int[] ns=ps.executeBatch();
+			for (int n : ns) {
+			        System.out.println(n + " inserted."); // batch中每个SQL执行的结果数量
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	System.out.println("excuted");
+}
+             
+public static String fun(String a) {
+		return "www."+a+".com";
+}
+```
+**事务**
+```java
+conn.setAutoCommit(false); // 关闭自动提交:
+stmt.execute("update site set name='google' where id=4");
+stmt.execute("update site set url=\"www.google.com\" where id=4");
+conn.commit(); // 提交事务:
+```
+**连接池**
+```java
+import java.sql.*;
+import jdbc.ConnectionPool;
+   
+public class TestConnectionPool {
+    public static void main(String[] args) {
+        ConnectionPool cp = new ConnectionPool(3);
+        for (int i = 0; i < 100; i++) {
+            new WorkingThread("working thread" + i, cp).start();
+        }
+    }
+}
+   
+class WorkingThread extends Thread {
+    private ConnectionPool cp;
+   
+    public WorkingThread(String name, ConnectionPool cp) {
+        super(name);
+        this.cp = cp;
+    }
+   
+    public void run() {
+        Connection c = cp.getConnection();
+        System.out.println(this.getName()+ ":\t 获取了一根连接，并开始工作"  );
+        try (Statement st = c.createStatement()){
+             
+            //模拟时耗１秒的数据库ＳＱＬ语句
+            Thread.sleep(1000);
+            st.execute("select * from hero");
+   
+        } catch (SQLException | InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        cp.returnConnection(c);
+    }
+}
+```
+
+
+
+# Network
+InetAddress
+
+- 类方法  <br />  InetAddress getByName(String host)：根据主机获取对应的 IP 对象  <br />  InetAddress getLocalHost()：类方法，获取本机 IP 地址对应的 IP 对象  <br />  isReachable()：测试是否可以在指定时间内到达该地址
+- 实例方法  <br />  String getHostAddress()：返回该 InetAddress 实例对应的 IP 地址字符串  <br />  String getHostName()：获取此 IP 地址的主机名  <br />  String getCanonicalHostName()：获取此 IP 地址的全限定域名
+
+URL
+
+- String URLDecoder.decode(String s, String enc)：使用指定字符集将特殊字符串转换成普通字符串（解码）
+- String URLEncoder.encode(String s, String enc)：使用指定字符集将普通字符串转换成特殊字符串（编码）（~ ! * ( ) - _ ' . 不会被编码）
+
+
+
+UDP
+```java
+public class Server {
+	public static void main(String[] args) throws Exception {
+		System.out.println("接受启动中···");
+		DatagramSocket server=new DatagramSocket(9999);
+		byte[] container=new byte[1024*60];
+		DatagramPacket packet=new DatagramPacket(container,0,container.length);
+		server.receive(packet);
+		byte[] datas=packet.getData();
+		System.out.println(new String(datas,0,datas.length));
+		server.close();
+	}
+}
+public class Client{
+	public static void main(String[] args) throws Exception {
+		System.out.println("发送启动中···");
+		DatagramSocket client=new DatagramSocket(8888);
+		String data="Web Programming";
+		byte[] datas=data.getBytes();
+		DatagramPacket packet=new DatagramPacket(datas,0, datas.length,
+				new InetSocketAddress("localhost",9999));
+		client.send(packet);
+		client.close();
+	}
+}
+```
+
+
+**Socket**
+```java
+import java.net.*;
+import java.io.*;
+import java.util.*;
+//服务端
+public class Server {
+ 
+    public static void main(String[] args) {
+        try {
+ 
+            ServerSocket ss = new ServerSocket(8888);
+ 
+            System.out.println("监听在端口号:8888");
+            Socket s = ss.accept();
+            System.out.println("有连接过来" + s);
+            
+            InputStream is = s.getInputStream();
+ 
+            //把输入流封装在DataInputStream
+            DataInputStream dis = new DataInputStream(is);
+            //使用readUTF读取字符串
+            String msg = dis.readUTF();
+            System.out.println(msg);
+            dis.close();
+            s.close();
+            ss.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+    }
+}
+// 客户端
+public class Client {
+ 
+    public static void main(String[] args) {
+ 
+        try {
+            Socket s = new Socket("127.0.0.1", 8888);
+ 
+            OutputStream os = s.getOutputStream();
+            DataOutputStream dos = new DataOutputStream(os);
+             
+            //使用Scanner读取控制台的输入，并发送到服务端
+            Scanner sc = new Scanner(System.in);
+             
+            String str = sc.next();
+            dos.writeUTF(str);
+             
+            dos.close();
+            s.close();
+        } catch (UnknownHostException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+**RMI（Remote Method Invocation，远程调用）**  <br />  一个JVM中的代码可以通过网络实现远程调用另一个JVM的某个方法  <br />  RMI要求服务器和客户端共享同一个接口
+```java
+import java.rmi.Remote
+public interface WorldClock extends Remote {
+    LocalDateTime getLocalDateTime(String zoneId) throws RemoteException;
+}
+```
+服务器
+```java
+// 服务器的实现类
+public class WorldClockService implements WorldClock {
+    @Override
+    public LocalDateTime getLocalDateTime(String zoneId) throws RemoteException {
+        return LocalDateTime.now(ZoneId.of(zoneId)).withNano(0);
+    }
+}
+// 将WorldClock实例注册到RMI服务
+public class Server {
+    public static void main(String[] args) throws RemoteException {
+        System.out.println("create World clock remote service...");
+        // 实例化一个WorldClock:
+        WorldClock worldClock = new WorldClockService();
+        // 将此服务转换为远程服务接口:
+        WorldClock skeleton = (WorldClock) UnicastRemoteObject.exportObject(worldClock, 0);
+        // 将RMI服务注册到1099端口:
+        Registry registry = LocateRegistry.createRegistry(1099);
+        // 注册此服务，服务名为"WorldClock":
+        registry.rebind("WorldClock", skeleton);
+    }
+}
+```
+客户端
+```java
+public class Client {
+    public static void main(String[] args) throws RemoteException, NotBoundException {
+        // 连接到服务器localhost，端口1099:
+        Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+        // 查找名称为"WorldClock"的服务并强制转型为WorldClock接口:
+        WorldClock worldClock = (WorldClock) registry.lookup("WorldClock");
+        // 正常调用接口方法:
+        LocalDateTime now = worldClock.getLocalDateTime("Asia/Shanghai");
+        // 打印调用结果:
+        System.out.println(now);
+    }
+}
+```
+
+
+# Web
+
+## Servlet
+Server Applet，即小服务程序或服务连接器。Servlet 是 Java 编写的服务器端程序，具有独立于平台和协议的特性，主要功能在于交互式地浏览和生成数据，生成动态 Web 内容。
+```java
+public interface Servlet {
+    void init(ServletConfig var1) throws ServletException;
+
+    ServletConfig getServletConfig();
+
+    void service(ServletRequest var1, ServletResponse var2) throws ServletException, IOException;
+
+    String getServletInfo();
+
+    void destroy();
+}
+```
+Servlet 生命周期
+
+1. **加载** - 第一个到达服务器的 HTTP 请求被委派到 Servlet 容器。容器通过类加载器使用 Servlet 类对应的文件加载 servlet；
+1. **初始化** - Servlet 通过调用 **init ()** 方法进行初始化。
+1. **服务** - Servlet 调用 **service()** 方法来处理客户端的请求。
+1. **销毁** - Servlet 通过调用 **destroy()** 方法终止（结束）。
+1. **卸载** - Servlet 是由 JVM 的垃圾回收器进行垃圾回收的。
+
+示例
+
+- Servlet实例必须由Servlet容器自动创建，并给每个Servlet类创建唯一实例；
+- Servlet容器会使用多线程执行doGet()或doPost()方法
+```java
+@WebServlet(urlPatterns = "/")
+public class HelloServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        // 设置响应类型:
+        resp.setContentType("text/html");
+        // 获取输出流:
+        PrintWriter pw = resp.getWriter();
+        // 写入响应:
+        pw.write("<h1>Hello, world!</h1>");
+        // 强制输出:
+        pw.flush();
+    }
+}
+```
+
+
+**HttpServletRequest**
+
+1. 获取请求行信息  <br />  String getMethod()：获取请求方式  <br />  String getRequestURI()：获取请求的 URI，从协议名称一直到查询字符串的那一部分，即返回请求行中的资源名，包括上下文路径，如 /test/index.html  <br />  StringBuffer getRequestURL()：获取请求的 URL，包含协议、服务器名、端口号、资源路径信息，不包含查询字符串参数，即浏览器地址栏的内容  <br />  public String getQueryString()：获取包含在请求 URL 中路径后面的查询字符串，即`?`后的字符串  <br />  String getContextPath()：获取上下文路径，即 `<Context />` 元素的 path 属性值
+1. 获取请求头信息  <br />  String getHeader(String name)：获取指定请求头的值  <br />  Enumeration<String> getHeaderNames()：获取所有请求头的名称  <br />  Enumeration<String> getHeaders(String name)：获取指定请求头的多个值  <br />  int getIntHeader(String name)：获取指定请求头的值，并将该值转为整数值  <br />  Locale getLocale()：根据 **Accept-Language** 请求头返回客户端将在其中接受内容的**首选 Locale**，如果客户端请求未提供 Accept-Language 请求头，则返回服务器的默认语言环境  <br />  Enumeration<Locale> getLocales()
+1. 获取请求参数  <br />  String getParameter(String paramName)：根据参数名称，获取对应请求参数的值  <br />  String[] getParameterValues(String paramName)：根据参数名称，获取对应请求参数的多个所组成的数组  <br />  Map getParameterMap()：获取所有请求参数名和参数值所组成的 Map 对象  <br />  Enumeration<String> getParameterNames()：获取所有请求参数名所组成的 Enumeration 对象
+1. 操作 request 范围的属性  <br />  setAttribute(String attrName, Object value)、getAttribute(String attrName)
+1. 执行请求转发（forward）或请求包含（include）
+   - HttpServletRequest 类提供了一个 getRequestDispatcher (String path) 方法（获取请求分发器），其中 path 就是希望 forward 或者 include 的目标路径（以斜线开头表示当前 web 应用的根路径，不以斜线开头表示相对路径），该方法返回 **RequestDispatcher**，该对象提供了如下两个方法：
+      1. void forward(ServletRequest request, ServletResponse response)：执行 forward
+      1. void include(ServletRequest request, ServletResponse response)：执行 include
+   - forward 用户请求时，请求参数和 request 范围的属性都不会丢失
+6. 获取网络信息  <br />  String getRemoteAddr()：返回发出请求的客户机的 IP 地址
+6. 其它  <br />  ServletInputStream getInputStream()：以二进制数据形式获取请求正文，返回输入流  <br />  BufferedReader getReader()：获取请求正文
+
+
+**HttpServletResponse**  <br />  常用方法
+
+- void setCharacterEncoding(String charset)：设置将发送到客户端的响应的字符编码
+- void setContentType(String type)：设置将发送到客户端的响应的内容类型（MIME 类型、编码方式），如 "text/html; charset=UTF-8"、"application/x-msdownload"
+- void setHeader(String name, String value)：用给定名称和值设置响应头
+- void setStatus(int sc)：设置此响应的状态代码
+- ServletOutputStream getOutputStream()：获取响应输出字节流，可用于文件下载
+- PrintWriter getWriter()：获取可将字符文本发送到客户端的字符输出流
+- void sendRedirect(String path)：重新向 path 资源发送请求，path 需加上上下文路径（当以 http 开头时，表示重定向到外部的一个资源）
+- String encodeURL(String url)：通过将会话 ID 包含在指定 URL 中对该 URL 进行编码，如果不需要编码，则返回未更改的 URL（URL 重写，用于不支持 cookie 的浏览器）
+
+
+
+## Filter
+对用户请求进行预处理，也可以对 HttpServletResponse 进行后处理
+```java
+@WebFilter(filterName = "CharsetFilter",
+        urlPatterns = "/*",  //对所有的web资源进行拦截
+        initParams = {
+                @WebInitParam(name = "charset", value = "utf-8") // 初始化的参数
+        })
+public class CharsetFilter implements Filter {
+    private String filterName;
+    private String charset;
+
+    public void init(FilterConfig config) throws ServletException {
+        filterName = config.getFilterName();
+        charset = config.getInitParameter("charset");
+
+        System.out.println("过滤器名称：" + filterName);
+        System.out.println("字符集编码：" + charset);
+    }
+
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
+        // 对request和response进行一些处理，然后交给下一个过滤器或Servlet处理
+		System.out.println(filterName + "doFilter()");
+        req.setCharacterEncoding(charset);
+        resp.setCharacterEncoding(charset);
+        chain.doFilter(req, resp);
+    }
+
+    public void destroy() {
+        System.out.println(filterName + "销毁");
+    }
+}
+```
+
+
+## Listener
+监听 Web 应用的内部事件
+
+- ServletContextListener：用于监听 Web 应用的启动和关闭
+- ServletContextAttributeListener：用于监听 application 内属性的改变（被添加、删除、替换）
+- ServletRequestListener：用于监听用户请求的初始化和销毁
+- ServletRequestAttributeListener：用于监听 request 内属性的改变（被添加、删除、替换）
+- HttpSessionListener：用于监听 session 的创建和销毁（可以通过该监听器监听系统的在线用户）
+- HttpSessionAttributeListener：用于监听 session 内属性的改变（被添加、删除、替换）
+```java
+@WebListener(value = "servletContextListener")
+public class ContextListener implements ServletContextListener, ServletContextAttributeListener {
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        /*servletContext创建时调用*/
+        System.out.println("项目启动了");
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        /*servletContext销毁时调用*/
+        System.out.println("项目停止了");
+    }
+    
+    @Override
+    public void attributeAdded(ServletContextAttributeEvent scae) {
+        /* 添加属性时调用 */
+        System.out.println("新增的属性："+scae.getName()+":"+scae.getValue());
+    }
+
+    @Override
+    public void attributeRemoved(ServletContextAttributeEvent scae) {
+        /*属性移除时调用*/
+        System.out.println("移除的属性："+scae.getName()+":"+scae.getValue());
+    }
+
+    @Override
+    public void attributeReplaced(ServletContextAttributeEvent scae) {
+        /*属性替换时调用（修改值）*/
+        System.out.println("替换的属性："+scae.getName()+":"+scae.getValue());
+    }
+}
+```
+
+
+
+
+
+
+
+
+# 国际化
+
+定义不同语种的模板  <br />  Java 中将多语言文本存储在格式为 properties 的资源文件中，在`src/main/resources/locales` 路径下  <br />  `<资源名>_<语言代码>_<国家/地区编码>.properties`
+
+JDK 的 bin 目录下有一个将非 ASCII 字符转为 Unicode 编码的工具：**native2ascii**。  <br />  `native2ascii [-reverse] [-encoding 编码] [输入文件 [输出文件]]`
+
+java.util.Locale 对象表示了特定的地理、政治和文化地区
+```java
+// 初始化一个通用英语的locale.
+Locale locale1 = new Locale("en");
+// 初始化一个加拿大英语的locale.
+Locale locale2 = new Locale("en", "CA");
+// 初始化一个美式英语变种硅谷英语的locale
+Locale locale3 = new Locale("en", "US", "SiliconValley");
+// 根据Locale常量初始化一个简体中文
+Locale locale4 = Locale.SIMPLIFIED_CHINESE;
+```
+
+java.util.ResourceBoundle	加载本地化资源文件的工具类
+```java
+String baseName = "realpath/bundleName";
+
+// 根据语言+地区编码初始化
+ResourceBundle rbUS = ResourceBundle.getBundle(baseName, new Locale("en", "US"));
+// 根据Locale常量初始化
+ResourceBundle rbZhCN = ResourceBundle.getBundle(baseName, Locale.SIMPLIFIED_CHINESE);
+// 获取本地系统默认的Locale初始化
+ResourceBundle rbDefault = ResourceBundle.getBundle(baseName);
+//等价 ResourceBundle rbDefault =ResourceBundle.getBundle(baseName, Locale.getDefault());
+
+
+System.out.println("us-US:" + String.format(rbUS.getString("time"), "08:00"));
+System.out.println("zh-CN：" + rbZhCN.getString("key"));
+```
+
+**支持本地化的工具类**  <br />  NumberFormat
+```java
+double num = 123456.78;
+NumberFormat format = NumberFormat.getCurrencyInstance(Locale.SIMPLIFIED_CHINESE);
+System.out.format("%f 的本地化（%s）结果: %s", num, Locale.SIMPLIFIED_CHINESE, format.format(num));
+```
+DateFormat
+```java
+Date date = new Date();
+DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.SIMPLIFIED_CHINESE);
+System.out.format("%s 的本地化（%s）结果: %s\n", date, Locale.SIMPLIFIED_CHINESE, df.format(date));
+```
+Messageformat 提供一种与语言无关的拼接消息的方式
+```java
+String pattern = "{0}，你好！你于  {1} 消费  {2} 元。";
+Object[] params = {"Jack", new GregorianCalendar().getTime(), 8888};
+MessageFormat mf = new MessageFormat(pattern, Locale.SIMPLIFIED_CHINESE);
+String msg = mf.format(params);
+System.out.println(msg);
+```
+
+
+
+
+
+

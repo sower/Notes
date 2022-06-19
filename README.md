@@ -1,6 +1,7 @@
 # Notes  
 
 ## CS  
+
 - ### [Web](./Notes/CS/Web.md)  
   - #### [HTML](./Notes/CS/HTML.md)  
   - #### [CSS](./Notes/CS/CSS.md)  
@@ -49,6 +50,14 @@
   - #### [NoSQL](./Notes/CS/NoSQL.md)  
 
   <br />  
+## Software  
+- ### [Application](./Notes/Software/Application.md)  
+- ### [API Collections](./Notes/Software/API%20Collections.md)  
+- ### [Chrome](./Notes/Software/Chrome.md)  
+- ### [Micro Office](./Notes/Software/Micro%20Office.md)  
+- ### [FFmpeg](./Notes/Software/FFmpeg.md)  
+
+  <br />  
 ## Universal  
 - ### [UML](./Notes/Universal/UML.md)  
 - ### [Markdown](./Notes/Universal/Markdown.md)  
@@ -59,13 +68,5 @@
 - ### [Software](./Notes/Universal/Software.md)  
 - ### [Programming paradigm](./Notes/Universal/Programming%20paradigm.md)  
 - ### [Security](./Notes/Universal/Security.md)  
-
-  <br />  
-## Software  
-- ### [Application](./Notes/Software/Application.md)  
-- ### [API Collections](./Notes/Software/API%20Collections.md)  
-- ### [Chrome](./Notes/Software/Chrome.md)  
-- ### [Micro Office](./Notes/Software/Micro%20Office.md)  
-- ### [FFmpeg](./Notes/Software/FFmpeg.md)  
 
   <br />  

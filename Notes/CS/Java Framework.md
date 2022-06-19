@@ -293,6 +293,7 @@ my-project
 - `@RequiredArgsConstructor` 注解在类，为类中需要特殊处理的字段生成构造方法，比如final和被`@NonNull`注解的字段。
 - `@AllArgsConstructor` 注解在类，生成包含类中所有字段的构造方法。
 - `@Data` 注解在类，生成setter/getter、equals、canEqual、hashCode、toString方法，如为final属性，则不会为该属性生成setter方法。
+- [@Builder](https://projectlombok.org/features/Builder)
 - `@Slf4j` 注解在类，生成log变量，严格意义来说是常量
 
 
@@ -701,8 +702,122 @@ void testCapitalize(String input, String result) {
 
 
 
-# [okhttp](https://github.com/square/okhttp)  <br />   
+# [okhttp](https://github.com/square/okhttp)
+```java
+class MyHttp {
 
+  OkHttpClient client = new OkHttpClient().newBuilder()
+      .addInterceptor(new BasicLoggingInterceptor())
+//      .cache(cache) // configure cache
+//      .proxy(proxy) // configure proxy
+//      .certificatePinner(certificatePinner) // certificate pinning
+//      .addNetworkInterceptor(interceptor) // network level interceptor
+//      .authenticator(authenticator) // authenticator for requests (it supports similar use-cases as "Authorization header" earlier
+//      .callTimeout(10000) // default timeout for complete calls
+//      .readTimeout(10000) // default read timeout for new connections
+//      .writeTimeout(10000) // default write timeout for new connections
+//      .dns(dns) // DNS service used to lookup IP addresses for hostnames
+//      .followRedirects(true) // follow requests redirects
+//      .followSslRedirects(true) // follow HTTP tp HTTPS redirects
+//      .connectionPool(connectionPool) // connection pool used to recycle HTTP and HTTPS connections
+//      .retryOnConnectionFailure(true) // retry or not when a connectivity problem is encountered
+//      .cookieJar(cookieJar) // cookie manager
+//      .dispatcher(dispatcher) // dispatcher used to set policy and execute asynchronous requests
+      .build();
+
+  String host = "https://json.extendsclass.com";
+
+  public final MediaType JSON
+      = MediaType.get("application/json; charset=utf-8");
+
+  private Request request;
+
+  //  public Headers headers = new Headers.Builder().add("Security-key", "ec").build();
+  public Headers headers;
+
+  MyHttp() {
+    Map<String, String> map = new HashMap<>();
+    map.put("Security-key", "ec");
+    headers = Headers.of(map);
+  }
+
+  public MyHttp get(String url) {
+    HttpUrl.Builder queryUrlBuilder = HttpUrl.get("https://json.extendsclass.com").newBuilder();
+    queryUrlBuilder.addQueryParameter("limit", "15");
+
+    request = new Request.Builder()
+        .url(host + url)
+        .headers(headers)
+        .addHeader("user-agent", "Mozilla/5.0")
+        .build();
+    return this;
+  }
+
+  public MyHttp post(String url, String json) {
+    RequestBody formBody = new FormBody.Builder().add("username","root").build();
+    RequestBody fileBody = RequestBody.create(new File("path/attachment.png"),
+        MediaType.parse("image/png"));
+    RequestBody requestBody = new MultipartBody.Builder()
+        .setType(MultipartBody.FORM)
+        .addFormDataPart("file", "head_img", fileBody)
+        .addFormDataPart("name", "xiaoyi").build();
+
+    RequestBody body = RequestBody.create(json, JSON);
+    request = new Request.Builder()
+        .url(host + url)
+        .headers(headers)
+        .post(body)
+        .build();
+    return this;
+  }
+
+  public String sync() throws IOException {
+    try (Response response = client.newCall(request).execute()) {
+      return response.body().string();
+    }
+  }
+
+  public void async() {
+    client.newCall(request).enqueue(new Callback() {
+      @Override
+      public void onFailure(@NotNull Call call, @NotNull IOException e) {
+        e.printStackTrace();
+      }
+
+      @Override
+      public void onResponse(@NotNull Call call, @NotNull Response response) {
+        System.out.println("----- Async -----");
+        System.out.println(response.body());
+      }
+    });
+  }
+
+  static class BasicLoggingInterceptor implements Interceptor {
+    @NotNull
+    @Override
+    public Response intercept(Interceptor.Chain chain) throws IOException {
+      Request request = chain.request();
+
+      System.out.printf("Sending request %s on %s%n%s%n",
+          request.url(), chain.connection(), request.headers());
+
+      Response response = chain.proceed(request);
+
+      System.out.printf("Received response for %s %n%s%n",
+          response.request().url(), response.headers());
+
+      return response;
+    }
+  }
+    
+  public static void main(String[] args) throws IOException {
+    MyHttp okhttp = new MyHttp();
+    String sync = okhttp.get("/bin/659e99c04915").sync();
+    System.out.println("--- main ---");
+    System.out.println(sync);
+  }
+}
+```
 
 
 

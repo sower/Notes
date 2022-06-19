@@ -2,6 +2,17 @@
 # —— [Spring](https://spring.io/) ——
 
 
+分层领域模型
+
+- DO（Data Object）：与数据库表结构一一对应，通过DAO层向上传输数据源对象。
+- DTO（Data Transfer Object）：数据传输对象，Service或Manager向外传输的对象。
+- BO（Business Object）：业务对象， 由Service层输出的封装业务逻辑的对象。
+- AO（Application Object）：应用对象， 在Web层与Service层之间抽象的复用对象模型，极为贴近展示层，复用度不高。
+- VO（View Object）：视图层对象，通常是Web向模板渲染引擎层传输的对象。
+- POJO（Plain Ordinary Java Object）：专指只有setter/getter/toString的简单类，包括DO/DTO/BO/VO等。
+
+
+
 # Core
 IoC（Inverse of Control，控制反转）：依赖注入（Dependency Injection，DI）。Spring 通过 IoC 容器来管理所有 Java 对象的实例化和初始化，控制对象与对象之间的依赖关系  <br />  AOP（Aspect Oriented Programming，面向切面编程）：横向抽取机制，取代了传统纵向继承体系的重复性代码，其应用主要体现在事务处理、日志管理、权限控制、异常处理等方面。  <br />  ![](./assets/1648975394639-fa7ee6c7-1b21-40cf-abc1-095e7034bd7e.gif)
 
@@ -1478,6 +1489,297 @@ public class MessageUtils
 }
 
 // 使用   String message = MessageUtils.getMessage("code")
+```
+
+
+
+## StopWatch
+```java
+/**
+ * 简单的秒表，允许对多个任务进行计时，公开总运行时间和每个命名任务的运行时间。
+ * 请注意，此对象并非设计为线程安全的，并且不使用同步。
+ */
+public class StopWatch {
+	private final String id;
+
+	private boolean keepTaskList = true;
+
+	private final List<TaskInfo> taskList = new LinkedList<>();
+
+	/** 当前任务的开始时间。 */
+	private long startTimeNanos;
+
+	/** 当前任务的名称。 */
+	@Nullable
+	private String currentTaskName;
+
+	@Nullable
+	private TaskInfo lastTaskInfo;
+
+	private int taskCount;
+
+	/** 总运行时间。 */
+	private long totalTimeNanos;
+
+
+	/**
+	 * 构造一个新的秒表。
+     * 不启动任何任务
+	 */
+	public StopWatch() {
+		this("");
+	}
+
+	public StopWatch(String id) {
+		this.id = id;
+	}
+    
+	public String getId() {
+		return this.id;
+	}
+
+	/**
+	 * 配置StopWatch.TaskInfo数组是否随着时间的推移而构建。
+	 * 使用秒表进行数百万个间隔时，将其设置为false；否则，TaskInfo结构将消耗过多的内存。
+	 * 默认为true。
+	 */
+	public void setKeepTaskList(boolean keepTaskList) {
+		this.keepTaskList = keepTaskList;
+	}
+
+
+	/**
+	 * 启动一个未命名的任务。
+	 * 如果在没有先调用该方法的情况下调用stop（）或计时方法，则结果是不确定的
+	 */
+	public void start() throws IllegalStateException {
+		start("");
+	}
+
+	public void start(String taskName) throws IllegalStateException {
+		if (this.currentTaskName != null) {
+			throw new IllegalStateException("Can't start StopWatch: it's already running");
+		}
+		this.currentTaskName = taskName;
+		this.startTimeNanos = System.nanoTime();
+	}
+
+	/**
+	 * 停止当前任务。
+	 * 如果在不调用至少一对start()/ stop()方法的情况下调用计时方法，则结果是不确定的。
+	 */
+	public void stop() throws IllegalStateException {
+		if (this.currentTaskName == null) {
+			throw new IllegalStateException("Can't stop StopWatch: it's not running");
+		}
+		long lastTime = System.nanoTime() - this.startTimeNanos;
+		this.totalTimeNanos += lastTime;
+		this.lastTaskInfo = new TaskInfo(this.currentTaskName, lastTime);
+		if (this.keepTaskList) {
+			this.taskList.add(this.lastTaskInfo);
+		}
+		++this.taskCount;
+		this.currentTaskName = null;
+	}
+
+	public boolean isRunning() {
+		return (this.currentTaskName != null);
+	}
+
+	@Nullable
+	public String currentTaskName() {
+		return this.currentTaskName;
+	}
+
+	/**
+	 * 获取上一个任务花费的时间（以纳秒为单位）。
+	 */
+	public long getLastTaskTimeNanos() throws IllegalStateException {
+		if (this.lastTaskInfo == null) {
+			throw new IllegalStateException("No tasks run: can't get last task interval");
+		}
+		return this.lastTaskInfo.getTimeNanos();
+	}
+
+	/**
+	 * 获取上一个任务花费的时间（以毫秒为单位）。
+	 */
+	public long getLastTaskTimeMillis() throws IllegalStateException {
+		if (this.lastTaskInfo == null) {
+			throw new IllegalStateException("No tasks run: can't get last task interval");
+		}
+		return this.lastTaskInfo.getTimeMillis();
+	}
+
+	/**
+	 * 获取上一个任务的名称。
+	 */
+	public String getLastTaskName() throws IllegalStateException {
+		if (this.lastTaskInfo == null) {
+			throw new IllegalStateException("No tasks run: can't get last task name");
+		}
+		return this.lastTaskInfo.getTaskName();
+	}
+
+	/**
+	 * 获取最后一个任务作为StopWatch.TaskInfo对象。
+	 */
+	public TaskInfo getLastTaskInfo() throws IllegalStateException {
+		if (this.lastTaskInfo == null) {
+			throw new IllegalStateException("No tasks run: can't get last task info");
+		}
+		return this.lastTaskInfo;
+	}
+
+
+	/**
+	 * 获取所有任务的总时间（以纳秒为单位）。
+	 */
+	public long getTotalTimeNanos() {
+		return this.totalTimeNanos;
+	}
+
+	/**
+	 * 获取所有任务的总时间（以毫秒为单位）。
+	 */
+	public long getTotalTimeMillis() {
+		return nanosToMillis(this.totalTimeNanos);
+	}
+
+	/**
+	 * 获取所有任务的总时间（以秒为单位）。
+	 */
+	public double getTotalTimeSeconds() {
+		return nanosToSeconds(this.totalTimeNanos);
+	}
+
+	/**
+	 * 获取计时的任务数。
+	 */
+	public int getTaskCount() {
+		return this.taskCount;
+	}
+
+	/**
+	 * 获取执行的任务的数据数组。
+	 */
+	public TaskInfo[] getTaskInfo() {
+		if (!this.keepTaskList) {
+			throw new UnsupportedOperationException("Task info is not being kept!");
+		}
+		return this.taskList.toArray(new TaskInfo[0]);
+	}
+
+	/**
+	 * 获得总运行时间的简短描述。
+	 */
+	public String shortSummary() {
+		return "StopWatch '" + getId() + "': running time = " + getTotalTimeNanos() + " ns";
+	}
+
+	/**
+	 * 生成带有描述所有已执行任务的表的字符串。
+	 * 对于自定义报告，请调用getTaskInfo()并直接使用任务信息。
+	 */
+	public String prettyPrint() {
+		StringBuilder sb = new StringBuilder(shortSummary());
+		sb.append('\n');
+		if (!this.keepTaskList) {
+			sb.append("No task info kept");
+		}
+		else {
+			sb.append("---------------------------------------------\n");
+			sb.append("ns         %     Task name\n");
+			sb.append("---------------------------------------------\n");
+			NumberFormat nf = NumberFormat.getNumberInstance();
+			nf.setMinimumIntegerDigits(9);
+			nf.setGroupingUsed(false);
+			NumberFormat pf = NumberFormat.getPercentInstance();
+			pf.setMinimumIntegerDigits(3);
+			pf.setGroupingUsed(false);
+			for (TaskInfo task : getTaskInfo()) {
+				sb.append(nf.format(task.getTimeNanos())).append("  ");
+				sb.append(pf.format((double) task.getTimeNanos() / getTotalTimeNanos())).append("  ");
+				sb.append(task.getTaskName()).append("\n");
+			}
+		}
+		return sb.toString();
+	}
+
+	/**
+	 * 生成描述所有已执行任务的信息字符串
+	 * 对于自定义报告，请调用getTaskInfo（）并直接使用任务信息。
+	 */
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(shortSummary());
+		if (this.keepTaskList) {
+			for (TaskInfo task : getTaskInfo()) {
+				sb.append("; [").append(task.getTaskName()).append("] took ").append(task.getTimeNanos()).append(" ns");
+				long percent = Math.round(100.0 * task.getTimeNanos() / getTotalTimeNanos());
+				sb.append(" = ").append(percent).append("%");
+			}
+		}
+		else {
+			sb.append("; no task info kept");
+		}
+		return sb.toString();
+	}
+
+
+	private static long nanosToMillis(long duration) {
+		return TimeUnit.NANOSECONDS.toMillis(duration);
+	}
+
+	private static double nanosToSeconds(long duration) {
+		return duration / 1_000_000_000.0;
+	}
+
+	/**
+	 * 嵌套类，用于保存有关StopWatch中执行的一项任务的数据。
+	 */
+	public static final class TaskInfo {
+
+		private final String taskName;
+
+		private final long timeNanos;
+
+		TaskInfo(String taskName, long timeNanos) {
+			this.taskName = taskName;
+			this.timeNanos = timeNanos;
+		}
+
+		/**
+		 * 获取此任务的名称。
+		 */
+		public String getTaskName() {
+			return this.taskName;
+		}
+
+		/**
+		 * 获取此任务花费的时间（以纳秒为单位）。
+		 */
+		public long getTimeNanos() {
+			return this.timeNanos;
+		}
+
+		/**
+		 * 获取此任务花费的时间（以毫秒为单位）。
+		 */
+		public long getTimeMillis() {
+			return nanosToMillis(this.timeNanos);
+		}
+
+		/**
+		 * 获取此任务花费的时间（以秒为单位）。
+		 */
+		public double getTimeSeconds() {
+			return nanosToSeconds(this.timeNanos);
+		}
+
+	}
+
+}
 ```
 
 

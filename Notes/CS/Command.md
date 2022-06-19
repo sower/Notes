@@ -44,6 +44,30 @@ history [-c] [-d offset] [n]  <br />  history -anrw [filename]
 - -r           读取历史文件，并将其内容附加到历史列表中。
 - -w           将当前历史记录列表附加到历史记录文件中并且附加它们到历史列表中。
 
+相关环境变量
+```shell
+HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S  `whoami` "
+
+# 历史命令记录数
+HISTSIZE=1000
+
+# 记录历史的文件的大小
+HISTFILESIZE=450
+
+# 指定不同终端执行的命令都存储在同一个文件中
+HISTFILE=/root/.commandline_warrior
+
+# 多个终端同时操作时，避免命令覆盖，采用追加方式
+shopt -s histappend
+
+# 忽略重复命令
+HISTCONTROL=ignoredups
+
+# ~/.bash_history 记录的是前一次登陆所运行过的命令
+# 本次登陆所运行的命令都被缓存在内存中，当退出后，才会记录到 .bash_history 中
+```
+
+
 
 ## 常用
 
@@ -276,13 +300,14 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 
 **交互模式下**
 
-- /字符串	向下搜索“字符串”的功能。
-- ?字符串	向上搜索“字符串”的功能。
-- n	重复*前一个搜索
+- /pattern	向下匹配搜索
+- ?pattern	向上匹配搜索
+- n	重复前一个搜索
 - N	反向重复前一个搜索
-- b	向上移动一页。
-- d	向下移动半页。
-- v	使用配置的编辑器编辑当前文件。
+- &pattern        只显示匹配的行
+- g	Go to first line in file (or line N).
+- G	Go to last line in file (or line N).
+- p	Go to beginning of file (or N percent into file)
 
 
 

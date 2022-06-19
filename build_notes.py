@@ -54,7 +54,12 @@ class ExportMD:
         repos = list(self.repo.keys())
         for index, repo_name in enumerate(repos, start=1):
             print(index, repo_name)
-        select = input("请输入知识库名对应序号，多个请以空格分开，全选请输入 0: ").strip()
+        select = input('''
+			请输入知识库名对应序号，多个请以空格分开
+			默认为导入Notes下的内容，全选请输入 0: 
+        ''').strip()
+        if len(select) == 0:
+            return os.listdir(self.export_dir)
         if select == '0':
             return repos
         return [repos[int(index)-1] for index in select.split(" ") if 0 < int(index) <= len(repos)]
