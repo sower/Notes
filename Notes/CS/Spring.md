@@ -2368,3 +2368,174 @@ public class Test {
 </select>
 ```
 
+
+
+[quartz](https://github.com/quartz-scheduler/quartz)
+
+- Scheduler 和调度程序交互的主要API
+- Job 调度器调度的任务组件接口
+- JobDetail Job实例，包含了该实例的执行计划和所需要的数据
+- Trigger 触发器，定义了一个触发策略
+
+```java
+public class QuartzTest {
+	// 你需要在start和shutdown之间执行你的任务。
+    public static void main(String[] args) {
+
+        try {
+            // 从工厂中获取Scheduler示例
+            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+
+            // 开始
+            scheduler.start();
+
+            // 定义Job，并将其绑定到HelloJob类中
+            JobDetail job = JobBuilder.newJob(HelloJob.class)
+                    .withIdentity("job1", "group1") // name 和 group
+                    .usingJobData("username", "snow") // 置入JobDataMap
+                    .usingJobData("age", "20")
+                    .withDescription("desc-demo")
+                    .build();
+
+            // 触发Job执行，每30s执行一次，直到22：00
+            Trigger trigger = TriggerBuilder.newTrigger()
+                    .withIdentity("trigger1", "group1")
+                    .startNow() // 立即开始
+                    .withSchedule(SimpleScheduleBuilder.simpleSchedule()
+                            .withIntervalInSeconds(30)
+                            .repeatForever())
+                    .endAt(dateOf(22, 0, 0))
+                    .build();
+
+            // 告诉 quartz 使用trigger来调度job
+            scheduler.scheduleJob(job, trigger);
+			// 关闭，线程终止
+            scheduler.shutdown();
+
+        } catch (SchedulerException se) {
+            se.printStackTrace();
+        }
+    }
+}
+
+@Slf4j
+@NoArgsConstructor
+public class HelloJob implements Job {
+
+    @Override
+    public void execute(JobExecutionContext context) throws JobExecutionException {
+        // 从context中获取属性
+        JobDetail jobDetail = context.getJobDetail();
+        JobKey key = jobDetail.getKey();
+        Class<? extends Job> jobClass = jobDetail.getJobClass();
+        String description = jobDetail.getDescription();
+
+        JobDataMap jobDataMap = jobDetail.getJobDataMap();
+        String username = jobDataMap.getString("username");
+        int age = jobDataMap.getIntValue("age");
+
+        log.info("\nJobKey : {},\n JobClass : {},\n JobDesc : {},\n username : {},\n age : {}",
+                key, jobClass.getName(), description, username, age);
+    }
+}
+```
+
+**SpringBoot整合**
+```java
+@Slf4j
+public class DemoJob extends QuartzJobBean {
+
+    @Override
+    protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        String now = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
+        log.info("当前的时间: " + now);
+    }
+}
+```
+
+调度器Scheduler绑定
+
+- Bean自动配置
+```java
+@Configuration
+public class QuartzConfig {
+
+    private static final String ID = "SUMMERDAY";
+
+    @Bean
+    public JobDetail jobDetail1() {
+        return JobBuilder.newJob(DemoJob.class)
+                .withIdentity(ID + " 01")
+                .storeDurably()
+                .build();
+    }
+
+    @Bean
+    public Trigger trigger1() {
+        // 简单的调度计划的构造器
+        SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
+                .withIntervalInSeconds(5) // 频率
+                .repeatForever(); // 次数
+
+        return TriggerBuilder.newTrigger()
+                .forJob(jobDetail1())
+                .withIdentity(ID + " 01Trigger")
+                .withSchedule(scheduleBuilder)
+                .build();
+    }
+}
+```
+
+- 手动配置
+```java
+@Component
+public class JobInit implements ApplicationRunner {
+
+    private static final String ID = "SUMMERDAY";
+
+    @Autowired
+    private Scheduler scheduler;
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        JobDetail jobDetail = JobBuilder.newJob(DemoJob.class)
+                .withIdentity(ID + " 01")
+                .storeDurably()
+                .build();
+        
+        CronScheduleBuilder scheduleBuilder =
+                CronScheduleBuilder.cronSchedule("0/5 * * * * ? *");
+        // 创建任务触发器
+        Trigger trigger = TriggerBuilder.newTrigger()
+                .forJob(jobDetail)
+                .withIdentity(ID + " 01Trigger")
+                .withSchedule(scheduleBuilder)
+                .startNow() //立即執行一次任務
+                .build();
+        
+        // 手动将触发器与任务绑定到调度器内
+        scheduler.scheduleJob(jobDetail, trigger);
+    }
+}
+```
+yml配置
+```yaml
+spring:
+  # Quartz 的配置，对应 QuartzProperties 配置类
+  quartz:
+    job-store-type: memory # Job 存储器类型。默认为 memory 表示内存，可选 jdbc 使用数据库。
+    auto-startup: true # Quartz 是否自动启动
+    startup-delay: 0 # 延迟 N 秒启动
+    wait-for-jobs-to-complete-on-shutdown: true # 应用关闭时，是否等待定时任务执行完成。默认false
+    overwrite-existing-jobs: false # 是否覆盖已有 Job 的配置
+    properties: # 添加 Quartz Scheduler 附加属性
+      org:
+        quartz:
+          threadPool:
+            threadCount: 25 # 线程池大小。默认为 10 。
+            threadPriority: 5 # 线程优先级
+            class: org.quartz.simpl.SimpleThreadPool # 线程池类型
+jdbc: 使用 JDBC 的 JobStore 的时需要配置
+```
+
+

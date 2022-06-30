@@ -67,6 +67,13 @@ public class Demo {
             public void run() {
             }
         }).start();
+        
+        // 使用Lambda表达式
+        new Thread(()->{
+          for (int i = 0; i < 100; i++) {
+            System.out.println(Thread.currentThread().getName() + " " + i);
+          }
+        },"Lambda").start();
     }
 }
 ```
@@ -100,7 +107,72 @@ Future<String> future = executor.submit(task);
 String result = future.get(); // 可能阻塞
 ```
 
-**CompletableFuture**  <br />  可以传入回调对象，当异步任务完成或者发生异常时，自动调用回调对象的回调方法
+class `FutureTask<V>`  <br />  FutureTask类实现了` RunnableFuture<V>` 接口（`RunnableFuture<V>` 接口继承了`Runnable` 接口和`Future<V> `接口）  <br />  构造器：FutureTask(Callable<V> callable)、FutureTask(Runnable runnable, V result)（指定成功完成时 get 返回给定的结果为 result）
+```java
+public class CallableDemo {
+
+    public static void main(String[] args) {
+        Callable<Long> callable = new MyThread();
+        FutureTask<Long> future = new FutureTask<>(callable);
+        new Thread(future, "Callable 线程").start();
+        try {
+            System.out.println("任务耗时：" + (future.get() / 1000000) + "毫秒");
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static class MyThread implements Callable<Long> {
+
+        private int ticket = 10000;
+
+        @Override
+        public Long call() {
+            long begin = System.nanoTime();
+            while (ticket > 0) {
+                System.out.println(Thread.currentThread().getName() + " 卖出了第 " + ticket + " 张票");
+                ticket--;
+            }
+
+            long end = System.nanoTime();
+            return (end - begin);
+        }
+
+    }
+
+}
+```
+
+
+**CompletableFuture**
+
+- implements Future<T>, CompletionStage<T>
+- 组合式异步编程，可以传入回调对象，当异步任务完成或者发生异常时，自动调用回调对象的回调方法
+
+**静态方法**
+
+- CompletableFuture<Void> runAsync(Runnable runnable)
+- CompletableFuture<Void> runAsync(Runnable runnable, Executor executor)
+- CompletableFuture<U> supplyAsync(Supplier<U> supplier)：使用公共的线程池 ForkJoinPool 执行异步任务
+- CompletableFuture<U> supplyAsync(Supplier<U> supplier, Executor executor)：使用指定的线程池执行异步任务
+- 组合多个 CompletableFuture
+   - CompletableFuture<Void> allOf(CompletableFuture<?>... cfs)：等待数组中的所有 CompletableFuture 对象都执行完毕
+   - CompletableFuture<Object> anyOf(CompletableFuture<?>... cfs)：只要数组有任何一个 CompletableFuture 对象执行完毕就不再等待，返回由第一个执行完毕的 CompletableFuture 对象的返回值构成的 CompletableFuture
+
+**实例方法**
+
+- T join()：阻塞直到返回完成时的结果值，如果遇到异常则抛出 unchecked exception
+- 定义处理 CompletableFuture 的返回结果，即回调函数
+   - CompletableFuture<Void> thenRun(Runnable action)
+   - CompletableFuture<Void> thenAccept(Consumer<? super T> action)
+   - CompletableFuture<U> thenApply(Function<? super T, ? extends U> fn)
+- 组合两个 CompletableFuture
+   - CompletableFuture<U> thenCompose(Function<? super T, ? extends CompletionStage<U>> fn)：对两个异步操作进行流水线，第一个操作完成后，将其结果作为参数传递给第二个操作
+   - CompletableFuture<V> thenCombine(CompletionStage<? extends U> other, BiFunction<? super T,? super U,? extends V> fn)：当两个 CompletableFuture 对象完成计算后，将结果合并
+- 异常处理（如果异常发生，res 参数将是 null，否则 ex 将是 null）
+   - ConnectionFuture<T> exceptionally(Function<Throwable, ? extends T> fn)：仅在异常时回调，可在异常时返回特定值用于回退
+   - ConnectionFuture<T> whenComplete(BiConsumer<? super T, ? super Throwable> action)：无论异常是否发生都会被调用
+   - ConnectionFuture<U> handle(BiFunction<? super T, Throwable, ? extends U> fn)：无论异常是否发生都会被调用，可在异常时返回特定值用于回退
 ```java
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -132,7 +204,7 @@ public class Main {
 }
 ```
 
-class `FutureTask<V>`  <br />  FutureTask类实现了` RunnableFuture<V>` 接口（`RunnableFuture<V>` 接口继承了`Runnable` 接口和`Future<V> `接口）  <br />  构造器：FutureTask(Callable<V> callable)、FutureTask(Runnable runnable, V result)（指定成功完成时 get 返回给定的结果为 result）
+
 
 
 
@@ -508,13 +580,22 @@ class Light{
 
 ## 线程池
 
+- Executor - 运行任务的简单接口。
+- ExecutorService - 扩展了 Executor 
+   - 支持有返回值的线程 - sumbit、invokeAll、invokeAny 方法中都支持传入Callable 对象。
+   - 支持管理线程生命周期 - shutdown、shutdownNow、isShutdown 等方法。
+- ScheduledExecutorService - 扩展了 ExecutorService 接口。支持定期执行任务。
+- AbstractExecutorService - ExecutorService 接口的默认实现。
+- ThreadPoolExecutor - Executor 框架最核心的类，它继承了 AbstractExecutorService 类。
+- ScheduledThreadPoolExecutor - ScheduledExecutorService 接口的实现，一个可定时调度任务的线程池。
+
+
 创建线程池的静态方法
 
 - ExecutorService newCachedThreadPool()：一个具有缓存功能的线程池，系统根据需要创建线程（**无界线程池**，已有 60 秒钟未被使用的线程会被终止并从缓存中移除）  <br />  `new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue<Runnable>())`
 - ExecutorService newFixedThreadPool(int nThreads)：一个可重用的、**具有固定核心线程数的线程池**  <br />  （使用无界队列，**队列堆积太多**数据导致 OOM）  <br />  `new ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>())`
-- ExecutorService newSingleThreadExecutor()：一个**只有单线程的线程池**  <br />  `new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>()`)
+- ExecutorService newSingleThreadExecutor()：一个**单线程的线程池**  <br />  `new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>()`)
 - ScheduledExecutorService newScheduledThreadPool(int corePoolSize)：一个线程池，可在指定延迟后执行或定期执行线程任务  <br />  `new ThreadPoolExecutor(corePoolSize, Integer.MAX_VALUE, 0, NANOSECONDS, new DelayedWorkQueue())`
-
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -546,29 +627,6 @@ class Task implements Runnable {
     }
 }
 ```
-
-**ExecutorService 线程池接口**  <br />  Executor 的子接口，代表尽快执行线程的线程池（只要线程池中有空闲线程，就立即执行线程任务）
-
-- void execute(Runnable command)：在未来某个时间执行给定的命令
-- `Future<?> submit(Runnable task)`：将一个 Runnable 对象提交给指定的线程池，线程池将在有空闲线程时执行 Runnable 对象代表的任务，其中 Future 对象代表 Runnable 任务的返回值——但 run () 方法没有返回值，所以 Future 对象将在 run() 方法执行结束后返回 null，但可以调用 Future 的 isDone()、isCancelled() 方法来获得 Runnable 对象的执行状态
-- `Future<T> submit(Runnable task, T result)`：将一个 Runnable 对象提交给指定的线程池，线程池将在有空闲线程时执行 Runnable 对象代表的任务，其中 result 显式指定线程执行结束后的返回值，所以 Future 对象将在 run() 方法执行结束后返回 result
-- `Future<T> submit(Callable<T> task)`：将一个 Callable 对象提交给指定的线程池，线程池将在有空闲线程时执行 Callable 对象代表的任务，其中 Future 代表 Callable 对象里 call() 方法的返回值（调用 AbstractExecutorService#submit 方法，**将 Callable 对象包装成 FutureTask 对象**，再调用 ThreadPoolExecutor#execute 方法 → ThreadPoolExecutor.Worker#run）
-- `List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks)`：执行给定的任务，当所有任务完成时，返回保持任务状态和结果的 Future 列表
-- `T invokeAny(Collection<? extends Callable<T>> tasks)`：执行给定的任务，如果某个任务已成功完成（也就是未抛出异常），则返回其结果
-- void shutdown()：启动线程池的关闭序列，调用该方法后的线程池不再接收新任务，但**会将以前所有已提交任务执行完成**，当线程池中的所有任务都执行完成后，池中的所有线程都会死亡
-- `List<Runnable> shutdownNow()`：试图停止所有正在执行的活动任务，暂停处理正在等待的任务，并返回等待执行的任务列表
-- boolean awaitTermination(long timeout, TimeUnit unit)：**阻塞**，直到所有任务完成执行
-
-**ScheduledExecutorService 接口**  <br />  ExecutorService 的子接口，代表可在指定延迟后或周期性地执行线程任务的线程池
-
-- `ScheduledFuture<V> schedule(Callable<V> callable, long delay, TimeUnit unit)`：指定 callable 任务将在 delay 延迟后执行
-- `ScheduledFuture<?> schedule(Runnable command, long delay, TimeUnit unit)`：指定 command 任务将在 delay 延迟后执行
-- `ScheduledFuture<?> scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)`：指定 command 任务将在 delay 延迟后执行，而且以设定频率重复执行（在 initialDelay 后开始执行，依次在 initialDelay+period、initialDelay+2*period… 处重复执行；如果当前任务耗时较多，超过定时周期 period，则当前任务结束后会立即执行）
-- `ScheduledFuture<?> scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)`：创建并执行一个在给定初始延迟后首次启用的定期操作，随后在每一次执行终止和下一次执行开始之间都存在给定的延迟（如果任务在任一次执行时遇到异常，就会取消后续执行；否则，只能通过程序来显式取消或终止该任务）
-
-
-**ThreadPoolExecutor**
-
 
 
 ForkJoinPool  <br />  线程池的实现类，将一个任务拆分成多个“小任务”并行计算，再把多个“小任务”的结果合成总的计算结果
@@ -643,10 +701,58 @@ class SumTask extends RecursiveTask<Long> {
 
 
 
-`ThreadLocal<T>`
+## `ThreadLocal<T>`
 
+- 代表一个线程局部变量
+- 当运行于多线程环境的某个对象使用 ThreadLocal 维护变量时，ThreadLocal **为每一个使用该变量的线程分配一个独立的变量副本**，从而解决多线程中对同一变量的访问冲突
 
+实例方法
 
+   - protected T initialValue()：返回此线程局部变量的当前线程的“初始值”
+   - T get()：返回此线程局部变量中当前线程副本中的值
+   - void remove()：移除此线程局部变量中当前线程的值
+   - void set(T value)：设置此线程局部变量中当前线程副本中的值
+- 子类 InheritableThreadLocal：在创建子线程时，子线程会接收所有**可继承的线程局部变量的初始值**，以获得父线程所具有的值
+```java
+public class ThreadLocalDemo {
+
+    private static ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>() {
+        @Override
+        protected Integer initialValue() {
+            return 0;
+        }
+    };
+
+    public static void main(String[] args) {
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        for (int i = 0; i < 10; i++) {
+            executorService.execute(new MyThread());
+        }  // 全部输出 count = 10
+        executorService.shutdown();
+    }
+
+    static class MyThread implements Runnable {
+
+        @Override
+        public void run() {
+            int count = threadLocal.get();
+            for (int i = 0; i < 10; i++) {
+                try {
+                    count++;
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            threadLocal.set(count);
+            threadLocal.remove();
+            System.out.println(Thread.currentThread().getName() + " : " + count);
+        }
+
+    }
+
+}
+```
 
 
 
