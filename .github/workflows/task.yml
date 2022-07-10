@@ -1,0 +1,35 @@
+name: Auto update notes
+
+env:
+  BRANCH: dev
+
+on:
+  schedule:
+    - cron: '0 20 * * *'
+  # push:
+  #   branchs:
+  #     - $BRANCH
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ env.BRANCH }}
+        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+    - name: prepare dependencies
+      run: |
+        pip list
+        pip install aiohttp
+        pip install asyncio
+        rm -rf ./Docs/[a-zA-Z]*/*
+    - name: build
+      run: python build_notes.py ${{ secrets.YQ_NAMESAPCE }} ${{ secrets.YQ_TOKEN }}
+    - name: Commit files
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add .
+        git commit -m "github-actions auto update"
+        git push origin ${{ env.BRANCH }}:${{ env.BRANCH }}

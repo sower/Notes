@@ -2,6 +2,7 @@
 
 import re
 import os
+import sys
 import aiohttp
 import asyncio
 from urllib import parse
@@ -9,6 +10,7 @@ from urllib import parse
 
 class ExportMD:
     def __init__(self):
+        self.is_action = False
         self.namespace, self.Token = self.get_UserInfo()
         self.headers = {
             "Content-Type": "application/json",
@@ -16,19 +18,18 @@ class ExportMD:
             "X-Auth-Token": self.Token
         }
         self.repo = {}
-        self.export_dir = './Notes'
+        self.export_dir = './Docs'
 
     # 用户信息
     def get_UserInfo(self):
-        f_name = ".userinfo"
-        if os.path.isfile(f_name):
-            with open(f_name, encoding="utf-8") as f:
-                userinfo = f.read().split("&")
-        else:
-            with open("info.txt") as f:
-                namespace, token = f.read().split(' ')
-                userinfo = [namespace, token]
-                return userinfo
+        if len(sys.argv) == 3:
+            self.is_action = True
+            return sys.argv[1:]
+
+        with open("info.txt") as f:
+            namespace, token = f.read().split(' ')
+            userinfo = [namespace, token]
+            return userinfo
 
     # 发送请求
     async def req(self, session, api):
@@ -44,9 +45,11 @@ class ExportMD:
         async with aiohttp.ClientSession() as session:
             result = await self.req(session, api)
             for repo in result.get('data'):
-                repo_id = str(repo['id'])
-                repo_name = repo['name']
-                self.repo[repo_name] = repo_id
+                self.repo[repo['name']] = str(repo['id'])
+
+    def getLocalRepo(self):
+        return list(filter(lambda item: not item.startswith(
+            '.'), os.listdir(self.export_dir)))
 
     # 选择知识库
     def selectRepo(self):
@@ -54,12 +57,16 @@ class ExportMD:
         repos = list(self.repo.keys())
         for index, repo_name in enumerate(repos, start=1):
             print(index, repo_name)
+
+        if self.is_action:
+            return self.getLocalRepo()
+
         select = input('''
 			请输入知识库名对应序号，多个请以空格分开
-			默认为导入Notes下的内容，全选请输入 0: 
+			默认为导入Docs下的内容，全选请输入 0:
         ''').strip()
         if len(select) == 0:
-            return os.listdir(self.export_dir)
+            return self.getLocalRepo()
         if select == '0':
             return repos
         return [repos[int(index)-1] for index in select.split(" ") if 0 < int(index) <= len(repos)]
@@ -78,9 +85,9 @@ class ExportMD:
                 title, level = '', 0
                 for pair in block.split('\n  ')[1:10]:
                     k, v = pair.split(': ', 1)
-                    if(k == 'title'):
+                    if k == 'title':
                         title = v
-                    if(k == 'level'):
+                    elif k == 'level':
                         level += int(v)
                 title_level = (level+3)*'#' if level < 3 else ''
                 path = parse.quote(f"{self.export_dir}/{repo_name}/{title}.md")
@@ -104,14 +111,11 @@ class ExportMD:
         api = f"/repos/{repo_id}/docs/{slug}"
         async with aiohttp.ClientSession() as session:
             result = await self.req(session, api)
-            body = result['data']['body']
-
-            return body
+            return result['data']['body']
 
     # 创建文件夹
     def mkDir(self, dir):
-        isExists = os.path.exists(dir)
-        if not isExists:
+        if not os.path.exists(dir):
             os.makedirs(dir)
 
     # 获取文章并执行保存
@@ -127,7 +131,7 @@ class ExportMD:
         new_body, image_list = await self.to_local_image_src(body)
 
         if image_list:
-            # 图片保存位置: ./Notes/<repo_name>/assets/<filename>
+            # 图片保存位置: ./Docs/<repo_name>/assets/<filename>
             image_dir = os.path.join(self.export_dir, repo_name, "assets")
             self.mkDir(image_dir)
             async with aiohttp.ClientSession() as session:
@@ -179,7 +183,6 @@ class ExportMD:
     async def run(self):
         await self.getRepo()
         repo_name_list = self.selectRepo()
-
         self.mkDir(self.export_dir)  # 创建用于存储知识库文章的文件夹
 
         with open('README.md', 'w', encoding='utf-8') as md:
