@@ -1,4 +1,16 @@
 # Notes  
+## Universal  
+- ### [UML](./Docs/Universal/UML.md)  
+- ### [Markdown](./Docs/Universal/Markdown.md)  
+- ### [Regular expression](./Docs/Universal/Regular%20expression.md)  
+- ### [编码 & 加密](./Docs/Universal/%E7%BC%96%E7%A0%81%20%26%20%E5%8A%A0%E5%AF%86.md)  
+- ### [Terminology](./Docs/Universal/Terminology.md)  
+- ### [QA](./Docs/Universal/QA.md)  
+- ### [Software](./Docs/Universal/Software.md)  
+- ### [Programming paradigm](./Docs/Universal/Programming%20paradigm.md)  
+- ### [Security](./Docs/Universal/Security.md)  
+
+  <br />  
 ## CS  
 - ### [Web](./Docs/CS/Web.md)  
   - #### [HTML](./Docs/CS/HTML.md)  
@@ -46,18 +58,6 @@
 - ### [SQL](./Docs/CS/SQL.md)  
   - #### [MySQL](./Docs/CS/MySQL.md)  
   - #### [NoSQL](./Docs/CS/NoSQL.md)  
-
-  <br />  
-## Universal  
-- ### [UML](./Docs/Universal/UML.md)  
-- ### [Markdown](./Docs/Universal/Markdown.md)  
-- ### [Regular expression](./Docs/Universal/Regular%20expression.md)  
-- ### [编码 & 加密](./Docs/Universal/%E7%BC%96%E7%A0%81%20%26%20%E5%8A%A0%E5%AF%86.md)  
-- ### [Terminology](./Docs/Universal/Terminology.md)  
-- ### [QA](./Docs/Universal/QA.md)  
-- ### [Software](./Docs/Universal/Software.md)  
-- ### [Programming paradigm](./Docs/Universal/Programming%20paradigm.md)  
-- ### [Security](./Docs/Universal/Security.md)  
 
   <br />  
 ## Software  
