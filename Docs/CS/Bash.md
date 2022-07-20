@@ -92,23 +92,12 @@ printf  format-string  [arguments...]
 
 # 通配符扩展（Wildcard Expansion）
 模式扩展（globbing）
-```shell
-#关闭
-$ set -o noglob
-# 或者
-$ set -f
-#打开
-$ set +o noglob
-# 或者
-$ set +f
-```
-**说明**
 
 - 通配符是先解释，再执行
 - 文件名扩展在不匹配时，会原样输出
 - 只适用于单层路径
 
-通配符
+**通配符**
 
 - ~：当前用户的主目录
    - ~user：用户user的主目录
@@ -150,11 +139,11 @@ $ set +f
 - @(pattern-list)：只匹配一个模式。
 - !(pattern-list)：匹配零个或一个以上的模式，但不匹配单独一个的模式。
 
-shopt [option] [optionname ...]	设定和取消设定 shell 选项
+`shopt [option] [optionname ...]`	设定 shell 选项
 
-- -p	打印每个 shell 选项并标注它的状态。
-- -s	启用(设定)每个 OPTNAME 选项
-- -u	禁用(取消设定)每个 OPTNAME 选项
+- -p	打印每个 shell 选项并标注它的状态
+- -s	启用 OPTNAME 选项
+- -u	禁用 OPTNAME 选项
 
 **optionname**
 
@@ -162,7 +151,9 @@ shopt [option] [optionname ...]	设定和取消设定 shell 选项
    - nullglob：让通配符不匹配任何文件名时，返回空字符
    - failglob：使得通配符不匹配任何文件名时，Bash 会直接报错，而不是让各个命令去处理。
    - extglob：使得 Bash 支持 ksh 的一些扩展语法。
-   - nocaseglob：让通配符扩展不区分大小写。
+   - **nocaseglob**：让通配符扩展不区分大小写
+   - **autocd**	 e.g. `**/qux` will enter `./foo/bar/baz/qux`
+   - **globstar**	递归通配
 
 
 
@@ -635,7 +626,31 @@ export EDITOR
 **登出**  <br />  `~/.bash_logout`脚本在每次退出 Session 时执行，通常用来做一些清理工作和记录工作，比如删除临时文件，记录用户在本次 Session 花费的时间。
 
 
-# 键盘绑定
+
+# Hot Key
+| Ctrl+R | 搜索历史命令 |
+| --- | --- |
+| Ctrl+A | 移动光标到行首 |
+| Ctrl+E | 移动光标到行尾 |
+| Ctrl + W | 剪切一个单词 |
+| Ctrl + U | 剪切光标位置到行首的字符 |
+| Ctrl + K | 剪切光标位置到行尾的字符 |
+| Ctrl + Y | 粘贴命令行剪切的内容 |
+
+命令控制
+
+| Ctrl + L | 清屏 |
+| --- | --- |
+| Ctrl + O | 执行当前命令，并选择上一条命令 |
+| Ctrl + S | 阻止屏幕输出 |
+| Ctrl + Q | 允许屏幕输出 |
+| Ctrl + C | 终止命令 |
+| Ctrl + Z | 挂起命令 |
+| Ctrl + D | 键盘输入结束或退出终端 |
+
+
+
+## 键盘绑定
 全局的键盘绑定文件默认为`/etc/inputrc`  <br />  自定义键盘绑定文件`~/.inputrc`文件
 ```shell
 # 保证全局绑定不会被遗漏
@@ -866,5 +881,6 @@ shift $(($OPTIND -1))
 - [awesome-bash](https://github.com/awesome-lists/awesome-bash)
 - [Bash-Snippets](https://github.com/alexanderepstein/Bash-Snippets)
 - [awesome-dotfiles](https://github.com/webpro/awesome-dotfiles)
+- [oh-my-zsh](https://ohmyz.sh/)
+- [Bash it](https://github.com/Bash-it/bash-it)
 - [oh-my-bash](https://github.com/ohmybash/oh-my-bash)
-- ohmyzsh

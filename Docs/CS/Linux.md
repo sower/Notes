@@ -147,28 +147,6 @@ mask 权限：用户或群组能拥有的最大 ACL 权限，超出部分做无�
 
 # 配置文件
 
-## 环境变量
-![](./assets/1643807404120-afeb68af-d868-4d1d-8c2c-88987beb0c63.png)
-
-- /etc/profile
-   - USER变量
-   - LOGNAME变量
-   - MAIL变量
-   - PATH变量
-   - HOSTNAME变量
-   - HISTSIZE变量
-   - umask
-   - 调用/etc/profile.d/*.sh文件
-- /etc/profile.d/*.sh
-- ~/.bash_profile
-- ~/.bashrc
-- /etc/bashrc
-   - PS1变量
-   - umask
-   - PATH变量
-   - 调用/etc/profile.d/*.sh文件
-
-**注销时候生效的环境变量配置文件**  <br />  ~/.bash_logout  <br />  历史记录保存在硬盘上  <br />  ~/.bash_history
 
 **登入显示**  <br />  登陆后欢迎信息: **/etc/motd**  <br />  本地和远程登录都显示此欢迎信息
 
@@ -264,32 +242,30 @@ systemctl restart networking
 
 ## 源码安装
 ```shell
+# 以安装python3为例
+
 # 安装编译程序（gcc、make、g++及其他所需软件）
-sudo apt install build-essential
-```
-解压缩源码压缩包（.tar、tar.gz、tar.bz2、tar.Z）
+yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make
 
-- 解xx.tar.gz：tar zxf xx.tar.gz
-- 解xx.tar.Z：tar zxf xx.tar.Z
-- 解xx.tgz：tar zxf xx.tgz
-- 解xx.bz2：bunzip2 xx.bz2
-- 解xx.tar：tar xf xx.tar
+# 一般安装软件的位置
+cd /usr/local
 
-进入到解压出的目录中  <br />  用ls -F --color或者ls -F命令查看一下可执行文件，可执行文件会以*号的尾部标志
-```shell
-./configure		# 检查系统是否有编译时所需的库，以及库的版本是否满足编译的需要等安装所需要的系统信息
-make		# 编译
-sudo make install	# 安装
+# 下载源码包，并解压
+wget https://www.python.org/ftp/python/3.10.5/Python-3.10.5.tgz
+tar -zxvf Python-3.10.5.tgz
 
-# 清除编译过程中产生的临时文件和配置过程中产生的文件
-sudo make clean
-sudo make distclean
+# 配置
+cd Python-3.10.5
+./configure  --prefix=/usr/local
 
-# 软件的源代码目录，卸载源代码编译安装的软件
-sudo make uninstall
+# 编译 & 安装
+make && sudo make install
+
+# 建立软链接
+ln -s /usr/local/Python-3.10.5/bin/python3 /usr/bin/python3
+ln -s /usr/local/Python-3.10.5/bin/pip3 /usr/bin/pip3
 ```
 
-export PATH=$PATH:/usr/local/<软件名>/...（解压目录）/bin
 
 
 ## RPM
@@ -339,8 +315,8 @@ Ubuntu升级
 
 1.系统软件包更新
 sudo apt update
-    sudo apt full-upgrade
-    sudo apt autoremove
+sudo apt full-upgrade
+sudo apt autoremove
 
 2.安装Update Manager Core 产品包
 sudo apt-get install update-manager-core
@@ -403,6 +379,7 @@ Debian Package，由 Debian Linux 所开发的包管理机制，通过 DPKG 包�
 ```shell
 # service命令启动redis脚本
 service redis start
+
 # 直接启动redis脚本
 /etc/init.d/redis start
 ```
@@ -605,30 +582,6 @@ getenforce	查询SELinux的工作模式  <br />  sestatus	查看策略
 
 
 
-# Hot Key
-
-| Ctrl+R | 搜索历史命令 |
-| --- | --- |
-| Ctrl+A | 移动光标到行首 |
-| Ctrl+E | 移动光标到行尾 |
-| Ctrl + W | 剪切一个单词 |
-| Ctrl + U | 剪切光标位置到行首的字符 |
-| Ctrl + K | 剪切光标位置到行尾的字符 |
-| Ctrl + Y | 粘贴命令行剪切的内容 |
-
-命令控制
-
-| Ctrl + L | 清屏 |
-| --- | --- |
-| Ctrl + O | 执行当前命令，并选择上一条命令 |
-| Ctrl + S | 阻止屏幕输出 |
-| Ctrl + Q | 允许屏幕输出 |
-| Ctrl + C | 终止命令 |
-| Ctrl + Z | 挂起命令 |
-| Ctrl + D | 键盘输入结束或退出终端 |
-
-
-
 # —— vi ——
 ![](https://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch1.gif#crop=0&crop=0&crop=1&crop=1&id=f6Bqi&originHeight=724&originWidth=1024&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
@@ -640,37 +593,80 @@ vi - Visual Interface  <br />  [vim](http://vimdoc.sourceforge.net/htmldoc/quick
 resource
 
 - [vim-galore](https://github.com/mhinz/vim-galore)
+- [Learn-Vim](https://github.com/iggredible/Learn-Vim)
 - [vimrc](https://github.com/amix/vimrc)
 
 
-## 启动
 vim [options] [file ..]       编辑指定的文件
 
 - -R			只读模式 (同 "view")
-- -r (跟文件名)		恢复崩溃的会话
-- -p[N]		打开 N 个标签页 (默认值: 每个文件一个)
-- -o[N]		打开 N 个窗口 (默认值: 每个文件一个)
-- -O[N]		同 -o 但垂直分割
 - +			启动后跳到文件末尾
 - +<lnum>		启动后跳到第 <lnum> 行
 - +/pattern	光标置于首个与 pattern 匹配的位置
 - -w <scriptout>	将所有输入的命令追加到文件 <scriptout>
 - -W <scriptout>	将所有输入的命令写入到文件 <scriptout>
 - -x			编辑加密的文件
-- --startuptime <file>	Write startup timing messages to <file>
-- --clean		'nocompatible', Vim defaults, no plugins, no viminfo
 
 
 # 命令模式（Command mode）
 
-## 基础修改
-| x, X | x 后删 (del)， X 前删(backspace) |
+## 操作符 Operator
+
+Inserting text
+
+| 命令 | 说明 |
 | --- | --- |
+| i，a | 在光标前，后进行编辑 |
+| I，A | 在行首，末插入 |
+| o，O | 在当前行后，前插入一个新行 |
+
+插入命令i、附加命令a、空行插入命令o
+
+Changing text
+
+| r, R | 替换单个，连续 |
+| --- | --- |
+| c, C | 修改 |
+| s, S | 替换字符，行 |
+
+修改命令c、取代命令r、替换命令s
+
+| x, X | x 后删 (del)， X 前删(backspace)单个字符 |
+| --- | --- |
+| d, D | 删除行 |
+| J | 将光标所在行与下一行的数据结合成同一行 |
+| u, U | 撤销上一步，撤销此处所有修改（二次复原） |
+| y, Y | 复制 |
 | p, P | 粘贴在上，下行 |
-| v,V | 文本选择 |
-| u,U | 撤销上一步，撤销此处所有修改（二次复原） |
-| Ctrl + r | redo，即撤销 undo 的操作 |
+| ~ | 反转游标所在字母大小写 |
+| n | 重复n次command |
+| . | 重复前一个动作 |
+
+paste、undo、delete、expurgate、yank
+
+
+## 范围 
+示例
+
+| **命令** | **操作的行** |
+| --- | --- |
+| `:d` | 当前行 |
+| `:.d` | 当前行 |
+| `:1d` | 第一行 |
+| `:$d` | 最后一行 |
+| `:1,$d` | 所有行 |
+| `:%d` | 所有行（1,$ 的语法糖） |
+| `:.,5d` | 当前行至第 5 行 |
+| `:,5d` | 同样是当前行至第 5 行 |
+| `:,+3d` | 当前行及接下来的 3 行 |
+| `:1,+3d` | 第一行至当前行再加 3 行 |
+| `:,-3d` | 当前行及向上的 3 行（Vim 会弹出提示信息，因为这是一个保留的范围） |
+| `:3,'xdelete` | 第三行至[标注](https://github.com/mhinz/vim-galore#%E6%A0%87%E6%B3%A8)为 x 的那一行 |
+| `:/^foo/,$delete` | 当前行以下，以字符 "foo" 开头的那一行至结尾 |
+| `:/^foo/+1,$delete` | 当前行以下，以字符 "foo" 开头的那一行的下一行至结尾 |
+
 | dd | 删除整行 |
+| --- | --- |
 | dw | 删除一个单词 |
 | d1G | 删除光标以前的所有数据 |
 | dG | 删除光标以后的所有数据 |
@@ -678,13 +674,7 @@ vim [options] [file ..]       编辑指定的文件
 | d0 | d^ |
 | d( , d) | 删除至上，下一句开始的所有字符 |
 | d{ , d} | 删除至上，下一段开始的所有字符 |
-| yy | 复制整行，y 拓展同 d |
-| J | 将光标所在行与下一行的数据结合成同一行 |
-| ~ | 反转游标所在字母大小写 |
-| n | 重复n次command |
-| . | 重复前一个动作 |
 
-paste、visual、undo、delete、expurgate
 
 
 ## 光标移动
@@ -703,8 +693,6 @@ paste、visual、undo、delete、expurgate
 
 w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一个字的字尾  <br />  b ,B  把光标移到上一个字的字首  <br />  小写指英文单词、标点符号和非字母字符；  <br />  大写指的字是指两个空格之间的任何内容。
 
-{：该命令将光标向前移至上一个段落的开头。  <br />  }：该命令将光标向后移至下一个段落的开头。
-
 | 按键 | 跳转至 |
 | --- | --- |
 | '[ 与 `[ | 上一次修改或复制的第一行或第一个字符 |
@@ -722,20 +710,6 @@ w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一�
 
 
 
-# 输入模式（Insert mode）
-| 命令 | 说明 |
-| --- | --- |
-| i，a | 在光标前，后进行编辑 |
-| I，A | 在行首，末插入 |
-| o，O | 在当前行后，前插入一个新行 |
-| r,R | 替换单个，连续 |
-| c,C | 修改 |
-| cc | 替换整行 |
-| cw | 替换从光标所在位置后到一个单词结尾的字符 |
-
-插入命令i、附加命令a、空行插入命令o、修改命令c、取代命令r、替换命令s
-
-
 # 底线命令模式（Last line mode）
 | :w | 保存但是不退出 Vim 编辑器 |
 | --- | --- |
@@ -743,11 +717,11 @@ w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一�
 | :q | 不保存就退出 Vim 编辑器 |
 | :q! | 不保存，且强制退出 Vim 编辑器 |
 | :wq | :x |
-| ZZ | 直接退出 Vim 编辑器 |
 | :w [filename] | 另存为 |
 | :r [filename] | 读入另一个档案的数据，加到游标所在行后面 |
 | :n1,n2 w [filename] | 将 n1 到 n2 的内容储存成 filename 这个档案。 |
 | :! command | 暂时离开 vi 到指令行模式下执行 command 的显示结果 |
+
 
 **多文件编辑**
 
@@ -766,6 +740,7 @@ w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一�
 - :last	切换至最后一个文件
 - :first	切换至第一个文件
 
+
 ## 搜索
 | /word &#124; ?word | 向下（上）搜索字符串word |
 | --- | --- |
@@ -773,14 +748,10 @@ w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一�
 
 
 ## 替换
-**[range]s/s1/s2/ [option]**
+**[range]s/<old>/<new>/ [option]**
 
-- [range] 表示检索范围，省略时表示当前行 
-   - 1,10 表示从第 1 行到 10 行。 
-   - % 表示整个文件，同1, $。 
-   - . ,$ 从当前行到文件尾。 
+- [range] 检索范围，省略时表示当前行 
 - s 替换命令 
-- s1 要被替换的串，s2 为替换的串。 
 - option 
    - 省略时仅对每行第一个匹配串进行替换 
    - /g 在全局文件中进行替换。 
@@ -788,22 +759,17 @@ w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一�
 
 
 
+**全局命令**  <br />  `:g/pattern/command`  <br />  如删除所有包含"console"的行  <br />  :g/console/d
+
 **文本对齐**  <br />  :ce	居中  <br />  :ri	右对齐  <br />  :le	左对齐
 
 
 ## 窗口切分
 :split 文件名	打开新的竖向向视窗  <br />  :vsp 文件名	打开新的横向视窗  <br />  :new	打开一个新的 vim 视窗
 
-| 切换命令 | 命令的意义 |
-| --- | --- |
-| Ctrl+w， j | 移动光标到下面的一个窗口 |
-| Ctrl+w，k | 移动光标到上面的一个窗口 |
-| Ctrl+w，q | 关闭当前窗口 |
-| Ctrl+w，w | 移动光标到另一个窗口 |
-
 
 ## 配置
-全局配置：/etc/vim/vimrc或者/etc/vimrc  <br />  用户配置：~/.vimrc	需要手动创建
+全局配置：/etc/vim/vimrc 或 /etc/vimrc  <br />  用户配置：~/.vimrc
 
 属性设置
 
