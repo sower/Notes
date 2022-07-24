@@ -516,6 +516,76 @@
 
 
 
+- [Office VBA 对象库参考](https://docs.microsoft.com/zh-cn/office/vba/api/overview/library-reference/reference-object-library-reference-for-office)
+
+Excel 对象
+
+- Application 对象，表示 Excel 应用程序。
+- Workbook 对象，表示工作簿对象。
+- Worksheet 对象，表示工作表对象
+- Range 对象，表示单元格区域对象。
+
+```vbnet
+Sub permutation(Optional isShow As Boolean = False)
+    Dim x As Integer
+    Dim y As Integer
+    x = Selection.Row
+    y = Selection.Column
+    
+    Dim i As Integer
+    Dim j As Integer
+    Dim count As Integer
+    count = Selection.Rows.count
+    
+    Dim arr1()
+    Dim arr2()
+    arr1 = Application.Transpose(Selection.Columns(1))
+    arr2 = Application.Transpose(Selection.Columns(2))
+    
+    Dim total As Variant
+    total = Cells(1, 1).Value
+
+    For k = 1 To count Step 1
+        For i = 1 To count Step 1
+            For j = i + 1 To count Step 1
+                Cells(x, y + 2).Value = MixUp(arr2(i), arr2(j), arr1(k), total)
+                If isShow Then
+                    Cells(x, y + 3).Value = arr2(i)
+                    Cells(x, y + 4).Value = arr2(j)
+                    Cells(x, y + 5).Value = arr1(k)
+                End If
+                x = x + 1
+            Next
+        Next
+    Next
+    
+End Sub
+
+' comment
+
+Function MixUp(ByVal a As Integer, ByVal b As Integer, ByVal an As Variant, ByVal total As Variant) As Variant
+    MixUp = (a * an + b * (total - an)) / total
+End Function
+
+
+Sub TestSelection()
+    Dim str As String
+    Select Case TypeName(Selection)
+    Case "Nothing"
+        str = "No selection made."
+    Case "Range"
+        str = "You selected the Range: " & Selection.Address
+    Case "Picture"
+        str = "You selected a picture."
+    Case Else
+        str = "You selected a " & TypeName(Selection) & "."
+    End Select
+    MsgBox str
+End Sub
+```
+
+
+
 
 # PPT  <br />    <br />  
 **16：9	33.87 x 19.05 	（cm）**

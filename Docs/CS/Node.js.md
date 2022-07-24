@@ -249,25 +249,25 @@ npm（Node Package Manager）是Node.js默认的、用JavaScript编写的软件�
    - -P, --save-prod: Package will appear in your dependencies. default
    - -D, --save-dev: Package will appear in your devDependencies.
 - [npm docs](https://docs.npmjs.com/cli/v7/commands/npm-docs)	Docs for a package in a web browser maybe
-- [npm install-ci-test](https://docs.npmjs.com/cli/v7/commands/npm-install-ci-test)	Install a project with a clean slate and run tests
 - [npm install-test](https://docs.npmjs.com/cli/v7/commands/npm-install-test)	Install package(s) and run tests
 - [npm link](https://docs.npmjs.com/cli/v7/commands/npm-link)	Symlink a package folder
 - [npm ls](https://docs.npmjs.com/cli/v7/commands/npm-ls)	List installed packages
    - --depth=0
 - [npm ping](https://docs.npmjs.com/cli/v7/commands/npm-ping)	Ping npm registry
+- [npm prune](https://docs.npmjs.com/cli/v8/commands/npm-prune)	Remove extraneous packages
 - [npm search](https://docs.npmjs.com/cli/v7/commands/npm-search)	Search for packages
    - [-l|--long] [--json] [--parseable] [--no-description] [search terms ...]
    - aliases: s, se, find
 - [npm run-script](https://docs.npmjs.com/cli/v7/commands/npm-run-script)	Run arbitrary package scripts
    - npm run-script <command> [--if-present] [--silent] [-- <args>]
 - [npm test](https://docs.npmjs.com/cli/v7/commands/npm-test)	Test a package
+- [npm update](https://docs.npmjs.com/cli/v8/commands/npm-update)	Update a package
 - [npm uninstall](https://docs.npmjs.com/cli/v7/commands/npm-uninstall)	Remove a package
    - [<@scope>/]<pkg>[@<version>]... [-S|--save|--no-save]
    - aliases: remove, rm, r, un, unlink
 - [npm view](https://docs.npmjs.com/cli/v7/commands/npm-view)	View registry info
    - npm view [<@scope>/]<name>[@<version>] [<field>[.<subfield>]...] aliases: info, show, v
-- [npx](https://docs.npmjs.com/cli/v7/commands/npx)	Run a command from an npm package
-- npm help <command>		npm <command> -h
+
 
 淘宝镜像
 ```javascript
@@ -337,11 +337,50 @@ Options:
                          use the latest version.                       [boolean]
   --quiet, -q            Suppress output from npx itself. Subcommands will not
                          be affected.                                  [boolean]
-  --npm                  npm binary to use for internal operations.
-  [string] [default: "D:\Portable\Programming\node-v14.15.4-win-x64\node_modules
-                                                           \npm\bin\npm-cli.js"]
+  --npm                  npm binary to use for internal operations.	[string]
   --node-arg, -n         Extra node argument when calling a node binary.[string]
 ```
+
+
+# [yarn](https://github.com/yarnpkg/yarn)
+```shell
+# Node.js >=16.10
+corepack enable
+
+
+# Accessing the list of commands
+yarn help
+
+# Starting a new project
+yarn init
+
+# Installing all the dependencies
+yarn
+yarn install
+
+# Adding a dependency
+yarn add [package]
+yarn add [package]@[version]
+yarn add [package]@[tag]
+
+# Adding a dependency to different categories of dependencies
+yarn add [package] --dev  # dev dependencies
+yarn add [package] --peer # peer dependencies
+
+# Upgrading a dependency
+yarn up [package]
+yarn up [package]@[version]
+yarn up [package]@[tag]
+
+# Removing a dependency
+yarn remove [package]
+
+# Upgrading Yarn itself
+yarn set version latest
+yarn set version from sources
+```
+
+
 
 # Module
 暴露模块	module.exports = variable;  <br />  引入模块	var foo = require('other_module');
@@ -1027,7 +1066,12 @@ test('two plus two', () => {
 # Others
 
 
-**UI**  <br />  [daisyui](https://github.com/saadeghi/daisyui)	Tailwind Components  <br />  [tailwindcss](https://github.com/tailwindlabs/tailwindcss)
+utility-first CSS framework
+
+- [tailwindcss](https://github.com/tailwindlabs/tailwindcss)
+- [daisyui](https://github.com/saadeghi/daisyui)	Tailwind Components
+- [windicss](https://github.com/windicss/windicss)
+
 
 [Chart.js](https://github.com/chartjs/Chart.js)  <br />  [echarts](https://github.com/apache/echarts)
 
