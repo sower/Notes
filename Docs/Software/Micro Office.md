@@ -516,76 +516,6 @@
 
 
 
-- [Office VBA 对象库参考](https://docs.microsoft.com/zh-cn/office/vba/api/overview/library-reference/reference-object-library-reference-for-office)
-
-Excel 对象
-
-- Application 对象，表示 Excel 应用程序。
-- Workbook 对象，表示工作簿对象。
-- Worksheet 对象，表示工作表对象
-- Range 对象，表示单元格区域对象。
-
-```vbnet
-Sub permutation(Optional isShow As Boolean = False)
-    Dim x As Integer
-    Dim y As Integer
-    x = Selection.Row
-    y = Selection.Column
-    
-    Dim i As Integer
-    Dim j As Integer
-    Dim count As Integer
-    count = Selection.Rows.count
-    
-    Dim arr1()
-    Dim arr2()
-    arr1 = Application.Transpose(Selection.Columns(1))
-    arr2 = Application.Transpose(Selection.Columns(2))
-    
-    Dim total As Variant
-    total = Cells(1, 1).Value
-
-    For k = 1 To count Step 1
-        For i = 1 To count Step 1
-            For j = i + 1 To count Step 1
-                Cells(x, y + 2).Value = MixUp(arr2(i), arr2(j), arr1(k), total)
-                If isShow Then
-                    Cells(x, y + 3).Value = arr2(i)
-                    Cells(x, y + 4).Value = arr2(j)
-                    Cells(x, y + 5).Value = arr1(k)
-                End If
-                x = x + 1
-            Next
-        Next
-    Next
-    
-End Sub
-
-' comment
-
-Function MixUp(ByVal a As Integer, ByVal b As Integer, ByVal an As Variant, ByVal total As Variant) As Variant
-    MixUp = (a * an + b * (total - an)) / total
-End Function
-
-
-Sub TestSelection()
-    Dim str As String
-    Select Case TypeName(Selection)
-    Case "Nothing"
-        str = "No selection made."
-    Case "Range"
-        str = "You selected the Range: " & Selection.Address
-    Case "Picture"
-        str = "You selected a picture."
-    Case Else
-        str = "You selected a " & TypeName(Selection) & "."
-    End Select
-    MsgBox str
-End Sub
-```
-
-
-
 
 # PPT  <br />    <br />  
 **16：9	33.87 x 19.05 	（cm）**
@@ -677,6 +607,289 @@ End Sub
 | --- | --- |
 | 将所选窗口上的图片复制到剪贴板上 | Alt+Print Screen |
 | 将视图调整到窗口 | Ctrl+Shift+W |
+
+
+
+
+# VBA
+> VBA（Visual Basic for Applications）是Visual Basic的一种宏语言，是在其桌面应用程序中执行通用的自动化(OLE)任务的编程语言。主要能用来扩展Windows的应用程序功能，特别是Microsoft Office软件。
+
+
+- [Office VBA 对象库参考](https://docs.microsoft.com/zh-cn/office/vba/api/overview/library-reference/reference-object-library-reference-for-office)
+
+数据类型
+
+| **类型** | **类型名称** | **范围** | **占用空间** | **声明符号** |
+| --- | --- | --- | --- | --- |
+| **逻辑型** |  |  |  |  |
+| 布尔 | Boolean | True, False | 2 |  |
+| **数值型** |  |  |  |  |
+| 字节 | Byte | 0~255的整数 | 1 |  |
+| 整数 | Integer | -32768~32767 | 2 | % |
+| 长整数 | Long | -2147483648~2147483647 | 4 | & |
+| 单精度浮点 | Single |  | 4 | ! |
+| 双精度浮点 | Double |  | 4 | # |
+| 货币 | Currency |  | 8 | @ |
+| 小数 | Decimal |  | 14 |  |
+| **日期型** |  |  |  |  |
+| 日期 | Date | 100/1/1~9999/12/31 | 8 |  |
+| **文本型** |  |  |  |  |
+| 变长字符串 | String | 0~20亿 |  | $ |
+| 定长字符串 | String | 1~65400 |  |  |
+| **其他** |  |  |  |  |
+| 变体型 | Variant(数值) | 保存任意数值，也可以存储Error,Empty,Nothing,Null等特殊数值 |  |  |
+| 对象 | Object | 引用对象 | 4 |  |
+
+
+变量
+```vbnet
+Const 常量名称 As 数据类型 = 值
+
+Dim 变量名 As 数据类型
+
+
+Private v1 As Integer   ' v1为私有整形变量
+Public v2 As String     ' v2为公共字符串变量
+Static v3 As Integer    ' v3为静态变量，程序结束后值不变
+
+' 变量声明之后，可以赋值和使用
+v1 = 1009
+v2 = "1009"
+v3 = 1009
+
+' 使用类型声明符，可以达到跟上面同样的效果
+public v2$  ' 与 Public v2 As String 效果一样
+
+' 声明变量时，不指定具体的类型就变成了Variant类型，根据需要转换数据类型
+Dim v4
+```
+  <br />  数组
+```vbnet
+' 确定范围的数组，可以存储b - a + 1个数，a、b为整数
+Dim 数组名称(a To b) As 数据类型
+
+Dim arr(1 TO 100) As Integer ' 表示arr可以存储100个整数
+arr(100) '表示arr中第100个数据
+
+' 不指定a，直接声明时，默认a为0
+Dim arr2(100) As Integer ' 表示arr可以存储101个整数,从0数
+arr2(100) '表示arr2中第101个数据
+
+' 多维数组
+Dim arr3(1 To 3, 1 To 3, 1 To 3) As Integer ' 定义了一个三维数组，可以存储3*3*3=27个整数
+
+' 动态数组，不确定数组大小时使用
+Dim arr4() As Integer   ' 定义arr4为整形动态数组
+ReDim arr4(1 To v1)     ' 设定arr4的大小，不能重新设定arr4的类型
+
+
+' 使用`Array`函数将已知的数据常量放到数组里
+Dim arr As Variant        ' 定义arr为变体类型
+arr = Array(1, 1, 2, 3, 5, 8, 13, 21) ' 将整数存储到arr中,索引默认从0开始
+
+' 使用Excel单元格区域创建数组
+' 这种方式创建的数组，索引默认从1开始
+Dim arr3 As Variant
+arr3 = Range("A1:C3").Value   ' 将A1:C3中的数组存储到arr3中
+Range("A4:C6").Value= arr3    ' 将arr3中的数据写入到A4:C6中的区域
+```
+
+- UBound(Array arr, [Integer i])	数组最大的索引值
+- LBound(Array arr, [Integer i])	数组最小的索引值
+- Join(Array arr, [String s])	合并字符串
+- Split(String str, [String s])	分割字符串
+- Erase ArrayName	擦拭清空数组	
+
+
+**运算符**
+
+- 数学运算符：&、+ (字符连接符)、+(加)、-(减)、Mod(取余)、\(整除)、*(乘)、/ (除)、-(负号)、^(指数)
+- 逻辑运算符： Not(非)、And(与)、Or(或)、Xor(异或)、Eqv(相等)、Imp(隐含)
+- 关系运算符： = (相同)、<>(不等)、>(大于)、<(小于)、>=(不小于)、<=(不大 于)、 **Like**、Is
+- 位运算符： Not(逻辑非)、And(逻辑与)、Or(逻辑或)、Xor(逻辑异或)、Eqv(逻辑 等)、Imp(隐含)
+- 三目运算符	`x = IIF(expression, A, B）`
+
+**条件 & 循环**
+```vbnet
+If a > b Then
+    ...
+ElseIf a = b Then
+    ...
+Else
+    ...
+End If
+
+
+Select a
+    Case Is <= 8
+        ...
+    Case Is > 20
+        ...
+    Case Else
+        ...
+End Select
+
+
+'Loop
+Dim i As Integer
+For i = 1 To 20 Step 1
+  ...
+  [Exit For]
+Next i
+
+arr = Array(1, 2, 3, 4, 5)
+For Each i In arr
+    操作1
+Next i
+
+Do [While ...]
+  ...
+  [Exit Do]
+Loop
+
+Continue
+Goto
+```
+
+
+**过程(Sub)	**
+```vbnet
+[Private|Public] [Static] Sub 过程名([参数列表 [As 数据类型]])
+    [语句块]
+End Sub
+```
+
+**函数(Function)**  <br />  自定义函数并不允许修改工作表和单元格格式
+```vbnet
+[Public|private] [Static] Function 函数名([参数列表 [As 数据类型]]) [As 返回值数据类型]
+    [语句块]
+    [函数名=返回值]
+End Function
+```
+默认为ByRef方式传值
+
+
+Excel 对象
+
+- Application Excel 应用程序
+- [Workbook](https://docs.microsoft.com/zh-cn/office/vba/api/excel.workbook) 工作簿对象
+- [Worksheet]()  工作表对象
+- Range 单元格区域对象
+
+| 属性 | 描述 |
+| --- | --- |
+| ActiveCell | 当前活动单元格 |
+| ActiveChart | 当前活动工作簿中的活动图表 |
+| ActiveSheet | 当前活动工作簿中的活动工作表 |
+| ActiveWindow | 当前活动窗口 |
+| ActiveWorkbook | 当前活动工作簿 |
+| Charts | 当前活动工作簿中所有的图表工作表 |
+| Selection | 当前活动工作簿中所有选中的对象 |
+| Sheets | 当前活动工作簿中所有Sheet对象，包括普通工作表、图表工作表 |
+| Worksheets | 当前活动工作簿中的所有Worksheet对象（普通工作表） |
+| Workbooks | 当前所有打开的工作簿 |
+
+
+
+常用操作
+```vbnet
+' 输入与显示
+Dim str As Variant
+str = InputBox("请输入：")
+MsgBox str
+
+
+' 复制粘贴
+Range("A1:A8").Select
+Selection.Copy
+Range("C1").Select
+ActiveSheet.Pastes
+
+' 字体字号及颜色
+With WorkSheets("sheet1").Range("A1").Font
+    .Name = "仿宋"
+    .Size = 12
+    .ColorIndex = 3
+End With
+        
+' 单元格颜色
+Range("B1").Interior.Color = RGB(255,255,0)
+Range("B1").Interior.ColorIndex = 6
+        
+        
+Range("A1")             ' 单元格 A1
+Range("A1:B5")          ' 从单元格 A1 到单元格 B5 的区域
+Range("C5:D9, G9:H16")  ' 多块选定区域
+' 选中不关联的单元格，cells(2, 3)返回结果为：B3
+Union(Range("A1:A10"), Range("K10"), Range("A1:" & cells(2, 3).Address)).Select
+Range("A:A")            ' A 列
+Range("1:1")            ' 第一行
+Range("A:C")            ' 从 A 列到 C 列的区域
+Range("1:5")            ' 从第一行到第五行的区域
+Range("1:1, 3:3, 8:8")  ' 第 1、3 和 8 行
+Range("A:A, C:C, F:F")  ' A 、C 和 F 列
+```
+
+
+示例
+```vbnet
+Sub permutation(Optional isShow As Boolean = False)
+    Dim x As Integer
+    Dim y As Integer
+    x = Selection.Row
+    y = Selection.Column
+    
+    Dim i As Integer
+    Dim j As Integer
+    Dim count As Integer
+    count = Selection.Rows.count
+    
+    Dim arr1()
+    Dim arr2()
+    arr1 = Application.Transpose(Selection.Columns(1))
+    arr2 = Application.Transpose(Selection.Columns(2))
+    
+    Dim total As Variant
+    total = Cells(1, 1).Value
+
+    For k = 1 To count Step 1
+        For i = 1 To count Step 1
+            For j = i + 1 To count Step 1
+                Cells(x, y + 2).Value = MixUp(arr2(i), arr2(j), arr1(k), total)
+                If isShow Then
+                    Cells(x, y + 3).Value = arr2(i)
+                    Cells(x, y + 4).Value = arr2(j)
+                    Cells(x, y + 5).Value = arr1(k)
+                End If
+                x = x + 1
+            Next
+        Next
+    Next
+    
+End Sub
+
+' comment
+
+Function MixUp(ByVal a As Integer, ByVal b As Integer, ByVal an As Variant, ByVal total As Variant) As Variant
+    MixUp = (a * an + b * (total - an)) / total
+End Function
+
+
+Sub TestSelection()
+    Dim str As String
+    Select Case TypeName(Selection)
+    Case "Nothing"
+        str = "No selection made."
+    Case "Range"
+        str = "You selected the Range: " & Selection.Address
+    Case "Picture"
+        str = "You selected a picture."
+    Case Else
+        str = "You selected a " & TypeName(Selection) & "."
+    End Select
+    MsgBox str
+End Sub
+```
 
 
 
