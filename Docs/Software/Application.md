@@ -181,6 +181,7 @@ Preview
 - 迅雷极速版
 - EagleGet
 - QBittorrent
+- [youtube-dl](https://github.com/ytdl-org/youtube-dl)
 
 **Proxy**
 
@@ -279,8 +280,6 @@ IDE
    - [IntelliJ IDEA](https://www.jetbrains.com/idea/)
    - Pycharm
 
-Java  <br />  Python  <br />  C/C++  <br />  Web  <br />  Andriod
-
 **Testing**
 
 - Fiddler
@@ -365,7 +364,16 @@ Magisk  <br />  自动化
 
 
 ### [termux](https://termux.com/)
-文件安装到位于以下位置的专用应用程序目录中  <br />  `/data/data/com.termux/files/usr`  <br />  **termux-setup-storage**  <br />  创建一个$HOME/storage目录，该目录具有指向sdcard各自路径的符号链接
+
+[Terminal Settings](https://wiki.termux.com/wiki/Terminal_Settings)  <br />  ` ~/.termux/termux.properties `
+```shell
+extra-keys = [ \
+ ['ESC','|','/','HOME','UP','END','PGUP','DEL'], \
+ ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN','BKSP'] \
+]
+```
+
+[Software](https://wiki.termux.com/wiki/Software)  <br />  [Development Environments](https://wiki.termux.com/wiki/Development_Environments)
 ```shell
 # 连接远程仓库，获取软件包信息
 $ apt update
@@ -377,8 +385,38 @@ $ apt upgrade
 $ apt install python
 $ python -m http.server 8080
 ```
+[Differences from Linux](https://wiki.termux.com/wiki/Differences_from_Linux)
 
-ssh
+   - Termux is not FHS compliant
+   - Termux uses Bionic libc
+   - Root file system is stored as ordinary application data
+   - Termux is single-user
+
+[Editors](https://wiki.termux.com/wiki/Editors)  <br />  [Graphical Environment](https://wiki.termux.com/wiki/Graphical_Environment)  <br />  Everything about using X Window System in Termux.  <br />  [Intents and Hooks](https://wiki.termux.com/wiki/Intents_and_Hooks)  <br />  Use intents and hooks to access Termux from other apps.  <br />  [Package Management](https://wiki.termux.com/wiki/Package_Management)
+```shell
+pkg install package-name
+pkg uninstall package-name
+
+
+pkg upgrade
+pkg autoclean
+pkg clean
+pkg files <package>
+pkg list-all
+pkg list-installed
+pkg reinstall <package>
+pkg search <query>
+pkg show <package>
+```
+| Repository | Command to subscribe to repository |
+| --- | --- |
+| [game-packages](https://github.com/termux/game-packages) | pkg install game-repo |
+| [science-packages](https://github.com/termux/science-packages) | pkg install science-repo |
+| [termux-root-packages](https://github.com/termux/termux-root-packages) | pkg install root-repo |
+| [x11-packages](https://github.com/termux/x11-packages) | pkg install x11-repo |
+
+
+[Remote Access](https://wiki.termux.com/wiki/Remote_Access)
 ```shell
 apt install openssh
 
@@ -392,10 +430,44 @@ ssh -p 8022 user@hostname_or_ip
 
 # 查看SSH守护程序日志
 logcat -s 'sshd:*'
-```
-[Terminal Settings](https://wiki.termux.com/wiki/Terminal_Settings)  <br />  ` ~/.termux/termux.properties `
 
-[Software](https://wiki.termux.com/wiki/Software)  <br />  [Development Environments](https://wiki.termux.com/wiki/Development_Environments)  <br />  Termux is a great software development environment.  <br />  [Differences from Linux](https://wiki.termux.com/wiki/Differences_from_Linux)  <br />  There are several differences between Termux and a regular Linux distribution.  <br />  [Editors](https://wiki.termux.com/wiki/Editors)  <br />  Edit, write and manipulate text and data files.  <br />  [Graphical Environment](https://wiki.termux.com/wiki/Graphical_Environment)  <br />  Everything about using X Window System in Termux.  <br />  [Intents and Hooks](https://wiki.termux.com/wiki/Intents_and_Hooks)  <br />  Use intents and hooks to access Termux from other apps.  <br />  [Package Management](https://wiki.termux.com/wiki/Package_Management)  <br />  Basic and advanced package and module management.  <br />  [Package Tips](https://wiki.termux.com/wiki/Package_Tips)  <br />  A list of manuals for packages that are tricky to install.  <br />  [Remote Access](https://wiki.termux.com/wiki/Remote_Access)  <br />  Access your remote devices or the Termux itself.  <br />  [Sharing Data](https://wiki.termux.com/wiki/Sharing_Data)  <br />  Accessing files in the $HOME directory in other apps on device  <br />  [Shells](https://wiki.termux.com/wiki/Shells)  <br />  A listing of some of the available shells in Termux.  <br />  [Hardware](https://wiki.termux.com/wiki/Hardware)  <br />  [Hardware Keyboard](https://wiki.termux.com/wiki/Hardware_Keyboard)  <br />  How to control Termux with a hardware keyboard  <br />  [Hardware Mouse](https://wiki.termux.com/wiki/Hardware_Mouse)  <br />  How to control Termux with a hardware mouse  <br />  [Internal and External Storage](https://wiki.termux.com/wiki/Internal_and_external_storage)  <br />  Accessing Files in shared storage and on SD Card
+
+# Connecting to Termux
+$ sftp -P 8022 192.168.1.20
+
+# Connecting to somewhere else
+$ sftp sftp.example.com
+
+
+
+# Sync your photos with PC:
+$ rsync -av /sdcard/DCIM/ user@192.168.1.20:~/Pictures/Android/
+
+# Get photos from remote Android device:
+$ rsync -av -e 'ssh -p 8022' 192.168.1.3:/sdcard/DCIM/ /sdcard/DCIM/
+```
+[Sharing Data](https://wiki.termux.com/wiki/Sharing_Data)
+```shell
+# 文件安装到位于以下位置的专用应用程序目录中
+/data/data/com.termux/files/usr
+
+# 创建一个$HOME/storage目录，该目录具有指向sdcard各自路径的符号链接
+termux-setup-storage
+```
+[Shells](https://wiki.termux.com/wiki/Shells)
+```shell
+# use Oh-My-ZSH
+pkg install zsh
+chsh -s zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+[Hardware](https://wiki.termux.com/wiki/Hardware)  <br />  Termux uses the Volume down button to emulate the Ctrl key
+
+[Internal and External Storage](https://wiki.termux.com/wiki/Internal_and_external_storage)
+
+   - Internal storage: files put in $HOME, available from inside Termux or when explictly picked in a SAF-compatible file manager.
+   - Shared storage: general purpose file storage available for the all applications. You need to grant Termux storage access permission to use it.
+   - External storage: external SD cards or USB hard drives. Typically read-only, except the Termux private directory.
 
 
 [太极](https://taichi.cool/)  <br />  **https://www.taichi-app.com/#/index**  <br />  821218720  <br />  1808
