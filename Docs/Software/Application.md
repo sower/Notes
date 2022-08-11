@@ -4,7 +4,6 @@
 [蓝奏云](http://www.lanzou.com/account.php?action=register)
 
 
-
 ## File
 **File Commander**
 
@@ -158,22 +157,41 @@ Preview
 **Extensions**
 
 - 暴力猴
-- Tampermonkey
+- [Tampermonkey](https://www.tampermonkey.net/)
    - [searchEngineJump](https://github.com/qxinGitHub/searchEngineJump)
    - [tampermonkey-script](https://github.com/barrer/tampermonkey-script)	划词翻译
    - [CSDNGreener](https://github.com/adlered/CSDNGreener)
    - [toc-bar-userscript](https://github.com/hikerpig/toc-bar-userscript)
    - [starpassword](https://github.com/syhyz1990/starpassword)	星号密码显示助手
+   - [Google谷歌翻译自动中英互译](https://greasyfork.org/zh-CN/scripts/378166-google-translate-auto-languages)
+   - [AC-baidu-重定向优化](https://greasyfork.org/zh-CN/scripts/14178-ac-baidu-%E9%87%8D%E5%AE%9A%E5%90%91%E4%BC%98%E5%8C%96%E7%99%BE%E5%BA%A6%E6%90%9C%E7%8B%97%E8%B0%B7%E6%AD%8C%E5%BF%85%E5%BA%94%E6%90%9C%E7%B4%A2-favicon-%E5%8F%8C%E5%88%97)
+   - Bilibili Evolved
+   - 中文维基百科优先简体中文
+   - [HTML5视频播放工具](https://greasyfork.org/zh-CN/scripts/30545-html5%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%B7%A5%E5%85%B7)
+   - [自动无缝翻页](https://greasyfork.org/zh-CN/scripts/419215-%E8%87%AA%E5%8A%A8%E6%97%A0%E7%BC%9D%E7%BF%BB%E9%A1%B5)
+
+- [ublock Origin](https://github.com/gorhill/uBlock)
 - Adblock Plus
+   - [EasyList](https://easylist-downloads.adblockplus.org/easylist.txt)：反英文广告。
+   - [EasyList China](https://easylist-downloads.adblockplus.org/easylistchina.txt)：反中文广告。
+   - [EasyPrivcy](https://easylist-downloads.adblockplus.org/easyprivacy.txt)：隐私保护，防跟踪。
+   - [CJX's Annoyance List](https://www.runningcheese.com/go?url=https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt)：过滤烦人的自我推广，对 EasyPrivacy 进行补充。
+   - [乘风视频广告过滤](https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt)：国内各大视频网站广告。
+   - [I don't care about cookies](https://www.runningcheese.com/go?url=https://www.i-dont-care-about-cookies.eu/abp/)：去掉网站的 Cookies 使用警告。
+   - [https://filterlists.com](https://filterlists.com/)：最全广告过滤清单，语言选择 “ZH” 则只显示中文规则。
+
+[  <br />  ](https://github.com/xinggsf/Adblock-Plus-Rule)
+
+- [xStyle](https://github.com/FirefoxBar/xStyle)
+   - [Userstyles.world](https://userstyles.world/)
 - [ext-saladict](https://github.com/crimx/ext-saladict)
-- SwitchyOmega
+- [Proxy SwitchyOmega](https://proxy-switchyomega.com/)
 - 图片助手(ImageAssistant) 
 - 右键搜
-- Infinity-New-Tab
-- Distill Web Monitor
-- Video DownloadHelper
+- [Distill Web Monitor](https://distill.io/)
 - Video-Speed-Controller
-- Wildfire[  <br />  ](https://www.runningcheese.com/firefox)
+- Wildfire
+- [Header Editor  <br />  ](https://github.com/FirefoxBar/HeaderEditor)
 
 **Downloader**
 
@@ -344,9 +362,22 @@ Google三件套
 
 TIM
 
-[Via](https://github.com/tuyafeng/Via)	**轻插件中心：**[http://via-app.cn](http://via-app.cn/#/tabBar/home)  <br />  [BinaryEye](https://github.com/markusfisch/BinaryEye)	扫码
+Browser
 
-Bilibili  <br />  Youtube  <br />  [NewPipe](https://github.com/TeamNewPipe/NewPipe)  <br />  VLC  <br />  MX player  <br />  Kodi
+- [X浏览器](https://www.xbext.com/)
+- [Via](https://github.com/tuyafeng/Via)	**轻插件中心：**[http://via-app.cn](http://via-app.cn/#/tabBar/home)
+- [Kiwi Browser](https://kiwibrowser.com/)
+
+[BinaryEye](https://github.com/markusfisch/BinaryEye)	扫码
+
+Player
+
+- Bilibili
+- Youtube
+- [NewPipe](https://github.com/TeamNewPipe/NewPipe)
+- VLC
+- MX player
+- Kodi
 
 [F-Droid](https://f-droid.org/zh_Hans/)	镜像	[https://mirrors.tuna.tsinghua.edu.cn/help/fdroid/](https://mirrors.tuna.tsinghua.edu.cn/help/fdroid/)  <br />  酷安
 
