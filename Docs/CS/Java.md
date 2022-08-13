@@ -439,22 +439,70 @@ Integer[] integers = list.toArray(new Integer[list.size()]);
 - 定义的enum类型总是继承自java.lang.Enum，且无法被继承；
 - 只能定义出enum的实例，而无法通过new操作符创建enum的实例；
 - 定义的每个实例都是引用类型的唯一实例；
+
+Enum
+
+- values()：返回 enum 实例的数组，而且该数组中的元素严格保持在 enum 中声明时的顺序。
+- name()：返回实例名。
+- ordinal()：返回实例声明时的次序，从 0 开始。
+- getDeclaringClass()：返回实例所属的 enum 类型。
+- equals() ：判断是否为同一个对象
+
 ```java
-enum Weekday {
-    MON(1, "星期一"), TUE(2, "星期二"), WED(3, "星期三"), THU(4, "星期四"), FRI(5, "星期五"), SAT(6, "星期六"), SUN(0, "星期日");
-    public final int dayValue;
-    private final String chinese;
-    private Weekday(int dayValue, String chinese) {
-        this.dayValue = dayValue;
-        this.chinese = chinese;
+public class ErrorCodeEnumDemo {
+    enum ErrorCodeEn {
+        OK(0, "成功"),
+        ERROR_A(100, "错误A"),
+        ERROR_B(200, "错误B");
+
+        ErrorCodeEn(int number, String msg) {
+            this.code = number;
+            this.msg = msg;
+        }
+
+        private int code;
+        private String msg;
+
+        public int getCode() {
+            return code;
+        }
+
+        public String getMsg() {
+            return msg;
+        }
+
+        @Override
+        public String toString() {
+            return "ErrorCodeEn{" + "code=" + code + ", msg='" + msg + '\'' + '}';
+        }
+
+        public static String toStringAll() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("ErrorCodeEn All Elements: [");
+            for (ErrorCodeEn code : ErrorCodeEn.values()) {
+                sb.append(code.getCode()).append(", ");
+            }
+            sb.append("]");
+            return sb.toString();
+        }
     }
-    
-    @Override
-    public String toString() {
-        return this.chinese;
+
+    public static void main(String[] args) {
+        System.out.println(ErrorCodeEn.toStringAll());
+        for (ErrorCodeEn s : ErrorCodeEn.values()) {
+            System.out.println(s);
+        }
     }
 }
+// Output:
+// ErrorCodeEn All Elements: [0, 100, 200, ]
+// ErrorCodeEn{code=0, msg='成功'}
+// ErrorCodeEn{code=100, msg='错误A'}
+// ErrorCodeEn{code=200, msg='错误B'}
 ```
+
+enum 工具类——EnumSet , EnumMap
+
 
 ### Number
 | 基本类型 | 对应的引用类型 |
@@ -1434,7 +1482,7 @@ Files.write(Paths.get("/path/to/file.txt"), lines);
 **捕获异常**
 ```java
 try{}
-[catch(){} 
+[catch(Exception | Exception2 e){} 
 finally{}]
 ```
 在catch中抛出异常，不会影响finally的执行。JVM会先执行finally，然后抛出异常。  <br />  finally抛出异常后，原来在catch中准备抛出的异常就“消失”了，因为只能抛出一个异常。
@@ -1459,6 +1507,7 @@ public class Main {
     }
 }
 ```
+
 **自定义异常**
 ```java
 public class BaseException extends RuntimeException {
@@ -1476,11 +1525,13 @@ public class BaseException extends RuntimeException {
     }
 }
 ```
+
 **断言（assert）**  <br />  JVM默认关闭断言指令，即遇到assert语句就自动忽略了，要执行assert语句，必须给Java虚拟机传递-enableassertions（可简写为-ea）参数启用断言  <br />  使用assert语句时，还可以添加一个可选的断言消息：
 ```java
 assert expression [ : "message" ];
 ```
 断言失败时会抛出AssertionError，导致程序结束退出，用于开发和测试阶段。
+
 
 # 函数式编程（Functional Programming）
 
@@ -1662,56 +1713,48 @@ Class cls = s.getClass();
 
 //方法三：知道一个class的完整类名，可以通过静态方法Class.forName()获取：
 Class cls = Class.forName("java.lang.String");
+
+
+// 创建实例
+//获取String类带一个String参数的构造器
+Constructor<?> constructor = cls.getConstructor(String.class);
+String str = (String) constructor.newInstance("test");
+
+// 创建数组实例
+Object array = Array.newInstance(cls, 5);
+//往数组里添加内容
+Array.set(array, 3, "Kotlin");
+//获取某一项的内容
+System.out.println(Array.get(array, 3));
 ```
-从Class实例获取获取的基本信息
-```java
-public class Main {
-    public static void main(String[] args) {
-        printClassInfo("".getClass());
-        printClassInfo(String[].class);
-        printClassInfo(int.class);
-    }
-    static void printClassInfo(Class cls) {
-        System.out.println("Class name: " + cls.getName());
-        System.out.println("Simple name: " + cls.getSimpleName());
-        if (cls.getPackage() != null) {
-            System.out.println("Package name: " + cls.getPackage().getName());
-        }
-        System.out.println("is interface: " + cls.isInterface());
-        System.out.println("is enum: " + cls.isEnum());
-        System.out.println("is array: " + cls.isArray());
-        System.out.println("is primitive: " + cls.isPrimitive());
-    }
-}
-```
-JVM总是动态加载class，可以在运行期根据条件来控制加载class。
 
-获取 Class 对应类所包含的构造器（由 Constructor 对象表示）
+**Class**  <br />  获取构造器（Constructor）
 
-- Constructor<T> getConstructor(Class<?>… parameterTypes)：获取此 Class 对象对应类的、带指定形参列表的 public 构造器
-- Constructor<T> getDeclaredConstructor(Class<?>.. parameterTypes)：获取此 Class 对象对应类的、带指定形参列表的构造器，与访问权限无关
-- Constructor<?>[] getConstructors()：获取此 Class 对象对应类的所有 public 构造器
-- Constructor<?>[] getDeclaredConstructors()：获取此 Class 对象对应类的所有构造器，与访问权限无关
+- `Constructor<T> getConstructor(Class<?>… parameterTypes)`：获取带指定形参列表的 public 构造器
+- `Constructor<T> getDeclaredConstructor(Class<?>.. parameterTypes)`：获取带指定形参列表的构造器，与访问权限无关
+- `Constructor<?>[] getConstructors()`：获取此 Class 对象对应类的所有 public 构造器
+- `Constructor<?>[] getDeclaredConstructors()`：获取此 Class 对象对应类的所有构造器，与访问权限无关
 
-获取 Class 对应类所包含的方法（由 Method 对象表示）
+获取方法（Method）
 
-- Method getMethod(String name, Class<?>.. parameterTypes)：获取此 Class 对象对应类的、带指定形参列表的 public 方法（包括继承的方法）
-- Method getDeclaredMethod(String name, Class<?>.. parameterTypes)：获取此 Class 对象对应类的、带指定形参列表的方法，与访问权限无关（不包括继承的方法）
-- Method[] getMethods()：获取此 Class 对象所表示的类的所有 public 方法（包括继承的方法）
-- Method[] getDeclaredMethods()：获取此 Class 对象对应类的全部方法，与访问权限无关（不包括继承的方法）
+- `Method getMethod(String name, Class<?>.. parameterTypes)`：获取带指定形参列表的 public 方法（包括继承的方法）
+- `Method getDeclaredMethod(String name, Class<?>.. parameterTypes)`：获取带指定形参列表的方法，与访问权限无关（不包括继承的方法）
+- Method[] getMethods()：获取所有 public 方法（包括继承的方法）
+- Method[] getDeclaredMethods()：获取全部方法，与访问权限无关（不包括继承的方法）
 
-访问 Class 对应类所包含的字符（由 Field 对象表示）
+获取字段（Field）
 
-- Field getField(String name)：获取此 Class 对象对应类的、指定名称的 public 成员变量（包括继承的字段）
-- Field getDeclaredField(String name)：获取此 Class 对象对应类的、指定名称的成员变量，与成员变量的访问权限无关（不包括继承的字符）
-- Field[] getFields()：返回此 Class 对象对应类的所有 public 成员变量（包括继承的字符）
-- Field[] getDeclaredFields()：获取此 Class 对象对应类的全部成员变量，与成员变量的访问权限无关（不包括继承的字符）
+- Field getField(String name)：获取指定名称的 public 成员变量（包括继承的字段）
+- Field getDeclaredField(String name)：获取指定名称的成员变量，与成员变量的访问权限无关（不包括继承的字符）
+- Field[] getFields()：返回所有 public 成员变量（包括继承的字符）
+- Field[] getDeclaredFields()：获取全部成员变量，与成员变量的访问权限无关（不包括继承的字符）
 
 其它实例方法
 
 - ClassLoader getClassLoader()：获取该类的类加载器
 - Class<?>[] getInterfaces()：获取此 Class 对象所表示的类或接口实现的接口
-- Class<? super T> getSuperclass()：获取该 Class 对象对应类的超类的 Class 对象 int getModifiers()：获取此类或接口的所有修饰符（返回的整数应使用 Modifier 工具类的方法来解码）
+- Class<? super T> getSuperclass()：获取该 Class 对象对应类的超类的 Class 对象
+- int getModifiers()：获取此类或接口的所有修饰符（返回的整数应使用 Modifier 工具类的方法来解码）
 - Package getPackage()：获取此类的包
 - String getName()：以字符串形式返回此 Class 对象所表示的类的名称
 - String getSimpleName()：以字符串形式返回此 Class 对象所表示的类的简称 Class<?> getComponentType()：返回表示数组元素类型的 Class
@@ -1722,7 +1765,65 @@ JVM总是动态加载class，可以在运行期根据条件来控制加载class�
 - Type getGenericSuperclass()：返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type
 - Class<?> getComponentType()：返回数组元素类型的 Class
 
+`Constructor/Field/Method.setAccessible(true)` 取消访问权限检查，可访问私有成员、方法
 
 
+**java.lang.reflect**
+
+- Member 接口：反映关于单个成员(字段或方法)或构造函数的标识信息。
+- Field 类：提供一个类的域的信息以及访问类的域的接口。
+   - Object get(Object obj)：获取 obj 对象上此 Field 表示的字段的值
+   - xxx getXxx(Object obj)：获取 obj 对象的该成员变量的值（ Xxx 对应 8 种基本类型）
+   - void setXxx(Object obj, Xxx val)：将 obj 对象的该成员变量设置成 val 值
+- Method 类：提供一个类的方法的信息以及访问类的方法的接口。
+   - `Object invoke(Object obj, Object...args)`
+- Constructor 类：提供一个类的构造函数的信息以及访问类的构造函数的接口。
+   - `T newInstance(Object... initargs)`
+- Array 类：该类提供动态地生成和访问 JAVA 数组的方法
+   - `Object newInstance(Class<?>componentType, int...length)`：创建一个具有指定的元素类型、指定维度的数组
+   - int getLength(Object array)：以 int 形式返回指定数组对象的长度
+   - get(ObjeCt array, int index)
+   - set(Object array, int index, Object val)
+- Modifier 类：提供了 static 方法和常量，对类和成员访问修饰符进行解码。
+- Proxy 类：提供动态地生成代理类和类实例的静态方法。
+   - `Class<?> getProxyClass(ClassLoader loader, Class<?>... interfaces)`：创建一个动态代理类所对应的 Class 对象，该代理类将实现 interfaces 所指定的多个接口
+   - `Object newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h)`：使用指定的 InvocationHandler 创建一个动态代理对象，该代理对象的实现类实现了 interfaces 指定的系列接口，执行代理对象的每个方法时都会被替换执行 InvocationHandler 对象的 invoke 方法
+
+
+## 动态代理
+通过使用 Proxy 类和 InvocationHandler 接口可以生成 JDK 动态代理类或动态代理对象，即在程序中为一个或多个接口动态地生成实现类或创建实例  <br />  特点：
+
+- 代理的对象必须有实现的接口
+- 需要为每个对象创建代理对象
+- 动态代理的最小单位是类（所有类中的方法都会被处理）
+
+
+**cglib	**一个基于 ASM 的、强大的、高性能、高质量的字节码生成库  <br />  原理：对指定的目标类生成一个子类，并覆盖其中方法实现增强，但因为采用的是继承，所以不能对 final 标注的类进行代理
+```java
+// 自定义的 MethodInterceptor 需实现 org.springframework.cglib.proxy.MethodInterceptor
+
+// 获取 cglib 动态代理对象的方法
+public <T> T getProxyObject(T target) {
+    Enhancer enhancer = new Enhancer();
+    enhancer.setSuperclass(target.getClass()); // 设置代理对象需要继承的类
+    // 设置代理对象需要回调的方法
+    enhancer.setCallback(new MethodInterceptor() {
+        @Override
+        public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy)
+                throws Throwable {
+            // 执行其它方法
+            // 这里 obj 是增强后的代理对象，所以不能调用 proxy.invoke(obj, args) 或 method.invoke(obj, args)，否则会再次进入拦截器
+            Object result = proxy.invokeSuper(obj, args);
+            // 执行其它方法
+            return result;
+        }
+    });
+    return (T)enhancer.create(); // 创建一个代理对象
+}
+
+// 将 cglib 动态代理生成的 class 字节码输出到本地文件系统
+System.setProperty("cglib.debugLocation", "d:/");
+
+```
 
 

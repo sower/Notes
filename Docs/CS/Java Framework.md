@@ -349,7 +349,6 @@ my-project
 - boolean isEmpty(Object[] array)：判断是否为空，length=0 或 null 都属于空
 - Object[] addAll(Object[] array1, Object... array2)：并集操作，合并数组
 
-
 [DateUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html)
 
 1. 全局静态常量：MILLIS_PER_SECOND、MILLIS_PER_SECOND、MILLIS_PER_MINUTE、MILLIS_PER_HOUR、MILLIS_PER_DAY
@@ -361,24 +360,87 @@ my-project
 
 Date round(Date date, int field)：相当于数学中的四舍五入法取整  <br />  Date truncate(Date date, int field)：相当于去余法取整  <br />  Date ceiling(Date date, int field)：相当于向上取整
 
+- [Pair](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/tuple/Pair.html)
 - [BooleanUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/BooleanUtils.html)
 - [CharUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/CharUtils.html)
 - [NumberUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/math/NumberUtils.html)
 - [RegExUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/RegExUtils.html)
 - [RandomStringUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/RandomStringUtils.html)
+- [StandardToStringStyle](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/builder/StandardToStringStyle.html)
+- [SerializationUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/SerializationUtils.html)
 - [SystemUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/SystemUtils.html)
 - [ThreadUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ThreadUtils.html)
+- [ClassUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/ClassUtils.html)
+- [FieldUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/reflect/FieldUtils.html)
+- [MethodUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/reflect/MethodUtils.html)
 
 
 ## commons-io
+[FilenameUtils](https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FilenameUtils.html)
 
-- [FilenameUtils](https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FilenameUtils.html)
-- [FileUtils](https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FileUtils.html)
-- [IOUtils](https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/IOUtils.html)
+- concat(String basePath, String fullFilenameToAdd)  合并目录和文件名为文件全路径
+- getBaseName(String filename)  去除目录和后缀后的文件名
+- getExtension(String filename)  获取文件的后缀
+- getFullPath(String filename)  获取文件的目录
+- getName(String filename)  获取文件名
+- getPath(String filename)  去除盘符后的路径
+- getPrefix(String filename)  盘符
+- indexOfExtension(String filename)  获取最后一个.的位置
+- indexOfLastSeparator(String filename)  获取最后一个/的位置
+- normalize(String filename)  获取当前系统格式化路径
+- removeExtension(String filename)  移除文件的扩展名
+- separatorsToSystem(String path)  转换分隔符为当前系统分隔符
+- separatorsToUnix(String path)  转换分隔符为linux系统分隔符
+- separatorsToWindows(String path)  转换分隔符为windows系统分隔符
+- equals(String filename1, String filename2)  判断文件路径是否相同，非格式化
+- equalsNormalized(String filename1, String filename2)  判断文件路径是否相同，格式化
+- directoryContains(String canonicalParent, String canonicalChild)  判断目录下是否包含指定文件或目录
+- isExtension(String filename, String extension)  判断文件扩展名是否包含在指定集合(数组、字符串)中
+- wildcardMatch(String filename, String wildcardMatcher)  判断文件扩展名是否和指定规则匹配
+
+[FileUtils](https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FileUtils.html)
+
+- writing to a file
+- reading from a file
+- make a directory including parent directories
+- copying files and directories
+- deleting files and directories
+- converting to and from a URL
+- listing files and directories by filter and extension
+- comparing file content
+- file last changed date
+- calculating a checksum
+
+[IOUtils](https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/IOUtils.html)
+
+- toXxx/read - these methods read data from a stream
+- write - these methods write data to a stream
+- copy - these methods copy all the data from one stream to another
+- contentEquals - these methods compare the content of two streams
 
 
 
 # [guava](https://github.com/google/guava)
+
+Collections
+
+- [Immutable collections](https://github.com/google/guava/wiki/ImmutableCollectionsExplained)
+- [New collection types](https://github.com/google/guava/wiki/NewCollectionTypesExplained)
+   - [Multiset](https://github.com/google/guava/wiki/NewCollectionTypesExplained#multiset)
+   - [Multimap](https://github.com/google/guava/wiki/NewCollectionTypesExplained#multimap)
+   - [BiMap](https://github.com/google/guava/wiki/NewCollectionTypesExplained#bimap)
+   - [Table](https://github.com/google/guava/wiki/NewCollectionTypesExplained#table)
+   - [ClassToInstanceMap](https://github.com/google/guava/wiki/NewCollectionTypesExplained#classtoinstancemap)
+   - [RangeSet](https://github.com/google/guava/wiki/NewCollectionTypesExplained#rangeset)
+   - [RangeMap](https://github.com/google/guava/wiki/NewCollectionTypesExplained#rangemap)
+- [Utility Classes](https://github.com/google/guava/wiki/CollectionUtilitiesExplained)
+   - [Iterables](https://github.com/google/guava/wiki/CollectionUtilitiesExplained#iterables)
+   - [Lists](https://github.com/google/guava/wiki/CollectionUtilitiesExplained#lists)
+   - [Sets](https://github.com/google/guava/wiki/CollectionUtilitiesExplained#sets)
+   - [Maps](https://github.com/google/guava/wiki/CollectionUtilitiesExplained#maps)
+   - [Multisets](https://github.com/google/guava/wiki/CollectionUtilitiesExplained#multisets)
+   - [Multimaps](https://github.com/google/guava/wiki/CollectionUtilitiesExplained#multimaps)
+   - [Tables](https://github.com/google/guava/wiki/CollectionUtilitiesExplained#tables)
 
 
 # [hutool](https://github.com/dromara/hutool)
@@ -703,6 +765,12 @@ void testCapitalize(String input, String result) {
 
 
 # [okhttp](https://github.com/square/okhttp)
+
+[OkHttpClient](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/)
+
+[Cookie](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-cookie/)  <br />  [Headers](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-headers/)  <br />  [HttpUrl](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-http-url/)  <br />  [Interceptor](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-interceptor/)  <br />  [MediaType](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-media-type/)  <br />  [MultipartBody](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-multipart-body/)  <br />  [Request](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-request/)  <br />  [Response](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-response/)  <br />  [WebSocket](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-web-socket/)
+
+
 ```java
 class MyHttp {
 
@@ -725,48 +793,105 @@ class MyHttp {
 //      .dispatcher(dispatcher) // dispatcher used to set policy and execute asynchronous requests
       .build();
 
-  String host = "https://json.extendsclass.com";
+  String url = "https://httpbin.org";
+  HttpUrl.Builder queryUrlBuilder;
 
   public final MediaType JSON
       = MediaType.get("application/json; charset=utf-8");
 
   private Request request;
-
-  //  public Headers headers = new Headers.Builder().add("Security-key", "ec").build();
-  public Headers headers;
+  public Headers.Builder headersBuilder;
+  private RequestBody body;
 
   MyHttp() {
-    Map<String, String> map = new HashMap<>();
-    map.put("Security-key", "ec");
-    headers = Headers.of(map);
+    headersBuilder = new Headers.Builder();
   }
 
-  public MyHttp get(String url) {
-    HttpUrl.Builder queryUrlBuilder = HttpUrl.get("https://json.extendsclass.com").newBuilder();
-    queryUrlBuilder.addQueryParameter("limit", "15");
+  public MyHttp header(String name, String value) {
+    headersBuilder.add(name, value);
+    return this;
+  }
 
+  public MyHttp headers(Map<String, String> params) {
+    headersBuilder.addAll(Headers.of(params));
+    return this;
+  }
+
+  public MyHttp url(String url) {
+    this.url = url;
+    this.queryUrlBuilder = HttpUrl.get(url).newBuilder();
+    return this;
+  }
+
+  public MyHttp queryParam(String paramName, String paramValue) {
+    queryUrlBuilder.addQueryParameter(paramName, paramValue);
+    return this;
+  }
+
+  public MyHttp queryParams(Map<String, String> params) {
+    for (Entry<String, String> entry : params.entrySet()) {
+      queryUrlBuilder.addQueryParameter(entry.getKey(), entry.getValue());
+    }
+    return this;
+  }
+
+  public MyHttp body(RequestBody body) {
+    this.body = body;
+    return this;
+  }
+
+  public MyHttp jsonBody(String json) {
+    body = RequestBody.create(json, JSON);
+    return this;
+  }
+
+  public MyHttp formBody(String name, String value) {
+    body = new FormBody.Builder().add(name, value).build();
+    return this;
+  }
+
+  public MyHttp fileBody(String json) {
+    RequestBody fileBody = RequestBody.create(new File("path/attachment.png"),
+        MediaType.parse("image/png"));
+    body = new MultipartBody.Builder()
+        .setType(MultipartBody.FORM)
+        .addFormDataPart("file", "head_img", fileBody)
+        .addFormDataPart("name", "xiaoyi").build();
+    return this;
+  }
+
+  public MyHttp get() {
     request = new Request.Builder()
-        .url(host + url)
-        .headers(headers)
+        .url(queryUrlBuilder.build().toString())
+        .headers(headersBuilder.build())
         .addHeader("user-agent", "Mozilla/5.0")
         .build();
     return this;
   }
 
-  public MyHttp post(String url, String json) {
-    RequestBody formBody = new FormBody.Builder().add("username","root").build();
-    RequestBody fileBody = RequestBody.create(new File("path/attachment.png"),
-        MediaType.parse("image/png"));
-    RequestBody requestBody = new MultipartBody.Builder()
-        .setType(MultipartBody.FORM)
-        .addFormDataPart("file", "head_img", fileBody)
-        .addFormDataPart("name", "xiaoyi").build();
-
-    RequestBody body = RequestBody.create(json, JSON);
+  public MyHttp post() {
     request = new Request.Builder()
-        .url(host + url)
-        .headers(headers)
+        .url(queryUrlBuilder.build().toString())
+        .headers(headersBuilder.build())
         .post(body)
+        .build();
+    return this;
+  }
+
+  public MyHttp put() {
+    request = new Request.Builder()
+        .url(queryUrlBuilder.build().toString())
+        .headers(headersBuilder.build())
+        .put(body)
+        .build();
+    return this;
+  }
+
+  public MyHttp delete() {
+    request = new Request.Builder()
+        .url(queryUrlBuilder.build().toString())
+        .headers(headersBuilder.build())
+        .delete(body)
         .build();
     return this;
   }
@@ -793,6 +918,7 @@ class MyHttp {
   }
 
   static class BasicLoggingInterceptor implements Interceptor {
+
     @NotNull
     @Override
     public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -800,11 +926,18 @@ class MyHttp {
 
       System.out.printf("Sending request %s on %s%n%s%n",
           request.url(), chain.connection(), request.headers());
+      System.out.printf("request method: %s%n request body: %s%n", request.method(),
+          request.body());
 
       Response response = chain.proceed(request);
 
-      System.out.printf("Received response for %s %n%s%n",
-          response.request().url(), response.headers());
+      System.out.printf("Received response code is %s %n response headers:%n%s%n",
+          response.code(), response.headers());
+      BufferedSource source = response.body().source();
+      source.request(Long.MAX_VALUE);
+      Buffer buffer = source.getBuffer();
+      System.out.printf("response body:%n%s response message: %n%s",
+          buffer.clone().readUtf8(), response.message());
 
       return response;
     }
@@ -812,9 +945,16 @@ class MyHttp {
     
   public static void main(String[] args) throws IOException {
     MyHttp okhttp = new MyHttp();
-    String sync = okhttp.get("/bin/659e99c04915").sync();
-    System.out.println("--- main ---");
-    System.out.println(sync);
+
+    LinkedHashMap<String, String> map = new LinkedHashMap<>();
+    map.put("map","映射");
+
+    String sync = okhttp.url("https://httpbin.org/post")
+        .header("h1","ad")
+        .queryParam("que", "param")
+        .queryParams(map)
+        .jsonBody("")
+        .post().sync();
   }
 }
 ```
@@ -846,6 +986,14 @@ String jsonString = JSON.toJSONString(obj);
 Object bean = JSON.parseObject(jsonString, Object.class);
 Object[] beans = JSON.parseArray(jsonStringArray, Object.class);
 ```
+JSON 字符串反序列化API
+
+- JSONObject parseObject(String text, Feature... features)
+- <T> T parseObject(String text, Class<T> clazz, Feature... features)
+- <T> T parseObject(String text, TypeReference<T> type, Feature... features)
+- JSONArray parseArray(String text)
+- <T> List<T> parseArray(String text, Class<T> clazz)
+
 注解 `@JSONField`  <br />  配置在属性（setter、getter）和字段（必须是 public field）上
 ```java
 // 设置字段名
@@ -1222,17 +1370,16 @@ Google style  <br />  [intellij-java-google-style.xml](https://github.com/google
 ## plugin
 
 - Maven Helper	依赖分析
-- Codota	代码智能提示
 - Tabnine	基于 AI 的代码提示
 - Rainbow Brackets	彩虹括号
 - One Dark theme
 
 - RestfulToolkit	RESTful服务开发
 - Key Promoter X	快捷键
-- GsonFormat+RoboPOJOGenerator	JSON转类对象
+- GsonFormat	JSON转类对象
 - Statistic	项目信息统计
 - Translation	必备的翻译插件
-- CamelCase-多种命名格式之间切换
+- CamelCase	多种命名格式之间切换
 
 
 
