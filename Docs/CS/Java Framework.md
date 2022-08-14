@@ -203,7 +203,7 @@ POM（Project Object Model，项目对象模型）是 Maven 的基本组件，�
 </settings>
 ```
 
-搜索第三方组件  <br />  [search.maven.org](https://search.maven.org/)  <br />  生命周期（default为例）phase：
+搜索第三方组件	[search.maven.org](https://search.maven.org/)  <br />  生命周期（default为例）phase：
 
 - validate
 - initialize
@@ -448,87 +448,109 @@ Collections
 
 
 
-# Log4j2
-**Maven导入**
-```xml
-<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-<dependency>
-<groupId>org.apache.logging.log4j</groupId>
-<artifactId>log4j-core</artifactId>
-<version>2.13.0</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
-<dependency>
-<groupId>org.apache.logging.log4j</groupId>
-<artifactId>log4j-api</artifactId>
-<version>2.13.0</version>
-</dependency>
-```
-**log4j2.xml**
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<Configuration>
-	<Properties>
-        <!-- 定义日志格式 -->
-		<Property name="log.pattern">%d{MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}%n%msg%n%n</Property>
-        <!-- 定义文件名变量 -->
-		<Property name="file.err.filename">log/err.log</Property>
-		<Property name="file.err.pattern">log/err.%i.log.gz</Property>
-	</Properties>
-    <!-- 定义Appender，即目的地 -->
-	<Appenders>
-        <!-- 定义输出到屏幕 -->
-		<Console name="console" target="SYSTEM_OUT">
-            <!-- 日志格式引用上面定义的log.pattern -->
-			<PatternLayout pattern="${log.pattern}" />
-		</Console>
-        <!-- 定义输出到文件,文件名引用上面定义的file.err.filename -->
-		<RollingFile name="err" bufferedIO="true" fileName="${file.err.filename}" filePattern="${file.err.pattern}">
-			<PatternLayout pattern="${log.pattern}" />
-			<Policies>
-                <!-- 根据文件大小自动切割日志 -->
-				<SizeBasedTriggeringPolicy size="1 MB" />
-			</Policies>
-            <!-- 保留最近10份 -->
-			<DefaultRolloverStrategy max="10" />
-		</RollingFile>
-	</Appenders>
-	<Loggers>
-		<Root level="info">
-            <!-- 对info级别的日志，输出到console -->
-			<AppenderRef ref="console" level="info" />
-            <!-- 对error级别的日志，输出到err，即上面定义的RollingFile -->
-			<AppenderRef ref="err" level="error" />
-		</Root>
-	</Loggers>
-</Configuration>
-```
-| Level | 描述 |
-| --- | --- |
-| ALL | 各级包括自定义级别 |
-| DEBUG | 指定细粒度信息事件是最有用的应用程序调试 |
-| ERROR | 错误事件可能仍然允许应用程序继续运行 |
-| FATAL | 指定非常严重的错误事件，这可能导致应用程序中止 |
-| INFO | 指定能够突出在粗粒度级别的应用程序运行情况的信息的消息 |
-| OFF | 这是最高等级，为了关闭日志记录 |
-| TRACE | 指定细粒度比DEBUG更低的信息事件 |
-| WARN | 指定具有潜在危害的情况 |
+# Log
+日志框架
 
-**程序示例**
+- [logging-log4j2](https://github.com/apache/logging-log4j2)
+- [logback](https://github.com/qos-ch/logback)
+
+日志门面：对不同日志框架提供的一个 API 封装，可以在部署的时候不修改任何配置即可接入一种日志实现方案
+
+- [slf4j](https://github.com/qos-ch/slf4j)
+
+**Spring Boot + Slf4j + Logback**
+> Spring Boot 默认使用 logback 作为日志组件
+
+
+配置文件  <br />  `spring.profiles.active = logback`
+
+logback.xml 配置
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- logback中一共有5种有效级别，分别是TRACE、DEBUG、INFO、WARN、ERROR，优先级依次从低到高 -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+  <property name="DIR_NAME" value="spring-boot-log-logback"/>
+
+  <!-- APPENDER BEGIN -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] [%-5p] %c{36}.%M - %m%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="ALL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 根据时间来制定滚动策略 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${user.dir}/logs/${DIR_NAME}/all.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+
+    <!-- 根据文件大小来制定滚动策略 -->
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>30MB</maxFileSize>
+    </triggeringPolicy>
+
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] [%-5p] %c{36}.%M - %m%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="SPRING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 根据时间来制定滚动策略 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${user.dir}/logs/${DIR_NAME}/spring.%d{yyyy-MM-dd}.log
+      </fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+
+    <!-- 根据文件大小来制定滚动策略 -->
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>10MB</maxFileSize>
+    </triggeringPolicy>
+
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] [%-5p] %c{36}.%M - %m%n</pattern>
+    </encoder>
+  </appender>
+  <!-- APPENDER END -->
+
+  <!-- LOGGER BEGIN -->
+  <!-- 本项目的日志记录，分级打印 -->
+  <logger name="io.github.dunwu" level="DEBUG" additivity="false">
+    <appender-ref ref="ALL"/>
+    <appender-ref ref="STDOUT"/>
+  </logger>
+  <springProfile name="staging">
+    <logger name="io.github.dunwu" level="TRACE" additivity="false">
+      <appender-ref ref="ALL"/>
+      <appender-ref ref="STDOUT"/>
+    </logger>
+  </springProfile>
+
+  <!-- SPRING框架日志 -->
+  <logger name="org.springframework" level="TRACE" additivity="false">
+    <appender-ref ref="SPRING"/>
+  </logger>
+
+  <root level="WARN">
+    <appender-ref ref="STDOUT"/>
+  </root>
+  <!-- LOGGER END -->
+
+</configuration>
+```
+
+使用 Slf4j API
 ```java
-import org.apache.logging.log4j.*；
-public class Test {
-	static Logger logger= LogManager.getLogger(Test.class.getName());
-	public static void main(String[] args) throws InterruptedException {
-         //PropertyConfigurator.configure("D:\\Code\\log4j2.xml");
-        logger.trace("跟踪信息");
-        logger.debug("调试信息");
-        logger.info("输出信息");
-        Thread.sleep(1000);
-        logger.warn("警告信息");
-        logger.error("错误信息");
-        logger.fatal("致命信息");
-	}
+public class WebLogAspect {
+
+    private Logger log = Logger.getLogger(getClass());
+
+    public void doAfterReturning(Object ret) throws Throwable {
+        // 处理完请求，返回内容
+        log.info("RESPONSE : {}", ret);
+        log.debug("SPEND TIME : {}", (System.currentTimeMillis() - startTime.get()));
+    }
 }
 ```
 
@@ -766,16 +788,27 @@ void testCapitalize(String input, String result) {
 
 # [okhttp](https://github.com/square/okhttp)
 
-[OkHttpClient](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/)
-
-[Cookie](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-cookie/)  <br />  [Headers](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-headers/)  <br />  [HttpUrl](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-http-url/)  <br />  [Interceptor](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-interceptor/)  <br />  [MediaType](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-media-type/)  <br />  [MultipartBody](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-multipart-body/)  <br />  [Request](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-request/)  <br />  [Response](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-response/)  <br />  [WebSocket](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-web-socket/)
-
+[OkHttpClient](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/)  <br />  [Cookie](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-cookie/)  <br />  [Headers](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-headers/)  <br />  [HttpUrl](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-http-url/)  <br />  [Interceptor](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-interceptor/)  <br />  [MediaType](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-media-type/)  <br />  [MultipartBody](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-multipart-body/)  <br />  [Request](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-request/)  <br />  [Response](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-response/)  <br />  [WebSocket](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-web-socket/)
 
 ```java
 class MyHttp {
 
-  OkHttpClient client = new OkHttpClient().newBuilder()
-      .addInterceptor(new BasicLoggingInterceptor())
+  OkHttpClient client;
+
+  String url = "https://httpbin.org";
+  HttpUrl.Builder queryUrlBuilder;
+
+  public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
+
+  private Request.Builder request;
+  public Headers.Builder headersBuilder;
+  private RequestBody body;
+
+  MyHttp() {
+    headersBuilder = new Headers.Builder();
+    TrustManager[] trustManagers = buildTrustManagers();
+    client= new OkHttpClient().newBuilder()
+        .addInterceptor(new BasicLoggingInterceptor())
 //      .cache(cache) // configure cache
 //      .proxy(proxy) // configure proxy
 //      .certificatePinner(certificatePinner) // certificate pinning
@@ -791,23 +824,15 @@ class MyHttp {
 //      .retryOnConnectionFailure(true) // retry or not when a connectivity problem is encountered
 //      .cookieJar(cookieJar) // cookie manager
 //      .dispatcher(dispatcher) // dispatcher used to set policy and execute asynchronous requests
-      .build();
-
-  String url = "https://httpbin.org";
-  HttpUrl.Builder queryUrlBuilder;
-
-  public final MediaType JSON
-      = MediaType.get("application/json; charset=utf-8");
-
-  private Request request;
-  public Headers.Builder headersBuilder;
-  private RequestBody body;
-
-  MyHttp() {
-    headersBuilder = new Headers.Builder();
+        .sslSocketFactory(createSSLSocketFactory(trustManagers),
+            (X509TrustManager) trustManagers[0])
+        .hostnameVerifier((hostName, session) -> true)
+        //设置连接池  最大连接数量  , 持续存活的连接
+//        .connectionPool(new ConnectionPool(50, 10, TimeUnit.MINUTES))
+        .build();
   }
 
-  public MyHttp header(String name, String value) {
+  public MyHttp header(@NotNull String name, @NotNull String value) {
     headersBuilder.add(name, value);
     return this;
   }
@@ -823,15 +848,13 @@ class MyHttp {
     return this;
   }
 
-  public MyHttp queryParam(String paramName, String paramValue) {
+  public MyHttp queryParam(@NotNull String paramName, String paramValue) {
     queryUrlBuilder.addQueryParameter(paramName, paramValue);
     return this;
   }
 
   public MyHttp queryParams(Map<String, String> params) {
-    for (Entry<String, String> entry : params.entrySet()) {
-      queryUrlBuilder.addQueryParameter(entry.getKey(), entry.getValue());
-    }
+    params.forEach(queryUrlBuilder::addQueryParameter);
     return this;
   }
 
@@ -845,76 +868,124 @@ class MyHttp {
     return this;
   }
 
-  public MyHttp formBody(String name, String value) {
-    body = new FormBody.Builder().add(name, value).build();
+  public MyHttp formBody(Map<String, String> map) {
+    FormBody.Builder formBody = new FormBody.Builder(StandardCharsets.UTF_8);
+    map.forEach(formBody::addEncoded);
+    body = formBody.build();
     return this;
   }
 
-  public MyHttp fileBody(String json) {
+  public MyHttp fileBody() {
     RequestBody fileBody = RequestBody.create(new File("path/attachment.png"),
         MediaType.parse("image/png"));
-    body = new MultipartBody.Builder()
-        .setType(MultipartBody.FORM)
+    body = new MultipartBody.Builder().setType(MultipartBody.FORM)
         .addFormDataPart("file", "head_img", fileBody)
-        .addFormDataPart("name", "xiaoyi").build();
+        .addFormDataPart("key", "val").build();
     return this;
+  }
+
+  private Builder initRequest() {
+    request = new Request.Builder().url(queryUrlBuilder.build())
+        .headers(headersBuilder.build());
+    return request;
   }
 
   public MyHttp get() {
-    request = new Request.Builder()
-        .url(queryUrlBuilder.build().toString())
-        .headers(headersBuilder.build())
-        .addHeader("user-agent", "Mozilla/5.0")
-        .build();
+    initRequest();
     return this;
   }
 
   public MyHttp post() {
-    request = new Request.Builder()
-        .url(queryUrlBuilder.build().toString())
-        .headers(headersBuilder.build())
-        .post(body)
-        .build();
+    initRequest().post(body);
     return this;
   }
 
   public MyHttp put() {
-    request = new Request.Builder()
-        .url(queryUrlBuilder.build().toString())
-        .headers(headersBuilder.build())
-        .put(body)
-        .build();
+    initRequest().put(body);
     return this;
   }
 
   public MyHttp delete() {
-    request = new Request.Builder()
-        .url(queryUrlBuilder.build().toString())
-        .headers(headersBuilder.build())
-        .delete(body)
-        .build();
+    initRequest().delete(body);
     return this;
   }
 
   public String sync() throws IOException {
-    try (Response response = client.newCall(request).execute()) {
+    try (Response response = client.newCall(request.build()).execute()) {
       return response.body().string();
     }
   }
 
-  public void async() {
-    client.newCall(request).enqueue(new Callback() {
+  private static volatile Semaphore semaphore = null;
+
+  /**
+   * 用于异步请求时，控制访问线程数，返回结果
+   */
+  private static Semaphore getSemaphoreInstance() {
+    //只能1个线程同时访问
+    synchronized (MyHttp.class) {
+      if (semaphore == null) {
+        semaphore = new Semaphore(0);
+      }
+    }
+    return semaphore;
+  }
+
+  public String async() {
+    StringBuffer buffer = new StringBuffer();
+    client.newCall(request.build()).enqueue(new Callback() {
+
       @Override
       public void onFailure(@NotNull Call call, @NotNull IOException e) {
+        buffer.append("request failed: ").append(e.getMessage());
         e.printStackTrace();
       }
 
       @Override
-      public void onResponse(@NotNull Call call, @NotNull Response response) {
-        System.out.println("----- Async -----");
-        System.out.println(response.body());
+      public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+        ResponseBody body = response.body();
+        if (body != null) {
+          buffer.append(body.string());
+        }
+        getSemaphoreInstance().release();
       }
     });
+    getSemaphoreInstance().release();
+    return buffer.toString();
+  }
+
+  /**
+   * 生成安全套接字工厂，用于https请求的证书跳过
+   */
+  private static SSLSocketFactory createSSLSocketFactory(TrustManager[] trustAllCerts) {
+    SSLSocketFactory ssfFactory = null;
+    try {
+      SSLContext sc = SSLContext.getInstance("TLS");
+      sc.init(null, trustAllCerts, new SecureRandom());
+      ssfFactory = sc.getSocketFactory();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return ssfFactory;
+  }
+
+  private static TrustManager[] buildTrustManagers() {
+    return new TrustManager[]{
+        new X509TrustManager() {
+          @Override
+          public void checkClientTrusted(X509Certificate[] chain, String authType) {
+          }
+
+          @Override
+          public void checkServerTrusted(X509Certificate[] chain, String authType) {
+          }
+
+          @Override
+          public X509Certificate[] getAcceptedIssuers() {
+            return new X509Certificate[]{};
+          }
+        }
+    };
   }
 
   static class BasicLoggingInterceptor implements Interceptor {
@@ -923,38 +994,47 @@ class MyHttp {
     @Override
     public Response intercept(Interceptor.Chain chain) throws IOException {
       Request request = chain.request();
+      System.out.printf("Sending %s request: %s%n", request.method(), request.url());
 
-      System.out.printf("Sending request %s on %s%n%s%n",
-          request.url(), chain.connection(), request.headers());
-      System.out.printf("request method: %s%n request body: %s%n", request.method(),
-          request.body());
+      System.out.println("request headers: " +
+          request.headers());
+
+      RequestBody requestBody = request.body();
+      Buffer buffer = new Buffer();
+      if (requestBody != null) {
+        requestBody.writeTo(buffer);
+        System.out.println("request body: " + buffer.readUtf8());
+      }
 
       Response response = chain.proceed(request);
 
-      System.out.printf("Received response code is %s %n response headers:%n%s%n",
-          response.code(), response.headers());
-      BufferedSource source = response.body().source();
-      source.request(Long.MAX_VALUE);
-      Buffer buffer = source.getBuffer();
-      System.out.printf("response body:%n%s response message: %n%s",
-          buffer.clone().readUtf8(), response.message());
+      System.out.printf("Received response code is %s %n response headers:%n%s%n", response.code(),
+          response.headers());
+      ResponseBody responseBody = response.body();
+      if (responseBody != null) {
+        BufferedSource source = responseBody.source();
+        source.request(Long.MAX_VALUE);
+        buffer = source.getBuffer();
+        System.out.printf("response body:%n%s", buffer.clone().readUtf8());
+      }
 
       return response;
     }
-  }
     
   public static void main(String[] args) throws IOException {
-    MyHttp okhttp = new MyHttp();
-
     LinkedHashMap<String, String> map = new LinkedHashMap<>();
     map.put("map","映射");
 
-    String sync = okhttp.url("https://httpbin.org/post")
-        .header("h1","ad")
-        .queryParam("que", "param")
-        .queryParams(map)
-        .jsonBody("")
+    MyHttp myHttp = new MyHttp().header("h1", "ad");
+      
+    String sync = myHttp.url("https://httpbin.org/post")
+        .queryParam("123", null)
+        .jsonBody("[你好, abc]")
+//        .formBody(map)
         .post().sync();
+    
+    myHttp.url("https://httpbin.org/get")
+        .queryParams(map).get().sync();
   }
 }
 ```
@@ -1052,14 +1132,20 @@ tomcat9启动后控制台乱码：
 
 
 
+# Resource
 
+- [awesome-java](https://github.com/akullpp/awesome-java)
+- [awesome-jvm](https://github.com/deephacks/awesome-jvm)
+- [useful-java-links](https://github.com/Vedenin/useful-java-links)
+- [awesome-microservices](https://github.com/mfornos/awesome-microservices)
+- [awesome-rest](https://github.com/marmelab/awesome-rest)
 
+[监控工具](https://dunwu.github.io/java-tutorial/tool/monitor/monitor-summary.html)
 
+- [SkyWalking](https://dunwu.github.io/java-tutorial/tool/monitor/skywalking.html)
+- [Arthas](https://dunwu.github.io/java-tutorial/tool/monitor/arthas.html)
 
-
-
-
-# [JavaFX](https://wiki.openjdk.java.net/display/OpenJFX/Main)
+[JavaFX](https://wiki.openjdk.java.net/display/OpenJFX/Main)
 
 
 
