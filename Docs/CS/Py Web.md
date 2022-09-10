@@ -1,4 +1,5 @@
 
+
 # PyMySQL
 class pymysql.connections.Connection
 
@@ -956,7 +957,7 @@ if __name__ == "__main__":
     uvicorn.run(app=app, host="127.0.0.1", port=5000, log_level="info")
 ```
 
-# [Requests](https://cn.python-requests.org/zh_CN/latest/)
+# [requests](https://github.com/psf/requests)
 **requests.request(method, url, **kwargs)**  <br />  request(method, url, params=None, data=None, headers=None, cookies=None, files=None, auth=None, timeout=None, allow_redirects=True, proxies=None, hooks=None, stream=None, verify=None, cert=None, json=None)  <br />  参数:
 
 - method -- method for the new Request object.
@@ -979,87 +980,234 @@ if __name__ == "__main__":
 
 **requests.head(url, **kwargs)**  <br />  **requests.get(url, params=None, **kwargs)**  <br />  **requests.post(url, data=None, json=None, **kwargs)**  <br />  **requests.put(url, data=None, **kwargs)**  <br />  **requests.patch(url, data=None, **kwargs)**  <br />  **requests.delete(url, **kwargs)**
 
-**class requests.Session**  <br />  **class requests.Response**
+**class requests.Session**
 
+**class requests.Response**
+
+- request
+   - body
+   - method
+   - headers
+- url
 - text -- Content of the response, in unicode.
 - content -- Content of the response, in bytes.
 - json(**kwargs) -- Returns the json-encoded content of a respon
 - status_code
 - raw
-- links
+- ok
 - is_redirect
 - headers
+- cookies
+- history
 ```python
-class CloudJson(object):
-    host = 'https://json.extendsclass.com'
-    session = requests.Session()
-    response = None
+import json
+from functools import wraps
+
+import requests
+
+
+def log(func):
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        print('running', func.__name__)
+
+        try:
+            res = func(self, *args, **kwargs)
+            request = res.request
+            print(f'send -> {request.method} {res.url}')
+            print(f'request headers: {request.headers}')
+            if request.body:
+                print(f'request body: {request.body}')
+            print(f'recevie <- {res.status_code}')
+            print(f'response headers: {res.headers}')
+        except Exception as exception:
+            print("request error: ", exception)
+
+        if not res.ok:
+            print('request failed: ', self.response.text)
+        else:
+            if self.response.headers['Content-Type'].find('json') > 0:
+                print("response result:",
+                      json.dumps(res.json(), indent=2, ensure_ascii=False))
+            else:
+                print('response result:', self.response.text)
+        return res
+
+    return wrapper
+
+
+class ApiGateway(object):
+    def __init__(self, host: str, path_prefix: str = ""):
+        self.host = host
+        self.path_prefix = path_prefix
+        self.session = requests.Session()
+        # self.session.proxies = {"https": None, "http": None}
+        self.session.verify = False
+        self.response = None
+        self.update_headers()
+
+    @property
+    def context_path(self):
+        return self.host + self.path_prefix
+
+    def update_headers(self):
+        self.session.headers = {}
+
+    def _request(self, method, path, **kwargs):
+        if not hasattr(self.session, method):
+            raise ValueError(f"don't have {method}")
+        request_method = getattr(self.session, method)
+        request_method(self.context_path + path, **kwargs)
+
+    def _get(self, path, **kwargs):
+        self.response = self.session.get(self.context_path + path, **kwargs)
+
+    def _post(self, path, data=None, json=None, **kwargs):
+        self.response = self.session.post(self.context_path + path, data, json,
+                                          **kwargs)
+
+    def _put(self, path, data, **kwargs):
+        self.response = self.session.put(self.context_path + path, data,
+                                         **kwargs)
+
+    def _delete(self, path, **kwargs):
+        self.response = self.session.delete(self.context_path + path, **kwargs)
+
+    def __del__(self):
+        self.session.close()
+
+
+class CloudJson(ApiGateway):
+
     def __init__(self, security_key: str = None):
+        super().__init__('https://json.extendsclass.com')
         if security_key:
             self.session.headers.update({"Security-key": security_key})
-            
-    # decorator
-    def log(func):
-        def wrapper(self, *args, **kwargs):
-            print('running', func.__name__)
-            res = func(self, *args, **kwargs)
-            if self.response.status_code >= 400:
-                print('request error')
-            else:
-                print('successfully request with', self.response.request.body)
-            print(json.dumps(res, indent=2))
-            return res
-        return wrapper
-    
+
     @log
     def create_bin(self, api_key: str, data, private=False):
         headers = {
             "Api-key": api_key,
             "Private": "true" if private else "false"
         }
-        self.response = self.session.post(f'{self.host}/bin',
-                                          data=data.encode('utf-8'), headers=headers)
-        return self.response.json()
-    
+        self._post(f'/bin', data=data.encode('utf-8'), headers=headers)
+        return self.response
+
     @log
     def obtain(self, id: str):
-        self.response = self.session.get(f'{self.host}/bin/{id}')
-        return self.response.json()
-    
+        self._get(f'/bin/{id}')
+        return self.response
+
     @log
     def update(self, id: str, data):
-        self.response = self.session.put(f'{self.host}/bin/{id}', data=data.encode('utf-8'))
-        return self.response.json()
-    
+        self._put(f'/bin/{id}', data=data.encode('utf-8'))
+        return self.response
+
     @log
     def partially_update(self, id: str, data):
         headers = {"Content-type": "application/json-patch+json"}
-        self.response = self.session.patch(f'{self.host}/bin/{id}',
-                                           data=data.encode('utf-8'), headers=headers)
-        return self.response.json()
-    
+        self._request('PATCH',
+                      f'/bin/{id}',
+                      data=data.encode('utf-8'),
+                      headers=headers)
+        return self.response
+
     @log
     def delete(self, id: str):
-        self.response = self.session.delete(f'{self.host}/bin/{id}')
-        return self.response.json()
-    
+        self._delete(f'/bin/{id}')
+        return self.response
+
     @log
     def bins(self, api_key: str):
         headers = {"Api-key": api_key}
-        self.response = self.session.get(f'{self.host}/bins', headers=headers)
-        return self.response.json()
-    
-    @log
-    def __del__(self):
-        self.session.close()
-        
+        self._get('/bins', headers=headers)
+        return self.response
+
+
 if __name__ == '__main__':
     id = '659e99c04915'
     key = '7816b5a9-451c-11ec-b95c-0242ac110002'
-    pw = 'ec'
-    cj = CloudJson(pw)
+    cj = CloudJson('ec')
     r = cj.obtain(id)
+    # cj.bins(key)
 ```
+
+
+
+# [aiohttp](https://github.com/aio-libs/aiohttp)
+class aiohttp.ClientSession(base_url=None, *, connector=None, cookies=None, headers=None, skip_auto_headers=None, auth=None, json_serialize=json.dumps, version=aiohttp.HttpVersion11, cookie_jar=None, read_timeout=None, conn_timeout=None, timeout=sentinel, raise_for_status=False, connector_owner=True, auto_decompress=True, read_bufsize=2 ** 16, requote_redirect_url=False, trust_env=False, trace_configs=None)
+
+coroutine async-with request(method, url, *, params=None, data=None, json=None, cookies=None, headers=None, skip_auto_headers=None, auth=None, allow_redirects=True, max_redirects=10, compress=None, chunked=None, expect100=False, raise_for_status=None, read_until_eof=True, read_bufsize=None, proxy=None, proxy_auth=None, timeout=sentinel, ssl=None, verify_ssl=None, fingerprint=None, ssl_context=None, proxy_headers=None)
+
+coroutine async-with ws_connect(url, *, method='GET', protocols=(), timeout=10.0, receive_timeout=None, auth=None, autoclose=True, autoping=True, heartbeat=None, origin=None, params=None, headers=None, proxy=None, proxy_auth=None, ssl=None, verify_ssl=None, fingerprint=None, ssl_context=None, proxy_headers=None, compress=0, max_msg_size=4194304)
+
+```python
+async def main():
+    async with aiohttp.ClientSession() as session:
+        headers={'Accept': 'application/json'}
+        async with session.get('http://httpbin.org/get', headers=headers) as resp:
+            print(resp.status)
+            print(await resp.text())
+
+asyncio.run(main())
+
+async with session.ws_connect('http://example.org/ws') as ws:
+    async for msg in ws:
+        if msg.type == aiohttp.WSMsgType.TEXT:
+            if msg.data == 'close cmd':
+                await ws.close()
+                break
+            else:
+                await ws.send_str(msg.data + '/answer')
+        elif msg.type == aiohttp.WSMsgType.ERROR:
+            break
+```
+```python
+class ApiGateway(object):
+
+    def __init__(self, host: str, path_prefix: str = ""):
+        self.host = host
+        self.path_prefix = path_prefix
+        self.session = aiohttp.ClientSession()
+        self.response = None
+        self.headers = {}
+
+    @property
+    def context_path(self):
+        return self.host + self.path_prefix
+
+    async def _get(self, path, **kwargs):
+        self.response = await self.session.get(self.context_path + path,
+                                               **kwargs)
+
+    async def _post(self, path, data=None, **kwargs):
+        self.response = await self.session.post(self.context_path + path,
+                                                data=data,
+                                                **kwargs)
+
+    async def _put(self, path, data, **kwargs):
+        self.response = await self.session.put(self.context_path + path,
+                                               data=data,
+                                               **kwargs)
+
+    async def _delete(self, path, **kwargs):
+        self.response = await self.session.delete(self.context_path + path,
+                                                  **kwargs)
+
+    async def close(self):
+        await self.session.close()
+
+async def main():
+    api = ApiGateway('http://httpbin.org')
+    await api._post('/post', json={'key': 'value'})
+    res = await api.response.json()
+    await api.close()
+    print(json.dumps(res, indent=2))
+
+
+asyncio.run(main())
+```
+
 
 # [lxml](https://lxml.de/)
 Class _Element(顶级基类)

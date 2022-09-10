@@ -4,8 +4,8 @@
 
 Resource
 
-- [awesome-python-cn](https://github.com/jobbole/awesome-python-cn)
 - [awesome-python](https://github.com/vinta/awesome-python)
+- [awesome-python-cn](https://github.com/jobbole/awesome-python-cn)
 
 
 
@@ -488,24 +488,7 @@ enh.enhance(1.3).show("30% more contrast")
 | -i | 改变生成程序的icon图标 |
 
 
-# [aiohttp](https://docs.aiohttp.org/en/stable/)
-```python
-import aiohttp
-import asyncio
 
-async def fetch(session, url):
-    async with session.get(url) as response:
-        return await response.text()
-    
-async def main():
-    async with aiohttp.ClientSession() as session:
-        html = await fetch(session, 'http://python.org')
-        print(html)
-        
-if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
-```
 
 # [jieba](https://github.com/fxsjy/jieba)
 四种分词模式：
@@ -990,9 +973,6 @@ if __name__ == '__main__':
     ssh.close()
 
 ```
-
-
-
 
 
 

@@ -54,10 +54,13 @@
 [awesome-vscode](https://github.com/viatsko/awesome-vscode)
 
 ## Extension
+extensions : `%USERPROFILE%\.vscode\extensions`
 
 - One Dark Pro
 - Chinese (Simplified) Language
-- indent-rainbow
+- [Visual Studio IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+- Tabnine AI
+- [Indent Rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)
 - Code Runner
 - [Toggle Quotes](https://marketplace.visualstudio.com/items?itemName=BriteSnow.vscode-toggle-quotes)
 - [Surround](https://marketplace.visualstudio.com/items?itemName=yatki.vscode-surround)
@@ -65,7 +68,7 @@
 - [Text Power Tools](https://marketplace.visualstudio.com/items?itemName=qcz.text-power-tools)
 
 
-## Default Keyboard Shortcuts
+## [Shortcuts](https://code.visualstudio.com/docs/getstarted/keybindings)
 **Basic Editing**
 
 | Command | Key | Command id |
@@ -152,7 +155,8 @@ code [options][paths...]
 
 
 ## Settings
-`C:\Users\<Username>\AppData\Roaming\Code\User\settings.json`
+
+`%APPDATA%\Code`  <br />  `C:\Users\<Username>\AppData\Roaming\Code\User\settings.json`
 ```json
 {
     "editor.fontSize": 18,
@@ -168,60 +172,23 @@ code [options][paths...]
     "editor.suggest.maxVisibleSuggestions": 10,
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.fontSize": 15,
-  
-    "C_Cpp.updateChannel": "Insiders",
-    "C_Cpp.default.cppStandard": "c++20",
-    "C_Cpp.default.cStandard": "c11",
-    "C_Cpp.default.intelliSenseMode": "msvc-x64",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "python.jediEnabled": true,
-    "python.pythonPath": "D:\\Python\\python.exe",
-    "files.trimTrailingWhitespace": true,
-    "code-runner.runInTerminal": true,
-    "code-runner.saveFileBeforeRun": true,
-    "[java]": {
-        "java.home":"D:\\jdk-13.0.1"
-    },
-    "workbench.startupEditor": "newUntitledFile",
-    "update.enableWindowsBackgroundUpdates": false,
-    "http.proxySupport": "off",
-    "python.terminal.activateEnvironment": false,
-    "explorer.confirmDelete": false,
-    "cSpell.enableFiletypes": [
-        "!asciidoc",
-        "!go",
-        "!handlebars",
-        "!haskell",
-        "!jade",
-        "!javascriptreact",
-        "!json",
-        "!jsonc",
-        "!less",
-        "!plaintext",
-        "!pug",
-        "!restructuredtext",
-        "!rust",
-        "!scala",
-        "!scss",
-        "!typescript",
-        "!typescriptreact",
-        "!yaml",
-        "!yml"
+
+		"python.jediEnabled": true,
+    "python.languageServer": "Pylance",
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.maxNumberOfProblems": 100,
+    "python.formatting.provider": "yapf",
+    "python.formatting.yapfArgs": [
+        "--style",
+        "{column_limit: 79}"
     ],
-    "java.semanticHighlighting.enabled": true,
-    "python.languageServer": "Jedi",
-    "explorer.confirmDragAndDrop": false,
-    "git.ignoreWindowsGit27Warning": true,
-    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
-    },
-    "python.defaultInterpreterPath": "D:\\Python\\python.exe"
+  
 }
 ```
 
 
-Snippets
+[Snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets)
 ```json
 {
   // Place your snippets for python here. Each snippet is defined under a snippet name and has a prefix, body and 
@@ -264,89 +231,7 @@ F1 键调出控制台，输入task,选择任务：配置任务运行程序,打�
 ```
 
 
-# Visual Studio 2019
-
-**shortcut**  <br />  代码对齐：Ctrl + K + D  <br />  调转代码段头/尾：Shift+HOME / Shift+END  <br />  注释选中代码段：Ctrl + K + C  <br />  取消选中代码段的注释：Ctrl + K +U  <br />  快速创建当前项目的类：Ctrl+Shift+A  <br />  F10：逐过程调试  <br />  F11：逐语句调试  <br />  F12：转到定义，到变量或函数定义的地方，与ctrl+-配合使用非常方便  <br />  Ctrl+]：匹配选中的括号（大括号、小括号都行），在多层循环+判断语句时非常方便  <br />  Ctr + Space：代码补全
-
-寻找
-
-| 快速寻找 | Ctrl + F |
-| --- | --- |
-| 快速寻找下一个结果 | Enter |
-| 快速寻找上一个结果 | Shift + Enter |
-| 快速寻找展开下拉式清单 | Alt + 向下键 |
-| 关闭寻找 | Esc |
-| 快速取代 | Ctrl + H |
-| 快速取代- 取代下一个 | Alt + R |
-| 快速取代- 全部取代 | Alt + A |
-| 档案中寻找 | Ctrl + Shift + F |
-| 档案中取代 | Ctrl + Shift + H |
-
-程式码编辑器
-
-| 移至全部 | Ctrl + T |
-| --- | --- |
-| 前往最近使用的档案 | Ctrl + T , R |
-| 多插入号多个插入点 | Ctrl + Alt + click |
-| 多插入号新增比对选取项目 | Shift + Alt + Ins |
-| 格式化文件 | Ctrl + K , D |
-| IntelliSense 建议模式 | Ctrl + Alt + 空格键 (切换) |
-| 强制显示IntelliSense | Ctrl + J |
-| 快速动作 | Ctrl + . |
-| 程式码片段选择器 | Ctrl + K、X或?、Tab (Visual Basic) |
-| 以此环绕 | Ctrl + K、S |
-| 显示快速咨询 | Ctrl + K、I |
-| 巡览至 | Ctrl + , |
-| 巡览反白显示的参考 | Ctrl + Shift + 向上键 (上一个)  Ctrl + Shift + 向下键 (下一个) |
-| 编辑器缩放 | Ctrl + Shift + > (放大)  Ctrl + Shift + < (缩小) |
-| 区块选取 | 按住Alt并拖曳滑鼠Shift + Alt + 箭号按键 |
-| 将行上移/下移 | Alt + 向上键 / Alt + 向下键 |
-| 重复行 | Ctrl + E、V |
-| 展开选取范围 | Shift + Alt + = |
-| 缩小选取范围 | Shift + Alt + - |
-| 移至定义 | F12 |
-| 查看定义 | Alt + F12 |
-| 移至定义堆叠 | Ctrl + Shift + 8 (向后)  Ctrl + Shift + 7 (向前) |
-| 关闭[查看定义] 视窗 | Esc |
-| 将[查看定义] 视窗升级到一般文件索引标签 | Ctrl + Alt + Home |
-| 在多个[查看定义] 视窗之间巡览 | Ctrl + Alt + - and Ctrl + Alt + = |
-| 在多个查看结果之间巡览 | F8和Shift + F8 |
-| 在程式码编辑器视窗和[查看定义] 视窗之间切换 | Shift + Esc |
-| 移至封闭区块 | Ctrl + Alt + 向上键 |
-| 前往下一个/上一个问题 | Alt + PgUp / Alt + PgDn |
-| 关联式导览功能表 | Alt + ` |
-
-侦错
-
-| 开始侦错 | F5 |
-| --- | --- |
-| 停止侦错 | Shift + F5 |
-| 重新启动侦错 | Ctrl + Shift + F5 |
-| 不进入函式 | F10 |
-| 逐步执行 | F11 |
-| 跳离函式 | Shift + F11 |
-| 执行至游标处 | Ctrl + F10 |
-| 设定Next 陈述式 | Ctrl + Shift + F10 |
-| 设定和切换中断点 | F9 |
-| 停用中断点 | Ctrl + F9 |
-| 即时运算视窗 | Ctrl + Alt + I |
-| 即时运算视窗命令模式 | 输入> |
-| 即时运算视窗- 清除缓冲区 | 输入cls |
-| 即时运算视窗- 列印值 | 输入?varname |
-
-
-
-**C6031 返回值被忽略: "scanf".**
-
-- 原因：在ANSI C中没有scanf_s(),只有scanf()，但是scanf()在读取时不检查边界，所以可能会造成内存泄露。Microsoft在VS中提供了scanf_s()，如果想继续使用scanf这个不安全的函数以下方法可以解决
-- 方法一：在文件顶部添加代码：#pragma warning(disable:4996)
-- 方法二：错误提示的原因在与vs中的SDL检查；关闭步骤右键单击工程文件-->属性-------->  c/c++  ------>所有选项------------> SDL检查选项改为 否
--   <br />  
-
-**对于调试程序是弹出xxx有未经处理的异常: 0xC00000FD: Stack overflow**  <br />  解决方案：将“项目属性->链接器->系统->堆栈保留大小”设大一点,比如1000000，此项的默认值是0；
-
-**VC++ & GCC 的差异**  <br />  **VC 可能会自动 include 一些头文件，gcc 编译提示函数找不到。**  <br />  **使用 scanf 等函数会警告 not safe(warning 4996)，VC 推荐使用 scanf_s ，但是这个不属于 C / C++ 标准，gcc 没有。**  <br />  **gcc 也没有 itoa（数字转换为字符串的函数）。**  <br />  **gcc 上，模板类继承模板类，two phase name lookup，调用父类函数会提示找不到，需要用 this-> 调用。**
-
+  <br />  
 
 # [WSL](https://docs.microsoft.com/zh-cn/windows/wsl/)
 Windows Subsystem for Linux

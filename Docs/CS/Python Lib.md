@@ -1292,54 +1292,8 @@ def js_call(e, func_name, *args):
 ```
 
 # [asyncio--- 异步 I/O](https://docs.python.org/zh-cn/3/library/asyncio.html)
-**获取事件循环**
 
-| [asyncio.get_running_loop()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.get_running_loop) | 获取当前运行的事件循环 首选 函数。 |
-| --- | --- |
-| [asyncio.get_event_loop()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.get_event_loop) | 获得一个事件循环实例(当前或通过策略)。 |
-| [asyncio.set_event_loop()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.set_event_loop) | 通过当前策略将事件循环设置当前事件循环。 |
-| [asyncio.new_event_loop()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.new_event_loop) | 创建一个新的事件循环。 |
-
-**事件循环方法集**  <br />  **生命周期**
-
-| [loop.run_until_complete()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.run_until_complete) | 运行一个期程/任务/可等待对象直到完成。 |
-| --- | --- |
-| [loop.run_forever()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.run_forever) | 一直运行事件循环。 |
-| [loop.stop()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.stop) | 停止事件循环。 |
-| [loop.close()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.close) | 关闭事件循环。 |
-| [loop.is_running()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.is_running) | 返回 True ， 如果事件循环正在运行。 |
-| [loop.is_closed()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.is_closed) | 返回 True ，如果事件循环已经被关闭 。 |
-| await [loop.shutdown_asyncgens()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.shutdown_asyncgens) | 关闭异步生成器。 |
-
-**调试**
-
-| [loop.set_debug()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.set_debug) | 开启或禁用调试模式。 |
-| --- | --- |
-| [loop.get_debug()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.get_debug) | 获取当前测试模式。 |
-
-**调度回调函数**
-
-| [loop.call_soon()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.call_soon) | 尽快调用回调。 |
-| --- | --- |
-| [loop.call_soon_threadsafe()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.call_soon_threadsafe) | [loop.call_soon() ](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.call_soon)  <br />  方法线程安全的变体。 |
-| [loop.call_later()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.call_later) | 在给定时间 之后 调用回调函数。 |
-| [loop.call_at()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.call_at) | 在 指定 时间调用回调函数。 |
-
-**线程/进程池**
-
-| await [loop.run_in_executor()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor) | 在 [concurrent.futures ](https://docs.python.org/zh-cn/3/library/concurrent.futures.html#module-concurrent.futures)  <br />  执行器中运行一个独占CPU或其它阻塞函数。 |
-| --- | --- |
-| [loop.set_default_executor()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.set_default_executor) | 设置 [loop.run_in_executor() ](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor)  <br />  默认执行器。 |
-
-**任务与期程**
-
-| [loop.create_future()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.create_future) | 创建一个 [Future ](https://docs.python.org/zh-cn/3/library/asyncio-future.html#asyncio.Future)  <br />  对象。 |
-| --- | --- |
-| [loop.create_task()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.create_task) | 将协程当作 [Task ](https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.Task)  <br />  一样调度。 |
-| [loop.set_task_factory()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.set_task_factory) | 设置 [loop.create_task() ](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.create_task)  <br />  使用的工厂，它将用来创建 Tasks 。 |
-| [loop.get_task_factory()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.get_task_factory) | 获取 [loop.create_task() ](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.create_task)  <br />  使用的工厂，它用来创建 Tasks 。 |
-
-**Tasks**  <br />  运行异步程序，创建Task对象，等待多件事运行超时的公共集
+asyncio
 
 | [run()](https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.run) | 创建事件循环，运行一个协程，关闭事件循环。 |
 | --- | --- |
@@ -1352,34 +1306,219 @@ def js_call(e, func_name, *args):
 | [current_task()](https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.current_task) | 返回当前Task对象 |
 | [all_tasks()](https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.all_tasks) | 返回事件循环中所有的task对象。 |
 | [Task](https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.Task) | Task对象 |
+| [to_thread()](https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.to_thread) | 在不同的 OS 线程中异步地运行一个函数。 |
 | [run_coroutine_threadsafe()](https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.run_coroutine_threadsafe) | 从其他OS线程中调度一个协程。 |
-| for in [as_completed()](https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.as_completed) | 用 for 循环监控完成情况。 |
+| for in [as_completed()](https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.as_completed) | 用 for 循环监控完成情况。 |
+
+
+子进程集
+
+| await [create_subprocess_exec()](https://docs.python.org/zh-cn/3/library/asyncio-subprocess.html#asyncio.create_subprocess_exec) | 创建一个子进程。 |
+| --- | --- |
+| await [create_subprocess_shell()](https://docs.python.org/zh-cn/3/library/asyncio-subprocess.html#asyncio.create_subprocess_shell) | 运行一个shell命令。 |
+
+网络IO
+
+| await [open_connection()](https://docs.python.org/zh-cn/3/library/asyncio-stream.html#asyncio.open_connection) | 建立一个TCP连接。 |
+| --- | --- |
+| await [open_unix_connection()](https://docs.python.org/zh-cn/3/library/asyncio-stream.html#asyncio.open_unix_connection) | 建立一个Unix socket连接。 |
+| await [start_server()](https://docs.python.org/zh-cn/3/library/asyncio-stream.html#asyncio.start_server) | 启动TCP服务。 |
+| await [start_unix_server()](https://docs.python.org/zh-cn/3/library/asyncio-stream.html#asyncio.start_unix_server) | 启动一个 Unix 套接字服务。 |
+| [StreamReader](https://docs.python.org/zh-cn/3/library/asyncio-stream.html#asyncio.StreamReader) | 接收网络数据的高级async/await对象。 |
+| [StreamWriter](https://docs.python.org/zh-cn/3/library/asyncio-stream.html#asyncio.StreamWriter) | 发送网络数据的高级async/await对象。 |
+
 
 ```python
-import asyncio,time
+import asyncio
+import sys
+import time
+import urllib.parse
 
-#用async修饰的函数称为一个协程对象
-async def work(x):
-    print('waiting:', x)
-    await asyncio.sleep(x)
-    return 'Done after {}s'.format(x)
+def blocking_io(count):
+    print(f"start blocking_io at {time.strftime('%X')}")
+    time.sleep(count)
+    print(f"blocking_io complete at {time.strftime('%X')}")
 
-start = time.time()
-t = [1,5,3] #各任务所需时间
-tasks = []
-for i in t:
-    coroutine = work(i) #创建协程对象
-    tasks.append(asyncio.ensure_future(coroutine))  #放入任务列表
-    
-#将任务列表注册到事件循环
-loop = asyncio.get_event_loop()
-loop.run_until_complete(asyncio.wait(tasks))
 
-#获取返回结果
-for task in tasks:
-    print('Task result:', task.result())
-print('Total time:', time.time()-start)
+async def execute_cmd(cmd):
+    proc = await asyncio.create_subprocess_shell(
+        cmd,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE)
+
+    stdout, stderr = await proc.communicate()
+
+    print(f'[{cmd!r} exited with {proc.returncode}]')
+    if stdout:
+        print(f'[stdout]\n{stdout.decode("gbk")}')
+    if stderr:
+        print(f'[stderr]\n{stderr.decode("gbk")}')
+
+
+async def get_date():
+    code = 'import datetime; print(datetime.datetime.now())'
+
+    # Create the subprocess; redirect the standard output into a pipe.
+    proc = await asyncio.create_subprocess_exec(
+        sys.executable, '-c', code,
+        stdout=asyncio.subprocess.PIPE)
+
+    # Read one line of output.
+    data = await proc.stdout.readline()
+    line = data.decode('ascii').rstrip()
+
+    # Wait for the subprocess exit.
+    await proc.wait()
+    print(f"date is {line}")
+    return line
+
+
+async def print_http_headers(url):
+    url = urllib.parse.urlsplit(url)
+    if url.scheme == 'https':
+        reader, writer = await asyncio.open_connection(
+            url.hostname, 443, ssl=True)
+    else:
+        reader, writer = await asyncio.open_connection(
+            url.hostname, 80)
+
+    query = (
+        f"HEAD {url.path or '/'} HTTP/1.0\r\n"
+        f"Host: {url.hostname}\r\n"
+        f"\r\n"
+    )
+
+    writer.write(query.encode('latin-1'))
+    while True:
+        line = await reader.readline()
+        if not line:
+            break
+
+        line = line.decode('latin1').rstrip()
+        if line:
+            print(f'HTTP header> {line}')
+
+    # Ignore the body, close the socket
+    writer.close()
+
+
+async def main():
+    await asyncio.gather(
+        asyncio.to_thread(blocking_io, 3),
+        print_http_headers("https://www.baidu.com"),
+        execute_cmd('ping bing.cn'), get_date())
+
+
+asyncio.run(main())
 ```
+队列示例
+```python
+import asyncio
+import random
+import time
+
+async def worker(name, queue):
+    while True:
+        # Get a "work item" out of the queue.
+        sleep_for = await queue.get()
+
+        # Sleep for the "sleep_for" seconds.
+        await asyncio.sleep(sleep_for)
+
+        # Notify the queue that the "work item" has been processed.
+        queue.task_done()
+
+        print(f'{name} has slept for {sleep_for:.2f} seconds')
+
+
+async def main():
+    # Create a queue that we will use to store our "workload".
+    queue = asyncio.Queue()
+
+    # Generate random timings and put them into the queue.
+    total_sleep_time = 0
+    for _ in range(20):
+        sleep_for = random.uniform(0.05, 1.0)
+        total_sleep_time += sleep_for
+        queue.put_nowait(sleep_for)
+
+    # Create three worker tasks to process the queue concurrently.
+    tasks = []
+    for i in range(3):
+        task = asyncio.create_task(worker(f'worker-{i}', queue))
+        tasks.append(task)
+
+    # Wait until the queue is fully processed.
+    started_at = time.monotonic()
+    await queue.join()
+    total_slept_for = time.monotonic() - started_at
+
+    # Cancel our worker tasks.
+    for task in tasks:
+        task.cancel()
+    # Wait until all worker tasks are cancelled.
+    await asyncio.gather(*tasks, return_exceptions=True)
+
+    print('====')
+    print(f'3 workers slept in parallel for {total_slept_for:.2f} seconds')
+    print(f'total expected sleep time: {total_sleep_time:.2f} seconds')
+
+
+asyncio.run(main())
+```
+
+[**低层级 API**](https://docs.python.org/zh-cn/3/library/asyncio-llapi-index.html)
+
+[事件循环](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html)
+
+| [asyncio.get_running_loop()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.get_running_loop) | 获取当前运行的事件循环 首选 函数。 |
+| --- | --- |
+| [asyncio.get_event_loop()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.get_event_loop) | 获得一个事件循环实例(当前或通过策略)。 |
+| [asyncio.set_event_loop()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.set_event_loop) | 通过当前策略将事件循环设置当前事件循环。 |
+| [asyncio.new_event_loop()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.new_event_loop) | 创建一个新的事件循环。 |
+
+  <br />  
+
+- 生命周期
+| [loop.run_until_complete()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.run_until_complete) | 运行一个期程/任务/可等待对象直到完成。 |
+| --- | --- |
+| [loop.run_forever()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.run_forever) | 一直运行事件循环。 |
+| [loop.stop()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.stop) | 停止事件循环。 |
+| [loop.close()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.close) | 关闭事件循环。 |
+| [loop.is_running()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.is_running) | 返回 True ， 如果事件循环正在运行。 |
+| [loop.is_closed()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.is_closed) | 返回 True ，如果事件循环已经被关闭 。 |
+| await [loop.shutdown_asyncgens()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.shutdown_asyncgens) | 关闭异步生成器。 |
+
+调试
+
+| [loop.set_debug()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.set_debug) | 开启或禁用调试模式。 |
+| --- | --- |
+| [loop.get_debug()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.get_debug) | 获取当前测试模式。 |
+
+调度回调函数
+
+| [loop.call_soon()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.call_soon) | 尽快调用回调。 |
+| --- | --- |
+| [loop.call_soon_threadsafe()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.call_soon_threadsafe) | [loop.call_soon() ](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.call_soon) 方法线程安全的变体。 |
+| [loop.call_later()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.call_later) | 在给定时间 之后 调用回调函数。 |
+| [loop.call_at()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.call_at) | 在 指定 时间调用回调函数。 |
+
+线程/进程池
+
+| await [loop.run_in_executor()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor) | 在 [concurrent.futures ](https://docs.python.org/zh-cn/3/library/concurrent.futures.html#module-concurrent.futures)  <br />  执行器中运行一个独占CPU或其它阻塞函数。 |
+| --- | --- |
+| [loop.set_default_executor()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.set_default_executor) | 设置 [loop.run_in_executor() ](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor)  <br />  默认执行器。 |
+
+任务与期程
+
+| [loop.create_future()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.create_future) | 创建一个 [Future ](https://docs.python.org/zh-cn/3/library/asyncio-future.html#asyncio.Future)对象。 |
+| --- | --- |
+| [loop.create_task()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.create_task) | 将协程当作 [Task ](https://docs.python.org/zh-cn/3/library/asyncio-task.html#asyncio.Task)一样调度。 |
+| [loop.set_task_factory()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.set_task_factory) | 设置 [loop.create_task() ](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.create_task)使用的工厂，它将用来创建 Tasks 。 |
+| [loop.get_task_factory()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.get_task_factory) | 获取 [loop.create_task() ](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.create_task)使用的工厂，它用来创建 Tasks 。 |
+
+
+
 
 # —— 开发工具
 
@@ -1400,8 +1539,8 @@ LogRecord 属性
 | 属性名称 | 格式 | 描述 |
 | --- | --- | --- |
 | args | 不需要格式化。 | 合并到 msg 以产生 message 的包含参数的元组，或是其中的值将被用于合并的字典 |
-| asctime | %(asctime)s | 表示 [LogRecord ](https://docs.python.org/zh-cn/3/library/logging.html#logging.LogRecord)  <br />  何时被创建的供人查看时间值。 默认形式为 '2003-07-08 16:49:45,896' (逗号之后为毫秒)。 |
-| created | %(created)f | [LogRecord ](https://docs.python.org/zh-cn/3/library/logging.html#logging.LogRecord)  <br />  被创建的时间（即 time.time() 的返回值）。 |
+| asctime | %(asctime)s | 表示 [LogRecord ](https://docs.python.org/zh-cn/3/library/logging.html#logging.LogRecord)何时被创建的供人查看时间值。 默认形式为 '2003-07-08 16:49:45,896' (逗号之后为毫秒)。 |
+| created | %(created)f | [LogRecord ](https://docs.python.org/zh-cn/3/library/logging.html#logging.LogRecord)被创建的时间（即 time.time() 的返回值）。 |
 | exc_info | 不需要格式化。 | 异常元组 (例如 sys.exc_info) 或  None |
 | 文件名 | %(filename)s | pathname 的文件名部分。 |
 | funcName | %(funcName)s | 函数名包括调用日志记录. |
@@ -1410,10 +1549,10 @@ LogRecord 属性
 | lineno | %(lineno)d | 发出日志记录调用所在的源行号（如果可用）。 |
 | message | %(message)s | 记入日志的消息，即 msg % args 的结果 |
 | module | %(module)s | 模块 (filename 的名称部分)。 |
-| msecs | %(msecs)d | [LogRecord ](https://docs.python.org/zh-cn/3/library/logging.html#logging.LogRecord)  <br />  被创建的时间的毫秒部分。 |
+| msecs | %(msecs)d | [LogRecord ](https://docs.python.org/zh-cn/3/library/logging.html#logging.LogRecord)被创建的时间的毫秒部分。 |
 | msg | 不需要格式化。 | 在原始日志记录调用中传入的格式字符串 |
 | 名称 | %(name)s | 用于记录调用的日志记录器名称。 |
-| pathname | %(pathname)s | 发出日志记录调用的源文件的完整路径名（如果可用）。 |
+| pathname | %(pathname)s | 发出日志记录调用的源文件的完整路径名 |
 | process | %(process)d | 进程ID（如果可用） |
 | processName | %(processName)s | 进程名（如果可用） |
 | relativeCreated | %(relativeCreated)d | 以毫秒数表示的 LogRecord 被创建的时间，即相对于 logging 模块被加载时间的差值。 |
@@ -1747,30 +1886,7 @@ class smtplib.SMTP(host='', port=0, local_hostname=None, [timeout, ]source_addre
 - SMTP.sendmail(from_addr, to_addrs, msg, mail_options=(), rcpt_options=())
 - SMTP.send_message(msg, from_addr=None, to_addrs=None, mail_options=(), rcpt_options=())
 - SMTP.quit()
-```python
-import smtplib
-def prompt(prompt):
-    return input(prompt).strip()
-fromaddr = prompt("From: ")
-toaddrs  = prompt("To: ").split()
-print("Enter message, end with ^D (Unix) or ^Z (Windows):")
-# Add the From: and To: headers at the start!
-msg = ("From: %s\r\nTo: %s\r\n\r\n"
-       % (fromaddr, ", ".join(toaddrs)))
-while True:
-    try:
-        line = input()
-    except EOFError:
-        break
-    if not line:
-        break
-    msg = msg + line
-print("Message length is", len(msg))
-server = smtplib.SMTP('localhost')
-server.set_debuglevel(1)
-server.sendmail(fromaddr, toaddrs, msg)
-server.quit()
-```
+
 示例
 ```python
 import smtplib
@@ -1874,11 +1990,11 @@ class Mail():
     
     
 if __name__ == '__main__':
-    title = "自动化测试报告测试"
-    file_path = r"D:\Users\泷\Pictures\Camera Roll\upload-3406226_1920.jpg"
+    title = "自动化测试报告"
+    file_path = r"image.jpg"
     content = """你好，这是一个测试邮件！"""
-    RECIPIENT = ["yulong9@outlook.com", "remarkablerain@126.com"]
-    mail = Mail("remarkablerain@126.com", "KDXTSZXYQCIBLCMY", "smtp.126.com")
+    RECIPIENT = ["xxx@outlook.com", "rain@126.com"]
+    mail = Mail("rain@126.com", "code", "smtp.126.com")
     mail.send_mail(RECIPIENT, title, content, file_path)
 ```
 
