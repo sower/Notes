@@ -298,11 +298,11 @@ Aspect Oriented Programming，面向切面编程
 
 | 名称 | 说明 |
 | --- | --- |
-| org.springframework.aop.MethodBeforeAdvice （前置通知） | 在方法之前自动执行的通知称为前置通知，可以应用于权限管理等功能。 |
-| org.springframework.aop.AfterReturningAdvice （后置通知） | 在方法之后自动执行的通知称为后置通知，可以应用于关闭流、上传文件、删除临时文件等功能。 |
-| org.aopalliance.intercept.MethodInterceptor （环绕通知） | 在方法前后自动执行的通知称为环绕通知，可以应用于日志、事务管理等功能。 |
-| org.springframework.aop.ThrowsAdvice （异常通知） | 在方法抛出异常时自动执行的通知称为异常通知，可以应用于处理异常记录日志等功能。 |
-| org.springframework.aop.IntroductionInterceptor （引介通知） | 在目标类中添加一些新的方法和属性，可以应用于修改旧版本程序（增强类）。 |
+| org.springframework.aop.MethodBeforeAdvice （前置通知） | 在方法之前自动执行的通知称为前置通知，可用于权限管理等功能。 |
+| org.springframework.aop.AfterReturningAdvice （后置通知） | 在方法之后自动执行的通知称为后置通知，可用于关闭流、上传文件、删除临时文件等功能。 |
+| org.aopalliance.intercept.MethodInterceptor （环绕通知） | 在方法前后自动执行的通知称为环绕通知，可用于日志、事务管理等功能。 |
+| org.springframework.aop.ThrowsAdvice （异常通知） | 在方法抛出异常时自动执行的通知称为异常通知，可用于处理异常记录日志等功能。 |
+| org.springframework.aop.IntroductionInterceptor （引介通知） | 在目标类中添加一些新的方法和属性，可用于修改旧版本程序（增强类）。 |
 
 
 **XML的声明式**
@@ -808,7 +808,7 @@ public class DemoPublisher  {
    - produces：指定**返回的内容类型**，返回的内容类型必须是 request 请求头（Accept）中所包含的类型，如 "application/json;charset=UTF-8"、"application/json"
    - headers：指定请求中必须包含某些指定的 header 值，才能让该方法处理，如 "Accept=application/json"
    - params：指定请求中必须包含某些参数值时，才让该方法处理，如 params="myParam=myValue”，方法仅处理其中名为“myParam”、值为“myValue”的请求
-- 组合注解：@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、PatchMapping
+- 组合注解：`@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、PatchMapping`
 - 后缀匹配：Spring MVC 中默认将 .* 作为匹配后缀，即映射到 /person 的方法也隐式映射到 /person.*。通过重写 WebMvcConfigurerAdapter 类中的 configurePathMatch 方法可设置不忽略“.”后面的参数，configurer.setUseSuffixPatternMatch(false)（Spring Boot 默认设置为 false）
 - URI 模式：
    - ? 匹配 1 个字符（但不能是代表路径分隔符的 /）
@@ -818,7 +818,60 @@ public class DemoPublisher  {
    - 也可以嵌入 ${…} 占位符，这些占位符在启动时通过 PropertyPlaceHolderConfigurer 对本地、系统、环境和其它属性源来解析
    - 最长匹配原则：存在多个路径匹配模式时，Spring MVC 会以最长符合路径模式来匹配一个路径
 
-`@RequestParam`：用于将指定的请求参数设置到方法参数  <br />  属性：name、required（默认 true）、defaultValue  <br />  `@PathVariable`：用于将 REST 风格的请求 URL 中的动态参数设置到方法参数，属性 value 省略则默认绑定同名参数  <br />  `@CrossOrigin`：可用于类或方法，**设置跨域行为**，常用属性：origins（允许域名）、methods、allowedHeaders、exposedHeaders、allowCredentials（是否允许发送 Cookie，**启用后允许域名不能设置为 '*'**）、maxAge（本次预检请求的有效期，单位为秒）
+  <br />  `@CrossOrigin`：可用于类或方法，**设置跨域行为**，常用属性：origins（允许域名）、methods、allowedHeaders、exposedHeaders、allowCredentials（是否允许发送 Cookie，**启用后允许域名不能设置为 '*'**）、maxAge（本次预检请求的有效期，单位为秒）
+
+
+方法参数
+
+| 控制器方法参数 | 描述 |
+| --- | --- |
+| WebRequest, NativeWebRequest | 对请求参数、请求、会话属性的通用访问，不直接使用 Servlet API |
+| javax.servlet.ServletRequest, javax.servlet.ServletResponse | 选择任意特定的请求或响应类型 —— 如：ServletRequest、HttpServletRequest，或 Spring 的 MultipartRequest、MultipartHttpServletRequest |
+| javax.servlet.http.HttpSession | 强制会话的存在。因此，该参数不可能为 null。 *会话访问不是线程安全的。如果多个请求被允许并发地访问会话，考虑设置 RequestMappingHandlerAdapter 的 synchronizeOnSession 标志为 true |
+| javax.servlet.http.PushBuilder | Servlet 4.0 push builder API，用来编程式 HTTP/2 资源推送。注意，每个 Servlet Spec，如果客户端不支持 HTTP/2 特性，注入的 PushBuilder 实例可以为 null |
+| java.security.Principal | 当前已认证的用户；如果已知，可能是一个特定的 Principal 实现 |
+| HttpMethod | 请求的 HTTP 方式 |
+| java.util.Locale | 当前请求的区域设置，由可用的最具体的 LocaleResolver 确定，实际上是已配置的 LocaleResolver 或 LocaleContextResolver |
+| java.util.TimeZone + java.time.ZoneId | 当前请求关联的时区，由 LocaleContextResolver 确定 |
+| java.io.InputStream, java.io.Reader | 用于访问由 Servlet API 暴露的原始请求体 |
+| java.io.OutputStream, java.io.Writer | 用于访问由 Servlet API 暴露的原始响应体 |
+| @PathVariable | 用于访问 URI 模板变量 |
+| @MatrixVariable | 用于访问 URI 路径段中的键值对 |
+| @RequestParam | 用来访问 Servlet 请求参数。参数值被转换为声明的方法参数类型。  |
+| @RequestHeader | 用来访问请求报文头。报文头值被转换为声明的方法参数类型 |
+| @CookieValue | 用来访问 Cookie。Cookie 值被转换为声明的方法参数类型 |
+| @RequestBody | 用来访问 HTTP 请求报文体。报文体内容使用 HttpMessageConverters 被转换为声明的方法参数类型 |
+| HttpEntity<B> | 用来访问请求报文头和报文体。报文体使用 HttpMessageConverters 被转换 |
+| @RequestPart | 用来访问 multipart/form-data 请求的一部分 |
+| java.util.Map, org.springframework.ui.Model, org.springframework.ui.ModelMap | 用来访问用于 HTTP 控制器的模型，作为视图渲染的一部分暴露给模板 |
+| RedirectAttributes | 指定在重定向时使用的属性 —— 用来附加临时存储到重定向之后请求的查询字符串，flash 属性 |
+| @ModelAttribute | 用于访问模型（如果不存在就实例化）中存在的应用数据绑定和校验的属性。 |
+| Errors, BindingResult | 用于访问命令对象（如 @ModelAttribute 参数）校验和数据绑定产生的错误，或 @RequestBody 或 @RequestPart 参数校验产生的错误；Errors 或 BindingResult 参数必须紧跟在被校验的方法参数之后 |
+| SessionStatus + class-level @SessionAttributes | 用于标记表单处理完成以清除通过类级别 @SessionAttributes 注解声明的会话属性 |
+| UriComponentsBuilder | 用于准备一个相对于当前请求的主机、端口、方案、上下文路径和 Servlet 映射的文字部分的 URL，还需要考虑 Forwarded 和 X-Forwarded-* 报文头 |
+| @SessionAttribute | 用于访问任意会话属性 |
+| @RequestAttribute | 用于访问请求属性 |
+
+
+返回值
+
+| 控制器方法返回值 | 描述 |
+| --- | --- |
+| @ResponseBody | 返回值通过 HttpMessageConverters 转换并写入响应 |
+| HttpEntity<B>, ResponseEntity<B> | 返回值指定完整的响应，包括通过 HttpMessageConverters 转换并写入响应的 HTTP 报文头和报文体 |
+| HttpHeaders | 用于返回只有报文头没有报文体的响应 |
+| String | 用于 ViewResolver 解析的视图名，并与隐式的模型 |
+| View | View 实例，与隐式的模型一起用来渲染模型 |
+| java.util.Map, org.springframework.ui.Model | 将被添加到隐式模型的属性，视图名由 RequestToViewNameTranslator 隐式地确定 |
+| @ModelAttribute | 将被添加的模型的属性 |
+| ModelAndView object | 待使用的视图和模型，以及可选的响应状态 |
+| void | void 返回类型（或 null 返回值）的方法，如果它同时包含 ServletResponse，或者 OutputStream 属性，或者 @ResponseStatus 注解，则认为它已经处理完了响应。 |
+| DeferredResult<V> | 从任意线程异步地生成任意上述返回值 |
+| Callable<V> | 在 Spring MVC 托管的线程中异步地生成任意上述返回值 |
+| ListenableFuture, CompletionStage, CompletableFuture | DeferredResult 的便捷替代方案 |
+| ResponseBodyEmitter, SseEmitter | 在 HttpMessageConverter 的帮助下异步地发出一个对象流以写入响应 |
+| StreamingResponseBody | 异步地写入响应 OutputStream |
+
 
 ```java
 @RestController
@@ -1216,7 +1269,7 @@ spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 
 - @ImportResource：修饰配置类，用于导入指定的 XML 配置文件
 - @PropertySource：修饰配置类，用于加载指定的资源配置文件
 - @PropertySources：修饰配置类，用于同时加载多个的资源配置文件
-- @ComponentScan：修饰配置类，相当于 <context:component-scan base-package="..."/>，默认扫描当前包以及子包下所有使用 @Service @Components @Repository @Controller 的类，并注册为 Bean。属性：basePackages、lazyInit
+- @ComponentScan：修饰配置类，相当于 `<context:component-scan base-package="..."/>`，默认扫描当前包以及子包下所有使用 @Service @Components @Repository @Controller 的类，并注册为 Bean。属性：basePackages、lazyInit
 - @ConfigurationProperties：修饰配置类或其内部的 @Bean 方法，用于将**配置文件**的某类名下所有的参数值赋给配置类的属性
 - @Profile：修饰配置类或方法，设定当前 context 需要使用的配置环境，可达到在不同情况下选择实例化不同的 Bean
 - @AutoConfigureAfter：在指定的配置类初始化后再加载
@@ -1252,7 +1305,7 @@ spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 
 
 
 
-## 外部配置
+## [Common Application Properties](https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html)
 
 - 可以使用 properties 文件、YAML 文件、环境变量和命令行参数来外部化配置
 - 属性会以如下的顺序进行设值（即后面读取的**不覆盖**前面读取到的）：
@@ -1528,149 +1581,6 @@ public class WebConfig implements WebMvcConfigurer {
 ```
 
 
-自定义工具类方式
-```java
-import org.springframework.aop.framework.AopContext;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
-import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.stereotype.Component;
- 
-/**
- * spring工具类 方便在非spring管理环境中获取bean
- *
- */
-@Component
-public final class SpringUtils implements BeanFactoryPostProcessor
-{
-    /** Spring应用上下文环境 */
-    private static ConfigurableListableBeanFactory beanFactory;
- 
-    @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException
-    {
-        SpringUtils.beanFactory = beanFactory;
-    }
- 
-    /**
-     * 获取对象
-     *
-     * @param name
-     * @return Object 一个以所给名字注册的bean的实例
-     * @throws org.springframework.beans.BeansException
-     *
-     */
-    @SuppressWarnings("unchecked")
-    public static <T> T getBean(String name) throws BeansException
-    {
-        return (T) beanFactory.getBean(name);
-    }
- 
-    /**
-     * 获取类型为requiredType的对象
-     *
-     * @param clz
-     * @return
-     * @throws org.springframework.beans.BeansException
-     *
-     */
-    public static <T> T getBean(Class<T> clz) throws BeansException
-    {
-        T result = (T) beanFactory.getBean(clz);
-        return result;
-    }
- 
-    /**
-     * 如果BeanFactory包含一个与所给名称匹配的bean定义，则返回true
-     *
-     * @param name
-     * @return boolean
-     */
-    public static boolean containsBean(String name)
-    {
-        return beanFactory.containsBean(name);
-    }
- 
-    /**
-     * 判断以给定名字注册的bean定义是一个singleton还是一个prototype。 如果与给定名字相应的bean定义没有被找到，将会抛出一个异常（NoSuchBeanDefinitionException）
-     *
-     * @param name
-     * @return boolean
-     * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
-     *
-     */
-    public static boolean isSingleton(String name) throws NoSuchBeanDefinitionException
-    {
-        return beanFactory.isSingleton(name);
-    }
- 
-    /**
-     * @param name
-     * @return Class 注册对象的类型
-     * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
-     *
-     */
-    public static Class<?> getType(String name) throws NoSuchBeanDefinitionException
-    {
-        return beanFactory.getType(name);
-    }
- 
-    /**
-     * 如果给定的bean名字在bean定义中有别名，则返回这些别名
-     *
-     * @param name
-     * @return
-     * @throws org.springframework.beans.factory.NoSuchBeanDefinitionException
-     *
-     */
-    public static String[] getAliases(String name) throws NoSuchBeanDefinitionException
-    {
-        return beanFactory.getAliases(name);
-    }
- 
-    /**
-     * 获取aop代理对象
-     *
-     * @param invoker
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    public static <T> T getAopProxy(T invoker)
-    {
-        return (T) AopContext.currentProxy();
-    }
-}
-```
-```java
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
-import com.common.utils.spring.SpringUtils;
- 
-/**
- * 获取i18n资源文件
- *
- */
-public class MessageUtils
-{
-    /**
-     * 根据消息键和参数 获取消息 委托给spring messageSource
-     *
-     * @param code 消息键
-     * @param args 参数
-     * @return 获取国际化翻译值
-     */
-    public static String getMessage(String code, Object... args)
-    {
-        MessageSource messageSource = SpringUtils.getBean(MessageSource.class);
-        return messageSource.getMessage(code, args, LocaleContextHolder.getLocale());
-    }
-}
-
-// 使用   String message = MessageUtils.getMessage("code")
-```
-
-
 
 # [JPA](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
 Java Persistence API（Java 持久化 API）：定义了对象关系映射（ORM）以及实体对象持久化的标准接口  <br />  Spirng Data JPA 是 Spring 提供的一套简化 JPA 开发的框架，可以理解为对 JPA 规范的再次封装抽象，底层还是使用了 Hibernate 的 JPA 技术实现
@@ -1817,6 +1727,33 @@ public interface JpaRepository<T, ID> extends PagingAndSortingRepository<T, ID>,
 | delete…By, remove…By | Delete query method returning either no result (void) or the delete count. |
 | …First<number>…, …Top<number>… | Limit the query results to the first <number> of results. This keyword can occur in any place of the subject between find (and the other keywords) and by. |
 | …Distinct… | Use a distinct query to return only unique results. Consult the store-specific documentation whether that feature is supported. This keyword can occur in any place of the subject between find (and the other keywords) and by. |
+
+
+**Query return types**
+
+| **Return type** | **Description** |
+| --- | --- |
+| void | Denotes no return value. |
+| Primitives | Java primitives. |
+| Wrapper types | Java wrapper types. |
+| T | A unique entity. Expects the query method to return one result at most. If no result is found, null is returned. More than one result triggers an IncorrectResultSizeDataAccessException. |
+| Iterator<T> | An Iterator. |
+| Collection<T> | A Collection. |
+| List<T> | A List. |
+| Optional<T> | A Java 8 or Guava Optional.  |
+| Option<T> | Either a Scala or Vavr Option type. Semantically the same behavior as Java 8’s Optional, described earlier. |
+| Stream<T> | A Java 8 Stream. |
+| Streamable<T> | A convenience extension of Iterable that directy exposes methods to stream, map and filter results, concatenate them etc. |
+| Types that implement Streamable and take a Streamable constructor or factory method argument | Types that expose a constructor or ….of(…)/….valueOf(…) factory method taking a Streamable as argument.  |
+| Vavr Seq, List, Map, Set | Vavr collection types. See [Support for Vavr Collections](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.collections-and-iterables.vavr) for details. |
+| Future<T> | Expects a method to be annotated with @Async and requires Spring’s asynchronous method execution capability to be enabled. |
+| CompletableFuture<T> | Expects a method to be annotated with @Async and requires Spring’s asynchronous method execution capability to be enabled. |
+| ListenableFuture | A org.springframework.util.concurrent.ListenableFuture. Expects a method to be annotated with @Async and requires Spring’s asynchronous method execution capability to be enabled. |
+| Slice<T> | A sized chunk of data with an indication of whether there is more data available. Requires a Pageable method parameter. |
+| Page<T> | A Slice with additional information, such as the total number of results. Requires a Pageable method parameter. |
+| GeoResult<T> | A result entry with additional information, such as the distance to a reference location. |
+| GeoResults<T> | A list of GeoResult<T> with additional information, such as the average distance to a reference location. |
+| GeoPage<T> | A Page with GeoResult<T>, such as the average distance to a reference location. |
 
 
 
