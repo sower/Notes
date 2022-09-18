@@ -285,8 +285,7 @@ my-project
 
 # [Lombok](https://projectlombok.org/features/all)
 
-- `@Setter` 注解在类或字段，注解在类时为所有字段生成setter方法，注解在字段上时只为该字段生成setter方法。
-- `@Getter` 使用方法同上，区别在于生成的是getter方法。
+- `[@Getter/@Setter](https://projectlombok.org/features/GetterSetter)`	注解在类或字段，注解在类时为所有字段生成setter方法，注解在字段上时只为该字段生成setter方法
 - `@ToString` 注解在类，添加toString方法。
 - `@EqualsAndHashCode` 注解在类，生成hashCode和equals方法。
 - `@NoArgsConstructor` 注解在类，生成无参的构造方法。
@@ -441,7 +440,47 @@ Collections
    - [Multisets](https://github.com/google/guava/wiki/CollectionUtilitiesExplained#multisets)
    - [Multimaps](https://github.com/google/guava/wiki/CollectionUtilitiesExplained#multimaps)
    - [Tables](https://github.com/google/guava/wiki/CollectionUtilitiesExplained#tables)
+```java
+List<Integer> countUp = Ints.asList(1, 2, 3, 4, 5);
+List<Integer> countDown = Lists.reverse(theList); // {5, 4, 3, 2, 1}
 
+List<List<Integer>> parts = Lists.partition(countUp, 2); // {{1, 2}, {3, 4}, {5}}
+
+Set<String> fruits = ImmutableSet.of("apple", "orange", "banana");
+List<String> copyList = ImmutableList.copyOf(fruits);
+List<String> buildList = ImmutableList.<String>builder().addAll(fruits).add("peach").build();
+```
+
+- [Graphs](https://github.com/google/guava/wiki/GraphsExplained)
+- [Caches](https://github.com/google/guava/wiki/CachesExplained)
+
+- [Strings](https://github.com/google/guava/wiki/StringsExplained)
+   - [Joiner](https://github.com/google/guava/wiki/StringsExplained#joiner)
+   - [Splitter](https://github.com/google/guava/wiki/StringsExplained#splitter)
+   - [CharMatcher](https://github.com/google/guava/wiki/StringsExplained#charmatcher)
+   - [Charsets](https://github.com/google/guava/wiki/StringsExplained#charsets)
+   - [CaseFormat](https://github.com/google/guava/wiki/StringsExplained#caseformat)
+
+- [Primitives](https://github.com/google/guava/wiki/PrimitivesExplained)
+   - [Primitive arrays](https://github.com/google/guava/wiki/PrimitivesExplained#primitive-array-utilities)
+   - [General utilities](https://github.com/google/guava/wiki/PrimitivesExplained#general-utility-methods)
+   - [Byte conversion](https://github.com/google/guava/wiki/PrimitivesExplained#byte-conversion-methods)
+   - [Unsigned support](https://github.com/google/guava/wiki/PrimitivesExplained#unsigned-support)
+- [Ranges](https://github.com/google/guava/wiki/RangesExplained)
+- [I/O](https://github.com/google/guava/wiki/IOExplained)
+   - [Closing Resources](https://github.com/google/guava/wiki/ClosingResourcesExplained)
+- [Hashing](https://github.com/google/guava/wiki/HashingExplained)
+   - [BloomFilter](https://github.com/google/guava/wiki/HashingExplained#bloomfilter)
+- [EventBus](https://github.com/google/guava/wiki/EventBusExplained)
+- [Math](https://github.com/google/guava/wiki/MathExplained)
+   - [Integral](https://github.com/google/guava/wiki/MathExplained#Math-on_Integral-Types)
+      - [Overflow Checking](https://github.com/google/guava/wiki/MathExplained#checked-arithmetic)
+   - [Floating Point](https://github.com/google/guava/wiki/MathExplained#Floating-point-arithmetic.md)
+- [Reflection](https://github.com/google/guava/wiki/ReflectionExplained)
+   - [TypeToken](https://github.com/google/guava/wiki/ReflectionExplained#typetoken)
+   - [Invokable](https://github.com/google/guava/wiki/ReflectionExplained#invokable)
+   - [Dynamic Proxies](https://github.com/google/guava/wiki/ReflectionExplained#dynamic-proxies)
+   - [ClassPath](https://github.com/google/guava/wiki/ReflectionExplained#classpath)
 
 # [hutool](https://github.com/dromara/hutool)
   <br />   
@@ -458,11 +497,10 @@ Collections
 
 - [slf4j](https://github.com/qos-ch/slf4j)
 
+
 **Spring Boot + Slf4j + Logback**
 > Spring Boot 默认使用 logback 作为日志组件
 
-
-配置文件  <br />  `spring.profiles.active = logback`
 
 logback.xml 配置
 ```xml
@@ -539,6 +577,98 @@ logback.xml 配置
 
 </configuration>
 ```
+
+
+**Spring Boot + Slf4j + Log4j2**
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-log4j2</artifactId>
+</dependency>
+
+<!-- 识别yaml格式依赖 -->
+<dependency>
+    <groupId>com.fasterxml.jackson.dataformat</groupId>
+    <artifactId>jackson-dataformat-yaml</artifactId>
+</dependency>
+
+
+application.yml
+logging:
+  config: classpath:log4j2.yml
+	root: info
+```
+```yaml
+Configuration:
+  status: warn # 用于控制log4j2日志框架本身的日志级别
+  monitorInterval: 30 # 每隔多少秒重新读取配置文件，可以不重启应用的情况下修改配置
+
+  Properties: # 定义全局变量
+    Property:
+      - name: log.level.console
+        value: info
+      - name: log.path
+        value: /app/logs
+      - name: project.name
+        value: Demo
+      - name: log.pattern
+        value: "%d{yyyy-MM-dd HH:mm:ss.SSS} -%5p ${PID:-} [%15.15t] %-30.30C{1.} : %m%n"
+
+  Appenders:
+    Console:  # 输出到控制台
+      name: CONSOLE
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%5p %t (%F:%L) - %m%n"
+
+    RollingFile: # 打印到文件
+      - name: ROLLING_FILE
+        # fileName  指定当前日志文件的位置和文件名称
+        fileName: ${log.path}/${project.name}.log
+        # filePattern  指定当发生Rolling时，文件的转移和重命名规则
+        filePattern: "${log.path}/$${date:yyyy-MM}/${project.name}-%d{yyyy-MM-dd}-%i.log.gz"
+        PatternLayout:
+          pattern: ${log.pattern}
+        Filters:
+          ThresholdFilter:
+            - level: ${sys:log.level.console}
+              onMatch: ACCEPT
+              onMismatch: DENY
+        Policies:
+          TimeBasedTriggeringPolicy:  # 按天分类
+            modulate: true
+            interval: 1
+          SizedTriggeringPolicy:  # zip when up to 50MB
+            size: "50 MB"
+        DefaultRolloverStrategy:
+          max: 100     # 文件最多100个
+          Delete:
+            basePath: "${log.path}"
+            maxDepth: "2"
+            IfLastModified:
+              age: "14d"
+
+  Loggers:
+    #日志器分根日志器Root和自定义日志器，当根据日志名字获取不到指定的日志器时就使用Root作为默认的日志器
+    Root:
+      level: info
+      AppenderRef:
+        - ref: CONSOLE
+        - ref: ROLLING_FILE
+```
+
 
 使用 Slf4j API
 ```java
@@ -1065,6 +1195,8 @@ String jsonString = JSON.toJSONString(obj);
 // 反序列化
 Object bean = JSON.parseObject(jsonString, Object.class);
 Object[] beans = JSON.parseArray(jsonStringArray, Object.class);
+Map<String, String> map = JSON.parseObject(jsonString, new TypeReference<Map<String, String>>() { });
+
 ```
 JSON 字符串反序列化API
 
@@ -1080,8 +1212,8 @@ JSON 字符串反序列化API
 @JSONField(name="ID")
 public int getId() {return id;}
 
-// 配置date序列化和反序列使用yyyyMMdd日期格式
-@JSONField(format="yyyyMMdd")
+// 配置date序列化和反序列使用日期格式
+@JSONField(format="yyyy-MM-dd HH:mm:ss")
 public Date date;
 
 // 不序列化
@@ -1459,13 +1591,14 @@ Google style  <br />  [intellij-java-google-style.xml](https://github.com/google
 - Tabnine	基于 AI 的代码提示
 - Rainbow Brackets	彩虹括号
 - One Dark theme
+- String Manipulation
+- GsonFormat	JSON转类对象
 
 - RestfulToolkit	RESTful服务开发
 - Key Promoter X	快捷键
-- GsonFormat	JSON转类对象
 - Statistic	项目信息统计
-- Translation	必备的翻译插件
-- CamelCase	多种命名格式之间切换
+- Translation	翻译插件
+
 
 
 

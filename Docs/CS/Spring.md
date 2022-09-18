@@ -1,7 +1,6 @@
 
 # —— [Spring](https://spring.io/) ——
 
-
 分层领域模型
 
 - DO（Data Object）：与数据库表结构一一对应，通过DAO层向上传输数据源对象。
@@ -12,8 +11,7 @@
 - POJO（Plain Ordinary Java Object）：专指只有setter/getter/toString的简单类，包括DO/DTO/BO/VO等。
 
 
-
-# Core
+# [Core](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core)
 IoC（Inverse of Control，控制反转）：依赖注入（Dependency Injection，DI）。Spring 通过 IoC 容器来管理所有 Java 对象的实例化和初始化，控制对象与对象之间的依赖关系  <br />  AOP（Aspect Oriented Programming，面向切面编程）：横向抽取机制，取代了传统纵向继承体系的重复性代码，其应用主要体现在事务处理、日志管理、权限控制、异常处理等方面。  <br />  ![](./assets/1648975394639-fa7ee6c7-1b21-40cf-abc1-095e7034bd7e.gif)
 
 
@@ -376,13 +374,13 @@ applicationContext.xml 配置
 
 | 名称 | 说明 |
 | --- | --- |
-| [_@_Aspect ](/Aspect ) | 用于定义一个切面。 |
-| [_@_Before ](/Before ) | 用于定义前置通知，相当于 BeforeAdvice。 |
-| [_@_AfterReturning ](/AfterReturning ) | 用于定义后置通知，相当于 AfterReturningAdvice。 |
-| [_@_Around ](/Around ) | 用于定义环绕通知，相当于MethodInterceptor。 |
-| [_@_AfterThrowing ](/AfterThrowing ) | 用于定义抛出通知，相当于ThrowAdvice。 |
-| [_@_After ](/After ) | 用于定义最终final通知，不管是否异常，该通知都会执行。 |
-| [_@_DeclareParents ](/DeclareParents ) | 用于定义引介通知，相当于IntroductionInterceptor |
+| _@_Aspect  | 用于定义一个切面。 |
+| _@_Before  | 用于定义前置通知，相当于 BeforeAdvice。 |
+| _@_AfterReturning  | 用于定义后置通知，相当于 AfterReturningAdvice。 |
+| _@_Around  | 用于定义环绕通知，相当于MethodInterceptor。 |
+| _@_AfterThrowing  | 用于定义抛出通知，相当于ThrowAdvice。 |
+| _@_After  | 用于定义最终final通知，不管是否异常，该通知都会执行。 |
+| _@_DeclareParents  | 用于定义引介通知，相当于IntroductionInterceptor |
 
 ```java
 //切面类
@@ -468,125 +466,6 @@ AspectJ 切入点语法
    - @target：用于匹配标注有指定注解的类的目标对象内所有方法
    - @args：用于匹配入参标注有指定注解的方法
 
-
-
-## JDBCTemplate
-通过配置文件、注解、Java 配置类等形式获取数据库的相关信息，实现了对 JDBC 开发过程中的驱动加载、连接的开启和关闭、SQL 语句的创建与执行、异常处理、事务处理、数据类型转换等操作的封装
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-    http://www.springframework.org/schema/context
-            http://www.springframework.org/schema/context/spring-context.xsd">
-    <!--开启组件扫描-->
-    <context:component-scan base-package="net.biancheng.c"></context:component-scan>
-    <!--引入 jdbc.properties 中的配置-->
-    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
-    
-  	<!--定义数据源 Bean-->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <!--数据库连接地址-->
-        <property name="url" value="${jdbc.url}"/>
-        <!--数据库的用户名-->
-        <property name="username" value="${jdbc.username}"/>
-        <!--数据库的密码-->
-        <property name="password" value="${jdbc.password}"/>
-        <!--数据库驱动-->
-        <property name="driverClassName" value="${jdbc.driver}"/>
-    </bean>
-    <!--定义JdbcTemplate Bean-->
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <!--将数据源的 Bean 注入到 JdbcTemplate 中-->
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>
-   
-</beans>
-```
-
-methods
-
-- public int update(String sql)	用于执行新增、更新、删除等语句；
-- public int update(String sql,Object... args)
-- public void execute(String sql)	可以执行任意 SQL，一般用于执行 DDL 语句；
-- public T execute(String sql, PreparedStatementCallback action)
-- public <T> List<T> query(String sql, RowMapper<T> rowMapper, @Nullable Object... args) 
-- 用于执行查询语句；
-- public <T> T queryForObject(String sql, RowMapper<T> rowMapper, @Nullable Object... args)
-- public int[] batchUpdate(String sql, List<Object[]> batchArgs, final int[] argTypes) 
-```java
-@Repository
-public class UserDaoImpl implements UserDao {
-    @Resource
-    private JdbcTemplate jdbcTemplate;
-    @Resource
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    
-    @Override
-    public int addUer(User user) {
-        String sql = "INSERT into `user` (`user`.user_name,`user`.`status`) VALUES(?,?);";
-        int update = jdbcTemplate.update(sql, user.getUserName(), user.getStatus());
-        return update;
-    }
-    
-    public int update(User user) {
-        String sql = "UPDATE `user` SET status=? WHERE user_name=?;";
-        return jdbcTemplate.update(sql, user.getStatus(), user.getUserName());
-    }
-    
-    public int delete(User user) {
-        String sql = "DELETE FROM `user` where user_name=?;";
-        return jdbcTemplate.update(sql, user.getUserName());
-    }
-    
-    public int count(User user) {
-        String sql = "SELECT COUNT(*) FROM `user` where `status`=?;";
-        return jdbcTemplate.queryForObject(sql, Integer.class, user.getStatus());
-    }
-    
-    public List<User> getList(User user) {
-        String sql = "SELECT * FROM `user` where `status`=?;";
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class), user.getStatus());
-    }
-    
-    public void batchAddUser(List<Object[]> batchArgs) {
-        String sql = "INSERT into `user` (`user`.user_name,`user`.`status`) VALUES(?,?);";
-        jdbcTemplate.batchUpdate(sql, batchArgs);
-    }
-}
-```
-
-
-## 事务（Transaction）
-
-**编程式事务管理**	通过编写代码实现的事务管理  <br />  **TransactionDefinition**：定义了一个事务规则——事务隔离、事务传播、事务超时、只读状态  <br />  TransactionStatus	表示一个事务
-
-**PlatformTransactionManager**： 具体的事务管理由 PlatformTransactionManager 的实现类DataSourceTransactionManager来完成
-
-- TransactionStatus getTransaction(@Nullable TransactionDefinition definition)：开始事务，transactionDefinition 可从容器中获取
-- void commit(TransactionStatus status)：提交事务
-- void rollback(TransactionStatus status)：回滚事务
-
-**声明式事务管理**	底层采用了 AOP 技术，只需要在配置文件中进行相关的规则声明  <br />  `@Transactional` 建议标注在实现类（或实现类的方法）上  <br />  可用属性
-
-- transactionManager：指定使用的事务管理器 Bean 的 id
-- isolation：用于指定事务的隔离级别，默认为底层事务的隔离级别 Isolation.DEFAULT
-- propagation：指定事务传播行为，默认 Propagation.REQUIRED
-- readOnly：指定事务是否只读，默认 false
-- rollbackFor：指定遇到特定异常时强制回滚事务，默认 ex instanceof RuntimeException || ex instanceof Error （RuntimeException 或 Error）时才回滚，DefaultTransactionAttribute#rollbackOn
-- rollbackForClassName：指定遇到特定的多个异常时强制回滚事务。该属性值可以指定多个异常类名
-- noRollbackFor：指定遇到特定异常时强制不回滚事务
-- noRollbackForClassName：指定遇到特定的多个异常时强制不回滚事务。该属性值可以指定多个异常类名
-- timeout：指定事务的超时时长
-
-:::warning
-注意事项
-
-- 自调用失效：一个类**自身方法之间的调用**
-- 方法是 public 且非静态的
-:::
 
 
 ## SpEL
@@ -786,7 +665,129 @@ public class DemoPublisher  {
 - String shortSummary()
 
 
-# Spring MVC
+
+# [Data Access](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#spring-data-tier)
+
+## JDBCTemplate
+通过配置文件、注解、Java 配置类等形式获取数据库的相关信息，实现了对 JDBC 开发过程中的驱动加载、连接的开启和关闭、SQL 语句的创建与执行、异常处理、事务处理、数据类型转换等操作的封装
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--开启组件扫描-->
+    <context:component-scan base-package="net.biancheng.c"></context:component-scan>
+    <!--引入 jdbc.properties 中的配置-->
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+    
+  	<!--定义数据源 Bean-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!--数据库连接地址-->
+        <property name="url" value="${jdbc.url}"/>
+        <!--数据库的用户名-->
+        <property name="username" value="${jdbc.username}"/>
+        <!--数据库的密码-->
+        <property name="password" value="${jdbc.password}"/>
+        <!--数据库驱动-->
+        <property name="driverClassName" value="${jdbc.driver}"/>
+    </bean>
+    <!--定义JdbcTemplate Bean-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!--将数据源的 Bean 注入到 JdbcTemplate 中-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+   
+</beans>
+```
+
+methods
+
+- public int update(String sql)	用于执行新增、更新、删除等语句；
+- public int update(String sql,Object... args)
+- public void execute(String sql)	可以执行任意 SQL，一般用于执行 DDL 语句；
+- public T execute(String sql, PreparedStatementCallback action)
+- public <T> List<T> query(String sql, RowMapper<T> rowMapper, @Nullable Object... args) 
+- 用于执行查询语句；
+- public <T> T queryForObject(String sql, RowMapper<T> rowMapper, @Nullable Object... args)
+- public int[] batchUpdate(String sql, List<Object[]> batchArgs, final int[] argTypes) 
+```java
+@Repository
+public class UserDaoImpl implements UserDao {
+    @Resource
+    private JdbcTemplate jdbcTemplate;
+    @Resource
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    
+    @Override
+    public int addUer(User user) {
+        String sql = "INSERT into `user` (`user`.user_name,`user`.`status`) VALUES(?,?);";
+        int update = jdbcTemplate.update(sql, user.getUserName(), user.getStatus());
+        return update;
+    }
+    
+    public int update(User user) {
+        String sql = "UPDATE `user` SET status=? WHERE user_name=?;";
+        return jdbcTemplate.update(sql, user.getStatus(), user.getUserName());
+    }
+    
+    public int delete(User user) {
+        String sql = "DELETE FROM `user` where user_name=?;";
+        return jdbcTemplate.update(sql, user.getUserName());
+    }
+    
+    public int count(User user) {
+        String sql = "SELECT COUNT(*) FROM `user` where `status`=?;";
+        return jdbcTemplate.queryForObject(sql, Integer.class, user.getStatus());
+    }
+    
+    public List<User> getList(User user) {
+        String sql = "SELECT * FROM `user` where `status`=?;";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class), user.getStatus());
+    }
+    
+    public void batchAddUser(List<Object[]> batchArgs) {
+        String sql = "INSERT into `user` (`user`.user_name,`user`.`status`) VALUES(?,?);";
+        jdbcTemplate.batchUpdate(sql, batchArgs);
+    }
+}
+```
+
+
+## 事务（Transaction）
+
+**编程式事务管理**	通过编写代码实现的事务管理  <br />  **TransactionDefinition**：定义了一个事务规则——事务隔离、事务传播、事务超时、只读状态  <br />  TransactionStatus	表示一个事务
+
+**PlatformTransactionManager**： 具体的事务管理由 PlatformTransactionManager 的实现类DataSourceTransactionManager来完成
+
+- TransactionStatus getTransaction(@Nullable TransactionDefinition definition)：开始事务，transactionDefinition 可从容器中获取
+- void commit(TransactionStatus status)：提交事务
+- void rollback(TransactionStatus status)：回滚事务
+
+**声明式事务管理**	底层采用了 AOP 技术，只需要在配置文件中进行相关的规则声明  <br />  `@Transactional` 建议标注在实现类（或实现类的方法）上  <br />  可用属性
+
+- transactionManager：指定使用的事务管理器 Bean 的 id
+- isolation：用于指定事务的隔离级别，默认为底层事务的隔离级别 Isolation.DEFAULT
+- propagation：指定事务传播行为，默认 Propagation.REQUIRED
+- readOnly：指定事务是否只读，默认 false
+- rollbackFor：指定遇到特定异常时强制回滚事务，默认 ex instanceof RuntimeException || ex instanceof Error （RuntimeException 或 Error）时才回滚，DefaultTransactionAttribute#rollbackOn
+- rollbackForClassName：指定遇到特定的多个异常时强制回滚事务。该属性值可以指定多个异常类名
+- noRollbackFor：指定遇到特定异常时强制不回滚事务
+- noRollbackForClassName：指定遇到特定的多个异常时强制不回滚事务。该属性值可以指定多个异常类名
+- timeout：指定事务的超时时长
+
+:::warning
+注意事项
+
+- 自调用失效：一个类**自身方法之间的调用**
+- 方法是 public 且非静态的
+:::
+
+
+# [Spring MVC](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html)
 
 
 **MVC**
@@ -960,34 +961,15 @@ public class MyConfig implements WebMvcConfigurer {
 - `@ExceptionHandler(value = Exception.class)` 指定该方法处理的异常类型
 - `@ResponseStatus(HttpStatus.xxx)` 指定该方法返回的状态码
 ```java
-/**
- * SpringMVC 自定义异常对应的 status code
- *            Exception                       HTTP Status Code
- * ConversionNotSupportedException         500 (Internal Server Error)
- * HttpMessageNotWritableException         500 (Internal Server Error)
- * HttpMediaTypeNotSupportedException      415 (Unsupported Media Type)
- * HttpMediaTypeNotAcceptableException     406 (Not Acceptable)
- * HttpRequestMethodNotSupportedException  405 (Method Not Allowed)
- * NoSuchRequestHandlingMethodException    404 (Not Found)
- * TypeMismatchException                   400 (Bad Request)
- * HttpMessageNotReadableException         400 (Bad Request)
- * MissingServletRequestParameterException 400 (Bad Request)
-*/
-
-@ControllerAdvice
+@Slf4j
+@RestControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(AuthorizationException.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
-    public void handlerAuthorizationException(HandlerMethod method, HttpServletResponse response, AuthorizationException exception) throws Exception {
-        if (method.getMethod().isAnnotationPresent(ResponseBody.class)) {
-            // ajax 请求
-            response.setCharacterEncoding("utf-8");
-            response.getWriter().print(new ObjectMapper().writeValueAsString(new JsonResult().mark(("没有权限！"))));
-        } else {
-            // 资源访问
-            response.sendRedirect("/nopermission.jsp");
-        }
-    }
+
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<?> handlerGeneralException(Exception exception) {
+    log.error("Occur exception {}", exception.getMessage());
+    return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+  }
 }
 ```
 
@@ -1164,6 +1146,15 @@ public String downloads(HttpServletResponse response ,HttpServletRequest request
 
 
 
+
+# [Web Reactive](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#spring-webflux)
+
+
+## [WebClient](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-client)
+
+
+
+
 # [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/)
 
 依赖配置
@@ -1248,15 +1239,6 @@ starter 中整合了该场景下各种可能用到的依赖，只需要在 Maven
 - spring-boot-starter-test：用于测试 Spring Boot 应用，支持常用测试类库，包括 JUnit, Hamcrest 和 Mockito
 - spring-boot-starter-cache：用于使用 Spring 框架的缓存支持
 - spring-boot-starter-aop：用于使用 Spring AOP 和 AspectJ 实现面向切面编程
-- spring-boot-starter-jdbc：对 JDBC 的支持（使用 Tomcat JDBC 连接池）
-- spring-boot-starter-data-mongodb：用于使用基于文档的数据库 MongoDB 和 Spring Data MongoDB
-- spring-boot-starter-data-redis：用于使用 Spring Data Redis 和 Jedis 客户端操作键-值存储的 Redis
-- spring-boot-starter-data-solr：通过 Spring Data Solr 使用 Apache Solr 搜索平台
-- spring-boot-starter-data-elasticsearch：用于使用 Elasticsearch 搜索，分析引擎和 Spring Data Elasticsearch
-- spring-boot-starter-freemarker：用于使用 FreeMarker 模板引擎构建 MVC web 应用
-- spring-boot-starter-mail：用于使用 Java Mail 和 Spring 框架 email 发送支持
-- spring-boot-starter-activemq：用于使用 Apache ActiveMQ 实现 JMS 消息
-- spring-boot-starter-amqp：用于使用 Spring AMQP 和 RabbitMQ
 
 spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 Spring Boot 的版本仲裁中心，可以对项目内的部分常用依赖进行统一管理。
 
@@ -1365,45 +1347,39 @@ public class MyAppConfig {
 - `@Value("${app.name}")`：标注在 JavaBean 的**属性**上，直接将**非静态属性**值注入到 **Bean** 中
 - `@PropertySource`** ：**加载指定的配置文件
 
-```properties
-person.last-name=李四
-person.age=12
-person.birth=2000/12/15
-person.boss=false
-person.maps.k1=v1
-person.maps.k2=14
-person.lists=a,b,c
-person.dog.name=dog
-person.dog.age=2
-```
 ```yaml
 person:
-  name: sword
-  age: 3
-  birth: 2000/01/01
-  maps: {k1: v1, k2: v2}
-  lists:
-   - code
-   - girl
-   - music
-  dog:
-    name: 旺财
-    age: 1
+  name: ming
+  age: ${random.int}  # 随机int
+  is-lived: true
+  birth: 2000-01-01
+  info: {sex: man, profession: programmer}
+  hobbies:
+    - code
+    - music
+  pet:
+    species: dog
+    name: ${person.name:other}_旺财
 ```
 ```java
-@PropertySource(value = "classpath:person.properties")//指向对应的配置文件
 @Component
+@Data
 @ConfigurationProperties(prefix = "person")
 public class Person {
-    private String lastName;
-    private Integer age;
-    private Boolean boss;
-    private Date birth;
-    private Map<String, Object> maps;
-    private List<Object> lists;
-    private Dog dog;
-    
-    // ... getter, setter ...
+  private String name;
+  private Integer age;
+  private Boolean isLived;
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  private Date birth;
+  private Map<String,Object> info;
+  private List<Object> hobbies;
+  private Pet pet;
+
+  @Data
+  public static class Pet {
+    private String name;
+    private String species;
+  }
 }
 ```
 
@@ -1775,10 +1751,6 @@ spring:
     
 logging:
   level:
-    org.springframework.security:
-      - debug
-      - info
-    org.springframework.web: error
     org.hibernate.SQL: debug
     org.hibernate.engine.QueryParameters: debug
     org.hibernate.engine.query.HQLQueryPlan: debug
