@@ -74,17 +74,17 @@ Access Rights
 **注册表法**（适用所有Win10版本，主要针对没有组策略编辑器的Win10家庭版）
 
 1. 打开注册表，依次定位到\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows；
-1. 鼠标右键单击Windows项，选择新建项，将其命名为Personalization；
-1. 建好后定位到Personalization处，在右边窗口空白处点击鼠标右键，选择新建-DWORD(32位)值，并将其命名为NoLockScreen；
-1. 双击该值打开编辑对话框，将数值数据更改为1，保存退出注册表编辑器即可。
-1. 如果想要保留锁屏，将数值数据更改为0。
+2. 鼠标右键单击Windows项，选择新建项，将其命名为Personalization；
+3. 建好后定位到Personalization处，在右边窗口空白处点击鼠标右键，选择新建-DWORD(32位)值，并将其命名为NoLockScreen；
+4. 双击该值打开编辑对话框，将数值数据更改为1，保存退出注册表编辑器即可。
+5. 如果想要保留锁屏，将数值数据更改为0。
 
 ![](./assets/1643807407939-8eb7cf66-9d38-4601-9eb2-21f5f022ee76.png)
 
 **组策略法**（适用有组策略编辑器的Win10专业版/企业版/教育版）
 
 1. 打开组策略，依次展开计算机配置 - 管理模板 - 控制面板，定位到 个性化 并双击，然后在右边栏中找到 不显示锁屏 项并双击，打开详细的配置窗口。默认的为未配置，选择 已启用 即可。
-1. 如果想要保留锁屏，选择  未配置 或 已禁用 即可。
+2. 如果想要保留锁屏，选择  未配置 或 已禁用 即可。
 
 ![](./assets/1643807408229-54f6570a-0f6d-477b-b985-989856ca0bf3.png)
 
@@ -96,15 +96,15 @@ Access Rights
 
 - 注册表法
 1. 打开注册表编辑器，定位至 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System ；
-1. 选中System项，在右侧窗口中点击右键，选择“新建 - DWORD(32位)值 ，命名为EnableActivityFeed ，数值数据按默认的 0 即可。
-1. 若想恢复，只需把EnableActivityFeed的数值修改为 1 ，或直接删除该值即可。
+2. 选中System项，在右侧窗口中点击右键，选择“新建 - DWORD(32位)值 ，命名为EnableActivityFeed ，数值数据按默认的 0 即可。
+3. 若想恢复，只需把EnableActivityFeed的数值修改为 1 ，或直接删除该值即可。
 
 ![](./assets/1643807408575-4d9be8ba-9d6c-45c4-9b1a-7975f5ba5dd8.png)
 
 - 组策略法
 1. 打开组策略编辑器，定位至 计算机配置 - 管理模板 - 系统 - OS策略 。然后在右侧窗口中找到 启用活动源（ActivityFeed） 配置项；
-1. 双击该项打开 启用活动源 配置窗口，修改为“已禁用”。
-1. 若想恢复，只需把 启用活动源 配置为 未配置 或 已启用 即可。
+2. 双击该项打开 启用活动源 配置窗口，修改为“已禁用”。
+3. 若想恢复，只需把 启用活动源 配置为 未配置 或 已启用 即可。
 
 ![](./assets/1643807408659-d7becea1-5c6d-46a2-afd4-928f9babaacb.png)
 
@@ -113,7 +113,7 @@ Access Rights
 一些朋友不喜欢Windows系统中快捷方式图标，下面介绍去除方法：
 
 1. 打开注册表编辑器后定位 HKEY_CLASSES_ROOT\lnkfile ；
-1. 删除 lnkfile 子项中的 IsShortcut 字符串值项（IsShortcut 项是用来控制是否显示普通应用程序和数据文件快捷方式中小箭头）；
+2. 删除 lnkfile 子项中的 IsShortcut 字符串值项（IsShortcut 项是用来控制是否显示普通应用程序和数据文件快捷方式中小箭头）；
 
 ![](./assets/1643807408775-0dc41acc-5226-4505-a2cd-95d1b2123253.png)
 
@@ -129,8 +129,8 @@ cmd /k reg delete "HKEY_CLASSES_ROOT\lnkfile" /v IsShortcut /f & taskkill /f /im
 ### - 去除此电脑首页的六个文件夹
 
 1. 定位到HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions
-1. 视频 文件夹的项 {35286a68-3c57-41a1-bbb1-0eae73d76c95} ，我们可以通过该项右侧窗口中Name的数据值来判断是否是我们需要的项， 视频 对应的是英文名Local Videos
-1. 接着展开进入它的子项 PropertyBag ，双击右侧窗口中的 ThisPCPolicy ，将其数据数值由Show改为Hide，最后确定即可。
+2. 视频 文件夹的项 {35286a68-3c57-41a1-bbb1-0eae73d76c95} ，我们可以通过该项右侧窗口中Name的数据值来判断是否是我们需要的项， 视频 对应的是英文名Local Videos
+3. 接着展开进入它的子项 PropertyBag ，双击右侧窗口中的 ThisPCPolicy ，将其数据数值由Show改为Hide，最后确定即可。
 
 ![](./assets/1643807408950-2ce15be1-e414-4d80-87f8-cf76d928bffd.png)  <br />  其它同理，对应的信息如下：
 

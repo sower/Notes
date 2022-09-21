@@ -664,9 +664,9 @@ Student.prototype.nationality = "English";
 **new 命令的原理**
 
 1. 创建一个空对象，作为将要返回的对象实例。
-1. 将这个空对象的原型，指向构造函数的prototype属性。
-1. 将这个空对象赋值给函数内部的this关键字。
-1. 开始执行构造函数内部的代码。
+2. 将这个空对象的原型，指向构造函数的prototype属性。
+3. 将这个空对象赋值给函数内部的this关键字。
+4. 开始执行构造函数内部的代码。
 
 new.target	如果当前函数是new命令调用，new.target指向当前函数，否则为undefined
 ```javascript
@@ -1661,8 +1661,8 @@ import(specifier)    // 支持动态加载模块
 **JS Event Loop 事件循环机制**  <br />  任务执行顺序：
 
 1. 同步任务；
-1. 微任务队列（promise.then、process.nextTick(node)）；
-1. 宏任务队列（script、setTimeOut、setInterval）
+2. 微任务队列（promise.then、process.nextTick(node)）；
+3. 宏任务队列（script、setTimeOut、setInterval）
 ```javascript
 setImmediate(console.log, 1);
 setTimeout(console.log, 1, 2);
@@ -1715,10 +1715,10 @@ document.addEventListener('scroll', function(){
 JavaScript Object Notation：一种数据交换的文本格式  <br />  2002年，道格拉斯·克罗克福特（Douglas Crockford）发明的超轻量级的数据交换格式  <br />  **规定**
 
 1. 复合类型的值只能是数组或对象，不能是函数、正则表达式对象、日期对象。
-1. 原始类型的值只有四种：字符串、数值（必须以十进制表示）、布尔值和null（不能使用NaN, Infinity, -Infinity和undefined）。
-1. 字符串必须使用双引号表示，不能使用单引号。
-1. 对象的键名必须放在双引号里面。
-1. 数组或对象最后一个成员的后面，不能加逗号。
+2. 原始类型的值只有四种：字符串、数值（必须以十进制表示）、布尔值和null（不能使用NaN, Infinity, -Infinity和undefined）。
+3. 字符串必须使用双引号表示，不能使用单引号。
+4. 对象的键名必须放在双引号里面。
+5. 数组或对象最后一个成员的后面，不能加逗号。
 
 序列化：JSON.stringify(object [```]);  <br />  反序列化：JSON.parse()
 ```javascript

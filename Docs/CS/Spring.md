@@ -1292,22 +1292,22 @@ spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 
 - 可以使用 properties 文件、YAML 文件、环境变量和命令行参数来外部化配置
 - 属性会以如下的顺序进行设值（即后面读取的**不覆盖**前面读取到的）：
    1. 命令行参数：如` --server.port=9000`，转化成一个 property，并将其添加到 Spring Environment 中
-   1. Java 系统属性 System.getProperties()
-   1. 操作系统环境变量
-   1. jar 包外部的 Profile-specific 应用属性（application-{profile}.properties 或 YAML 文件）
-   1. jar 包内部的 Profile-specific 应用属性（application-{profile}.properties 或 YAML 文件）
-   1. jar 包外部的应用配置（application.properties 或 YAML 文件）
-   1. jar 包内部的应用配置（application.properties 或 YAML 文件）
-   1. @Configuration 类上的 @PropertySource 注解
-   1. 使用 SpringApplication.setDefaultProperties 指定的默认属性
+   2. Java 系统属性 System.getProperties()
+   3. 操作系统环境变量
+   4. jar 包外部的 Profile-specific 应用属性（application-{profile}.properties 或 YAML 文件）
+   5. jar 包内部的 Profile-specific 应用属性（application-{profile}.properties 或 YAML 文件）
+   6. jar 包外部的应用配置（application.properties 或 YAML 文件）
+   7. jar 包内部的应用配置（application.properties 或 YAML 文件）
+   8. @Configuration 类上的 @PropertySource 注解
+   9. 使用 SpringApplication.setDefaultProperties 指定的默认属性
 
 
 ### [properties 文件配置参数](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-application-property-files)
 
    1. 项目根目录下的 /config 子目录 `file:config/`
-   1. 项目根目录 `file:`
-   1. 项目 classpath 下的 /config 包`classpath:/config`
-   1. 项目 classpath 根路径 `classpath:`
+   2. 项目根目录 `file:`
+   3. 项目 classpath 下的 /config 包`classpath:/config`
+   4. 项目 classpath 根路径 `classpath:`
 - 指定其它的配置文件名：`spring.config.name`
 - 指定配置文件的加载路径（目录位置或文件路径列表以逗号分割，目录应以 / 结尾）：`spring.config.location`
 ```java
@@ -1391,9 +1391,9 @@ public class Person {
    - 把静态资源打成 jar 包，Spring Boot 会自动加载 /webjars/** 下的所有 jar 包中的静态资源
 - 默认静态资源路径
    1. classpath:/META-INF/resources/
-   1. classpath:/resources/
-   1. classpath:/static/
-   1. classpath:/public/
+   2. classpath:/resources/
+   3. classpath:/static/
+   4. classpath:/public/
 - 自定义静态资源**加载路径**：spring.resources.staticLocations
 - 自定义静态资源**映射**：spring.mvc.static-path-pattern，默认值为/**（表示所有的访问都经过静态资源路径）
 
@@ -1437,8 +1437,8 @@ public class WebConfig implements WebMvcConfigurer  {
 接管 Spring MVC 
 
 1. @EnableWebMvc + extends WebMvcConfigurerAdapter，在扩展类中重写父类的方法，会导致 WebMvcAutoConfiguration 不被自动装配
-1. extends WebMvcConfigurationSupport，在扩展类中重写父类的方法，会导致 WebMvcAutoConfiguration（@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)） 不被自动装配
-1. extends WebMvcConfigurerAdapter 或 implements WebMvcConfigurer，在扩展类中重写父类的方法，WebMvcAutoConfiguration 可以被自动装配
+2. extends WebMvcConfigurationSupport，在扩展类中重写父类的方法，会导致 WebMvcAutoConfiguration（@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)） 不被自动装配
+3. extends WebMvcConfigurerAdapter 或 implements WebMvcConfigurer，在扩展类中重写父类的方法，WebMvcAutoConfiguration 可以被自动装配
 
 
 ## I18n

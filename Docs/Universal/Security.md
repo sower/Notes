@@ -18,11 +18,11 @@ resource
 常见流程
 
 1. 用户(User)向服务提供商(Service Provider)发起请求
-1. SP重定向User至SSO身份校验服务(Identity Provider)
-1. User通过IP登录
-1. IP返回凭证给User
-1. User将凭证发给SP
-1. SP返回受保护的资源给用户
+2. SP重定向User至SSO身份校验服务(Identity Provider)
+3. User通过IP登录
+4. IP返回凭证给User
+5. User将凭证发给SP
+6. SP返回受保护的资源给用户
 
 
 
@@ -78,13 +78,13 @@ jti (JWT ID)：编号
 SAML (Security Assertion Markup Language，安全断言标记语言) 一种xXML格式的语言，使用XML格式交互，来完成SSO的功能。  <br />  涉及角色：服务提供者(SP)、认证服务(IDP)、用户(Client)  <br />  流程
 
 1. Client访问受保护的资源
-1. SP生成认证请求SAML返回给Client
-1. Client提交请求到IDP
-1. IDP返回认证请求
-1. Client登陆IDP
-1. 认证成功后，IDP生成私钥签名标识了权限的SAML，返回给Client
-1. Client提交SAML给SP
-1. SP读取SAML，确定请求合法，返回资源
+2. SP生成认证请求SAML返回给Client
+3. Client提交请求到IDP
+4. IDP返回认证请求
+5. Client登陆IDP
+6. 认证成功后，IDP生成私钥签名标识了权限的SAML，返回给Client
+7. Client提交SAML给SP
+8. SP读取SAML，确定请求合法，返回资源
 
 
 

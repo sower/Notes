@@ -43,14 +43,14 @@
 安装
 
 1. 选择产品——Microsoft 365
-1. 选择所需应用程序
-1. 选择语言
-1. 开始部署
+2. 选择所需应用程序
+3. 选择语言
+4. 开始部署
 
 激活
 
 1. 清除激活信息
-1. 打开命令框，输入
+2. 打开命令框，输入
 
 `ospp /ilbyid MondoVolume /sethst:kms.loli.beer /setprt:1688 /act `
 

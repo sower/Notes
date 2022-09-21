@@ -96,11 +96,11 @@ def disable_all_uwp_net():
 工具：[WePE](https://www.wepe.com.cn/)  <br />  U盘：>8G
 
 1. 将WePE安装到U盘（U盘数据会被清空），勾选DOS
-1. 将系统镜像文件（.ISO）复制到U盘
-1. 重启电脑，进入BIOS
-1. 以U盘的方式进入PE
-1. 如有必要可对C盘重新分区
-1. 找到ISO文件，进行装载，完成后自动重启
+2. 将系统镜像文件（.ISO）复制到U盘
+3. 重启电脑，进入BIOS
+4. 以U盘的方式进入PE
+5. 如有必要可对C盘重新分区
+6. 找到ISO文件，进行装载，完成后自动重启
 
 
 
@@ -226,8 +226,8 @@ wmic path softwarelicensingservice get OA3xOriginalProductKey
 **永久关闭**
 
 1. 打开 gpedit.msc —— 本地组策略编辑器
-1. 计算机配置 > 管理模板 > Windows组件 > Microsoft Defender防病毒
-1. 打开 关闭Microsoft Defender防病毒，选择启用，并保持
+2. 计算机配置 > 管理模板 > Windows组件 > Microsoft Defender防病毒
+3. 打开 关闭Microsoft Defender防病毒，选择启用，并保持
 
 ![](./assets/1643807406796-a3f8a2f7-2af2-4b7e-9a40-ae9e26f58fdd.png)
 

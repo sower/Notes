@@ -143,7 +143,7 @@ string s("markdown");
 
 1. A numbered list 
    1. A nested numbered list
-   1. Which is numbered
+   2. Which is numbered
 2. Which is numbered
 ```markdown
 1. A numbered list

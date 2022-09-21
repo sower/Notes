@@ -941,8 +941,8 @@ public class App implements Task
 一种符合命名规范的class
 
 1. 类使用 public 修饰
-1. 有 public 修饰的无参构造器
-1. 包含属性的操作方法，即有 public 修饰的 getter/setter 方法
+2. 有 public 修饰的无参构造器
+3. 包含属性的操作方法，即有 public 修饰的 getter/setter 方法
 
 
 **class Introspector**  <br />  通过分别分析 bean 的类和父类，寻找显式或隐式信息，使用这些信息构建一个全面描述目标 bean 的 BeanInfo 对象  <br />  类方法
@@ -1346,7 +1346,7 @@ public class Main {
 
 - 全局静态常量
    1. 路径分隔符：char pathSeparatorChar、String pathSeparator
-   1. 文件名称分隔符：char separatorChar、String separator
+   2. 文件名称分隔符：char separatorChar、String separator
 
 **访问文件名**
 

@@ -203,10 +203,10 @@ if (detectTab.getAttribute("aria-selected") !== "true") detectTab.click();
 **规则**
 
 1. 以`javascript:`开头
-1. 所有代码必须在同一行：因为浏览器把Bookmarklet当做网址保存，而网址是不能分行的。另外，网址是有长度限制的。
-1. 使用单引号：由于html语言主要使用双引号，所以Bookmarklet优先使用单引号。使用双引号的情况采用其URL编码形式`%22`。
-1. 采用匿名函数，不污染全局变量`javascript: (function(){...})(); `
-1. 对文本和URL进行编码：为了防止出现非法字符，代码以外的文本都应该使用`encodeURIComponent()`函数进行编码，比如把空格变成`%20`。
+2. 所有代码必须在同一行：因为浏览器把Bookmarklet当做网址保存，而网址是不能分行的。另外，网址是有长度限制的。
+3. 使用单引号：由于html语言主要使用双引号，所以Bookmarklet优先使用单引号。使用双引号的情况采用其URL编码形式`%22`。
+4. 采用匿名函数，不污染全局变量`javascript: (function(){...})(); `
+5. 对文本和URL进行编码：为了防止出现非法字符，代码以外的文本都应该使用`encodeURIComponent()`函数进行编码，比如把空格变成`%20`。
 
 
 

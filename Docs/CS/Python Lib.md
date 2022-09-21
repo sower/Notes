@@ -1034,8 +1034,8 @@ GIL(global interpreter lock，全局解释器锁)：使得同一个时刻只有�
 释放条件
 
 1. 字节码执行一定行数后释放
-1. 通过时间片划分
-1. 遇到IO操作时会主动释放。
+2. 通过时间片划分
+3. 遇到IO操作时会主动释放。
 
 - threading.active_count()
    - 返回当前存活的线程类 Thread 对象

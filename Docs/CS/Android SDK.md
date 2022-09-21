@@ -211,7 +211,7 @@ apksigner verify [options] app-name.apk
 
 - USB 连接
 1. 显示开发者选项：转到**设置 > 关于手机**，然后点按 **build（软件版本）号**七次。
-1. 返回上一屏幕，在底部可以找到**开发者选项，**启用 **USB 调试**
+2. 返回上一屏幕，在底部可以找到**开发者选项，**启用 **USB 调试**
 - 使用WiFi连接
 ```shell
 # 监听端口 5555 上的 TCP/IP 连接，后续可拔掉连接目标设备的 USB 线
@@ -225,10 +225,10 @@ su setprop service.adb.tcp.port 5555
 
 - WLAN 连接	Android 11（及更高版本）
 1. 启用**开发者选项**下的**无线调试**选项。
-1. 选择**使用配对码配对设备**。记下设备上显示的配对码、IP 地址和端口号
-1. 运行 `adb pair _ipaddr_:_port_`
-1. 当系统提示时，输入您在第 3 步中获得的配对码。系统会显示一条消息，表明您的设备已成功配对。
-1. 运行 `adb connect <ip:port>`
+2. 选择**使用配对码配对设备**。记下设备上显示的配对码、IP 地址和端口号
+3. 运行 `adb pair _ipaddr_:_port_`
+4. 当系统提示时，输入您在第 3 步中获得的配对码。系统会显示一条消息，表明您的设备已成功配对。
+5. 运行 `adb connect <ip:port>`
 
 
 #### 基础指令
@@ -896,9 +896,9 @@ options:
 步骤
 
 1. 进入Fastboot，解锁手机 Bootloader
-1. 刷入第三方 Recovery（TWRP.img，TeamWin Recovery Project）
-1. 安装Magisk.apk，需科学上网，App内下载Magisk.zip
-1. 通过第三方 Recovery 刷入Magisk，获取Root
+2. 刷入第三方 Recovery（TWRP.img，TeamWin Recovery Project）
+3. 安装Magisk.apk，需科学上网，App内下载Magisk.zip
+4. 通过第三方 Recovery 刷入Magisk，获取Root
 
 加锁：fastboot oem lock
 
@@ -1307,8 +1307,8 @@ toast  <br />  启动参数中添加一个参数  <br />  automationName": "Uiau
 小程序  <br />  获取小程序在微信中的进程
 
 1. adb shell
-1. dumpsus activity top | grep ACTIVITY	# pid
-1. ps pid
+2. dumpsus activity top | grep ACTIVITY	# pid
+3. ps pid
 
 得到微信小程序进程 com.tencent.mm:appbrand0  <br />  启动参数中添加微信小程序进程  <br />  "chromeOptions": {"androidProcess": "com. tencent. mm: appbzango"}
 

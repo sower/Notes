@@ -351,24 +351,24 @@ id | select_type | table | partitions | type | possible_keys | key  | key_len | 
 select_type
 
 1. SIMPLE：简单的select查询，查询中不包含子查询和union
-1. PRIMARY：查询中若包含任何复杂的子部分，最外层查询则被标记为
-1. SUBQUERY：在select或where列表中包含了子查询
-1. DERIVED：在from列表中包含的子查询被标记为derived，mysql会递归执行这些子查询，把结果放在临时表中
-1. UNION：若第二个select出现在union之后，则被标记;
-1. UNION RESULT：从union表获取结果的select
+2. PRIMARY：查询中若包含任何复杂的子部分，最外层查询则被标记为
+3. SUBQUERY：在select或where列表中包含了子查询
+4. DERIVED：在from列表中包含的子查询被标记为derived，mysql会递归执行这些子查询，把结果放在临时表中
+5. UNION：若第二个select出现在union之后，则被标记;
+6. UNION RESULT：从union表获取结果的select
 
 table：当前执行的表
 
 type
 
 1. NULL：不用访问表或者索引，直接就能得到结果；
-1. system：表示表中只有一条记录；
-1. const：表示表中有多条记录，但只从表中查询一条记录；
-1. eq _ref：类似 ref，表示多表连接时，后面的表使用了 UNIQUE 或者 PRIMARY KEY；
-1. ref：表示多表查询时，后面的表使用了普通索引；
-1. range：表示查询语句中给出了查询范围，常见于 <、<=、>、>=、between 等操作符；
-1. index：表示对表中的索引进行了完整的扫描，MySQL 遍历整个索引来查询匹配的行；
-1. ALL：表示对表进行了完整的扫描，MySQL 遍历全表来找到匹配的行。
+2. system：表示表中只有一条记录；
+3. const：表示表中有多条记录，但只从表中查询一条记录；
+4. eq _ref：类似 ref，表示多表连接时，后面的表使用了 UNIQUE 或者 PRIMARY KEY；
+5. ref：表示多表查询时，后面的表使用了普通索引；
+6. range：表示查询语句中给出了查询范围，常见于 <、<=、>、>=、between 等操作符；
+7. index：表示对表中的索引进行了完整的扫描，MySQL 遍历整个索引来查询匹配的行；
+8. ALL：表示对表进行了完整的扫描，MySQL 遍历全表来找到匹配的行。
 
 possible_keys：表示查询中可以使用的索引；  <br />  key：表示实际查询中使用到的索引；  <br />  key_len：表示索引字段的长度；  <br />  ref：表示使用哪个列或常数与索引一起来查询记录；  <br />  rows：表示查询的行数；  <br />  Extra：表示查询过程的附件信息。
 

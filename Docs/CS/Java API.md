@@ -58,26 +58,26 @@ public interface Iterable<T> {
 
 - 增加
    1. boolean add(Object o)：向集合里添加**一个**元素，如果集合对象被添加操作改变了，则返回 true
-   1. boolean addAll(Collection c)：把集合 c 里的所有元素添加到指定集合里，如果集合对象被添加操作改变了，则返回 true
+   2. boolean addAll(Collection c)：把集合 c 里的所有元素添加到指定集合里，如果集合对象被添加操作改变了，则返回 true
 - 删除
    1. boolean remove(Object o)：删除集合中第一个符合条件的**指定元素** o，返回 true
-   1. boolean removeAll(Collecrion c)：从该集合中**删除**集合 c 里包含的所有元素，如果删除了一个或一个以上的元素，该方法将返回 true
-   1. boolean retainAll(Collection c)：使该集合中**仅保留**集合 c 里包含的元素（求两个集合的**交集**），如果该操作改变了调用该方法的集合，则该方法返回 true
-   1. void clear()：清除集合里的所有元素，将集合长度变为 0
+   2. boolean removeAll(Collecrion c)：从该集合中**删除**集合 c 里包含的所有元素，如果删除了一个或一个以上的元素，该方法将返回 true
+   3. boolean retainAll(Collection c)：使该集合中**仅保留**集合 c 里包含的元素（求两个集合的**交集**），如果该操作改变了调用该方法的集合，则该方法返回 true
+   4. void clear()：清除集合里的所有元素，将集合长度变为 0
 - 查询
    1. boolean contains(Object o)：判断集合里是否包含指定元素 o
-   1. boolean containsAll(Collection c)：判断集合里是否包含集合 c 里的所有元素
-   1. boolean isEmpty()：判断集合是否为空，当集合长度为 0 时返回 true，否则返回 false
-   1. int size()：返回集合里元素的个数
+   2. boolean containsAll(Collection c)：判断集合里是否包含集合 c 里的所有元素
+   3. boolean isEmpty()：判断集合是否为空，当集合长度为 0 时返回 true，否则返回 false
+   4. int size()：返回集合里元素的个数
 - 其它操作
    1. Iterator<E> iterator()：获取一个 Iterator 对象（迭代器）
-   1. Object[] toArray()：把集合转换成一个数组，所有的集合元素变成对应的数组元素（**转换成 Object 数组时**，没有必要使用 toArray[new Object[0]]，可以直接使用 toArray()）
-   1. T[] toArray(T[] a)：返回一个包含此集合中所有元素的数组（返回数组的运行时类型是指定数组的类型）。如果指定的数组 a **能容纳**该集合，则 a 将在其中返回；否则，将分配一个具有指定数组的运行时类型和此集合大小的**新数组**（**集合转换为类型 T 数组时**，尽量传入空数组 T[0]）
+   2. Object[] toArray()：把集合转换成一个数组，所有的集合元素变成对应的数组元素（**转换成 Object 数组时**，没有必要使用 toArray[new Object[0]]，可以直接使用 toArray()）
+   3. T[] toArray(T[] a)：返回一个包含此集合中所有元素的数组（返回数组的运行时类型是指定数组的类型）。如果指定的数组 a **能容纳**该集合，则 a 将在其中返回；否则，将分配一个具有指定数组的运行时类型和此集合大小的**新数组**（**集合转换为类型 T 数组时**，尽量传入空数组 T[0]）
 - 默认方法
    1. Stream<E> stream()
-   1. Stream<E> parallelStream()
-   1. boolean removeIf(Predicate<E> filter)：删除满足给定谓词的此集合的所有元素
-   1. void forEach(Consumer<? super T> action)：对 Iterable 的每个元素执行给定的操作
+   2. Stream<E> parallelStream()
+   3. boolean removeIf(Predicate<E> filter)：删除满足给定谓词的此集合的所有元素
+   4. void forEach(Consumer<? super T> action)：对 Iterable 的每个元素执行给定的操作
 
 
 ## class Collections
@@ -91,24 +91,24 @@ public interface Iterable<T> {
 
 - 增加
    1. void add(int index, Object element)：将元素 element 插入到 List 集合的 index 处，索引范围 [0, size)
-   1. boolean addAll(int index, Collection c)：将集合 c 所包含的所有元素都插入到 List 集合的 index 处
+   2. boolean addAll(int index, Collection c)：将集合 c 所包含的所有元素都插入到 List 集合的 index 处
 - 删除
    1. Object remove(int index)：删除并返回 **index 索引**处的元素
 - **修改**
    1. Object set(int index, Object element)：将 index 索引处的元素替换成 element 对象，返回被替换的旧元素
 - 查询
    1. Object get(int index)：返回集合 index 索引处的元素
-   1. int indexOf(Object o)：返回对象 o 在 List 集合中第一次出现的位置索引
-   1. int lastIndexOf(Object o)：返回对象 o 在 List 集合中最后一次出现的位置索引
+   2. int indexOf(Object o)：返回对象 o 在 List 集合中第一次出现的位置索引
+   3. int lastIndexOf(Object o)：返回对象 o 在 List 集合中最后一次出现的位置索引
 - 其它
    1. List subList(int fromlndex, int tolndex)：返回从索引 fromlndex（包含）到索引 tolndex（不包含）处所有集合元素组成的子集合，**返回的列表由此列表支持，因此返回列表中的非结构性更改将反映在此列表中，反之亦然**（对于子列表的所有操作最终会反映到原列表上；对**父集合**元素的增加或删除，均会导致子列表的遍历、增加、删除产生 ConcurrentModificationException 异常）
-   1. ListIterator<E> listIterator(int index)：返回一个 ListIterator 对象（双向的迭代器），从列表的指定位置开始
+   2. ListIterator<E> listIterator(int index)：返回一个 ListIterator 对象（双向的迭代器），从列表的指定位置开始
 - 默认方法
    1. void replaceAll(UnaryOperator<E> operator)：对列表中的每一个元素执行特定的操作，并用处理的结果替换该元素
-   1. void sort(Comparator<E> c)：使用提供的 Comparator 来比较元素排序该列表
+   2. void sort(Comparator<E> c)：使用提供的 Comparator 来比较元素排序该列表
 - 常用构造器
    1. ArrayList()：一个数组队列，相当于**动态数组**。**ArrayList 默认初始容量大小为 10 ，添加元素时，如果发现容量已满，会自动扩容为原始大小的 1.5 倍**。
-   1. ArrayList(Collection<? extends E> c)：构造一个包含指定 collection 的元素的列表，这些元素是按照该 collection 的迭代器返回它们的顺序排列的
+   2. ArrayList(Collection<? extends E> c)：构造一个包含指定 collection 的元素的列表，这些元素是按照该 collection 的迭代器返回它们的顺序排列的
 
 LinkedList 基于双链表结构实现，顺序访问会非常高效，而随机访问效率比较低。
 
@@ -172,33 +172,33 @@ TreeSet  <br />  根据红黑树结构确定元素的存储位置  <br />  查�
 
 - 增加 / 修改
    1. Object put(Object key, Object value)：添加一个 key-value 对，如果当前 Map 中已有一个与该 key 相等的 key-value 对，则新的 key-value 对会**覆盖**原来的 key-value 对，返回被覆盖的 value，否则返回 null
-   1. void putAll(Map m)：将指定 Map 中的 key-value 对复制到本 Map 中
+   2. void putAll(Map m)：将指定 Map 中的 key-value 对复制到本 Map 中
 - 删除
    1. Object remove(Object key)：删除指定 key 所对应的 key-value 对，返回被删除 key 所关联的 value，如果该 key 不存在，则返回 null
-   1. boolean remove(Object key, Object value)：删除指定 key、value 所对应的 key-value 对
-   1. void clear()：删除该 Map 对象中的所有 key-value 对
+   2. boolean remove(Object key, Object value)：删除指定 key、value 所对应的 key-value 对
+   3. void clear()：删除该 Map 对象中的所有 key-value 对
 - 查询
    1. Object get(Object key)：返回指定 key 所对应的 value；如果此 Map 中不包含该 key，则返回 null
-   1. boolean containsKey(Object key)：查询 Map 中是否包含指定的 key，如果包含则返回 true
-   1. boolean containsValue(Object value)：查询 Map 中是否包含一个或多个 value，如果包含则返回true
-   1. boolean isEmpty()：查询该 Map 是否为空（即不包含任何 key-value 对），如果为空则返回 true
-   1. int size()：查询该 Map 里的 key-value 对的个数
+   2. boolean containsKey(Object key)：查询 Map 中是否包含指定的 key，如果包含则返回 true
+   3. boolean containsValue(Object value)：查询 Map 中是否包含一个或多个 value，如果包含则返回true
+   4. boolean isEmpty()：查询该 Map 是否为空（即不包含任何 key-value 对），如果为空则返回 true
+   5. int size()：查询该 Map 里的 key-value 对的个数
 - 其它
    1. Set<K> keySet()：返回该 Map 中所有 key 组成的 Set 集合（相应实现类中的内部类，不支持 add 或 addAll 操作）
-   1. Collection<V> values()：返回该 Map 里所有 value 组成的 **Collection**（相应实现类中的内部类，不支持 add 或 addAll 操作）
-   1. Set<Map.Entry<K, V>> entrySet()：返回 Map 中包含的 key-value 对所组成的 Set 集合，每个集合元素都是 Map.Entry 对象（不支持 add 或 addAll 操作）
+   2. Collection<V> values()：返回该 Map 里所有 value 组成的 **Collection**（相应实现类中的内部类，不支持 add 或 addAll 操作）
+   3. Set<Map.Entry<K, V>> entrySet()：返回 Map 中包含的 key-value 对所组成的 Set 集合，每个集合元素都是 Map.Entry 对象（不支持 add 或 addAll 操作）
 - 默认方法
    1. void forEach(BiConsumer<K, V> action)：对此映射中的每个条目执行给定的操作
-   1. V computeIfPresent(K key, BiFunction<K, V, V> remappingFunction)
-   1. V computeIfAbsent(K key, Function<K, V> mappingFunction)：如果 key 不存在或者对应的值是 null，则调用 mappingFunction 来产生一个值，然后将其放入 Map（**原子操作** CAS），再**返回这个值**；否则的话返回 Map 已存在的对应的值
-   1. V putIfAbsent(K key, V value)：如果 key 不存在或者对应的值是 null，则**将 value 设置进去**（**原子操作** CAS），然后**返回 null**；否则返回 Map 中对应的值，而不做其它操作
-   1. V getOrDefault(Object key, V defaultValue)：如果 key 不存在或者对应的值是 null，则返回 defaultValue
-   1. boolean remove(Object key, Object value)：仅当指定的 key 当前映射到指定的值时删除该条目
-   1. boolean replace(K key, V oldValue, V newValue)：仅当当前映射到指定的值时，才替换指定键的条目
-   1. V merge(K key, V value, BiFunction<V, V, V> remappingFunction)：如果指定的 key 尚未与值相关联或与 null 相关联，则将其与给定的非空 value 相关联，否则将关联值替换为给定重映射函数的结果
+   2. V computeIfPresent(K key, BiFunction<K, V, V> remappingFunction)
+   3. V computeIfAbsent(K key, Function<K, V> mappingFunction)：如果 key 不存在或者对应的值是 null，则调用 mappingFunction 来产生一个值，然后将其放入 Map（**原子操作** CAS），再**返回这个值**；否则的话返回 Map 已存在的对应的值
+   4. V putIfAbsent(K key, V value)：如果 key 不存在或者对应的值是 null，则**将 value 设置进去**（**原子操作** CAS），然后**返回 null**；否则返回 Map 中对应的值，而不做其它操作
+   5. V getOrDefault(Object key, V defaultValue)：如果 key 不存在或者对应的值是 null，则返回 defaultValue
+   6. boolean remove(Object key, Object value)：仅当指定的 key 当前映射到指定的值时删除该条目
+   7. boolean replace(K key, V oldValue, V newValue)：仅当当前映射到指定的值时，才替换指定键的条目
+   8. V merge(K key, V value, BiFunction<V, V, V> remappingFunction)：如果指定的 key 尚未与值相关联或与 null 相关联，则将其与给定的非空 value 相关联，否则将关联值替换为给定重映射函数的结果
 - 常用构造器
    1. HashMap()：构造一个具有默认初始容量（16）和默认加载因子（0.75）的空 HashMap
-   1. `HashMap(Map<? extends K,? extends V> m)`：构造一个映射关系与指定 Map 相同的新 HashMap
+   2. `HashMap(Map<? extends K,? extends V> m)`：构造一个映射关系与指定 Map 相同的新 HashMap
 
 
 
@@ -814,10 +814,10 @@ public interface Servlet {
 Servlet 生命周期
 
 1. **加载** - 第一个到达服务器的 HTTP 请求被委派到 Servlet 容器。容器通过类加载器使用 Servlet 类对应的文件加载 servlet；
-1. **初始化** - Servlet 通过调用 **init ()** 方法进行初始化。
-1. **服务** - Servlet 调用 **service()** 方法来处理客户端的请求。
-1. **销毁** - Servlet 通过调用 **destroy()** 方法终止（结束）。
-1. **卸载** - Servlet 是由 JVM 的垃圾回收器进行垃圾回收的。
+2. **初始化** - Servlet 通过调用 **init ()** 方法进行初始化。
+3. **服务** - Servlet 调用 **service()** 方法来处理客户端的请求。
+4. **销毁** - Servlet 通过调用 **destroy()** 方法终止（结束）。
+5. **卸载** - Servlet 是由 JVM 的垃圾回收器进行垃圾回收的。
 
 示例
 
@@ -844,16 +844,16 @@ public class HelloServlet extends HttpServlet {
 **HttpServletRequest**
 
 1. 获取请求行信息  <br />  String getMethod()：获取请求方式  <br />  String getRequestURI()：获取请求的 URI，从协议名称一直到查询字符串的那一部分，即返回请求行中的资源名，包括上下文路径，如 /test/index.html  <br />  StringBuffer getRequestURL()：获取请求的 URL，包含协议、服务器名、端口号、资源路径信息，不包含查询字符串参数，即浏览器地址栏的内容  <br />  public String getQueryString()：获取包含在请求 URL 中路径后面的查询字符串，即`?`后的字符串  <br />  String getContextPath()：获取上下文路径，即 `<Context />` 元素的 path 属性值
-1. 获取请求头信息  <br />  String getHeader(String name)：获取指定请求头的值  <br />  Enumeration<String> getHeaderNames()：获取所有请求头的名称  <br />  Enumeration<String> getHeaders(String name)：获取指定请求头的多个值  <br />  int getIntHeader(String name)：获取指定请求头的值，并将该值转为整数值  <br />  Locale getLocale()：根据 **Accept-Language** 请求头返回客户端将在其中接受内容的**首选 Locale**，如果客户端请求未提供 Accept-Language 请求头，则返回服务器的默认语言环境  <br />  Enumeration<Locale> getLocales()
-1. 获取请求参数  <br />  String getParameter(String paramName)：根据参数名称，获取对应请求参数的值  <br />  String[] getParameterValues(String paramName)：根据参数名称，获取对应请求参数的多个所组成的数组  <br />  Map getParameterMap()：获取所有请求参数名和参数值所组成的 Map 对象  <br />  Enumeration<String> getParameterNames()：获取所有请求参数名所组成的 Enumeration 对象
-1. 操作 request 范围的属性  <br />  setAttribute(String attrName, Object value)、getAttribute(String attrName)
-1. 执行请求转发（forward）或请求包含（include）
+2. 获取请求头信息  <br />  String getHeader(String name)：获取指定请求头的值  <br />  Enumeration<String> getHeaderNames()：获取所有请求头的名称  <br />  Enumeration<String> getHeaders(String name)：获取指定请求头的多个值  <br />  int getIntHeader(String name)：获取指定请求头的值，并将该值转为整数值  <br />  Locale getLocale()：根据 **Accept-Language** 请求头返回客户端将在其中接受内容的**首选 Locale**，如果客户端请求未提供 Accept-Language 请求头，则返回服务器的默认语言环境  <br />  Enumeration<Locale> getLocales()
+3. 获取请求参数  <br />  String getParameter(String paramName)：根据参数名称，获取对应请求参数的值  <br />  String[] getParameterValues(String paramName)：根据参数名称，获取对应请求参数的多个所组成的数组  <br />  Map getParameterMap()：获取所有请求参数名和参数值所组成的 Map 对象  <br />  Enumeration<String> getParameterNames()：获取所有请求参数名所组成的 Enumeration 对象
+4. 操作 request 范围的属性  <br />  setAttribute(String attrName, Object value)、getAttribute(String attrName)
+5. 执行请求转发（forward）或请求包含（include）
    - HttpServletRequest 类提供了一个 getRequestDispatcher (String path) 方法（获取请求分发器），其中 path 就是希望 forward 或者 include 的目标路径（以斜线开头表示当前 web 应用的根路径，不以斜线开头表示相对路径），该方法返回 **RequestDispatcher**，该对象提供了如下两个方法：
       1. void forward(ServletRequest request, ServletResponse response)：执行 forward
-      1. void include(ServletRequest request, ServletResponse response)：执行 include
+      2. void include(ServletRequest request, ServletResponse response)：执行 include
    - forward 用户请求时，请求参数和 request 范围的属性都不会丢失
 6. 获取网络信息  <br />  String getRemoteAddr()：返回发出请求的客户机的 IP 地址
-6. 其它  <br />  ServletInputStream getInputStream()：以二进制数据形式获取请求正文，返回输入流  <br />  BufferedReader getReader()：获取请求正文
+7. 其它  <br />  ServletInputStream getInputStream()：以二进制数据形式获取请求正文，返回输入流  <br />  BufferedReader getReader()：获取请求正文
 
 
 **HttpServletResponse**  <br />  常用方法

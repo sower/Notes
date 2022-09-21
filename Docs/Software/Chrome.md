@@ -39,9 +39,9 @@ FPS：主要和动画性能有关，代表每秒帧数。图表中的绿色长�
 Performance monitor
 
 1. 打开 Chrome 开发者工具
-1. 按“Esc”，打开附加面板
-1. 点击选项按钮，打开选项菜单
-1. 选择“Performance monitor”
+2. 按“Esc”，打开附加面板
+3. 点击选项按钮，打开选项菜单
+4. 选择“Performance monitor”
 
 
 ### Shortcut
