@@ -383,53 +383,71 @@ applicationContext.xml 配置
 | _@_DeclareParents  | 用于定义引介通知，相当于IntroductionInterceptor |
 
 ```java
-//切面类
-@Aspect
 @Component
-public class MyAspect {
-    
-    // 用于取代：<aop:pointcut
-    // expression="execution(*com.mengma.dao..*.*(..))" id="myPointCut"/>
-    // 要求：方法必须是private，没有值，名称自定义，没有参数
-    @Pointcut("execution(*com.mengma.dao..*.*(..))")
-    private void myPointCut() {
+@Aspect
+@Slf4j
+public class WebLogAspect {
+
+  @Pointcut("execution( public * me.demo.controller..*.*(..))")
+  public void aopPointCut() {
+  }
+
+  // 前置通知
+  @Before("aopPointCut()")
+  public void doBefore(JoinPoint joinPoint) {
+    ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+    Optional.ofNullable(requestAttributes).map(ServletRequestAttributes::getRequest)
+        .ifPresent(request -> log.info("{} sends {} request {}", request.getRemoteAddr(),
+            request.getMethod(),
+            ServletUriComponentsBuilder.fromContextPath(request).encode().build()));
+    log.info("Ready into {} - {} - {}", joinPoint.getTarget(),
+        joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
+    log.info("ARGS: {}", joinPoint.getArgs());
+  }
+
+  // 后置通知
+  @AfterReturning(value = "aopPointCut()")
+  public void doAfterReturning(JoinPoint joinPoint) {
+    log.info("Exit from {} - {}", joinPoint.getTarget(),
+        joinPoint.getSignature().getName());
+  }
+
+  // 环绕通知
+  @Around("aopPointCut()")
+  public Object doAround(ProceedingJoinPoint proceedingJoinPoint)
+      throws Throwable {
+
+    StopWatch stopWatch = new StopWatch(proceedingJoinPoint.toShortString());
+    stopWatch.start();
+    Object obj = null;
+    try {
+      // 执行当前目标方法
+      obj = proceedingJoinPoint.proceed();
+      return obj;
+    } finally {
+
+      stopWatch.stop();
+      log.info("{} - {} complete, it takes {}ms", proceedingJoinPoint.getTarget(),
+          proceedingJoinPoint.getSignature().getName()
+          , stopWatch.getLastTaskTimeMillis());
+      if (Objects.nonNull(obj)) {
+        log.info("return result -> {}", StringUtils.abbreviate(JSON.toJSONString(obj), 1000));
+      }
     }
-    
-    // 前置通知
-    @Before("myPointCut()")
-    public void myBefore(JoinPoint joinPoint) {
-        System.out.print("前置通知，目标：");
-        System.out.print(joinPoint.getTarget() + "方法名称:");
-        System.out.println(joinPoint.getSignature().getName());
-    }
-    
-    // 后置通知
-    @AfterReturning(value = "myPointCut()")
-    public void myAfterReturning(JoinPoint joinPoint) {
-        System.out.print("后置通知，方法名称：" + joinPoint.getSignature().getName());
-    }
-    
-    // 环绕通知
-    @Around("myPointCut()")
-    public Object myAround(ProceedingJoinPoint proceedingJoinPoint)
-            throws Throwable {
-        System.out.println("环绕开始"); // 开始
-        Object obj = proceedingJoinPoint.proceed(); // 执行当前目标方法
-        System.out.println("环绕结束"); // 结束
-        return obj;
-    }
-    
-    // 异常通知
-    @AfterThrowing(value = "myPointCut()", throwing = "e")
-    public void myAfterThrowing(JoinPoint joinPoint, Throwable e) {
-        System.out.println("异常通知" + "出错了" + e.getMessage());
-    }
-    
-    // 最终通知
-    @After("myPointCut()")
-    public void myAfter() {
-        System.out.println("最终通知");
-    }
+  }
+
+  // 异常通知
+  @AfterThrowing(value = "aopPointCut()", throwing = "e")
+  public void doAfterThrowing(JoinPoint joinPoint, Throwable e) {
+    log.info("{} - {} execute error {}", joinPoint.getTarget(),
+        joinPoint.getSignature().getName() , e.getMessage());
+  }
+
+  // 最终通知
+  @After("aopPointCut()")
+  public void doAfter() {
+    log.info("最终通知");
+  }
 }
 ```
 applicationContext.xml 配置
@@ -822,6 +840,14 @@ public class UserDaoImpl implements UserDao {
   <br />  `@CrossOrigin`：可用于类或方法，**设置跨域行为**，常用属性：origins（允许域名）、methods、allowedHeaders、exposedHeaders、allowCredentials（是否允许发送 Cookie，**启用后允许域名不能设置为 '*'**）、maxAge（本次预检请求的有效期，单位为秒）
 
 
+**Util**
+
+- HttpMethod
+- HttpStatus
+- UriComponents
+- HtmlUtils
+
+
 方法参数
 
 | 控制器方法参数 | 描述 |
@@ -1024,30 +1050,6 @@ public class LogResponseBodyAdvice implements ResponseBodyAdvice {
     }
 }
 ```
-
-
-
-
-## JSR 303
-Java Specification Requests：Java 规范提案，指向JCP(Java Community Process)提出新增一个标准化技术规范的正式请求
-
-JSR-303 是JAVA EE 6 中的一项子规范，叫做Bean Validation。  <br />  Hibernate Validator 提供了 JSR 303 规范中所有内置 constraint 的实现，除此之外还有一些附加的 constraint。
-
-| 名称 | 说明 |
-| --- | --- |
-| @Null | 被标注的元素必须为 null |
-| @NotNull | 被标注的元素必须不为 null |
-| @AssertTrue | 被标注的元素必须为 true |
-| @AssertFalse | 被标注的元素必须为 false |
-| @Min(value) | 被标注的元素必须是一个数字，其值必须大于等于指定的最小值 |
-| @Max(value) | 被标注的元素必须是一个数字，其值必须小于等于指定的最大值 |
-| @DecimalMax(value) | 被标注的元素必须是一个数字，其值必须大于等于指定的最大值 |
-| @DecimalMin(value) | 被标注的元素必须是一个数字，其值必须小于等于指定的最小值 |
-| @size | 被标注的元素的大小必须在指定的范围内 |
-| @Digits（integer，fraction） | 被标注的元素必须是一个数字，其值必须在可接受的范围内；integer 指定整数精度，fraction 指定小数精度 |
-| @Past | 被标注的元素必须是一个过去的日期 |
-| @Future | 被标注的元素必须是一个将来的日期 |
-| @Pattern(value) | 被标注的元素必须符合指定的正则表达式 |
 
 
 
@@ -1441,6 +1443,47 @@ public class WebConfig implements WebMvcConfigurer  {
 3. extends WebMvcConfigurerAdapter 或 implements WebMvcConfigurer，在扩展类中重写父类的方法，WebMvcAutoConfiguration 可以被自动装配
 
 
+
+## Bean Validation
+Java Specification Requests：Java 规范提案，指向JCP(Java Community Process)提出新增一个标准化技术规范的正式请求
+
+JSR-303 是JAVA EE 6 中的一项子规范，叫做Bean Validation。  <br />  [Hibernate Validator](https://hibernate.org/validator/) 提供了 JSR 303 规范中所有内置 constraint 的实现，除此之外还有一些附加的 constraint。
+
+**spring-boot-starter-validation**
+
+| 名称 | 说明 |
+| --- | --- |
+| @Null | 被标注的元素必须为 null |
+| @NotNull | 被标注的元素必须不为 null |
+| @AssertTrue | 被标注的元素必须为 true |
+| @AssertFalse | 被标注的元素必须为 false |
+| @Min(value) | 一个数字，其值必须大于等于指定的最小值 |
+| @Max(value) | 一个数字，其值必须小于等于指定的最大值 |
+| @DecimalMax(value) | 一个数字，其值必须小于等于指定的最大值 |
+| @DecimalMin(value) | 一个数字，其值必须大于等于指定的最小值 |
+| @Size | 被标注的元素的大小必须在指定的范围内 |
+| @Digits（integer，fraction） | 一个数字，其值必须在可接受的范围内；integer 指定整数精度，fraction 指定小数精度 |
+| @Past | 一个过去的日期 |
+| @Future | 一个将来的日期 |
+| @Pattern(value) | 被标注的元素必须符合指定的正则表达式 |
+
+
+| @Email | 字符串，邮箱格式 |
+| --- | --- |
+| @NotEmpty | 集合，不为空 |
+| @NotBlank | 字符串，不为空字符串 |
+| @Positive | 数字，正数 |
+| @PositiveOrZero | 数字，正数或0 |
+| @Negative | 数字，负数 |
+| @NegativeOrZero | 数字，负数或0 |
+| @PastOrPresent | 过去或者现在 |
+
+- `@Valid` 嵌套校验
+- `@Validated` 分组校验
+- 自定义注解校验
+
+
+
 ## I18n
 
 **步骤**  <br />  1 在resources目录下，编写国际化资源文件
@@ -1562,25 +1605,39 @@ public class WebConfig implements WebMvcConfigurer {
 Java Persistence API（Java 持久化 API）：定义了对象关系映射（ORM）以及实体对象持久化的标准接口  <br />  Spirng Data JPA 是 Spring 提供的一套简化 JPA 开发的框架，可以理解为对 JPA 规范的再次封装抽象，底层还是使用了 Hibernate 的 JPA 技术实现
 
 ## 注解
-**javax.persistence**
+javax.persistence
 
 - 实体
    - @Entity：表示该类是一个实体类
    - @MappedSuperclass
-   - @Table(name)：指定该类对应数据库中的表名，如果类名和数据库表名符合驼峰及下划线规则，可省略，如 FlowType 类名对应表名 flow_type
+   - @Table(name)：指定该类对应数据库中的表名，如果类名和数据库表名符合驼峰及下划线规则，可省略
+   - @SecondaryTable(name , pkJoinColumns = @PrimaryKeyJoinColumn(name ))
 - 主键
    - @Id：指定该属性为表的主键
+   - @IdClass：复合主键
    - @GeneratedValue(strategy, generator)：主键生成策略，如 @GeneratedValue(strategy = GenerationType.IDENTITY)，依赖于数据库递增的策略
-   - @SequenceGenerator (name, sequenceName)
+   - @GenericGenerator	自定义主键生成策略
+      - native: 将主键的生成工作交由数据库完成，对于 oracle 采用 Sequence 方式，对于MySQL 和 SQL Server 采用identity（自增主键生成机制）
+      - uuid: 采用128位的uuid算法生成主键，uuid被编码为一个32位16进制数字的字符串
+      - assigned: 在插入数据的时候主键由程序处理。等同于JPA中的AUTO
+
 - 映射
    - @Column(name, nullable, length, insertable, updatable)：定义属性和表的映射关系
+   - @JoinTable(name)、@JoinColumn(name, referencedColumnName)
    - @Enumerated
-   - @JoinTable(name)、@JoinColumn(name)
    - @Convert(converter)：指定使用的转换器（自定义转换器实现 AttributeConverter<X,Y>）
-   - @Version
+   - @Version	可用于乐观锁并发更新
+
 - 关系
    - @OneToOne、@OneToMany、@ManyToOne、@ManyToMany
-   - @OrderBy
+      - CascadeType.MERGE 级联更新
+      - CascadeType.PERSIST 级联保存
+      - CascadeType.REFRESH 级联刷新
+      - CascadeType.REMOVE 级联删除
+      - CascadeType.ALL 级联上述4种操作
+   - @OrderBy	对集合排序
+   - @NamedEntityGraph(name, attributeNodes = {@NamedAttributeNode()})	命名实体图
+   - @EntityGraph(value, type=EntityGraphType.FETCH)
 
 spring-data-commons
 
@@ -1588,6 +1645,8 @@ spring-data-commons
 - `@Modifying`：自定义语句查询涉及到修改、删除时需要加上此注解
 - `@Transient`：属性不被持久化
 - @CreatedBy、@CreatedDate、@LastModifiedBy、@LastModifiedDate
+- @EntityListeners(AuditingEntityListener.class)
+- @NoRepositoryBean
 
 Hibernate
 
@@ -1600,7 +1659,6 @@ Hibernate
 
 - 添加依赖 spring-boot-starter-data-jpa
 - @EnableJpaRepositories：启用 JPA 编程
-- @EntityScan
 - 继承 JpaRepository<T, ID>
 ```java
 public interface CrudRepository<T, ID> extends Repository<T, ID> {
@@ -1657,6 +1715,22 @@ public interface JpaRepository<T, ID> extends PagingAndSortingRepository<T, ID>,
   <S extends T> List<S> findAll(Example<S> var1);
 
   <S extends T> List<S> findAll(Example<S> var1, Sort var2);
+}
+
+
+// 动态查询
+public interface JpaSpecificationExecutor<T> {
+  Optional<T> findOne(@Nullable Specification<T> spec);
+
+  List<T> findAll(@Nullable Specification<T> spec);
+
+  Page<T> findAll(@Nullable Specification<T> spec, Pageable pageable);
+
+  List<T> findAll(@Nullable Specification<T> spec, Sort sort);
+
+  long count(@Nullable Specification<T> spec);
+
+  boolean exists(Specification<T> spec);
 }
 ```
 
@@ -1829,7 +1903,6 @@ public void getBooksPageable()
 
 
 ## 审计 Auditing
-启用Jpa审计功能：在Spring Boot启动类上添加`@EnableJpaAuditing`注解用于启用Jpa的审计功能
 ```java
 // 实体类
 @Entity
@@ -1875,14 +1948,16 @@ public class User {
 }
 
 
-// 实现AuditorAware接口
-@Component
-public class AuditorAwareImpl implements AuditorAware<String> {
+// 实现AuditorAware
+@Configuration
+@EnableJpaAuditing
+public class JpaAuditingConfiguration {
 
-    @Override
-    public Optional<String> getCurrentAuditor() {
-        return Optional.of("admin");
-    }
+  @Bean
+  public AuditorAware<String> auditorProvider() {
+    return () -> Optional.of("system");
+  }
+
 }
 ```
 
