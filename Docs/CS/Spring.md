@@ -845,8 +845,23 @@ public class UserDaoImpl implements UserDao {
 - HttpMethod
 - HttpStatus
 - UriComponents
-- HtmlUtils
+```java
+UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl("https://www.bing.cn")
+    .path("search/{content}")
+    .queryParam("q", "spring")
+    .uriVariables(ImmutableMap.of("content", "abc"))
+    .build().encode(StandardCharsets.UTF_8);
+```
 
+- HtmlUtils
+- AntPathMatcher
+- PathPattern
+   - `?` matches one character
+   - `*` matches zero or more characters within a path segment
+   - `**` matches zero or more path segments until the end of the path
+   - `{spring}` matches a path segment and captures it as a variable named "spring"
+   - `{spring:[a-z]+}` matches the regexp [a-z]+ as a path variable named "spring"
+   - `{*spring}` matches zero or more path segments until the end of the path and captures it as a variable named "spring"
 
 方法参数
 
@@ -1566,36 +1581,34 @@ public LocaleResolver localeResolver() {
 
 自定义区域信息解析器
 ```java
-public class MyLocalResolver implements LocaleResolver {
-    @Override
-    public Locale resolveLocale(HttpServletRequest request) {
-        //获取请求中参数
-        String lang = request.getParameter("lang");
-        //获取默认的区域信息解析器
-        Locale locale = Locale.getDefault();
-        //根据请求中的参数重新构造区域信息对象
-        if (StringUtils.hasText(lang)) {
-            String[] s = lang.split("_");
-            locale = new Locale(s[0], s[1]);
-        }
-        return locale;
-    }
-    
-    @Override
-    public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
-    }
+@Configuration
+public class LocaleConfig {
+
+  /**
+   * 默认解析器 其中locale表示默认语言
+   */
+  @Bean
+  public LocaleResolver localeResolver() {
+    SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+    localeResolver.setDefaultLocale(Locale.CHINA);
+    return localeResolver;
+  }
 }
 
 
-
-// 在MvcConfig 中添加以下方法
+// 在MvcConfig
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-    //将自定义的区域信息解析器以组件的形式添加到容器中
-    @Bean
-    public LocaleResolver localeResolver(){
-        return new MyLocalResolver();
-    }
+
+  /**
+   * 默认拦截器 其中lang表示切换语言的参数名
+   */
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
+    localeInterceptor.setParamName("lang");
+    registry.addInterceptor(localeInterceptor);
+  }
 }
 ```
 
@@ -2033,6 +2046,41 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 ```
 
 
+
+# [Spring Cache](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache)
+
+spring-boot-starter-cache
+
+| 名称 | 解释 |
+| --- | --- |
+| Cache | 缓存接口，定义缓存操作。实现有：RedisCache、EhCacheCache、ConcurrentMapCache等 |
+| CacheManager | 缓存管理器，管理各种缓存（cache）组件 |
+| @Cacheable | 主要针对方法配置，能够根据方法的请求参数对其进行缓存 |
+| @CacheEvict | 清空缓存 |
+| @CachePut | 保证方法被调用，又希望结果被缓存。与@Cacheable区别在于是否每次都调用方法，常用于更新 |
+| @Caching | 让一个类或方法上定义多个cache相关的注解 |
+| @EnableCaching | 开启基于注解的缓存 |
+| keyGenerator | 缓存数据时key生成策略 |
+| serialize | 缓存数据时value序列化策略 |
+| @CacheConfig | 统一配置本类的缓存注解的属性 |
+
+
+SpEL上下文数据
+
+| 名称 | 位置 | 描述 | 示例 |
+| --- | --- | --- | --- |
+| methodName | root对象 | 当前被调用的方法名 | #root.methodname |
+| method | root对象 | 当前被调用的方法 | #root.method.name |
+| target | root对象 | 当前被调用的目标对象实例 | #root.target |
+| targetClass | root对象 | 当前被调用的目标对象的类 | #root.targetClass |
+| args | root对象 | 当前被调用的方法的参数列表 | #root.args[0] |
+| caches | root对象 | 当前方法调用使用的缓存列表 | #root.caches[0].name |
+| Argument Name | 执行上下文 | 当前被调用的方法的参数，如findArtisan(Artisan artisan)，可以通过#artsian.id获得参数 | #artsian.id |
+| result | 执行上下文 | 法执行后的返回值（仅当方法执行后的判断有效，如 unless cacheEvict的beforeInvocation=false） | #result |
+
+
+
+
 # —— ORM ——
 
 ## [Hibernate](http://hibernate.org/orm/)
@@ -2264,12 +2312,95 @@ public class Test {
 
 
 
-[quartz](https://github.com/quartz-scheduler/quartz)
+
+# [Druid](https://github.com/alibaba/druid)
+数据库连接池，提供强大的监控和扩展功能  <br />  web: [http://localhost/druid](http://localhost/demo/druid)
+
+druid-spring-boot-starter
+```yaml
+spring:
+  datasource:
+    druid:
+      db-type: com.alibaba.druid.pool.DruidDataSource
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:web}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+      username: ${DB_USER:root}
+      password: ${DB_PWD:mysql8}
+      # 初始连接数
+      initial-size: 5
+      # 最小连接数
+      min-idle: 15
+      # 最大连接数
+      max-active: 30
+      # 超时时间(以秒数为单位)
+      remove-abandoned-timeout: 180
+      # 获取连接超时时间
+      max-wait: 3000
+      # 连接有效性检测时间
+      time-between-eviction-runs-millis: 60000
+      # 连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      # 连接在池中最大生存的时间
+      max-evictable-idle-time-millis: 900000
+      # 指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败,则连接将被从池中去除
+      test-while-idle: true
+      # 指明是否在从池中取出连接前进行检验,如果检验失败, 则从池中去除连接并尝试取出另一个
+      test-on-borrow: true
+      # 是否在归还到池中前进行检验
+      test-on-return: false
+      # 检测连接是否有效
+      validation-query: select 1
+      # 配置监控统计 WebStatFilter（StatFilter监控器中的Web模板）
+      web-stat-filter:
+        enabled: true # 开启 WebStatFilter，即开启监控功能中的 Web 监控功能
+        url-pattern: /* # 映射地址，即统计指定地址的web请求
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*' # 不统计的web请求，如下是不统计静态资源及druid监控页面本身的请求
+        session-stat-enable: true # 是否启用session统计
+        session-stat-max-count: 10 # session统计的最大个数，默认是1000。当统计超过这个数，只统计最新的
+        principal-session-name: userName # 所存用户信息的serssion参数名。Druid会依照此参数名读取相应session对应的用户名记录下来（在监控页面可看到）。如果指定参数不是基础数据类型，将会自动调用相应参数对象的toString方法来取值
+        principal-cookie-name: userName # 与上类似，但这是通过Cookie名取到用户信息
+        profile-enable: true # 监控单个url调用的sql列表
+      # StatViewServlet监控器。开启后，访问http://域名/druid/index.html
+      stat-view-servlet:
+        enabled: true
+        # 监控后台账号和密码
+        login-password: admin
+        login-username: admin
+        url-pattern: /druid/*
+        reset-enable: false
+        allow: 127.0.0.1,192.168.1.0/24 # 监控页面访问白名单。默认为127.0.0.1。支持子网掩码
+        deny: 4.4.4.4 # 监控页面访问黑名单
+      filter:
+        stat:
+          enabled: true
+          # 记录慢SQL
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+enabled: true  # 开启SQL防火墙功能
+          config:
+            multi-statement-allow: true
+select-allow: true # 允许执行Select查询操作
+delete-allow: false # 不允许执行delete操作
+create-table-allow: false # 不允许创建表
+
+```
+
+
+[Quartz](https://github.com/quartz-scheduler/quartz)
 
 - Scheduler 和调度程序交互的主要API
 - Job 调度器调度的任务组件接口
 - JobDetail Job实例，包含了该实例的执行计划和所需要的数据
 - Trigger 触发器，定义了一个触发策略
+| 触发器 | 适用场景 |
+| --- | --- |
+| SimpleTrigger | 简单触发器，适用于 按指定的时间间隔执行多少次任务的情况 |
+| CronTrigger | Cron触发器，通过Cron表达式来控制任务的执行时间 |
+| DailyTimeIntervalTrigger | 日期触发器，在给定的时间范围内或指定的星期内以秒、分钟或者小时为周期进行重复的情况 |
+| CalendarIntervalTrigger | 日历触发器，根据一个给定的日历时间进行重复 |
+
 
 ```java
 public class QuartzTest {
@@ -2334,7 +2465,7 @@ public class HelloJob implements Job {
 }
 ```
 
-**SpringBoot整合**
+**SpringBoot整合**  <br />  spring-boot-starter-quartz
 ```java
 @Slf4j
 public class DemoJob extends QuartzJobBean {
@@ -2354,29 +2485,28 @@ public class DemoJob extends QuartzJobBean {
 @Configuration
 public class QuartzConfig {
 
-    private static final String ID = "SUMMERDAY";
+  @Bean
+  public JobDetail jobDetail1() {
+    return JobBuilder.newJob(DemoJob.class)
+        .withIdentity("demo 01")
+        .withDescription("demo job test") // 任务描述
+        .storeDurably() // 每次任务执行后进行存储
+        .build();
+  }
 
-    @Bean
-    public JobDetail jobDetail1() {
-        return JobBuilder.newJob(DemoJob.class)
-                .withIdentity(ID + " 01")
-                .storeDurably()
-                .build();
-    }
+  @Bean
+  public Trigger trigger1() {
+    // 简单的调度计划的构造器
+    SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
+        .withIntervalInSeconds(5) // 频率
+        .repeatForever(); // 次数
 
-    @Bean
-    public Trigger trigger1() {
-        // 简单的调度计划的构造器
-        SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
-                .withIntervalInSeconds(5) // 频率
-                .repeatForever(); // 次数
-
-        return TriggerBuilder.newTrigger()
-                .forJob(jobDetail1())
-                .withIdentity(ID + " 01Trigger")
-                .withSchedule(scheduleBuilder)
-                .build();
-    }
+    return TriggerBuilder.newTrigger()
+        .forJob(jobDetail1()) // 绑定工作任务
+        .withIdentity("demo 01 Trigger")
+        .withSchedule(scheduleBuilder)
+        .build();
+  }
 }
 ```
 
@@ -2385,7 +2515,7 @@ public class QuartzConfig {
 @Component
 public class JobInit implements ApplicationRunner {
 
-    private static final String ID = "SUMMERDAY";
+    private static final String ID = "DEMO";
 
     @Autowired
     private Scheduler scheduler;
@@ -2412,24 +2542,51 @@ public class JobInit implements ApplicationRunner {
     }
 }
 ```
-yml配置
+
+**数据库方式存储任务信息**  <br />  yml配置
 ```yaml
 spring:
   # Quartz 的配置，对应 QuartzProperties 配置类
   quartz:
-    job-store-type: memory # Job 存储器类型。默认为 memory 表示内存，可选 jdbc 使用数据库。
+    job-store-type: jdbc # Job 存储器类型。默认为 memory 表示内存
     auto-startup: true # Quartz 是否自动启动
     startup-delay: 0 # 延迟 N 秒启动
     wait-for-jobs-to-complete-on-shutdown: true # 应用关闭时，是否等待定时任务执行完成。默认false
     overwrite-existing-jobs: false # 是否覆盖已有 Job 的配置
-    properties: # 添加 Quartz Scheduler 附加属性
+
+    # 添加 Quartz Scheduler 附加属性
+    properties:
       org:
         quartz:
+          scheduler:
+            instanceName: clusteredScheduler
+            instanceId: AUTO
+          jobStore:
+            class: org.springframework.scheduling.quartz.LocalDataSourceJobStore
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: QRTZ_
+            isClustered: true
+            clusterCheckinInterval: 10000
+            useProperties: false
           threadPool:
-            threadCount: 25 # 线程池大小。默认为 10 。
-            threadPriority: 5 # 线程优先级
             class: org.quartz.simpl.SimpleThreadPool # 线程池类型
-jdbc: 使用 JDBC 的 JobStore 的时需要配置
+            threadCount: 10  # 线程池大小 默认为 10
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
 ```
+
+| 表名 | 解释 |
+| --- | --- |
+| QRTZ_CALENDARS | 以 Blob 类型存储 Quartz 的 Calendar 信息 |
+| QRTZ_CRON_TRIGGERS | 存储 Cron Trigger，包括 Cron 表达式和时区信息 |
+| QRTZ_FIRED_TRIGGERS | 存储与已触发的 Trigger 相关的状态信息，以及相联 Job 的执行信息 |
+| QRTZ_PAUSED_TRIGGER_GRPS | 存储已暂停的 Trigger 组的信息 |
+| QRTZ_SCHEDULER_STATE | 存储少量的有关 Scheduler 的状态信息，和别的 Scheduler 实例(假如是用于一个集群中) |
+| QRTZ_LOCKS | 存储程序的悲观锁的信息 |
+| QRTZ_JOB_DETAILS | 存储每一个已配置的 Job 的详细信息 |
+| QRTZ_SIMPLE_TRIGGERS | 存储简单的 Trigger，包括重复次数，间隔，以及已触的次数 |
+| QRTZ_BLOG_TRIGGERS | Trigger 作为 Blob 类型存储(用于 Quartz 用户用 JDBC 创建他们自己定制的 Trigger 类型，JobStore 并不知道如何存储实例的时候) |
+| QRTZ_TRIGGER_LISTENERS | 存储已配置的 TriggerListener 的信息 |
+| QRTZ_TRIGGERS | 存储已配置的 Trigger 的信息 |
 
 

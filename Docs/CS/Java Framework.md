@@ -282,8 +282,9 @@ my-project
 
 
 
+# Utility
 
-# [Lombok](https://projectlombok.org/features/all)
+## [Lombok](https://projectlombok.org/features/all)
 
 - `[@Getter/@Setter](https://projectlombok.org/features/GetterSetter)`	注解在类或字段，注解在类时为所有字段生成setter方法，注解在字段上时只为该字段生成setter方法
 - `@ToString` 注解在类，添加toString方法。
@@ -297,9 +298,10 @@ my-project
 
 
 
-# [Apache Commons](https://commons.apache.org/)
 
-## [commons-lang](https://github.com/apache/commons-lang)
+## [Apache Commons](https://commons.apache.org/)
+
+### [commons-lang](https://github.com/apache/commons-lang)
 
 [StringUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/StringUtils.html)
 
@@ -374,7 +376,7 @@ Date round(Date date, int field)：相当于数学中的四舍五入法取整  <
 - [MethodUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/reflect/MethodUtils.html)
 
 
-## commons-io
+### commons-io
 [FilenameUtils](https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FilenameUtils.html)
 
 - concat(String basePath, String fullFilenameToAdd)  合并目录和文件名为文件全路径
@@ -419,7 +421,81 @@ Date round(Date date, int field)：相当于数学中的四舍五入法取整  <
 
 
 
-# [guava](https://github.com/google/guava)
+### [Compress](http://commons.apache.org/proper/commons-compress/)
+```java
+@Slf4j
+public class ZipUtils {
+
+  /**
+   * @param srcPath    待压缩的文件或目录
+   * @param targetFile 压缩后的文件
+   */
+  public static void zip(String srcPath, String targetFile) throws Exception {
+    File zipFile = FileUtils.getFile(targetFile);
+    File srcDir = FileUtils.getFile(srcPath);
+    try (ZipArchiveOutputStream stream = new ZipArchiveOutputStream(zipFile)) {
+      zipRecursive(stream, srcDir, StringUtils.EMPTY);
+      stream.finish();
+    }
+  }
+
+  // 递归压缩目录下的文件和目录
+  private static void zipRecursive(ZipArchiveOutputStream zipStream, File srcFile, String basePath)
+      throws IOException {
+    String currentFile = basePath + srcFile.getName();
+    if (srcFile.isDirectory()) {
+      File[] files = srcFile.listFiles();
+      if (ArrayUtils.isNotEmpty(files)) {
+        for (File file : files) {
+          zipRecursive(zipStream, file, currentFile + File.separator);
+        }
+        return;
+      }
+    }
+    // 空目录 或 文件直接放入
+    ZipArchiveEntry entry = new ZipArchiveEntry(srcFile, currentFile);
+    zipStream.putArchiveEntry(entry);
+    if (srcFile.isFile()) {
+      FileUtils.copyFile(srcFile, zipStream);
+    }
+    zipStream.closeArchiveEntry();
+  }
+
+  /**
+   * @param srcFile    待解压文件
+   * @param targetPath 存放位置
+   */
+  public static void unZip(String srcFile, String targetPath) throws Exception {
+    try (InputStream fileInputStream = new FileInputStream(
+        srcFile); ZipArchiveInputStream archiveInputStream = new ZipArchiveInputStream(
+        fileInputStream)) {
+      ZipArchiveEntry entry;
+      while ((entry = archiveInputStream.getNextZipEntry()) != null) {
+        if (!archiveInputStream.canReadEntryData(entry)) {
+          log.warn("{} skip", entry.getName());
+          continue;
+        }
+        File file = FileUtils.getFile(targetPath, entry.getName());
+        if (entry.isDirectory()) {
+          log.info("Create directory {}", file.getCanonicalPath());
+          if (!file.isDirectory() && !file.mkdirs()) {
+            throw new IOException("failed to create directory " + file);
+          }
+        } else {
+          FileUtils.copyToFile(archiveInputStream, file);
+          if (!file.setLastModified(entry.getLastModifiedDate().getTime())) {
+            log.warn("set {} file properties failed.", file.getName());
+          }
+        }
+      }
+    }
+  }
+
+}
+```
+
+
+## [guava](https://github.com/google/guava)
 
 Collections
 
@@ -454,6 +530,71 @@ List<String> buildList = ImmutableList.<String>builder().addAll(fruits).add("pea
 - [Graphs](https://github.com/google/guava/wiki/GraphsExplained)
 - [Caches](https://github.com/google/guava/wiki/CachesExplained)
 
+默认使用LRU淘汰算法
+
+基于容量的回收（size-based eviction）
+
+- maximumSize(long)
+- weigher(Weigher)	指定一个权重函数
+- maximumWeight(long)	指定最大总重
+
+定时回收（Timed Eviction）
+
+- expireAfterAccess(long, TimeUnit)：缓存项在给定时间内没有被读/写访问，则回收
+- expireAfterWrite(long, TimeUnit)：缓存项在给定时间内没有被写访问（创建或覆盖），则回收
+
+基于引用的回收（Reference-based Eviction）
+
+- CacheBuilder.weakKeys()：使用弱引用存储键。
+- CacheBuilder.weakValues()：使用弱引用存储值
+- CacheBuilder.softValues()：使用软引用存储值
+
+显式清除
+
+- 个别清除：Cache.invalidate(key)
+- 批量清除：Cache.invalidateAll(keys)
+- 清除所有缓存项：Cache.invalidateAll()
+
+统计
+
+- recordStats()	开启Guava Cache的统计功能。
+- Cache.stats()	返回CacheStats对象
+   - hitRate()：缓存命中率；
+   - averageLoadPenalty()：加载新值的平均时间，单位为纳秒；
+   - evictionCount()：缓存项被回收的总数，不包括显式清除。
+
+移除监听器：缓存项被移除时的回调
+```java
+// 通过CacheBuilder构建一个缓存实例
+Cache<String, String> cache = CacheBuilder.newBuilder()
+        		.initialCapacity(10)   // 设置初始容量为10
+                .maximumSize(100) // 设置缓存的最大容量
+                .expireAfterWrite(1, TimeUnit.MINUTES) // 设置缓存在写入一分钟后失效
+                .concurrencyLevel(10) // 设置并发级别为10
+                // 设置并发级别为cpu核心数
+                .concurrencyLevel(Runtime.getRuntime().availableProcessors()) 
+                .recordStats() // 开启缓存统计
+                .build();
+// 放入/覆盖一个缓存
+cache.put("key", "value");
+// 获取缓存，如果不存在返回null
+String value = cache.getIfPresent("key");
+
+
+// LoadingCache，能够通过CacheLoader自发的加载缓存
+// 定时刷新缓存
+LoadingCache<Object, Object> loadingCache = CacheBuilder.newBuilder()
+        // 设置缓存在写入10分钟后，通过CacheLoader的load方法进行刷新
+        .refreshAfterWrite(10, TimeUnit.SECONDS)
+        .build(new CacheLoader<String, String>() {
+            @Override
+            public String load(String key) throws Exception {
+                // 缓存加载逻辑
+                ...
+            }
+        });
+```
+
 - [Strings](https://github.com/google/guava/wiki/StringsExplained)
    - [Joiner](https://github.com/google/guava/wiki/StringsExplained#joiner)
    - [Splitter](https://github.com/google/guava/wiki/StringsExplained#splitter)
@@ -482,7 +623,19 @@ List<String> buildList = ImmutableList.<String>builder().addAll(fruits).add("pea
    - [Dynamic Proxies](https://github.com/google/guava/wiki/ReflectionExplained#dynamic-proxies)
    - [ClassPath](https://github.com/google/guava/wiki/ReflectionExplained#classpath)
 
-# [hutool](https://github.com/dromara/hutool)
+
+[guava-retrying](https://github.com/rholder/guava-retrying)
+```python
+Retryer<Boolean> retryer = RetryerBuilder.<Boolean>newBuilder()
+        .retryIfExceptionOfType(IOException.class)
+        .retryIfRuntimeException()
+        .withWaitStrategy(WaitStrategies.exponentialWait(100, 5, TimeUnit.MINUTES))
+        .withStopStrategy(StopStrategies.neverStop())
+        .build();
+```
+
+
+## [hutool](https://github.com/dromara/hutool)
   <br />   
 
 
@@ -921,32 +1074,37 @@ void testCapitalize(String input, String result) {
 [OkHttpClient](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/)  <br />  [Cookie](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-cookie/)  <br />  [Headers](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-headers/)  <br />  [HttpUrl](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-http-url/)  <br />  [Interceptor](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-interceptor/)  <br />  [MediaType](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-media-type/)  <br />  [MultipartBody](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-multipart-body/)  <br />  [Request](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-request/)  <br />  [Response](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-response/)  <br />  [WebSocket](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-web-socket/)
 
 ```java
-class MyHttp {
+@Slf4j
+@Component
+public class HttpsUtils {
 
   OkHttpClient client;
-
-  String url = "https://httpbin.org";
-  HttpUrl.Builder queryUrlBuilder;
-
-  public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
+  public Map<String, String> queryParams;
+  private String url;
+  public static MediaType JSON_MEDIA_TYPE = MediaType.get("application/json; charset=utf-8");
 
   private Request.Builder request;
-  public Headers.Builder headersBuilder;
+  private Map<String, String> headers;
   private RequestBody body;
 
-  MyHttp() {
-    headersBuilder = new Headers.Builder();
+  private final boolean isReset = true;
+
+  @Autowired
+  public HttpsUtils(HttpsClientConfig clientConfig) {
     TrustManager[] trustManagers = buildTrustManagers();
-    client= new OkHttpClient().newBuilder()
+    client = new OkHttpClient().newBuilder()
         .addInterceptor(new BasicLoggingInterceptor())
 //      .cache(cache) // configure cache
 //      .proxy(proxy) // configure proxy
 //      .certificatePinner(certificatePinner) // certificate pinning
 //      .addNetworkInterceptor(interceptor) // network level interceptor
 //      .authenticator(authenticator) // authenticator for requests (it supports similar use-cases as "Authorization header" earlier
-//      .callTimeout(10000) // default timeout for complete calls
-//      .readTimeout(10000) // default read timeout for new connections
-//      .writeTimeout(10000) // default write timeout for new connections
+        .callTimeout(clientConfig.getCallTimeout(),
+            TimeUnit.SECONDS) // default timeout for complete calls
+        .readTimeout(clientConfig.getReadTimeout(),
+            TimeUnit.SECONDS) // default read timeout for new connections
+        .writeTimeout(clientConfig.getWriteTimeout(),
+            TimeUnit.SECONDS) // default write timeout for new connections
 //      .dns(dns) // DNS service used to lookup IP addresses for hostnames
 //      .followRedirects(true) // follow requests redirects
 //      .followSslRedirects(true) // follow HTTP tp HTTPS redirects
@@ -956,56 +1114,52 @@ class MyHttp {
 //      .dispatcher(dispatcher) // dispatcher used to set policy and execute asynchronous requests
         .sslSocketFactory(createSSLSocketFactory(trustManagers),
             (X509TrustManager) trustManagers[0])
-        .hostnameVerifier((hostName, session) -> true)
+        .hostnameVerifier((hostName, session) -> StringUtils.isNotBlank(hostName))
         //设置连接池  最大连接数量  , 持续存活的连接
-//        .connectionPool(new ConnectionPool(50, 10, TimeUnit.MINUTES))
+        .connectionPool(new ConnectionPool(clientConfig.getConnectionTimeout(),
+            clientConfig.getKeepAliveTimeout(), TimeUnit.MINUTES))
         .build();
   }
 
-  public MyHttp header(@NotNull String name, @NotNull String value) {
-    headersBuilder.add(name, value);
+
+  public HttpsUtils headers(Map<String, String> headers) {
+    this.headers = headers;
     return this;
   }
 
-  public MyHttp headers(Map<String, String> params) {
-    headersBuilder.addAll(Headers.of(params));
-    return this;
-  }
-
-  public MyHttp url(String url) {
+  public HttpsUtils url(String url) {
     this.url = url;
-    this.queryUrlBuilder = HttpUrl.get(url).newBuilder();
     return this;
   }
 
-  public MyHttp queryParam(@NotNull String paramName, String paramValue) {
-    queryUrlBuilder.addQueryParameter(paramName, paramValue);
+  public HttpsUtils queryParams(Map<String, String> params) {
+    this.queryParams = params;
     return this;
   }
 
-  public MyHttp queryParams(Map<String, String> params) {
-    params.forEach(queryUrlBuilder::addQueryParameter);
-    return this;
-  }
-
-  public MyHttp body(RequestBody body) {
+  public HttpsUtils body(RequestBody body) {
     this.body = body;
     return this;
   }
 
-  public MyHttp jsonBody(String json) {
-    body = RequestBody.create(json, JSON);
-    return this;
+  public HttpsUtils jsonBody(@NotNull String json) {
+    return body(RequestBody.create(json, JSON_MEDIA_TYPE));
   }
 
-  public MyHttp formBody(Map<String, String> map) {
+  public HttpsUtils jsonBody(Object obj) {
+    if (obj == null) {
+      return this;
+    }
+    return jsonBody(JSON.toJSONString(obj));
+  }
+
+  public HttpsUtils formBody(Map<String, String> map) {
     FormBody.Builder formBody = new FormBody.Builder(StandardCharsets.UTF_8);
     map.forEach(formBody::addEncoded);
-    body = formBody.build();
-    return this;
+    return body(formBody.build());
   }
 
-  public MyHttp fileBody() {
+  public HttpsUtils fileBody() {
     RequestBody fileBody = RequestBody.create(new File("path/attachment.png"),
         MediaType.parse("image/png"));
     body = new MultipartBody.Builder().setType(MultipartBody.FORM)
@@ -1014,36 +1168,62 @@ class MyHttp {
     return this;
   }
 
-  private Builder initRequest() {
-    request = new Request.Builder().url(queryUrlBuilder.build())
-        .headers(headersBuilder.build());
-    return request;
-  }
+  private void beforeRequest() {
+    log.info("build request");
 
-  public MyHttp get() {
-    initRequest();
-    return this;
-  }
-
-  public MyHttp post() {
-    initRequest().post(body);
-    return this;
-  }
-
-  public MyHttp put() {
-    initRequest().put(body);
-    return this;
-  }
-
-  public MyHttp delete() {
-    initRequest().delete(body);
-    return this;
-  }
-
-  public String sync() throws IOException {
-    try (Response response = client.newCall(request.build()).execute()) {
-      return response.body().string();
+    // 构建url
+    HttpUrl.Builder urlBuilder = HttpUrl.get(url).newBuilder();
+    if (ObjectUtils.isNotEmpty(this.queryParams)) {
+      this.queryParams.forEach((key, value) -> {
+        if (StringUtils.isNotBlank(value)) {
+          urlBuilder.addQueryParameter(key, value);
+        }
+      });
     }
+
+    this.request = new Request.Builder().url(urlBuilder.build());
+    if (ObjectUtils.isNotEmpty(this.headers)) {
+      this.request.headers(Headers.of(headers));
+    }
+
+  }
+
+  private void afterRequest() {
+    log.info("end request");
+    if (isReset) {
+      headers = null;
+      queryParams = null;
+      body = null;
+      log.info("Reset request");
+    }
+  }
+
+  public Response sync(String method) throws IOException {
+    Response response;
+    try {
+      beforeRequest();
+      this.request.method(method, body);
+      response = this.client.newCall(request.build()).execute();
+    } finally {
+      afterRequest();
+    }
+    return response;
+  }
+
+  public Response get() throws IOException {
+    return sync(HttpMethod.GET.name());
+  }
+
+  public Response post() throws IOException {
+    return sync(HttpMethod.POST.name());
+  }
+
+  public Response put() throws IOException {
+    return sync(HttpMethod.PUT.name());
+  }
+
+  public Response delete() throws IOException {
+    return sync(HttpMethod.DELETE.name());
   }
 
   private static volatile Semaphore semaphore = null;
@@ -1053,7 +1233,7 @@ class MyHttp {
    */
   private static Semaphore getSemaphoreInstance() {
     //只能1个线程同时访问
-    synchronized (MyHttp.class) {
+    synchronized (HttpsUtils.class) {
       if (semaphore == null) {
         semaphore = new Semaphore(0);
       }
@@ -1094,7 +1274,7 @@ class MyHttp {
       sc.init(null, trustAllCerts, new SecureRandom());
       ssfFactory = sc.getSocketFactory();
     } catch (Exception e) {
-      e.printStackTrace();
+      log.info("Create SSLSocketFactory error", e);
     }
     return ssfFactory;
   }
@@ -1124,32 +1304,33 @@ class MyHttp {
     @Override
     public Response intercept(Interceptor.Chain chain) throws IOException {
       Request request = chain.request();
-      System.out.printf("Sending %s request: %s%n", request.method(), request.url());
+      log.info("===> Sending {} request: {}", request.method(), request.url());
 
-      System.out.println("request headers: " +
-          request.headers());
+      log.info("request headers: {}", request.headers());
 
       RequestBody requestBody = request.body();
       Buffer buffer = new Buffer();
       if (requestBody != null) {
         requestBody.writeTo(buffer);
-        System.out.println("request body: " + buffer.readUtf8());
+        log.info("request body: {}", buffer.readUtf8());
       }
 
       Response response = chain.proceed(request);
 
-      System.out.printf("Received response code is %s %n response headers:%n%s%n", response.code(),
+      log.info("<=== Received response code is {} , response headers: {}", response.code(),
           response.headers());
       ResponseBody responseBody = response.body();
       if (responseBody != null) {
         BufferedSource source = responseBody.source();
         source.request(Long.MAX_VALUE);
         buffer = source.getBuffer();
-        System.out.printf("response body:%n%s", buffer.clone().readUtf8());
+        log.info("response body:{}", buffer.clone().readUtf8());
       }
 
       return response;
     }
+
+  }
     
   public static void main(String[] args) throws IOException {
     LinkedHashMap<String, String> map = new LinkedHashMap<>();
@@ -1183,8 +1364,57 @@ String jsonString = mapper.writeValueAsString(object);
 
 // 反序列化
 Object bean = mapper.readValue(jsonString, Object.class);
+List<Object> list = mapper.readValue(jsonArray, new TypeReference<List<Object>>(){});
+
+// 转换树模型
+JsonNode jsonTree = objectMapper.valueToTree(object);
+JsonNode jsonNode = mapper.readTree(jsonString);
+
+Object object = mapper.treeToValue(jsonNode);
 ```
-注解  <br />  `@JsonProperty`: 属性使用的注解，用来表示外部属性名字，就是使用别名序列化  <br />  `@JsonIgnore`: 属性使用的注解，用于忽略指定属性。  <br />  `@JsonIgnoreProperties`: 实体类使用的注解，用于序列化的时候忽略指定的一系列属性，或者反序列化的时候忽略未知的属性(没有getter/setter的属性)。  <br />  `@JsonIgnoreType`: 实体类使用的注解，表示该类被忽略。  <br />  `@JsonInclude`: 实体类/属性使用的注解，用于忽略NULL的属性，空的属性或者NULL的类  <br />  `@JsonFormat`：具有每种类型行为的一般注释；例如，可用于指定序列化日期/时间值时使用的格式。  <br />  反序列化  <br />  `@JacksonInject`: 注释表示属性应该通过“注入”而不是从数据 (JSON) 中获取其值。  <br />  `@JsonAnySetter`: 用于将双参数方法定义为“任何设置器”的注释，用于反序列化否则未映射的 JSON 属性的值  <br />  `@JsonCreator`: 用于指示在反序列化期间应使用构造函数或静态工厂方法创建值实例的注释。  <br />  `@JsonSetter`：替代@JsonProperty，用于标记指定的方法是“setter-method”  <br />  序列化细节  <br />  `@JsonAnyGetter`: 用于将 getter 定义为“任何 getter”的注释，它返回一个java.util.Map，其内容将被序列化为 JSON 对象的附加属性，以及该对象可能具有的常规属性。  <br />  `@JsonGetter`：替代@JsonProperty，用于标记指定的方法是“getter-method”  <br />  `@JsonPropertyOrder`: 用于指定属性序列化顺序的注释  <br />  `@JsonRawValue`：可用于指定属性的值将按原样“完全”包含在序列化中，没有转义或修饰  <br />  `@JsonValue`：指示 POJO 应该序列化是使用属性的值来完成的，通常是java.lang.String（如注释toString()方法）  <br />  `@JsonRootName`: 类注释用于指示用于根值的“包装器”条目的名称，如果启用了根包装
+ObjectNode -> JsonNode
+
+[**Jackson Annotations**](https://github.com/FasterXML/jackson-annotations/wiki/Jackson-Annotations)  <br />  Property Naming
+
+- `@JsonProperty`: 属性使用的注解，用来表示外部属性名字，就是使用别名序列化
+- `@JsonNaming`：属性命名策略，如PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy，将大写转换为小写并添加下划线
+
+Property Inclusion
+
+- `@JsonAutoDetect`: class annotation used for overriding property introspection definitions
+- `@JsonIgnore`: 属性使用的注解，用于忽略指定属性
+- `@JsonIgnoreProperties`: 实体类使用的注解，用于序列化的时候忽略指定的一系列属性，或者反序列化的时候忽略未知的属性(ignoreUnknown=true)。
+- `@JsonIgnoreType`: 实体类使用的注解，表示该类被忽略。
+- `@JsonInclude`: 实体类/属性使用的注解，用于忽略NULL的属性
+
+Deserialization and Serialization details
+
+- `@JsonFormat`：具有每种类型行为的一般注释；例如，可用于指定序列化日期/时间值时使用的格式。
+- 反序列化
+- @JsonUnwrapped:  反序列化时解包，扁平化结果
+- @JsonView: property annotation used for defining View(s) in which property will be included for serialization, deserialization.
+
+反序列化细节
+
+- `@JacksonInject`: 注释表示属性应该通过“注入”而不是从数据 (JSON) 中获取其值。
+- `@JsonAnySetter`: 用于将双参数方法定义为“任何设置器”的注释，用于反序列化未映射的 JSON 属性的值
+- `@JsonCreator`: 用于指示在反序列化期间应使用构造函数或静态工厂方法创建值实例的注释。
+- `@JsonSetter`：替代@JsonProperty，用于标记指定的方法是“setter-method”
+
+序列化细节
+
+- `@JsonAnyGetter`: 用于将 getter 定义为“任何 getter”的注释，它返回一个java.util.Map，其内容将被序列化为 JSON 对象的附加属性，以及该对象可能具有的常规属性。
+- `@JsonGetter`：替代@JsonProperty，用于标记指定的方法是“getter-method”
+- `@JsonPropertyOrder`: 用于指定属性序列化顺序的注释
+- `@JsonRawValue`：可用于指定属性的值将按原样“完全”包含在序列化中，没有转义或修饰
+- `@JsonValue`：指示 POJO 应该序列化是使用属性的值来完成的，通常是java.lang.String（如注释toString()方法）
+- `@JsonRootName`: 类注释用于指示用于根值的“包装器”条目的名称，如果启用了根包装
+
+多态类型处理
+
+- @JsonTypeInfo	用来开启多态类型处理
+- @JsonSubTypes	列出给定类的子类
+- @JsonTypeName	为多态子类指定类型标识符的值
 
 
 ## [Fastjson](https://github.com/alibaba/fastjson)
@@ -1225,6 +1455,57 @@ public Date date;
 @JSONField(ordinal = 2)
 ```
 
+[JSONPath](https://github.com/alibaba/fastjson/wiki/JSONPath)
+```java
+public class JSONPath {          
+ //  求值，静态方法
+ public static Object eval(Object rootObject, String path);
+
+ //  求值，静态方法，按需计算，性能更好
+ public static Object extract(String json, String path);
+ 
+ // 计算Size，Map非空元素个数，对象非空元素个数，Collection的Size，数组的长度。无法求值返回-1
+ public static int size(Object rootObject, String path);
+ 
+ // 是否包含，path中是否存在对象
+ public static boolean contains(Object rootObject, String path) { }
+ 
+ // 是否包含，path中是否存在指定值，如果是集合或者数组，在集合中查找value是否存在
+ public static boolean containsValue(Object rootObject, String path, Object value) { }
+ 
+ // 修改制定路径的值，如果修改成功，返回true，否则返回false
+ public static boolean set(Object rootObject, String path, Object value) {}
+
+ // 在数组或者集合中添加元素
+ public static boolean arrayAdd(Object rootObject, String path, Object... values);
+ 
+ // 获取，Map的KeySet，对象非空属性的名称。数组、Collection等不支持类型返回null。
+ public static Set<?> keySet(Object rootObject, String path);
+}
+```
+| JSONPATH | 描述 |
+| --- | --- |
+| $ | 根对象，例如$.name |
+| [num] | 数组访问，其中num是数字，可以是负数。 |
+| [num0,num1,num2...] | 数组多个元素访问，其中num是数字，可以是负数，返回数组中的多个元素。例如$[0,3,-2,5] |
+| [start:end] | 数组范围访问，其中start和end是开始小表和结束下标，可以是负数，返回数组中的多个元素。例如$[0:5] |
+| [start:end :step] | 数组范围访问，其中start和end是开始小表和结束下标，可以是负数；step是步长，返回数组中的多个元素。例如$[0:5:2] |
+| [?(key)] | 对象属性非空过滤，例如$.departs[?(name)] |
+| [key > 123] | 数值类型对象属性比较过滤，例如$.departs[id >= 123]，比较操作符支持=,!=,>,>=,<,<= |
+| [key = '123'] | 字符串类型对象属性比较过滤，例如$.departs[name = '123']，比较操作符支持=,!=,>,>=,<,<= |
+| [key like 'aa%'] | 字符串类型like过滤，  <br />  例如$.departs[name like 'sz*']，通配符只支持%  <br />  支持not like |
+| [key rlike 'regexpr'] | 字符串类型正则匹配过滤，  <br />  例如departs[name rlike 'aa(.)*']，  <br />  正则语法为jdk的正则语法，支持not rlike |
+| [key in ('v0', 'v1')] | IN过滤, 支持字符串和数值类型  <br />  例如:  <br />  $.departs[name in ('wenshao','Yako')]  <br />  $.departs[id not in (101,102)] |
+| [key between 234 and 456] | BETWEEN过滤, 支持数值类型，支持not between  <br />  例如:  <br />  $.departs[id between 101 and 201]  <br />  $.departs[id not between 101 and 201] |
+| length() 或者 size() | 数组长度。例如$.values.size()  <br />  支持类型java.util.Map和java.util.Collection和数组 |
+| keySet() | 获取Map的keySet或者对象的非空属性名称。例如$.val.keySet()  <br />  支持类型：Map和普通对象  <br />  不支持：Collection和数组（返回null） |
+| . | 属性访问，例如$.name |
+| .. | deepScan属性访问，例如$..name |
+| * | 对象的所有属性，例如$.leader.* |
+| ['key'] | 属性访问。例如$['name'] |
+| ['key0','key1'] | 多个属性访问。例如$['id','name'] |
+
+
 
 ## [Gson](https://github.com/google/gson)
 ```java
@@ -1261,9 +1542,6 @@ tomcat9启动后控制台乱码：
 
 
 
-
-
-
 # Resource
 
 - [awesome-java](https://github.com/akullpp/awesome-java)
@@ -1279,7 +1557,10 @@ tomcat9启动后控制台乱码：
 
 [JavaFX](https://wiki.openjdk.java.net/display/OpenJFX/Main)
 
+Cache
 
+- [Caffeine](https://github.com/ben-manes/caffeine) - High-performance, near-optimal caching library.
+- [Ehcache](http://www.ehcache.org/) - Distributed general-purpose cache.
 
 
 # **—— **[IntelliJ IDEA](https://www.423down.com/10850.html)** ——**

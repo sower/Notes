@@ -99,6 +99,12 @@ Preview
 
 - [QuickLook](https://github.com/QL-Win/QuickLook)
 
+[SwitchHosts](https://github.com/oldj/SwitchHosts)
+
+- [https://raw.hellogithub.com/hosts](https://raw.hellogithub.com/hosts)
+- [http://hosts.gitcdn.top/hosts.txt](http://hosts.gitcdn.top/hosts.txt)
+
+[NETworkManager](https://github.com/BornToBeRoot/NETworkManager)
 
 
 ## Media
