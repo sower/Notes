@@ -100,12 +100,12 @@ res
 | raw/ | 需以原始形式保存的任意文件。 |
 | values/ | 包含字符串、整型数和颜色等简单值的 XML 文件。  <br />  arrays.xml：资源数组（类型数组）。  <br />  colors.xml：颜色值。  <br />  dimens.xml：尺寸值。  <br />  strings.xml：字符串值。  <br />  styles.xml：样式。  <br />  请参阅字符串资源、样式资源和更多资源类型。 |
 | xml/ | 可在运行时通过调用 [Resources.getXML()](https://developer.android.google.cn/reference/android/content/res/Resources?hl=zh-cn#getXml(int)) 读取的任意 XML 文件。各种 XML 配置文件（如[可搜索配置](https://developer.android.google.cn/guide/topics/search/searchable-config?hl=zh-cn)）都必须保存在此处。 |
-| font/ | 带有扩展名的字体文件（如 .ttf、.otf 或 .ttc），或包含 <font-family> 元素的 XML 文件。如需详细了解作为资源的字体，请参阅 [XML 中的字体](https://developer.android.google.cn/preview/features/fonts-in-xml?hl=zh-cn)。 |
+| font/ | 带有扩展名的字体文件（如 .ttf、.otf 或 .ttc），或包含 `<font-family>` 元素的 XML 文件。如需详细了解作为资源的字体，请参阅 [XML 中的字体](https://developer.android.google.cn/preview/features/fonts-in-xml?hl=zh-cn)。 |
 
 访问资源的方法
 
-- 在代码中	[<package_name>.]R.<resource_type>.<resource_name>	R.string.app_name
-- 在XML中	@[<package_name>:]<resource_type>/<resource_name>	@string/app_name
+- 在代码中	`[<package_name>.]R.<resource_type>.<resource_name>`	R.string.app_name
+- 在XML中	`@[<package_name>:]<resource_type>/<resource_name>`	@string/app_name
 
 单位
 
@@ -115,34 +115,34 @@ res
 
 **AndroidManifest.xml**
 
-| [<action>](https://developer.android.google.cn/guide/topics/manifest/action-element?hl=zh-cn) | 向 Intent 过滤器添加操作。 |
+| <[action](https://developer.android.google.cn/guide/topics/manifest/action-element?hl=zh-cn)> | 向 Intent 过滤器添加操作。 |
 | --- | --- |
-| [<activity>](https://developer.android.google.cn/guide/topics/manifest/activity-element?hl=zh-cn) | 声明 Activity 组件。 |
-| [<activity-alias>](https://developer.android.google.cn/guide/topics/manifest/activity-alias-element?hl=zh-cn) | 声明 Activity 的别名。 |
-| [<application>](https://developer.android.google.cn/guide/topics/manifest/application-element?hl=zh-cn) | 应用的声明。 |
-| [<category>](https://developer.android.google.cn/guide/topics/manifest/category-element?hl=zh-cn) | 向 Intent 过滤器添加类别名称。 |
-| [<compatible-screens>](https://developer.android.google.cn/guide/topics/manifest/compatible-screens-element?hl=zh-cn) | 指定与应用兼容的每个屏幕配置。 |
-| [<data>](https://developer.android.google.cn/guide/topics/manifest/data-element?hl=zh-cn) | 向 Intent 过滤器添加数据规范。 |
-| [<grant-uri-permission>](https://developer.android.google.cn/guide/topics/manifest/grant-uri-permission-element?hl=zh-cn) | 指定父级内容提供程序有权访问的应用数据的子集。 |
-| [<instrumentation>](https://developer.android.google.cn/guide/topics/manifest/instrumentation-element?hl=zh-cn) | 声明支持您监控应用与系统进行交互的 Instrumentation 类。 |
-| [<intent-filter>](https://developer.android.google.cn/guide/topics/manifest/intent-filter-element?hl=zh-cn) | 指定 Activity、服务或广播接收器可以响应的 Intent 类型。 |
-| [<manifest>](https://developer.android.google.cn/guide/topics/manifest/manifest-element?hl=zh-cn) | AndroidManifest.xml 文件的根元素。 |
-| [<meta-data>](https://developer.android.google.cn/guide/topics/manifest/meta-data-element?hl=zh-cn) | 可以提供给父级组件的其他任意数据项的名称-值对。 |
-| [<path-permission>](https://developer.android.google.cn/guide/topics/manifest/path-permission-element?hl=zh-cn) | 定义内容提供程序中特定数据子集的路径和所需权限。 |
-| [<permission>](https://developer.android.google.cn/guide/topics/manifest/permission-element?hl=zh-cn) | 声明安全权限，可用于限制对此应用或其他应用的特定组件或功能的访问。 |
-| [<permission-group>](https://developer.android.google.cn/guide/topics/manifest/permission-group-element?hl=zh-cn) | 为相关权限的逻辑分组声明名称。 |
-| [<permission-tree>](https://developer.android.google.cn/guide/topics/manifest/permission-tree-element?hl=zh-cn) | 声明权限树的基本名称。 |
-| [<provider>](https://developer.android.google.cn/guide/topics/manifest/provider-element?hl=zh-cn) | 声明内容提供程序组件。 |
-| [<receiver>](https://developer.android.google.cn/guide/topics/manifest/receiver-element?hl=zh-cn) | 声明广播接收器组件。 |
-| [<service>](https://developer.android.google.cn/guide/topics/manifest/service-element?hl=zh-cn) | 声明服务组件。 |
-| [<supports-gl-texture>](https://developer.android.google.cn/guide/topics/manifest/supports-gl-texture-element?hl=zh-cn) | 声明应用支持的一种 GL 纹理压缩格式。 |
-| [<supports-screens>](https://developer.android.google.cn/guide/topics/manifest/supports-screens-element?hl=zh-cn) | 声明应用支持的屏幕尺寸，并为大于此尺寸的屏幕启用屏幕兼容模式。 |
-| [<uses-configuration>](https://developer.android.google.cn/guide/topics/manifest/uses-configuration-element?hl=zh-cn) | 指明应用要求的特定输入功能。 |
-| [<uses-feature>](https://developer.android.google.cn/guide/topics/manifest/uses-feature-element?hl=zh-cn) | 声明应用使用的单个硬件或软件功能。 |
-| [<uses-library>](https://developer.android.google.cn/guide/topics/manifest/uses-library-element?hl=zh-cn) | 指定应用必须链接到的共享库。 |
-| [<uses-permission>](https://developer.android.google.cn/guide/topics/manifest/uses-permission-element?hl=zh-cn) | 指定为使应用正常运行，用户必须授予的系统权限。 |
-| [<uses-permission-sdk-23>](https://developer.android.google.cn/guide/topics/manifest/uses-permission-sdk-23-element?hl=zh-cn) | 指明应用需要特定权限，但仅当应用在运行 Android 6.0（API 级别 23）或更高版本的设备上安装时才需要。 |
-| [<uses-sdk>](https://developer.android.google.cn/guide/topics/manifest/uses-sdk-element?hl=zh-cn) | 您可以通过整数形式的 API 级别，表示应用与一个或多个版本的 Android 平台的兼容性。 |
+| <[activity](https://developer.android.google.cn/guide/topics/manifest/activity-element?hl=zh-cn)> | 声明 Activity 组件。 |
+| <[activity-alias](https://developer.android.google.cn/guide/topics/manifest/activity-alias-element?hl=zh-cn)> | 声明 Activity 的别名。 |
+| <[application](https://developer.android.google.cn/guide/topics/manifest/application-element?hl=zh-cn)> | 应用的声明。 |
+| <[category](https://developer.android.google.cn/guide/topics/manifest/category-element?hl=zh-cn)> | 向 Intent 过滤器添加类别名称。 |
+| <[compatible-screens](https://developer.android.google.cn/guide/topics/manifest/compatible-screens-element?hl=zh-cn)> | 指定与应用兼容的每个屏幕配置。 |
+| <[data](https://developer.android.google.cn/guide/topics/manifest/data-element?hl=zh-cn)> | 向 Intent 过滤器添加数据规范。 |
+| <[grant-uri-permission](https://developer.android.google.cn/guide/topics/manifest/grant-uri-permission-element?hl=zh-cn)> | 指定父级内容提供程序有权访问的应用数据的子集。 |
+| <[instrumentation](https://developer.android.google.cn/guide/topics/manifest/instrumentation-element?hl=zh-cn)> | 声明支持您监控应用与系统进行交互的 Instrumentation 类。 |
+| <[intent-filter](https://developer.android.google.cn/guide/topics/manifest/intent-filter-element?hl=zh-cn)> | 指定 Activity、服务或广播接收器可以响应的 Intent 类型。 |
+| <[manifest](https://developer.android.google.cn/guide/topics/manifest/manifest-element?hl=zh-cn)> | AndroidManifest.xml 文件的根元素。 |
+| <[meta-data](https://developer.android.google.cn/guide/topics/manifest/meta-data-element?hl=zh-cn)> | 可以提供给父级组件的其他任意数据项的名称-值对。 |
+| <[path-permission](https://developer.android.google.cn/guide/topics/manifest/path-permission-element?hl=zh-cn)> | 定义内容提供程序中特定数据子集的路径和所需权限。 |
+| <[permission](https://developer.android.google.cn/guide/topics/manifest/permission-element?hl=zh-cn)> | 声明安全权限，可用于限制对此应用或其他应用的特定组件或功能的访问。 |
+| <[permission-group](https://developer.android.google.cn/guide/topics/manifest/permission-group-element?hl=zh-cn)> | 为相关权限的逻辑分组声明名称。 |
+| <[permission-tree](https://developer.android.google.cn/guide/topics/manifest/permission-tree-element?hl=zh-cn)> | 声明权限树的基本名称。 |
+| <[provider](https://developer.android.google.cn/guide/topics/manifest/provider-element?hl=zh-cn)> | 声明内容提供程序组件。 |
+| <[receiver](https://developer.android.google.cn/guide/topics/manifest/receiver-element?hl=zh-cn)> | 声明广播接收器组件。 |
+| <[service](https://developer.android.google.cn/guide/topics/manifest/service-element?hl=zh-cn)> | 声明服务组件。 |
+| <[supports-gl-texture](https://developer.android.google.cn/guide/topics/manifest/supports-gl-texture-element?hl=zh-cn)> | 声明应用支持的一种 GL 纹理压缩格式。 |
+| <[supports-screens](https://developer.android.google.cn/guide/topics/manifest/supports-screens-element?hl=zh-cn)> | 声明应用支持的屏幕尺寸，并为大于此尺寸的屏幕启用屏幕兼容模式。 |
+| <[uses-configuration](https://developer.android.google.cn/guide/topics/manifest/uses-configuration-element?hl=zh-cn)> | 指明应用要求的特定输入功能。 |
+| <[uses-feature](https://developer.android.google.cn/guide/topics/manifest/uses-feature-element?hl=zh-cn)> | 声明应用使用的单个硬件或软件功能。 |
+| <[uses-library](https://developer.android.google.cn/guide/topics/manifest/uses-library-element?hl=zh-cn)> | 指定应用必须链接到的共享库。 |
+| <[uses-permission](https://developer.android.google.cn/guide/topics/manifest/uses-permission-element?hl=zh-cn)> | 指定为使应用正常运行，用户必须授予的系统权限。 |
+| <[uses-permission-sdk-23](https://developer.android.google.cn/guide/topics/manifest/uses-permission-sdk-23-element?hl=zh-cn)> | 指明应用需要特定权限，但仅当应用在运行 Android 6.0（API 级别 23）或更高版本的设备上安装时才需要。 |
+| <[uses-sdk](https://developer.android.google.cn/guide/topics/manifest/uses-sdk-element?hl=zh-cn)> | 您可以通过整数形式的 API 级别，表示应用与一个或多个版本的 Android 平台的兼容性。 |
 
 Android中的日志工具类是Log（android.util.Log）
 
@@ -1352,7 +1352,7 @@ adb shell getprop ro.product.cpu.abilist    CPU 支持的 abi 列表
 | 在路径中查找 | Ctrl+Shift+F | Command+Shift+F |
 | 打开文件结构弹出式菜单 | Ctrl+F12 | Command+F12 |
 | 在打开的编辑器标签页之间导航 | Alt+向右箭头  <br />  或  <br />  向左箭头 | Ctrl+向右箭头  <br />  或  <br />  Ctrl+向左箭头 |
-| **跳到源代码** | **F4**  <br />  **或**  <br />  **Ctrl+Enter** | **F4**  <br />  **或**  <br />  **Command+向下箭头** |
+| **跳到源代码** | **F4 或 Ctrl+Enter** | **F4 或 Command+向下箭头** |
 | 转到上一个编辑位置 | Ctrl+Shift+退格键 | Command+Shift+Delete |
 | 关闭活动编辑器标签页 | Ctrl+F4 | Command+W |
 
@@ -1364,7 +1364,7 @@ adb shell getprop ro.product.cpu.abilist    CPU 支持的 abi 列表
 | 实现方法 | Ctrl+I | Ctrl+I |
 | 控制语句（if...else / try...catch / 等） | Ctrl+Alt+T | Command+Option+T |
 | 删除插入符处的行 | Ctrl+Y | Command+Delete |
-| 收起/展开当前代码块 | Ctrl+减号键  <br />  或  <br />  Ctrl+加号键 | Command+减号键  <br />  或  <br />  Command+加号键 |
+| 收起/展开当前代码块 | Ctrl+减号键 或  <br />  Ctrl+加号键 | Command+减号键 或  <br />  Command+加号键 |
 | 收起/展开所有代码块 | Ctrl+Shift+减号键  <br />  或  <br />  Ctrl+Shift+加号键 | Command+Shift+减号键  <br />  或  <br />  Command+Shift+加号键 |
 | 复制当前行或选择 | Ctrl+D | Command+D |
 | 基本代码补全 | Ctrl+空格键 | Ctrl+空格键 |
@@ -1372,7 +1372,7 @@ adb shell getprop ro.product.cpu.abilist    CPU 支持的 abi 列表
 | 完成语句 | Ctrl+Shift+Enter | Command+Shift+Enter |
 | 快速查找文档 | Ctrl+Q | Ctrl+J |
 | 显示选定方法的参数 | Ctrl+P | Command+P |
-| 转到声明（直接） | Ctrl+B  <br />  或  <br />  Ctrl  <br />  +点击 | Command+B  <br />  或  <br />  Command  <br />  +点击 |
+| 转到声明（直接） | Ctrl+B 或  <br />  Ctrl +点击 | Command+B 或  <br />  Command+点击 |
 | 转到实现 | Ctrl+Alt+B | Command+Option+B |
 | 转到超方法/超类 | Ctrl+U | Command+U |
 | 打开快速定义查找 | Ctrl+Shift+I | Command+Y |
@@ -1397,7 +1397,7 @@ adb shell getprop ro.product.cpu.abilist    CPU 支持的 abi 列表
 | 智能行合并 | Ctrl+Shift+J | Ctrl+Shift+J |
 | 智能行拆分 | Ctrl+Enter | Command+Enter |
 | **开始新行** | **Shift+Enter** | **Shift+Enter** |
-| 下一个/上一个突出显示的错误 | F2  <br />  或  <br />  Shift+F2 | F2  <br />  或  <br />  Shift+F2 |
+| 下一个/上一个突出显示的错误 | F2 或  <br />  Shift+F2 | F2 或  <br />  Shift+F2 |
 | 编译并运行 |  |  |
 | 编译 | Ctrl+F9 | Command+F9 |
 | 编译并运行 | Shift+F10 | Ctrl+R |

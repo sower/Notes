@@ -62,6 +62,7 @@ myEmitter.emit('event', 'a', 'b');    // 触发事件
 - [File system](https://nodejs.org/api/fs.html)
 ```javascript
 const fs = require('fs')
+
 fs.readFile('/Users/joe/test.txt', 'utf8' , (err, data) => {
   if (err) {
     console.error(err)
@@ -69,6 +70,7 @@ fs.readFile('/Users/joe/test.txt', 'utf8' , (err, data) => {
   }
   console.log(data)
 })
+
 fs.writeFile('/Users/joe/test.txt', 'content', err => {
   if (err) {
     console.error(err)
@@ -235,13 +237,13 @@ npm（Node Package Manager）是Node.js默认的、用JavaScript编写的软件�
    - aliases: npm cache clear, npm cache rm
 - [npm ci](https://docs.npmjs.com/cli/v7/commands/npm-ci)	Install a project with a clean slate
 - [npm config](https://docs.npmjs.com/cli/v7/commands/npm-config)	Manage the npm configuration files
-   - npm config set <key>=<value> [<key>=<value> ...]
-   - npm config get [<key> [<key> ...]]
-   - npm config delete <key> [<key> ...]
-   - npm config list [--json]
-   - npm config edit
-   - npm set <key>=<value> [<key>=<value> ...]
-   - npm get [<key> [<key> ...]]
+   - `npm config set <key>=<value> [<key>=<value> ...]`
+   - `npm config get [<key> [<key> ...]]`
+   - `npm config delete <key> [<key> ...]`
+   - `npm config list [--json]`
+   - `npm config edit`
+   - `npm set <key>=<value> [<key>=<value> ...]`
+   - `npm get [<key> [<key> ...]]`
 - [npm init](https://docs.npmjs.com/cli/v7/commands/npm-init)	Create a package.json file
 - [npm install](https://docs.npmjs.com/cli/v7/commands/npm-install)	Install a package
    - aliases: npm i, npmadd
@@ -253,20 +255,22 @@ npm（Node Package Manager）是Node.js默认的、用JavaScript编写的软件�
 - [npm link](https://docs.npmjs.com/cli/v7/commands/npm-link)	Symlink a package folder
 - [npm ls](https://docs.npmjs.com/cli/v7/commands/npm-ls)	List installed packages
    - --depth=0
+- [npm outdated](https://docs.npmjs.com/cli/v7/commands/npm-outdated)	Check for outdated packages
 - [npm ping](https://docs.npmjs.com/cli/v7/commands/npm-ping)	Ping npm registry
 - [npm prune](https://docs.npmjs.com/cli/v8/commands/npm-prune)	Remove extraneous packages
 - [npm search](https://docs.npmjs.com/cli/v7/commands/npm-search)	Search for packages
    - [-l|--long] [--json] [--parseable] [--no-description] [search terms ...]
    - aliases: s, se, find
 - [npm run-script](https://docs.npmjs.com/cli/v7/commands/npm-run-script)	Run arbitrary package scripts
-   - npm run-script <command> [--if-present] [--silent] [-- <args>]
+   - `npm run-script <command> [--if-present] [--silent] [-- <args>]`
 - [npm test](https://docs.npmjs.com/cli/v7/commands/npm-test)	Test a package
 - [npm update](https://docs.npmjs.com/cli/v8/commands/npm-update)	Update a package
 - [npm uninstall](https://docs.npmjs.com/cli/v7/commands/npm-uninstall)	Remove a package
-   - [<@scope>/]<pkg>[@<version>]... [-S|--save|--no-save]
+   - `[<@scope>/]<pkg>[@<version>]... [-S|--save|--no-save]`
    - aliases: remove, rm, r, un, unlink
 - [npm view](https://docs.npmjs.com/cli/v7/commands/npm-view)	View registry info
-   - npm view [<@scope>/]<name>[@<version>] [<field>[.<subfield>]...] aliases: info, show, v
+   - `npm view [<@scope>/]<name>[@<version>] [<field>[.<subfield>]...]` 
+   - aliases: info, show, v
 
 
 淘宝镜像
@@ -310,14 +314,14 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 - dependencies 和 devDependencies ：模块的依赖和开发环境依赖
 - peerDependencies	模块需要与宿主模块共享依赖（可能会用到某个模块，但不安装）
-   - x.y.z 使用精确版本号
-   - * 	任意版本，第一次安装会使用模块最新版本
-   - ^x.y.z	x 位锁死，y、z 位使用最新版本
-   - ~x.y.z	x、y 锁定，z 位使用最新版本
+   - `x.y.z` 使用精确版本号
+   - `*` 	任意版本，第一次安装会使用模块最新版本
+   - `^x.y.z`	x 位锁死，y、z 位使用最新版本
+   - `~x.y.z`	x、y 锁定，z 位使用最新版本
 - main 	标识模块的默认入口文件
 
 ## [npx](https://github.com/npm/npx)
-Execute binaries from npm packages.  <br />  npx [options] [@version] [command-arg]...  <br />  npx [options] [-p|--package ]...  [command-arg]...  <br />  npx [options] -c ''  <br />  npx --shell-auto-fallback [shell]
+Execute binaries from npm packages.  <br />  npx [options] [@version] [command-arg]...  <br />  npx [options] [-p|--package ]...  [command-arg]...  <br />  npx [options] -c ' '  <br />  npx --shell-auto-fallback [shell]
 ```javascript
 Options:
   --package, -p          Package to be installed.                       [string]
@@ -1263,7 +1267,7 @@ function reverse(x: number | string): number | string {
 **类型断言（Type Assertion）**	指定一个值的类型
 
 - 值 as 类型
-- <类型>值
+- `<类型>`值
 ```javascript
 interface Cat {
     name: string;

@@ -193,7 +193,7 @@ command
 | config | kubectl config SUBCOMMAND [flags] | 修改 kubeconfig 文件。有关详细信息，请参阅各个子命令。 |
 | convert | kubectl convert -f FILENAME [options] | 在不同的 API 版本之间转换配置文件。配置文件可以是 YAML 或 JSON 格式。 |
 | cordon | kubectl cordon NODE [options] | 将节点标记为不可调度。 |
-| cp | kubectl cp <file-spec-src> <file-spec-dest> [options] | 在容器之间复制文件和目录。 |
+| cp | `kubectl cp <file-spec-src> <file-spec-dest> [options]` | 在容器之间复制文件和目录。 |
 | create | kubectl create -f FILENAME [flags] | 从文件或 stdin 创建一个或多个资源。 |
 | delete | kubectl delete (-f FILENAME &#124; TYPE [NAME &#124; /NAME &#124; -l label &#124; --all]) [flags] | 从文件、标准输入或指定标签选择器、名称、资源选择器或资源中删除资源。 |
 | describe | kubectl describe (-f FILENAME &#124; TYPE [NAME_PREFIX &#124; /NAME &#124; -l label]) [flags] | 显示一个或多个资源的详细状态。 |
@@ -204,7 +204,7 @@ command
 | explain | kubectl explain [--recursive=false] [flags] | 获取多种资源的文档。例如 pod, node, service 等。 |
 | expose | kubectl expose (-f FILENAME &#124; TYPE NAME &#124; TYPE/NAME) [--port=port] [--protocol=TCP&#124;UDP] [--target-port=number-or-name] [--name=name] [--external-ip=external-ip-of-service] [--type=type] [flags] | 将副本控制器、服务或 pod 作为新的 Kubernetes 服务暴露。 |
 | get | kubectl get (-f FILENAME &#124; TYPE [NAME &#124; /NAME &#124; -l label]) [--watch] [--sort-by=FIELD] [[-o &#124; --output]=OUTPUT_FORMAT] [flags] | 列出一个或多个资源。 |
-| kustomize | kubectl kustomize <dir> [flags] [options] | 列出从 kustomization.yaml 文件中的指令生成的一组 API 资源。参数必须是包含文件的目录的路径，或者是 git 存储库 URL，其路径后缀相对于存储库根目录指定了相同的路径。 |
+| kustomize | kubectl kustomize `<dir>` [flags] [options] | 列出从 kustomization.yaml 文件中的指令生成的一组 API 资源。参数必须是包含文件的目录的路径，或者是 git 存储库 URL，其路径后缀相对于存储库根目录指定了相同的路径。 |
 | label | kubectl label (-f FILENAME &#124; TYPE NAME &#124; TYPE/NAME) KEY_1=VAL_1 ... KEY_N=VAL_N [--overwrite] [--all] [--resource-version=version] [flags] | 添加或更新一个或多个资源的标签。 |
 | logs | kubectl logs POD [-c CONTAINER] [--follow] [flags] | 在 pod 中打印容器的日志。 |
 | options | kubectl options | 全局命令行选项列表，适用于所有命令。 |

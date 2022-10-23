@@ -25,14 +25,22 @@ IoC（Inverse of Control，控制反转）：依赖注入（Dependency Injection
 
 常用方法
 
-- boolean containsBean(String name)：判断 Spring 容器是否包含 id 为 name 的 Bean 实例
-- T getBean(Class<T> requiredType)：获取 Spring 容器中属于 requiredType 类型的、唯一的 Bean 实例
-- Object getBean(String name)：返回容器 id 为 name 的 Bean 实例
-- T getBean(String name, Class requiredType)：返回容器中 id 为 name，并且类型为 requiredType 的 Bean
+- `boolean containsBean(String name)`：判断 Spring 容器是否包含 id 为 name 的 Bean 实例
+- `T getBean(Class<T> requiredType)`：获取 Spring 容器中属于 requiredType 类型的、唯一的 Bean 实例
+- `Object getBean(String name)`：返回容器 id 为 name 的 Bean 实例
+- `T getBean(String name, Class requiredType)`：返回容器中 id 为 name，并且类型为 requiredType 的 Bean
 - `Class<?> getType(String name)`：返回容器中 id 为 name 的 Bean 实例的类型
 
 
 **ApplicationContext 接口**  <br />  Spring 上下文，BeanFactory 的子接口。在初始化应用上下文时就实例化所有单实例的 Bean  <br />  常用实现类：FileSystemXmlApplicationContext、ClassPathXmlApplicationContext 和 AnnotationConfigApplicationContext
+
+
+**后置处理器**
+
+- BeanPostProcessor	Bean 后置处理器
+   - postProcessBeforeInitialization（初始化前执行）
+   - postProcessAfterInitialization（初始化后执行）
+- BeanFactoryPostProcessor	容器后置处理器
 
 
 **XML装配Bean**  <br />  配置 applicationContext.xml
@@ -148,25 +156,18 @@ public class App {
 | name | Bean 的名称，通过 name 属性为同一个 Bean 同时指定多个名称，每个名称之间用逗号或分号隔开。Spring 容器可以通过 name 属性配置和管理容器中的 Bean。 |
 | class |  Bean 的具体实现类，它必须是一个完整的类名，即类的全限定名。 |
 | scope |  Bean 的作用域，属性值可以为 singleton（单例）、prototype（原型）、request、session 和 global Session。默认值是 singleton。 |
-| constructor-arg | <bean> 元素的子元素，通过该元素，将构造参数传入，以实现 Bean 的实例化。该元素的 index 属性指定构造参数的序号（从 0 开始），type 属性指定构造参数的类型。 |
-| property | <bean>元素的子元素，用于调用 Bean 实例中的 setter 方法对属性进行赋值，从而完成属性的注入。该元素的 name 属性用于指定 Bean 实例中相应的属性名。 |
-| ref | <property> 和 <constructor-arg> 等元素的子元索，用于指定对某个 Bean 实例的引用，即 <bean> 元素中的 id 或 name 属性。 |
-| value | <property> 和 <constractor-arg> 等元素的子元素，用于直接指定一个常量值。 |
+| constructor-arg | `<bean>` 元素的子元素，通过该元素，将构造参数传入，以实现 Bean 的实例化。该元素的 index 属性指定构造参数的序号（从 0 开始），type 属性指定构造参数的类型。 |
+| property | `<bean>`元素的子元素，用于调用 Bean 实例中的 setter 方法对属性进行赋值，从而完成属性的注入。该元素的 name 属性用于指定 Bean 实例中相应的属性名。 |
+| ref | `<property>`和 `<constructor-arg>` 等元素的子元索，用于指定对某个 Bean 实例的引用，即 `<bean>` 元素中的 id 或 name 属性。 |
+| value | `<property>` 和 `<constractor-arg>` 等元素的子元素，用于直接指定一个常量值。 |
 | list | 用于封装 List 或数组类型的属性注入。 |
 | set | 用于封装 Set 类型的属性注入。 |
 | map | 用于封装 Map 类型的属性注入。 |
-| entry |  <map> 元素的子元素，用于设置一个键值对。其 key 属性指定字符串类型的键值，ref 或 value 子元素指定其值。 |
+| entry | `<map>` 元素的子元素，用于设置一个键值对。其 key 属性指定字符串类型的键值，ref 或 value 子元素指定其值。 |
 | init-method | 容器加载 Bean 时调用该方法，类似于 Servlet 中的 init() 方法 |
 | destroy-method | 容器删除 Bean 时调用该方法，类似于 Servlet 中的 destroy() 方法。该方法只在 scope=singleton 时有效 |
 | lazy-init | 懒加载，值为 true，容器在首次请求时才会创建 Bean 实例；值为 false，容器在启动时创建 Bean 实例。该方法只在 scope=singleton 时有效 |
 
-
-**后置处理器**
-
-- BeanPostProcessor	Bean 后置处理器
-   - postProcessBeforeInitialization（初始化前执行）
-   - postProcessAfterInitialization（初始化后执行）
-- BeanFactoryPostProcessor	容器后置处理器
 
 
 **自动装配	autowired**
@@ -464,7 +465,7 @@ AspectJ 切入点语法
 - [Supported Pointcut Designators](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop-pointcuts-designators)
 - Spring AOP 常用的切入点指示符（pointcut designators，PCD）
    - execution：用于匹配执行方法的连接点
-      - execution(<修饰符>? <返回值类型> <所属类>?<方法名>(形参类型列表) <声明抛出的异常>?)，? 表示该部分可省略
+      - `execution(<修饰符>? <返回值类型> <所属类>?<方法名>(形参类型列表) <声明抛出的异常>?)`，? 表示该部分可省略
       - 通配符：
          - * 代表一个任意类型的参数
          - .. 代表零个或多个任意类型的参数，在表示类时，必须和 * 联合使用，而在表示入参时则单独使用
@@ -578,9 +579,9 @@ public class DemoPublisher  {
 - String[] sortStringArray(String[] array)：字符串数组排序
 - String[] tokenizeToStringArray(String str, String delimiters)：对每一个元素执行 trim 操作，并去掉空字符串
 - String[] delimitedListToStringArray(String str, String delimiter)：分割字符串，以 delimiter 作为整体分隔符
-- Set<String> commaDelimitedListToSet(String str)：使用逗号分割字符串，并放到 set 中去重
-- String collectionToDelimitedString(Collection<?> coll, String delim, String prefix, String suffix)：将集合中的每个元素使用前缀、后缀、分隔符连接
-- String collectionToDelimitedString(Collection<?> coll, String delim)：将集合中的每个元素使用指定字符串连接
+- `Set<String> commaDelimitedListToSet(String str)`：使用逗号分割字符串，并放到 set 中去重
+- `String collectionToDelimitedString(Collection<?> coll, String delim, String prefix, String suffix)`：将集合中的每个元素使用前缀、后缀、分隔符连接
+- `String collectionToDelimitedString(Collection<?> coll, String delim)`：将集合中的每个元素使用指定字符串连接
 - String arrayToDelimitedString(Object[] arr, String delim)：数组使用指定字符串连接
 - String[] split(String toSplit, String delimiter)：在第一次出现分隔符时分割
 - Properties splitArrayElementsIntoProperties(String[] array, String delimiter)：把字符串数组中的每一个字符串按照给定的分隔符装配到一个 Properties 中
@@ -588,9 +589,9 @@ public class DemoPublisher  {
 
 ### NumberUtils
 
-- T convertNumberToTargetClass(Number number, Class<T> targetClass)
-- T parseNumber(String text, Class<T> targetClass)
-- T parseNumber(String text, Class<T> targetClass, NumberFormat numberFormat)
+- `T convertNumberToTargetClass(Number number, Class<T> targetClass)`
+- `T parseNumber(String text, Class<T> targetClass)`
+- `T parseNumber(String text, Class<T> targetClass, NumberFormat numberFormat)`
 
 
 ### ObjectUtils
@@ -633,9 +634,9 @@ public class DemoPublisher  {
 ### BeanUtils
 
 - void copyProperties(Object source, Object target, String... ignoreProperties)：浅克隆（原理：反射）
-- boolean isSimpleProperty(Class<?> clazz)：判断给定的类型是否表示简单属性：八大基本类型/包装类型、字符串或其它 CharSequence、Number、Enum、Date、URI、URL、Locale、Class 或对应的数组
-- T instantiateClass(Class<T> clazz)：使用无参构造器实例化
-- Method findDeclaredMethod(Class<?> clazz, String methodName, Class<?>... paramTypes)
+- `boolean isSimpleProperty(Class<?> clazz)`：判断给定的类型是否表示简单属性：八大基本类型/包装类型、字符串或其它 CharSequence、Number、Enum、Date、URI、URL、Locale、Class 或对应的数组
+- `T instantiateClass(Class<T> clazz)`：使用无参构造器实例化
+- `Method findDeclaredMethod(Class<?> clazz, String methodName, Class<?>... paramTypes)`
 
 
 ### BeanCopier
@@ -655,19 +656,19 @@ public class DemoPublisher  {
 - boolean isAopProxy(Object object)：是否是代理对象
 - boolean isJdkDynamicProxy(Object object)：判断是否是 JDK 代理对象
 - boolean isCglibProxy(Object object)：判断是否是 cglib 代理对象
-- Class<?> getTargetClass(Object candidate)：获取对象的真实类型
-- Method getMostSpecificMethod(Method method, Class<?> targetClass)：获取真实对象上对应的方法
+- `Class<?> getTargetClass(Object candidate)`：获取对象的真实类型
+- `Method getMostSpecificMethod(Method method, Class<?> targetClass)`：获取真实对象上对应的方法
 - Object invokeJoinpointUsingReflection(Object target, Method method, Object[] args)：在 target 对象上，使用 args 参数列表执行 method
 
 
 ### ReflectionUtils
 
-- Field findField(Class<?> clazz, String name)
-- Field findField(Class<?> clazz, String name, Class<?> type)
+- `Field findField(Class<?> clazz, String name)`
+- `Field findField(Class<?> clazz, String name, Class<?> type)`
 - Object getField(Field field, Object target)
 - void setField(Field field, Object target, Object value)
-- Method findMethod(Class<?> clazz, String name)
-- Method findMethod(Class<?> clazz, String name, Class<?>... paramTypes)
+- `Method findMethod(Class<?> clazz, String name)`
+- `Method findMethod(Class<?> clazz, String name, Class<?>... paramTypes)`
 - Object invokeMethod(Method method, Object target)
 - Object invokeMethod(Method method, Object target, Object... args)
 
@@ -728,10 +729,10 @@ methods
 - public int update(String sql,Object... args)
 - public void execute(String sql)	可以执行任意 SQL，一般用于执行 DDL 语句；
 - public T execute(String sql, PreparedStatementCallback action)
-- public <T> List<T> query(String sql, RowMapper<T> rowMapper, @Nullable Object... args) 
+- `public <T> List<T> query(String sql, RowMapper<T> rowMapper, @Nullable Object... args) `
 - 用于执行查询语句；
-- public <T> T queryForObject(String sql, RowMapper<T> rowMapper, @Nullable Object... args)
-- public int[] batchUpdate(String sql, List<Object[]> batchArgs, final int[] argTypes) 
+- `public <T> T queryForObject(String sql, RowMapper<T> rowMapper, @Nullable Object... args)`
+- `public int[] batchUpdate(String sql, List<Object[]> batchArgs, final int[] argTypes) `
 ```java
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -833,8 +834,8 @@ public class UserDaoImpl implements UserDao {
    - ? 匹配 1 个字符（但不能是代表路径分隔符的 /）
    - * 匹配 0 或多个任意的字符（可以是代表路径分隔符的 /）
    - ** 匹配 0 或多个目录
-   - {varName:regex}，如 {spring:[a-z]+} 将**正则表达式** [a-z]+ 匹配到的值赋值给名为 spring 的路径变量
-   - 也可以嵌入 ${…} 占位符，这些占位符在启动时通过 PropertyPlaceHolderConfigurer 对本地、系统、环境和其它属性源来解析
+   - `{varName:regex}`，如`{spring:[a-z]+} `将**正则表达式** [a-z]+ 匹配到的值赋值给名为 spring 的路径变量
+   - 也可以嵌入 `${…} `占位符，这些占位符在启动时通过 PropertyPlaceHolderConfigurer 对本地、系统、环境和其它属性源来解析
    - 最长匹配原则：存在多个路径匹配模式时，Spring MVC 会以最长符合路径模式来匹配一个路径
 
   <br />  `@CrossOrigin`：可用于类或方法，**设置跨域行为**，常用属性：origins（允许域名）、methods、allowedHeaders、exposedHeaders、allowCredentials（是否允许发送 Cookie，**启用后允许域名不能设置为 '*'**）、maxAge（本次预检请求的有效期，单位为秒）
@@ -883,7 +884,7 @@ UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl("https://www.bing
 | @RequestHeader | 用来访问请求报文头。报文头值被转换为声明的方法参数类型 |
 | @CookieValue | 用来访问 Cookie。Cookie 值被转换为声明的方法参数类型 |
 | @RequestBody | 用来访问 HTTP 请求报文体。报文体内容使用 HttpMessageConverters 被转换为声明的方法参数类型 |
-| HttpEntity<B> | 用来访问请求报文头和报文体。报文体使用 HttpMessageConverters 被转换 |
+| `HttpEntity<B>` | 用来访问请求报文头和报文体。报文体使用 HttpMessageConverters 被转换 |
 | @RequestPart | 用来访问 multipart/form-data 请求的一部分 |
 | java.util.Map, org.springframework.ui.Model, org.springframework.ui.ModelMap | 用来访问用于 HTTP 控制器的模型，作为视图渲染的一部分暴露给模板 |
 | RedirectAttributes | 指定在重定向时使用的属性 —— 用来附加临时存储到重定向之后请求的查询字符串，flash 属性 |
@@ -900,7 +901,7 @@ UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl("https://www.bing
 | 控制器方法返回值 | 描述 |
 | --- | --- |
 | @ResponseBody | 返回值通过 HttpMessageConverters 转换并写入响应 |
-| HttpEntity<B>, ResponseEntity<B> | 返回值指定完整的响应，包括通过 HttpMessageConverters 转换并写入响应的 HTTP 报文头和报文体 |
+| `HttpEntity<B>, ResponseEntity<B>` | 返回值指定完整的响应，包括通过 HttpMessageConverters 转换并写入响应的 HTTP 报文头和报文体 |
 | HttpHeaders | 用于返回只有报文头没有报文体的响应 |
 | String | 用于 ViewResolver 解析的视图名，并与隐式的模型 |
 | View | View 实例，与隐式的模型一起用来渲染模型 |
@@ -908,8 +909,8 @@ UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl("https://www.bing
 | @ModelAttribute | 将被添加的模型的属性 |
 | ModelAndView object | 待使用的视图和模型，以及可选的响应状态 |
 | void | void 返回类型（或 null 返回值）的方法，如果它同时包含 ServletResponse，或者 OutputStream 属性，或者 @ResponseStatus 注解，则认为它已经处理完了响应。 |
-| DeferredResult<V> | 从任意线程异步地生成任意上述返回值 |
-| Callable<V> | 在 Spring MVC 托管的线程中异步地生成任意上述返回值 |
+| `DeferredResult<V>` | 从任意线程异步地生成任意上述返回值 |
+| `Callable<V>` | 在 Spring MVC 托管的线程中异步地生成任意上述返回值 |
 | ListenableFuture, CompletionStage, CompletableFuture | DeferredResult 的便捷替代方案 |
 | ResponseBodyEmitter, SseEmitter | 在 HttpMessageConverter 的帮助下异步地发出一个对象流以写入响应 |
 | StreamingResponseBody | 异步地写入响应 OutputStream |
@@ -1282,7 +1283,7 @@ spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 
 - @Scope：修饰属性或方法，指定该方法对应的 Bean 的生命域
 - @Lazy：修饰属性、方法或 Bean 类，指定该属性延迟到调用此属性时才注入属性值，或该方法对应的 Bean 延迟初始化（可用来解决循环依赖）
 - @DependsOn：修饰方法，指定在初始化该方法对应的 Bean 之前初始化指定的 Bean
-- @Conditional：满足某个特定的条件才创建该一个特定的 Bean，其属性 value 的类型是 Class<? extends Condition>[]
+- @Conditional：满足某个特定的条件才创建该一个特定的 Bean，其属性 value 的类型是 `Class<? extends Condition>[]`
 - @Scheduled：修饰方法，用于声明该方法是一个计划任务
 
 - @EnableTransactionManagement：开启注解式事务的支持，Spring 容器会自动扫描注解 
@@ -1638,7 +1639,7 @@ javax.persistence
    - @Column(name, nullable, length, insertable, updatable)：定义属性和表的映射关系
    - @JoinTable(name)、@JoinColumn(name, referencedColumnName)
    - @Enumerated
-   - @Convert(converter)：指定使用的转换器（自定义转换器实现 AttributeConverter<X,Y>）
+   - @Convert(converter)：指定使用的转换器（自定义转换器实现 `AttributeConverter<X,Y>`）
    - @Version	可用于乐观锁并发更新
 
 - 关系
@@ -1672,7 +1673,7 @@ Hibernate
 
 - 添加依赖 spring-boot-starter-data-jpa
 - @EnableJpaRepositories：启用 JPA 编程
-- 继承 JpaRepository<T, ID>
+- 继承 `JpaRepository<T, ID>`
 ```java
 public interface CrudRepository<T, ID> extends Repository<T, ID> {
   <S extends T> S save(S entity);
@@ -1772,9 +1773,9 @@ public interface JpaSpecificationExecutor<T> {
 | EndingWith | findByFirstnameEndingWith | … where x.firstname like ?1 (parameter bound with prepended %) |
 | Containing | findByFirstnameContaining | … where x.firstname like ?1 (parameter bound wrapped in %) |
 | OrderBy | findByAgeOrderByLastnameDesc | … where x.age = ?1 order by x.lastname desc |
-| Not | findByLastnameNot | … where x.lastname <> ?1 |
-| In | findByAgeIn(Collection<Age> ages) | … where x.age in ?1 |
-| NotIn | findByAgeNotIn(Collection<Age> ages) | … where x.age not in ?1 |
+| Not | findByLastnameNot | … where x.lastname `<> ?1` |
+| In | findByAgeIn(`Collection<Age>` ages) | … where x.age in ?1 |
+| NotIn | findByAgeNotIn(`Collection<Age>` ages) | … where x.age not in ?1 |
 | True | findByActiveTrue() | … where x.active = true |
 | False | findByActiveFalse() | … where x.active = false |
 | IgnoreCase | findByFirstnameIgnoreCase | … where UPPER(x.firstname) = UPPER(?1) |
@@ -1788,7 +1789,7 @@ public interface JpaSpecificationExecutor<T> {
 | exists…By | Exists projection, returning typically a boolean result. |
 | count…By | Count projection returning a numeric result. |
 | delete…By, remove…By | Delete query method returning either no result (void) or the delete count. |
-| …First<number>…, …Top<number>… | Limit the query results to the first <number> of results. This keyword can occur in any place of the subject between find (and the other keywords) and by. |
+| …First`<number>`…, …Top`<number>`… | Limit the query results to the first `<number>` of results. This keyword can occur in any place of the subject between find (and the other keywords) and by. |
 | …Distinct… | Use a distinct query to return only unique results. Consult the store-specific documentation whether that feature is supported. This keyword can occur in any place of the subject between find (and the other keywords) and by. |
 
 
@@ -1800,23 +1801,23 @@ public interface JpaSpecificationExecutor<T> {
 | Primitives | Java primitives. |
 | Wrapper types | Java wrapper types. |
 | T | A unique entity. Expects the query method to return one result at most. If no result is found, null is returned. More than one result triggers an IncorrectResultSizeDataAccessException. |
-| Iterator<T> | An Iterator. |
-| Collection<T> | A Collection. |
-| List<T> | A List. |
-| Optional<T> | A Java 8 or Guava Optional.  |
-| Option<T> | Either a Scala or Vavr Option type. Semantically the same behavior as Java 8’s Optional, described earlier. |
-| Stream<T> | A Java 8 Stream. |
-| Streamable<T> | A convenience extension of Iterable that directy exposes methods to stream, map and filter results, concatenate them etc. |
+| `Iterator<T>` | An Iterator. |
+| `Collection<T>` | A Collection. |
+| `List<T>` | A List. |
+| `Optional<T>` | A Java 8 or Guava Optional.  |
+| `Option<T>` | Either a Scala or Vavr Option type. Semantically the same behavior as Java 8’s Optional, described earlier. |
+| `Stream<T>` | A Java 8 Stream. |
+| `Streamable<T>` | A convenience extension of Iterable that directy exposes methods to stream, map and filter results, concatenate them etc. |
 | Types that implement Streamable and take a Streamable constructor or factory method argument | Types that expose a constructor or ….of(…)/….valueOf(…) factory method taking a Streamable as argument.  |
 | Vavr Seq, List, Map, Set | Vavr collection types. See [Support for Vavr Collections](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.collections-and-iterables.vavr) for details. |
-| Future<T> | Expects a method to be annotated with @Async and requires Spring’s asynchronous method execution capability to be enabled. |
-| CompletableFuture<T> | Expects a method to be annotated with @Async and requires Spring’s asynchronous method execution capability to be enabled. |
+| `Future<T>` | Expects a method to be annotated with @Async and requires Spring’s asynchronous method execution capability to be enabled. |
+| `CompletableFuture<T>` | Expects a method to be annotated with @Async and requires Spring’s asynchronous method execution capability to be enabled. |
 | ListenableFuture | A org.springframework.util.concurrent.ListenableFuture. Expects a method to be annotated with @Async and requires Spring’s asynchronous method execution capability to be enabled. |
-| Slice<T> | A sized chunk of data with an indication of whether there is more data available. Requires a Pageable method parameter. |
-| Page<T> | A Slice with additional information, such as the total number of results. Requires a Pageable method parameter. |
-| GeoResult<T> | A result entry with additional information, such as the distance to a reference location. |
-| GeoResults<T> | A list of GeoResult<T> with additional information, such as the average distance to a reference location. |
-| GeoPage<T> | A Page with GeoResult<T>, such as the average distance to a reference location. |
+| `Slice<T>` | A sized chunk of data with an indication of whether there is more data available. Requires a Pageable method parameter. |
+| `Page<T>` | A Slice with additional information, such as the total number of results. Requires a Pageable method parameter. |
+| `GeoResult<T>` | A result entry with additional information, such as the distance to a reference location. |
+| `GeoResults<T>` | A list of `GeoResult<T>` with additional information, such as the average distance to a reference location. |
+| `GeoPage<T>` | A Page with `GeoResult<T>`, such as the average distance to a reference location. |
 
 
 

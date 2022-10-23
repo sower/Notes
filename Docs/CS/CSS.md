@@ -26,43 +26,55 @@ properties-list ::=
 
 如果值为若干单词，则要给值加引号
 
+
 # 选择器（Selector）
 [基本选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Selectors#simple_selectors)
 
-- 通配选择器 _, ns|_, _|_, |*
-- 元素选择器 elementname(元素名称)
-- 类选择器 .classname(类名)
-- ID 选择器 #idname(ID 名)
-- 属性选择器 [属性=值]
+- [通用选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Universal_selectors)（[Universal selector](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Universal_selectors)）
+   - `ns|*`	会匹配ns命名空间下的所有元素
+   - `*|*`	会匹配所有命名空间下的所有元素
+   - `|*`	会匹配所有没有命名空间的元素
+- [元素选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors)（[Type selector](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors)） `elementname`(元素名称)
+- [类选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Class_selectors)（[Class selector](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Class_selectors)）	`.classname`(类名)
+- [ID 选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/ID_selectors)（[ID selector](https://developer.mozilla.org/zh-CN/docs/Web/CSS/ID_selectors)） `#idname`(ID 名)
+- [属性选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors)（[Attribute selector](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors)） `[attr=value]`
 
-[分组选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference#%E5%88%86%E7%BB%84%E9%80%89%E6%8B%A9%E5%99%A8)  <br />  [**选择器列表**](https://developer.mozilla.org/en-US/docs/Web/CSS/Selector_list)** A, B**	同时选择A 和 B元素。  <br />  [组合选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Selectors#combinators)
+[分组选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference#%E5%88%86%E7%BB%84%E9%80%89%E6%8B%A9%E5%99%A8)  <br />  [**选择器列表**](https://developer.mozilla.org/en-US/docs/Web/CSS/Selector_list)** **`A, B`	同时选择A 和 B元素。
 
-- 相邻兄弟选择器 A + B
+[组合器（Combinators）](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Selectors#%E7%BB%84%E5%90%88%E5%99%A8%EF%BC%88combinators%EF%BC%89)
+
+- 相邻兄弟选择器 `A + B`
 
 指定A和B选择的元素具有相同的父元素，并且B选择的元素在水平方向上紧随A选择的元素。
 
-- 普通兄弟选择器 A ~ B
+- 普通兄弟选择器 `A ~ B`
 
 指定由A和B选择的元素共享相同的父元素，并指定A选择的元素在B选择的元素之前（但不一定紧接在B之前）。
 
-- 子选择器 A > B
+- 子选择器 `A > B`
 
 指定B选择的元素是A选择的元素的直接子元素。
 
-- 后代选择器 A B
+- 后代选择器 `A B`
 
-指定B选择的元素是A选择的元素的后代，但不一定是直接子代。  <br />  **An+B of S**  <br />  :nth-chid(even)	偶数节点  <br />  :nth-child(3n+1 of li.important) 第4，7...个 li.important节点  <br />  [伪类](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes) (Pseudo-classes)：添加到选择器的关键字，指定要选择的元素的特殊状态。
+指定B选择的元素是A选择的元素的后代，但不一定是直接子代。  <br />  **An+B of S**  <br />  `:nth-chid(even)`	偶数节点  <br />  `:nth-child(3n+1 of li.important)`第4，7...个 li.important节点
+
+[伪选择器（Pseudo）](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Selectors#%E4%BC%AA%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88pseudo%EF%BC%89)
+
+- [伪类](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes) (Pseudo-classes)：添加到选择器的关键字，指定要选择的元素的特殊状态。
 ```css
 selector:pseudo-class {
   property: value;
 }
 ```
-[伪元素](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements)：一个附加至选择器末的关键词，允许你对被选择元素的特定部分修改样式。
+
+- [伪元素](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements)：一个附加至选择器末的关键词，允许你对被选择元素的特定部分修改样式。
 ```css
 selector::pseudo-element {
   property: value;
 }
 ```
+
 
 # 样式
 外部样式表
@@ -105,7 +117,7 @@ This is a paragraph
 [**优先级**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity)
 
 - 内联样式 > ID 选择器 > 类选择器 = 属性选择器 = 伪类选择器 > 标签选择器 = 伪元素选择器
-- 属性后插有 !important 的属性拥有最高优先级
+- 属性后插有 `!important` 的属性拥有最高优先级
 - 计算选择符中 ID 选择器的个数（a），类选择器、属性选择器以及伪类选择器的个数之和（b），标签选择器和伪元素选择器的个数之和（c），按 a、b、c 的顺序依次比较大小，大的则优先级高，相等则比较下一个。若都相等，按照"就近原则"。
 
 # [@ 规则](https://developer.mozilla.org/zh-CN/docs/Web/CSS/At-rule)
@@ -395,6 +407,7 @@ flex
 }
 ```
 
+
 ## 常用样式
 **文本省略号**
 ```css
@@ -556,7 +569,7 @@ root.style.setProperty('--main-color', 'blue')
 | --- | --- |
 | [@keyframes](https://www.w3school.com.cn/cssref/pr_keyframes.asp) | 规定动画。 |
 | [animation](https://www.w3school.com.cn/cssref/pr_animation.asp) | 所有动画属性的简写属性，除了 animation-play-state 属性。 |
-| [animation-name](https://www.w3school.com.cn/cssref/pr_animation-name.asp) | 规定 [_@_keyframes](/keyframes ) 动画的名称。  |
+| [animation-name](https://www.w3school.com.cn/cssref/pr_animation-name.asp) | 规定 _@_keyframes 动画的名称。  |
 | [animation-duration](https://www.w3school.com.cn/cssref/pr_animation-duration.asp) | 规定动画完成一个周期所花费的秒或毫秒。 |
 | [animation-timing-function](https://www.w3school.com.cn/cssref/pr_animation-timing-function.asp) | 规定动画的速度曲线。 |
 | [animation-delay](https://www.w3school.com.cn/cssref/pr_animation-delay.asp) | 规定动画何时开始。 |
@@ -579,6 +592,7 @@ root.style.setProperty('--main-color', 'blue')
     animation-fill-mode: forwards;
 }
 ```
+
 
 ## 背景属性（Background）
 | 属性 | 描述 | CSS |
@@ -606,6 +620,7 @@ background-attachment
 
 - fixed：固定，不随页面滚动条而滚动
 - scroll：默认，随页面内容滚动
+
 
 ## 内边距属性（Padding）
 | 属性 | 描述 | CSS |
@@ -937,11 +952,11 @@ background-attachment
 | [.class](https://www.w3school.com.cn/cssref/selector_class.asp) | .intro | 选择 class="intro" 的所有元素。 |
 | [#id](https://www.w3school.com.cn/cssref/selector_id.asp) | #firstname | 选择 id="firstname" 的所有元素。 |
 | [*](https://www.w3school.com.cn/cssref/selector_all.asp) | * | 选择所有元素。 |
-| [element](https://www.w3school.com.cn/cssref/selector_element.asp) | p | 选择所有 <p> 元素。 |
-| [element,element](https://www.w3school.com.cn/cssref/selector_element_comma.asp) | div,p | 选择所有 <div> 元素和所有 <p> 元素。 |
-| [elementelement](https://www.w3school.com.cn/cssref/selector_element_element.asp) | div p | 选择 <div> 元素内部的所有 <p> 元素。 |
-| [element>element](https://www.w3school.com.cn/cssref/selector_element_gt.asp) | div>p | 选择父元素为 <div> 元素的所有 <p> 元素。 |
-| [element+element](https://www.w3school.com.cn/cssref/selector_element_plus.asp) | div+p | 选择紧接在 <div> 元素之后的所有 <p> 元素。 |
+| [element](https://www.w3school.com.cn/cssref/selector_element.asp) | p | 选择所有 `<p>`元素 |
+| [element,element](https://www.w3school.com.cn/cssref/selector_element_comma.asp) | div,p | 选择所有 `<div>`元素和所有 `<p>`元素 |
+| [elementelement](https://www.w3school.com.cn/cssref/selector_element_element.asp) | div p | 选择 `<div>`元素内部的所有 `<p>`元素。 |
+| [element>element](https://www.w3school.com.cn/cssref/selector_element_gt.asp) | div>p | 选择父元素为 `<div>`元素的所有 `<p>`元素。 |
+| [element+element](https://www.w3school.com.cn/cssref/selector_element_plus.asp) | div+p | 选择紧接在 `<div>`元素之后的所有 `<p>`元素。 |
 | [[attribute]](https://www.w3school.com.cn/cssref/selector_attribute.asp) | [target] | 选择带有 target 属性所有元素。 |
 | [[attribute=value]](https://www.w3school.com.cn/cssref/selector_attribute_value.asp) | [target=_blank] | 选择 target="_blank" 的所有元素。 |
 | [[attribute~=value]](https://www.w3school.com.cn/cssref/selector_attribute_value_contain.asp) | [title~=flower] | 选择 title 属性包含单词 "flower" 的所有元素。 |
@@ -951,32 +966,32 @@ background-attachment
 | [:active](https://www.w3school.com.cn/cssref/selector_active.asp) | a:active | 选择活动链接。 |
 | [:hover](https://www.w3school.com.cn/cssref/selector_hover.asp) | a:hover | 选择鼠标指针位于其上的链接。 |
 | [:focus](https://www.w3school.com.cn/cssref/selector_focus.asp) | input:focus | 选择获得焦点的 input 元素。 |
-| [:first-letter](https://www.w3school.com.cn/cssref/selector_first-letter.asp) | p:first-letter | 选择每个 <p> 元素的首字母。 |
-| [:first-line](https://www.w3school.com.cn/cssref/selector_first-line.asp) | p:first-line | 选择每个 <p> 元素的首行。 |
-| [:first-child](https://www.w3school.com.cn/cssref/selector_first-child.asp) | p:first-child | 选择属于父元素的第一个子元素的每个 <p> 元素。 |
-| [:before](https://www.w3school.com.cn/cssref/selector_before.asp) | p:before | 在每个 <p> 元素的内容之前插入内容。 |
-| [:after](https://www.w3school.com.cn/cssref/selector_after.asp) | p:after | 在每个 <p> 元素的内容之后插入内容。 |
-| [:lang(language)](https://www.w3school.com.cn/cssref/selector_lang.asp) | p:lang(it) | 选择带有以 "it" 开头的 lang 属性值的每个 <p> 元素。 |
-| [element1~element2](https://www.w3school.com.cn/cssref/selector_gen_sibling.asp) | p~ul | 选择前面有 <p> 元素的每个 <ul> 元素。 |
-| [[attribute^=value]](https://www.w3school.com.cn/cssref/selector_attr_begin.asp) | a[src^="https"] | 选择其 src 属性值以 "https" 开头的每个 <a> 元素。 |
-| [[attribute$=value]](https://www.w3school.com.cn/cssref/selector_attr_end.asp) | a[src$=".pdf"] | 选择其 src 属性以 ".pdf" 结尾的所有 <a> 元素。 |
-| [[attribute*=value]](https://www.w3school.com.cn/cssref/selector_attr_contain.asp) | a[src*="abc"] | 选择其 src 属性中包含 "abc" 子串的每个 <a> 元素。 |
-| [:first-of-type](https://www.w3school.com.cn/cssref/selector_first-of-type.asp) | p:first-of-type | 选择属于其父元素的首个 <p> 元素的每个 <p> 元素。 |
-| [:last-of-type](https://www.w3school.com.cn/cssref/selector_last-of-type.asp) | p:last-of-type | 选择属于其父元素的最后 <p> 元素的每个 <p> 元素。 |
-| [:only-of-type](https://www.w3school.com.cn/cssref/selector_only-of-type.asp) | p:only-of-type | 选择属于其父元素唯一的 <p> 元素的每个 <p> 元素。 |
-| [:only-child](https://www.w3school.com.cn/cssref/selector_only-child.asp) | p:only-child | 选择属于其父元素的唯一子元素的每个 <p> 元素。 |
-| [:nth-child(n)](https://www.w3school.com.cn/cssref/selector_nth-child.asp) | p:nth-child(2) | 选择属于其父元素的第二个子元素的每个 <p> 元素。 |
+| [:first-letter](https://www.w3school.com.cn/cssref/selector_first-letter.asp) | p:first-letter | 选择每个 `<p>`元素的首字母。 |
+| [:first-line](https://www.w3school.com.cn/cssref/selector_first-line.asp) | p:first-line | 选择每个 `<p>`元素的首行。 |
+| [:first-child](https://www.w3school.com.cn/cssref/selector_first-child.asp) | p:first-child | 选择属于父元素的第一个子元素的每个 `<p>`元素。 |
+| [:before](https://www.w3school.com.cn/cssref/selector_before.asp) | p:before | 在每个 `<p>`元素的内容之前插入内容。 |
+| [:after](https://www.w3school.com.cn/cssref/selector_after.asp) | p:after | 在每个 `<p>`元素的内容之后插入内容。 |
+| [:lang(language)](https://www.w3school.com.cn/cssref/selector_lang.asp) | p:lang(it) | 选择带有以 "it" 开头的 lang 属性值的每个 `<p>`元素。 |
+| [element1~element2](https://www.w3school.com.cn/cssref/selector_gen_sibling.asp) | p~ul | 选择前面有 `<p>`元素的每个 `<ul>`元素。 |
+| [[attribute^=value]](https://www.w3school.com.cn/cssref/selector_attr_begin.asp) | a[src^="https"] | 选择其 src 属性值以 "https" 开头的每个 `<a>`元素。 |
+| [[attribute$=value]](https://www.w3school.com.cn/cssref/selector_attr_end.asp) | a[src$=".pdf"] | 选择其 src 属性以 ".pdf" 结尾的所有 `<a>`元素。 |
+| [[attribute*=value]](https://www.w3school.com.cn/cssref/selector_attr_contain.asp) | a[src*="abc"] | 选择其 src 属性中包含 "abc" 子串的每个 `<a>`元素。 |
+| [:first-of-type](https://www.w3school.com.cn/cssref/selector_first-of-type.asp) | p:first-of-type | 选择属于其父元素的首个 `<p>`元素的每个 `<p>`元素。 |
+| [:last-of-type](https://www.w3school.com.cn/cssref/selector_last-of-type.asp) | p:last-of-type | 选择属于其父元素的最后 `<p>`元素的每个 `<p>`元素。 |
+| [:only-of-type](https://www.w3school.com.cn/cssref/selector_only-of-type.asp) | p:only-of-type | 选择属于其父元素唯一的 `<p>`元素的每个 `<p>`元素。 |
+| [:only-child](https://www.w3school.com.cn/cssref/selector_only-child.asp) | p:only-child | 选择属于其父元素的唯一子元素的每个 `<p>`元素。 |
+| [:nth-child(n)](https://www.w3school.com.cn/cssref/selector_nth-child.asp) | p:nth-child(2) | 选择属于其父元素的第二个子元素的每个 `<p>`元素。 |
 | [:nth-last-child(n)](https://www.w3school.com.cn/cssref/selector_nth-last-child.asp) | p:nth-last-child(2) | 同上，从最后一个子元素开始计数。 |
-| [:nth-of-type(n)](https://www.w3school.com.cn/cssref/selector_nth-of-type.asp) | p:nth-of-type(2) | 选择属于其父元素第二个 <p> 元素的每个 <p> 元素。 |
+| [:nth-of-type(n)](https://www.w3school.com.cn/cssref/selector_nth-of-type.asp) | p:nth-of-type(2) | 选择属于其父元素第二个 `<p>`元素的每个 `<p>`元素。 |
 | [:nth-last-of-type(n)](https://www.w3school.com.cn/cssref/selector_nth-last-of-type.asp) | p:nth-last-of-type(2) | 同上，但是从最后一个子元素开始计数。 |
-| [:last-child](https://www.w3school.com.cn/cssref/selector_last-child.asp) | p:last-child | 选择属于其父元素最后一个子元素每个 <p> 元素。 |
+| [:last-child](https://www.w3school.com.cn/cssref/selector_last-child.asp) | p:last-child | 选择属于其父元素最后一个子元素每个 `<p>`元素。 |
 | [:root](https://www.w3school.com.cn/cssref/selector_root.asp) | :root | 选择文档的根元素。 |
-| [:empty](https://www.w3school.com.cn/cssref/selector_empty.asp) | p:empty | 选择没有子元素的每个 <p> 元素（包括文本节点）。 |
+| [:empty](https://www.w3school.com.cn/cssref/selector_empty.asp) | p:empty | 选择没有子元素的每个 `<p>`元素（包括文本节点）。 |
 | [:target](https://www.w3school.com.cn/cssref/selector_target.asp) | #news:target | 选择当前活动的 #news 元素。 |
-| [:enabled](https://www.w3school.com.cn/cssref/selector_enabled.asp) | input:enabled | 选择每个启用的 <input> 元素。 |
-| [:disabled](https://www.w3school.com.cn/cssref/selector_disabled.asp) | input:disabled | 选择每个禁用的 <input> 元素 |
-| [:checked](https://www.w3school.com.cn/cssref/selector_checked.asp) | input:checked | 选择每个被选中的 <input> 元素。 |
-| [:not(selector)](https://www.w3school.com.cn/cssref/selector_not.asp) | :not(p) | 选择非 <p> 元素的每个元素。 |
+| [:enabled](https://www.w3school.com.cn/cssref/selector_enabled.asp) | input:enabled | 选择每个启用的  元素。 |
+| [:disabled](https://www.w3school.com.cn/cssref/selector_disabled.asp) | input:disabled | 选择每个禁用的  元素 |
+| [:checked](https://www.w3school.com.cn/cssref/selector_checked.asp) | input:checked | 选择每个被选中的  元素。 |
+| [:not(selector)](https://www.w3school.com.cn/cssref/selector_not.asp) | :not(p) | 选择非 `<p>`元素的每个元素。 |
 | [::selection](https://www.w3school.com.cn/cssref/selector_selection.asp) | ::selection | 选择被用户选取的元素部分。 |
 | [:out-of-range](https://www.runoob.com/cssref/sel-out-of-range.html) | :out-of-range | 匹配值在指定区间之外的input元素 |
 | [:in-range](https://www.runoob.com/cssref/sel-in-range.html) | :in-range | 匹配值在指定区间之内的input元素 |
@@ -986,7 +1001,6 @@ background-attachment
 | [:required](https://www.runoob.com/cssref/sel-required.html) | :required | 用于匹配设置了 "required" 属性的元素 |
 | [:valid](https://www.runoob.com/cssref/sel-valid.html) | :valid | 用于匹配输入值为合法的元素 |
 | [:invalid](https://www.runoob.com/cssref/sel-invalid.html) | :invalid | 用于匹配输入值为非法的元素 |
-
 
 
 # 函数
@@ -1066,6 +1080,7 @@ background-attachment
 ## [CSS命名规范-BEM](https://www.bemcss.com/#)
 Block（模块）、Element（元素）、Modifier（修饰符）  <br />  命名规矩：block-name__element-name--modifier-name
 
+
 # ——  Sass (Syntactically Awesome Stylesheets)   ——
 最初由 Hampton Catlin 设计并由 Natalie Weizenbaum 开发的层叠样式表语言  <br />  是一个 CSS 预处理器，CSS 扩展语言，帮助减少 CSS 重复的代码，节省开发时间。  <br />  Sass 文件后缀为 .scss。
 
@@ -1090,7 +1105,7 @@ body {
 ```css
 命令行输入 sass test.scss [test.css]
 ```
-变量  <br />  $variablename: value;  <br />  用 !global 关键词来设置变量是全局的  <br />  **嵌套**  <br />  标签
+变量  <br />  `$variablename: value;`  <br />  用` !global `关键词来设置变量是全局的  <br />  **嵌套**  <br />  标签
 ```css
 //sass
 nav {
@@ -1128,54 +1143,12 @@ font-weight: bold;
 ```
 指令
 
-- [_@_import ](/import ) filename; 
-- [_@_mixin ](/mixin ) ：定义一个可以在整个样式表中重复使用的样式。 
-- [_@_include ](/include ) ：将混入（mixin）引入到文档中。 
-- [_@_extend ](/extend ) ：样式从另一选择器继承 
-
-
-# Bootstrap4
-```css
-<!-- 新 Bootstrap4 核心 CSS 文件 -->
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
- 
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
- 
-<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
-<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
- 
-<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-```
-
-容器类：
-
-- .container 类用于固定宽度并支持响应式布局的容器。
-- .container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器。
+- _@_import  filename; 
+- _@_mixin  ：定义一个可以在整个样式表中重复使用的样式。 
+- _@_include  ：将混入（mixin）引入到文档中。 
+- _@_extend  ：样式从另一选择器继承 
 
 
 
-**网格系统**  <br />  一套响应式、移动设备优先的流式网格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多 12 列。
 
-**网格类**
-
-- .col- 针对所有设备
-- .col-sm- 平板 - 屏幕宽度等于或大于 576px
-- .col-md- 桌面显示器 - 屏幕宽度等于或大于 768px)
-- .col-lg- 大桌面显示器 - 屏幕宽度等于或大于 992px)
-- .col-xl- 超大桌面显示器 - 屏幕宽度等于或大于 1200px)
-
-偏移列通过 offset-_-_ 类来设置  <br />  默认的 **font-size** 为 16px, line-height 为 1.5。  <br />  默认的 **font-family** 为 "Helvetica Neue", Helvetica, Arial, sans-serif。
-
-此外，所有的 **<p>** 元素 **margin-top: 0** 、 **margin-bottom: 1rem** (16px)。
-```css
-<div class="container">
-  <h1>h1 Bootstrap 标题 (2.5rem = 40px)</h1>
-  <h2>h2 Bootstrap 标题 (2rem = 32px)</h2>
-  <h3>h3 Bootstrap 标题 (1.75rem = 28px)</h3>
-  <h4>h4 Bootstrap 标题 (1.5rem = 24px)</h4>
-  <h5>h5 Bootstrap 标题 (1.25rem = 20px)</h5>
-  <h6>h6 Bootstrap 标题 (1rem = 16px)</h6>
-</div>
-```
+### [bootstrap](https://github.com/twbs/bootstrap)

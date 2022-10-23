@@ -46,7 +46,7 @@ target1, *target2 = matching - length - iterable
 ```
 
 
-在交互模式（interactive mode）中，最后被输出的表达式结果被赋值给变量 _
+在交互模式（interactive mode）中，最后被输出的表达式结果被赋值给变量 `_`
 
 
 
@@ -200,7 +200,7 @@ b'bce'
 - b	byte
 - u	unicode
 - r	raw string，不识别转义
-- f	format，格式化字符串	f'{var} {{raw big parantheses}}'
+- f	format，格式化字符串	`f'{var} {{raw-big-parantheses}}'`
 | 方法 | 描述 |
 | --- | --- |
 | [capitalize()](https://www.w3school.com.cn/python/ref_string_capitalize.asp) | 把首字符转换为大写。 |
@@ -261,7 +261,7 @@ str1 = str.translate(trantab,'2')
 - digits：字符串 '0123456789'。
 - hexdigits：字符串 '0123456789abcdefABCDEF'。
 - octdigits：字符串 '01234567'。
-- punctuation：由在 C 区域设置中被视为标点符号的 ASCII 字符所组成的字符串: !"#$%&'()*+,-./:;<=>?@[]^_`{|}~.
+- punctuation：由在 C 区域设置中被视为标点符号的 ASCII 字符所组成的字符串: `!"#$%&'()*+,-./:;<=>?@[]^_`{|}~.`
 - whitespace：空白符号的 ASCII 字符组成的字符串。 包括空格、制表、换行、回车、进纸和纵向制表符。
 - printable：可打印符号的 ASCII 字符组成的字符串。 digits, ascii_letters, punctuation 和 whitespace 的总和。
 
@@ -299,7 +299,7 @@ str1 = str.translate(trantab,'2')
 | [list.extend(seq)](https://www.runoob.com/python3/python3-att-list-extend.html) | 在列表末尾一次性追加另一个序列中的多个值 |
 | [list.index(obj)](https://www.runoob.com/python3/python3-att-list-index.html) | 从列表中找出某个值第一个匹配项的索引位置 |
 | [list.insert(index, obj)](https://www.runoob.com/python3/python3-att-list-insert.html) | 将对象插入列表 |
-| [list.pop([index=-1])](https://www.runoob.com/python3/python3-att-list-pop.html) | 移除列表中的一个元素（默认最后一个元素），并且返回该元素的值 |
+| [list.pop([index=-1])](https://www.runoob.com/python3/python3-att-list-pop.html) | 移除列表中的一个元素（默认最后一个元素），并且返回 |
 | [list.remove(obj)](https://www.runoob.com/python3/python3-att-list-remove.html) | 移除列表中某个值的第一个匹配项 |
 | [list.reverse()](https://www.runoob.com/python3/python3-att-list-reverse.html) | 反向列表中元素 |
 | [list.sort( key=None, reverse=False)](https://www.runoob.com/python3/python3-att-list-sort.html) | 对原列表进行排序 |
@@ -501,6 +501,7 @@ Fraction(2476979795053773, 2251799813685248)
 Fraction(11, 10)
 ```
 
+
 # 运算符
 **算数运算符**
 
@@ -623,6 +624,7 @@ What is your favorite color?  It is blue.
 ```
 zip() 将字典”反转”为 (值，键) 元组序列
 
+
 ## 生成式 Comprehensions
 ```python
 <list> = [i+1 for i in range(10)]                         # [1, 2, ..., 10]
@@ -630,6 +632,7 @@ zip() 将字典”反转”为 (值，键) 元组序列
 <generator> = (i+5 for i in range(10))                    # (5, 6, ..., 14)
 <dict> = {i: i*2 for i in range(10)}                      # {0: 0, 1: 2, ..., 9: 18}
 ```
+
 
 ## 迭代器 Iterator
 可迭代对象(Iterable)：定义了返回一个迭代器的__iter__方法，或定义了支持下标索引的__getitem__方法的对象  <br />  迭代器：定义了__next__方法的对象  <br />  list、dict、str等是Iterable但不是Iterator，可以通过iter()函数获得一个Iterator对象。
@@ -678,6 +681,7 @@ def intNum():
 num = intNum()
 ```
 
+
 ## 协程 Coroutine
 微线程，推广了协作式多任务的子程序，允许执行被挂起与被恢复。
 ```python
@@ -698,6 +702,7 @@ def product(c):
 c = consumer()
 product(c)
 ```
+
 
 # Function
 定义一个函数要使用def语句，依次写出函数名、括号、括号中的参数和冒号:，在缩进块中编写函数体，返回值用return语句返回。

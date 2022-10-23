@@ -294,6 +294,10 @@ my-project
 - `@AllArgsConstructor` 注解在类，生成包含类中所有字段的构造方法。
 - `@Data` 注解在类，生成setter/getter、equals、canEqual、hashCode、toString方法，如为final属性，则不会为该属性生成setter方法。
 - [@Builder](https://projectlombok.org/features/Builder)
+- [@NonNull](https://projectlombok.org/features/NonNull)
+- [@Cleanup](https://projectlombok.org/features/Cleanup)	Automatic resource management: Call your close() methods safely with no hassle.
+- [@Synchronized](https://projectlombok.org/features/Synchronized)
+- [@SneakyThrows](https://projectlombok.org/features/SneakyThrows)
 - `@Slf4j` 注解在类，生成log变量，严格意义来说是常量
 
 
@@ -623,6 +627,18 @@ LoadingCache<Object, Object> loadingCache = CacheBuilder.newBuilder()
    - [Dynamic Proxies](https://github.com/google/guava/wiki/ReflectionExplained#dynamic-proxies)
    - [ClassPath](https://github.com/google/guava/wiki/ReflectionExplained#classpath)
 
+**RateLimiter**  <br />  令牌桶算法
+
+- RateLimiter.create(double permitsPerSecond)	根据指定的稳定吞吐率创建RateLimiter，吞吐率指每秒多少许可数（QPS，每秒多少查询）
+- RateLimiter.create(double permitsPerSecond, long warmupPeriod, TimeUnit unit)	根据指定的稳定吞吐率和预热期来创建RateLimiter，在这段预热时间内，RateLimiter每秒分配的许可数会平稳地增长直到预热期结束时达到其最大速率。（只要存在足够请求数来使其饱和）
+- getRate()	配置中的稳定速率，该速率单位是每秒多少许可数
+- setRate(double permitsPerSecond)	更新RateLimite的稳定速率
+- acquire() 从RateLimiter获取一个许可，该方法会被阻塞直到获取到请求
+- acquire(int permits)	从RateLimiter获取指定许可数，该方法会被阻塞直到获取到请求
+- tryAcquire()	获取许可，如果该许可可以在无延迟下的情况下立即获取得到的话
+- tryAcquire(int permits)
+- tryAcquire(long timeout, TimeUnit unit)
+- tryAcquire(int permits, long timeout, TimeUnit unit)	获取指定许可数如果该许可数可以在不超过timeout的时间内获取得到的话，或者如果无法在timeout 过期之前获取得到许可数的话，立即返回false （无需等待）
 
 [guava-retrying](https://github.com/rholder/guava-retrying)
 ```python
@@ -1571,7 +1587,7 @@ Cache
 **Live Templates**
 > File | Settings | Editor | Live Templates
 
-psvm	main方法  <br />  fori	for循环  <br />  sout	System.out  <br />  user.for+Tab	for(User user : users)  <br />  user.getBirthday().var+Tab	Date birthday = user.getBirthday()
+fori	for循环  <br />  sout	System.out  <br />  .var	生成变量
 
 insert	插入/改写模式
 

@@ -78,7 +78,7 @@
 
 - [createApp](https://v3.cn.vuejs.org/api/global-api.html#createapp)
 - [createSSRApp()](https://vuejs.org/api/application.html#createssrapp)
-- [h](https://v3.cn.vuejs.org/api/global-api.html#h)	返回一个”虚拟节点“ (VNode)
+- [h](https://v3.cn.vuejs.org/api/global-api.html#h)	返回一个 虚拟节点  (VNode)
    - 参数
       - type	HTML 标签名、组件。使用返回 null 的函数将渲染一个注释
       - props	与在模板中使用的 attribute、prop 和事件相对应
@@ -892,7 +892,6 @@ const foo = inject(key) // foo 的类型: string | undefined
 ```
 
 
-
 组合式示例
 ```javascript
 import { fetchUserRepositories } from '@/api/repositories'
@@ -1093,7 +1092,7 @@ watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
 ```
 
 <a name="d41d8cd9"></a>
-## [<script setup>](https://v3.cn.vuejs.org/api/sfc-script-setup.html)
+## <[script setup](https://v3.cn.vuejs.org/api/sfc-script-setup.html)>
 ```javascript
 <script setup>
 const props = defineProps({
@@ -1803,7 +1802,6 @@ app.component('base-input', {
 
 [  <br />  ](https://v3.cn.vuejs.org/guide/component-edge-cases.html)
 
-
 ## [动态组件 & 异步组件](https://v3.cn.vuejs.org/guide/component-dynamic-async.html)
 
 动态
@@ -2005,9 +2003,6 @@ app.mount('#mixins-global')
 // => "hello!"
 // => "hello from component!"
 ```
-
-<a name="613cf536"></a>
-[  <br />  ](https://github.com/vuejs/vuepress)
 
 
 

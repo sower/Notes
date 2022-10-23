@@ -2,14 +2,14 @@
 # —— [Web API](https://developer.mozilla.org/zh-CN/docs/Web/API) ——
 **网页中嵌入 JavaScript 代码**
 
-- <script>元素直接嵌入代码
+- `<script>`元素直接嵌入代码
 ```javascript
 <script>
   console.log(new Date().toLocaleTimeString());
 </script>
 ```
 
-- <script>标签加载外部脚本
+- `<script>`标签加载外部脚本
 ```javascript
 <script charset="utf-8" src="https://www.example.com/script.js"></script>
 ```
@@ -171,11 +171,11 @@ Property
 - document.activeElement	当前焦点（focus）的 DOM 元素
 - document.fullscreenElement	全屏状态展示的 DOM 元素
 
-- document.links	所有设定了href属性的<a>及<area>节点。
-- document.forms	所有<form>表单节点
-- document.images	所有<img>图片节点
-- document.embeds，document.plugins	所有<embed>节点
-- document.scripts	所有<script>节点。
+- document.links	所有设定了href属性的`<a>`及`<area>`节点。
+- document.forms	所有`<form>`表单节点
+- document.images	所有`<img>`图片节点
+- document.embeds，document.plugins	所有`<embed>`节点
+- document.scripts	所有`<script>`节点。
 - document.styleSheets	内嵌或引入的样式表集合
 
 - document.documentURI，document.URL
@@ -607,7 +607,7 @@ KeyboardEvent.getModifierState()	表示是否按下或激活指定的功能键
 <a name="30d0aa87"></a>
 ## [ProgressEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/ProgressEvent)
 
-描述资源加载的进度，主要由 AJAX 请求、<img>、<audio>、<video>、<style>、<link>等外部资源的加载触发  <br />  Type
+描述资源加载的进度，主要由 AJAX 请求、`<img>、<audio>、<video>、<style>、<link>`等外部资源的加载触发  <br />  Type
 
 -  abort：外部资源中止加载时（比如用户取消）触发。 
 -  error：由于错误导致外部资源无法加载时触发。 
@@ -628,9 +628,9 @@ Property
 
 Type
 
-- input事件：<input>、<select>、<textarea>的值发生变化时触发。
-- select事件：在<input>、<textarea>里面选中文本时触发。
-- change事件：<input>、<select>、<textarea>的值发生变化时触发。
+- input事件：`<input>、<select>、<textarea>`的值发生变化时触发。
+- select事件：在`<input>、<textarea>`里面选中文本时触发。
+- change事件：`<input>、<select>、<textarea>`的值发生变化时触发。
 - invalid 事件：表单元素的值不满足校验条件触发
 - reset事件：表单重置（所有表单成员变回默认值）时触发
 - submit事件：表单数据向服务器提交时触发
@@ -942,7 +942,7 @@ var frameDoc = frame.contentWindow.document;
 
 统一资源定位器（Uniform Resource Locator）用于定位万维网上的文档（或其他数据）。
 
-语法规则： protocol://hostname[:port]/path[?key1=value1&key2=value2][#anchor]
+语法规则： `protocol://hostname[:port]/path[?key1=value1&key2=value2][#anchor]`
 
 -  :port - 定义主机上的端口号（http 的默认端口号是 80） 
 -  path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。 
@@ -1207,7 +1207,6 @@ Method
 -  IDBKeyRange.only()：指定只包含一个值。 
 
 e.g
-
 ```javascript
 // 新建/打开数据库
 var request = window.indexedDB.open(databaseName, version);
@@ -1599,7 +1598,7 @@ foo({
    - Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain
 
 如果Origin指定的域名在许可范围内，服务器返回的响应，会多出几个头信息字段。
-```javascript
+```http
 Access-Control-Allow-Origin: http://api.bob.com
 Access-Control-Allow-Credentials: true    // 可选，是否允许发送 Cookie
 Access-Control-Expose-Headers: FooBar
@@ -1609,7 +1608,7 @@ Content-Type: text/html; charset=utf-8
 **非简单请求**  <br />  “预检”请求（preflight）：浏览器发出CORS 请求，会在正式通信之前，增加一次 HTTP 查询请求。  <br />  一旦服务器通过了“预检”请求，以后每次浏览器正常的 CORS 请求，就都跟简单请求一样
 
 预检请求的 HTTP 头信息
-```javascript
+```http
 OPTIONS /cors HTTP/1.1
 Origin: http://api.bob.com
 Access-Control-Request-Method: PUT
@@ -1621,7 +1620,7 @@ User-Agent: Mozilla/5.0...
 ```
 
 预检请求的回应
-```javascript
+```http
 HTTP/1.1 200 OK
 Date: Mon, 01 Dec 2008 01:15:39 GMT
 Server: Apache/2.0.61 (Unix)
@@ -1637,11 +1636,12 @@ Content-Type: text/plain
 ```
 
 请求头
-
-- Access-Control-Allow-Origin: <origin> | *
-- Access-Control-Allow-Credentials: true
-- Access-Control-Allow-Methods: <method>[, <method>]*
-- Access-Control-Allow-Headers: <field-name>[, <field-name>]*
+```http
+Access-Control-Allow-Origin: <origin> | *
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Methods: <method>[, <method>]*
+Access-Control-Allow-Headers: <field-name>[, <field-name>]*
+```
 
 <a name="6bd99046"></a>
 # [Fetch](https://wangdoc.com/webapi/fetch.html)
@@ -1720,7 +1720,7 @@ mode	请求的模式
 
 -  cors：默认值，允许跨域请求。 
 -  same-origin：只允许同源请求。 
--  no-cors：请求方法只限于 GET、POST 和 HEAD，并且只能使用有限的几个简单标头，不能添加跨域的复杂标头，相当于提交表单、<script>加载脚本、<img>加载图片等传统的跨域请求方法。
+-  no-cors：请求方法只限于 GET、POST 和 HEAD，并且只能使用有限的几个简单标头，不能添加跨域的复杂标头，相当于提交表单、`<script>`加载脚本、`<img>`加载图片等传统的跨域请求方法。
 
 credentials	是否发送 Cookie
 
@@ -1747,9 +1747,7 @@ try {
 }
 ```
 
-[**Response**](https://developer.mozilla.org/en-US/docs/Web/API/Response)  <br />  [
-
-](https://developer.mozilla.org/en-US/docs/Web/API/Response)
+[**Response**](https://developer.mozilla.org/en-US/docs/Web/API/Response)
 
 - Response.ok
 - Response.status
@@ -2227,54 +2225,54 @@ $(document).ready(function(){
 
 
 ## 选择器
-| 选择器 | 实例 | 选取 |
-| --- | --- | --- |
-| [*](https://www.w3school.com.cn/jquery/selector_all.asp) | $("*") | 所有元素 |
-| [#id](https://www.w3school.com.cn/jquery/selector_id.asp) | $("#lastname") | id="lastname" 的元素 |
-| [.class](https://www.w3school.com.cn/jquery/selector_class.asp) | $(".intro") | 所有 class="intro" 的元素 |
-| [element](https://www.w3school.com.cn/jquery/selector_element.asp) | $("p") | 所有 <p> 元素 |
-| ._class_._class_ | $(".intro.demo") | 所有 class="intro" 且 class="demo" 的元素 |
-|   |   |   |
-| [:first](https://www.w3school.com.cn/jquery/selector_first.asp) | $("p:first") | 第一个 <p> 元素 |
-| [:last](https://www.w3school.com.cn/jquery/selector_last.asp) | $("p:last") | 最后一个 <p> 元素 |
-| [:even](https://www.w3school.com.cn/jquery/selector_even.asp) | $("tr:even") | 所有偶数 <tr> 元素 |
-| [:odd](https://www.w3school.com.cn/jquery/selector_odd.asp) | $("tr:odd") | 所有奇数 <tr> 元素 |
-|   |   |   |
-| [:eq(index)](https://www.w3school.com.cn/jquery/selector_eq.asp) | $("ul li:eq(3)") | 列表中的第四个元素（index 从 0 开始） |
-| [:gt(no)](https://www.w3school.com.cn/jquery/selector_gt.asp) | $("ul li:gt(3)") | 列出 index 大于 3 的元素 |
-| [:lt(no)](https://www.w3school.com.cn/jquery/selector_lt.asp) | $("ul li:lt(3)") | 列出 index 小于 3 的元素 |
-| :not(_selector_) | $("input:not(:empty)") | 所有不为空的 input 元素 |
-|   |   |   |
-| [:header](https://www.w3school.com.cn/jquery/selector_header.asp) | $(":header") | 所有标题元素 <h1> - <h6> |
-| [:animated](https://www.w3school.com.cn/jquery/selector_animated.asp) |   | 所有动画元素 |
-|   |   |   |
-| [:contains(text)](https://www.w3school.com.cn/jquery/selector_contains.asp) | $(":contains('W3School')") | 包含指定字符串的所有元素 |
-| [:empty](https://www.w3school.com.cn/jquery/selector_empty.asp) | $(":empty") | 无子（元素）节点的所有元素 |
-| :hidden | $("p:hidden") | 所有隐藏的 <p> 元素 |
-| [:visible](https://www.w3school.com.cn/jquery/selector_visible.asp) | $("table:visible") | 所有可见的表格 |
-|   |   |   |
-| s1,s2,s3 | $("th,td,.intro") | 所有带有匹配选择的元素 |
-|   |   |   |
-| [[attribute]](https://www.w3school.com.cn/jquery/selector_attribute.asp) | $("[href]") | 所有带有 href 属性的元素 |
-| [[attribute=value]](https://www.w3school.com.cn/jquery/selector_attribute_equal_value.asp) | $("[href='#']") | 所有 href 属性的值等于 "#" 的元素 |
-| [[attribute!=value]](https://www.w3school.com.cn/jquery/selector_attribute_notequal_value.asp) | $("[href!='#']") | 所有 href 属性的值不等于 "#" 的元素 |
-| [[attribute$=value]](https://www.w3school.com.cn/jquery/selector_attribute_end_value.asp) | $("[href$='.jpg']") | 所有 href 属性的值包含以 ".jpg" 结尾的元素 |
-|   |   |   |
-| [:input](https://www.w3school.com.cn/jquery/selector_input.asp) | $(":input") | 所有 <input> 元素 |
-| [:text](https://www.w3school.com.cn/jquery/selector_input_text.asp) | $(":text") | 所有 type="text" 的 <input> 元素 |
-| [:password](https://www.w3school.com.cn/jquery/selector_input_password.asp) | $(":password") | 所有 type="password" 的 <input> 元素 |
-| [:radio](https://www.w3school.com.cn/jquery/selector_input_radio.asp) | $(":radio") | 所有 type="radio" 的 <input> 元素 |
-| [:checkbox](https://www.w3school.com.cn/jquery/selector_input_checkbox.asp) | $(":checkbox") | 所有 type="checkbox" 的 <input> 元素 |
-| [:submit](https://www.w3school.com.cn/jquery/selector_input_submit.asp) | $(":submit") | 所有 type="submit" 的 <input> 元素 |
-| [:reset](https://www.w3school.com.cn/jquery/selector_input_reset.asp) | $(":reset") | 所有 type="reset" 的 <input> 元素 |
-| [:button](https://www.w3school.com.cn/jquery/selector_input_button.asp) | $(":button") | 所有 type="button" 的 <input> 元素 |
-| [:image](https://www.w3school.com.cn/jquery/selector_input_image.asp) | $(":image") | 所有 type="image" 的 <input> 元素 |
-| [:file](https://www.w3school.com.cn/jquery/selector_input_file.asp) | $(":file") | 所有 type="file" 的 <input> 元素 |
-|   |   |   |
-| [:enabled](https://www.w3school.com.cn/jquery/selector_input_enabled.asp) | $(":enabled") | 所有激活的 input 元素 |
-| [:disabled](https://www.w3school.com.cn/jquery/selector_input_disabled.asp) | $(":disabled") | 所有禁用的 input 元素 |
-| [:selected](https://www.w3school.com.cn/jquery/selector_input_selected.asp) | $(":selected") | 所有被选取的 input 元素 |
-| [:checked](https://www.w3school.com.cn/jquery/selector_input_checked.asp) | $(":checked") | 所有被选中的 input 元素 |
+| 选择器 | 实例 |
+| --- | --- |
+| [*](https://www.w3school.com.cn/jquery/selector_all.asp) | $("*") |
+| [#id](https://www.w3school.com.cn/jquery/selector_id.asp) | $("#lastname") |
+| [.class](https://www.w3school.com.cn/jquery/selector_class.asp) | $(".intro") |
+| [element](https://www.w3school.com.cn/jquery/selector_element.asp) | $("p") |
+| ._class_._class_ | $(".intro.demo") |
+|   |   |
+| [:first](https://www.w3school.com.cn/jquery/selector_first.asp) | $("p:first") |
+| [:last](https://www.w3school.com.cn/jquery/selector_last.asp) | $("p:last") |
+| [:even](https://www.w3school.com.cn/jquery/selector_even.asp) | $("tr:even") |
+| [:odd](https://www.w3school.com.cn/jquery/selector_odd.asp) | $("tr:odd") |
+|   |   |
+| [:eq(index)](https://www.w3school.com.cn/jquery/selector_eq.asp) | $("ul li:eq(3)") |
+| [:gt(no)](https://www.w3school.com.cn/jquery/selector_gt.asp) | $("ul li:gt(3)") |
+| [:lt(no)](https://www.w3school.com.cn/jquery/selector_lt.asp) | $("ul li:lt(3)") |
+| :not(_selector_) | $("input:not(:empty)") |
+|   |   |
+| [:header](https://www.w3school.com.cn/jquery/selector_header.asp) | $(":header") |
+| [:animated](https://www.w3school.com.cn/jquery/selector_animated.asp) |   |
+|   |   |
+| [:contains(text)](https://www.w3school.com.cn/jquery/selector_contains.asp) | $(":contains('W3School')") |
+| [:empty](https://www.w3school.com.cn/jquery/selector_empty.asp) | $(":empty") |
+| :hidden | $("p:hidden") |
+| [:visible](https://www.w3school.com.cn/jquery/selector_visible.asp) | $("table:visible") |
+|   |   |
+| s1,s2,s3 | $("th,td,.intro") |
+|   |   |
+| [[attribute]](https://www.w3school.com.cn/jquery/selector_attribute.asp) | $("[href]") |
+| [[attribute=value]](https://www.w3school.com.cn/jquery/selector_attribute_equal_value.asp) | $("[href='#']") |
+| [[attribute!=value]](https://www.w3school.com.cn/jquery/selector_attribute_notequal_value.asp) | $("[href!='#']") |
+| [[attribute$=value]](https://www.w3school.com.cn/jquery/selector_attribute_end_value.asp) | $("[href$='.jpg']") |
+|   |   |
+| [:input](https://www.w3school.com.cn/jquery/selector_input.asp) | $(":input") |
+| [:text](https://www.w3school.com.cn/jquery/selector_input_text.asp) | $(":text") |
+| [:password](https://www.w3school.com.cn/jquery/selector_input_password.asp) | $(":password") |
+| [:radio](https://www.w3school.com.cn/jquery/selector_input_radio.asp) | $(":radio") |
+| [:checkbox](https://www.w3school.com.cn/jquery/selector_input_checkbox.asp) | $(":checkbox") |
+| [:submit](https://www.w3school.com.cn/jquery/selector_input_submit.asp) | $(":submit") |
+| [:reset](https://www.w3school.com.cn/jquery/selector_input_reset.asp) | $(":reset") |
+| [:button](https://www.w3school.com.cn/jquery/selector_input_button.asp) | $(":button") |
+| [:image](https://www.w3school.com.cn/jquery/selector_input_image.asp) | $(":image") |
+| [:file](https://www.w3school.com.cn/jquery/selector_input_file.asp) | $(":file") |
+|   |   |
+| [:enabled](https://www.w3school.com.cn/jquery/selector_input_enabled.asp) | $(":enabled") |
+| [:disabled](https://www.w3school.com.cn/jquery/selector_input_disabled.asp) | $(":disabled") |
+| [:selected](https://www.w3school.com.cn/jquery/selector_input_selected.asp) | $(":selected") |
+| [:checked](https://www.w3school.com.cn/jquery/selector_input_checked.asp) | $(":checked") |
 
 
 ## 事件

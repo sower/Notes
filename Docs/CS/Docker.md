@@ -156,7 +156,7 @@ ubuntu下docker配置国内镜像源
 
 # 镜像管理
 
-**虚悬镜像(dangling image)** ：由于新旧镜像同名，旧镜像名称被取消，从而出现仓库名、标签均为 <none> 的镜像
+**虚悬镜像(dangling image)** ：由于新旧镜像同名，旧镜像名称被取消，从而出现仓库名、标签均为 `<none>`的镜像
 ```shell
 docker image ls -f dangling=true
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
@@ -334,7 +334,7 @@ docker start [OPTIONS] CONTAINER [CONTAINER...]  <br />  docker stop [--time , -
 - --interactive , -i		Keep STDIN open even if not attached
 - --privileged		Give extended privileges to the command
 - --tty , -t		Allocate a pseudo-TTY
-- --user , -u		Username or UID (format: <name|uid>[:<group|gid>])
+- --user , -u		Username or UID (format: `<name|uid>[:<group|gid>]`)
 - --workdir , -w		Working directory inside the container
 
 docker attach [OPTIONS] CONTAINER	进入容器正在执行的终端，不会启动新的进程

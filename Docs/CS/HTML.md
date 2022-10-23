@@ -1,5 +1,4 @@
 
-
 # ——超文本标记语言 (Hyper Text Markup Language)——
 
 
@@ -28,7 +27,7 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)
 - 开始标签（start tag）或开放标签（opening tag）
 - 结束标签（end tag）或闭合标签（closing tag），在标签名之前加斜杠。
 - 空标签：只包含属性，且没有闭合标签
-- <!DOCTYPE>： 不是 HTML 标签。它为浏览器提供一项信息（声明），即 HTML 是用什么版本编写的。
+- `<!DOCTYPE>`： 不是 HTML 标签。它为浏览器提供一项信息（声明），即 HTML 是用什么版本编写的。
 
 
 
@@ -37,20 +36,20 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)
 - 默认占据一个独立的区域，在网页上会自动另起一行，占据 100% 的宽度
 - 可以给块级元素设置宽高、内边距、外边距等盒模型属性；
 - 块级元素可以包含块级元素和行内元素；
-- 常见的块级元素有：<div>、<h1> ~ <h6>、<p>、<ul>、<ol>、<dl>、<table>、<address>
+- 常见的块级元素有：`<div>、<h1> ~ <h6>、<p>、<ul>、<ol>、<dl>、<table>、<address>、<form>` 等。
 
-    <form> 等。
+
 
 **行内元素（inline）**
 
 - 默认与其他元素在同一行，不产生换行，只会占领自身宽高所需要的空间；
 - 给行内元素设置宽高不会起作用，margin 值只对左右起作用，padding 值也只对左右起作用；
 - 行内元素一般不可以包含块级元素，只能包含行内元素和文本；
-- 常见的行内元素有 <a>、<b>、<label>、<span>、<img>、<em>、<strong>、<i>、<input> 等。
+- 常见的行内元素有 `<a>、<b>、<label>、<span>、<img>、<em>、<strong>、<i>、<input>` 等。
 
 
 
-**属性（attribute）**  <br />  标签的额外信息，定制元素的行为。  <br />  `<img src="demo.jpg" width="500"> `
+**属性（attribute）**  <br />  标签的额外信息，定制元素的行为。  <br />  `<img src="demo.jpg" width="500">`
 
 - 以名称/值对的形式出现，使用空格与标签名和其他属性分隔
 - 在 HTML 元素的开始标签中规定。
@@ -72,16 +71,16 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)
 ## 基本标签（Basic Tags）
 | 标签 | 描述 |
 | --- | --- |
-| [<!DOCTYPE>](https://www.w3school.com.cn/tags/tag_doctype.asp)  | 定义文档类型。 |
-| [<html>](https://www.w3school.com.cn/tags/tag_html.asp) | 定义 HTML 文档 |
-| [<title>](https://www.w3school.com.cn/tags/tag_title.asp) | 文档的标题 |
-| [<body>](https://www.w3school.com.cn/tags/tag_body.asp) | 文档的主体 |
-| [<h1> to <h6>](https://www.w3school.com.cn/tags/tag_hn.asp) | Heading |
-| <hgroup> | 包围多级标题组 |
-| [<p>](https://www.w3school.com.cn/tags/tag_p.asp) | Paragraph |
-| [<br>](https://www.w3school.com.cn/tags/tag_br.asp) | 折行 |
-| [<hr>](https://www.w3school.com.cn/tags/tag_hr.asp) | horizontal line |
-| [<!--...-->](https://www.w3school.com.cn/tags/tag_comment.asp) | Comment |
+| `[<!DOCTYPE>](https://www.w3school.com.cn/tags/tag_doctype.asp)` | 定义文档类型。 |
+| `[<html>](https://www.w3school.com.cn/tags/tag_html.asp)` | 定义 HTML 文档 |
+| `[<title>](https://www.w3school.com.cn/tags/tag_title.asp)` | 文档的标题 |
+| `[<body>](https://www.w3school.com.cn/tags/tag_body.asp)` | 文档的主体 |
+| `[<h1> to <h6>](https://www.w3school.com.cn/tags/tag_hn.asp)` | Heading |
+| `<hgroup>` | 包围多级标题组 |
+| `[<p>](https://www.w3school.com.cn/tags/tag_p.asp)` | Paragraph |
+| `[<br>](https://www.w3school.com.cn/tags/tag_br.asp)` | 折行 |
+| `[<hr>](https://www.w3school.com.cn/tags/tag_hr.asp)` | horizontal line |
+| `[<!--...-->](https://www.w3school.com.cn/tags/tag_comment.asp)` | Comment |
 
 ```html
 <hgroup>
@@ -98,29 +97,29 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)
 <hr> （水平线）
 <!-- 这是注释 -->
 ```
-`<html>`：网页的顶层容器，即标签树结构的顶层节点，根元素（root element），其他元素都是它的子元素。  <br />  一个网页只能有一个<html>标签。
+`<html>`：网页的顶层容器，即标签树结构的顶层节点，根元素（root element），其他元素都是它的子元素。  <br />  一个网页只能有一个`<html>`标签。
 
 
 ## 元信息 (Metadata)
 | 标签 | 描述 |
 | --- | --- |
-| [<head>](https://www.w3school.com.cn/tags/tag_head.asp) | 定义关于文档的信息。 |
-| [<meta>](https://www.w3school.com.cn/tags/tag_meta.asp) | metadata |
-| [<base>](https://www.w3school.com.cn/tags/tag_base.asp) | 定义页面中所有链接的默认地址或默认目标。 |
+| `[<head>](https://www.w3school.com.cn/tags/tag_head.asp)` | 定义关于文档的信息。 |
+| `[<meta>](https://www.w3school.com.cn/tags/tag_meta.asp)` | metadata |
+| `[<base>](https://www.w3school.com.cn/tags/tag_base.asp)` | 定义页面中所有链接的默认地址或默认目标。 |
 
-<head>：一个容器标签，用于放置网页的元信息。它的内容不会出现在网页上，而是为网页渲染提供额外信息。
+`<head>`：一个容器标签，用于放置网页的元信息。它的内容不会出现在网页上，而是为网页渲染提供额外信息。
 
-- <meta>：设置网页的元数据。
-   - charset：指定网页的编码方式	
+- `<meta>`：设置网页的元数据。 
+   - charset：指定网页的编码方式
    - name：表示元数据的名字
    - content：表示元数据的值
    - http-equiv：覆盖 HTTP 回应的头信息字段
-- <link>：连接外部样式表。
-- <title>：设置网页标题。
-- <style>：放置内嵌的样式表。
-- <script>：引入脚本。
-- <noscript>：浏览器不支持脚本时，所要显示的内容。
-- <base>：设置网页内部相对 URL 的计算基准。
+- `<link>`：连接外部样式表。
+- `<title>`：设置网页标题。
+- `<style>`：放置内嵌的样式表。
+- `<script>`：引入脚本。
+- `<noscript>`：浏览器不支持脚本时，所要显示的内容。
+- `<base>`：设置网页内部相对 URL 的计算基准。
 
 
 
@@ -128,39 +127,39 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)
 ## 文本格式化（Formatting）
 | 标签 | 描述 |
 | --- | --- |
-| [<acronym>](https://www.w3school.com.cn/tags/tag_acronym.asp) | 定义只取首字母的缩写。 |
-| [<abbr>](https://www.w3school.com.cn/tags/tag_abbr.asp) | abbreviations |
-| [<address>](https://www.w3school.com.cn/tags/tag_address.asp) | 定义文档作者或拥有者的联系信息。 |
-| [<b>](https://www.w3school.com.cn/tags/tag_font_style.asp) | bold |
-| [<bdi>](https://www.w3school.com.cn/tags/tag_bdi.asp) | 定义文本的文本方向，使其脱离其周围文本的方向设置。 |
-| [<bdo>](https://www.w3school.com.cn/tags/tag_bdo.asp) | bi-directional override |
-| [<big>](https://www.w3school.com.cn/tags/tag_font_style.asp) | 定义大号文本。 |
-| [<blockquote>](https://www.w3school.com.cn/tags/tag_blockquote.asp) | 定义长的引用。 |
-| [<cite>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp) | 定义引用(citation)。 |
-| [<code>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp) | 定义计算机代码文本。 |
-| [<del>](https://www.w3school.com.cn/tags/tag_del.asp) | delete |
-| [<dfn>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp) | definition project |
-| [<em>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp) | emphasize |
-| [<i>](https://www.w3school.com.cn/tags/tag_font_style.asp) | italics |
-| [<ins>](https://www.w3school.com.cn/tags/tag_ins.asp) | insert |
-| [<kbd>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp) | keyboard code |
-| [<mark>](https://www.w3school.com.cn/tags/tag_mark.asp) | 定义有记号的文本。 |
-| [<meter>](https://www.w3school.com.cn/tags/tag_meter.asp) | 定义预定义范围内的度量。 |
-| [<pre>](https://www.w3school.com.cn/tags/tag_pre.asp) | Preformatted text |
-| [<progress>](https://www.w3school.com.cn/tags/tag_progress.asp) | 定义任何类型的任务的进度。 |
-| [<q>](https://www.w3school.com.cn/tags/tag_q.asp) | 定义短的引用。 |
-| [<rp>](https://www.w3school.com.cn/tags/tag_rp.asp) | 定义若浏览器不支持 ruby 元素显示的内容。 |
-| [<rt>](https://www.w3school.com.cn/tags/tag_rt.asp) | 定义 ruby 注释的解释。 |
-| [<ruby>](https://www.w3school.com.cn/tags/tag_ruby.asp) | 定义 ruby 注释。 |
-| [<samp>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp) | 定义计算机代码样本。 |
-| [<small>](https://www.w3school.com.cn/tags/tag_font_style.asp) | 定义小号文本。 |
-| [<strong>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp) | 定义语气更为强烈的强调文本。 |
-| [<sup>](https://www.w3school.com.cn/tags/tag_sup.asp) | superscript |
-| [<sub>](https://www.w3school.com.cn/tags/tag_sub.asp) | subscript |
-| [<time>](https://www.w3school.com.cn/tags/tag_time.asp) | 定义日期/时间。 |
-| [<tt>](https://www.w3school.com.cn/tags/tag_font_style.asp) | 定义打字机文本。 |
-| [<var>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp) | variable |
-| [<wbr>](https://www.w3school.com.cn/tags/tag_wbr.asp) | 定义可能的换行符。 |
+| `[<acronym>](https://www.w3school.com.cn/tags/tag_acronym.asp)` | 定义只取首字母的缩写。 |
+| `[<abbr>](https://www.w3school.com.cn/tags/tag_abbr.asp)` | abbreviations |
+| `[<address>](https://www.w3school.com.cn/tags/tag_address.asp)` | 定义文档作者或拥有者的联系信息。 |
+| `[<b>](https://www.w3school.com.cn/tags/tag_font_style.asp)` | bold |
+| `[<bdi>](https://www.w3school.com.cn/tags/tag_bdi.asp)` | 定义文本的文本方向，使其脱离其周围文本的方向设置。 |
+| `[<bdo>](https://www.w3school.com.cn/tags/tag_bdo.asp)` | bi-directional override |
+| `[<big>](https://www.w3school.com.cn/tags/tag_font_style.asp)` | 定义大号文本。 |
+| `[<blockquote>](https://www.w3school.com.cn/tags/tag_blockquote.asp)` | 定义长的引用。 |
+| `[<cite>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp)` | 定义引用(citation)。 |
+| `[<code>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp)` | 定义计算机代码文本。 |
+| `[<del>](https://www.w3school.com.cn/tags/tag_del.asp)` | delete |
+| `[<dfn>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp)` | definition project |
+| `[<em>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp)` | emphasize |
+| `[<i>](https://www.w3school.com.cn/tags/tag_font_style.asp)` | italics |
+| `[<ins>](https://www.w3school.com.cn/tags/tag_ins.asp)` | insert |
+| `[<kbd>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp)` | keyboard code |
+| `[<mark>](https://www.w3school.com.cn/tags/tag_mark.asp)` | 定义有记号的文本。 |
+| `[<meter>](https://www.w3school.com.cn/tags/tag_meter.asp)` | 定义预定义范围内的度量。 |
+| `[<pre>](https://www.w3school.com.cn/tags/tag_pre.asp)` | Preformatted text |
+| `[<progress>](https://www.w3school.com.cn/tags/tag_progress.asp)` | 定义任何类型的任务的进度。 |
+| `[<q>](https://www.w3school.com.cn/tags/tag_q.asp)` | 定义短的引用。 |
+| `[<rp>](https://www.w3school.com.cn/tags/tag_rp.asp)` | 定义若浏览器不支持 ruby 元素显示的内容。 |
+| `[<rt>](https://www.w3school.com.cn/tags/tag_rt.asp)` | 定义 ruby 注释的解释。 |
+| `[<ruby>](https://www.w3school.com.cn/tags/tag_ruby.asp)` | 定义 ruby 注释。 |
+| `[<samp>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp)` | 定义计算机代码样本。 |
+| `[<small>](https://www.w3school.com.cn/tags/tag_font_style.asp)` | 定义小号文本。 |
+| `[<strong>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp)` | 定义语气更为强烈的强调文本。 |
+| `[<sup>](https://www.w3school.com.cn/tags/tag_sup.asp)` | superscript |
+| `[<sub>](https://www.w3school.com.cn/tags/tag_sub.asp)` | subscript |
+| `[<time>](https://www.w3school.com.cn/tags/tag_time.asp)` | 定义日期/时间。 |
+| `[<tt>](https://www.w3school.com.cn/tags/tag_font_style.asp)` | 定义打字机文本。 |
+| `[<var>](https://www.w3school.com.cn/tags/tag_phrase_elements.asp)` | variable |
+| `[<wbr>](https://www.w3school.com.cn/tags/tag_wbr.asp)` | 定义可能的换行符。 |
 
 ```html
 <b>粗体文本</b>
@@ -184,14 +183,14 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)
 ```
 
 
-**<progress>属性**
+`**<progress>**`**属性**
 
 - max：进度条的最大值，应该是一个大于0的浮点数。默认值为1。
 - value：进度条的当前值。它必须是0和max属性之间的一个有效浮点数。如果省略了max属性，该值则必须在0和1之间。如果省略了value属性，则进度条会出现滚动，表明正在进行中，无法知道完成的进度。
 
 `<progress id="file" max="100" value="70"> 70% </progress> `
 
-**<meter>属性**
+`**<meter>**`**属性**
 
 - min：范围的下限，必须小于max属性。如果省略，则默认为0。
 - max：范围的上限，必须大于min属性。如果省略，则默认为1。
@@ -214,11 +213,11 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)
 ## 链接（Links）
 | 标签 | 描述 |
 | --- | --- |
-| [<a>](https://www.w3school.com.cn/tags/tag_a.asp) | anchor |
-| [<link>](https://www.w3school.com.cn/tags/tag_link.asp) | 定义文档与外部资源的关系。 |
-| [<nav>](https://www.w3school.com.cn/tags/tag_nav.asp) | navigation |
-| [<script>](https://www.w3school.com.cn/tags/tag_script.asp) | 定义客户端脚本。 |
-| [<noscript>](https://www.w3school.com.cn/tags/tag_noscript.asp) | 定义针对不支持客户端脚本的用户的替代内容。 |
+| `[<a>](https://www.w3school.com.cn/tags/tag_a.asp)` | anchor |
+| `[<link>](https://www.w3school.com.cn/tags/tag_link.asp)` | 定义文档与外部资源的关系。 |
+| `[<nav>](https://www.w3school.com.cn/tags/tag_nav.asp)` | navigation |
+| `[<script>](https://www.w3school.com.cn/tags/tag_script.asp)` | 定义客户端脚本。 |
+| `[<noscript>](https://www.w3school.com.cn/tags/tag_noscript.asp)` | 定义针对不支持客户端脚本的用户的替代内容。 |
 
 ```html
 普通链接
@@ -229,7 +228,7 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)
 <link rel="stylesheet" type="text/css" href="theme.css">
 ```
 
-**<a>属性**
+`**<a>**`**属性**
 
 - href（hypertext reference）：指向URL或者锚点
 - alt（alter）：替用(一般是图片显示不出的提示)
@@ -238,7 +237,7 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)
 - target：指定如何展示打开的链接
    - _self：当前窗口打开，这是默认值。
    - _blank：新窗口打开。
-   - _parent：上层窗口打开，用于从父窗口打开的子窗口，或者<iframe>里面的链接。
+   - _parent：上层窗口打开，用于从父窗口打开的子窗口，或者`<iframe>`里面的链接。
    - _top：顶层窗口打开。
 - rel：说明链接与当前页面的关系。
    - alternate：当前文档的另一种形式，比如翻译。
@@ -272,7 +271,7 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)
 
 **电话链接**  <br />  唤起拨号界面，可以直接拨打指定号码。  <br />  `<a href="tel:13312345678">13312345678</a> `
 
-**<script>属性**
+`**<script>**`**属性**
 
 - type：给出脚本的类型，默认是 JavaScript 代码，可省略
 - async：指定 JavaScript 代码为异步执行，不是造成阻塞效果
@@ -291,18 +290,18 @@ Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)
 ## 样式/区块（Styles/Sections）
 | 标签 | 描述 |
 | --- | --- |
-| [<style>](https://www.w3school.com.cn/tags/tag_style.asp) | 定义文档的样式信息。 |
-| [<div>](https://www.w3school.com.cn/tags/tag_div.asp) | division |
-| [<span>](https://www.w3school.com.cn/tags/tag_span.asp) | 定义文档中的节。 |
-| [<header>](https://www.w3school.com.cn/tags/tag_header.asp) | 定义 section 或 page 的页眉。 |
-| [<footer>](https://www.w3school.com.cn/tags/tag_footer.asp) | 定义 section 或 page 的页脚。 |
-| <main> | 页面的主体内容 |
-| [<section>](https://www.w3school.com.cn/tags/tag_section.asp) | 定义 section。 |
-| [<article>](https://www.w3school.com.cn/tags/tag_article.asp) | 定义文章。 |
-| [<aside>](https://www.w3school.com.cn/tags/tag_aside.asp) | 定义页面内容之外的内容。 |
-| [<details>](https://www.w3school.com.cn/tags/tag_details.asp) | 定义元素的细节。 |
-| [<dialog>](https://www.w3school.com.cn/tags/tag_dialog.asp) | 定义对话框或窗口。 |
-| [<summary>](https://www.w3school.com.cn/tags/tag_summary.asp) | 为 <details> 元素定义可见的标题。 |
+| `[<style>](https://www.w3school.com.cn/tags/tag_style.asp)` | 定义文档的样式信息。 |
+| `[<div>](https://www.w3school.com.cn/tags/tag_div.asp)` | division |
+| `[<span>](https://www.w3school.com.cn/tags/tag_span.asp)` | 定义文档中的节。 |
+| `[<header>](https://www.w3school.com.cn/tags/tag_header.asp)` | 定义 section 或 page 的页眉。 |
+| `[<footer>](https://www.w3school.com.cn/tags/tag_footer.asp)` | 定义 section 或 page 的页脚。 |
+| `<main>` | 页面的主体内容 |
+| `[<section>](https://www.w3school.com.cn/tags/tag_section.asp)` | 定义 section。 |
+| `[<article>](https://www.w3school.com.cn/tags/tag_article.asp)` | 定义文章。 |
+| `[<aside>](https://www.w3school.com.cn/tags/tag_aside.asp)` | 定义页面内容之外的内容。 |
+| `[<details>](https://www.w3school.com.cn/tags/tag_details.asp)` | 定义元素的细节。 |
+| `[<dialog>](https://www.w3school.com.cn/tags/tag_dialog.asp)` | 定义对话框或窗口。 |
+| `[<summary>](https://www.w3school.com.cn/tags/tag_summary.asp)` | 为 `<details>`元素定义可见的标题 |
 
 ```html
 <body>
@@ -351,18 +350,18 @@ p {color:blue;}
 ## 列表（List）
 | 标签 | 描述 |
 | --- | --- |
-| [<ul>](https://www.w3school.com.cn/tags/tag_ul.asp) | Unordered list |
-| [<ol>](https://www.w3school.com.cn/tags/tag_ol.asp) | ordered list |
-| [<li>](https://www.w3school.com.cn/tags/tag_li.asp) | list items |
-| [<dl>](https://www.w3school.com.cn/tags/tag_dl.asp) | description list |
-| [<dt>](https://www.w3school.com.cn/tags/tag_dt.asp) | description term |
-| [<dd>](https://www.w3school.com.cn/tags/tag_dd.asp) | description detail |
-| [<menu>](https://www.w3school.com.cn/tags/tag_menu.asp) | 定义命令的菜单/列表。 |
-| [<menuitem>](https://www.w3school.com.cn/tags/tag_menuitem.asp) | 定义用户可以从弹出菜单调用的命令/菜单项目。 |
-| [<command>](https://www.w3school.com.cn/tags/tag_command.asp) | 定义命令按钮。 |
+| `[<ul>](https://www.w3school.com.cn/tags/tag_ul.asp)` | Unordered list |
+| `[<ol>](https://www.w3school.com.cn/tags/tag_ol.asp)` | ordered list |
+| `[<li>](https://www.w3school.com.cn/tags/tag_li.asp)` | list items |
+| `[<dl>](https://www.w3school.com.cn/tags/tag_dl.asp)` | description list |
+| `[<dt>](https://www.w3school.com.cn/tags/tag_dt.asp)` | description term |
+| `[<dd>](https://www.w3school.com.cn/tags/tag_dd.asp)` | description detail |
+| `[<menu>](https://www.w3school.com.cn/tags/tag_menu.asp)` | 定义命令的菜单/列表。 |
+| `[<menuitem>](https://www.w3school.com.cn/tags/tag_menuitem.asp)` | 定义用户可以从弹出菜单调用的命令/菜单项目。 |
+| `[<command>](https://www.w3school.com.cn/tags/tag_command.asp)` | 定义命令按钮。 |
 
 
-<ol>属性
+`<ol>`属性
 
 - reversed：产生倒序的数字列表
 - start：表示数字列表的起始编号
@@ -373,7 +372,7 @@ p {color:blue;}
    - I：大写罗马数字
    - 1：整数（默认值）
 
-<li>value属性：定义当前列表项的编号，后面列表项会从这个值开始编号
+`<li>` value属性：定义当前列表项的编号，后面列表项会从这个值开始编号
 ```html
 无序列表
 <ul>
@@ -404,24 +403,24 @@ p {color:blue;}
 ## 表格（Tables）
 | 标签 | 描述 |
 | --- | --- |
-| [<table>](https://www.w3school.com.cn/tags/tag_table.asp) | 定义表格 |
-| [<caption>](https://www.w3school.com.cn/tags/tag_caption.asp) | 定义表格标题。 |
-| [<th>](https://www.w3school.com.cn/tags/tag_th.asp) | 定义表格中的表头单元格。 |
-| [<tr>](https://www.w3school.com.cn/tags/tag_tr.asp) | table row |
-| [<td>](https://www.w3school.com.cn/tags/tag_td.asp) | table data |
-| [<thead>](https://www.w3school.com.cn/tags/tag_thead.asp) | 定义表格中的表头内容。 |
-| [<tbody>](https://www.w3school.com.cn/tags/tag_tbody.asp) | 定义表格中的主体内容。 |
-| [<tfoot>](https://www.w3school.com.cn/tags/tag_tfoot.asp) | 定义表格中的表注内容（脚注）。 |
-| [<col>](https://www.w3school.com.cn/tags/tag_col.asp) | column |
-| [<colgroup>](https://www.w3school.com.cn/tags/tag_colgroup.asp) | 定义表格中供格式化的列组。 |
+| `[<table>](https://www.w3school.com.cn/tags/tag_table.asp)` | 定义表格 |
+| `[<caption>](https://www.w3school.com.cn/tags/tag_caption.asp)` | 定义表格标题。 |
+| `[<th>](https://www.w3school.com.cn/tags/tag_th.asp)` | 定义表格中的表头单元格。 |
+| `[<tr>](https://www.w3school.com.cn/tags/tag_tr.asp)` | table row |
+| `[<td>](https://www.w3school.com.cn/tags/tag_td.asp)` | table data |
+| `[<thead>](https://www.w3school.com.cn/tags/tag_thead.asp)` | 定义表格中的表头内容。 |
+| `[<tbody>](https://www.w3school.com.cn/tags/tag_tbody.asp)` | 定义表格中的主体内容。 |
+| `[<tfoot>](https://www.w3school.com.cn/tags/tag_tfoot.asp)` | 定义表格中的表注内容（脚注） |
+| `[<col>](https://www.w3school.com.cn/tags/tag_col.asp)` | column |
+| `[<colgroup>](https://www.w3school.com.cn/tags/tag_colgroup.asp)` | 定义表格中供格式化的列组。 |
 
 
-<col>span属性：默认为1。如果大于1，表示该列的宽度包含连续的多列。  <br />  <th> & <td>
+`<col>` span属性：默认为1。如果大于1，表示该列的宽度包含连续的多列。  <br />  `<th> & <td>`
 
 - colspan
 - rowspan
-- headers：对应<th>标签的id属性的值
-- scope：表示该<th>单元格到底是栏的标题，还是列的标题。
+- headers：对应`<th>`标签的id属性的值
+- scope：表示该`<th>`单元格到底是栏的标题，还是列的标题。
    - row：该行的所有单元格，都与该标题单元格相关。
    - col：该列的所有单元格，都与该标题单元格相关。
    - rowgroup：多行组成的一个行组的所有单元格，都与该标题单元格相关，可以与rowspan属性配合使用。
@@ -490,21 +489,21 @@ p {color:blue;}
 ## 表单（Forms）
 | 标签 | 描述 |
 | --- | --- |
-| [<form>](https://www.w3school.com.cn/tags/tag_form.asp) | 定义供用户输入的 HTML 表单。 |
-| [<input>](https://www.w3school.com.cn/tags/tag_input.asp) | 定义输入控件。 |
-| [<textarea>](https://www.w3school.com.cn/tags/tag_textarea.asp) | 定义多行的文本输入控件。 |
-| [<button>](https://www.w3school.com.cn/tags/tag_button.asp) | 定义按钮。 |
-| [<select>](https://www.w3school.com.cn/tags/tag_select.asp) | 定义选择列表（下拉列表）。 |
-| [<optgroup>](https://www.w3school.com.cn/tags/tag_optgroup.asp) | 定义选择列表中相关选项的组合。 |
-| [<option>](https://www.w3school.com.cn/tags/tag_option.asp) | 定义选择列表中的选项。 |
-| [<label>](https://www.w3school.com.cn/tags/tag_label.asp) | 定义 input 元素的标注。 |
-| [<fieldset>](https://www.w3school.com.cn/tags/tag_fieldset.asp) | 定义围绕表单中元素的边框。 |
-| [<legend>](https://www.w3school.com.cn/tags/tag_legend.asp) | 定义 fieldset 元素的标题。 |
-| [<datalist>](https://www.w3school.com.cn/tags/tag_datalist.asp) | 定义下拉列表。 |
-| [<keygen>](https://www.w3school.com.cn/tags/tag_keygen.asp) | 定义生成密钥。 |
-| [<output>](https://www.w3school.com.cn/tags/tag_output.asp) | 定义输出的一些类型。 |
+| `[<form>](https://www.w3school.com.cn/tags/tag_form.asp)` | 定义供用户输入的 HTML 表单。 |
+| `[<input>](https://www.w3school.com.cn/tags/tag_input.asp)` | 定义输入控件。 |
+| `[<textarea>](https://www.w3school.com.cn/tags/tag_textarea.asp)` | 定义多行的文本输入控件。 |
+| `[<button>](https://www.w3school.com.cn/tags/tag_button.asp)` | 定义按钮。 |
+| `[<select>](https://www.w3school.com.cn/tags/tag_select.asp)` | 定义选择列表（下拉列表）。 |
+| `[<optgroup>](https://www.w3school.com.cn/tags/tag_optgroup.asp)` | 定义选择列表中相关选项的组合。 |
+| `[<option>](https://www.w3school.com.cn/tags/tag_option.asp)` | 定义选择列表中的选项。 |
+| `[<label>](https://www.w3school.com.cn/tags/tag_label.asp)` | 定义 input 元素的标注。 |
+| `[<fieldset>](https://www.w3school.com.cn/tags/tag_fieldset.asp)` | 定义围绕表单中元素的边框。 |
+| `[<legend>](https://www.w3school.com.cn/tags/tag_legend.asp)` | 定义 fieldset 元素的标题。 |
+| `[<datalist>](https://www.w3school.com.cn/tags/tag_datalist.asp)` | 定义下拉列表。 |
+| `[<keygen>](https://www.w3school.com.cn/tags/tag_keygen.asp)` | 定义生成密钥。 |
+| `[<output>](https://www.w3school.com.cn/tags/tag_output.asp)` | 定义输出的一些类型。 |
 
-**<form>属性**
+`**<form>**`**属性**
 
 - accept-charset：服务器接受的字符编码列表，使用空格分隔，默认与网页编码相同。
 - action：服务器接收数据的 URL。
@@ -514,7 +513,7 @@ p {color:blue;}
 - method：提交数据的 HTTP 方法
    - post（表单数据作为 HTTP 数据体发送）
    - get（表单数据作为 URL 的查询字符串发送）
-   - dialog（表单位于<dialog>内部使用）
+   - dialog（表单位于`<dialog>`内部使用）
 - enctype：当method属性等于post时，该属性指定提交给服务器的 MIME 类型。
    - application/x-www-form-urlencoded（默认值）
    - multipart/form-data（文件上传的情况）
@@ -537,10 +536,10 @@ p {color:blue;}
 </form>
 ```
 
-**<fieldset>属性**
+`**<fieldset>**`**属性**
 
-- disabled：布尔属性，一旦设置会使得<fieldset>内部包含的控件都不可用，都变成灰色状态。
-- form：指定控件组所属的<form>，它的值等于<form>的id属性。
+- disabled：布尔属性，一旦设置会使得`<fieldset>`内部包含的控件都不可用，都变成灰色状态。
+- form：指定控件组所属的`<form>`，它的值等于`<form>`的id属性。
 - name：该控件组的名称。
 ```html
 <form>
@@ -552,17 +551,17 @@ p {color:blue;}
 </form>
 ```
 
-**<label>属性**
+`**<label>**`**属性**
 
 - for：关联控件的id属性。
-- form：关联表单的id属性。设置了该属性后，<label>可以放置在页面的任何位置，否则只能放在<form>内部。
+- form：关联表单的id属性。设置了该属性后，`<label>`可以放置在页面的任何位置，否则只能放在`<form>`内部。
 
-**<input>属性**
+`**<input>**`**属性**
 
 - autofocus：布尔属性，是否在页面加载时自动获得焦点。
 - disabled：布尔属性，是否禁用该控件。一旦设置，该控件将变灰，用户可以看到，但是无法操作。
-- form：关联表单的id属性。设置了该属性后，控件可以放置在页面的任何位置，否则只能放在<form>内部。
-- list：关联的<datalist>的id属性，设置该控件相关的数据列表
+- form：关联表单的id属性。设置了该属性后，控件可以放置在页面的任何位置，否则只能放在`<form>`内部。
+- list：关联的`<datalist>`的id属性，设置该控件相关的数据列表
 - name：控件的名称，主要用于向服务器提交数据时，控件键值对的键名。
 - readonly：布尔属性，是否为只读。
 - required：布尔属性，是否为必填。
@@ -594,7 +593,7 @@ button	没有默认行为的按钮，通过脚本指定click事件的监听函�
 reset	重置按钮  <br />  checkbox	复选框  <br />  radio	单选框
 
 - checked：布尔属性，表示是否默认选中当前项。
-- value：用户选中该项时，提交到服务器的值，默认为on'。
+- value：用户选中该项时，提交到服务器的值，默认为on。
 ```html
 <fieldset>
   <legend>你的兴趣</legend>
@@ -659,7 +658,7 @@ number	数字输入框，只能输入数字  <br />  range	滑块
          min="0" max="11">
 ```
 
-**<button>	属性**
+`**<button>**`**	属性**
 
 - autofocus：布尔属性，表示网页加载时，焦点就在这个按钮。
 - disabled：布尔属性，表示按钮不可用，会导致按钮变灰，不可点击。
@@ -669,14 +668,14 @@ number	数字输入框，只能输入数字  <br />  range	滑块
    - submit（点击后将数据提交给服务器）
    - reset（将所有控件的值重置为初始值）
    - button（没有默认行为，由脚本指定按钮的行为）
-- formaction：数据提交到服务器的目标 URL，会覆盖<form>元素的action属性。
-- formenctype：数据提交到服务器的编码方式，会覆盖<form>元素的enctype属性。
+- formaction：数据提交到服务器的目标 URL，会覆盖`<form>`元素的action属性。
+- formenctype：数据提交到服务器的编码方式，会覆盖`<form>`元素的enctype属性。
    - application/x-www-form-urlencoded（默认值）
    - multipart/form-data（只用于文件上传）
    - text/plain。
 - formmethod：数据提交到服务器使用的 HTTP 方法(post或get)。
-- formnovalidate：布尔属性，数据提交到服务器时关闭本地验证，会覆盖<form>元素的novalidate属性。
-- formtarget：数据提交到服务器后，展示服务器返回数据的窗口，会覆盖<form>元素的target属性。
+- formnovalidate：布尔属性，数据提交到服务器时关闭本地验证，会覆盖`<form>`元素的novalidate属性。
+- formtarget：数据提交到服务器后，展示服务器返回数据的窗口，会覆盖`<form>`元素的target属性。
    - _self（当前窗口）
    - _blank（新的空窗口）
    - _parent（父窗口）
@@ -687,7 +686,7 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 </button>
 ```
 
-**<select>属性**
+`**<select>**`**属性**
 
 - autofocus：布尔属性，页面加载时是否自动获得焦点。
 - disabled：布尔属性，是否禁用当前控件。
@@ -708,7 +707,7 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 ```
 
 
-**<option>属性**
+`**<option>**`**属性**
 
 - disabled：布尔属性，是否禁用该项。
 - label：该项的说明。如果省略，则等于该项的文本内容。
@@ -729,7 +728,7 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 </label>
 ```
 
-**<textarea>属性**
+`**<textarea>**`**属性**
 
 - autofocus：布尔属性，是否自动获得焦点。
 - cols：文本框的宽度，单位为字符，默认值为20。
@@ -754,7 +753,7 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 </textarea>
 ```
 
-**<output>属性**
+`**<output>**`**属性**
 
 - for：关联控件的id属性，表示为该控件的操作结果。
 - form：关联表单的id属性。
@@ -770,13 +769,13 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 ## 框架（Iframe）
 | 标签 | 描述 |
 | --- | --- |
-| [<frame>](https://www.w3school.com.cn/tags/tag_frame.asp) | 定义框架集的窗口或框架。Inline frame |
-| [<frameset>](https://www.w3school.com.cn/tags/tag_frameset.asp) | 定义框架集。 |
-| [<noframes>](https://www.w3school.com.cn/tags/tag_noframes.asp) | 定义针对不支持框架的用户的替代内容。 |
-| [<iframe>](https://www.w3school.com.cn/tags/tag_iframe.asp) | 定义内联框架。 |
+| `[<frame>](https://www.w3school.com.cn/tags/tag_frame.asp)` | 定义框架集的窗口或框架。Inline frame |
+| `[<frameset>](https://www.w3school.com.cn/tags/tag_frameset.asp)` | 定义框架集。 |
+| `[<noframes>](https://www.w3school.com.cn/tags/tag_noframes.asp)` | 定义针对不支持框架的用户的替代内容。 |
+| `[<iframe>](https://www.w3school.com.cn/tags/tag_iframe.asp)` | 定义内联框架。 |
 
 
-<iframe>属性
+`<iframe>`属性
 
 - allowfullscreen：允许嵌入的网页全屏显示，需要全屏 API 的支持
 - frameborder：是否绘制边框，0为不绘制，1为绘制（默认值）。建议在 CSS 里面设置样式。
@@ -787,16 +786,16 @@ number	数字输入框，只能输入数字  <br />  range	滑块
    - high	高优先级
    - low	低优先级
    - auto	由浏览器自行决定。
-- name：内嵌窗口的名称，可以用于<a>、<form>、<base>的target属性。
+- name：内嵌窗口的名称，可以用于`<a>、<form>、<base>`的target属性。
 - referrerpolicy：请求嵌入网页时，HTTP 请求的Referer字段的设置。
 - loading
    - auto：浏览器的默认行为，与不使用loading属性效果相同。
-   - lazy：<iframe>的懒加载，即将滚动进入视口时开始加载。
+   - lazy：`<iframe>`的懒加载，即将滚动进入视口时开始加载。
    - eager：立即加载资源，无论在页面上的位置如何。
 - sandbox：设置嵌入的网页的权限
    - allow-forms：允许提交表单。
-   - allow-modals：允许提示框，即允许执行window.alert()等会产生弹出提示框的 JavaScript 方法。
-   - allow-popups：允许嵌入的网页使用window.open()方法弹出窗口。
+   - allow-modals：允许提示框，即允许执行`window.alert()`等会产生弹出提示框的 JavaScript 方法。
+   - allow-popups：允许嵌入的网页使用`window.open()`方法弹出窗口。
    - allow-popups-to-escape-sandbox：允许弹出窗口不受沙箱的限制。
    - allow-orientation-lock：允许嵌入的网页用脚本锁定屏幕的方向，即横屏或竖屏。
    - allow-pointer-lock：允许嵌入的网页使用 Pointer Lock API，锁定鼠标的移动。
@@ -820,16 +819,16 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 
 | 标签 | 描述 |
 | --- | --- |
-| [<img>](https://www.w3school.com.cn/tags/tag_img.asp) | image |
-| [<map>](https://www.w3school.com.cn/tags/tag_map.asp) | 定义图像映射。 |
-| [<area>](https://www.w3school.com.cn/tags/tag_area.asp) | 定义图像地图内部的区域。 |
-| [<canvas>](https://www.w3school.com.cn/tags/tag_canvas.asp) | 定义图形。 |
-| [<figcaption>](https://www.w3school.com.cn/tags/tag_figcaption.asp) | 定义 figure 元素的标题。 |
-| [<figure>](https://www.w3school.com.cn/tags/tag_figure.asp) | 定义媒介内容的分组，以及它们的标题。 |
-| <picture> | 容器标签 |
+| `[<img>](https://www.w3school.com.cn/tags/tag_img.asp)` | image |
+| `[<map>](https://www.w3school.com.cn/tags/tag_map.asp)` | 定义图像映射。 |
+| `[<area>](https://www.w3school.com.cn/tags/tag_area.asp)` | 定义图像地图内部的区域。 |
+| `[<canvas>](https://www.w3school.com.cn/tags/tag_canvas.asp)` | 定义图形。 |
+| `[<figcaption>](https://www.w3school.com.cn/tags/tag_figcaption.asp)` | 定义 figure 元素的标题。 |
+| `[<figure>](https://www.w3school.com.cn/tags/tag_figure.asp)` | 定义媒介内容的分组，以及它们的标题。 |
+| `<picture>` | 容器标签 |
 
 
-**<img> 属性**
+`**<img>**`** 属性**
 
 - src（source）：图像的 URL 地址
 - alt：为图像定义一串预备的可替换的文本
@@ -876,16 +875,16 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 ## 影音 (Multimedia)
 | 标签 | 描述 |
 | --- | --- |
-| [<audio>](https://www.w3school.com.cn/tags/tag_audio.asp) | 定义声音内容。 |
-| [<source>](https://www.w3school.com.cn/tags/tag_source.asp) | 定义媒介源。 |
-| [<track>](https://www.w3school.com.cn/tags/tag_track.asp) | 定义用在媒体播放器中的文本轨道。 |
-| [<video>](https://www.w3school.com.cn/tags/tag_video.asp) | 定义视频。 |
-| [<embed>](https://www.w3school.com.cn/tags/tag_embed.asp) | 为外部应用程序（非 HTML）定义容器。 |
-| [<object>](https://www.w3school.com.cn/tags/tag_object.asp) | 定义嵌入的对象。 |
-| [<param>](https://www.w3school.com.cn/tags/tag_param.asp) | 定义对象的参数。 |
+| `[<audio>](https://www.w3school.com.cn/tags/tag_audio.asp)` | 定义声音内容。 |
+| `[<source>](https://www.w3school.com.cn/tags/tag_source.asp)` | 定义媒介源。 |
+| `[<track>](https://www.w3school.com.cn/tags/tag_track.asp)` | 定义用在媒体播放器中的文本轨道。 |
+| `[<video>](https://www.w3school.com.cn/tags/tag_video.asp)` | 定义视频。 |
+| `[<embed>](https://www.w3school.com.cn/tags/tag_embed.asp)` | 为外部应用程序（非 HTML）定义容器。 |
+| `[<object>](https://www.w3school.com.cn/tags/tag_object.asp)` | 定义嵌入的对象。 |
+| `[<param>](https://www.w3school.com.cn/tags/tag_param.asp)` | 定义对象的参数。 |
 
 
-<video>属性
+`<video>`属性
 
 - src：视频文件的网址。
 - controls：播放器是否显示控制栏。
@@ -912,7 +911,7 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 </video>
 ```
 
-<audio>属性
+`<audio>`属性
 
 - autoplay：是否自动播放，布尔属性。
 - controls：是否显示播放工具栏，布尔属性。如果不设置，浏览器不显示播放界面，通常用于背景音乐。
@@ -929,7 +928,7 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 </audio>
 ```
 
-<track>属性
+`<track>`属性
 
 - label：播放器显示的字幕名称，供用户选择。
 - kind：字幕的类型
@@ -939,17 +938,15 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 - srclang：字幕的语言，必须是有效的语言代码。
 - default：是否默认打开，布尔属性。
 
-<source>属性
+`<source>`属性
 
 - type：指定外部资源的 MIME 类型。
-- src：指定源文件，用于<video>和<audio>。
-- srcset：指定不同条件下加载的图像文件，用于<picture>。
-- media：指定媒体查询表达式，用于<picture>。
-- sizes：指定不同设备的显示大小，用于<picture>，必须跟srcset搭配使用。
+- src：指定源文件，用于`<video>、<audio>`。
+- srcset：指定不同条件下加载的图像文件，用于`<picture>`。
+- media：指定媒体查询表达式，用于`<picture>`。
+- sizes：指定不同设备的显示大小，用于`<picture>`，必须跟srcset搭配使用。
 
-
-
-<embed>属性
+`<embed>`属性
 
 - height：显示高度，单位为像素，不允许百分比。
 - width：显示宽度，单位为像素，不允许百分比。
@@ -962,7 +959,7 @@ number	数字输入框，只能输入数字  <br />  range	滑块
        height="200">
 ```
 
-<object>属性
+`<object>`属性
 
 - data：嵌入的资源的 URL。
 - form：当前网页中相关联表单的id属性（如果有的话）。
@@ -982,8 +979,8 @@ number	数字输入框，只能输入数字  <br />  range	滑块
 
 **码点表示法**  <br />  每个字符有一个 Unicode 号码，称为码点（code point）
 
-- &#N;（十进制，N代表码点）
-- &#xN;（十六进制，N代表码点）
+- `&#N;`（十进制，N代表码点）
+- `&#xN;`（十六进制，N代表码点）
 
 **实体表示法（entity）**  <br />  HTML 为一些特殊字符，规定了容易记忆的名字，允许通过名字来表示它们
 
@@ -1049,33 +1046,31 @@ lang属性的值，必须符合 BCP47 的标准。
 
 # 网页元素接口
 
-
-
-## <a>
+## `<a>`
 除了网页元素的通用接口（Node接口、Element接口、HTMLElement接口），它还继承了HTMLAnchorElement接口和HTMLHyperlinkElementUtils接口。
 
 [属性](https://wangdoc.com/javascript/elements/a.html#%E5%B1%9E%E6%80%A7)
 
 - [URL 相关属性](https://wangdoc.com/javascript/elements/a.html#url-%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7)
-- [accessKey](https://wangdoc.com/javascript/elements/a.html#accesskey-%E5%B1%9E%E6%80%A7)	读写<a>元素的快捷键
-- [download](https://wangdoc.com/javascript/elements/a.html#download-%E5%B1%9E%E6%80%A7)表示当前链接不是用来浏览，而是用来下载
-- [hreflang](https://wangdoc.com/javascript/elements/a.html#hreflang-%E5%B1%9E%E6%80%A7)表示链接指向的资源的语言
+- [accessKey](https://wangdoc.com/javascript/elements/a.html#accesskey-%E5%B1%9E%E6%80%A7)	读写`<a>`元素的快捷键
+- [download](https://wangdoc.com/javascript/elements/a.html#download-%E5%B1%9E%E6%80%A7) 当前链接不是用来浏览，而是用来下载
+- [hreflang](https://wangdoc.com/javascript/elements/a.html#hreflang-%E5%B1%9E%E6%80%A7) 指向的资源的语言
 - [referrerPolicy 属性](https://wangdoc.com/javascript/elements/a.html#referrerpolicy-%E5%B1%9E%E6%80%A7)
-- [rel](https://wangdoc.com/javascript/elements/a.html#rel-%E5%B1%9E%E6%80%A7)链接与当前文档的关系
+- [rel](https://wangdoc.com/javascript/elements/a.html#rel-%E5%B1%9E%E6%80%A7) 链接与当前文档的关系
 - [tabIndex](https://wangdoc.com/javascript/elements/a.html#tabindex-%E5%B1%9E%E6%80%A7) Tab 键遍历顺序
 - [target 属性](https://wangdoc.com/javascript/elements/a.html#target-%E5%B1%9E%E6%80%A7)
 - [text 属性](https://wangdoc.com/javascript/elements/a.html#text-%E5%B1%9E%E6%80%A7)
-- [type](https://wangdoc.com/javascript/elements/a.html#type-%E5%B1%9E%E6%80%A7)接目标的 MIME 类型
+- [type](https://wangdoc.com/javascript/elements/a.html#type-%E5%B1%9E%E6%80%A7) 接目标的 MIME 类型
 
 
-## [<img>](https://wangdoc.com/javascript/elements/image.html)
+## `[<img>](https://wangdoc.com/javascript/elements/image.html)`
 继承了 HTMLImageElement 接口
 
 - HTMLImageElement.src	图像的完整网址
 - HTMLImageElement.currentSrc	当前正在展示的图像的网址
 - HTMLImageElement.alt	读写对图片的文字说明。
 - HTMLImageElement.isMap	图像是否为服务器端的图像映射的一部分。
-- HTMLImageElement.useMap	图像对应的<map>元素。
+- HTMLImageElement.useMap	图像对应的`<map>`元素。
 - HTMLImageElement.srcset，HTMLImageElement.sizes
 - [HTMLImageElement.width，HTMLImageElement.height](https://wangdoc.com/javascript/elements/image.html#htmlimageelementwidth%EF%BC%8Chtmlimageelementheight)
 - [HTMLImageElement.naturalWidth，HTMLImageElement.naturalHeight](https://wangdoc.com/javascript/elements/image.html#htmlimageelementnaturalwidth%EF%BC%8Chtmlimageelementnaturalheight)
@@ -1085,7 +1080,7 @@ lang属性的值，必须符合 BCP47 的标准。
 - [HTMLImageElement.x，HTMLImageElement.y](https://wangdoc.com/javascript/elements/image.html#htmlimageelementx%EF%BC%8Chtmlimageelementy)
 
 
-## [<form>](https://wangdoc.com/javascript/elements/form.html)
+## `[<form>](https://wangdoc.com/javascript/elements/form.html)`
 继承了 HTMLFormElement 接口
 
 属性
@@ -1098,7 +1093,7 @@ lang属性的值，必须符合 BCP47 的标准。
 - action：字符串，表示表单提交数据的 URL。
 - enctype（或encoding）：字符串，表示表单提交数据的编码方法，可能的值有application/x-www-form-urlencoded、multipart/form-data和text/plain。
 - acceptCharset：字符串，表示服务器所能接受的字符编码，多个编码格式之间使用逗号或空格分隔。
-- autocomplete：字符串on或off，表示浏览器是否要对<input>控件提供自动补全。
+- autocomplete：字符串on或off，表示浏览器是否要对`<input>`控件提供自动补全。
 - noValidate：布尔值，表示是否关闭表单的自动校验。
 
 方法
@@ -1110,24 +1105,24 @@ lang属性的值，必须符合 BCP47 的标准。
 
 
 
-## [<input>](https://wangdoc.com/javascript/elements/input.html)
+## `[<input>](https://wangdoc.com/javascript/elements/input.html)`
 HTMLInputElement 接口
 
 [特征属性](https://wangdoc.com/javascript/elements/input.html#%E7%89%B9%E5%BE%81%E5%B1%9E%E6%80%A7)
 
-- name：字符串，表示<input>节点的名称。该属性可读写。
-- type：字符串，表示<input>节点的类型。该属性可读写。
-- disabled：布尔值，表示<input>节点是否禁止使用。一旦被禁止使用，表单提交时不会包含该<input>节点。该属性可读写。
+- name：字符串，节点的名称。该属性可读写。
+- type：字符串，节点的类型。该属性可读写。
+- disabled：布尔值，节点是否禁止使用。一旦被禁止使用，表单提交时不会包含该节点。该属性可读写。
 - autofocus：布尔值，表示页面加载时，该元素是否会自动获得焦点。该属性可读写。
-- required：布尔值，表示表单提交时，该<input>元素是否必填。该属性可读写。
-- value：字符串，表示该<input>节点的值。该属性可读写。
-- validity：返回一个ValidityState对象，表示<input>节点的校验状态。该属性只读。
-- validationMessage：字符串，表示该<input>节点的校验失败时，用户看到的报错信息。如果该节点不需要校验，或者通过校验，该属性为空字符串。该属性只读。
-- willValidate：布尔值，表示表单提交时，该<input>元素是否会被校验。该属性只读。
+- required：布尔值，表示表单提交时，该`<input>`元素是否必填。该属性可读写。
+- value：字符串，节点的值。该属性可读写。
+- validity：返回一个ValidityState对象，表示节点的校验状态。该属性只读。
+- validationMessage：字符串，表示节点的校验失败时，用户看到的报错信息。如果该节点不需要校验，或者通过校验，该属性为空字符串。该属性只读。
+- willValidate：布尔值，表示表单提交时，元素是否会被校验。该属性只读。
 
 [表单相关属性](https://wangdoc.com/javascript/elements/input.html#%E8%A1%A8%E5%8D%95%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7)
 
-- form：返回<input>元素所在的表单（<form>）节点。该属性只读。
+- form：返回`<input>`元素所在的表单（`<form>`）节点。该属性只读。
 - formAction：字符串，表示表单提交时的服务器目标。该属性可读写，一旦设置了这个属性，会覆盖表单元素的action属性。
 - formEncType：字符串，表示表单提交时数据的编码方式。该属性可读写，一旦设置了这个属性，会覆盖表单元素的enctype的属性。
 - formMethod：字符串，表示表单提交时的 HTTP 方法。该属性可读写，一旦设置了这个属性，会覆盖表单元素的method属性。
@@ -1136,23 +1131,23 @@ HTMLInputElement 接口
 
 [文本输入框的特有属性](https://wangdoc.com/javascript/elements/input.html#%E6%96%87%E6%9C%AC%E8%BE%93%E5%85%A5%E6%A1%86%E7%9A%84%E7%89%B9%E6%9C%89%E5%B1%9E%E6%80%A7)
 
-- autocomplete：字符串on或off，表示该<input>节点的输入内容可以被浏览器自动补全。该属性可读写。
+- autocomplete：字符串on或off，表示该`<input>`节点的输入内容可以被浏览器自动补全。该属性可读写。
 - maxLength：整数，表示可以输入的字符串最大长度。如果设为负整数，会报错。该属性可读写。
-- size：整数，表示<input>节点的显示长度。如果类型是text或password，该属性的单位是字符个数，否则单位是像素。该属性可读写。
-- pattern：字符串，表示<input>节点的值应该满足的正则表达式。该属性可读写。
-- placeholder：字符串，表示该<input>节点的占位符，作为对元素的提示。该字符串不能包含回车或换行。该属性可读写。
+- size：整数，表示`<input>`节点的显示长度。如果类型是text或password，该属性的单位是字符个数，否则单位是像素。该属性可读写。
+- pattern：字符串，表示`<input>`节点的值应该满足的正则表达式。该属性可读写。
+- placeholder：字符串，表示该`<input>`节点的占位符，作为对元素的提示。该字符串不能包含回车或换行。该属性可读写。
 - readOnly：布尔值，表示用户是否可以修改该节点的值。该属性可读写。
 - min：字符串，表示该节点的最小数值或日期，且不能大于max属性。该属性可读写。
 - max：字符串，表示该节点的最大数值或日期，且不能小于min属性。该属性可读写。
-- selectionStart：整数，表示选中文本的起始位置。如果没有选中文本，返回光标在<input>元素内部的位置。该属性可读写。
-- selectionEnd：整数，表示选中文本的结束位置。如果没有选中文本，返回光标在<input>元素内部的位置。该属性可读写。
+- selectionStart：整数，表示选中文本的起始位置。如果没有选中文本，返回光标在`<input>`元素内部的位置。该属性可读写。
+- selectionEnd：整数，表示选中文本的结束位置。如果没有选中文本，返回光标在`<input>`元素内部的位置。该属性可读写。
 - selectionDirection：字符串，表示选中文本的方向。可能的值包括forward（与文字书写方向一致）、backward（与文字书写方向相反）和none（文字方向未知）。该属性可读写。
 
 [复选框和单选框的特有属性](https://wangdoc.com/javascript/elements/input.html#%E5%A4%8D%E9%80%89%E6%A1%86%E5%92%8C%E5%8D%95%E9%80%89%E6%A1%86%E7%9A%84%E7%89%B9%E6%9C%89%E5%B1%9E%E6%80%A7)
 
-- checked：布尔值，表示该<input>元素是否选中。该属性可读写。
-- defaultChecked：布尔值，表示该<input>元素默认是否选中。该属性可读写。
-- indeterminate：布尔值，表示该<input>元素是否还没有确定的状态。一旦用户点击过一次，该属性就会变成false，表示用户已经给出确定的状态了。该属性可读写。
+- checked：布尔值，表示元素是否选中。该属性可读写。
+- defaultChecked：布尔值，表示元素默认是否选中。该属性可读写。
+- indeterminate：布尔值，表示元素是否还没有确定的状态。一旦用户点击过一次，该属性就会变成false，表示用户已经给出确定的状态了。该属性可读写。
 
 [文件上传按钮的特有属性](https://wangdoc.com/javascript/elements/input.html#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE%E7%9A%84%E7%89%B9%E6%9C%89%E5%B1%9E%E6%80%A7)
 
@@ -1161,36 +1156,36 @@ HTMLInputElement 接口
 
 [其他属性](https://wangdoc.com/javascript/elements/input.html#%E5%85%B6%E4%BB%96%E5%B1%9E%E6%80%A7)
 
-- defaultValue：字符串，表示该<input>节点的原始值。
+- defaultValue：字符串，节点的原始值。
 - dirName：字符串，表示文字方向。
-- accessKey：字符串，表示让该<input>节点获得焦点的某个字母键。
-- list：返回一个<datalist>节点，该节点必须绑定<input>元素，且<input>元素的类型必须可以输入文本，否则无效。该属性只读。
+- accessKey：字符串，表示让该节点获得焦点的某个字母键。
+- list：返回一个`<datalist>`节点，该节点必须绑定`<input>`元素，且`<input>`元素的类型必须可以输入文本，否则无效。该属性只读。
 - multiple：布尔值，表示是否可以选择多个值。
-- labels：返回一个NodeList实例，代表绑定当前<input>节点的<label>元素。该属性只读。
+- labels：返回一个NodeList实例，代表绑定当前`<input>`节点的`<label>`元素。该属性只读。
 - step：字符串，表示在min属性到max属性之间，每次递增或递减时的数值或时间。
-- valueAsDate：Date实例，一旦设置，该<input>元素的值会被解释为指定的日期。如果无法解析该属性的值，<input>节点的值将是null。
-- valueAsNumber：浮点数，当前<input>元素的值会被解析为这个数值。
+- valueAsDate：Date实例，一旦设置，该<input>元素的值会被解释为指定的日期。如果无法解析该属性的值，`<input>`节点的值将是null。
+- valueAsNumber：浮点数，当前`<input>`元素的值会被解析为这个数值。
 
 方法
 
-- focus()：当前<input>元素获得焦点。
-- blur()：移除<input>元素的焦点。
-- select()：选中<input>元素内部的所有文本。该方法不能保证<input>获得焦点，最好先用focus()方法，再用这个方法。
-- click()：模拟鼠标点击当前的<input>元素。
-- setSelectionRange()：选中<input>元素内部的一段文本，但不会将焦点转移到选中的文本。
+- focus()：当前元素获得焦点。
+- blur()：移除元素的焦点。
+- select()：选中元素内部的所有文本
+- click()：模拟鼠标点击当前元素。
+- setSelectionRange()：选中元素内部的一段文本，但不会将焦点转移到选中的文本。
 - setRangeText()：新文本替换选中的文本。
 - setCustomValidity()：该方法用于自定义校验失败时的报错信息。
 - checkValidity()：返回一个布尔值，表示当前节点的校验结果。
-- stepDown()：将当前<input>节点的值减少一个步长。
-- stepUp()：将当前<input>节点的值增加一个步长。
+- stepDown()：将当前节点的值减少一个步长。
+- stepUp()：将当前节点的值增加一个步长。
 
 
-## [<option>](https://wangdoc.com/javascript/elements/option.html)
+## `[<option>](https://wangdoc.com/javascript/elements/option.html)`
 HTMLOptionElement 接口  <br />  属性
 
 - disabled：布尔值，表示该项是否可选择。
-- defaultSelected：布尔值，表示该项是否默认选中。一旦设为true，该项的值就是<select>的默认值。
-- form：返回<option>所在的表单元素。如果不属于任何表单，则返回null。该属性只读。
+- defaultSelected：布尔值，表示该项是否默认选中。一旦设为true，该项的值就是`<select>`的默认值。
+- form：返回`<option>`所在的表单元素。如果不属于任何表单，则返回null。该属性只读。
 - index：整数，表示该选项在整个下拉列表里面的位置。该属性只读。
 - label：字符串，表示对该选项的说明。如果该属性未设置，则返回该选项的文本内容。
 - selected：布尔值，表示该选项是否选中。
@@ -1198,7 +1193,7 @@ HTMLOptionElement 接口  <br />  属性
 - value：字符串，该选项的值。表单提交时，上传的就是选中项的这个属性。
 
 
-## [<video>，<audio>](https://wangdoc.com/javascript/elements/video.html)
+## `[<video>，<audio>](https://wangdoc.com/javascript/elements/video.html)`
 HTMLMediaElement接口  <br />  属性
 
 - HTMLMediaElement.audioTracks：返回一个类似数组的对象，表示媒体文件包含的音轨。
@@ -1230,8 +1225,6 @@ HTMLMediaElement接口  <br />  属性
 - HTMLMediaElement.textTracks：返回一个类似数组的对象，包含所有文本轨道。该属性只读。
 - HTMLMediaElement.videoTracks：返回一个类似数组的对象，包含多有视频轨道。该属性只读。
 - HTMLMediaElement.volume：浮点数，表示音量。0.0 表示静音，1.0 表示最大音量。
-
-
 
 方法
 
@@ -1391,7 +1384,7 @@ CanvasRenderingContext2D.drawImage()
 - CanvasRenderingContext2D.putImageData()：将 ImageData 对象写入画布
 - CanvasRenderingContext2D.createImageData()：生成 ImageData 对象
 
-CanvasRenderingContext2D.save()：将画布的当前样式保存到堆栈，相当于在内存之中产生一个样式快照。  <br />  CanvasRenderingContext2D.restore()：将画布的样式恢复到上一个保存的快照，如果没有已保存的快照，则不产生任何效果。  <br />  CanvasRenderingContext2D.canvas：指向当前CanvasRenderingContext2D对象所在的<canvas>元素
+CanvasRenderingContext2D.save()：将画布的当前样式保存到堆栈，相当于在内存之中产生一个样式快照。  <br />  CanvasRenderingContext2D.restore()：将画布的样式恢复到上一个保存的快照，如果没有已保存的快照，则不产生任何效果。  <br />  CanvasRenderingContext2D.canvas：指向当前CanvasRenderingContext2D对象所在的`<canvas>`元素
 
 图像变换
 

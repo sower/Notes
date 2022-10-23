@@ -220,8 +220,8 @@ const routes = [
 
 | 声明式 | 编程式 |
 | --- | --- |
-| <router-link :to="..."> | router.push(...) |
-| <router-link :to="..." replace> | router.replace(...) |
+| `<router-link :to="...">` | router.push(...) |
+| `<router-link :to="..." replace>` | router.replace(...) |
 
 
 ```javascript
@@ -374,11 +374,11 @@ const routes = [
 1.  导航被触发。 
 2.  在失活的组件里调用 beforeRouteLeave 守卫。 
 3.  调用全局的 beforeEach 守卫。 
-4.  在重用的组件里调用 beforeRouteUpdate 守卫(2.2+)。 
+4.  在重用的组件里调用 beforeRouteUpdate 守卫
 5.  在路由配置里调用 beforeEnter。 
 6.  解析异步路由组件。 
 7.  在被激活的组件里调用 beforeRouteEnter。 
-8.  调用全局的 beforeResolve 守卫(2.5+)。 
+8.  调用全局的 beforeResolve 守卫
 9.  导航被确认。 
 10.  调用全局的 afterEach 钩子。 
 11.  触发 DOM 更新。 
@@ -452,12 +452,12 @@ const UserProfileEdit = () =>
 
 **API**
 
-- [<router-link> Props](https://next.router.vuejs.org/zh/api/#router-link-props)
+- `<router-link>` Props
    - [to](https://next.router.vuejs.org/zh/api/#to)	目标路由的链接
    - [replace](https://next.router.vuejs.org/zh/api/#replace)
-   - [active-class](https://next.router.vuejs.org/zh/api/#active-class)	链接激活时，应用于渲染的 <a> 的 class
+   - [active-class](https://next.router.vuejs.org/zh/api/#active-class)	链接激活时，应用于渲染的 `<a>` 的 class
    - [aria-current-value](https://next.router.vuejs.org/zh/api/#aria-current-value)	当链接激活时，传递给属性 aria-current 的值
-   - [custom](https://next.router.vuejs.org/zh/api/#custom)	<router-link> 是否应该将其内容包裹在 <a> 元素中
+   - [custom](https://next.router.vuejs.org/zh/api/#custom)	`<router-link>` 是否应该将其内容包裹在 `<a>` 元素中
 ```javascript
 <router-link to="/home" custom v-slot="{ navigate, href, route }">
   <a :href="href" @click="navigate">{{ route.fullPath }}</a>
@@ -466,9 +466,9 @@ const UserProfileEdit = () =>
 渲染成 <a href="/home">/home</a>。
 ```
 
-- [exact-active-class](https://next.router.vuejs.org/zh/api/#exact-active-class)	链接精准激活时，应用于渲染的 <a> 的 class
+- [exact-active-class](https://next.router.vuejs.org/zh/api/#exact-active-class)	链接精准激活时，应用于渲染的 `<a>` 的 class
    - [v-slot](https://next.router.vuejs.org/zh/api/#router-link-%E7%9A%84-v-slot)
-- [<router-view> Props](https://next.router.vuejs.org/zh/api/#router-view-props)
+- `<router-view>` Props
    - [name](https://next.router.vuejs.org/zh/api/#name)
    - [route](https://next.router.vuejs.org/zh/api/#route)
    - [v-slot](https://next.router.vuejs.org/zh/api/#router-view-%E7%9A%84-v-slot)
@@ -535,9 +535,9 @@ export default {
    - [hasRoute](https://next.router.vuejs.org/zh/api/#hasroute)(name: string | symbol): boolean
    - [isReady](https://next.router.vuejs.org/zh/api/#isready)
    - [onError](https://next.router.vuejs.org/zh/api/#onerror)
-   - [push](https://next.router.vuejs.org/zh/api/#push)(to: RouteLocationRaw): Promise<NavigationFailure | void | undefined>
+   - [push](https://next.router.vuejs.org/zh/api/#push)(to: RouteLocationRaw)
    - [removeRoute](https://next.router.vuejs.org/zh/api/#removeroute)(name: string | symbol): void
-   - [replace](https://next.router.vuejs.org/zh/api/#replace-1)(to: RouteLocationRaw): Promise<NavigationFailure | void | undefined>
+   - [replace](https://next.router.vuejs.org/zh/api/#replace-1)(to: RouteLocationRaw)
    - [resolve](https://next.router.vuejs.org/zh/api/#resolve)
 - [RouterOptions](https://next.router.vuejs.org/zh/api/#routeroptions)
    - [history](https://next.router.vuejs.org/zh/api/#history)
@@ -1083,7 +1083,7 @@ computed: {
 <a name="ac2cd4e9"></a>
 ## Scoped CSS
 
-当 <style> 标签有 scoped 属性时，它的 CSS 只作用于当前组件中的元素。父组件的样式将不会渗透到子组件中
+当 `<style>` 标签有 scoped 属性时，它的 CSS 只作用于当前组件中的元素。父组件的样式将不会渗透到子组件中
 ```html
 <style scoped>
 .example {
@@ -1123,13 +1123,13 @@ computed: {
 <style scoped>
 :deep(<inner-selector>)
 </style>
-```
 
-编译成：
-
-```javascript
+  
+// 编译成：
 .a[data-v-f3f3eg9] .b { /* ... */ }
 ```
+
+
 
 **插槽选择器**
 
@@ -1545,7 +1545,7 @@ API
 <a name="aa7b71a3"></a>
 # [SSR](https://v3.cn.vuejs.org/guide/ssr/introduction.html)
 
-![](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png#clientId=u9a034459-3792-4&crop=0&crop=0&crop=1&crop=1&id=yZjUA&originHeight=892&originWidth=1946&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ue8e28367-b99d-4946-909f-5f0119f31f9&title=)
+![](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png#clientId=u9a034459-3792-4&crop=0&crop=0&crop=1&crop=1&errorMessage=unknown%20error&id=yZjUA&originHeight=892&originWidth=1946&originalType=binary&ratio=1&rotation=0&showTitle=false&status=error&style=none&taskId=ue8e28367-b99d-4946-909f-5f0119f31f9&title=)
 
 ```javascript
 const { createSSRApp } = require('vue')

@@ -376,7 +376,7 @@ adb uninstall [-k]   <br />  k：卸载应用但保留数据和缓存目录
    - -3 只显示第三方应用
    - -i 显示应用的 installer
    - -u 包含已卸载应用
-   - <FILTER> 包名包含 <FILTER> 字符串
+   - `<FILTER>` 包名包含 `<FILTER>`字符串
 - list permission-groups	输出所有已知的权限组。
    - -g：按组进行整理。
    - -f：输出所有信息。
@@ -446,21 +446,21 @@ adb shell pm list packages [option] [--user USER_ID] [FILTER]
 | -3 | 只显示第三方应用 |
 | -i | 显示应用的 installer |
 | -u | 包含已卸载应用 |
-| <FILTER> | 包名包含 <FILTER> 字符串 |
+| `<FILTER>` | 包名包含 `<FILTER>` 字符串 |
 
 
 **activity manager (am)**  <br />  adb shell am [subcommand] [options]
 
 | command | 用途 |
 | --- | --- |
-| start [options] <INTENT> | 启动 <INTENT> 指定的 Activity |
-| startservice [options] <INTENT> | 启动 <INTENT> 指定的 Service |
+| start [options] `<INTENT>` | 启动 `<INTENT>`指定的 Activity |
+| startservice [options] `<INTENT>` | 启动 `<INTENT>`指定的 Service |
 | stopservice |  |
-| broadcast [options] <INTENT> | 发送 <INTENT> 指定的广播 |
-| force-stop <packages> | 停止 <packages> 相关的进程 |
+| broadcast [options] `<INTENT>` | 发送 `<INTENT>`指定的广播 |
+| force-stop `<packages>` | 停止 `<packages>`相关的进程 |
 | kill [_options_] _package_ |  |
 | kill-all | 终止所有后台进程 |
-| instrument [_options_] _component_ | 使用 [Instrumentation](https://developer.android.google.cn/reference/android/app/Instrumentation?hl=zh-cn) 实例启动监控 |
+| instrument [_options_] _component_ | 使用 [Instrumentation](https://developer.android.google.cn/reference/android/app/Instrumentation?hl=zh-cn)实例启动监控 |
 | profile start _processfile_ | 启动 _process_ 的性能剖析器，将结果写入 _file_。 |
 | profile stop _process_ | 停止 _process_ 的性能剖析器。 |
 | dumpheap [_options_] _processfile_ | 转储 _process_ 的堆，写入 _file_。 |
@@ -474,7 +474,7 @@ adb shell pm list packages [option] [--user USER_ID] [FILTER]
 | to-intent-uri _intent_ | 以 intent: URI 的形式输出给定的 intent 规范 |
 
 
-adb shell am start [-D] [-W] [-P <FILE>] [--start-profiler <FILE>]  <br />   [--sampling INTERVAL] [-R COUNT] [-S] [--opengl-trace]  <br />   [--user <USER_ID> | current] <INTENT>
+`adb shell am start [-D] [-W] [-P <FILE>] [--start-profiler <FILE>]`  <br />  ` [--sampling INTERVAL] [-R COUNT] [-S] [--opengl-trace]`  <br />  ` [--user <USER_ID> | current] <INTENT>`
 
 - -D：启用调试功能。
 - -W：等待启动完成。
@@ -767,33 +767,6 @@ Android 日志
 
 命令格式：`[adb] logcat [<option>] ... [<filter-spec>] ...`
 
-| 选项 | 说明 |
-| --- | --- |
-| -b <buffer> | 加载可供查看的备用日志缓冲区 |
-| -c, --clear | 清除（清空）所选的缓冲区并退出。默认缓冲区集为 main、system 和 crash。如需清除所有缓冲区，请使用 -b all -c。 |
-| -e <expr>, --regex=<expr> | 只输出日志消息与 <expr> 匹配的行，其中 <expr> 是正则表达式。 |
-| -m <count>, --max-count=<count> | 输出 <count> 行后退出 |
-| --print | 与 --regex 和 --max-count 配对，使内容绕过正则表达式过滤器，但仍能够在获得适当数量的匹配时停止。 |
-| -d | 将日志转储到屏幕并退出。 |
-| -f <filename> | 将日志消息输出写入 <filename>。默认值为 stdout。 |
-| -g, --buffer-size | 输出指定日志缓冲区的大小并退出。 |
-| -n <count> | 将轮替日志的数量上限设置为 <count>。默认值为 4。需要使用 -r 选项。 |
-| -r <kbytes> | 每输出 <kbytes> 时轮替日志文件。默认值为 16。需要 -f 选项。 |
-| -s | 相当于过滤器表达式 '*:S'；它将所有标记的优先级设为“静默”，并用于放在可添加内容的过滤器表达式列表之前。 |
-| -v <format> | 设置日志消息的输出格式。默认格式为 threadtime。 |
-| -D, --dividers | 输出各个日志缓冲区之间的分隔线。 |
-| -t <count> | 仅输出最新的行数。此选项包括 -d 功能。 |
-| -t '<time>' | 输出自指定时间以来的最新行。此选项包括 -d 功能 |
-| -T <count> | 输出自指定时间以来的最新行数。此选项不包括 -d 功能。 |
-| -T '<time>' | 输出自指定时间以来的最新行。此选项不包括 -d 功能 |
-| -L, --last | 在最后一次重新启动之前转储日志。 |
-| -B, --binary | 以二进制文件形式输出日志。 |
-| -S, --statistics | 在输出中包含统计信息，以帮助您识别和定位日志垃圾信息发送者。 |
-| -G <size> | 设置日志环形缓冲区的大小。可以在结尾处添加 K 或 M，以指示单位为千字节或兆字节。 |
-| -p, --prune | 输出（读取）当前的允许 (white) 列表和拒绝 (black) 列表，不采用任何参数 |
-| -P '<list> ...'  <br />  --prune '<list> ...' -P '<white_and_black_list>' | 写入（设置）允许 (white) 列表和拒绝 (black) 列表以出于特定目的调整日志记录内容 |
-
-
 优先级（priority）
 
 - V —— Verbose（最低，输出得最多）
@@ -925,28 +898,27 @@ adb shell monkey -p your.package.name -v 500
 | 类别 | 选项 | 说明 |
 | --- | --- | --- |
 | 常规 | --help | 输出简单的使用指南。 |
-|  | -v | 命令行上的每个 -v 都会增加详细程度级别。级别 0（默认值）只提供启动通知、测试完成和最终结果。级别 1 提供有关测试在运行时的更多详细信息，例如发送到您的 Activity 的各个事件。级别 2 提供更详细的设置信息，例如已选择或未选择用于测试的 Activity。 |
-| 事件 | -s <seed> | 伪随机数生成器的种子值。如果您使用相同的种子值重新运行 Monkey，它将会生成相同的事件序列。 |
-|  | --throttle <milliseconds> | 在事件之间插入固定的延迟时间 |
-|  | --pct-touch <percent> | 调整轻触事件所占百分比。（轻触事件是指屏幕上的单个位置上的按下/释放事件。） |
-|  | --pct-motion <percent> | 调整动作事件所占百分比。（动作事件包括屏幕上某个位置的按下事件，一系列伪随机动作和一个释放事件。） |
-|  | --pct-trackball <percent> | 调整轨迹球事件所占百分比。（轨迹球事件包括一个或多个随机动作，有时后跟点击。） |
-|  | --pct-nav <percent> | 调整“基本”导航事件所占百分比。（导航事件包括向上/向下/向左/向右，作为方向输入设备的输入。） |
-|  | --pct-majornav <percent> | 调整“主要”导航事件所占百分比。（这些导航事件通常会导致界面中的操作，例如 5 方向键的中间按钮、返回键或菜单键。） |
-|  | --pct-syskeys <percent> | 调整“系统”按键事件所占百分比。（这些按键通常预留供系统使用，例如“主屏幕”、“返回”、“发起通话”、“结束通话”或“音量控件”。） |
-|  | --pct-appswitch <percent> | 调整 Activity 启动次数所占百分比。Monkey 会以随机间隔发起 startActivity() 调用，以最大限度地覆盖软件包中的所有 Activity。 |
-|  | --pct-anyevent <percent> | 调整其他类型事件所占百分比。这包括所有其他类型的事件，例如按键、设备上的其他不太常用的按钮等等。 |
-| 约束条件 | -p <allowed-package-name> | 仅允许系统访问这些软件包内的 Activity。如果未指定任何软件包，Monkey 将允许系统启动所有软件包中的 Activity。要指定多个软件包，请多次使用 -p 选项，每个软件包对应一个 -p 选项。 |
-|  | -c <main-category> | 仅允许系统访问其中一个指定类别中所列的 Activity。如果没有指定任何类别，Monkey 会选择 Intent.CATEGORY_LAUNCHER 或 Intent.CATEGORY_MONKEY 类别所列的 Activity。要指定多个类别，请多次使用 -c 选项，每个类别对应一个 -c 选项。 |
+|  | -v | 命令行上的每个 -v 都会增加详细程度级别 |
+| 事件 | -s `<seed>` | 伪随机数生成器的种子值。如果您使用相同的种子值重新运行 Monkey，它将会生成相同的事件序列。 |
+|  | --throttle `<milliseconds>` | 在事件之间插入固定的延迟时间 |
+|  | --pct-touch `<percent>` | 调整轻触事件所占百分比。（轻触事件是指屏幕上的单个位置上的按下/释放事件。） |
+|  | --pct-motion `<percent>` | 调整动作事件所占百分比。（动作事件包括屏幕上某个位置的按下事件，一系列伪随机动作和一个释放事件。） |
+|  | --pct-trackball `<percent>` | 调整轨迹球事件所占百分比。（轨迹球事件包括一个或多个随机动作，有时后跟点击。） |
+|  | --pct-nav `<percent>` | 调整“基本”导航事件所占百分比。（导航事件包括向上/向下/向左/向右，作为方向输入设备的输入。） |
+|  | --pct-majornav `<percent>` | 调整“主要”导航事件所占百分比。（这些导航事件通常会导致界面中的操作，例如 5 方向键的中间按钮、返回键或菜单键。） |
+|  | --pct-syskeys `<percent>` | 调整“系统”按键事件所占百分比。（这些按键通常预留供系统使用，例如“主屏幕”、“返回”、“发起通话”、“结束通话”或“音量控件”。） |
+|  | --pct-appswitch `<percent>` | 调整 Activity 启动次数所占百分比。Monkey 会以随机间隔发起 startActivity() 调用，以最大限度地覆盖软件包中的所有 Activity。 |
+|  | --pct-anyevent `<percent>` | 调整其他类型事件所占百分比。这包括所有其他类型的事件，例如按键、设备上的其他不太常用的按钮等等。 |
+| 约束条件 | -p `<allowed-package-name>` | 仅允许系统访问这些软件包内的 Activity。如果未指定任何软件包，Monkey 将允许系统启动所有软件包中的 Activity。要指定多个软件包，请多次使用 -p 选项，每个软件包对应一个 -p 选项。 |
+|  | -c `<main-category>` | 仅允许系统访问其中一个指定类别中所列的 Activity。如果没有指定任何类别，Monkey 会选择 Intent.CATEGORY_LAUNCHER 或 Intent.CATEGORY_MONKEY 类别所列的 Activity。要指定多个类别，请多次使用 -c 选项，每个类别对应一个 -c 选项。 |
 | 调试 | --dbg-no-events | 初始启动到测试 Activity，但不会生成任何其他事件。为了获得最佳结果，请结合使用 -v、一个或多个软件包约束条件以及非零限制，以使 Monkey 运行 30 秒或更长时间。这提供了一个环境，您可以在其中监控应用调用的软件包转换操作。 |
-|  | --hprof | 如果设置此选项，则会在 Monkey 事件序列之前和之后立即生成分析报告。这将在 data/misc 下生成大型（约为 5Mb）文件，因此请谨慎使用。如需了解如何分析性能剖析报告，请参阅[剖析应用性能](https://developer.android.google.cn/studio/profile?hl=zh-cn)。 |
+|  | --hprof | 如果设置此选项，则会在 Monkey 事件序列之前和之后立即生成分析报告。这将在 data/misc 下生成大型（约为 5Mb）文件，因此请谨慎使用。 |
 |  | --ignore-crashes | 通常，当应用崩溃或遇到任何类型的未处理异常时，Monkey 将会停止。如果指定此选项，Monkey 会继续向系统发送事件，直到计数完成为止。 |
 |  | --ignore-timeouts | 通常，当应用遇到任何类型的超时错误（例如“应用无响应”对话框）时，Monkey 将会停止。如果指定此选项，Monkey 会继续向系统发送事件，直到计数完成为止。 |
-|  | --ignore-security-exceptions | 通常，当应用遇到任何类型的权限错误（例如，如果它尝试启动需要特定权限的 Activity）时，Monkey 将会停止。如果指定此选项，Monkey 会继续向系统发送事件，直到计数完成为止。 |
-|  | --kill-process-after-error | 通常，当 Monkey 因出错而停止运行时，出现故障的应用将保持运行状态。设置此选项后，它将会指示系统停止发生错误的进程。注意，在正常（成功）完成情况下，已启动的进程不会停止，并且设备仅会处于最终事件之后的最后状态。 |
+|  | --ignore-security-exceptions | 通常，当应用遇到任何类型的权限错误（例如，如果它尝试启动需要特定权限的 Activity）时，Monkey 将会停止。 |
+|  | --kill-process-after-error | 通常，当 Monkey 因出错而停止运行时，出现故障的应用将保持运行状态。设置此选项后，它将会指示系统停止发生错误的进程。 |
 |  | --monitor-native-crashes | 监视并报告 Android 系统原生代码中发生的崩溃。如果设置了 --kill-process-after-error，系统将会停止。 |
 |  | --wait-dbg | 阻止 Monkey 执行，直到为其连接了调试程序。 |
-
 
 
 
@@ -1072,15 +1044,15 @@ Options:
 
 **预期能力（Desired Capabilities）**
 
-[Appium 服务器初始化参数（Capability）](https://github.com/appium/appium/blob/master/docs/cn/writing-running-appium/caps.md)  <br />  `<expand_table>`
+[Appium 服务器初始化参数（Capability）](https://github.com/appium/appium/blob/master/docs/cn/writing-running-appium/caps.md)
 
 | 键 | 描述 | 值 |
 | --- | --- | --- |
 | automationName | 自动化测试的引擎 | Appium （默认）或者 Selendroid |
 | platformName | 使用的手机操作系统 | iOS, Android, 或者 FirefoxOS |
 | platformVersion | 手机操作系统的版本 | 例如 7.1, 4.4 |
-| deviceName | 使用的手机或模拟器类型 | iPhone Simulator, iPad Simulator, iPhone Retina 4-inch, Android Emulator, Galaxy S4, 等等.... 在 iOS 上，使用 Instruments 的 instruments -s devices 命令可返回一个有效的设备的列表。在 Andorid 上虽然这个参数目前已被忽略，但仍然需要添加上该参数 |
-| app | 本地绝对路径_或_远程 http URL 所指向的一个安装包（.ipa,.apk,或 .zip 文件）。Appium 将其安装到合适的设备上。请注意，如果您指定了 appPackage 和 appActivity 参数（见下文），Android 则不需要此参数了。该参数也与 browserName 不兼容。 | /abs/path/to/my.apk 或 http://myapp.com/app.ipa |
+| deviceName | 使用的手机或模拟器类型 | iPhone Simulator, iPad Simulator, iPhone Retina 4-inch, Android Emulator, Galaxy S4, 等等 |
+| app | 本地绝对路径_或_远程 http URL 所指向的一个安装包（.ipa,.apk,或 .zip 文件）。Appium 将其安装到合适的设备上。请注意，如果您指定了 appPackage 和 appActivity 参数，Android 则不需要此参数了。该参数也与 browserName 不兼容。 | /abs/path/to/my.apk 或 http://myapp.com/app.ipa |
 | browserName | 做自动化时使用的浏览器名字。如果是一个应用则只需填写个空的字符串 | 'Safari' 对应 iOS，'Chrome', 'Chromium', 或 'Browser' 则对应 Android |
 | newCommandTimeout | 用于客户端在退出或者结束 session 之前，Appium 等待客户端发送一条新命令所花费的时间（秒为单位） | 例如 60 |
 | language | (Sim/Emu-only) 为模拟器设置语言 | 例如 fr |
@@ -1090,79 +1062,6 @@ Options:
 | autoWebview | 直接转换到 Webview 上下文（context）。默认值为 false | true, false |
 | noReset | 在当前 session 下不会重置应用的状态。默认值为 false | true, false |
 | fullReset | (iOS)删除所有的模拟器文件夹。(Android) 要清除 app 里的数据，请将应用卸载才能达到重置应用的效果。在 Android, 在 session 完成之后也会将应用卸载掉。默认值为 false | true, false |
-
-Android 独有  <br />  `<expand_table>`
-
-| 键 | 描述 | 值 |
-| --- | --- | --- |
-| appActivity | Activity 的名字是指从你的包中所要启动的 Android acticity。他通常需要再前面添加. （例如 使用 .MainActivity 代替 MainActivity） | MainActivity, .Settings |
-| appPackage | 运行的 Android 应用的包名 | com.example.android.myApp, com.android.settings |
-| appWaitActivity | 用于等待启动的 Android Activity 名称 | SplashActivity |
-| appWaitPackage | 用于等待启动的 Android 应用的包 | com.example.android.myApp, com.android.settings |
-| appWaitDuration | 用于等待 appWaitActivity 启动的超时时间（以毫秒为单位）（默认值为 20000) | 30000 |
-| deviceReadyTimeout | 用于等待模拟器或真机准备就绪的超时时间 | 5 |
-| androidCoverage | 用于执行测试的 instrumentation 类。 传送 -w 参数到如下命令 adb shell am instrument -e coverage true -w | com.my.Pkg/com.my.Pkg.instrumentation.MyInstrumentation |
-| enablePerformanceLogging | （仅适用于 Chrome 与 webview）开启 Chromedriver 的性能日志。（默认值为 false） | true, false |
-| androidDeviceReadyTimeout | 用于等待设备在启动应用后准备就绪的超时时间。以秒为单位。 | 例如 30 |
-| androidInstallTimeout | 用于等待在设备中安装 apk 所花费的时间（以毫秒为单位）。默认值为 90000 | 例如 90000 |
-| adbPort | 用来连接 ADB 服务器的端口（默认值为 5037） | 5037 |
-| androidDeviceSocket | 开发工具的 socket 名称。只有在被测应用是一个使用 Chromium 内核的浏览器时才需要。socket 会被浏览器打开，然后 Chromedriver 把它作为开发者工具来进行连接。 | 例如 chrome_devtools_remote |
-| avd | 被启动 avd 的名字 | 例如 api19 |
-| avdLaunchTimeout | 用于等待 avd 启动并连接 ADB 的超时时间（以毫秒为单位），默认值为 120000。 | 300000 |
-| avdReadyTimeout | 用于等待 avd 完成启动动画的超时时间（以毫秒为单位），默认值为 120000。 | 300000 |
-| avdArgs | 启动 avd 时使用的额外参数 | 例如 -netfast |
-| useKeystore | 使用自定义的 keystore 给 apk 签名，默认值为 false | true或false |
-| keystorePath | 自定义 keystore 的路径, 默认路径为 ~/.android/debug.keystore | 例如 /path/to.keystore |
-| keystorePassword | 自定义 keystore 的密码 | 例如 foo |
-| keyAlias | key 的别名 | 例如 androiddebugkey |
-| keyPassword | key 的密码 | 例如 foo |
-| chromedriverExecutable | webdriver 可执行文件的绝对路径（如果 Chromium 内嵌一个自己提供的 webdriver，则应使用他去替换掉 Appium 自带的 chromedriver） | /abs/path/to/webdriver |
-| autoWebviewTimeout | 用于等待 Webview 上下文（context）激活的时间（以毫秒为单位）。默认值为 2000 | 例如 4 |
-| intentAction | 用于启动 activity 的 intent action（默认值为 android.intent.action.MAIN) | 例如 android.intent.action.MAIN, android.intent.action.VIEW |
-| intentCategory | 用于启动 activity 的 intent category。（默认值为 android.intent.category.LAUNCHER) | 例如 android.intent.category.LAUNCHER, android.intent.category.APP_CONTACTS |
-| intentFlags | 用于启动 activity 的标识（flags）（默认值为 0x10200000） | 例如 0x10200000 |
-| optionalIntentArguments | 用于启动 activity 的额外 intent 参数。请查看 [Intent 参数](http://developer.android.com/reference/android/content/Intent.html) | 例如 --esn <EXTRA_KEY>, --ez <EXTRA_KEY> <EXTRA_BOOLEAN_VALUE>, 等等。 |
-| dontStopAppOnReset | 在使用 adb 启动应用之前，不要终止被测应用的进程。如果被测应用是被其他钩子(anchor)应用所创建的，设置该参数为 false 后，就允许钩子(anchor)应用的进程在使用 adb 启动被测应用期间仍然存在。换而言之，设置 dontStopAppOnReset 为 true 后，我们在 adb shell am start 的调用中不需要包含 -S标识（flag）。忽略该 capability 或 设置为 false 的话，就需要包含 -S 标识（flag）。默认值为 false | true或false |
-| unicodeKeyboard | 使用 Unicode 输入法。 默认值为 false | true或false |
-| resetKeyboard | 在设定了 unicodeKeyboard 关键字的 Unicode 测试结束后，重置输入法到原有状态。如果单独使用，将会被忽略。默认值为 false | true或false |
-| noSign | 跳过检查和对应用进行 debug 签名的步骤。仅适用于 UiAutomator，不适用于 selendroid。 默认值为 false | true或false |
-| ignoreUnimportantViews | 调用 uiautomator 的函数 setCompressedLayoutHierarchy()。由于 Accessibility 命令在忽略部分元素的情况下执行速度会加快，这个关键字能加快测试执行的速度。被忽略的元素将不能够被找到，因此这个关键字同时也被实现成可以随时改变的 _设置 ( settings )_。 默认值为 false | true 或 false |
-| disableAndroidWatchers | 禁用 android 监视器（watchers）。监视器用于见识应用程序的无响应状态（anr）和崩溃（crash），禁用会降低 Android 设备或模拟器的 CPU 使用率。该 capability 仅在使用 UiAutomator 时有效，不适用于 selendroid，默认设置为 false。 | true 或 false |
-| chromeOptions | 允许对 ChromeDriver 传 chromeOptions 的参数。了解更多信息请查阅 [chromeOptions](https://sites.google.com/a/chromium.org/chromedriver/capabilities) | chromeOptions: {args: ['--disable-popup-blocking']} |
-| recreateChromeDriverSessions | 当移除非 ChromeDriver webview时，终止掉 ChromeDriver 的 session。默认设置为 false | true或false |
-| nativeWebScreenshot | 在 web 的上下文（context），使用原生（native）的方法去截图，而不是用过代理的 ChromeDriver。默认值为 false | true或false |
-| androidScreenshotPath | 在设备中截图被保存的目录名。默认值为 /data/local/tmp | 例如 /sdcard/screenshots/ |
-| autoGrantPermissions | 让Appium自动确定您的应用需要哪些权限，并在安装时将其授予应用。默认设置为 false | true或false |
-
-iOS 独有  <br />  `<expand_table>`
-
-| 键 | 描述 | 值 |
-| --- | --- | --- |
-| calendarFormat | （仅支持模拟器） 为iOS的模拟器设置日历格式 | 例如 gregorian |
-| bundleId | 被测应用的 bundle ID 。用于在真实设备中启动测试，也用于使用其他需要 bundle ID 的关键字启动测试。在使用 bundle ID 在真实设备上执行测试时，你可以不提供 app 关键字，但你必须提供 udid 。 | 例如 io.appium.TestApp |
-| udid | 连接的真实设备的唯一设备编号 (Unique device identifier) | 例如 1ae203187fc012g |
-| launchTimeout | 以毫秒为单位，在 Appium 运行失败之前设置一个等待 instruments 的时间 | 例如 20000 |
-| locationServicesEnabled | （仅支持模拟器）强制打开或关闭定位服务。默认值是保持当前模拟器的设定. | true或false |
-| locationServicesAuthorized | （仅支持模拟器）通过修改 plist 文件设定是否允许应用使用定位服务，从而避免定位服务的警告出现。默认值是保持当前模拟器的设定。请注意在使用这个关键字时，你同时需要使用 bundleId 关键字来发送你的应用的 bundle ID。 | true或false |
-| autoAcceptAlerts | 当警告弹出的时候，都会自动去点接受。包括隐私访问权限的警告（例如 定位，联系人，照片）。默认值为 false。不支持基于 XCUITest 的测试。 | true或false |
-| autoDismissAlerts | 当警告弹出的时候，都会自动去点取消。包括隐私访问权限的警告（例如 定位，联系人，照片）。默认值为 false。不支持基于 XCUITest 的测试。 | true或false |
-| nativeInstrumentsLib | 使用原生 intruments 库（即关闭 instruments-without-delay）。 | true或false |
-| nativeWebTap | （仅支持模拟器）在Safari中允许“真实的"，非基于 javascript 的 web 点击 (tap) 。 默认值：false。注意：取决于 viewport 大小/比例， 点击操作不一定能精确地点中对应的元素。 | true或false |
-| safariInitialUrl | （仅支持模拟器） (>= 8.1) 初始化 safari 的时使用的地址。默认是一个本地的欢迎页面 | 例如 https://www.github.com |
-| safariAllowPopups | （仅支持模拟器）允许 javascript 在 Safari 中创建新窗口。默认保持模拟器当前设置。 | true或false |
-| safariIgnoreFraudWarning | （仅支持模拟器）阻止 Safari 显示此网站可能存在风险的警告。默认保持浏览器当前设置。 | true或false |
-| safariOpenLinksInBackground | （仅支持模拟器）Safari 是否允许链接在新窗口打开。默认保持浏览器当前设置。 | true或false |
-| keepKeyChains | （仅支持模拟器）当 Appium 会话开始/结束时是否保留存放密码存放记录 (keychains) 库(Library)/钥匙串(Keychains)) | true或false |
-| localizableStringsDir | 从哪里查找本地化字符串。默认值为 en.lproj | en.lproj |
-| processArguments | 通过 instruments 传递到 AUT 的参数 | 例如 -myflag |
-| interKeyDelay | 以毫秒为单位，按下每一个按键之间的延迟时间 | 例如 100 |
-| showIOSLog | 是否在 Appium 的日志中显示设备的日志。默认值为 false | true或false |
-| sendKeyStrategy | 输入文字到文字框的策略。模拟器默认值：oneByOne(一个接着一个)。真实设备默认值：grouped (分组输入) | oneByOne, grouped或setValue |
-| screenshotWaitTimeout | 以秒为单位，生成屏幕截图的最长等待时间。默认值为：10 | 例如 5 |
-| waitForAppScript | 用于判断 "应用是否被启动” 的 iOS 自动化脚本代码。默认情况下系统等待直到页面内容非空。结果必须是布尔类型。 | 例如 true;, target.elements().length > 0;, $.delay(5000); true; |
-| webviewConnectRetries | 用于获取 webview 失败时，发送连接信息到远程调试器的次数。默认次数为: 8 | 例如 12 |
-| appName | 被测应用的名字。 用于支持 iOS 9 以上系统的应用的自动化。 | 例如 UICatalog |
-| customSSLCert | (Sim/Emu-only) 给模拟器添加一个 SSL 证书。 | 例如  <br />  -----BEGIN CERTIFICATE-----MIIFWjCCBEKg...  <br />  -----END CERTIFICATE----- |
 
 
 
@@ -1244,52 +1143,6 @@ element改为elements是找所有满足的条件，返回数组。  <br />  Mobi
 
 driver.get_window_size()	获取手机分辨率  <br />  driver.get_screenshot_as_file()	截图  <br />  driver.network_connection	获取手机网络（1：飞行模式 2：只开wifi 4：只开流量 6：网络全开）  <br />  driver.set_network_connection(connection_type)	设置网络  <br />  driver.press_keycode(keycode,metastate=None)	发送键到设备  <br />  driver.open_notifications()	点击通知消息
 
-UIAutomator 查找元素  <br />  **优缺点**
-
-- 优点
-   - xpath 定位速度慢
-   - UIAutomator 是 Android 的工作引擎，速度快
-   - 滚动查找很方便
-- 缺点
-   - 表达式书写复杂，容易写错 IDE 没有提示
-
-**定位方式**
-
-- 通过 resource-id 定位
-- 通过 classname 定位
-- 通过 content-desc 定位
-- 通过文本定位
-- 组合定位
-- 通过父子关系定位
-
-**用法**
-
-- driver.find_element_by_android_uiautomator("表达式")
-- 注：外层要用单引号，内层的字符串用双引号，Java 双引号表示字符串
-- 通过文本定位
-   - new UiSelector().text("text文本")
-- 通过 textContains 模糊匹配
-   - new UiSelector().textContains("text文本")
-- 通过某个文本开头匹配
-   - new UiSelector().textStartWith("text文本")
-- 正则表达式匹配
-   - new UiSelector().textMatches("text文本")
-- 组合定位
-   - 比如 id 与 text 的属性组合：driver.find_element_by_android_uiautomator('new UiSelector().resourceId("com.xueqiu.android:id/login_account").text("我的")')
-- 父子关系定位:childSelector，先定位到父类，再用 childSelector 来定位子类
-   - driver.find_element_by_android_uiautomator('new UiSelector().resourceId("com.xueqiu.android:id/login_account").childSelector(text("股票"))')
-- 兄弟定位：fromParent
-   - driver.find_element_by_android_uiautomator('new UiSelector().resourceId("com.xueqiu.android:id/login_account").fromParent(text("股票"))')
-
-
-
-**滑动元素查找**
-
-- 有一些页面有持续滑动的能力，比如微博，没有分页，可以一直滑动，UIAutomator 提供了滑动的很好的方法。
-- driver.find_element_by_android_uiautomator(‘new UiScrollable(new UiSelector().’
-
-‘scrollable(true).instance(0)).’  <br />  ‘scrollIntoView(new UiSelector().textContains(“病人”).’  <br />  ‘instance(0));’).click()
-
 
 模拟操作  <br />  **TouchAction(driver)**
 
@@ -1310,9 +1163,9 @@ toast  <br />  启动参数中添加一个参数  <br />  automationName": "Uiau
 2. dumpsus activity top | grep ACTIVITY	# pid
 3. ps pid
 
-得到微信小程序进程 com.tencent.mm:appbrand0  <br />  启动参数中添加微信小程序进程  <br />  "chromeOptions": {"androidProcess": "com. tencent. mm: appbzango"}
+得到微信小程序进程 com.tencent.mm:appbrand0  <br />  启动参数中添加微信小程序进程  <br />  `"chromeOptions": {"androidProcess": "com. tencent. mm: appbzango"}`
 
-appium的ChromeDriver目录：appium\node_modules\appium-chromedriver\chromedriver\win  <br />  'chromeOptions': {'androidProcess': 'com.vitalerter'},
+appium的ChromeDriver目录：appium\node_modules\appium-chromedriver\chromedriver\win  <br />  `'chromeOptions': {'androidProcess': 'com.vitalerter'},`
 
 Webview debug  <br />  adb 连接 手机或模拟器  <br />  chrome://inspect  <br />  对于内核版本不一致需要vpn
 
