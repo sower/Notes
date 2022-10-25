@@ -74,7 +74,7 @@ Windows PowerShell ISE是Windows PowerShell的主机应用程序  <br />  文件
 - Out-Null
 - Start-Sleep -Seconds
 
-```shell
+```powershell
 # 列出计算机的 IP 地址
 Get-CimInstance -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=$true | Select-Object -ExpandProperty IPAddress
 # Ping 计算机
@@ -91,6 +91,14 @@ New-NetIPAddress -InterfaceIndex 8 -IpAddress 192.168.1.2 -PrefixLength 24 -Defa
 
 3.设置DNS服务器地址
 Set-DNSClientServerAddress -InterfaceIndex 8 -ServerAddress ("192.168.1.3","192.168.1.4")
+
+
+
+# 日期转秒数
+[int] (Get-Date (Get-Date).ToUniversalTime() -uformat "%s")
+
+# 秒数转日期
+Get-Date ([timezone]::CurrentTimeZone.ToLocalTime(([datetime]'1/1/1970').AddSeconds(1664810878))) -uformat "%Y-%m-%d %H:%M:%S"
 ```
 
 
@@ -603,8 +611,8 @@ Get-NetTCPConnection	端口信息  <br />  Get-WmiObject win32_service | select 
 
 **注释**
 
-- 单行注释：#
-- 多行注释：<#	...	#>
+- 单行注释：`#`
+- 多行注释：`<#	...	#>`
 
 # [变量](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_variables)
 无需声明，直接使用  <br />  以`$`符号开头或在`{}`内，不区分大小写，包含空格和特殊字符  <br />  默认值 [$null](https://docs.microsoft.com/zh-cn/powershell/scripting/learn/deep-dives/everything-about-null)
@@ -632,9 +640,9 @@ Get-NetTCPConnection	端口信息  <br />  Get-WmiObject win32_service | select 
 | $Home | 此变量用于表示用户主目录的完整路径 |
 | $input | 包含一个枚举器，枚举传递给该函数的所有输入。仅适用于脚本块和功能。 |
 | $Host | 此变量包含一个对象，该对象显示Windows PowerShell的当前主机应用程序。 |
-| $IsLinux | 如果当前会话在Linux操作系统上运行，则此变量值为![](https://cdn.nlark.com/yuque/__latex/1054c0bfa51227f9c5a0c4caecaa4899.svg#card=math&code=True%C3%AF%C2%BC%C2%8C%C3%A5%C2%90%C2%A6%C3%A5%C2%88%C2%99%C3%A4%C2%B8%C2%BA&id=jxTu5)False。 |
-| $IsWindows | 如果当前会话在Windows操作系统上运行，则此变量值为![](https://cdn.nlark.com/yuque/__latex/1054c0bfa51227f9c5a0c4caecaa4899.svg#card=math&code=True%C3%AF%C2%BC%C2%8C%C3%A5%C2%90%C2%A6%C3%A5%C2%88%C2%99%C3%A4%C2%B8%C2%BA&id=eQKMV)False。 |
-| $IsMacOS | 如果当前会话在MacOS操作系统上运行，则此变量值为![](https://cdn.nlark.com/yuque/__latex/1054c0bfa51227f9c5a0c4caecaa4899.svg#card=math&code=True%C3%AF%C2%BC%C2%8C%C3%A5%C2%90%C2%A6%C3%A5%C2%88%C2%99%C3%A4%C2%B8%C2%BA&id=mD3RH)False。 |
+| $IsLinux | 如果当前会话在Linux操作系统上运行，则此变量值为$True，否则为$False。 |
+| $IsWindows | 如果当前会话在Windows操作系统上运行，则此变量值为$True，否则为$False。 |
+| $IsMacOS | 如果当前会话在MacOS操作系统上运行，则此变量值为$True，否则为$False。 |
 | $null | 此变量用于表示null值或空值。可以使用它来表示脚本和命令中缺少或未定义的值。 |
 | $PID | 此变量显示进程的PID，该进程正在托管当前PowerShell的会话。 |
 | $PSItem | 此变量充当$_，它在管道对象中包含当前对象。 |
@@ -687,10 +695,10 @@ System.String  <br />  方法
 - -like       通配符匹配
 
 - -Join 
-- -Split <String> 
-   - -Split (<String[]>) 
-   - <String> -Split <Delimiter>[,<Max-substrings>[,"<Options>"]] 
-   - <String> -Split {<ScriptBlock>} [,<Max-substrings>]
+- -Split `<String> `
+   - `-Split (<String[]>)`
+   - `<String> -Split <Delimiter>[,<Max-substrings>[,"<Options>"]] `
+   - `<String> -Split {<ScriptBlock>} [,<Max-substrings>]`
 
 变量替换	在字符串中指定变量
 ```shell
@@ -818,11 +826,11 @@ $myObject | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name
 | -NotLike | 不使用 * 通配符进行匹配 | "file.doc" -notlike "p*.doc" |
 | -Contains | 确定集合中是否包含指定的值 | 1,2,3 -contains 1 |
 | -NotContains | 确定集合是否不包含特定值 | 1,2,3 -notcontains 4 |
-| -Match | 匹配指定的正则表达式 |  |
-| -NotMatch | 不匹配指定的正则表达式 |  |
-| -In | 确定指定的值是否在集合中 |  |
-| -NotIn | 确定指定的值是否不在集合中 |  |
-| -Replace | 替换指定的值 |  |
+| -Match | 匹配指定的正则表达式 |   <br />   |
+| -NotMatch | 不匹配指定的正则表达式 |   <br />   |
+| -In | 确定指定的值是否在集合中 |   <br />   |
+| -NotIn | 确定指定的值是否不在集合中 |   <br />   |
+| -Replace | 替换指定的值 |   <br />   |
 
 **调用**运算符
 

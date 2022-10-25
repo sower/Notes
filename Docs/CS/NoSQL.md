@@ -27,7 +27,7 @@
 
 
 
-# —— Redis ——
+# —— [Redis](https://github.com/redis/redis) ——
 Remote Dictionary Server（远程字典服务器）
 
 由Salvatore Sanfilippo编写的key-value存储系统。  <br />  一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。
@@ -71,7 +71,7 @@ Remote Dictionary Server（远程字典服务器）
 | **-d** | 指定SET/GET值的数据大小(以字节为单位) | 2 |
 | **-k** | 1=keep alive, 0=reconnect | 1 |
 | **-r** | 使用SET/GET/INCR的随机键，SADD的随机值 |  |
-| **-p** | 管道<numreq>请求 | 1 |
+| **-p** | 管道`<numreq>`请求 | 1 |
 | **-h** | 指定服务器主机名 |  |
 | **-q** | 强制让Redis安装。 只显示query/sec值 |  |
 | **--csv** | 以CSV格式输出 |  |

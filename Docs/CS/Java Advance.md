@@ -107,7 +107,7 @@ Future<String> future = executor.submit(task);
 String result = future.get(); // 可能阻塞
 ```
 
-class `FutureTask<V>`  <br />  FutureTask类实现了` RunnableFuture<V>` 接口（`RunnableFuture<V>` 接口继承了`Runnable` 接口和`Future<V> `接口）  <br />  构造器：FutureTask(Callable<V> callable)、FutureTask(Runnable runnable, V result)（指定成功完成时 get 返回给定的结果为 result）
+class `FutureTask<V>`  <br />  FutureTask类实现了` RunnableFuture<V>` 接口（`RunnableFuture<V>` 接口继承了`Runnable` 接口和`Future<V> `接口）  <br />  构造器：`FutureTask(Callable<V> callable)`、`FutureTask(Runnable runnable, V result)`（指定成功完成时 get 返回给定的结果为 result）
 ```java
 public class CallableDemo {
 
@@ -144,35 +144,48 @@ public class CallableDemo {
 ```
 
 
-**CompletableFuture**
+**创建线程的三种方式对比**
 
-- implements Future<T>, CompletionStage<T>
+- 继承 Thread 类
+   1. 线程类已经继承了 Thread 类，不能再继承其它父类
+   2. 访问当前线程直接使用 this
+   3. 多个线程之间**无法共享线程类中的实例变量**
+- 实现 Runnable、Callable 接口的方式创建多线程
+   1. 线程类只是实现了 Runnable 接口，还可以继承其它类
+   2. 访问当前线程须使用 Thread. currentThread() 方法
+   3. 所创建的 Runnable 对象只是**线程的 target**，而多个线程**可以共享同一个 target 对象的实例变量**，所以适合多个相同线程来处理同一份资源的情况
+
+
+
+## CompletableFuture
+
+- `implements Future<T>, CompletionStage<T>`
 - 组合式异步编程，可以传入回调对象，当异步任务完成或者发生异常时，自动调用回调对象的回调方法
 
-**静态方法**
+静态方法
 
-- CompletableFuture<Void> runAsync(Runnable runnable)
-- CompletableFuture<Void> runAsync(Runnable runnable, Executor executor)
-- CompletableFuture<U> supplyAsync(Supplier<U> supplier)：使用公共的线程池 ForkJoinPool 执行异步任务
-- CompletableFuture<U> supplyAsync(Supplier<U> supplier, Executor executor)：使用指定的线程池执行异步任务
+- `CompletableFuture<Void> runAsync(Runnable runnable)`
+- `CompletableFuture<Void> runAsync(Runnable runnable, Executor executor)`
+- `CompletableFuture<U> supplyAsync(Supplier<U> supplier)`：使用公共的线程池 ForkJoinPool 执行异步任务
+- `CompletableFuture<U> supplyAsync(Supplier<U> supplier, Executor executor)`：使用指定的线程池执行异步任务
 - 组合多个 CompletableFuture
-   - CompletableFuture<Void> allOf(CompletableFuture<?>... cfs)：等待数组中的所有 CompletableFuture 对象都执行完毕
-   - CompletableFuture<Object> anyOf(CompletableFuture<?>... cfs)：只要数组有任何一个 CompletableFuture 对象执行完毕就不再等待，返回由第一个执行完毕的 CompletableFuture 对象的返回值构成的 CompletableFuture
+   - `CompletableFuture<Void> allOf(CompletableFuture<?>... cfs)`：等待数组中的所有 CompletableFuture 对象都执行完毕
+   - `CompletableFuture<Object> anyOf(CompletableFuture<?>... cfs)`：只要数组有任何一个 CompletableFuture 对象执行完毕就不再等待，返回由第一个执行完毕的 CompletableFuture 对象的返回值构成的 CompletableFuture
 
-**实例方法**
+实例方法
 
 - T join()：阻塞直到返回完成时的结果值，如果遇到异常则抛出 unchecked exception
 - 定义处理 CompletableFuture 的返回结果，即回调函数
-   - CompletableFuture<Void> thenRun(Runnable action)
-   - CompletableFuture<Void> thenAccept(Consumer<? super T> action)
-   - CompletableFuture<U> thenApply(Function<? super T, ? extends U> fn)
+   - `CompletableFuture<Void> thenRun(Runnable action)`
+   - `CompletableFuture<Void> thenAccept(Consumer<? super T> action)`
+   - `CompletableFuture<U> thenApply(Function<? super T, ? extends U> fn)`
 - 组合两个 CompletableFuture
-   - CompletableFuture<U> thenCompose(Function<? super T, ? extends CompletionStage<U>> fn)：对两个异步操作进行流水线，第一个操作完成后，将其结果作为参数传递给第二个操作
-   - CompletableFuture<V> thenCombine(CompletionStage<? extends U> other, BiFunction<? super T,? super U,? extends V> fn)：当两个 CompletableFuture 对象完成计算后，将结果合并
+   - `CompletableFuture<U> thenCompose(Function<? super T, ? extends CompletionStage<U>> fn)`：对两个异步操作进行流水线，第一个操作完成后，将其结果作为参数传递给第二个操作
+   - `CompletableFuture<V> thenCombine(CompletionStage<? extends U> other, BiFunction<? super T,? super U,? extends V> fn)`：当两个 CompletableFuture 对象完成计算后，将结果合并
 - 异常处理（如果异常发生，res 参数将是 null，否则 ex 将是 null）
-   - ConnectionFuture<T> exceptionally(Function<Throwable, ? extends T> fn)：仅在异常时回调，可在异常时返回特定值用于回退
-   - ConnectionFuture<T> whenComplete(BiConsumer<? super T, ? super Throwable> action)：无论异常是否发生都会被调用
-   - ConnectionFuture<U> handle(BiFunction<? super T, Throwable, ? extends U> fn)：无论异常是否发生都会被调用，可在异常时返回特定值用于回退
+   - `ConnectionFuture<T> exceptionally(Function<Throwable, ? extends T> fn)`：仅在异常时回调，可在异常时返回特定值用于回退
+   - `ConnectionFuture<T> whenComplete(BiConsumer<? super T, ? super Throwable> action)`：无论异常是否发生都会被调用
+   - `ConnectionFuture<U> handle(BiFunction<? super T, Throwable, ? extends U> fn)`：无论异常是否发生都会被调用，可在异常时返回特定值用于回退
 ```java
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -204,20 +217,6 @@ public class Main {
 }
 ```
 
-
-
-
-
-**创建线程的三种方式对比**
-
-- 继承 Thread 类
-   1. 线程类已经继承了 Thread 类，不能再继承其它父类
-   2. 访问当前线程直接使用 this
-   3. 多个线程之间**无法共享线程类中的实例变量**
-- 实现 Runnable、Callable 接口的方式创建多线程
-   1. 线程类只是实现了 Runnable 接口，还可以继承其它类
-   2. 访问当前线程须使用 Thread. currentThread() 方法
-   3. 所创建的 Runnable 对象只是**线程的 target**，而多个线程**可以共享同一个 target 对象的实例变量**，所以适合多个相同线程来处理同一份资源的情况
 
 
 
@@ -822,13 +821,13 @@ public class ThreadLocalDemo {
 - **jps -l**：JVM 进程状态工具，列出系统上的 JVM 进程
 - jcmd：JVM 命令行调试工具，用于向 JVM 进程发送调试命令
 - jstat：JVM 统计监控工具，附加到一个 JVM 进程上收集和记录 JVM 的各种性能指标数据
-   - jstat -gcutil <pid> 5000 100：输出 GC 和内存占用汇总信息，每隔 5 秒输出一次，输出 100 次（其中，S0 表示 Survivor0 区占用百分比，S1 表示 Survivor1 区占用百分比，E 表示 Eden 区占用百分比，O 表示老年代占用百分比，M 表示元数据区占用百分比，YGC 表示新生代回收次数，YGCT 表示新生代回收耗时，FGC 表示老年代回收次数，FGCT 表示老年代回收耗时）
+   - `jstat -gcutil <pid> 5000 100`：输出 GC 和内存占用汇总信息，每隔 5 秒输出一次，输出 100 次（其中，S0 表示 Survivor0 区占用百分比，S1 表示 Survivor1 区占用百分比，E 表示 Eden 区占用百分比，O 表示老年代占用百分比，M 表示元数据区占用百分比，YGC 表示新生代回收次数，YGCT 表示新生代回收耗时，FGC 表示老年代回收次数，FGCT 表示老年代回收耗时）
 - **jstack**：JVM 栈查看工具，可以打印 JVM 进程的线程栈和锁情况
 - **jinfo**：JVM 信息查看工具，查看 JVM 的各种配置信息
 - **jmap**：JVM 堆内存分析工具，可以打印 VM 进程对象直方图、类加载统计，以及做堆转储操作
-   - jmap -dump:format=b,file=/tmp/a.hprof <pid>：生成虚拟机的堆内存转储快照（heapdump 文件）
-   - jmap -heap <pid>：显示堆详细信息，包括使用的 GC 算法、堆配置信息和各内存区域内存使用信息
-   - jmap -histo:live <pid>：显示堆中对象的统计信息，包括每个 Java 类的对象数量（只计算活动的对象）、内存大小
+   - `jmap -dump:format=b,file=/tmp/a.hprof <pid>`：生成虚拟机的堆内存转储快照（heapdump 文件）
+   - `jmap -heap <pid>`：显示堆详细信息，包括使用的 GC 算法、堆配置信息和各内存区域内存使用信息
+   - `jmap -histo:live <pid>`：显示堆中对象的统计信息，包括每个 Java 类的对象数量（只计算活动的对象）、内存大小
 - jhat：JVM Heap Dump Browser，用于分析 heapdump 文件，它会建立一个 HTTP/HTML 服务器，让用户可以在浏览器上查看分析结果
 
 

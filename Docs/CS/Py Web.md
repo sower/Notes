@@ -128,6 +128,7 @@ cursor.close()
 mydb.close()
 ```
 
+
 # [SQLAlchemy](https://www.sqlalchemy.org/)
 [https://www.osgeo.cn/sqlalchemy/](https://www.osgeo.cn/sqlalchemy/)
 ```python
@@ -216,7 +217,7 @@ if __name__ == '__main__':
 - [ItsDangerous](https://pythonhosted.org/itsdangerous/): 安全地注入数据以确保数据的完整性，通常用于保护 Flask 的 session cookie。
 - [Click](https://click.palletsprojects.com/en/7.x/): 一个解析命令行的应用，它支持在 Flask 中自定义管理命令。
 
-<converter:variable_name>主要类型
+`<converter:variable_name>`主要类型
 
 | 类型 | 含义 |
 | --- | --- |
@@ -377,7 +378,7 @@ cors = CORS(app)
 Delimiters（分隔符）
 
 - `{% ... %}` 语句
-- `{{ ... }}` 打印模板输出的表达式
+- `{ { ... } }` 打印模板输出的表达式
 - `{# ... #} `注释
 - `... ##` 行语句
 
@@ -681,7 +682,7 @@ python manage.py migrate
   {% endfor %}
 </table>
 ```
-对于 {{ book.name }} ，首先 Django 尝试对 book 对象使用字典查找（也就是使用 obj.get(str) 操作），如果失败了就尝试属性查找（也就是 obj.str 操作），最后尝试列表查找（也就是 obj[int] 操作）。  <br />  book_list.all 被解释为 Python 代码 book_list.objects.all()，将会返回一个可迭代的 Book 对象  <br />  创建视图来返回图书列表：
+对于 `{ { book.name } }` ，首先 Django 尝试对 book 对象使用字典查找（也就是使用 obj.get(str) 操作），如果失败了就尝试属性查找（也就是 obj.str 操作），最后尝试列表查找（也就是 obj[int] 操作）。  <br />  book_list.all 被解释为 Python 代码 book_list.objects.all()，将会返回一个可迭代的 Book 对象  <br />  创建视图来返回图书列表：
 ```python
 # myApp/views.py
 from django.shortcuts import render
@@ -961,20 +962,20 @@ if __name__ == "__main__":
 **requests.request(method, url, **kwargs)**  <br />  request(method, url, params=None, data=None, headers=None, cookies=None, files=None, auth=None, timeout=None, allow_redirects=True, proxies=None, hooks=None, stream=None, verify=None, cert=None, json=None)  <br />  参数:
 
 - method -- method for the new Request object.
-- url -- URL for the new Request object.
-- params -- (optional) Dictionary or bytes to be sent in the query string for the Request.
-- data -- (optional) Dictionary or list of tuples [(key, value)] (will be form-encoded), bytes, or file-like object to send in the body of the Request.
-- json -- (optional) json data to send in the body of the Request.
-- headers -- (optional) Dictionary of HTTP Headers to send with the Request.
-- cookies -- (optional) Dict or CookieJar object to send with the Request.
-- files -- (optional) Dictionary of 'name': file-like-objects (or {'name': file-tuple}) for multipart encoding upload. file-tuple can be a 2-tuple ('filename', fileobj), 3-tuple ('filename', fileobj, 'content_type') or a 4-tuple ('filename', fileobj, 'content_type', custom_headers), where 'content-type' is a string defining the content type of the given file and custom_headers a dict-like object containing additional headers to add for the file.
-- auth -- (optional) Auth tuple to enable Basic/Digest/Custom HTTP Auth.
-- timeout (float or tuple) -- (optional) How many seconds to wait for the server to send data before giving up, as a float, or a (connect timeout, read timeout) tuple.
-- allow_redirects (bool) -- (optional) Boolean. Enable/disable GET/OPTIONS/POST/PUT/PATCH/DELETE/HEAD redirection. Defaults to True.
-- proxies -- (optional) Dictionary mapping protocol to the URL of the proxy.
-- verify -- (optional) Either a boolean, in which case it controls whether we verify the server's TLS certificate, or a string, in which case it must be a path to a CA bundle to use. Defaults to True.
-- stream -- (optional) if False, the response content will be immediately downloaded.
-- cert -- (optional) if String, path to ssl client cert file (.pem). If Tuple, ('cert', 'key') pair.
+- url：请求服务器地址；
+- params：字典或字节序列形式的请求参数（请求地址中？后面的键值对参数）；
+- data：字典，字节序或文件对象；向服务器提交的数据内容；
+- json：json格式的数据（与data=json.dumps(jsBody)等价）；
+- headers：字典，请求头信息；
+- cookies：字典或CookieJar，只从http中解析cookie；
+- auth：元组，支持http认证功能；
+- files：字典，向服务器上传文件；
+- timeout：设定超时秒数；
+- proxies：字典，设定访问代理服务器；
+- allow_redirects: 开关， 表示是否允许对url进行重定向， 默认为True。
+- stream: 开关， 指是否对获取内容进行立即下载， 默认为True。
+- verify：开关， 用于认证SSL证书， 默认为True。
+- cert： 用于设置保存本地SSL证书路径
 
 
 
@@ -1123,6 +1124,13 @@ class CloudJson(ApiGateway):
         self._get('/bins', headers=headers)
         return self.response
 
+        
+# 下载大文件，一次性加载可能会导致内存爆满，可采取分块读写的方法
+def download_file():
+    req = requests.get("http://www.test.com/test.jpg", stream=True)
+    with open(r"c:\test.jpg", "wb") as f:
+        for chunk in req.iter_content(chunk_size=1024):  # 每次加载1024字节
+            f.write(chunk)
 
 if __name__ == '__main__':
     id = '659e99c04915'

@@ -1,14 +1,7 @@
 <a name="29327766"></a>
 # —— C ——
 
-
-C 语言是一种通用的高级语言，最初是由 Dennis Ritchie 在贝尔实验室为开发 UNIX 操作系统而设计的。
-
-C 语言最开始是于 1972 年在 DEC PDP-11 计算机上被首次实现。
-
-1978 年，布莱恩·柯林汉（Brian Kernighan）和丹尼斯·里奇（Dennis Ritchie）制作了 C 的第一个公开可用的描述(K&R 标准)。
-
-
+C 语言是一种通用的高级语言，最初是由 Dennis Ritchie 在贝尔实验室为开发 UNIX 操作系统而设计的。  <br />  C 语言最开始是于 1972 年在 DEC PDP-11 计算机上被首次实现。  <br />  1978 年，布莱恩·柯林汉（Brian Kernighan）和丹尼斯·里奇（Dennis Ritchie）制作了 C 的第一个公开可用的描述(K&R 标准)。
 
 <a name="b6003d0f"></a>
 # --基本语法--
@@ -45,6 +38,7 @@ C 是**区分大小写**的编程语言。
 -  构造类型：数组类型、结构体类型（struct)、共用体类型(union) 、函数类型 
 -  指针类型 
 -  空类型：void
+
 | 类型 | 存储大小 | 值范围 |
 | --- | --- | --- |
 | char | 1 字节 | -128 - 127 或 0 - 255 |
@@ -395,7 +389,7 @@ int main(void)
 <a name="2db41159"></a>
 # 可变参数 (Variadic)
 
-[** <stdarg.h>**](https://zh.cppreference.com/w/c/variadic)
+**<**[**stdarg.h**](https://zh.cppreference.com/w/c/variadic)**>**
 
 | [va_start](https://zh.cppreference.com/w/c/variadic/va_start) | 令函数得以访问可变参数 (宏函数) |
 | --- | --- |
@@ -494,7 +488,7 @@ int main ()
 
 信号是由操作系统传给进程的中断，会提早终止一个程序。在操作系统上，一般通过按 Ctrl+C 产生中断。
 
-[**<signal.h>**](https://zh.cppreference.com/w/c/program)  <br />  **信号管理函数**
+**<**[**signal.h**](https://zh.cppreference.com/w/c/program)**>**  <br />  **信号管理函数**
 
 | [signal](https://zh.cppreference.com/w/c/program/signal) | 为特定的信号设置信号处理函数 (函数) |
 | --- | --- |
@@ -584,7 +578,7 @@ int main()
 
 <a name="cfb5f18c"></a>
 # 关键字
-| [auto](https://zh.cppreference.com/w/c/keyword/auto)  <br />  [break](https://zh.cppreference.com/w/c/keyword/break)  <br />  [case](https://zh.cppreference.com/w/c/keyword/case)  <br />  [char](https://zh.cppreference.com/w/c/keyword/char)  <br />  [const](https://zh.cppreference.com/w/c/keyword/const)  <br />  [continue](https://zh.cppreference.com/w/c/keyword/continue)  <br />  [default](https://zh.cppreference.com/w/c/keyword/default)  <br />  [do](https://zh.cppreference.com/w/c/keyword/do)  <br />  [double](https://zh.cppreference.com/w/c/keyword/double)  <br />  [else](https://zh.cppreference.com/w/c/keyword/else)  <br />  [enum](https://zh.cppreference.com/w/c/keyword/enum)  <br />  [extern](https://zh.cppreference.com/w/c/keyword/extern) | [float](https://zh.cppreference.com/w/c/keyword/float)  <br />  [for](https://zh.cppreference.com/w/c/keyword/for)  <br />  [goto](https://zh.cppreference.com/w/c/keyword/goto)  <br />  [if](https://zh.cppreference.com/w/c/keyword/if)  <br />  [inline](https://zh.cppreference.com/w/c/keyword/inline) (C99 起)  <br />  [int](https://zh.cppreference.com/w/c/keyword/int)  <br />  [long](https://zh.cppreference.com/w/c/keyword/long)  <br />  [register](https://zh.cppreference.com/w/c/keyword/register)  <br />  [restrict](https://zh.cppreference.com/w/c/keyword/restrict) (C99 起)  <br />  [return](https://zh.cppreference.com/w/c/keyword/return)  <br />  [short](https://zh.cppreference.com/w/c/keyword/short) | [signed](https://zh.cppreference.com/w/c/keyword/signed)  <br />  [sizeof](https://zh.cppreference.com/w/c/keyword/sizeof)  <br />  [static](https://zh.cppreference.com/w/c/keyword/static)  <br />  [struct](https://zh.cppreference.com/w/c/keyword/struct)  <br />  [switch](https://zh.cppreference.com/w/c/keyword/switch)  <br />  [typedef](https://zh.cppreference.com/w/c/keyword/typedef)  <br />  [union](https://zh.cppreference.com/w/c/keyword/union)  <br />  [unsigned](https://zh.cppreference.com/w/c/keyword/unsigned)  <br />  [void](https://zh.cppreference.com/w/c/keyword/void)  <br />  [volatile](https://zh.cppreference.com/w/c/keyword/volatile)  <br />  [while](https://zh.cppreference.com/w/c/keyword/while) | [_Alignas](https://zh.cppreference.com/w/c/keyword/_Alignas) (C11 起)  <br />  [_Alignof](https://zh.cppreference.com/w/c/keyword/_Alignof) (C11 起)  <br />  [_Atomic](https://zh.cppreference.com/w/c/keyword/_Atomic) (C11 起)  <br />  [_Bool](https://zh.cppreference.com/w/c/keyword/_Bool) (C99 起)  <br />  [_Complex](https://zh.cppreference.com/w/c/keyword/_Complex) (C99 起)  <br />  [_Generic](https://zh.cppreference.com/w/c/keyword/_Generic) (C11 起)  <br />  [_Imaginary](https://zh.cppreference.com/w/c/keyword/_Imaginary) (C99 起)  <br />  [_Noreturn](https://zh.cppreference.com/w/c/keyword/_Noreturn) (C11 起)  <br />  [_Static_assert](https://zh.cppreference.com/w/c/keyword/_Static_assert) (C11 起)  <br />  [_Thread_local](https://zh.cppreference.com/w/c/keyword/_Thread_local) (C11 起) |
+| [auto](https://zh.cppreference.com/w/c/keyword/auto)  <br />  [break](https://zh.cppreference.com/w/c/keyword/break)  <br />  [case](https://zh.cppreference.com/w/c/keyword/case)  <br />  [char](https://zh.cppreference.com/w/c/keyword/char)  <br />  [const](https://zh.cppreference.com/w/c/keyword/const)  <br />  [continue](https://zh.cppreference.com/w/c/keyword/continue)  <br />  [default](https://zh.cppreference.com/w/c/keyword/default)  <br />  [do](https://zh.cppreference.com/w/c/keyword/do)  <br />  [double](https://zh.cppreference.com/w/c/keyword/double)  <br />  [else](https://zh.cppreference.com/w/c/keyword/else)  <br />  [enum](https://zh.cppreference.com/w/c/keyword/enum)  <br />  [extern](https://zh.cppreference.com/w/c/keyword/extern) | [float](https://zh.cppreference.com/w/c/keyword/float)  <br />  [for](https://zh.cppreference.com/w/c/keyword/for)  <br />  [goto](https://zh.cppreference.com/w/c/keyword/goto)  <br />  [if](https://zh.cppreference.com/w/c/keyword/if)  <br />  [inline](https://zh.cppreference.com/w/c/keyword/inline) (C99 起)  <br />  [int](https://zh.cppreference.com/w/c/keyword/int)  <br />  [long](https://zh.cppreference.com/w/c/keyword/long)  <br />  [register](https://zh.cppreference.com/w/c/keyword/register)  <br />  [restrict](https://zh.cppreference.com/w/c/keyword/restrict) (C99 起)  <br />  [return](https://zh.cppreference.com/w/c/keyword/return)  <br />  [short](https://zh.cppreference.com/w/c/keyword/short) | [signed](https://zh.cppreference.com/w/c/keyword/signed)  <br />  [sizeof](https://zh.cppreference.com/w/c/keyword/sizeof)  <br />  [static](https://zh.cppreference.com/w/c/keyword/static)  <br />  [struct](https://zh.cppreference.com/w/c/keyword/struct)  <br />  [switch](https://zh.cppreference.com/w/c/keyword/switch)  <br />  [typedef](https://zh.cppreference.com/w/c/keyword/typedef)  <br />  [union](https://zh.cppreference.com/w/c/keyword/union)  <br />  [unsigned](https://zh.cppreference.com/w/c/keyword/unsigned)  <br />  [void](https://zh.cppreference.com/w/c/keyword/void)  <br />  [volatile](https://zh.cppreference.com/w/c/keyword/volatile)  <br />  [while](https://zh.cppreference.com/w/c/keyword/while) | [_Alignas](https://zh.cppreference.com/w/c/keyword/_Alignas)   <br />  [_Alignof](https://zh.cppreference.com/w/c/keyword/_Alignof)   <br />  [_Atomic](https://zh.cppreference.com/w/c/keyword/_Atomic)   <br />  [_Bool](https://zh.cppreference.com/w/c/keyword/_Bool) (C99 起)  <br />  [_Complex](https://zh.cppreference.com/w/c/keyword/_Complex) (C99 起)  <br />  [_Generic](https://zh.cppreference.com/w/c/keyword/_Generic)   <br />  [_Imaginary](https://zh.cppreference.com/w/c/keyword/_Imaginary) (C99 起)  <br />  [_Noreturn](https://zh.cppreference.com/w/c/keyword/_Noreturn)   <br />  [_Static_assert](https://zh.cppreference.com/w/c/keyword/_Static_assert)   <br />  [_Thread_local](https://zh.cppreference.com/w/c/keyword/_Thread_local)  |
 | --- | --- | --- | --- |
 
 
@@ -598,7 +592,7 @@ int main()
 
 
 <a name="95a2bf18"></a>
-## [<stdio.h> ](https://zh.cppreference.com/w/c/io)
+## <[stdio.h](https://zh.cppreference.com/w/c/io)>
 
 **无格式输入/输出 （窄字符）**
 
@@ -608,18 +602,18 @@ int main()
 | [fputcputc](https://zh.cppreference.com/w/c/io/fputc) | 将一个字符写入文件流 (函数) |
 | [fputs](https://zh.cppreference.com/w/c/io/fputs) | 将一个字符串写入文件流 (函数) |
 | [getchar](https://zh.cppreference.com/w/c/io/getchar) | 从 stdin 读取一个字符 (函数) |
-| [gets_s ](https://zh.cppreference.com/w/c/io/gets)  <br />  (C11 起) | 从 stdin 读取一个字符串 (函数) |
+| [gets_s ](https://zh.cppreference.com/w/c/io/gets) | 从 stdin 读取一个字符串 (函数) |
 | [putchar](https://zh.cppreference.com/w/c/io/putchar) | 将一个字符写入 stdout (函数) |
 | [puts](https://zh.cppreference.com/w/c/io/puts) | 将一个字符串写入 stdout (函数) |
 | [ungetc](https://zh.cppreference.com/w/c/io/ungetc) | 将一个字符送回文件流 (函数) |
 
 
 
-| [scanf](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [fscanf](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [sscanf](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [scanf_s](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [fscanf_s](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [sscanf_s](https://zh.cppreference.com/w/c/io/fscanf)  <br />  (C11)(C11)(C11) | 从**stdin**、文件流或缓冲区读取格式化输入  <br />  (函数) |
+| [scanf](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [fscanf](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [sscanf](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [scanf_s](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [fscanf_s](https://zh.cppreference.com/w/c/io/fscanf)  <br />  [sscanf_s](https://zh.cppreference.com/w/c/io/fscanf) | 从**stdin**、文件流或缓冲区读取格式化输入  <br />  (函数) |
 | --- | --- |
-| [vscanf](https://zh.cppreference.com/w/c/io/vfscanf)[vfscanfvsscanfvscanf_svfscanf_svsscanf_s](https://zh.cppreference.com/w/c/io/vfscanf)  <br />  (C99)(C99)(C99)(C11)(C11)(C11) | 从 **stdin** 、文件流或缓冲区读取格式化输入  <br />  使用可变参数列表  <br />  (函数) |
-| [printf](https://zh.cppreference.com/w/c/io/fprintf)[fprintfsprintfsnprintfprintf_sfprintf_ssprintf_ssnprintf_s](https://zh.cppreference.com/w/c/io/fprintf)  <br />  (C99)(C11)(C11)(C11)(C11) | 打印格式化输出到 **stdout** 、文件流或缓冲区  <br />  (函数) |
-| [vprintf](https://zh.cppreference.com/w/c/io/vfprintf)[vfprintfvsprintfvsnprintfvprintf_svfprintf_svsprintf_svsnprintf_s](https://zh.cppreference.com/w/c/io/vfprintf)  <br />  (C99)(C11)(C11)(C11)(C11) | 打印格式化输出到**stdout**、文件流或缓冲区  <br />  使用可变参数列表 |
+| [vscanf](https://zh.cppreference.com/w/c/io/vfscanf)[vfscanfvsscanfvscanf_svfscanf_svsscanf_s](https://zh.cppreference.com/w/c/io/vfscanf) | 从 **stdin** 、文件流或缓冲区读取格式化输入  <br />  使用可变参数列表  <br />  (函数) |
+| [printf](https://zh.cppreference.com/w/c/io/fprintf)[fprintfsprintfsnprintfprintf_sfprintf_ssprintf_ssnprintf_s](https://zh.cppreference.com/w/c/io/fprintf)  <br />   | 打印格式化输出到 **stdout** 、文件流或缓冲区  <br />  (函数) |
+| [vprintf](https://zh.cppreference.com/w/c/io/vfprintf)[vfprintfvsprintfvsnprintfvprintf_svfprintf_svsprintf_svsnprintf_s](https://zh.cppreference.com/w/c/io/vfprintf)  <br />   | 打印格式化输出到**stdout**、文件流或缓冲区  <br />  使用可变参数列表 |
 
 
 **printf() 格式输出**  <br />  `%[flag][width][.precision]type`
@@ -688,15 +682,15 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 
 **文件访问**
 
-| [fopen ](https://zh.cppreference.com/w/c/io/fopen)  <br />  fopen_s (C11) | 打开文件 (函数) |
+| [fopen ](https://zh.cppreference.com/w/c/io/fopen)  <br />  fopen_s  | 打开文件 (函数) |
 | --- | --- |
-| [freopen ](https://zh.cppreference.com/w/c/io/freopen)  <br />  freopen_s (C11) | 以不同名称打开既存的文件流 (函数) |
+| [freopen ](https://zh.cppreference.com/w/c/io/freopen)  <br />  freopen_s  | 以不同名称打开既存的文件流 (函数) |
 | [fclose](https://zh.cppreference.com/w/c/io/fclose) | 关闭文件 (函数) |
 | [fflush](https://zh.cppreference.com/w/c/io/fflush) | 将输出流与实际文件同步 (函数) |
 | [setbuf](https://zh.cppreference.com/w/c/io/setbuf) | 为文件流设置缓冲区 (函数) |
 | [setvbuf](https://zh.cppreference.com/w/c/io/setvbuf) | 为文件流设置缓冲区和其大小 (函数) |
-| 定义于头文件 <wchar.h> |  |
-| [fwide ](https://zh.cppreference.com/w/c/io/fwide)  <br />  (C95) | 将文件流在宽字符I/O和窄字符I/O间切换 (函数) |
+| 定义于头文件 `<wchar.h>` |  |
+| [fwide ](https://zh.cppreference.com/w/c/io/fwide) | 将文件流在宽字符I/O和窄字符I/O间切换 (函数) |
 | 直接输入/输出 |  |
 | [fread](https://zh.cppreference.com/w/c/io/fread) | 从文件读取 (函数) |
 | [fwrite](https://zh.cppreference.com/w/c/io/fwrite) | 写入到文件 |
@@ -719,8 +713,8 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 | [remove](https://zh.cppreference.com/w/c/io/remove) | 删除文件 (函数) |
 | --- | --- |
 | [rename](https://zh.cppreference.com/w/c/io/rename) | 重命名文件 (函数) |
-| [tmpfile ](https://zh.cppreference.com/w/c/io/tmpfile)  <br />  tmpfile_s (C11) | 返回指向临时文件的指针 (函数) |
-| [tmpnam ](https://zh.cppreference.com/w/c/io/tmpnam)  <br />  tmpnam_s (C11) | 返回唯一的文件名 |
+| [tmpfile ](https://zh.cppreference.com/w/c/io/tmpfile)  <br />  tmpfile_s  | 返回指向临时文件的指针 (函数) |
+| [tmpnam ](https://zh.cppreference.com/w/c/io/tmpnam)  <br />  tmpnam_s  | 返回唯一的文件名 |
 
 
 
@@ -745,20 +739,20 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 | BUFSIZ | setbuf()所用的缓冲区大小 (宏常量) |
 | _IOFBF _IOLBF _IONBF | 指示全缓冲 I/O 的 setvbuf() 参数 指示行缓冲 I/O 的 setvbuf() 参数 指示无缓冲 I/O 的 setvbuf() 参数 (宏常量) |
 | SEEK_SET SEEK_CUR SEEK_END | 指示从文件首开始寻位的 fseek() 参数 指示从文件当前位置开始寻位的 fseek()参数 指示从文件尾开始寻位的 fseek() 参数 (宏常量) |
-| TMP_MAX TMP_MAX_S (C11) | [tmpnam ](https://zh.cppreference.com/w/c/io/tmpnam)  <br />  所能生成的最大独有文件数 tmpnam_s 所能生成的最大独有文件数 (宏常量) |
-| L_tmpnam L_tmpnam_s (C11) | 保有 [tmpnam ](https://zh.cppreference.com/w/c/io/tmpnam)  <br />  结果所需的数组大小 保有 tmpnam_s 结果所需的数组大小 (宏常量) |
+| TMP_MAX TMP_MAX_S  | [tmpnam ](https://zh.cppreference.com/w/c/io/tmpnam)  <br />  所能生成的最大独有文件数 tmpnam_s 所能生成的最大独有文件数 (宏常量) |
+| L_tmpnam L_tmpnam_s  | 保有 [tmpnam ](https://zh.cppreference.com/w/c/io/tmpnam)  <br />  结果所需的数组大小 保有 tmpnam_s 结果所需的数组大小 (宏常量) |
 
 
 
 
-## [<cstdlib>](https://zh.cppreference.com/w/cpp/header/cstdlib)
+## <[cstdlib](https://zh.cppreference.com/w/cpp/header/cstdlib)>
 
 **类型**
 
 | [div_t](https://zh.cppreference.com/w/cpp/numeric/math/div) | struct div_t {  int quot ;  int rem ;  } ; |
 | --- | --- |
 | [ldiv_t](https://zh.cppreference.com/w/cpp/numeric/math/div) | 结构体类型 |
-| [lldiv_t ](https://zh.cppreference.com/w/cpp/numeric/math/div)  <br />  (C++11) | 结构体类型 |
+| [lldiv_t ](https://zh.cppreference.com/w/cpp/numeric/math/div) | 结构体类型 |
 | [size_t](https://zh.cppreference.com/w/cpp/types/size_t) | [sizeof运](https://zh.cppreference.com/w/cpp/language/sizeof)  <br />  算符返回的无符号整数类型 (typedef) |
 
 
@@ -768,15 +762,15 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 | --- | --- |
 | [abort](https://zh.cppreference.com/w/cpp/utility/program/abort) | 导致非正常的程序终止（不进行清理） (函数) |
 | [exit](https://zh.cppreference.com/w/cpp/utility/program/exit) | 导致正常的程序终止并进行清理 (函数) |
-| [quick_exit ](https://zh.cppreference.com/w/cpp/utility/program/quick_exit)  <br />  (C++11) | 导致快速程序终止，不进行完全的清理 (函数) |
-| [_Exit ](https://zh.cppreference.com/w/cpp/utility/program/_Exit)  <br />  (C++11) | 导致正常的程序终止，不进行清理 (函数) |
+| [quick_exit ](https://zh.cppreference.com/w/cpp/utility/program/quick_exit)  <br />   | 导致快速程序终止，不进行完全的清理 (函数) |
+| [_Exit ](https://zh.cppreference.com/w/cpp/utility/program/_Exit) | 导致正常的程序终止，不进行清理 (函数) |
 | [atexit](https://zh.cppreference.com/w/cpp/utility/program/atexit) | 注册将于调用[std::exit()时](https://zh.cppreference.com/w/cpp/utility/program/exit)  <br />  被调用的函数 (函数) |
-| [at_quick_exit ](https://zh.cppreference.com/w/cpp/utility/program/at_quick_exit)  <br />  (C++11) | 注册将于调用[quick_exit时](https://zh.cppreference.com/w/cpp/utility/program/quick_exit)  <br />  被调用的函数 (函数) |
+| [at_quick_exit ](https://zh.cppreference.com/w/cpp/utility/program/at_quick_exit)  <br />   | 注册将于调用[quick_exit时](https://zh.cppreference.com/w/cpp/utility/program/quick_exit)  <br />  被调用的函数 (函数) |
 | [system](https://zh.cppreference.com/w/cpp/utility/program/system) | 调用宿主环境的命令处理器 (函数) |
 | [getenv](https://zh.cppreference.com/w/cpp/utility/program/getenv) | 访问环境变数列表 (函数) |
 | 内存管理 |  |
 | [malloc](https://zh.cppreference.com/w/cpp/memory/c/malloc) | 分配内存 (函数) |
-| [aligned_alloc ](https://zh.cppreference.com/w/cpp/memory/c/aligned_alloc)  <br />  (C++17) | 分配对齐的内存 (函数) |
+| [aligned_alloc ](https://zh.cppreference.com/w/cpp/memory/c/aligned_alloc) | 分配对齐的内存 (函数) |
 | [calloc](https://zh.cppreference.com/w/cpp/memory/c/calloc) | 分配并清零内存 (函数) |
 | [realloc](https://zh.cppreference.com/w/cpp/memory/c/realloc) | 扩张先前分配的内存块 (函数) |
 | [free](https://zh.cppreference.com/w/cpp/memory/c/free) | 解分配先前分配的内存 (函数) |
@@ -795,8 +789,8 @@ sprintf(str, "%s %s", s1, s2);//连接字符串s1和s2
 | 杂项演算法与数学 |  |
 | [rand](https://zh.cppreference.com/w/cpp/numeric/random/rand) | 生成伪随机数 (函数) |
 | [srand](https://zh.cppreference.com/w/cpp/numeric/random/srand) | 初始化伪随机数生成器 void srand ( unsigned seed ) ; |
-| [abs (int)labsllabs ](https://zh.cppreference.com/w/cpp/numeric/math/abs)  <br />  (C++11) | 计算整数值的绝对值（ |
-| [div (int)ldivlldiv ](https://zh.cppreference.com/w/cpp/numeric/math/div)  <br />  (C++11) | 计算整数除法的商和余数 |
+| [abs (int)labsllabs ](https://zh.cppreference.com/w/cpp/numeric/math/abs)  <br />   | 计算整数值的绝对值（ |
+| [div (int)ldivlldiv ](https://zh.cppreference.com/w/cpp/numeric/math/div)  <br />   | 计算整数除法的商和余数 |
 
 
 
@@ -823,8 +817,11 @@ void srand(unsigned seed);
 
 
 **用法:** 它初始化随机种子，会提供一个种子，这个种子会对应一个随机数，如果使用相同的种子后面的 rand() 函数会出现一样的随机数，如: srand(1); 直接使用 1 来初始化种子。不过为了防止随机数每次重复，常常使用系统时间来初始化，即使用 time函数来获得系统时间，它的返回值为从 00:00:00 GMT, January 1, 1970 到现在所持续的秒数，然后将time_t型数据转化为(unsigned)型再传给srand函数，即: srand((unsigned) time(&t)); 还有一个经常用法，不需要定义time_t型t变量,即: srand((unsigned) time(NULL)); 直接传入一个空指针，因为你的程序中往往并不需要经过参数获得的数据。
-<a name="d41d8cd9-1"></a>
-[<ctime>](https://zh.cppreference.com/w/cpp/header/ctime)  <br />  **宏常量	CLOCKS_PER_SEC**	每秒的处理器始时钟嘀嗒数
+
+
+
+## <[ctime](https://zh.cppreference.com/w/cpp/header/ctime)>
+**宏常量	CLOCKS_PER_SEC**	每秒的处理器始时钟嘀嗒数
 
 **类型**
 
@@ -871,75 +868,75 @@ void srand(unsigned seed);
 
 | 基本运算 |  |
 | --- | --- |
-| [abs (float)fabsfabsffabsl ](https://zh.cppreference.com/w/cpp/numeric/math/fabs)  <br />  (C11)(C11) | 浮点值的绝对值（ |
-| [fmodfmodffmodl ](https://zh.cppreference.com/w/cpp/numeric/math/fmod)  <br />  (C11)(C11) | 浮点除法运算的余数 (函数) |
-| [remainderremainderfremainderl ](https://zh.cppreference.com/w/cpp/numeric/math/remainder)  <br />  (C11)(C11)(C++11) | 除法运算的有符号余数 (函数) |
-| [remquoremquofremquol ](https://zh.cppreference.com/w/cpp/numeric/math/remquo)  <br />  (C11)(C11)(C++11) | 除法运算的有符号余数和最后三个二进制位 (函数) |
-| [fmafmaffmal ](https://zh.cppreference.com/w/cpp/numeric/math/fma)  <br />  (C11)(C11)(C++11) | 混合的乘加运算 (函数) |
-| [fmaxfmaxffmaxl ](https://zh.cppreference.com/w/cpp/numeric/math/fmax)  <br />  (C11)(C11)(C++11) | 两个浮点值的较大者 (函数) |
-| [fminfminffminl ](https://zh.cppreference.com/w/cpp/numeric/math/fmin)  <br />  (C11)(C11)(C++11) | 两个浮点值的较小者 (函数) |
-| [fdimfdimffdiml ](https://zh.cppreference.com/w/cpp/numeric/math/fdim)  <br />  (C11)(C11)(C++11) | 两个浮点值的正数差（max(0, xy)） (函数) |
-| [nannanfnanl ](https://zh.cppreference.com/w/cpp/numeric/math/nan)  <br />  (C11)(C11)(C++11) | 非数（NaN） (函数) |
+| [abs (float)fabsfabsffabsl ](https://zh.cppreference.com/w/cpp/numeric/math/fabs) | 浮点值的绝对值（ |
+| [fmodfmodffmodl ](https://zh.cppreference.com/w/cpp/numeric/math/fmod)  <br />   | 浮点除法运算的余数 (函数) |
+| [remainderremainderfremainderl ](https://zh.cppreference.com/w/cpp/numeric/math/remainder)  <br />   | 除法运算的有符号余数 (函数) |
+| [remquoremquofremquol ](https://zh.cppreference.com/w/cpp/numeric/math/remquo)  <br />   | 除法运算的有符号余数和最后三个二进制位 (函数) |
+| [fmafmaffmal ](https://zh.cppreference.com/w/cpp/numeric/math/fma)  <br />   | 混合的乘加运算 (函数) |
+| [fmaxfmaxffmaxl ](https://zh.cppreference.com/w/cpp/numeric/math/fmax)  <br />   | 两个浮点值的较大者 (函数) |
+| [fminfminffminl ](https://zh.cppreference.com/w/cpp/numeric/math/fmin)  <br />   | 两个浮点值的较小者 (函数) |
+| [fdimfdimffdiml ](https://zh.cppreference.com/w/cpp/numeric/math/fdim)  <br />   | 两个浮点值的正数差（max(0, xy)） (函数) |
+| [nannanfnanl ](https://zh.cppreference.com/w/cpp/numeric/math/nan) | 非数（NaN） (函数) |
 | 线性插值 |  |
 | [lerp ](https://zh.cppreference.com/w/cpp/numeric/lerp)  <br />  (C++20) | 线性插值函数 (函数) |
 | 指数函数 |  |
-| [expexpfexpl ](https://zh.cppreference.com/w/cpp/numeric/math/exp)  <br />  (C11)(C11) | 返回e的给定次幂（e x） (函数) |
-| [exp2exp2fexp2l ](https://zh.cppreference.com/w/cpp/numeric/math/exp2)  <br />  (C11)(C11)(C++11) | 返回2的给定次幂（2 x） (函数) |
-| [expm1expm1fexpm1l ](https://zh.cppreference.com/w/cpp/numeric/math/expm1)  <br />  (C11)(C11)(C++11) | 返回e的给定次幂减一（e x -1） (函数) |
-| [loglogflogl ](https://zh.cppreference.com/w/cpp/numeric/math/log)  <br />  (C11)(C11) | 计算自然（以e为底）对数（ln(x)） (函数) |
-| [log10log10flog10l ](https://zh.cppreference.com/w/cpp/numeric/math/log10)  <br />  (C11)(C11) | 计算常用（以10为底）对数（log 10 (x)） (函数) |
-| [log2log2flog2l ](https://zh.cppreference.com/w/cpp/numeric/math/log2)  <br />  (C11)(C11)(C++11) | 给定数值的以2为底的对数（log 2 (x)） (函数) |
-| [log1plog1pflog1pl ](https://zh.cppreference.com/w/cpp/numeric/math/log1p)  <br />  (C11)(C11)(C++11) | 1加上给定数值的自然（以e为底）对数（ln(1+x)） (函数) |
+| [expexpfexpl ](https://zh.cppreference.com/w/cpp/numeric/math/exp) | 返回e的给定次幂（e x） (函数) |
+| [exp2exp2fexp2l ](https://zh.cppreference.com/w/cpp/numeric/math/exp2)  <br />   | 返回2的给定次幂（2 x） (函数) |
+| [expm1expm1fexpm1l ](https://zh.cppreference.com/w/cpp/numeric/math/expm1)  <br />   | 返回e的给定次幂减一（e x -1） (函数) |
+| [loglogflogl ](https://zh.cppreference.com/w/cpp/numeric/math/log) | 计算自然（以e为底）对数（ln(x)） (函数) |
+| [log10log10flog10l ](https://zh.cppreference.com/w/cpp/numeric/math/log10) | 计算常用（以10为底）对数（log 10 (x)） (函数) |
+| [log2log2flog2l ](https://zh.cppreference.com/w/cpp/numeric/math/log2)  <br />   | 给定数值的以2为底的对数（log 2 (x)） (函数) |
+| [log1plog1pflog1pl ](https://zh.cppreference.com/w/cpp/numeric/math/log1p)  <br />   | 1加上给定数值的自然（以e为底）对数（ln(1+x)） (函数) |
 | 幂函数 |  |
-| [powpowfpowl ](https://zh.cppreference.com/w/cpp/numeric/math/pow)  <br />  (C11)(C11) | 求某数的给定次幂（x y） (函数) |
-| [sqrtsqrtfsqrtl ](https://zh.cppreference.com/w/cpp/numeric/math/sqrt)  <br />  (C11)(C11) | 计算平方根（√ x） (函数) |
-| [cbrtcbrtfcbrtl ](https://zh.cppreference.com/w/cpp/numeric/math/cbrt)  <br />  (C11)(C11)(C++11) | 计算立方根（3 √ x） (函数) |
-| [hypothypotfhypotl ](https://zh.cppreference.com/w/cpp/numeric/math/hypot)  <br />  (C11)(C11)(C++11) | 计算两个给定数的平方和的平方根（√ x2 +y2） (函数) |
+| [powpowfpowl ](https://zh.cppreference.com/w/cpp/numeric/math/pow) | 求某数的给定次幂（x y） (函数) |
+| [sqrtsqrtfsqrtl ](https://zh.cppreference.com/w/cpp/numeric/math/sqrt) | 计算平方根（√ x） (函数) |
+| [cbrtcbrtfcbrtl ](https://zh.cppreference.com/w/cpp/numeric/math/cbrt)  <br />   | 计算立方根（3 √ x） (函数) |
+| [hypothypotfhypotl ](https://zh.cppreference.com/w/cpp/numeric/math/hypot)  <br />   | 计算两个给定数的平方和的平方根（√ x2 +y2） (函数) |
 | 三角函数 |  |
-| [sinsinfsinl ](https://zh.cppreference.com/w/cpp/numeric/math/sin)  <br />  (C11)(C11) | 计算正弦（sin(x)） (函数) |
-| [coscosfcosl ](https://zh.cppreference.com/w/cpp/numeric/math/cos)  <br />  (C11)(C11) | 计算余弦（cos(x)） (函数) |
-| [tantanftanl ](https://zh.cppreference.com/w/cpp/numeric/math/tan)  <br />  (C11)(C11) | 计算正切（tan(x)） (函数) |
-| [asinasinfasinl ](https://zh.cppreference.com/w/cpp/numeric/math/asin)  <br />  (C11)(C11) | 计算反正弦（arcsin(x)） (函数) |
-| [acosacosfacosl ](https://zh.cppreference.com/w/cpp/numeric/math/acos)  <br />  (C11)(C11) | 计算反余弦（arccos(x)） (函数) |
-| [atanatanfatanl ](https://zh.cppreference.com/w/cpp/numeric/math/atan)  <br />  (C11)(C11) | 计算反正切（arctan(x)） (函数) |
-| [atan2atan2fatan2l ](https://zh.cppreference.com/w/cpp/numeric/math/atan2)  <br />  (C11)(C11) | 反正切，用符号确定象限 (函数) |
+| [sinsinfsinl ](https://zh.cppreference.com/w/cpp/numeric/math/sin) | 计算正弦（sin(x)） (函数) |
+| [coscosfcosl ](https://zh.cppreference.com/w/cpp/numeric/math/cos) | 计算余弦（cos(x)） (函数) |
+| [tantanftanl ](https://zh.cppreference.com/w/cpp/numeric/math/tan) | 计算正切（tan(x)） (函数) |
+| [asinasinfasinl ](https://zh.cppreference.com/w/cpp/numeric/math/asin) | 计算反正弦（arcsin(x)） (函数) |
+| [acosacosfacosl ](https://zh.cppreference.com/w/cpp/numeric/math/acos) | 计算反余弦（arccos(x)） (函数) |
+| [atanatanfatanl ](https://zh.cppreference.com/w/cpp/numeric/math/atan) | 计算反正切（arctan(x)） (函数) |
+| [atan2atan2fatan2l ](https://zh.cppreference.com/w/cpp/numeric/math/atan2) | 反正切，用符号确定象限 (函数) |
 | 双曲函数 |  |
-| [sinhsinhfsinhl ](https://zh.cppreference.com/w/cpp/numeric/math/sinh)  <br />  (C11)(C11) | 计算双曲正弦（sh(x)） (函数) |
-| [coshcoshfcoshl ](https://zh.cppreference.com/w/cpp/numeric/math/cosh)  <br />  (C11)(C11) | 计算双曲余弦（ch(x)） (函数) |
-| [tanhtanhftanhl ](https://zh.cppreference.com/w/cpp/numeric/math/tanh)  <br />  (C11)(C11) | 双曲正切 (函数) |
-| [asinhasinhfasinhl ](https://zh.cppreference.com/w/cpp/numeric/math/asinh)  <br />  (C11)(C11)(C++11) | 计算反双曲正弦（arsinh(x)） (函数) |
-| [acoshacoshfacoshl ](https://zh.cppreference.com/w/cpp/numeric/math/acosh)  <br />  (C11)(C11)(C++11) | 计算反双曲余弦（arcosh(x)） (函数) |
-| [atanhatanhfatanhl ](https://zh.cppreference.com/w/cpp/numeric/math/atanh)  <br />  (C11)(C11)(C++11) | 计算反双曲正切（artanh(x)） (函数) |
+| [sinhsinhfsinhl ](https://zh.cppreference.com/w/cpp/numeric/math/sinh) | 计算双曲正弦（sh(x)） (函数) |
+| [coshcoshfcoshl ](https://zh.cppreference.com/w/cpp/numeric/math/cosh) | 计算双曲余弦（ch(x)） (函数) |
+| [tanhtanhftanhl ](https://zh.cppreference.com/w/cpp/numeric/math/tanh) | 双曲正切 (函数) |
+| [asinhasinhfasinhl ](https://zh.cppreference.com/w/cpp/numeric/math/asinh)  <br />   | 计算反双曲正弦（arsinh(x)） (函数) |
+| [acoshacoshfacoshl ](https://zh.cppreference.com/w/cpp/numeric/math/acosh)  <br />   | 计算反双曲余弦（arcosh(x)） (函数) |
+| [atanhatanhfatanhl ](https://zh.cppreference.com/w/cpp/numeric/math/atanh)  <br />   | 计算反双曲正切（artanh(x)） (函数) |
 | 误差与伽马函数 |  |
-| [erferfferfl ](https://zh.cppreference.com/w/cpp/numeric/math/erf)  <br />  (C11)(C11)(C++11) | 误差函数 (函数) |
-| [erfcerfcferfcl ](https://zh.cppreference.com/w/cpp/numeric/math/erfc)  <br />  (C11)(C11)(C++11) | 补误差函数 (函数) |
-| [tgammatgammaftgammal ](https://zh.cppreference.com/w/cpp/numeric/math/tgamma)  <br />  (C11)(C11)(C++11) | gamma函数 (函数) |
-| [lgammalgammaflgammal ](https://zh.cppreference.com/w/cpp/numeric/math/lgamma)  <br />  (C11)(C11)(C++11) | gamma函数的自然对数 (函数) |
+| [erferfferfl ](https://zh.cppreference.com/w/cpp/numeric/math/erf)  <br />   | 误差函数 (函数) |
+| [erfcerfcferfcl ](https://zh.cppreference.com/w/cpp/numeric/math/erfc)  <br />   | 补误差函数 (函数) |
+| [tgammatgammaftgammal ](https://zh.cppreference.com/w/cpp/numeric/math/tgamma)  <br />   | gamma函数 (函数) |
+| [lgammalgammaflgammal ](https://zh.cppreference.com/w/cpp/numeric/math/lgamma)  <br />   | gamma函数的自然对数 (函数) |
 | 临近整数的浮点运算 |  |
-| [ceilceilfceill ](https://zh.cppreference.com/w/cpp/numeric/math/ceil)  <br />  (C11)(C11) | 不小于给定值的最接近整数值 (函数) |
-| [floorfloorffloorl ](https://zh.cppreference.com/w/cpp/numeric/math/floor)  <br />  (C11)(C11) | 不大于给定值的最接近整数 (函数) |
-| [trunctruncftruncl ](https://zh.cppreference.com/w/cpp/numeric/math/trunc)  <br />  (C11)(C11)(C++11) | 绝对值不大于给定值的最接近整数 (函数) |
-| [roundroundfroundllroundlroundflroundlllroundllroundfllroundl ](https://zh.cppreference.com/w/cpp/numeric/math/round)  <br />  (C11)(C11)(C11)(C11)(C11)(C11)(C11)(C11)(C ++11) | 最接近整数，中间情况下向远离零舍入 (函数) |
-| [nearbyintnearbyintfnearbyintl ](https://zh.cppreference.com/w/cpp/numeric/math/nearbyint)  <br />  (C11)(C11)(C++11) | 使用当前舍入模式的最接近整数 (函数) |
-| [rintrintfrintllrintlrintflrintlllrintllrintfllrintl ](https://zh.cppreference.com/w/cpp/numeric/math/rint)  <br />  (C11)(C11)(C11)(C11)(C11)(C11)(C11)(C11)(C ++11) | 使用当前舍入模式的最接近整数 若结果有别则有异常 (函数) |
+| [ceilceilfceill ](https://zh.cppreference.com/w/cpp/numeric/math/ceil) | 不小于给定值的最接近整数值 (函数) |
+| [floorfloorffloorl ](https://zh.cppreference.com/w/cpp/numeric/math/floor) | 不大于给定值的最接近整数 (函数) |
+| [trunctruncftruncl ](https://zh.cppreference.com/w/cpp/numeric/math/trunc)  <br />   | 绝对值不大于给定值的最接近整数 (函数) |
+| [roundroundfroundllroundlroundflroundlllroundllroundfllroundl ](https://zh.cppreference.com/w/cpp/numeric/math/round)  <br />  (C ++11) | 最接近整数，中间情况下向远离零舍入 (函数) |
+| [nearbyintnearbyintfnearbyintl ](https://zh.cppreference.com/w/cpp/numeric/math/nearbyint)  <br />   | 使用当前舍入模式的最接近整数 (函数) |
+| [rintrintfrintllrintlrintflrintlllrintllrintfllrintl ](https://zh.cppreference.com/w/cpp/numeric/math/rint)  <br />  (C ++11) | 使用当前舍入模式的最接近整数 若结果有别则有异常 (函数) |
 | 浮点操纵函数 |  |
-| [frexpfrexpffrexpl ](https://zh.cppreference.com/w/cpp/numeric/math/frexp)  <br />  (C11)(C11) | 将数分解为有效数字和2的幂次 (函数) |
-| [ldexpldexpfldexpl ](https://zh.cppreference.com/w/cpp/numeric/math/ldexp)  <br />  (C11)(C11) | 将数乘以2的幂次 (函数) |
-| [modfmodffmodfl ](https://zh.cppreference.com/w/cpp/numeric/math/modf)  <br />  (C11)(C11) | 分解数为整数和小数部分 (函数) |
-| [scalbnscalbnfscalbnlscalblnscalblnfscalblnl ](https://zh.cppreference.com/w/cpp/numeric/math/scalbn)  <br />  (C11)(C11)(C11)(C11)(C11)(C11) | 将数乘以[FLT_RADIX的](https://zh.cppreference.com/w/cpp/types/climits)  <br />  幂次 (函数) |
-| [ilogbilogbfilogbl ](https://zh.cppreference.com/w/cpp/numeric/math/ilogb)  <br />  (C11)(C11)(C++11) | 提取数的指数 (函数) |
-| [logblogbflogbl ](https://zh.cppreference.com/w/cpp/numeric/math/logb)  <br />  (C11)(C11)(C++11) | 提取数的指数 (函数) |
-| [nextafternextafterfnextafterlnexttowardnexttowardfnexttowardl ](https://zh.cppreference.com/w/cpp/numeric/math/nextafter)  <br />  (C11)(C11)(C11)(C11)(C11)(C11) | 趋向给定值的下个可表示浮点值 (函数) |
-| [copysigncopysignfcopysignl ](https://zh.cppreference.com/w/cpp/numeric/math/copysign)  <br />  (C11)(C11)(C++11) | 复制浮点值的符号 (函数) |
+| [frexpfrexpffrexpl ](https://zh.cppreference.com/w/cpp/numeric/math/frexp) | 将数分解为有效数字和2的幂次 (函数) |
+| [ldexpldexpfldexpl ](https://zh.cppreference.com/w/cpp/numeric/math/ldexp) | 将数乘以2的幂次 (函数) |
+| [modfmodffmodfl ](https://zh.cppreference.com/w/cpp/numeric/math/modf) | 分解数为整数和小数部分 (函数) |
+| [scalbnscalbnfscalbnlscalblnscalblnfscalblnl ](https://zh.cppreference.com/w/cpp/numeric/math/scalbn) | 将数乘以[FLT_RADIX的](https://zh.cppreference.com/w/cpp/types/climits)  <br />  幂次 (函数) |
+| [ilogbilogbfilogbl ](https://zh.cppreference.com/w/cpp/numeric/math/ilogb)  <br />   | 提取数的指数 (函数) |
+| [logblogbflogbl ](https://zh.cppreference.com/w/cpp/numeric/math/logb)  <br />   | 提取数的指数 (函数) |
+| [nextafternextafterfnextafterlnexttowardnexttowardfnexttowardl ](https://zh.cppreference.com/w/cpp/numeric/math/nextafter) | 趋向给定值的下个可表示浮点值 (函数) |
+| [copysigncopysignfcopysignl ](https://zh.cppreference.com/w/cpp/numeric/math/copysign)  <br />   | 复制浮点值的符号 (函数) |
 | 分类与比较 |  |
-| [fpclassify ](https://zh.cppreference.com/w/cpp/numeric/math/fpclassify)  <br />  (C++11) | 归类给定的浮点值 (函数) |
-| [isfinite ](https://zh.cppreference.com/w/cpp/numeric/math/isfinite)  <br />  (C++11) | 检查给定数是否拥有有限值 (函数) |
-| [isinf ](https://zh.cppreference.com/w/cpp/numeric/math/isinf)  <br />  (C++11) | 检查给定数是否为无限 (函数) |
-| [isnan ](https://zh.cppreference.com/w/cpp/numeric/math/isnan)  <br />  (C++11) | 检查给定的数是否NaN (函数) |
-| [isnormal ](https://zh.cppreference.com/w/cpp/numeric/math/isnormal)  <br />  (C++11) | 检查给定数是否正规 (函数) |
-| [signbit ](https://zh.cppreference.com/w/cpp/numeric/math/signbit)  <br />  (C++11) | 检查给定数是否为负 (函数) |
-| [isgreater ](https://zh.cppreference.com/w/cpp/numeric/math/isgreater)  <br />  (C++11) | 检查第一个浮点实参是否大于第二个 (函数) |
-| [isgreaterequal ](https://zh.cppreference.com/w/cpp/numeric/math/isgreaterequal)  <br />  (C++11) | 检查第一个浮点实参是否大于或等于第二个 |
+| [fpclassify ](https://zh.cppreference.com/w/cpp/numeric/math/fpclassify)  <br />   | 归类给定的浮点值 (函数) |
+| [isfinite ](https://zh.cppreference.com/w/cpp/numeric/math/isfinite)  <br />   | 检查给定数是否拥有有限值 (函数) |
+| [isinf ](https://zh.cppreference.com/w/cpp/numeric/math/isinf)  <br />   | 检查给定数是否为无限 (函数) |
+| [isnan ](https://zh.cppreference.com/w/cpp/numeric/math/isnan)  <br />   | 检查给定的数是否NaN (函数) |
+| [isnormal ](https://zh.cppreference.com/w/cpp/numeric/math/isnormal)  <br />   | 检查给定数是否正规 (函数) |
+| [signbit ](https://zh.cppreference.com/w/cpp/numeric/math/signbit)  <br />   | 检查给定数是否为负 (函数) |
+| [isgreater ](https://zh.cppreference.com/w/cpp/numeric/math/isgreater)  <br />   | 检查第一个浮点实参是否大于第二个 (函数) |
+| [isgreaterequal ](https://zh.cppreference.com/w/cpp/numeric/math/isgreaterequal)  <br />   | 检查第一个浮点实参是否大于或等于第二个 |
 
 
 
@@ -954,7 +951,7 @@ void srand(unsigned seed);
 | [iscntrl](https://zh.cppreference.com/w/cpp/string/byte/iscntrl) | 检查字元是否为控制字元 (函数) |
 | [isgraph](https://zh.cppreference.com/w/cpp/string/byte/isgraph) | 检查字元是否为图形字元 (函数) |
 | [isspace](https://zh.cppreference.com/w/cpp/string/byte/isspace) | 检查字元是否为空白间隔字元 (函数) |
-| [isblank ](https://zh.cppreference.com/w/cpp/string/byte/isblank)  <br />  (C++11) | 检查字元是否为空白字元 (函数) |
+| [isblank ](https://zh.cppreference.com/w/cpp/string/byte/isblank)  <br />   | 检查字元是否为空白字元 (函数) |
 | [isprint](https://zh.cppreference.com/w/cpp/string/byte/isprint) | 检查字元是否为列印字元 (函数) |
 | [ispunct](https://zh.cppreference.com/w/cpp/string/byte/ispunct) | 检查字元是否为标点符 (函数) |
 | [tolower](https://zh.cppreference.com/w/cpp/string/byte/tolower) | 转换字元为小写 (函数) |
@@ -994,26 +991,25 @@ void srand(unsigned seed);
 
 
 
-
 <a name="0712fc4f"></a>
-## [<limits.h>](https://zh.cppreference.com/w/c/types/limits)
+## <[limits.h](https://zh.cppreference.com/w/c/types/limits)>
 | CHAR_BIT | 字节位数 (宏常量) |
 | --- | --- |
 | MB_LEN_MAX | 多字节字符的最大字节数 (宏常量) |
 | CHAR_MIN | char 的最小值 (宏常量) |
 | CHAR_MAX | char 的最大值 (宏常量) |
-| SCHAR_MIN SHRT_MIN INT_MIN LONG_MIN LLONG_MIN (C99) | 分别为 signed char 、 short 、 int 、 long 和 long long的最小值 (宏常量) |
-| SCHAR_MAX SHRT_MAX INT_MAX LONG_MAX LLONG_MAX (C99) | 分别为 signed char 、 short 、 int 、 long 和 long long的最大值 (宏常量) |
-| UCHAR_MAX USHRT_MAX UINT_MAX ULONG_MAX ULLONG_MAX (C99) | 分别为 unsigned char 、 unsigned short 、 unsigned int 、 unsigned long 和 unsigned long long 的最大值 |
+| SCHAR_MIN SHRT_MIN INT_MIN LONG_MIN LLONG_MIN  | 分别为 signed char 、 short 、 int 、 long 和 long long的最小值 (宏常量) |
+| SCHAR_MAX SHRT_MAX INT_MAX LONG_MAX LLONG_MAX  | 分别为 signed char 、 short 、 int 、 long 和 long long的最大值 (宏常量) |
+| UCHAR_MAX USHRT_MAX UINT_MAX ULONG_MAX ULLONG_MAX  | 分别为 unsigned char 、 unsigned short 、 unsigned int 、 unsigned long 和 unsigned long long 的最大值 |
 
 
 
 | FLT_RADIX | 用于表示所有三种浮点数类型的底（整数基） (宏常量) |
 | --- | --- |
-| DECIMAL_DIG (C99) | 将 long double转换成十进制小数，再转回 long double 而保持同一值，至少需要 DECIMAL_DIG 位小数：此乃 long double 序列化/反序列化所需的十进制精度 (宏常量) |
-| FLT_DECIMAL_DIGDBL_DECIMAL_DIGLDBL_DECIMAL_DIG (C11) | 将 float/double/long double 转换成十进制小数再转换回同一值，至少需要 FLT_DECIMAL_DIG/DBL_DECIMAL_DIG/LDBL_DECIMAL_DIG 位小数：此乃浮点值序列化/反序列化所需的十进制精度。标准定义至少为 6 、 10 、 10 ， 而 IEEE float 为 9 ， IEEE double 为 17 。（见 C++ 模仿 [max_digits10 ](https://zh.cppreference.com/w/cpp/types/numeric_limits/max_digits10)  <br />  ） (宏常量) |
+| DECIMAL_DIG  | 将 long double转换成十进制小数，再转回 long double 而保持同一值，至少需要 DECIMAL_DIG 位小数：此乃 long double 序列化/反序列化所需的十进制精度 (宏常量) |
+| FLT_DECIMAL_DIGDBL_DECIMAL_DIGLDBL_DECIMAL_DIG  | 将 float/double/long double 转换成十进制小数再转换回同一值，至少需要 FLT_DECIMAL_DIG/DBL_DECIMAL_DIG/LDBL_DECIMAL_DIG 位小数：此乃浮点值序列化/反序列化所需的十进制精度。标准定义至少为 6 、 10 、 10 ， 而 IEEE float 为 9 ， IEEE double 为 17 。（见 C++ 模仿 [max_digits10 ](https://zh.cppreference.com/w/cpp/types/numeric_limits/max_digits10)  <br />  ） (宏常量) |
 | FLT_MIN DBL_MIN LDBL_MIN | 分别为 float 、 double 及 long double 的最小正规正值 (宏常量) |
-| FLT_TRUE_MIN DBL_TRUE_MIN LDBL_TRUE_MIN (C11) | 分别为 float 、 double 和 long double 的最小正值 (宏常量) |
+| FLT_TRUE_MIN DBL_TRUE_MIN LDBL_TRUE_MIN  | 分别为 float 、 double 和 long double 的最小正值 (宏常量) |
 | FLT_MAX DBL_MAX LDBL_MAX | 分别为 float 、 double 和 long double 的最大有限正值 (宏常量) |
 | FLT_EPSILONDBL_EPSILONLDBL_EPSILON | 分别为 1.0 与下一个可表示的float 、 double 和 long double 值之差 (宏常量) |
 | FLT_DIGDBL_DIGLDBL_DIG | 保证能从文本转换为 float/double/long double 再转换回文本，而不会发生改变或上溢出的十进制位数（细节见 C++ 模仿 [digits10 ](https://zh.cppreference.com/w/cpp/types/numeric_limits/digits10)  <br />  ） (宏常量) |
@@ -1023,8 +1019,8 @@ void srand(unsigned seed);
 | FLT_MAX_EXPDBL_MAX_EXPLDBL_MAX_EXP | 分别为能够使 FLT_RADIX 的该整数减一次幂为可表示的有限的 float、double 与 long double 的最大正整数 (宏常量) |
 | FLT_MAX_10_EXPDBL_MAX_10_EXPLDBL_MAX_10_EXP | 分别为能够使 10 的该整数减一次幂为可表示的有限的 float、double 与 long double 的最大正整数 (宏常量) |
 | [FLT_ROUNDS](https://zh.cppreference.com/w/c/types/limits/FLT_ROUNDS) | 浮点算术的舍入模式，等于 float_round_style (宏常量) |
-| [FLT_EVAL_METHOD ](https://zh.cppreference.com/w/c/types/limits/FLT_EVAL_METHOD)  <br />  (C99) | 中间结果所用的扩展精度： 0 表示不使用， 1 表示用 double 替代 float ， 2 表示使用 long double (宏常量) |
-| FLT_HAS_SUBNORMDBL_HAS_SUBNORMLDBL_HAS_SUBNORM (C11) | 类型是否支持非正规（[非正规）](https://en.wikipedia.org/wiki/Denormal_number)  <br />  数： -1 为不确定， 0 为不支持， 1 为支持 (宏常量) |
+| [FLT_EVAL_METHOD ](https://zh.cppreference.com/w/c/types/limits/FLT_EVAL_METHOD)  <br />   | 中间结果所用的扩展精度： 0 表示不使用， 1 表示用 double 替代 float ， 2 表示使用 long double (宏常量) |
+| FLT_HAS_SUBNORMDBL_HAS_SUBNORMLDBL_HAS_SUBNORM  | 类型是否支持非正规（[非正规）](https://en.wikipedia.org/wiki/Denormal_number)  <br />  数： -1 为不确定， 0 为不支持， 1 为支持 (宏常量) |
 
 
 
@@ -1042,7 +1038,7 @@ void srand(unsigned seed);
 
 
 <a name="08b14789"></a>
-## [<stdbool.h>](https://zh.cppreference.com/w/c/types/boolean)
+## <[stdbool.h](https://zh.cppreference.com/w/c/types/boolean)>
 C 编程语言从 C99 开始支持以内建类型 _Bool 进行的布尔运算
 
 | 宏名称 | 展开成 |
@@ -1056,7 +1052,7 @@ C 编程语言从 C99 开始支持以内建类型 _Bool 进行的布尔运算
 
 
 <a name="681e39b2"></a>
-## <conio.h>
+## `<conio.h>`
 Console Input/Output（控制台输入[输出](https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA/5885826)），定义了通过控制台进行数据输入和输出的函数，主要是一些用户通过按键盘产生的对应操作。
 
 **屏幕操作函数**

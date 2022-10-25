@@ -180,7 +180,7 @@ using namespace std;
 
 
 
-**初始化列表 **[**initializer_list**](https://zh.cppreference.com/w/cpp/utility/initializer_list)  <br />  template< class T >  <br />  class initializer_list;  <br />  一个访问 const T 类型对象数组的轻量代理对象
+**初始化列表 **[**initializer_list**](https://zh.cppreference.com/w/cpp/utility/initializer_list)  <br />  `template< class T >`  <br />  class initializer_list;  <br />  一个访问 const T 类型对象数组的轻量代理对象
 
 | 容量 |  |
 | --- | --- |
@@ -194,7 +194,7 @@ using namespace std;
 ```cpp
 [capture] | (parameters) | mutable | exception | -> return-type | {body}
 ```
-e.g.：[](int x, int y){ return x < y ; }
+e.g.：`[](int x, int y){ return x < y ; }`
 > []      // 沒有定义任何变量。使用未定义变量会引发错误。
 > [x, &y] // x以传值方式传入（默认），y以引用方式传入。
 > [&]     // 任何被使用到的外部变量都隐式地以引用方式加以引用。
@@ -219,29 +219,29 @@ lambda 表达式可以直接使用 this 指针，对于[]的形式须显式传�
 | 元素访问 |  |
 | [at](https://zh.cppreference.com/w/cpp/string/basic_string/at) | 访问指定字符，有边界检查  (公开成员函数) |
 | [operator[]](https://zh.cppreference.com/w/cpp/string/basic_string/operator_at) | 访问指定字符  (公开成员函数) |
-| [front ](https://zh.cppreference.com/w/cpp/string/basic_string/front)  <br />  (C++11) | 访问首字符  (公开成员函数) |
-| [back ](https://zh.cppreference.com/w/cpp/string/basic_string/back)  <br />  (C++11) | 访问最后的字符  (公开成员函数) |
+| [front ](https://zh.cppreference.com/w/cpp/string/basic_string/front)  <br />   | 访问首字符  (公开成员函数) |
+| [back ](https://zh.cppreference.com/w/cpp/string/basic_string/back)  <br />   | 访问最后的字符  (公开成员函数) |
 | [data](https://zh.cppreference.com/w/cpp/string/basic_string/data) | 返回指向字符串首字符的指针  (公开成员函数) |
 | [c_str](https://zh.cppreference.com/w/cpp/string/basic_string/c_str) | 返回字符串的不可修改的 C 字符数组版本  (公开成员函数) |
 | [operator basic_string_view ](https://zh.cppreference.com/w/cpp/string/basic_string/operator_basic_string_view)  <br />  (C++17) | 返回到整个字符串的不可修改的 basic_string_view  (公开成员函数) |
 | 迭代器 |  |
-| [begin ](https://zh.cppreference.com/w/cpp/string/basic_string/begin)  <br />   cbegin (C++11) | 返回指向起始的迭代器  (公开成员函数) |
-| [end ](https://zh.cppreference.com/w/cpp/string/basic_string/end)  <br />   cend (C++11) | 返回指向末尾的迭代器  (公开成员函数) |
-| [rbegin ](https://zh.cppreference.com/w/cpp/string/basic_string/rbegin)  <br />   crbegin (C++11) | 返回指向起始的逆向迭代器  (公开成员函数) |
-| [rend ](https://zh.cppreference.com/w/cpp/string/basic_string/rend)  <br />   crend (C++11) | 返回指向末尾的逆向迭代器  (公开成员函数) |
+| [begin ](https://zh.cppreference.com/w/cpp/string/basic_string/begin)  <br />   cbegin  | 返回指向起始的迭代器  (公开成员函数) |
+| [end ](https://zh.cppreference.com/w/cpp/string/basic_string/end)  <br />   cend  | 返回指向末尾的迭代器  (公开成员函数) |
+| [rbegin ](https://zh.cppreference.com/w/cpp/string/basic_string/rbegin)  <br />   crbegin  | 返回指向起始的逆向迭代器  (公开成员函数) |
+| [rend ](https://zh.cppreference.com/w/cpp/string/basic_string/rend)  <br />   crend  | 返回指向末尾的逆向迭代器  (公开成员函数) |
 | 容量 |  |
 | [empty](https://zh.cppreference.com/w/cpp/string/basic_string/empty) | 检查字符串是否为空  (公开成员函数) |
 | [sizelength](https://zh.cppreference.com/w/cpp/string/basic_string/size) | 返回字符数  (公开成员函数) |
 | [max_size](https://zh.cppreference.com/w/cpp/string/basic_string/max_size) | 返回字符数的最大值  (公开成员函数) |
 | [reserve](https://zh.cppreference.com/w/cpp/string/basic_string/reserve) | 保留存储  (公开成员函数) |
 | [capacity](https://zh.cppreference.com/w/cpp/string/basic_string/capacity) | 返回当前对象分配的存储空间能保存的字符数量  (公开成员函数) |
-| [shrink_to_fit ](https://zh.cppreference.com/w/cpp/string/basic_string/shrink_to_fit)  <br />  (C++11) | 通过释放不使用内存减少内存使用  (公开成员函数) |
+| [shrink_to_fit ](https://zh.cppreference.com/w/cpp/string/basic_string/shrink_to_fit)  <br />   | 通过释放不使用内存减少内存使用  (公开成员函数) |
 | 操作 |  |
 | [clear](https://zh.cppreference.com/w/cpp/string/basic_string/clear) | 清除内容  (公开成员函数) |
 | [insert](https://zh.cppreference.com/w/cpp/string/basic_string/insert) | 插入字符  (公开成员函数) |
 | [erase](https://zh.cppreference.com/w/cpp/string/basic_string/erase) | 移除字符  (公开成员函数) |
 | [push_back](https://zh.cppreference.com/w/cpp/string/basic_string/push_back) | 后附字符到结尾  (公开成员函数) |
-| [pop_back ](https://zh.cppreference.com/w/cpp/string/basic_string/pop_back)  <br />  (C++11) | 移除末尾字符  (公开成员函数) |
+| [pop_back ](https://zh.cppreference.com/w/cpp/string/basic_string/pop_back)  <br />   | 移除末尾字符  (公开成员函数) |
 | [append](https://zh.cppreference.com/w/cpp/string/basic_string/append) | 后附字符到结尾  (公开成员函数) |
 | [operator+=](https://zh.cppreference.com/w/cpp/string/basic_string/operator%2B%3D) | 后附字符到结尾  (公开成员函数) |
 | [compare](https://zh.cppreference.com/w/cpp/string/basic_string/compare) | 比较二个字符串  (公开成员函数) |
@@ -994,6 +994,8 @@ int main()
 }
 ```
 
+
+
 # —— [Standard Library](https://zh.cppreference.com/w/cpp/header) ——
 
 # IOStream
@@ -1079,8 +1081,8 @@ int main()
 
 | [init](https://zh.cppreference.com/w/cpp/io/basic_ios/init) | 初始化一个默认构造的std::basic_ios (受保护成员函数) |
 | --- | --- |
-| [move ](https://zh.cppreference.com/w/cpp/io/basic_ios/move)  <br />  (C++11) | 从另一 std::basic_ios 移动，除了 rdbuf (受保护成员函数) |
-| [swap ](https://zh.cppreference.com/w/cpp/io/basic_ios/swap)  <br />  (C++11) | 与另一 std::basic_ios 交换，除了 rdbuf (受保护成员函数) |
+| [move ](https://zh.cppreference.com/w/cpp/io/basic_ios/move)  <br />   | 从另一 std::basic_ios 移动，除了 rdbuf (受保护成员函数) |
+| [swap ](https://zh.cppreference.com/w/cpp/io/basic_ios/swap)  <br />   | 与另一 std::basic_ios 交换，除了 rdbuf (受保护成员函数) |
 | [set_rdbuf](https://zh.cppreference.com/w/cpp/io/basic_ios/set_rdbuf) | 替换 rdbuf 而不清除其错误状态 |
 
 [basic_istream](https://zh.cppreference.com/w/cpp/io/basic_istream)
@@ -1200,7 +1202,7 @@ while (ss)
 # 容器库
 
 ## [  <br />    <br />  ](https://zh.cppreference.com/w/cpp/header/vector)
-**动态数组的顺序容器：**快速查找，尾端快速插入与删除  <br />  **template <class T，class Allocator = std:: allocator < T >> class vector ;**  <br />  **成员函数**
+**动态数组的顺序容器：**快速查找，尾端快速插入与删除  <br />  `**template <class T，class Allocator = std:: allocator < T >> class vector ;**`  <br />  **成员函数**
 
 | [(构造函数)](https://zh.cppreference.com/w/cpp/container/vector/vector) | 构造vector (公开成员函数) |
 | --- | --- |
@@ -1225,21 +1227,21 @@ while (ss)
 | [max_size](https://zh.cppreference.com/w/cpp/container/vector/max_size) | 返回可容纳的最大元素数 (公开成员函数) |
 | [reserve](https://zh.cppreference.com/w/cpp/container/vector/reserve) | 预留存储空间 (公开成员函数) |
 | [capacity](https://zh.cppreference.com/w/cpp/container/vector/capacity) | 返回当前存储空间能够容纳的元素数 (公开成员函数) |
-| [shrink_to_fit ](https://zh.cppreference.com/w/cpp/container/vector/shrink_to_fit)  <br />  (C++11) | 通过释放未使用的内存减少内存的使用 (公开成员函数) |
+| [shrink_to_fit ](https://zh.cppreference.com/w/cpp/container/vector/shrink_to_fit)  <br />   | 通过释放未使用的内存减少内存的使用 (公开成员函数) |
 | 修改器 |  |
 | [clear](https://zh.cppreference.com/w/cpp/container/vector/clear) | 清除内容 (公开成员函数) |
 | [insert](https://zh.cppreference.com/w/cpp/container/vector/insert) | 插入元素 (公开成员函数) |
-| [emplace ](https://zh.cppreference.com/w/cpp/container/vector/emplace)  <br />  (C++11) | 原位构造元素 (公开成员函数) |
+| [emplace ](https://zh.cppreference.com/w/cpp/container/vector/emplace)  <br />   | 原位构造元素 (公开成员函数) |
 | [erase](https://zh.cppreference.com/w/cpp/container/vector/erase) | 擦除元素 (公开成员函数) |
 | [push_back](https://zh.cppreference.com/w/cpp/container/vector/push_back) | 将元素添加到容器末尾 (公开成员函数) |
-| [emplace_back ](https://zh.cppreference.com/w/cpp/container/vector/emplace_back)  <br />  (C++11) | 在容器末尾就地构造元素 (公开成员函数) |
+| [emplace_back ](https://zh.cppreference.com/w/cpp/container/vector/emplace_back)  <br />   | 在容器末尾就地构造元素 (公开成员函数) |
 | [pop_back](https://zh.cppreference.com/w/cpp/container/vector/pop_back) | 移除末元素 (公开成员函数) |
 | [resize](https://zh.cppreference.com/w/cpp/container/vector/resize) | 改变容器中可存储元素的个数 (公开成员函数) |
 | [swap](https://zh.cppreference.com/w/cpp/container/vector/swap) | 交换内容 |
 
 
 ## [array](https://zh.cppreference.com/w/cpp/header/array)
-静态的连续数组  <br />  template < class T,[std:: size_t](http://zh.cppreference.com/w/cpp/types/size_t) N> struct array ;
+静态的连续数组  <br />  `template < class T,[std:: size_t](http://zh.cppreference.com/w/cpp/types/size_t) N> struct array ;`
 
 | 元素访问 |  |
 | --- | --- |
@@ -1262,8 +1264,8 @@ while (ss)
 | [swap](https://zh.cppreference.com/w/cpp/container/array/swap) | 交换内容 |
 
 
-## [<deque>](https://zh.cppreference.com/w/cpp/header/deque)
-**double-ended queue ，双端队列**，头尾快速插入与删除  <br />  template <class T, class Allocator = [std:: allocator](http://zh.cppreference.com/w/cpp/memory/allocator) < T >> class deque ;  <br />  **成员函数**
+## [deque](https://zh.cppreference.com/w/cpp/header/deque)
+**double-ended queue ，双端队列**，头尾快速插入与删除  <br />  `template <class T, class Allocator = [std:: allocator](http://zh.cppreference.com/w/cpp/memory/allocator) < T >> class deque ;`  <br />  **成员函数**
 
 | [(构造函数)](https://zh.cppreference.com/w/cpp/container/deque/deque) | 构造deque (公开成员函数) |
 | --- | --- |
@@ -1285,24 +1287,24 @@ while (ss)
 | [empty](https://zh.cppreference.com/w/cpp/container/deque/empty) | 检查容器是否为空 (公开成员函数) |
 | [size](https://zh.cppreference.com/w/cpp/container/deque/size) | 返回容纳的元素数 (公开成员函数) |
 | [max_size](https://zh.cppreference.com/w/cpp/container/deque/max_size) | 返回可容纳的最大元素数 (公开成员函数) |
-| [shrink_to_fit ](https://zh.cppreference.com/w/cpp/container/deque/shrink_to_fit)  <br />  (C++11) | 通过释放未使用的内存减少内存的使用 (公开成员函数) |
+| [shrink_to_fit ](https://zh.cppreference.com/w/cpp/container/deque/shrink_to_fit)  <br />   | 通过释放未使用的内存减少内存的使用 (公开成员函数) |
 | 修改器 |  |
 | [clear](https://zh.cppreference.com/w/cpp/container/deque/clear) | 清除内容 (公开成员函数) |
 | [insert](https://zh.cppreference.com/w/cpp/container/deque/insert) | 插入元素 (公开成员函数) |
-| [emplace ](https://zh.cppreference.com/w/cpp/container/deque/emplace)  <br />  (C++11) | 原位构造元素 (公开成员函数) |
+| [emplace ](https://zh.cppreference.com/w/cpp/container/deque/emplace)  <br />   | 原位构造元素 (公开成员函数) |
 | [erase](https://zh.cppreference.com/w/cpp/container/deque/erase) | 擦除元素 (公开成员函数) |
 | [push_back](https://zh.cppreference.com/w/cpp/container/deque/push_back) | 将元素添加到容器末尾 (公开成员函数) |
-| [emplace_back ](https://zh.cppreference.com/w/cpp/container/deque/emplace_back)  <br />  (C++11) | 在容器末尾就地构造元素 (公开成员函数) |
+| [emplace_back ](https://zh.cppreference.com/w/cpp/container/deque/emplace_back)  <br />   | 在容器末尾就地构造元素 (公开成员函数) |
 | [pop_back](https://zh.cppreference.com/w/cpp/container/deque/pop_back) | 移除末元素 (公开成员函数) |
 | [push_front](https://zh.cppreference.com/w/cpp/container/deque/push_front) | 插入元素到容器起始 (公开成员函数) |
-| [emplace_front ](https://zh.cppreference.com/w/cpp/container/deque/emplace_front)  <br />  (C++11) | 在容器头部就地构造元素 (公开成员函数) |
+| [emplace_front ](https://zh.cppreference.com/w/cpp/container/deque/emplace_front)  <br />   | 在容器头部就地构造元素 (公开成员函数) |
 | [pop_front](https://zh.cppreference.com/w/cpp/container/deque/pop_front) | 移除首元素 (公开成员函数) |
 | [resize](https://zh.cppreference.com/w/cpp/container/deque/resize) | 改变容器中可存储元素的个数 (公开成员函数) |
 | [swap](https://zh.cppreference.com/w/cpp/container/deque/swap) | 交换内容 |
 
 
-## [<list>](https://zh.cppreference.com/w/cpp/header/list)
-**双向链表**，快速插入与删除，不支持快速随机访问。  <br />  template <class T,  class Allocator = [std:: allocator](http://zh.cppreference.com/w/cpp/memory/allocator) < T >> class list ;  <br />  **成员函数**
+## [list](https://zh.cppreference.com/w/cpp/header/list)
+**双向链表**，快速插入与删除，不支持快速随机访问。  <br />  `template <class T,  class Allocator = [std:: allocator](http://zh.cppreference.com/w/cpp/memory/allocator) < T >> class list ;`  <br />  **成员函数**
 
 | [(构造函数)](https://zh.cppreference.com/w/cpp/container/list/list) | 构造list (公开成员函数) |
 | --- | --- |
@@ -1325,13 +1327,13 @@ while (ss)
 | 修改器 |  |
 | [clear](https://zh.cppreference.com/w/cpp/container/list/clear) | 清除内容 (公开成员函数) |
 | [insert](https://zh.cppreference.com/w/cpp/container/list/insert) | 插入元素 (公开成员函数) |
-| [emplace ](https://zh.cppreference.com/w/cpp/container/list/emplace)  <br />  (C++11) | 原位构造元素 (公开成员函数) |
+| [emplace ](https://zh.cppreference.com/w/cpp/container/list/emplace)  <br />   | 原位构造元素 (公开成员函数) |
 | [erase](https://zh.cppreference.com/w/cpp/container/list/erase) | 擦除元素 (公开成员函数) |
 | [push_back](https://zh.cppreference.com/w/cpp/container/list/push_back) | 将元素添加到容器末尾 (公开成员函数) |
-| [emplace_back ](https://zh.cppreference.com/w/cpp/container/list/emplace_back)  <br />  (C++11) | 在容器末尾就地构造元素 (公开成员函数) |
+| [emplace_back ](https://zh.cppreference.com/w/cpp/container/list/emplace_back)  <br />   | 在容器末尾就地构造元素 (公开成员函数) |
 | [pop_back](https://zh.cppreference.com/w/cpp/container/list/pop_back) | 移除末元素 (公开成员函数) |
 | [push_front](https://zh.cppreference.com/w/cpp/container/list/push_front) | 插入元素到容器起始 (公开成员函数) |
-| [emplace_front ](https://zh.cppreference.com/w/cpp/container/list/emplace_front)  <br />  (C++11) | 在容器头部就地构造元素 (公开成员函数) |
+| [emplace_front ](https://zh.cppreference.com/w/cpp/container/list/emplace_front)  <br />   | 在容器头部就地构造元素 (公开成员函数) |
 | [pop_front](https://zh.cppreference.com/w/cpp/container/list/pop_front) | 移除首元素 (公开成员函数) |
 | [resize](https://zh.cppreference.com/w/cpp/container/list/resize) | 改变容器中可存储元素的个数 (公开成员函数) |
 | [swap](https://zh.cppreference.com/w/cpp/container/list/swap) | 交换内容 (公开成员函数) |
@@ -1344,8 +1346,8 @@ while (ss)
 | [sort](https://zh.cppreference.com/w/cpp/container/list/sort) | 对元素进行排序 |
 
 
-## [<forward_list>](https://zh.cppreference.com/w/cpp/header/forward_list)
-**正向单链表**，快速插入与删除，不支持快速随机访问。  <br />  template <class T, class Allocator = [std:: allocator](http://zh.cppreference.com/w/cpp/memory/allocator) < T >> class forward_list ;  <br />  **成员函数**
+## [forward_list](https://zh.cppreference.com/w/cpp/header/forward_list)
+**正向单链表**，快速插入与删除，不支持快速随机访问。  <br />  `template <class T, class Allocator = [std:: allocator](http://zh.cppreference.com/w/cpp/memory/allocator) < T >> class forward_list ;`  <br />  **成员函数**
 
 | [(构造函数)](https://zh.cppreference.com/w/cpp/container/forward_list/forward_list) | 构造forward_list (公开成员函数) |
 | --- | --- |
@@ -1381,8 +1383,8 @@ while (ss)
 | [sort](https://zh.cppreference.com/w/cpp/container/forward_list/sort) | 对元素进行排序 |
 
 
-## [<stack>](https://zh.cppreference.com/w/cpp/header/stack)
-**LIFO**  <br />  **template <class T,  class Container = std:: deque < T >> class stack ;**
+## [stack](https://zh.cppreference.com/w/cpp/header/stack)
+**LIFO**  <br />  `template <class T,  class Container = std:: deque < T >> class stack ;`
 
 | 元素访问 |  |
 | --- | --- |
@@ -1392,13 +1394,13 @@ while (ss)
 | [size](https://zh.cppreference.com/w/cpp/container/stack/size) | 返回容纳的元素数 (公开成员函数) |
 | 修改器 |  |
 | [push](https://zh.cppreference.com/w/cpp/container/stack/push) | 向栈顶插入元素 (公开成员函数) |
-| [emplace ](https://zh.cppreference.com/w/cpp/container/stack/emplace)  <br />  (C++11) | 于顶原位构造元素 (公开成员函数) |
+| [emplace ](https://zh.cppreference.com/w/cpp/container/stack/emplace)  <br />   | 于顶原位构造元素 (公开成员函数) |
 | [pop](https://zh.cppreference.com/w/cpp/container/stack/pop) | 删除栈顶元素 (公开成员函数) |
 | [swap](https://zh.cppreference.com/w/cpp/container/stack/swap) | 交换内容 |
 
 
-## [<queue>](https://zh.cppreference.com/w/cpp/header/queue)
-**FIFO**  <br />  **template <class T, class Container = **[**std:: deque**](http://zh.cppreference.com/w/cpp/container/deque)** < T >> class queue ;**
+## [queue](https://zh.cppreference.com/w/cpp/header/queue)
+**FIFO**  <br />  `**template <class T, class Container = **[**std:: deque**](http://zh.cppreference.com/w/cpp/container/deque)** < T >> class queue ;**`
 
 | 元素访问 |  |
 | --- | --- |
@@ -1409,13 +1411,13 @@ while (ss)
 | [size](https://zh.cppreference.com/w/cpp/container/queue/size) | 返回容纳的元素数 (公开成员函数) |
 | 修改器 |  |
 | [push](https://zh.cppreference.com/w/cpp/container/queue/push) | 向队列尾部插入元素 (公开成员函数) |
-| [emplace ](https://zh.cppreference.com/w/cpp/container/queue/emplace)  <br />  (C++11) | 于尾部原位构造元素 (公开成员函数) |
+| [emplace ](https://zh.cppreference.com/w/cpp/container/queue/emplace)  <br />   | 于尾部原位构造元素 (公开成员函数) |
 | [pop](https://zh.cppreference.com/w/cpp/container/queue/pop) | 删除栈顶元素 (公开成员函数) |
 | [swap](https://zh.cppreference.com/w/cpp/container/queue/swap) | 交换内容 |
 
 
 ## [priority_queue](https://zh.cppreference.com/w/cpp/container/priority_queue)
-template<class T, class Container = [std::vector](http://zh.cppreference.com/w/cpp/container/vector), class Compare = std::less> class priority_queue;
+`template<class T, class Container = [std::vector](http://zh.cppreference.com/w/cpp/container/vector), class Compare = std::less> class priority_queue;`
 
 | 元素访问 |  |
 | --- | --- |
@@ -1425,13 +1427,13 @@ template<class T, class Container = [std::vector](http://zh.cppreference.com
 | [size](https://zh.cppreference.com/w/cpp/container/priority_queue/size) | 返回容纳的元素数 (公开成员函数) |
 | 修改器 |  |
 | [push](https://zh.cppreference.com/w/cpp/container/priority_queue/push) | 插入元素，并对底层容器排序 (公开成员函数) |
-| [emplace ](https://zh.cppreference.com/w/cpp/container/priority_queue/emplace)  <br />  (C++11) | 原位构造元素并排序底层容器 (公开成员函数) |
+| [emplace ](https://zh.cppreference.com/w/cpp/container/priority_queue/emplace)  <br />   | 原位构造元素并排序底层容器 (公开成员函数) |
 | [pop](https://zh.cppreference.com/w/cpp/container/priority_queue/pop) | 删除栈顶元素 (公开成员函数) |
 | [swap](https://zh.cppreference.com/w/cpp/container/priority_queue/swap) | 交换内容 |
 
 
-## [<set>](https://zh.cppreference.com/w/cpp/header/set)
-template <class Key,  class Compare = [std:: less](http://zh.cppreference.com/w/cpp/utility/functional/less) < Key > , class Allocator = std:: allocator < Key >> class set ;
+## [set](https://zh.cppreference.com/w/cpp/header/set)
+`template <class Key,  class Compare = [std:: less](http://zh.cppreference.com/w/cpp/utility/functional/less) < Key > , class Allocator = std:: allocator < Key >> class set ;`
 
 | 迭代器 |  |
 | --- | --- |
@@ -1446,8 +1448,8 @@ template <class Key,  class Compare = [std:: less](http://zh.cppreference
 | 修改器 |  |
 | [clear](https://zh.cppreference.com/w/cpp/container/set/clear) | 清除内容 (公开成员函数) |
 | [insert](https://zh.cppreference.com/w/cpp/container/set/insert) | 插入元素或结点 (C++17起) (公开成员函数) |
-| [emplace ](https://zh.cppreference.com/w/cpp/container/set/emplace)  <br />  (C++11) | 原位构造元素 (公开成员函数) |
-| [emplace_hint ](https://zh.cppreference.com/w/cpp/container/set/emplace_hint)  <br />  (C++11) | 使用提示原位构造元素 (公开成员函数) |
+| [emplace ](https://zh.cppreference.com/w/cpp/container/set/emplace)  <br />   | 原位构造元素 (公开成员函数) |
+| [emplace_hint ](https://zh.cppreference.com/w/cpp/container/set/emplace_hint)  <br />   | 使用提示原位构造元素 (公开成员函数) |
 | [erase](https://zh.cppreference.com/w/cpp/container/set/erase) | 擦除元素 (公开成员函数) |
 | [swap](https://zh.cppreference.com/w/cpp/container/set/swap) | 交换内容 (公开成员函数) |
 | [extract ](https://zh.cppreference.com/w/cpp/container/set/extract)  <br />  (C++17) | 从另一容器释出结点 (公开成员函数) |
@@ -1465,7 +1467,7 @@ template <class Key,  class Compare = [std:: less](http://zh.cppreference
 
 
 ## [multiset](https://zh.cppreference.com/w/cpp/container/multiset)
-template <  class Key, class Compare = [std:: less](http://zh.cppreference.com/w/cpp/utility/functional/less) < Key > ,  class Allocator = std:: allocator < Key >> class multiset ;
+`template <  class Key, class Compare = [std:: less](http://zh.cppreference.com/w/cpp/utility/functional/less) < Key > ,  class Allocator = std:: allocator < Key >> class multiset ;`
 
 | 迭代器 |  |
 | --- | --- |
@@ -1480,8 +1482,8 @@ template <  class Key, class Compare = [std:: less](http://zh.cppreferen
 | 修改器 |  |
 | [clear](https://zh.cppreference.com/w/cpp/container/multiset/clear) | 清除内容 (公开成员函数) |
 | [insert](https://zh.cppreference.com/w/cpp/container/multiset/insert) | 插入元素或结点 (C++17起) (公开成员函数) |
-| [emplace ](https://zh.cppreference.com/w/cpp/container/multiset/emplace)  <br />  (C++11) | 原位构造元素 (公开成员函数) |
-| [emplace_hint ](https://zh.cppreference.com/w/cpp/container/multiset/emplace_hint)  <br />  (C++11) | 使用提示原位构造元素 (公开成员函数) |
+| [emplace ](https://zh.cppreference.com/w/cpp/container/multiset/emplace)  <br />   | 原位构造元素 (公开成员函数) |
+| [emplace_hint ](https://zh.cppreference.com/w/cpp/container/multiset/emplace_hint)  <br />   | 使用提示原位构造元素 (公开成员函数) |
 | [erase](https://zh.cppreference.com/w/cpp/container/multiset/erase) | 擦除元素 (公开成员函数) |
 | [swap](https://zh.cppreference.com/w/cpp/container/multiset/swap) | 交换内容 (公开成员函数) |
 | [extract ](https://zh.cppreference.com/w/cpp/container/multiset/extract)  <br />  (C++17) | 从另一容器释出结点 (公开成员函数) |
@@ -1498,12 +1500,12 @@ template <  class Key, class Compare = [std:: less](http://zh.cppreferen
 | [value_comp](https://zh.cppreference.com/w/cpp/container/multiset/value_comp) | 返回用于在value_type类型的对象中比较键的函数 |
 
 
-## [<map>](https://zh.cppreference.com/w/cpp/header/map)
-template <class Key,class T, class Compare = [std:: less](http://zh.cppreference.com/w/cpp/utility/functional/less) < Key > ,class Allocator = std:: allocator < std:: pair < const Key, T > >> class map ;
+## [map](https://zh.cppreference.com/w/cpp/header/map)
+`template <class Key,class T, class Compare = [std:: less](http://zh.cppreference.com/w/cpp/utility/functional/less) < Key > ,class Allocator = std:: allocator < std:: pair < const Key, T > >> class map ;`
 
 | 元素访问 |  |
 | --- | --- |
-| [at ](https://zh.cppreference.com/w/cpp/container/map/at)  <br />  (C++11) | 访问指定的元素，同时进行越界检查 (公开成员函数) |
+| [at ](https://zh.cppreference.com/w/cpp/container/map/at)  <br />   | 访问指定的元素，同时进行越界检查 (公开成员函数) |
 | [operator[]](https://zh.cppreference.com/w/cpp/container/map/operator_at) | 访问或插入指定的元素 (公开成员函数) |
 | 迭代器 |  |
 | [begincbegin](https://zh.cppreference.com/w/cpp/container/map/begin) | 返回指向容器第一个元素的迭代器 (公开成员函数) |
@@ -1518,8 +1520,8 @@ template <class Key,class T, class Compare = [std:: less](http://zh.cppref
 | [clear](https://zh.cppreference.com/w/cpp/container/map/clear) | 清除内容 (公开成员函数) |
 | [insert](https://zh.cppreference.com/w/cpp/container/map/insert) | 插入元素或结点 (C++17起) (公开成员函数) |
 | [insert_or_assign ](https://zh.cppreference.com/w/cpp/container/map/insert_or_assign)  <br />  (C++17) | 插入元素，或若关键已存在则赋值给当前元素 (公开成员函数) |
-| [emplace ](https://zh.cppreference.com/w/cpp/container/map/emplace)  <br />  (C++11) | 原位构造元素 (公开成员函数) |
-| [emplace_hint ](https://zh.cppreference.com/w/cpp/container/map/emplace_hint)  <br />  (C++11) | 使用提示原位构造元素 (公开成员函数) |
+| [emplace ](https://zh.cppreference.com/w/cpp/container/map/emplace)  <br />   | 原位构造元素 (公开成员函数) |
+| [emplace_hint ](https://zh.cppreference.com/w/cpp/container/map/emplace_hint)  <br />   | 使用提示原位构造元素 (公开成员函数) |
 | [try_emplace ](https://zh.cppreference.com/w/cpp/container/map/try_emplace)  <br />  (C++17) | 若键不存在则原位插入，若键存在则不做任何事 (公开成员函数) |
 | [erase](https://zh.cppreference.com/w/cpp/container/map/erase) | 擦除元素 (公开成员函数) |
 | [swap](https://zh.cppreference.com/w/cpp/container/map/swap) | 交换内容 (公开成员函数) |
@@ -1539,7 +1541,7 @@ template <class Key,class T, class Compare = [std:: less](http://zh.cppref
 emplace()、emplace_hint()的执行效率比insert()高
 
 ## [multimap](https://zh.cppreference.com/w/cpp/container/multimap)
-template <class Key,  class T,  class Compare = [std:: less](http://zh.cppreference.com/w/cpp/utility/functional/less) < Key > , class Allocator = std:: allocator < std:: pair < const Key, T > >> class multimap ;
+`template <class Key,  class T,  class Compare = [std:: less](http://zh.cppreference.com/w/cpp/utility/functional/less) < Key > , class Allocator = std:: allocator < std:: pair < const Key, T > >> class multimap ;`
 
 | 迭代器 |  |
 | --- | --- |
@@ -1554,8 +1556,8 @@ template <class Key,  class T,  class Compare = [std:: less](http://zh
 | 修改器 |  |
 | [clear](https://zh.cppreference.com/w/cpp/container/multimap/clear) | 清除内容 (公开成员函数) |
 | [insert](https://zh.cppreference.com/w/cpp/container/multimap/insert) | 插入元素或结点 (C++17起) (公开成员函数) |
-| [emplace ](https://zh.cppreference.com/w/cpp/container/multimap/emplace)  <br />  (C++11) | 原位构造元素 (公开成员函数) |
-| [emplace_hint ](https://zh.cppreference.com/w/cpp/container/multimap/emplace_hint)  <br />  (C++11) | 使用提示原位构造元素 (公开成员函数) |
+| [emplace ](https://zh.cppreference.com/w/cpp/container/multimap/emplace)  <br />   | 原位构造元素 (公开成员函数) |
+| [emplace_hint ](https://zh.cppreference.com/w/cpp/container/multimap/emplace_hint)  <br />   | 使用提示原位构造元素 (公开成员函数) |
 | [erase](https://zh.cppreference.com/w/cpp/container/multimap/erase) | 擦除元素 (公开成员函数) |
 | [swap](https://zh.cppreference.com/w/cpp/container/multimap/swap) | 交换内容 (公开成员函数) |
 | [extract ](https://zh.cppreference.com/w/cpp/container/multimap/extract)  <br />  (C++17) | 从另一容器释出结点 (公开成员函数) |
@@ -1572,10 +1574,10 @@ template <class Key,  class T,  class Compare = [std:: less](http://zh
 | [value_comp](https://zh.cppreference.com/w/cpp/container/multimap/value_comp) | 返回用于在value_type类型的对象中比较键的函数 |
 
 
-## [<unordered_set>](https://zh.cppreference.com/w/cpp/header/unordered_set)
+## [unordered_set](https://zh.cppreference.com/w/cpp/header/unordered_set)
 
 ### unordered_set
-template <  <br />  class Key,  <br />  class Hash = [std:: hash](http://zh.cppreference.com/w/cpp/utility/hash) < Key > ,  <br />  class KeyEqual = [std:: equal_to](http://zh.cppreference.com/w/cpp/utility/functional/equal_to) < Key > ,  <br />  class Allocator = [std:: allocator](http://zh.cppreference.com/w/cpp/memory/allocator) < Key >
+
 > class unordered_set ;
 
 | 迭代器 |  |
@@ -1618,8 +1620,6 @@ template <  <br />  class Key,  <br />  class Hash = [std:: hash](http://zh
 
 
 ### unordered_multiset
-template <  <br />      class Key,  <br />      class Hash = [std:: hash](http://zh.cppreference.com/w/cpp/utility/hash) < Key > ,  <br />      class KeyEqual = [std:: equal_to](http://zh.cppreference.com/w/cpp/utility/functional/equal_to) < Key > ,  <br />      class Allocator = [std:: allocator](http://zh.cppreference.com/w/cpp/memory/allocator) < Key >  <br />  > class unordered_multiset ;
-
 | 迭代器 |  |
 | --- | --- |
 | [begincbegin](https://zh.cppreference.com/w/cpp/container/unordered_multiset/begin) | 返回指向容器第一个元素的迭代器 (公开成员函数) |
@@ -1659,11 +1659,9 @@ template <  <br />      class Key,  <br />      class Hash = [std:: hash](http:
 | [key_eq](https://zh.cppreference.com/w/cpp/container/unordered_multiset/key_eq) | 返回用于比较键的相等性的函数 |
 
 
-## [<unordered_map>](https://zh.cppreference.com/w/cpp/header/unordered_map)
+## [unordered_map](https://zh.cppreference.com/w/cpp/header/unordered_map)
 
 ### **unordered_map**
-template <  <br />      class Key,  <br />      class T,  <br />      class Hash = [std:: hash](http://zh.cppreference.com/w/cpp/utility/hash) < Key > ,  <br />      class KeyEqual = [std:: equal_to](http://zh.cppreference.com/w/cpp/utility/functional/equal_to) < Key > ,  <br />      class Allocator = [std:: allocator](http://zh.cppreference.com/w/cpp/memory/allocator) < [std:: pair](http://zh.cppreference.com/w/cpp/utility/pair) < const Key, T > >  <br />  > class unordered_map ;
-
 | 迭代器 |  |
 | --- | --- |
 | [begincbegin](https://zh.cppreference.com/w/cpp/container/unordered_map/begin) | 返回指向容器第一个元素的迭代器 (公开成员函数) |
@@ -1708,8 +1706,6 @@ template <  <br />      class Key,  <br />      class T,  <br />      class Hash
 
 
 ### unordered_multimap
-template <  <br />      class Key,  <br />      class T,  <br />      class Hash = [std:: hash](http://zh.cppreference.com/w/cpp/utility/hash) < Key > ,  <br />      class KeyEqual = [std:: equal_to](http://zh.cppreference.com/w/cpp/utility/functional/equal_to) < Key > ,  <br />      class Allocator = [std:: allocator](http://zh.cppreference.com/w/cpp/memory/allocator) < [std:: pair](http://zh.cppreference.com/w/cpp/utility/pair) < const Key, T > >  <br />  > class unordered_multimap ;
-
 | 迭代器 |  |
 | --- | --- |
 | [begincbegin](https://zh.cppreference.com/w/cpp/container/unordered_multimap/begin) | 返回指向容器第一个元素的迭代器 (公开成员函数) |
@@ -1749,7 +1745,7 @@ template <  <br />      class Key,  <br />      class T,  <br />      class Hash
 | [key_eq](https://zh.cppreference.com/w/cpp/container/unordered_multimap/key_eq) | 返回用于比较键的相等性的函数 |
 
 
-## [<tuple>](https://zh.cppreference.com/mwiki/index.php?title=cpp/header/tuple&variant=zh-hans)
+## [tuple](https://zh.cppreference.com/mwiki/index.php?title=cpp/header/tuple&variant=zh-hans)
 | 函数 |  |
 | --- | --- |
 | [make_tuple](https://zh.cppreference.com/w/cpp/utility/tuple/make_tuple) | 创建一个 tuple 对象，其类型根据各实参类型定义 (函数模板) |
@@ -1757,12 +1753,12 @@ template <  <br />      class Key,  <br />      class T,  <br />      class Hash
 | [forward_as_tuple](https://zh.cppreference.com/w/cpp/utility/tuple/forward_as_tuple) | 创建[转发引用的](https://zh.cppreference.com/w/cpp/language/reference#.E8.BD.AC.E5.8F.91.E5.BC.95.E7.94.A8)  <br />   tuple (函数模板) |
 | [tuple_cat](https://zh.cppreference.com/w/cpp/utility/tuple/tuple_cat) | 通过连接任意数量的元组来创建一个tuple (函数模板) |
 | [std::get(std::tuple)](https://zh.cppreference.com/w/cpp/utility/tuple/get) | 元组式访问指定的元素 |
-| [std::swap(std::tuple) ](https://zh.cppreference.com/w/cpp/utility/tuple/swap2)  <br />  (C++11) | 特化 [std::swap ](https://zh.cppreference.com/w/cpp/algorithm/swap)  <br />  算法 (函数模板) |
+| [std::swap(std::tuple) ](https://zh.cppreference.com/w/cpp/utility/tuple/swap2)  <br />   | 特化 [std::swap ](https://zh.cppreference.com/w/cpp/algorithm/swap)  <br />  算法 (函数模板) |
 | [apply ](https://zh.cppreference.com/w/cpp/utility/apply)  <br />  (C++17) | 以一个实参的元组来调用函数 (函数模板) |
 | [make_from_tuple ](https://zh.cppreference.com/w/cpp/utility/make_from_tuple)  <br />  (C++17) | 以一个实参元组构造对象 |
 
 
-## [<valarray>](https://zh.cppreference.com/w/cpp/header/valarray)
+## [valarray](https://zh.cppreference.com/w/cpp/header/valarray)
 | [valarray](https://zh.cppreference.com/w/cpp/numeric/valarray) | 数值数组和数组切片 (类模板) |
 | --- | --- |
 | [slice](https://zh.cppreference.com/w/cpp/numeric/valarray/slice) | valarray的BLAS式切片：起始下标、长度、跨度 (类) |
@@ -1772,7 +1768,7 @@ template <  <br />      class Key,  <br />      class T,  <br />      class Hash
 | [mask_array](https://zh.cppreference.com/w/cpp/numeric/valarray/mask_array) | 到应用布尔掩码 operator[]后的valarray子集的代理 (类模板) |
 | [indirect_array](https://zh.cppreference.com/w/cpp/numeric/valarray/indirect_array) | 到应用间接operator[]后的valarray子集的代理 |
 
-template < class T >  <br />  class valarray ;  <br />  **valarray**表示并操作值数组的类。支持逐元素数学运算与多种形式的广义下标运算符、切片及间接访问。
+`template < class T >`  <br />  class valarray ;  <br />  **valarray**表示并操作值数组的类。支持逐元素数学运算与多种形式的广义下标运算符、切片及间接访问。
 
 | [swap](https://zh.cppreference.com/w/cpp/numeric/valarray/swap) | 与另一valarray交换 (公开成员函数) |
 | --- | --- |
@@ -1785,10 +1781,10 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | [cshift](https://zh.cppreference.com/w/cpp/numeric/valarray/cshift) | 循环移动valarray的元素 (公开成员函数) |
 | [apply](https://zh.cppreference.com/w/cpp/numeric/valarray/apply) | 将函数应用到valarray的每个元素 |
 
-**slice( std::size_t start, std::size_t size, std::size_t stride );**  <br />  **gslice ( std:: size_t start, const std:: valarray < std:: size_t > & sizes,**  <br />  **                           const std:: valarray < std:: size_t > & strides ) ;**
+**slice( std::size_t start, std::size_t size, std::size_t stride );**  <br />  `**gslice ( std:: size_t start, const std:: valarray < std:: size_t > & sizes,  const std:: valarray < std:: size_t > & strides ) ;**`
 
 
-## [<algorithm>](https://zh.cppreference.com/w/cpp/algorithm)
+## [algorithm](https://zh.cppreference.com/w/cpp/algorithm)
 
 ### 不修改序列的操作
 | [for_each](https://zh.cppreference.com/w/cpp/algorithm/for_each) | 应用函数到范围中的元素 (函数模板) |
@@ -1807,10 +1803,10 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 ### 修改序列的操作
 | [copy ](https://zh.cppreference.com/w/cpp/algorithm/copy)  <br />  copy_if | 将某一范围的元素复制到一个新的位置 (函数模板) |
 | --- | --- |
-| [copy_n ](https://zh.cppreference.com/w/cpp/algorithm/copy_n)  <br />  (C++11) | 将一定数目的元素复制到一个新的位置 (函数模板) |
+| [copy_n ](https://zh.cppreference.com/w/cpp/algorithm/copy_n)  <br />   | 将一定数目的元素复制到一个新的位置 (函数模板) |
 | [copy_backward](https://zh.cppreference.com/w/cpp/algorithm/copy_backward) | 按从后往前的顺序复制一个范围内的元素 (函数模板) |
-| [move ](https://zh.cppreference.com/w/cpp/algorithm/move)  <br />  (C++11) | 将某一范围的元素移动到一个新的位置 (函数模板) |
-| [move_backward ](https://zh.cppreference.com/w/cpp/algorithm/move_backward)  <br />  (C++11) | 按从后往前的顺序移动某一范围的元素到新的位置 (函数模板) |
+| [move ](https://zh.cppreference.com/w/cpp/algorithm/move)  <br />   | 将某一范围的元素移动到一个新的位置 (函数模板) |
+| [move_backward ](https://zh.cppreference.com/w/cpp/algorithm/move_backward)  <br />   | 按从后往前的顺序移动某一范围的元素到新的位置 (函数模板) |
 | [fill](https://zh.cppreference.com/w/cpp/algorithm/fill) | 将一个给定值复制赋值给一个范围内的每个元素 (函数模板) |
 | [fill_n](https://zh.cppreference.com/w/cpp/algorithm/fill_n) | 将一个给定值复制赋值给一个范围内的N个元素 (函数模板) |
 | [transform](https://zh.cppreference.com/w/cpp/algorithm/transform) | 将一个函数应用于某一范围的各个元素，并在目标范围存储结果 (函数模板) |
@@ -1836,18 +1832,18 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 **replace_if(s.begin(), s.end(), [](char c) {return !isalpha(c); },' ');**  <br />  **transform(s.begin(), s.end(), s.begin(), ::tolower);**
 
 ### 划分操作
-| [is_partitioned ](https://zh.cppreference.com/w/cpp/algorithm/is_partitioned)  <br />  (C++11) | 判断范围是否已按给定的谓词划分 (函数模板) |
+| [is_partitioned ](https://zh.cppreference.com/w/cpp/algorithm/is_partitioned)  <br />   | 判断范围是否已按给定的谓词划分 (函数模板) |
 | --- | --- |
 | [partition](https://zh.cppreference.com/w/cpp/algorithm/partition) | 将范围中的元素分为两组 (函数模板) |
-| [partition_copy ](https://zh.cppreference.com/w/cpp/algorithm/partition_copy)  <br />  (C++11) | 复制一个范围，将各元素分为两组 (函数模板) |
+| [partition_copy ](https://zh.cppreference.com/w/cpp/algorithm/partition_copy)  <br />   | 复制一个范围，将各元素分为两组 (函数模板) |
 | [stable_partition](https://zh.cppreference.com/w/cpp/algorithm/stable_partition) | 将元素分为两组，同时保留其相对顺序 (函数模板) |
-| [partition_point ](https://zh.cppreference.com/w/cpp/algorithm/partition_point)  <br />  (C++11) | 定位已划分范围的划分点 |
+| [partition_point ](https://zh.cppreference.com/w/cpp/algorithm/partition_point)  <br />   | 定位已划分范围的划分点 |
 
 
 ### 排序操作
-| [is_sorted ](https://zh.cppreference.com/w/cpp/algorithm/is_sorted)  <br />  (C++11) | 检查范围是否已按升序排列 (函数模板) |
+| [is_sorted ](https://zh.cppreference.com/w/cpp/algorithm/is_sorted)  <br />   | 检查范围是否已按升序排列 (函数模板) |
 | --- | --- |
-| [is_sorted_until ](https://zh.cppreference.com/w/cpp/algorithm/is_sorted_until)  <br />  (C++11) | 找出最大的已排序子范围 (函数模板) |
+| [is_sorted_until ](https://zh.cppreference.com/w/cpp/algorithm/is_sorted_until)  <br />   | 找出最大的已排序子范围 (函数模板) |
 | [sort](https://zh.cppreference.com/w/cpp/algorithm/sort) | 将范围按升序排序 (函数模板) |
 | [partial_sort](https://zh.cppreference.com/w/cpp/algorithm/partial_sort) | 排序一个范围的前N个元素 (函数模板) |
 | [partial_sort_copy](https://zh.cppreference.com/w/cpp/algorithm/partial_sort_copy) | 对范围内的元素进行复制并部分排序 (函数模板) |
@@ -1878,7 +1874,7 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 ### 堆操作
 | [is_heap](https://zh.cppreference.com/w/cpp/algorithm/is_heap) | 检查给定范围是否为一个最大堆 (函数模板) |
 | --- | --- |
-| [is_heap_until ](https://zh.cppreference.com/w/cpp/algorithm/is_heap_until)  <br />  (C++11) | 查找能成为最大堆的最大子范围 (函数模板) |
+| [is_heap_until ](https://zh.cppreference.com/w/cpp/algorithm/is_heap_until)  <br />   | 查找能成为最大堆的最大子范围 (函数模板) |
 | [make_heap](https://zh.cppreference.com/w/cpp/algorithm/make_heap) | 从一个元素范围创建出一个最大堆 (函数模板) |
 | [push_heap](https://zh.cppreference.com/w/cpp/algorithm/push_heap) | 将一个元素加入到一个最大堆 (函数模板) |
 | [pop_heap](https://zh.cppreference.com/w/cpp/algorithm/pop_heap) | 从最大堆中移除最大元素 (函数模板) |
@@ -1891,8 +1887,8 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | [max_element](https://zh.cppreference.com/w/cpp/algorithm/max_element) | 返回范围内的最大元素 (函数模板) |
 | [min](https://zh.cppreference.com/w/cpp/algorithm/min) | 返回各给定值中的较小者 (函数模板) |
 | [min_element](https://zh.cppreference.com/w/cpp/algorithm/min_element) | 返回范围内的最小元素 (函数模板) |
-| [minmax ](https://zh.cppreference.com/w/cpp/algorithm/minmax)  <br />  (C++11) | 返回两个元素的较小和较大者 (函数模板) |
-| [minmax_element ](https://zh.cppreference.com/w/cpp/algorithm/minmax_element)  <br />  (C++11) | 返回范围内的最小元素和最大元素 (函数模板) |
+| [minmax ](https://zh.cppreference.com/w/cpp/algorithm/minmax)  <br />   | 返回两个元素的较小和较大者 (函数模板) |
+| [minmax_element ](https://zh.cppreference.com/w/cpp/algorithm/minmax_element)  <br />   | 返回范围内的最小元素和最大元素 (函数模板) |
 | [clamp ](https://zh.cppreference.com/w/cpp/algorithm/clamp)  <br />  (C++17) | 在一对边界值间夹逼一个值 |
 
 
@@ -1904,7 +1900,7 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 
 
 ### 排列操作
-| [is_permutation ](https://zh.cppreference.com/w/cpp/algorithm/is_permutation)  <br />  (C++11) | 判断一个序列是否为另一个序列的排列 (函数模板) |
+| [is_permutation ](https://zh.cppreference.com/w/cpp/algorithm/is_permutation)  <br />   | 判断一个序列是否为另一个序列的排列 (函数模板) |
 | --- | --- |
 | [next_permutation](https://zh.cppreference.com/w/cpp/algorithm/next_permutation) | 产生某个元素范围的按字典顺序的下一个较大的排列 (函数模板) |
 | [prev_permutation](https://zh.cppreference.com/w/cpp/algorithm/prev_permutation) | 产生某个元素范围的按字典顺序的下一个较小的排列 |
@@ -1913,7 +1909,7 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 ## [  <br />    <br />  ](https://zh.cppreference.com/w/cpp/header/numeric)
 **数值运算**
 
-| [iota ](https://zh.cppreference.com/w/cpp/algorithm/iota)  <br />  (C++11) | 用从起始值开始连续递增的值填充一个范围 (函数模板) |
+| [iota ](https://zh.cppreference.com/w/cpp/algorithm/iota)  <br />   | 用从起始值开始连续递增的值填充一个范围 (函数模板) |
 | --- | --- |
 | [accumulate](https://zh.cppreference.com/w/cpp/algorithm/accumulate) | 对一个范围内的元素求和 (函数模板) |
 | [reduce ](https://zh.cppreference.com/w/cpp/algorithm/reduce)  <br />  (C++17) | 类似[std::accumulate，](https://zh.cppreference.com/w/cpp/algorithm/accumulate)  <br />  但不依序执行 (函数模板) |
@@ -1930,20 +1926,20 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | [midpoint ](https://zh.cppreference.com/w/cpp/numeric/midpoint)  <br />  (C++20) | 两个数值或指针间的中点 |
 
 
-## [<functional>](https://zh.cppreference.com/mwiki/index.php?title=cpp/header/functional&variant=zh-cn)
+## [functional](https://zh.cppreference.com/mwiki/index.php?title=cpp/header/functional&variant=zh-cn)
 
 ### 类
-| [function ](https://zh.cppreference.com/w/cpp/utility/functional/function)  <br />  (C++11) | 包装具有指定函数调用签名的任意类型的可调用对象 (类模板) |
+| [function ](https://zh.cppreference.com/w/cpp/utility/functional/function)  <br />   | 包装具有指定函数调用签名的任意类型的可调用对象 (类模板) |
 | --- | --- |
-| [mem_fn ](https://zh.cppreference.com/w/cpp/utility/functional/mem_fn)  <br />  (C++11) | 从成员指针创建出函数对象 (函数模板) |
-| [bad_function_call ](https://zh.cppreference.com/w/cpp/utility/functional/bad_function_call)  <br />  (C++11) | 调用空的 [std::function ](https://zh.cppreference.com/w/cpp/utility/functional/function)  <br />  时抛出的异常 (类) |
-| [is_bind_expression ](https://zh.cppreference.com/w/cpp/utility/functional/is_bind_expression)  <br />  (C++11) | 指示对象为 std::bind 表达式，或能被用作这种表达式 (类模板) |
-| [is_placeholder ](https://zh.cppreference.com/w/cpp/utility/functional/is_placeholder)  <br />  (C++11) | 表明一个对象是标准占位符，或者可以用作标准占位符 (类模板) |
-| [reference_wrapper ](https://zh.cppreference.com/w/cpp/utility/functional/reference_wrapper)  <br />  (C++11) | [可复制构造 (CopyConstructible) 且](https://zh.cppreference.com/w/cpp/named_req/CopyConstructible)  <br />  可复制赋值 (CopyAssignable) 的引用包装器 |
+| [mem_fn ](https://zh.cppreference.com/w/cpp/utility/functional/mem_fn)  <br />   | 从成员指针创建出函数对象 (函数模板) |
+| [bad_function_call ](https://zh.cppreference.com/w/cpp/utility/functional/bad_function_call)  <br />   | 调用空的 [std::function ](https://zh.cppreference.com/w/cpp/utility/functional/function)  <br />  时抛出的异常 (类) |
+| [is_bind_expression ](https://zh.cppreference.com/w/cpp/utility/functional/is_bind_expression)  <br />   | 指示对象为 std::bind 表达式，或能被用作这种表达式 (类模板) |
+| [is_placeholder ](https://zh.cppreference.com/w/cpp/utility/functional/is_placeholder)  <br />   | 表明一个对象是标准占位符，或者可以用作标准占位符 (类模板) |
+| [reference_wrapper ](https://zh.cppreference.com/w/cpp/utility/functional/reference_wrapper)  <br />   | [可复制构造 (CopyConstructible) 且](https://zh.cppreference.com/w/cpp/named_req/CopyConstructible)  <br />  可复制赋值 (CopyAssignable) 的引用包装器 |
 
 
 ### 函数
-| [bind ](https://zh.cppreference.com/w/cpp/utility/functional/bind)  <br />  (C++11) | 绑定一或多个实参到函数对象 (函数模板) |
+| [bind ](https://zh.cppreference.com/w/cpp/utility/functional/bind)  <br />   | 绑定一或多个实参到函数对象 (函数模板) |
 | --- | --- |
 | [refcref ](https://zh.cppreference.com/w/cpp/utility/functional/ref)  <br />  (C11)(C11) | 创建具有从其实参推导的类型的 [std::reference_wrapper ](https://zh.cppreference.com/w/cpp/utility/functional/reference_wrapper)  <br />  (函数模板) |
 | [invoke ](https://zh.cppreference.com/w/cpp/utility/functional/invoke)  <br />  (C++17) | 以给定实参调用任意[可调用 (Callable) 对](https://zh.cppreference.com/w/cpp/named_req/Callable)  <br />  象 |
@@ -2001,7 +1997,7 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | [boyer_moore_horspool_searcher ](https://zh.cppreference.com/w/cpp/utility/functional/boyer_moore_horspool_searcher)  <br />  (C++17) | Boyer-Moore-Horspool 搜索算法实现 |
 
 
-## [<utility>](https://zh.cppreference.com/mwiki/index.php?title=cpp/header/utility&variant=zh-cn)
+## [utility](https://zh.cppreference.com/mwiki/index.php?title=cpp/header/utility&variant=zh-cn)
 | [rel_ops](https://zh.cppreference.com/w/cpp/utility/rel_ops/operator_cmp) | 提供自动的比较运算符 |
 | --- | --- |
 
@@ -2014,15 +2010,15 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | --- | --- |
 | [swap](https://zh.cppreference.com/w/cpp/algorithm/swap) | 交换两个对象的值 (函数模板) |
 | [exchange ](https://zh.cppreference.com/w/cpp/utility/exchange)  <br />  (C++14) | 将实参替换为一个新值，并返回其先前值 (函数模板) |
-| [forward ](https://zh.cppreference.com/w/cpp/utility/forward)  <br />  (C++11) | 转发一个函数实参 (函数模板) |
-| [move ](https://zh.cppreference.com/w/cpp/utility/move)  <br />  (C++11) | 获得右值引用 (函数模板) |
-| [move_if_noexcept ](https://zh.cppreference.com/w/cpp/utility/move_if_noexcept)  <br />  (C++11) | 若移动构造函数不抛出则获得右值引用 (函数模板) |
+| [forward ](https://zh.cppreference.com/w/cpp/utility/forward)  <br />   | 转发一个函数实参 (函数模板) |
+| [move ](https://zh.cppreference.com/w/cpp/utility/move)  <br />   | 获得右值引用 (函数模板) |
+| [move_if_noexcept ](https://zh.cppreference.com/w/cpp/utility/move_if_noexcept)  <br />   | 若移动构造函数不抛出则获得右值引用 (函数模板) |
 | [as_const ](https://zh.cppreference.com/w/cpp/utility/as_const)  <br />  (C++17) | 获得到其实参的 const 引用 (函数模板) |
-| [declval ](https://zh.cppreference.com/w/cpp/utility/declval)  <br />  (C++11) | 获取到其实参的引用，用于不求值语境中 (函数模板) |
+| [declval ](https://zh.cppreference.com/w/cpp/utility/declval)  <br />   | 获取到其实参的引用，用于不求值语境中 (函数模板) |
 | [make_pair](https://zh.cppreference.com/w/cpp/utility/pair/make_pair) | 创建一个 pair 对象，其类型根据各实参类型定义 |
 
 
-## [<iterator>](https://zh.cppreference.com/w/cpp/header/iterator)
+## [iterator](https://zh.cppreference.com/w/cpp/header/iterator)
 | 迭代器概念 |  |
 | --- | --- |
 | [readable](https://zh.cppreference.com/mwiki/index.php?title=cpp/iterator/readable&action=edit&redlink=1) | 指定类型通过应用运算符 * 可读 |
@@ -2045,7 +2041,7 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | [input_iterator_tag ](https://zh.cppreference.com/w/cpp/iterator/iterator_tags)  <br />  output_iterator_tag forward_iterator_tag bidirectional_iterator_tag random_access_iterator_tag contiguous_iterator_tag | 用于指示迭代器类别的空类类型 (类) |
 | 适配器 |  |
 | [reverse_iterator](https://zh.cppreference.com/w/cpp/iterator/reverse_iterator) | 逆序遍历的迭代器适配器 (类模板) |
-| [move_iterator ](https://zh.cppreference.com/w/cpp/iterator/move_iterator)  <br />  (C++11) | 解引用结果为右值引用的迭代器适配器 (类模板) |
+| [move_iterator ](https://zh.cppreference.com/w/cpp/iterator/move_iterator)  <br />   | 解引用结果为右值引用的迭代器适配器 (类模板) |
 | [move_sentinel ](https://zh.cppreference.com/w/cpp/iterator/move_sentinel)  <br />  (C++20) | 用于 [std::move_iterator ](https://zh.cppreference.com/w/cpp/iterator/move_iterator)  <br />  的哨位适配器 (类模板) |
 | [common_iterator ](https://zh.cppreference.com/mwiki/index.php?title=cpp/iterator/common_iterator&action=edit&redlink=1)  <br />  (C++20) | 适配一个迭代器类型及其哨位为一个公共迭代器类型 (类模板) |
 | [default_sentinel_t ](https://zh.cppreference.com/w/cpp/iterator/default_sentinel_t)  <br />  (C++20) | 用于知晓其边界的迭代器的默认哨位 (类) |
@@ -2068,15 +2064,15 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | --- | --- |
 | 适配器 |  |
 | [make_reverse_iterator ](https://zh.cppreference.com/w/cpp/iterator/make_reverse_iterator)  <br />  (C++14) | 创建拥有从实参推出的类型的 [std::reverse_iterator ](https://zh.cppreference.com/w/cpp/iterator/reverse_iterator)  <br />  (函数模板) |
-| [make_move_iterator ](https://zh.cppreference.com/w/cpp/iterator/make_move_iterator)  <br />  (C++11) | 创建拥有从实参推出的类型的 [std::move_iterator ](https://zh.cppreference.com/w/cpp/iterator/move_iterator)  <br />  (函数模板) |
+| [make_move_iterator ](https://zh.cppreference.com/w/cpp/iterator/make_move_iterator)  <br />   | 创建拥有从实参推出的类型的 [std::move_iterator ](https://zh.cppreference.com/w/cpp/iterator/move_iterator)  <br />  (函数模板) |
 | [front_inserter](https://zh.cppreference.com/w/cpp/iterator/front_inserter) | 创建拥有从实参推出的类型的 [std::front_insert_iterator ](https://zh.cppreference.com/w/cpp/iterator/front_insert_iterator)  <br />  (函数模板) |
 | [back_inserter](https://zh.cppreference.com/w/cpp/iterator/back_inserter) | 创建拥有从实参推出的类型的 [std::back_insert_iterator ](https://zh.cppreference.com/w/cpp/iterator/back_insert_iterator)  <br />  (函数模板) |
 | [inserter](https://zh.cppreference.com/w/cpp/iterator/inserter) | 创建拥有从实参推出的类型的 [std::insert_iterator](https://zh.cppreference.com/w/cpp/iterator/insert_iterator) |
 | 操作 |  |
 | [advance](https://zh.cppreference.com/w/cpp/iterator/advance) | 令迭代器前进给定的距离 (函数模板) |
 | [distance](https://zh.cppreference.com/w/cpp/iterator/distance) | 返回两个迭代器间的距离 (函数模板) |
-| [next ](https://zh.cppreference.com/w/cpp/iterator/next)  <br />  (C++11) | 令迭代器自增 (函数模板) |
-| [prev ](https://zh.cppreference.com/w/cpp/iterator/prev)  <br />  (C++11) | 令迭代器自减 (函数模板) |
+| [next ](https://zh.cppreference.com/w/cpp/iterator/next)  <br />   | 令迭代器自增 (函数模板) |
+| [prev ](https://zh.cppreference.com/w/cpp/iterator/prev)  <br />   | 令迭代器自减 (函数模板) |
 | [ranges::advance ](https://zh.cppreference.com/mwiki/index.php?title=cpp/iterator/ranges/advance&action=edit&redlink=1)  <br />  (C++20) | 令迭代器前进给定的距离或到给定的边界 (niebloid) |
 | [ranges::distance ](https://zh.cppreference.com/mwiki/index.php?title=cpp/iterator/ranges/distance&action=edit&redlink=1)  <br />  (C++20) | 返回迭代器与哨位间的距离，或范围起始与结尾间的距离 (niebloid) |
 | [ranges::next ](https://zh.cppreference.com/mwiki/index.php?title=cpp/iterator/ranges/next&action=edit&redlink=1)  <br />  (C++20) | 自增迭代器给定的距离或到边界 (niebloid) |
@@ -2096,12 +2092,12 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | --- | --- |
 | [operator newoperator new[]](https://zh.cppreference.com/w/cpp/memory/new/operator_new) | 分配函数 (函数) |
 | [operator deleteoperator delete[]](https://zh.cppreference.com/w/cpp/memory/new/operator_delete) | 解分配函数 (函数) |
-| [get_new_handler ](https://zh.cppreference.com/w/cpp/memory/new/get_new_handler)  <br />  (C++11) | 获得当前的new处理函数 (函数) |
+| [get_new_handler ](https://zh.cppreference.com/w/cpp/memory/new/get_new_handler)  <br />   | 获得当前的new处理函数 (函数) |
 | [set_new_handler](https://zh.cppreference.com/w/cpp/memory/new/set_new_handler) | 注册一个new处理函数 (函数) |
 | [launder ](https://zh.cppreference.com/w/cpp/utility/launder)  <br />  (C++17) | 指针优化屏障 (函数模板) |
 | 类 |  |
 | [bad_alloc](https://zh.cppreference.com/w/cpp/memory/new/bad_alloc) | 内存分配失败时抛出的异常 (类) |
-| [bad_array_new_length ](https://zh.cppreference.com/w/cpp/memory/new/bad_array_new_length)  <br />  (C++11) | 在分配有非法长度的数组时抛出的异常 (类) |
+| [bad_array_new_length ](https://zh.cppreference.com/w/cpp/memory/new/bad_array_new_length)  <br />   | 在分配有非法长度的数组时抛出的异常 (类) |
 | [nothrow_t](https://zh.cppreference.com/w/cpp/memory/new/nothrow_t) | 用于选择不抛出分配函数的标签类型 (类) |
 | [align_val_t ](https://zh.cppreference.com/w/cpp/memory/new/align_val_t)  <br />  (C++17) | 用于向带对齐分配及解分配函数传递对齐值的类型 (类) |
 | [destroying_delete_t ](https://zh.cppreference.com/w/cpp/memory/new/destroying_delete_t)  <br />  (C++20) | 用于鉴别operator delete的销毁删除重载的标签类型 (类) |
@@ -2114,16 +2110,16 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 
 
 ### 智能指针
-| [unique_ptr ](https://zh.cppreference.com/w/cpp/memory/unique_ptr)  <br />  (C++11) | 拥有独有对象所有权语义的智能指针 (类模板) |
+| [unique_ptr ](https://zh.cppreference.com/w/cpp/memory/unique_ptr)  <br />   | 拥有独有对象所有权语义的智能指针 (类模板) |
 | --- | --- |
-| [shared_ptr ](https://zh.cppreference.com/w/cpp/memory/shared_ptr)  <br />  (C++11) | 拥有共享对象所有权语义的智能指针 (类模板) |
-| [weak_ptr ](https://zh.cppreference.com/w/cpp/memory/weak_ptr)  <br />  (C++11) | 到 [std::shared_ptr ](https://zh.cppreference.com/w/cpp/memory/shared_ptr)  <br />  所管理对象的弱引用 |
+| [shared_ptr ](https://zh.cppreference.com/w/cpp/memory/shared_ptr)  <br />   | 拥有共享对象所有权语义的智能指针 (类模板) |
+| [weak_ptr ](https://zh.cppreference.com/w/cpp/memory/weak_ptr)  <br />   | 到 [std::shared_ptr ](https://zh.cppreference.com/w/cpp/memory/shared_ptr)  <br />  所管理对象的弱引用 |
 
 
 ### 未初始化存储
 | [uninitialized_copy](https://zh.cppreference.com/w/cpp/memory/uninitialized_copy) | 将范围内的对象复制到未初始化的内存区域 (函数模板) |
 | --- | --- |
-| [uninitialized_copy_n ](https://zh.cppreference.com/w/cpp/memory/uninitialized_copy_n)  <br />  (C++11) | 将指定数量的对象复制到未初始化的内存区域 (函数模板) |
+| [uninitialized_copy_n ](https://zh.cppreference.com/w/cpp/memory/uninitialized_copy_n)  <br />   | 将指定数量的对象复制到未初始化的内存区域 (函数模板) |
 | [uninitialized_fill](https://zh.cppreference.com/w/cpp/memory/uninitialized_fill) | 复制一个对象到以范围定义的未初始化内存区域 (函数模板) |
 | [uninitialized_fill_n](https://zh.cppreference.com/w/cpp/memory/uninitialized_fill_n) | 复制一个对象到以起点和计数定义的未初始化内存区域 (函数模板) |
 | [uninitialized_move ](https://zh.cppreference.com/w/cpp/memory/uninitialized_move)  <br />  (C++17) | 移动一个范围的对象到未初始化的内存区域 (函数模板) |
@@ -2140,10 +2136,10 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 ### 分配器
 | [allocator](https://zh.cppreference.com/w/cpp/memory/allocator) | 默认的分配器 (类模板) |
 | --- | --- |
-| [allocator_traits ](https://zh.cppreference.com/w/cpp/memory/allocator_traits)  <br />  (C++11) | 提供关于分配器类型的信息 (类模板) |
-| [allocator_arg_t ](https://zh.cppreference.com/w/cpp/memory/allocator_arg_t)  <br />  (C++11) | 标签类型，用于选择具分配器的构造函数重载 (类) |
-| [allocator_arg ](https://zh.cppreference.com/w/cpp/memory/allocator_arg)  <br />  (C++11) | 用于选择具分配器的构造函数的 [std::allocator_arg_t ](https://zh.cppreference.com/w/cpp/memory/allocator_arg_t)  <br />  对象 (常量) |
-| [uses_allocator ](https://zh.cppreference.com/w/cpp/memory/uses_allocator)  <br />  (C++11) | 检查指定的类型是否支持使用分配器的构造 |
+| [allocator_traits ](https://zh.cppreference.com/w/cpp/memory/allocator_traits)  <br />   | 提供关于分配器类型的信息 (类模板) |
+| [allocator_arg_t ](https://zh.cppreference.com/w/cpp/memory/allocator_arg_t)  <br />   | 标签类型，用于选择具分配器的构造函数重载 (类) |
+| [allocator_arg ](https://zh.cppreference.com/w/cpp/memory/allocator_arg)  <br />   | 用于选择具分配器的构造函数的 [std::allocator_arg_t ](https://zh.cppreference.com/w/cpp/memory/allocator_arg_t)  <br />  对象 (常量) |
+| [uses_allocator ](https://zh.cppreference.com/w/cpp/memory/uses_allocator)  <br />   | 检查指定的类型是否支持使用分配器的构造 |
 
 
 # 数值
@@ -2153,45 +2149,45 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | --- | --- |
 | [uniform_random_bit_generator ](https://zh.cppreference.com/w/cpp/numeric/random/uniform_random_bit_generator)  <br />  (C++20) | 指定类型具备作为均匀随机位生成器的资格 (概念) |
 | 随机数引擎 |  |
-| [linear_congruential_engine ](https://zh.cppreference.com/w/cpp/numeric/random/linear_congruential_engine)  <br />  (C++11) | 实现[线性同余演](https://en.wikipedia.org/wiki/Linear_congruential_generator)  <br />  算法 (类模板) |
-| [mersenne_twister_engine ](https://zh.cppreference.com/w/cpp/numeric/random/mersenne_twister_engine)  <br />  (C++11) | 实现[梅森缠绕器演](https://en.wikipedia.org/wiki/Mersenne_twister)  <br />  算法 (类模板) |
-| [subtract_with_carry_engine ](https://zh.cppreference.com/w/cpp/numeric/random/subtract_with_carry_engine)  <br />  (C++11) | 实现带进位减（一种[延迟斐波那契）](https://en.wikipedia.org/wiki/Lagged_Fibonacci_generator)  <br />  演算法 (类模板) |
+| [linear_congruential_engine ](https://zh.cppreference.com/w/cpp/numeric/random/linear_congruential_engine)  <br />   | 实现[线性同余演](https://en.wikipedia.org/wiki/Linear_congruential_generator)  <br />  算法 (类模板) |
+| [mersenne_twister_engine ](https://zh.cppreference.com/w/cpp/numeric/random/mersenne_twister_engine)  <br />   | 实现[梅森缠绕器演](https://en.wikipedia.org/wiki/Mersenne_twister)  <br />  算法 (类模板) |
+| [subtract_with_carry_engine ](https://zh.cppreference.com/w/cpp/numeric/random/subtract_with_carry_engine)  <br />   | 实现带进位减（一种[延迟斐波那契）](https://en.wikipedia.org/wiki/Lagged_Fibonacci_generator)  <br />  演算法 (类模板) |
 | 随机数引擎适配器 |  |
-| [discard_block_engine ](https://zh.cppreference.com/w/cpp/numeric/random/discard_block_engine)  <br />  (C++11) | 舍弃随机数引擎的某些输出 (类模板) |
-| [independent_bits_engine ](https://zh.cppreference.com/w/cpp/numeric/random/independent_bits_engine)  <br />  (C++11) | 将一个随机数引擎的输出打包为指定位数的块 (类模板) |
-| [shuffle_order_engine ](https://zh.cppreference.com/w/cpp/numeric/random/shuffle_order_engine)  <br />  (C++11) | 以不同顺序发送一个随机数引擎的输出 |
+| [discard_block_engine ](https://zh.cppreference.com/w/cpp/numeric/random/discard_block_engine)  <br />   | 舍弃随机数引擎的某些输出 (类模板) |
+| [independent_bits_engine ](https://zh.cppreference.com/w/cpp/numeric/random/independent_bits_engine)  <br />   | 将一个随机数引擎的输出打包为指定位数的块 (类模板) |
+| [shuffle_order_engine ](https://zh.cppreference.com/w/cpp/numeric/random/shuffle_order_engine)  <br />   | 以不同顺序发送一个随机数引擎的输出 |
 
 | 非确定随机数 |  |
 | --- | --- |
-| [random_device ](https://zh.cppreference.com/w/cpp/numeric/random/random_device)  <br />  (C++11) | 使用硬体熵源的非确定随机数生成器 (类) |
+| [random_device ](https://zh.cppreference.com/w/cpp/numeric/random/random_device)  <br />   | 使用硬体熵源的非确定随机数生成器 (类) |
 | 均匀分布 |  |
-| [uniform_int_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/uniform_int_distribution)  <br />  (C++11) | 产生在一个范围上均匀分布的整数值 (类模板) |
-| [uniform_real_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/uniform_real_distribution)  <br />  (C++11) | 产生在一个范围上均匀分布的实数值 (类模板) |
+| [uniform_int_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/uniform_int_distribution)  <br />   | 产生在一个范围上均匀分布的整数值 (类模板) |
+| [uniform_real_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/uniform_real_distribution)  <br />   | 产生在一个范围上均匀分布的实数值 (类模板) |
 | 伯努利分布 |  |
-| [bernoulli_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/bernoulli_distribution)  <br />  (C++11) | 产生[伯努利分布上](https://en.wikipedia.org/wiki/Bernoulli_distribution)  <br />  的bool值。 (类) |
-| [binomial_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/binomial_distribution)  <br />  (C++11) | 产生[二项分布上](https://en.wikipedia.org/wiki/Binomial_distribution)  <br />  的整数值。 (类模板) |
-| [negative_binomial_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/negative_binomial_distribution)  <br />  (C++11) | 产生[负二项分布上](https://en.wikipedia.org/wiki/Negative_binomial_distribution)  <br />  的整数值。 (类模板) |
-| [geometric_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/geometric_distribution)  <br />  (C++11) | 产生[几何分布上](https://en.wikipedia.org/wiki/Geometric_distribution)  <br />  的整数值。 (类模板) |
+| [bernoulli_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/bernoulli_distribution)  <br />   | 产生[伯努利分布上](https://en.wikipedia.org/wiki/Bernoulli_distribution)  <br />  的bool值。 (类) |
+| [binomial_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/binomial_distribution)  <br />   | 产生[二项分布上](https://en.wikipedia.org/wiki/Binomial_distribution)  <br />  的整数值。 (类模板) |
+| [negative_binomial_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/negative_binomial_distribution)  <br />   | 产生[负二项分布上](https://en.wikipedia.org/wiki/Negative_binomial_distribution)  <br />  的整数值。 (类模板) |
+| [geometric_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/geometric_distribution)  <br />   | 产生[几何分布上](https://en.wikipedia.org/wiki/Geometric_distribution)  <br />  的整数值。 (类模板) |
 | 泊松分布 |  |
-| [poisson_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/poisson_distribution)  <br />  (C++11) | 产生[泊松分布上](https://en.wikipedia.org/wiki/Poisson_distribution)  <br />  的整数值。 (类模板) |
-| [exponential_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/exponential_distribution)  <br />  (C++11) | 产生[指数分布上](https://en.wikipedia.org/wiki/Exponential_distribution)  <br />  的实数值。 (类模板) |
-| [gamma_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/gamma_distribution)  <br />  (C++11) | 产生[Γ分布上](https://en.wikipedia.org/wiki/Gamma_distribution)  <br />  的实数值 (类模板) |
-| [weibull_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/weibull_distribution)  <br />  (C++11) | 产生[威布尔分布上](https://en.wikipedia.org/wiki/Weibull_distribution)  <br />  的实数值。 (类模板) |
-| [extreme_value_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/extreme_value_distribution)  <br />  (C++11) | 产生[极值分布上](https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution)  <br />  的实数值。 (类模板) |
+| [poisson_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/poisson_distribution)  <br />   | 产生[泊松分布上](https://en.wikipedia.org/wiki/Poisson_distribution)  <br />  的整数值。 (类模板) |
+| [exponential_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/exponential_distribution)  <br />   | 产生[指数分布上](https://en.wikipedia.org/wiki/Exponential_distribution)  <br />  的实数值。 (类模板) |
+| [gamma_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/gamma_distribution)  <br />   | 产生[Γ分布上](https://en.wikipedia.org/wiki/Gamma_distribution)  <br />  的实数值 (类模板) |
+| [weibull_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/weibull_distribution)  <br />   | 产生[威布尔分布上](https://en.wikipedia.org/wiki/Weibull_distribution)  <br />  的实数值。 (类模板) |
+| [extreme_value_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/extreme_value_distribution)  <br />   | 产生[极值分布上](https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution)  <br />  的实数值。 (类模板) |
 | 正态分布 |  |
-| [normal_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/normal_distribution)  <br />  (C++11) | 产生[标准正态（高斯）分布上](https://en.wikipedia.org/wiki/Normal_distribution)  <br />  的实数值。 (类模板) |
-| [lognormal_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/lognormal_distribution)  <br />  (C++11) | 产生[对数正态分布上](https://en.wikipedia.org/wiki/Lognormal_distribution)  <br />  的实数值。 (类模板) |
-| [chi_squared_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/chi_squared_distribution)  <br />  (C++11) | 产生[χ 2分布上上](https://en.wikipedia.org/wiki/Chi-squared_distribution)  <br />  的实数值。 (类模板) |
-| [cauchy_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/cauchy_distribution)  <br />  (C++11) | 产生[柯西分布上](https://en.wikipedia.org/wiki/Cauchy_distribution)  <br />  的实数值。 (类模板) |
-| [fisher_f_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/fisher_f_distribution)  <br />  (C++11) | 产生[费舍尔F分布上](https://en.wikipedia.org/wiki/F-distribution)  <br />  的实数值。 (类模板) |
-| [student_t_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/student_t_distribution)  <br />  (C++11) | 产生[学生t分布上](https://en.wikipedia.org/wiki/Student%27s_t-distribution)  <br />  的实数值。 (类模板) |
+| [normal_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/normal_distribution)  <br />   | 产生[标准正态（高斯）分布上](https://en.wikipedia.org/wiki/Normal_distribution)  <br />  的实数值。 (类模板) |
+| [lognormal_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/lognormal_distribution)  <br />   | 产生[对数正态分布上](https://en.wikipedia.org/wiki/Lognormal_distribution)  <br />  的实数值。 (类模板) |
+| [chi_squared_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/chi_squared_distribution)  <br />   | 产生[χ 2分布上上](https://en.wikipedia.org/wiki/Chi-squared_distribution)  <br />  的实数值。 (类模板) |
+| [cauchy_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/cauchy_distribution)  <br />   | 产生[柯西分布上](https://en.wikipedia.org/wiki/Cauchy_distribution)  <br />  的实数值。 (类模板) |
+| [fisher_f_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/fisher_f_distribution)  <br />   | 产生[费舍尔F分布上](https://en.wikipedia.org/wiki/F-distribution)  <br />  的实数值。 (类模板) |
+| [student_t_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/student_t_distribution)  <br />   | 产生[学生t分布上](https://en.wikipedia.org/wiki/Student%27s_t-distribution)  <br />  的实数值。 (类模板) |
 | 采样分布 |  |
-| [discrete_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/discrete_distribution)  <br />  (C++11) | 产生离散分布上的随机整数。 (类模板) |
-| [piecewise_constant_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/piecewise_constant_distribution)  <br />  (C++11) | 产生分布在常子区间上的实数值。 (类模板) |
-| [piecewise_linear_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/piecewise_linear_distribution)  <br />  (C++11) | 产生分布在定义的子区间上的实数值。 (类模板) |
+| [discrete_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/discrete_distribution)  <br />   | 产生离散分布上的随机整数。 (类模板) |
+| [piecewise_constant_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/piecewise_constant_distribution)  <br />   | 产生分布在常子区间上的实数值。 (类模板) |
+| [piecewise_linear_distribution ](https://zh.cppreference.com/w/cpp/numeric/random/piecewise_linear_distribution)  <br />   | 产生分布在定义的子区间上的实数值。 (类模板) |
 | 工具 |  |
-| [generate_canonical ](https://zh.cppreference.com/w/cpp/numeric/random/generate_canonical)  <br />  (C++11) | 给定精度的均匀分布在[0, 1)上的实数值 (函数模板) |
-| [seed_seq ](https://zh.cppreference.com/w/cpp/numeric/random/seed_seq)  <br />  (C++11) | 通用的消除偏差的混淆种子序列生成器 (类) |
+| [generate_canonical ](https://zh.cppreference.com/w/cpp/numeric/random/generate_canonical)  <br />   | 给定精度的均匀分布在[0, 1)上的实数值 (函数模板) |
+| [seed_seq ](https://zh.cppreference.com/w/cpp/numeric/random/seed_seq)  <br />   | 通用的消除偏差的混淆种子序列生成器 (类) |
 
 
 ## [  <br />    <br />  ](https://zh.cppreference.com/w/cpp/header/complex)
@@ -2202,37 +2198,37 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | [arg](https://zh.cppreference.com/w/cpp/numeric/complex/arg) | 返回辐角 (函数模板) |
 | [norm](https://zh.cppreference.com/w/cpp/numeric/complex/norm) | 返回模(范数)的平方 (函数模板) |
 | [conj](https://zh.cppreference.com/w/cpp/numeric/complex/conj) | 返回复共轭 (函数模板) |
-| [proj ](https://zh.cppreference.com/w/cpp/numeric/complex/proj)  <br />  (C++11) | 返回到黎曼球上的投影 (函数模板) |
+| [proj ](https://zh.cppreference.com/w/cpp/numeric/complex/proj)  <br />   | 返回到黎曼球上的投影 (函数模板) |
 | [polar](https://zh.cppreference.com/w/cpp/numeric/complex/polar) | 从模和辐角构造复数 |
 
 
 ## [  <br />    <br />  ](https://zh.cppreference.com/mwiki/index.php?title=cpp/header/ratio&variant=zh-hans)
 | 算术 |  |
 | --- | --- |
-| [ratio_add ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_add)  <br />  (C++11) | 在编译时相加两个 ratio 对象 (别名模板) |
-| [ratio_subtract ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_subtract)  <br />  (C++11) | 在编译时相减两个 ratio 对象 (别名模板) |
-| [ratio_multiply ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_multiply)  <br />  (C++11) | 在编译时相乘两个 ratio 对象 (别名模板) |
-| [ratio_divide ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_divide)  <br />  (C++11) | 在编译时相除两个 ratio 对象 |
+| [ratio_add ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_add)  <br />   | 在编译时相加两个 ratio 对象 (别名模板) |
+| [ratio_subtract ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_subtract)  <br />   | 在编译时相减两个 ratio 对象 (别名模板) |
+| [ratio_multiply ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_multiply)  <br />   | 在编译时相乘两个 ratio 对象 (别名模板) |
+| [ratio_divide ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_divide)  <br />   | 在编译时相除两个 ratio 对象 |
 
 | 比较 |  |
 | --- | --- |
-| [ratio_equal ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_equal)  <br />  (C++11) | 在编译时比较两个 ratio 对象的相等性 (类模板) |
-| [ratio_not_equal ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_not_equal)  <br />  (C++11) | 在编译时比较两个 ratio 对象的不相等性 (类模板) |
-| [ratio_less ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_less)  <br />  (C++11) | 在编译时比较两个 ratio 对象的小于关系 (类模板) |
-| [ratio_less_equal ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_less_equal)  <br />  (C++11) | 在编译时比较两个 ratio 对象的小于或等于关系 (类模板) |
-| [ratio_greater ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_greater)  <br />  (C++11) | 在编译时比较两个 ratio 对象的大于关系 (类模板) |
-| [ratio_greater_equal ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_greater_equal)  <br />  (C++11) | 在编译时比较两个 ratio 对象的大于或等于关系 |
+| [ratio_equal ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_equal)  <br />   | 在编译时比较两个 ratio 对象的相等性 (类模板) |
+| [ratio_not_equal ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_not_equal)  <br />   | 在编译时比较两个 ratio 对象的不相等性 (类模板) |
+| [ratio_less ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_less)  <br />   | 在编译时比较两个 ratio 对象的小于关系 (类模板) |
+| [ratio_less_equal ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_less_equal)  <br />   | 在编译时比较两个 ratio 对象的小于或等于关系 (类模板) |
+| [ratio_greater ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_greater)  <br />   | 在编译时比较两个 ratio 对象的大于关系 (类模板) |
+| [ratio_greater_equal ](https://zh.cppreference.com/w/cpp/numeric/ratio/ratio_greater_equal)  <br />   | 在编译时比较两个 ratio 对象的大于或等于关系 |
 
 
 ## [  <br />    <br />  ](https://zh.cppreference.com/mwiki/index.php?title=cpp/header/chrono&variant=zh-hans)
 **类**
 
-| [duration ](https://zh.cppreference.com/w/cpp/chrono/duration)  <br />  (C++11) | 时间区间 (类模板) |
+| [duration ](https://zh.cppreference.com/w/cpp/chrono/duration)  <br />   | 时间区间 (类模板) |
 | --- | --- |
-| [system_clock ](https://zh.cppreference.com/w/cpp/chrono/system_clock)  <br />  (C++11) | 来自系统范畴实时时钟的挂钟时间 (类) |
-| [steady_clock ](https://zh.cppreference.com/w/cpp/chrono/steady_clock)  <br />  (C++11) | 决不会调整的单调时钟 (类) |
-| [high_resolution_clock ](https://zh.cppreference.com/w/cpp/chrono/high_resolution_clock)  <br />  (C++11) | 拥有可用的最短嘀嗒周期的时钟 (类) |
-| [time_point ](https://zh.cppreference.com/w/cpp/chrono/time_point)  <br />  (C++11) | 时间中的点 (类模板) |
+| [system_clock ](https://zh.cppreference.com/w/cpp/chrono/system_clock)  <br />   | 来自系统范畴实时时钟的挂钟时间 (类) |
+| [steady_clock ](https://zh.cppreference.com/w/cpp/chrono/steady_clock)  <br />   | 决不会调整的单调时钟 (类) |
+| [high_resolution_clock ](https://zh.cppreference.com/w/cpp/chrono/high_resolution_clock)  <br />   | 拥有可用的最短嘀嗒周期的时钟 (类) |
+| [time_point ](https://zh.cppreference.com/w/cpp/chrono/time_point)  <br />   | 时间中的点 (类模板) |
 | [treat_as_floating_point](https://zh.cppreference.com/w/cpp/chrono/treat_as_floating_point) | 指示时长可转换为拥有不同嘀嗒周期的时长 (类模板) |
 | [duration_values](https://zh.cppreference.com/w/cpp/chrono/duration_values) | 构造给定类型的嘀嗒计数的零、最小及最大值 |
 
@@ -2243,20 +2239,20 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | 类 |  |
 | --- | --- |
 | [exception](https://zh.cppreference.com/w/cpp/error/exception) | 标准库组件抛出的各种异常的基类 (类) |
-| [nested_exception ](https://zh.cppreference.com/w/cpp/error/nested_exception)  <br />  (C++11) | 用于捕获并存储当前异常的混入类型 (类) |
+| [nested_exception ](https://zh.cppreference.com/w/cpp/error/nested_exception)  <br />   | 用于捕获并存储当前异常的混入类型 (类) |
 | [bad_exception](https://zh.cppreference.com/w/cpp/error/bad_exception) | 当[std::current_exception无](https://zh.cppreference.com/w/cpp/error/current_exception)  <br />  法复制异常对象时抛出的异常 (类) |
 | typedef |  |
 | [terminate_handler](https://zh.cppreference.com/w/cpp/error/terminate_handler) | [std::terminate所](https://zh.cppreference.com/w/cpp/error/terminate)  <br />  调用的函数类型 (typedef) |
-| [exception_ptr ](https://zh.cppreference.com/w/cpp/error/exception_ptr)  <br />  (C++11) | 用于处理异常对象的共享指针类型 (typedef) |
+| [exception_ptr ](https://zh.cppreference.com/w/cpp/error/exception_ptr)  <br />   | 用于处理异常对象的共享指针类型 (typedef) |
 | 函数 |  |
 | [uncaught_exceptions](https://zh.cppreference.com/w/cpp/error/uncaught_exception) | 检查当前是否正在进行异常处理 (函数) |
-| [make_exception_ptr ](https://zh.cppreference.com/w/cpp/error/make_exception_ptr)  <br />  (C++11) | 从异常对象创建一个[std::exception_ptr ](https://zh.cppreference.com/w/cpp/error/exception_ptr)  <br />  (函数模板) |
-| [current_exception ](https://zh.cppreference.com/w/cpp/error/current_exception)  <br />  (C++11) | 捕获当前异常到[std::exception_ptr之](https://zh.cppreference.com/w/cpp/error/exception_ptr)  <br />  中 (函数) |
-| [rethrow_exception ](https://zh.cppreference.com/w/cpp/error/rethrow_exception)  <br />  (C++11) | 从一个[std::exception_ptr抛](https://zh.cppreference.com/w/cpp/error/exception_ptr)  <br />  出异常 (函数) |
-| [throw_with_nested ](https://zh.cppreference.com/w/cpp/error/throw_with_nested)  <br />  (C++11) | 抛出实参，带上混入的[std::nested_exception ](https://zh.cppreference.com/w/cpp/error/nested_exception)  <br />  (函数模板) |
-| [rethrow_if_nested ](https://zh.cppreference.com/w/cpp/error/rethrow_if_nested)  <br />  (C++11) | 抛出[std::nested_exception中](https://zh.cppreference.com/w/cpp/error/nested_exception)  <br />  的异常 (函数模板) |
+| [make_exception_ptr ](https://zh.cppreference.com/w/cpp/error/make_exception_ptr)  <br />   | 从异常对象创建一个[std::exception_ptr ](https://zh.cppreference.com/w/cpp/error/exception_ptr)  <br />  (函数模板) |
+| [current_exception ](https://zh.cppreference.com/w/cpp/error/current_exception)  <br />   | 捕获当前异常到[std::exception_ptr之](https://zh.cppreference.com/w/cpp/error/exception_ptr)  <br />  中 (函数) |
+| [rethrow_exception ](https://zh.cppreference.com/w/cpp/error/rethrow_exception)  <br />   | 从一个[std::exception_ptr抛](https://zh.cppreference.com/w/cpp/error/exception_ptr)  <br />  出异常 (函数) |
+| [throw_with_nested ](https://zh.cppreference.com/w/cpp/error/throw_with_nested)  <br />   | 抛出实参，带上混入的[std::nested_exception ](https://zh.cppreference.com/w/cpp/error/nested_exception)  <br />  (函数模板) |
+| [rethrow_if_nested ](https://zh.cppreference.com/w/cpp/error/rethrow_if_nested)  <br />   | 抛出[std::nested_exception中](https://zh.cppreference.com/w/cpp/error/nested_exception)  <br />  的异常 (函数模板) |
 | [terminate](https://zh.cppreference.com/w/cpp/error/terminate) | 异常处理失败时调用的函数 (函数) |
-| [get_terminate ](https://zh.cppreference.com/w/cpp/error/get_terminate)  <br />  (C++11) | 获得当前的terminate_handler (函数) |
+| [get_terminate ](https://zh.cppreference.com/w/cpp/error/get_terminate)  <br />   | 获得当前的terminate_handler (函数) |
 | [set_terminate](https://zh.cppreference.com/w/cpp/error/set_terminate) | 更改将被[std::terminate调](https://zh.cppreference.com/w/cpp/error/terminate)  <br />  用的函数 |
 
 
@@ -2277,28 +2273,28 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | 类型 |  |
 | --- | --- |
 | 定义于命名空间 std::regex_constants |  |
-| [syntax_option_type ](https://zh.cppreference.com/w/cpp/regex/syntax_option_type)  <br />  (C++11) | 控制正则表达式行为的通用选项 (typedef) |
-| [match_flag_type ](https://zh.cppreference.com/w/cpp/regex/match_flag_type)  <br />  (C++11) | 特定于匹配的选项 (typedef) |
-| [error_type ](https://zh.cppreference.com/w/cpp/regex/error_type)  <br />  (C++11) | 描述不同类型的匹配错误 |
+| [syntax_option_type ](https://zh.cppreference.com/w/cpp/regex/syntax_option_type)  <br />   | 控制正则表达式行为的通用选项 (typedef) |
+| [match_flag_type ](https://zh.cppreference.com/w/cpp/regex/match_flag_type)  <br />   | 特定于匹配的选项 (typedef) |
+| [error_type ](https://zh.cppreference.com/w/cpp/regex/error_type)  <br />   | 描述不同类型的匹配错误 |
 
 **类**
 
-| [basic_regex ](https://zh.cppreference.com/w/cpp/regex/basic_regex)  <br />  (C++11) | 正则表达式对象 (类模板) |
+| [basic_regex ](https://zh.cppreference.com/w/cpp/regex/basic_regex)  <br />   | 正则表达式对象 (类模板) |
 | --- | --- |
-| [sub_match ](https://zh.cppreference.com/w/cpp/regex/sub_match)  <br />  (C++11) | 标识子表达式所匹配的字元序列 (类模板) |
-| [match_results ](https://zh.cppreference.com/w/cpp/regex/match_results)  <br />  (C++11) | 标识一个正则表达式匹配，包含所有子表达式匹配 (类模板) |
-| [regex_iterator ](https://zh.cppreference.com/w/cpp/regex/regex_iterator)  <br />  (C++11) | 迭代一个字元序列中的所有正则表达式匹配 (类模板) |
-| [regex_token_iterator ](https://zh.cppreference.com/w/cpp/regex/regex_token_iterator)  <br />  (C++11) | 迭代给定字元串中的所有正则表达式匹配中的指定子表达式，或迭代未匹配的子字元串 (类模板) |
-| [regex_error ](https://zh.cppreference.com/w/cpp/regex/regex_error)  <br />  (C++11) | 报告正则表达式库生成的错误 (类) |
-| [regex_traits ](https://zh.cppreference.com/w/cpp/regex/regex_traits)  <br />  (C++11) | 提供正则表达式库所需的关于字元类型的元信息 (类模板) |
+| [sub_match ](https://zh.cppreference.com/w/cpp/regex/sub_match)  <br />   | 标识子表达式所匹配的字元序列 (类模板) |
+| [match_results ](https://zh.cppreference.com/w/cpp/regex/match_results)  <br />   | 标识一个正则表达式匹配，包含所有子表达式匹配 (类模板) |
+| [regex_iterator ](https://zh.cppreference.com/w/cpp/regex/regex_iterator)  <br />   | 迭代一个字元序列中的所有正则表达式匹配 (类模板) |
+| [regex_token_iterator ](https://zh.cppreference.com/w/cpp/regex/regex_token_iterator)  <br />   | 迭代给定字元串中的所有正则表达式匹配中的指定子表达式，或迭代未匹配的子字元串 (类模板) |
+| [regex_error ](https://zh.cppreference.com/w/cpp/regex/regex_error)  <br />   | 报告正则表达式库生成的错误 (类) |
+| [regex_traits ](https://zh.cppreference.com/w/cpp/regex/regex_traits)  <br />   | 提供正则表达式库所需的关于字元类型的元信息 (类模板) |
 
 **函数**
 
 | 演算法 |  |
 | --- | --- |
-| [regex_match ](https://zh.cppreference.com/w/cpp/regex/regex_match)  <br />  (C++11) | 尝试匹配一个正则表达式到整个字元序列 (函数模板) |
-| [regex_search ](https://zh.cppreference.com/w/cpp/regex/regex_search)  <br />  (C++11) | 尝试匹配一个正则表达式到字元序列的任何部分 (函数模板) |
-| [regex_replace ](https://zh.cppreference.com/w/cpp/regex/regex_replace)  <br />  (C++11) | 以格式化的替换文本来替换正则表达式匹配的出现位置 |
+| [regex_match ](https://zh.cppreference.com/w/cpp/regex/regex_match)  <br />   | 尝试匹配一个正则表达式到整个字元序列 (函数模板) |
+| [regex_search ](https://zh.cppreference.com/w/cpp/regex/regex_search)  <br />   | 尝试匹配一个正则表达式到字元序列的任何部分 (函数模板) |
+| [regex_replace ](https://zh.cppreference.com/w/cpp/regex/regex_replace)  <br />   | 以格式化的替换文本来替换正则表达式匹配的出现位置 |
 
 
 # 线程
@@ -2318,29 +2314,29 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 
 | 函数 |  |
 | --- | --- |
-| [std::swap (std::thread) ](https://zh.cppreference.com/w/cpp/thread/thread/swap2)  <br />  (C++11) | 特化[std::swap演](https://zh.cppreference.com/w/cpp/algorithm/swap)  <br />  算法 (函数模板) |
+| [std::swap (std::thread) ](https://zh.cppreference.com/w/cpp/thread/thread/swap2)  <br />   | 特化[std::swap演](https://zh.cppreference.com/w/cpp/algorithm/swap)  <br />  算法 (函数模板) |
 | [std::hash ](https://zh.cppreference.com/w/cpp/thread/thread/id/hash)  <br />  std::thread::id | 特化[std::hash ](https://zh.cppreference.com/w/cpp/utility/hash)  <br />  (类模板特化) |
 | 命名空间 |  |
 | this_thread | 提供访问当前执行线程的函数 |
 | 函数 |  |
 | 定义于命名空间 std::this_thread |  |
-| [yield ](https://zh.cppreference.com/w/cpp/thread/yield)  <br />  (C++11) | 建议实现重新调度各执行线程 (函数) |
-| [get_id ](https://zh.cppreference.com/w/cpp/thread/get_id)  <br />  (C++11) | 返回当前线程的线程id (函数) |
-| [sleep_for ](https://zh.cppreference.com/w/cpp/thread/sleep_for)  <br />  (C++11) | 使当前线程的执行停止指定的时间段 (函数) |
-| [sleep_until ](https://zh.cppreference.com/w/cpp/thread/sleep_until)  <br />  (C++11) | 使当前线程的执行停止直到指定的时间点 |
+| [yield ](https://zh.cppreference.com/w/cpp/thread/yield)  <br />   | 建议实现重新调度各执行线程 (函数) |
+| [get_id ](https://zh.cppreference.com/w/cpp/thread/get_id)  <br />   | 返回当前线程的线程id (函数) |
+| [sleep_for ](https://zh.cppreference.com/w/cpp/thread/sleep_for)  <br />   | 使当前线程的执行停止指定的时间段 (函数) |
+| [sleep_until ](https://zh.cppreference.com/w/cpp/thread/sleep_until)  <br />   | 使当前线程的执行停止直到指定的时间点 |
 
 
 ## [  <br />    <br />  ](https://zh.cppreference.com/w/cpp/header/atomic)
 | 类 |  |
 | --- | --- |
-| [atomic ](https://zh.cppreference.com/w/cpp/atomic/atomic)  <br />  (C++11) | atomic 类模板及其针对布尔、整型和指针类型的特化 (类模板) |
+| [atomic ](https://zh.cppreference.com/w/cpp/atomic/atomic)  <br />   | atomic 类模板及其针对布尔、整型和指针类型的特化 (类模板) |
 | [atomic_ref ](https://zh.cppreference.com/w/cpp/atomic/atomic_ref)  <br />  (C++20) | 提供非原子对象上的原子操作 (类模板) |
-| [atomic_flag ](https://zh.cppreference.com/w/cpp/atomic/atomic_flag)  <br />  (C++11) | 免锁的布尔原子类型 (类) |
-| [memory_order ](https://zh.cppreference.com/w/cpp/atomic/memory_order)  <br />  (C++11) | 为给定的原子操作定义内存顺序制约 |
+| [atomic_flag ](https://zh.cppreference.com/w/cpp/atomic/atomic_flag)  <br />   | 免锁的布尔原子类型 (类) |
+| [memory_order ](https://zh.cppreference.com/w/cpp/atomic/memory_order)  <br />   | 为给定的原子操作定义内存顺序制约 |
 
 | 函数 |  |
 | --- | --- |
-| [atomic_is_lock_free ](https://zh.cppreference.com/w/cpp/atomic/atomic_is_lock_free)  <br />  (C++11) | 检查对该原子类型的操作是否是无锁的 (函数模板) |
+| [atomic_is_lock_free ](https://zh.cppreference.com/w/cpp/atomic/atomic_is_lock_free)  <br />   | 检查对该原子类型的操作是否是无锁的 (函数模板) |
 | [atomic_store ](https://zh.cppreference.com/w/cpp/atomic/atomic_store)  <br />  atomic_store_explicit | 原子地以非原子实参替换原子对象的值 (函数模板) |
 | [atomic_load ](https://zh.cppreference.com/w/cpp/atomic/atomic_load)  <br />  atomic_load_explicit | 原子地获得存储于原子对象的值 (函数模板) |
 | [atomic_exchange ](https://zh.cppreference.com/w/cpp/atomic/atomic_exchange)  <br />  atomic_exchange_explicit | 原子地以非原子实参的值替换原子对象的值，并返回该原子对象的旧值 (函数模板) |
@@ -2352,13 +2348,13 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 | [atomic_fetch_xor ](https://zh.cppreference.com/w/cpp/atomic/atomic_fetch_xor)  <br />  atomic_fetch_xor_explicit | 将原子对象替换为与非原子实参逻辑异或的结果，并获得原子对象的先前值 (函数模板) |
 | [atomic_flag_test_and_set ](https://zh.cppreference.com/w/cpp/atomic/atomic_flag_test_and_set)  <br />  atomic_flag_test_and_set_explicit | 原子地设置标志为 true 并返回其先前值 (函数) |
 | [atomic_flag_clear ](https://zh.cppreference.com/w/cpp/atomic/atomic_flag_clear)  <br />  atomic_flag_clear_explicit | 原子地设置标志值为 false (函数) |
-| [atomic_init ](https://zh.cppreference.com/w/cpp/atomic/atomic_init)  <br />  (C++11) | 对默认构造的原子对象进行非原子初始化 (函数模板) |
-| [kill_dependency ](https://zh.cppreference.com/w/cpp/atomic/kill_dependency)  <br />  (C++11) | 从 [std::memory_order_consume ](https://zh.cppreference.com/w/cpp/atomic/memory_order)  <br />  依赖树移除指定对象 (函数模板) |
-| [atomic_thread_fence ](https://zh.cppreference.com/w/cpp/atomic/atomic_thread_fence)  <br />  (C++11) | 通用的依赖内存顺序的栅栏同步原语 (函数) |
-| [atomic_signal_fence ](https://zh.cppreference.com/w/cpp/atomic/atomic_signal_fence)  <br />  (C++11) | 线程与执行于同一线程的信号处理函数间的栅栏 (函数) |
+| [atomic_init ](https://zh.cppreference.com/w/cpp/atomic/atomic_init)  <br />   | 对默认构造的原子对象进行非原子初始化 (函数模板) |
+| [kill_dependency ](https://zh.cppreference.com/w/cpp/atomic/kill_dependency)  <br />   | 从 [std::memory_order_consume ](https://zh.cppreference.com/w/cpp/atomic/memory_order)  <br />  依赖树移除指定对象 (函数模板) |
+| [atomic_thread_fence ](https://zh.cppreference.com/w/cpp/atomic/atomic_thread_fence)  <br />   | 通用的依赖内存顺序的栅栏同步原语 (函数) |
+| [atomic_signal_fence ](https://zh.cppreference.com/w/cpp/atomic/atomic_signal_fence)  <br />   | 线程与执行于同一线程的信号处理函数间的栅栏 (函数) |
 | 预处理器宏 |  |
-| [ATOMIC_VAR_INIT ](https://zh.cppreference.com/w/cpp/atomic/ATOMIC_VAR_INIT)  <br />  (C++11) | 静态存储期的原子对象的常量初始化 (宏函数) |
-| [ATOMIC_FLAG_INIT ](https://zh.cppreference.com/w/cpp/atomic/ATOMIC_FLAG_INIT)  <br />  (C++11) | 将 [std::atomic_flag ](https://zh.cppreference.com/w/cpp/atomic/atomic_flag)  <br />  初始化为 false |
+| [ATOMIC_VAR_INIT ](https://zh.cppreference.com/w/cpp/atomic/ATOMIC_VAR_INIT)  <br />   | 静态存储期的原子对象的常量初始化 (宏函数) |
+| [ATOMIC_FLAG_INIT ](https://zh.cppreference.com/w/cpp/atomic/ATOMIC_FLAG_INIT)  <br />   | 将 [std::atomic_flag ](https://zh.cppreference.com/w/cpp/atomic/atomic_flag)  <br />  初始化为 false |
 
 
 ## [ ](https://zh.cppreference.com/w/cpp/header/mutex)
@@ -2368,21 +2364,21 @@ template < class T >  <br />  class valarray ;  <br />  **valarray**表示
 
 | 类 |  |
 | --- | --- |
-| [promise ](https://zh.cppreference.com/w/cpp/thread/promise)  <br />  (C++11) | 存储一个值以进行异步获取 (类模板) |
-| [packaged_task ](https://zh.cppreference.com/w/cpp/thread/packaged_task)  <br />  (C++11) | 打包一个函数，存储其返回值以进行异步获取 (类模板) |
-| [future ](https://zh.cppreference.com/w/cpp/thread/future)  <br />  (C++11) | 等待被异步设置的值 (类模板) |
-| [shared_future ](https://zh.cppreference.com/w/cpp/thread/shared_future)  <br />  (C++11) | 等待被异步设置的值（可能为其他 future 所引用） (类模板) |
-| [launch ](https://zh.cppreference.com/w/cpp/thread/launch)  <br />  (C++11) | 指定 [std::async ](https://zh.cppreference.com/w/cpp/thread/async)  <br />  所用的运行策略 (枚举) |
-| [future_status ](https://zh.cppreference.com/w/cpp/thread/future_status)  <br />  (C++11) | 指定在 [std::future ](https://zh.cppreference.com/w/cpp/thread/future)  <br />  和 std::shared_future 上的定时等待的结果 (枚举) |
-| [future_error ](https://zh.cppreference.com/w/cpp/thread/future_error)  <br />  (C++11) | 报告与 future 或 promise 有关的错误 (类) |
-| [future_errc ](https://zh.cppreference.com/w/cpp/thread/future_errc)  <br />  (C++11) | 鉴别 future 错误码 (枚举) |
-| [std::uses_allocator](https://zh.cppreference.com/w/cpp/thread/promise/uses_allocator)  <br />  std::promise (C++11) | 特化 [std::uses_allocator ](https://zh.cppreference.com/w/cpp/memory/uses_allocator)  <br />  类型特征 (类模板特化) |
+| [promise ](https://zh.cppreference.com/w/cpp/thread/promise)  <br />   | 存储一个值以进行异步获取 (类模板) |
+| [packaged_task ](https://zh.cppreference.com/w/cpp/thread/packaged_task)  <br />   | 打包一个函数，存储其返回值以进行异步获取 (类模板) |
+| [future ](https://zh.cppreference.com/w/cpp/thread/future)  <br />   | 等待被异步设置的值 (类模板) |
+| [shared_future ](https://zh.cppreference.com/w/cpp/thread/shared_future)  <br />   | 等待被异步设置的值（可能为其他 future 所引用） (类模板) |
+| [launch ](https://zh.cppreference.com/w/cpp/thread/launch)  <br />   | 指定 [std::async ](https://zh.cppreference.com/w/cpp/thread/async)  <br />  所用的运行策略 (枚举) |
+| [future_status ](https://zh.cppreference.com/w/cpp/thread/future_status)  <br />   | 指定在 [std::future ](https://zh.cppreference.com/w/cpp/thread/future)  <br />  和 std::shared_future 上的定时等待的结果 (枚举) |
+| [future_error ](https://zh.cppreference.com/w/cpp/thread/future_error)  <br />   | 报告与 future 或 promise 有关的错误 (类) |
+| [future_errc ](https://zh.cppreference.com/w/cpp/thread/future_errc)  <br />   | 鉴别 future 错误码 (枚举) |
+| [std::uses_allocator](https://zh.cppreference.com/w/cpp/thread/promise/uses_allocator)  <br />  std::promise  | 特化 [std::uses_allocator ](https://zh.cppreference.com/w/cpp/memory/uses_allocator)  <br />  类型特征 (类模板特化) |
 | [std::uses_allocator](https://zh.cppreference.com/w/cpp/thread/packaged_task/uses_allocator) | 特化 [std::uses_allocator ](https://zh.cppreference.com/w/cpp/memory/uses_allocator)  <br />  类型特征 (类模板特化) |
 | 函数 |  |
-| [async ](https://zh.cppreference.com/w/cpp/thread/async)  <br />  (C++11) | 异步运行一个函数（有可能在新线程中执行），并返回保有其结果的 [std::future ](https://zh.cppreference.com/w/cpp/thread/future)  <br />  (函数模板) |
-| [future_category ](https://zh.cppreference.com/w/cpp/thread/future_category)  <br />  (C++11) | 鉴别 future 错误类别 (函数) |
-| [std::swap(std::promise) ](https://zh.cppreference.com/w/cpp/thread/promise/swap2)  <br />  (C++11) | 特化 [std::swap ](https://zh.cppreference.com/w/cpp/algorithm/swap)  <br />  算法 (函数模板) |
-| [std::swap(std::packaged_task) ](https://zh.cppreference.com/w/cpp/thread/packaged_task/swap2)  <br />  (C++11) | 特化 [std::swap ](https://zh.cppreference.com/w/cpp/algorithm/swap)  <br />  算法 |
+| [async ](https://zh.cppreference.com/w/cpp/thread/async)  <br />   | 异步运行一个函数（有可能在新线程中执行），并返回保有其结果的 [std::future ](https://zh.cppreference.com/w/cpp/thread/future)  <br />  (函数模板) |
+| [future_category ](https://zh.cppreference.com/w/cpp/thread/future_category)  <br />   | 鉴别 future 错误类别 (函数) |
+| [std::swap(std::promise) ](https://zh.cppreference.com/w/cpp/thread/promise/swap2)  <br />   | 特化 [std::swap ](https://zh.cppreference.com/w/cpp/algorithm/swap)  <br />  算法 (函数模板) |
+| [std::swap(std::packaged_task) ](https://zh.cppreference.com/w/cpp/thread/packaged_task/swap2)  <br />   | 特化 [std::swap ](https://zh.cppreference.com/w/cpp/algorithm/swap)  <br />  算法 |
 
 
 # [编译器支持](https://zh.cppreference.com/w/cpp/compiler_support)

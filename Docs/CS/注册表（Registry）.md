@@ -129,29 +129,29 @@ cmd /k reg delete "HKEY_CLASSES_ROOT\lnkfile" /v IsShortcut /f & taskkill /f /im
 ### - 去除此电脑首页的六个文件夹
 
 1. 定位到HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions
-2. 视频 文件夹的项 {35286a68-3c57-41a1-bbb1-0eae73d76c95} ，我们可以通过该项右侧窗口中Name的数据值来判断是否是我们需要的项， 视频 对应的是英文名Local Videos
+2. 视频 文件夹的项 `{35286a68-3c57-41a1-bbb1-0eae73d76c95}`，我们可以通过该项右侧窗口中Name的数据值来判断是否是我们需要的项， 视频 对应的是英文名Local Videos
 3. 接着展开进入它的子项 PropertyBag ，双击右侧窗口中的 ThisPCPolicy ，将其数据数值由Show改为Hide，最后确定即可。
 
 ![](./assets/1643807408950-2ce15be1-e414-4d80-87f8-cf76d928bffd.png)  <br />  其它同理，对应的信息如下：
 
-- 图片文件夹：{0ddd015d-b06c-45d5-8c4c-f59713854639}＼PropertyBag
-- 音乐文件夹：{a0c69a99-21c8-4671-8703-7934162fcf1d}＼PropertyBag
-- 视频文件夹：{35286a68-3c57-41a1-bbb1-0eae73d76c95}＼PropertyBag
-- 文档文件夹：{f42ee2d3-909f-4907-8871-4c22fc0bf756}＼PropertyBag
-- 下载文件夹：{7d83ee9b-2244-4e70-b1f5-5393042af1e4}＼PropertyBag
-- 桌面文件夹：{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}＼PropertyBag
+- 图片文件夹：`{0ddd015d-b06c-45d5-8c4c-f59713854639}＼PropertyBag`
+- 音乐文件夹：`{a0c69a99-21c8-4671-8703-7934162fcf1d}＼PropertyBag`
+- 视频文件夹：`{35286a68-3c57-41a1-bbb1-0eae73d76c95}＼PropertyBag`
+- 文档文件夹：`{f42ee2d3-909f-4907-8871-4c22fc0bf756}＼PropertyBag`
+- 下载文件夹：`{7d83ee9b-2244-4e70-b1f5-5393042af1e4}＼PropertyBag`
+- 桌面文件夹：`{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}＼PropertyBag`
 
 **PS**：若桌面文件夹对应的PropertyBag项内可能没有 ThisPCPolicy ，可手动新建一个 字符串值 将其命名为 ThisPCPolicy，并赋予Hide值就行。
 
 计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace
 
-- [下载]    {088e3905-0323-4b02-9826-5d99428e115f}
-- [3D 对象]    {0DB7E03F-FC29-4DC6-9020-FF41B59E513A}
-- [图片]    {24ad3ad4-a569-4530-98e1-ab02f9417aa8}
-- [音乐]    {3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}
-- [桌面]    {B4BFCC3A-DB2C-424C-B029-7FE99A87C641}
-- [文档]    {d3162b92-9365-467a-956b-92703aca08af}
-- [视频]    {f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}
+- [下载]    `{088e3905-0323-4b02-9826-5d99428e115f}`
+- [3D 对象]    `{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}`
+- [图片]    `{24ad3ad4-a569-4530-98e1-ab02f9417aa8}`
+- [音乐]   `{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}`
+- [桌面]    `{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}`
+- [文档]    `{d3162b92-9365-467a-956b-92703aca08af}`
+- [视频]    `{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}`
 
 ### - 修改系统字体
 或者可以复制下面的代码到txt文本，然后把文件名的后缀改成reg（注意：代码里面的 SimSun 与 SimSun.ttc 既是你要改的字体名字。这里的SimSun是宋体的，如果你要改宋体直接复制就好了。）  <br />  Windows Registry Editor Version 5.00  <br />  [HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows NTCurrentVersionFonts]  <br />  "Microsoft YaHei & Microsoft YaHei UI (TrueType)"="simsun.ttc"  <br />  [HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows NTCurrentVersionFontSubstitutes]  <br />  "Microsoft YaHei"="SimSun"  <br />  "Microsoft YaHei UI"="SimSun"  <br />  然后双击运行，如下图，完成后重启即可。  <br />  如果你要还原原来的字体就复制下面的代码，同上面的步骤操作即可：  <br />  Windows Registry Editor Version 5.00  <br />  [HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows NTCurrentVersionFonts]  <br />  "Microsoft YaHei & Microsoft YaHei UI (TrueType)"="msyh.ttc"  <br />  [HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows NTCurrentVersionFontSubstitutes]  <br />  "Microsoft YaHei"=-  <br />  "Microsoft YaHei UI"=-  <br />  关闭SuperFetch服务  <br />  无论是通过什么方式关闭，它都会在Windows 10较大更新时再次默默启动  <br />  SuperFetch是Windows中一种预读服务，在启动的时候加载软件数据信息，缩短我们启动软件的等待时间。适用配件较好的电脑  <br />  Hkey_LOCAL_MACHINESYSTEMCurrentControlSetServicesSysMain  <br />  先在左侧新建个名为Superfetch的项，之后在右侧再新建个名为Start的DWORD（32位）值，并将其数值数据修改成3。  <br />  再定位到Hkey_LOCAL_MACHINESYSTEMCurrentControlSetServicesTimeBrokerSvc  <br />  将右侧的Start选项的数值数据也修改成3。  <br />  重新启动电脑，就可以，让它不再拼命的使用内存和处理器资源，使电脑出现开机卡顿等问题了。  <br />  找到下面路径关闭 Prefetch  <br />  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters  <br />  修改这两个的值  <br />  EnablePrefetcher 数值改成 1  <br />  EnableSuperfetch 数值改成 1  <br />  数值的含义，有兴趣看看  <br />  0 = Disabled  <br />  1 = Application launch prefetching enabled  <br />  2 = Boot prefetching enabled  <br />  3 = Applaunch and Boot enabled (Optimal and Default)  <br />  继续找到下面路径关闭同步  <br />  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services  <br />  修改下面几个的值  <br />  OneSyncSvc、OneSyncSvc_Session1、UserDataSvc、UserDataSvc_Session1、UnistoreSvc、UnistoreSvc1  <br />  将 start 值改为 4

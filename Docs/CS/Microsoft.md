@@ -293,8 +293,8 @@ wsl --shutdown
 
 建议不要跨操作系统使用文件
 
-- 使用 Linux 文件系统根目录：\wsl$\Ubuntu-18.04\home<user name>\Project
-- 而不使用 Windows 文件系统根目录：/mnt/c/Users//Project$ 或 C:\Users<user name>\Project
+- 使用 Linux 文件系统根目录：`\wsl$\Ubuntu-18.04\home<user name>\Project`
+- 而不使用 Windows 文件系统根目录：`/mnt/c/Users//Project$ 或 C:\Users<user name>\Project`
 
 访问主文件夹的 Windows 路径
 ```shell
@@ -369,7 +369,6 @@ WSLENV=HOME/w:GOPATH/l:TMPDIR/p …
 - --terminate, -t <分发版>       终止指定的分发。
 - --unregister <分发版>        注销分发。
 
- <DistributionName> config --default-user <Username>
 
 
 
@@ -393,10 +392,11 @@ Start-VM | Stop-VM -Name <virtual machine name>	启动和关闭虚拟机
 - 运行 sudo update-grub
 - 重启 sudo reboot
 
+  <br />  
 
+  <br />  
 
-
-# <windows.h>
+# `<windows.h>`
 ```c
 #include <windows.h>
 int WINAPI WinMain(

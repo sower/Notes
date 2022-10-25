@@ -138,7 +138,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志
 | -t | 以时间排序 |
 | --color=never  <br />  --color=always  <br />  --color=auto | never 表示不依据文件特性给予颜色显示。  <br />  always 表示显示颜色，ls 默认采用这种方式。  <br />  auto 表示让系统自行依据配置来判断是否给予颜色。 |
 | --full-time | 以完整时间模式 （包含年、月、日、时、分）输出 |
-| --time={atime,ctime} | 输出 access 时间或改变权限属性时间（ctime），而不是内容变更时间。 |
+| --time=`{atime,ctime}` | 输出 access 时间或改变权限属性时间（ctime），而不是内容变更时间。 |
 
 **ll = 'ls -alF'**
 
@@ -238,7 +238,7 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 
 
 
-**find	查找文件**  <br />  find path -option [ -print ] [ -exec -ok command ] {} \;
+**find	查找文件**  <br />  `find path -option [ -print ] [ -exec -ok command ] {} \;`
 
 - -name name, -iname name : 文件名称符合 name 的文件。iname 会忽略大小写
 - -size n : 文件大小 是 n 单位，b 代表 512 位元组的区块，c 表示字元数，k 表示 kilo bytes，w 是二个位元组。
@@ -324,7 +324,7 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 
 **tail [参数]  [文件]**
 
-- -f, --follow[={name|descriptor}]  循环读取
+- -f, --follow`[={name|descriptor}]`  循环读取
 - -c, --bytes=[+]NUM
 - -n, --lines=[+]NUM
 - --pid=PID 与-f合用，表示在进程ID，PID死掉之后结束
@@ -423,7 +423,7 @@ sed替换标记
 sed -n -e '1~2=' -e '1~2p' test.txt
 ```
 
-awk  Alfred Aho，Peter Weinberger 和 Brian Kernighan 创造  <br />  awk [选项] '脚本命令' 文件名  <br />  awk 'BEGIN{ commands } pattern{ commands } END{ commands }'
+awk  Alfred Aho，Peter Weinberger 和 Brian Kernighan 创造  <br />  awk [选项] '脚本命令' 文件名  <br />  `awk 'BEGIN{ commands } pattern{ commands } END{ commands }'`
 
 | 选项 | 含义 |
 | --- | --- |
@@ -605,28 +605,31 @@ tar [必要参数] [选择参数] [文件]
 **.tar文件格式**  <br />  解包：tar xvf FileName.tar  <br />  打包：tar cvf FileName.tar DirName  <br />  **.gz文件格式**  <br />  解压1：gunzip FileName.gz  <br />  解压2：gzip -d FileName.gz  <br />  压缩：gzip FileName  <br />  **.tar.gz 和 .tgz**  <br />  解压：tar zxvf FileName.tar.gz  <br />  压缩：tar zcvf FileName.tar.gz DirName  <br />  **.bz2文件格式**  <br />  解压1：bzip2 -d FileName.bz2  <br />  解压2：bunzip2 FileName.bz2  <br />  压缩： bzip2 -z FileName  <br />  **.tar.bz2文件格式**  <br />  解压：tar jxvf FileName.tar.bz2  <br />  压缩：tar jcvf FileName.tar.bz2 DirName  <br />  **.Z文件格式**  <br />  解压：uncompress FileName.Z  <br />  压缩：compress FileName  <br />  **.tar.Z文件格式**  <br />  解压：tar Zxvf FileName.tar.Z  <br />  压缩：tar Zcvf FileName.tar.Z DirName  <br />  **.zip文件格式**  <br />  解压：unzip FileName.zip  <br />  压缩：zip FileName.zip DirName  <br />  **.rar**  <br />  解压：rar x FileName.rar  <br />  压缩：rar a FileName.rar DirName
 
 
-zip [选项] 压缩包名 源文件或源目录列表
+`zip [options][-b <目录>] [-t <日期时间>][-<压缩效率>][压缩文件][文件...] [-xi <样式>]`
 
-| 选项 | 含义 |
-| --- | --- |
-| -r | 递归压缩目录，及将制定目录下的所有文件以及子目录全部压缩。 |
-| -m | 将文件压缩之后，删除原始文件，相当于把文件移到压缩文件中。 |
-| -v | 显示详细的压缩过程信息。 |
-| -q | 在压缩的时候不显示命令的执行过程。 |
-| -压缩级别 | 压缩级别是从 1~9 的数字，-1 代表压缩速度更快，-9 代表压缩效果更好。 |
-| -u | 更新压缩文件，即往压缩文件中添加新文件。 |
+- -r	递归压缩目录，及将制定目录下的所有文件以及子目录全部压缩。
+- -m	将文件压缩之后，删除原始文件，相当于把文件移到压缩文件中。
+- -v	显示详细的压缩过程信息。
+- -q	在压缩的时候不显示命令的执行过程。
+- -压缩级别	压缩级别是从 1~9 的数字，-1 代表压缩速度更快，-9 代表压缩效果更好。
+- -u	更新压缩文件，即往压缩文件中添加新文件。
+- -b <目录> 指定暂时存放文件的目录
+- -d 从压缩文件内删除指定的文件
+- -i <样式> 只压缩符合条件的文件
+- -x <样式> 压缩时排除符合条件的文件
+- -S 包含系统和隐藏文件
+- -t<日期时间> 把压缩文件的日期设成指定的日期
 
+`unzip [-cflptuvz][-agCjLMnoqsVX][-P <密码>][.zip文件][文件][-d <目录>][-x <文件>]`
 
-unzip [选项] 压缩包名
-
-| 选项 | 含义 |
-| --- | --- |
-| -d 目录名 | 将压缩文件解压到指定目录下。 |
-| -n | 解压时并不覆盖已经存在的文件。 |
-| -o | 解压时覆盖已经存在的文件，并且无需用户确认。 |
-| -v | 查看压缩文件的详细信息 |
-| -t | 测试压缩文件有无损坏，但并不解压。 |
-| -x 文件列表 | 解压文件，但不包含文件列表中指定的文件。 |
+- -d 目录名	将压缩文件解压到指定目录下。
+- -n	解压时并不覆盖已经存在的文件。
+- -o	解压时覆盖已经存在的文件，并且无需用户确认。
+- -v	查看压缩文件的详细信息
+- -t	测试压缩文件有无损坏，但并不解压。
+- -l 显示压缩文件内所包含的文件
+- -c 将解压缩的结果显示到屏幕上，并对字符做适当的转换
+- -x 文件列表	解压文件，但不包含文件列表中指定的文件。
 
 
 gzip [选项] 源文件
@@ -772,7 +775,7 @@ nice  <br />  给要启动的进程赋予 NI 值，不能修改已运行进程�
 
 renice [优先级] PID
 
-kill - send a signal to a process  <br />  kill [options] <pid> [...]
+kill - send a signal to a process  <br />  `kill [options] <pid> [...]`
 
 - -s sig SIG 是信号名称
 - -n sig SIG 是信号编号
@@ -809,10 +812,10 @@ pgrep, pkill - look up or signal processes based on name and other attributes  <
 - -i, --ignore-case         match case insensitively
 - -n, --newest              select most recently started
 - -o, --oldest              select least recently started
-- -P, --parent <PPID,...>   match only child processes of the given parent
-- -s, --session <SID,...>   match session IDs
-- -t, --terminal <tty,...>  match by controlling terminal
-- -U, --uid <ID,...>        match by real IDs
+- -P, --parent `<PPID,...>`   match only child processes of the given parent
+- -s, --session `<SID,...>`   match session IDs
+- -t, --terminal `<tty,...>`  match by controlling terminal
+- -U, --uid `<ID,...>`        match by real IDs
 
 trap  <br />  trap [command] [SIGINT]
 
@@ -1131,29 +1134,29 @@ Wget - The non-interactive network downloader  <br />  一个GPL许可证下的�
 - -N,  --timestamping              只获取比本地文件新的文件
 - -r,  --recursive                 指定递归下载
 
-curl - transfer a URL	客户端（client）的 URL 工具  <br />  curl [options...] <url>
+[curl](https://github.com/curl/curl) - transfer a URL	客户端（client）的 URL 工具  <br />  `curl [options...] <url>`
 
-- -O, --remote-name Write output to a file named as the remote file
-- -o, --output <file> Write to file instead of stdout
-- -i, --include Include protocol response headers in the output
-- -I, --head Show document info only
-- -v, --verbose Make the operation more talkative
-- --trace <file> Write a debug trace to FILE
-- -H, --header <header/@file> Pass custom header(s) to server
-- -X, --request <command> Specify request command to use
-- -d, --data <data> HTTP POST data
-- -F, --form <name=content> Specify multipart MIME data
-- -A, --user-agent <name> Send User-Agent <name> to server
-- -b, --cookie <data|filename> Send cookies from string/file
-- -c, --cookie-jar <filename> Write cookies to <filename> after operation
+-   -O, --remote-name Write output to a file named as the remote file 
+-  -o, --output `<file>` Write to file instead of stdout 
+-  -i, --include Include protocol response headers in the output 
+-  -I, --head Show document info only 
+-  -v, --verbose Make the operation more talkative 
+-  --trace `<file>` Write a debug trace to FILE 
+-  -H, --header `<header/@file>` Pass custom header(s) to server 
+-  -X, --request `<command>` Specify request command to use 
+-  -d, --data `<data>` HTTP POST data 
+-  -F, --form `<name=content>` Specify multipart MIME data 
+-  -A, --user-agent `<name>` Send User-Agent `<name>` to server 
+-  -b, --cookie `<data|filename>` Send cookies from string/file 
+-  -c, --cookie-jar `<filename>` Write cookies to `<filename>` after operation 
+-  -e, --referer `<URL>` Referrer URL 
 
-- -e, --referer <URL> Referrer URL
-- -k, --insecure Allow insecure server connections when using SSL
-- --limit-rate <speed> Limit transfer speed to RATE
-- -x, --proxy [protocol://]host[:port] Use this proxy
-- -m, --max-time <seconds> Maximum time allowed for the transfer
-- -G, --get Put the post data in the URL and use GET
-- -L, --location Follow redirects
+-  -k, --insecure Allow insecure server connections when using SSL 
+-  --limit-rate `<speed>` Limit transfer speed to RATE 
+-  -x, --proxy [protocol://]host[:port] Use this proxy 
+-  -m, --max-time `<seconds>` Maximum time allowed for the transfer 
+-  -G, --get Put the post data in the URL and use GET 
+-  -L, --location Follow redirects 
 
 
 

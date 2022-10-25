@@ -222,11 +222,11 @@ read - 从标准输入读取一行并将其分为不同的域  <br />  read [-op
 
 | 形式 | 说明 |
 | --- | --- |
-| ${var} | 变量本来的值 |
-| ${var:-word} | 如果变量 var 为空或已被删除(unset)，那么返回 word |
-| ${var:+word} | 如果变量 var 被定义，那么返回 word |
-| ${var:=word} | 如果变量 var 为空或已被删除(unset)，将 var 的值设置为 word，并返回 |
-| ${var:?message} | 如果变量 var 为空或已被删除，那么将消息 message 送到标准错误输出，并中断运行 |
+| `${var}` | 变量本来的值 |
+| `${var:-word}` | 如果变量 var 为空或已被删除(unset)，那么返回 word |
+| `${var:+word}` | 如果变量 var 被定义，那么返回 word |
+| `${var:=word}` | 如果变量 var 为空或已被删除(unset)，将 var 的值设置为 word，并返回 |
+| `${var:?message}` | 如果变量 var 为空或已被删除，那么将消息 message 送到标准错误输出，并中断运行 |
 
 
 
@@ -276,21 +276,23 @@ env 或 printenv	所有环境变量  <br />  env [OPTION]... [-] [NAME=VALUE]...
 
 **methods**
 
-- 获取字符串长度：${#string}
-- 查找子字符串：${string:offset[:length]}
-- 头部的模式匹配：匹配成功，就删除匹配的部分，返回剩下的部分。原始变量不会发生变化
-   - ${variable#pattern}——删除最短匹配（非贪婪匹配）的部分
-   - ${variable##pattern}——删除最长匹配（贪婪匹配）的部分
-   - ${variable/#pattern/string}——头部匹配的部分替换成string
-- 尾部的模式匹配
-   - ${variable%pattern}
-   - ${variable%%pattern}
-   - ${variable/%pattern/string}
-- 任意位置的模式匹配
-   - ${variable/pattern/string}
-   - ${variable//pattern/string}
-- 转为大写：${varname^^}
-- 转为小写：${varname,,}
+- 获取字符串长度：`${#string}`
+- 查找子字符串：`${string:offset[:length]}`
+- 头部的模式匹配：匹配成功，就删除匹配的部分，返回剩下的部分。原始变量不会发生变化 
+   - `${variable#pattern}`——删除最短匹配（非贪婪匹配）的部分
+   - `${variable##pattern}`——删除最长匹配（贪婪匹配）的部分
+   - `${variable/#pattern/string}`——头部匹配的部分替换成string
+- 尾部的模式匹配 
+   - `${variable%pattern}`
+   - `${variable%%pattern}`
+   - `${variable/%pattern/string}`
+- 任意位置的模式匹配 
+   - `${variable/pattern/string}`
+   - `${variable//pattern/string}`
+- 转为大写：`${varname^^}`
+- 转为小写：`${varname,,}`
+
+
 | 字符 | 描述 |
 | --- | --- |
 | \\a | 铃声字符 |

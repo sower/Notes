@@ -601,10 +601,10 @@ vim [options] [file ..]       编辑指定的文件
 
 - -R			只读模式 (同 "view")
 - +			启动后跳到文件末尾
-- +<lnum>		启动后跳到第 <lnum> 行
+- +`<lnum>`		启动后跳到第 lnum 行
 - +/pattern	光标置于首个与 pattern 匹配的位置
-- -w <scriptout>	将所有输入的命令追加到文件 <scriptout>
-- -W <scriptout>	将所有输入的命令写入到文件 <scriptout>
+- -w `<scriptout>`	将所有输入的命令追加到文件 scriptout
+- -W `<scriptout>`	将所有输入的命令写入到文件 scriptout
 - -x			编辑加密的文件
 
 
@@ -673,7 +673,7 @@ paste、undo、delete、expurgate、yank
 | D | d$ |
 | d0 | d^ |
 | d( , d) | 删除至上，下一句开始的所有字符 |
-| d{ , d} | 删除至上，下一段开始的所有字符 |
+| `d{ , d}` | 删除至上，下一段开始的所有字符 |
 
 
 
@@ -748,7 +748,7 @@ w,W	光标右移至下一个字的字首  <br />  e, E 把光标移动到下一�
 
 
 ## 替换
-**[range]s/<old>/<new>/ [option]**
+`[range]s/<old>/<new>/ [option]`
 
 - [range] 检索范围，省略时表示当前行 
 - s 替换命令 

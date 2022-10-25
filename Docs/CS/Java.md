@@ -339,9 +339,9 @@ public final class **String**  <br />  extends Object  <br />  implements Serial
 
 - String valueOf(X x)：将基本类型值转换为字符串
 - String valueOf(Object obj)：如果参数为 null，则字符串等于 "null"；否则，返回 obj.toString() 的值
-- String format(String format, Object... args)：使用指定的格式字符串（包含格式说明符，语法%[argument_index$][flags][width][.precision]conversion，如 %s，%1$tY-%<tm-%<td %<tH:%<tM:%<tS）和参数返回一个格式化字符串
+- String format(String format, Object... args)：使用指定的格式字符串（包含格式说明符，语法%[argument_index$][flags][width][.precision]conversion，如 %s，`%1$tY-%<tm-%<td %<tH:%<tM:%<tS`）和参数返回一个格式化字符串
 - String join(CharSequence delimiter, CharSequence... elements)：用一个分隔符将多个字符串连接起来
-- String join(CharSequence delimiter, Iterable<? extends CharSequence> elements)：用一个分隔符将集合中的字符串元素连接起来
+- `String join(CharSequence delimiter, Iterable<? extends CharSequence> elements)`：用一个分隔符将集合中的字符串元素连接起来
 
 **StringBuilder**
 
@@ -402,7 +402,7 @@ int[][] arr = new int[3][]; // 等同于 int[][] arr = {null, null, null};
 **java.util.Arrays**
 
 - void sort(Object[] a)：根据元素的自然顺序对指定对象数组按升序进行排序，元素须实现 Comparable 接口
-- void sort(T[] a, Comparator<? super T> c)：根据指定比较器产生的顺序对指定对象数组进行排序
+- `void sort(T[] a, Comparator<? super T> c)`：根据指定比较器产生的顺序对指定对象数组进行排序
 - void parallelSort(Object[] a)：以并发的方式对 a 数组的数组元素进行排序
 - void setAll(T[] array, IntFunction generator)：使用提供的函数计算每一个元素的值
 - void parallelSetAll(T[] array, IntFunction generator)：以并发的方式
@@ -410,7 +410,7 @@ int[][] arr = new int[3][]; // 等同于 int[][] arr = {null, null, null};
 - Object[] copyOf(Object[] original, int newLength)：复制 original 数组，截取或用 0（数值类型）、false（布尔类型）或者 null（引用类型）填充，以使新数组的长度为 newLength
 - List asList(T... a)：把一个引用类型的数组或指定个数的对象转换成固定长度的 List，只读数组
 
-`List＜Integer＞`、`int[ ]`、`Integer[ ]`相互转换
+`List<Integer>`、`int[ ]`、`Integer[ ]`相互转换
 ```java
 // int[ ] 转 Integer[ ]
 Integer[] integers = Arrays.stream(ints).boxed().toArray(Integer[]::new);
@@ -947,21 +947,21 @@ public class App implements Task
 
 **class Introspector**  <br />  通过分别分析 bean 的类和父类，寻找显式或隐式信息，使用这些信息构建一个全面描述目标 bean 的 BeanInfo 对象  <br />  类方法
 
-- BeanInfo getBeanInfo(Class<?> beanClass)：在 JavaBean 上进行内省，获取其所有成员信息（包括继承的）
-- BeanInfo getBeanInfo(Class<?> beanClass, Class<?> stopClass)：在给定的“断”点之下，在 JavaBean 上进行内省，获取其所有成员信息
-- String decapitalize(String name)：获得一个字符串并将它转换成普通 Java 变量名称大写形式
+- `BeanInfo getBeanInfo(Class<?> beanClass)`：在 JavaBean 上进行内省，获取其所有成员信息（包括继承的）
+- `BeanInfo getBeanInfo(Class<?> beanClass, Class<?> stopClass)`：在给定的“断”点之下，在 JavaBean 上进行内省，获取其所有成员信息
+- `String decapitalize(String name)`：获得一个字符串并将它转换成普通 Java 变量名称大写形式
 
 interface BeanInfo
 
-- PropertyDescriptor[] getPropertyDescriptors()：获取其中的属性描述器
-- MethodDescriptor[] getMethodDescriptors()：获取其中的方法描述器
+- `PropertyDescriptor[] getPropertyDescriptors()`：获取其中的属性描述器
+- `MethodDescriptor[] getMethodDescriptors()`：获取其中的方法描述器
 
-class PropertyDescriptor 
+class PropertyDescriptor
 
-- Class<?> getPropertyType()：获得属性的类型的 Class 对象
-- String getName()：获取此属性名
-- Method getReadMethod()：获取属性值的 get 方法
-- Method getWriteMethod()：获取属性值的 set 方法
+- `Class<?> getPropertyType()`：获得属性的类型的 Class 对象
+- `String getName()`：获取此属性名
+- `Method getReadMethod()`：获取属性值的 get 方法
+- `Method getWriteMethod()`：获取属性值的 set 方法
 ```java
 // JavaBean 和 Map 之间的相互转换
 public class BeanMapUtils {
@@ -1594,18 +1594,18 @@ Built-in Functional Interfaces(内置函数接口)
 
 | 函数式接口 | 抽象方法 | 函数描述符 | 默认方法 | 静态方法 |
 | --- | --- | --- | --- | --- |
-| Comparator<T> | int compare(T o1, T o2) | (T,T) -> int | reversed,  <br />  thenComparing | naturalOrder,  <br />  comparing,  <br />  comparingInt,  <br />  comparingLong,  <br />  comparingDouble,  <br />  reverseOrder,  <br />  nullsFirst,  <br />  nullsLast |
+| Comparator`<T>` | int compare(T o1, T o2) | (T,T) -> int | reversed,  <br />  thenComparing | naturalOrder,  <br />  comparing,  <br />  comparingInt,  <br />  comparingLong,  <br />  comparingDouble,  <br />  reverseOrder,  <br />  nullsFirst,  <br />  nullsLast |
 | Runnable | void run() | () -> void |  |  |
-| Callable<V> | V call() | () -> V |  |  |
-| Predicate<T> | boolean test(T t) | T -> boolean | and, or, negate |  |
-| BiPredicate<T, U> | boolean test(T t, U u) | (T,U) -> boolean |  |  |
-| Consumer<T> | void accept(T t) | T -> void | andThen |  |
-| BiConsumer<T, U> | void accept(T t, U u) | (T,U) -> void |  |  |
-| Supplier<T> | T get() | () -> T |  |  |
-| Function<T,R> | R apply(T t) | T -> R | andThen, compose | identity |
-| BiFunction<T, U, R> | R apply(T t, U u) | (T,U) -> R |  |  |
-| UnaryOperator<T> | T apply(T t) | T -> T |  |  |
-| BinaryOperator<T> | Tt apply(T t1, T t2) | (T,T) -> T |  | minBy, maxBy |
+| Callable`<V>` | V call() | () -> V |  |  |
+| Predicate`<T>` | boolean test(T t) | T -> boolean | and, or, negate |  |
+| BiPredicate`<T, U>` | boolean test(T t, U u) | (T,U) -> boolean |  |  |
+| Consumer`<T>` | void accept(T t) | T -> void | andThen |  |
+| BiConsumer`<T, U>` | void accept(T t, U u) | (T,U) -> void |  |  |
+| Supplier`<T>` | T get() | () -> T |  |  |
+| Function`<T, R>` | R apply(T t) | T -> R | andThen, compose | identity |
+| BiFunction`<T, U, R>` | R apply(T t, U u) | (T,U) -> R |  |  |
+| UnaryOperator`<T>` | T apply(T t) | T -> T |  |  |
+| BinaryOperator`<T>` | Tt apply(T t1, T t2) | (T,T) -> T |  | minBy, maxBy |
 
 
 
@@ -1627,21 +1627,21 @@ Built-in Functional Interfaces(内置函数接口)
 
 **查找和匹配**
 
-- boolean allMatch(Predicate<T> predicate)：流中的元素是否都能匹配给定的谓词
-- boolean anyMatch(Predicate<T> predicate)：流中是否有一个元素能匹配给定的谓词
-- boolean noneMatch(Predicate<T> predicate)：流中是否没有任何元素与给定的谓词匹配
-- Optional<T> findAny()：返回当前流中的任意元素
-- Optional<T> findFirst()：返回当前流中的第一个元素
+- `boolean allMatch(Predicate<T> predicate)`：流中的元素是否都能匹配给定的谓词
+- `boolean anyMatch(Predicate<T> predicate)`：流中是否有一个元素能匹配给定的谓词
+- `boolean noneMatch(Predicate<T> predicate)`：流中是否没有任何元素与给定的谓词匹配
+- `Optional<T> findAny()`：返回当前流中的任意元素
+- `Optional<T> findFirst()`：返回当前流中的第一个元素
 
 **归约**  <br />  将流中所有的元素迭代合并成一个结果
 
-- Optional<T> reduce(BinaryOperator<T> accumulator)
-- T reduce(T identity, BinaryOperator<T> accumulator)：初始值 identity，accumulator 将两个流元素结合起来并产生一个新值（适用于不可变的归约）
-- U reduce(U identity, BiFunction<U, T, U> accumulator, BinaryOperator<U> combiner)：
-- Optional<T> min(Comparator<T> comparator)：根据提供的 Comparator 返回此流的最小元素
-- Optional<T> max(Comparator<T> comparator)：根据提供的 Comparator 返回此流的最大元素
-- R collect(Collector<T, A, R> collector)
-- R collect(Supplier<R> supplier, BiConsumer<R, T> accumulator, BiConsumer<R, R> combiner)：自定义收集器的供应源 supplier、累加器 accumulator、组合器 combiner
+- `Optional<T> reduce(BinaryOperator<T> accumulator)`
+- `T reduce(T identity, BinaryOperator<T> accumulator)`：初始值 identity，accumulator 将两个流元素结合起来并产生一个新值（适用于不可变的归约）
+- `U reduce(U identity, BiFunction<U, T, U> accumulator, BinaryOperator<U> combiner)`：
+- `Optional<T> min(Comparator<T> comparator)`：根据提供的 Comparator 返回此流的最小元素
+- `Optional<T> max(Comparator<T> comparator)`：根据提供的 Comparator 返回此流的最大元素
+- `R collect(Collector<T, A, R> collector)`
+- `R collect(Supplier<R> supplier, BiConsumer<R, T> accumulator, BiConsumer<R, R> combiner)`：自定义收集器的供应源 supplier、累加器 accumulator、组合器 combiner
 
 
 **方法**
@@ -1679,26 +1679,26 @@ public class Main {
 
 
 
-## Optional<T>
-Optional<T>  是一个容器类，代表一个值存在或不存在  <br />  基本类型的 Optional 对象：OptionalInt、OptionalLong、OptionalDouble
+## `Optional<T>`
+`Optional<T>`  是一个容器类，代表一个值存在或不存在  <br />  基本类型的 Optional 对象：OptionalInt、OptionalLong、OptionalDouble
 
 静态方法
 
-- Optional<T> empty()：返回一个空的 Optional 实例
-- Optional<T> of(T value)：返回具有指定非空值的 Optional 实例，如果该值为 null，则抛出一个 NullPointerException 异常
-- Optional<T> ofNullable(T value)：返回一个指定值的 Optional，如果值为 null，则返回一个空的 Optional
+- `Optional<T> empty()`：返回一个空的 Optional 实例
+- `Optional<T> of(T value)`：返回具有指定非空值的 Optional 实例，如果该值为 null，则抛出一个 NullPointerException 异常
+- `Optional<T> ofNullable(T value)`：返回一个指定值的 Optional，如果值为 null，则返回一个空的 Optional
 
 实例方法
 
-- boolean isPresent()：在值存在时就返回 true，否则返回 false
-- void ifPresent(Consumer<T> block)：在值存在的时候执行给定的代码块，否则什么也不做
-- Optional<U> map(Function<T, U> mapper)：如果值存在，就对该值执行提供的 mapping 函数调用，否则返回一个空的 Optional 对象
-- Optional<U> flatMap(Function<T, Optional<U>> mapper)：如果值存在，就对该值执行提供的 mapping 函数调用，否则就返回一个空的 Optional 对象（将两层的 Optional 对象转换为单一 Optional 对象）
-- Optional<T> filter(Predicate<T> predicate)：如果值存在并且满足提供的谓词，就返回包含该值的 Optional 对象；否则返回一个空的 Optional 对象
-- T get()：有值则返回值，否则抛出一个 NoSuchElementException 异常
-- T orElse(T other)：有值则返回值，否则返回 other
-- T orElseGet(Supplier<T> other)：有值则返回值，否则调用 other 并返回该调用的结果
-- T orElseThrow(Supplier<X> exceptionSupplier)：有值则返回值，否则抛出由 exceptionSupplier 创建的异常
+- `boolean isPresent()`：在值存在时就返回 true，否则返回 false
+- `void ifPresent(Consumer<T> block)`：在值存在的时候执行给定的代码块，否则什么也不做
+- `Optional<U> map(Function<T, U> mapper)`：如果值存在，就对该值执行提供的 mapping 函数调用，否则返回一个空的 Optional 对象
+- `Optional<U> flatMap(Function<T, Optional<U>> mapper)`：如果值存在，就对该值执行提供的 mapping 函数调用，否则就返回一个空的 Optional 对象（将两层的 Optional 对象转换为单一 Optional 对象）
+- `Optional<T> filter(Predicate<T> predicate)`：如果值存在并且满足提供的谓词，就返回包含该值的 Optional 对象；否则返回一个空的 Optional 对象
+- `T get()`：有值则返回值，否则抛出一个 NoSuchElementException 异常
+- `T orElse(T other)`：有值则返回值，否则返回 other
+- `T orElseGet(Supplier<T> other)`：有值则返回值，否则调用 other 并返回该调用的结果
+- `T orElseThrow(Supplier<X> exceptionSupplier)`：有值则返回值，否则抛出由 exceptionSupplier 创建的异常
 
 
 # 反射（Reflection）
@@ -1752,18 +1752,18 @@ System.out.println(Array.get(array, 3));
 其它实例方法
 
 - ClassLoader getClassLoader()：获取该类的类加载器
-- Class<?>[] getInterfaces()：获取此 Class 对象所表示的类或接口实现的接口
-- Class<? super T> getSuperclass()：获取该 Class 对象对应类的超类的 Class 对象
+- `Class<?>[] getInterfaces()`：获取此 Class 对象所表示的类或接口实现的接口
+- `Class<? super T> getSuperclass()`：获取该 Class 对象对应类的超类的 Class 对象
 - int getModifiers()：获取此类或接口的所有修饰符（返回的整数应使用 Modifier 工具类的方法来解码）
 - Package getPackage()：获取此类的包
 - String getName()：以字符串形式返回此 Class 对象所表示的类的名称
-- String getSimpleName()：以字符串形式返回此 Class 对象所表示的类的简称 Class<?> getComponentType()：返回表示数组元素类型的 Class
+- String getSimpleName()：以字符串形式返回此 Class 对象所表示的类的简称 `Class<?> getComponentType()`：返回表示数组元素类型的 Class
 - isArray()、isEnum()
 - isInterface()、isInstance(Object obj)
-- isAssignableFrom(Class<?> cls)：判定此 Class 对象所表示的类或接口是否是 cls，或者是否是 cls 的超类或超接口
+- `isAssignableFrom(Class<?> cls)`：判定此 Class 对象所表示的类或接口是否是 cls，或者是否是 cls 的超类或超接口
 - T cast(Object obj)：将一个对象强制转换成此 Class 对象所表示的类或接口
 - Type getGenericSuperclass()：返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type
-- Class<?> getComponentType()：返回数组元素类型的 Class
+- `Class<?> getComponentType()`：返回数组元素类型的 Class
 
 `Constructor/Field/Method.setAccessible(true)` 取消访问权限检查，可访问私有成员、方法
 

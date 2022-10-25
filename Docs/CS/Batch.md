@@ -62,7 +62,7 @@ Dir C:\ > NUL
 | Notation | 说明 |
 | --- | --- |
 | 不含方括号或大括号的文本 | 必须按如下所示键入项。 |
-| <Text inside angle brackets> | 必须为其提供值的占位符。 |
+| `<Text inside angle brackets>` | 必须为其提供值的占位符。 |
 | [Text inside square brackets] | 可选项。 |
 | {Text inside braces} | 所需项的集合。 须选择一个。 |
 | 竖线(&#124;) | 互斥项的分隔符。 须选择一个。 |
@@ -229,7 +229,7 @@ GOTO label  <br />  label必须单独一行，并且以冒号开头  <br />  GOT
 - SET /P variable=[promptString]
 - SET /A expression
 
-计算只能精确到整数，小数采用四舍五入。有效值范围是-2147483647 至 2147483647  <br />  <nul 是 0<nul 的简写，0 句柄是默认的输入句柄，nul 是空设备， 所以 <nul 表示从空设备获取输入
+计算只能精确到整数，小数采用四舍五入。有效值范围是-2147483647 至 2147483647  <br />  `<nul` 是 `0<nul`的简写，0 句柄是默认的输入句柄，nul 是空设备， 所以 `<nul` 表示从空设备获取输入
 
 # setlocal
 开始批处理文件中环境改动的本地化操作。在执行 SETLOCAL 之后所做的环境改动只限于批处理文件。要还原原先的设置，必须执行 ENDLOCAL。达到批处理文件结尾时，对于该批处理文件的每个尚未执行的 SETLOCAL 命令，都会有一个隐含的 ENDLOCAL 被执行。
@@ -402,11 +402,11 @@ net user %username% password
 ```
 
 # SC
-用来与服务控制管理器和服务进行通信  <br />  sc <server> [command] [service name] <option1> <option2>...
+用来与服务控制管理器和服务进行通信  <br />  `sc <server> [command] [service name] <option1> <option2>...`
 
- <server> 选项的格式为 "\\ServerName"  <br />   可通过键入以下命令获取有关命令的更多帮助: "sc [command]"  <br />   命令:  <br />   query-----------查询服务的状态，或枚举服务类型的状态。  <br />   queryex---------查询服务的扩展状态或枚举服务类型的状态。  <br />   start-----------启动服务。  <br />   pause-----------向服务发送 PAUSE 控制请求。  <br />   interrogate-----向服务发送 INTERROGATE 控制请求。  <br />   continue--------向服务发送 CONTINUE 控制请求。  <br />   stop------------向服务发送 STOP 请求。  <br />   config----------更改服务的配置(永久)。  <br />   description-----更改服务的描述。  <br />   failure---------更改失败时服务执行的操作。  <br />   failureflag-----更改服务的失败操作标志。  <br />   sidtype---------更改服务的服务 SID 类型。  <br />   privs-----------更改服务的所需特权。  <br />   managedaccount--更改服务以将服务帐户密码标记为由 LSA 管理。  <br />   qc--------------查询服务的配置信息。  <br />   qdescription----查询服务的描述。  <br />   qfailure--------查询失败时服务执行的操作。  <br />   qfailureflag----查询服务的失败操作标志。  <br />   qsidtype--------查询服务的服务 SID 类型。  <br />   qprivs----------查询服务的所需特权。  <br />   qtriggerinfo----查询服务的触发器参数。  <br />   qpreferrednode--查询服务的首选 NUMA 节点。  <br />   qmanagedaccount-查询服务是否将帐户与 LSA 管理的密码结合使用。  <br />   qprotection-----查询服务的进程保护级别。  <br />   quserservice----查询用户服务模板的本地实例。  <br />   delete ----------(从注册表中)删除服务。  <br />   create----------创建服务(并将其添加到注册表中)。  <br />   control---------向服务发送控制。  <br />   sdshow----------显示服务的安全描述符。  <br />   sdset-----------设置服务的安全描述符。  <br />   showsid---------显示与任意名称对应的服务 SID 字符串。  <br />   triggerinfo-----配置服务的触发器参数。  <br />   preferrednode---设置服务的首选 NUMA 节点。  <br />   GetDisplayName--获取服务的 DisplayName。  <br />   GetKeyName------获取服务的 ServiceKeyName。  <br />   EnumDepend------枚举服务依赖关系。
+`<server>` 选项的格式为 "\\ServerName"  <br />   可通过键入以下命令获取有关命令的更多帮助: "sc [command]"  <br />   命令:  <br />   query-----------查询服务的状态，或枚举服务类型的状态。  <br />   queryex---------查询服务的扩展状态或枚举服务类型的状态。  <br />   start-----------启动服务。  <br />   pause-----------向服务发送 PAUSE 控制请求。  <br />   interrogate-----向服务发送 INTERROGATE 控制请求。  <br />   continue--------向服务发送 CONTINUE 控制请求。  <br />   stop------------向服务发送 STOP 请求。  <br />   config----------更改服务的配置(永久)。  <br />   description-----更改服务的描述。  <br />   failure---------更改失败时服务执行的操作。  <br />   failureflag-----更改服务的失败操作标志。  <br />   sidtype---------更改服务的服务 SID 类型。  <br />   privs-----------更改服务的所需特权。  <br />   managedaccount--更改服务以将服务帐户密码标记为由 LSA 管理。  <br />   qc--------------查询服务的配置信息。  <br />   qdescription----查询服务的描述。  <br />   qfailure--------查询失败时服务执行的操作。  <br />   qfailureflag----查询服务的失败操作标志。  <br />   qsidtype--------查询服务的服务 SID 类型。  <br />   qprivs----------查询服务的所需特权。  <br />   qtriggerinfo----查询服务的触发器参数。  <br />   qpreferrednode--查询服务的首选 NUMA 节点。  <br />   qmanagedaccount-查询服务是否将帐户与 LSA 管理的密码结合使用。  <br />   qprotection-----查询服务的进程保护级别。  <br />   quserservice----查询用户服务模板的本地实例。  <br />   delete ----------(从注册表中)删除服务。  <br />   create----------创建服务(并将其添加到注册表中)。  <br />   control---------向服务发送控制。  <br />   sdshow----------显示服务的安全描述符。  <br />   sdset-----------设置服务的安全描述符。  <br />   showsid---------显示与任意名称对应的服务 SID 字符串。  <br />   triggerinfo-----配置服务的触发器参数。  <br />   preferrednode---设置服务的首选 NUMA 节点。  <br />   GetDisplayName--获取服务的 DisplayName。  <br />   GetKeyName------获取服务的 ServiceKeyName。  <br />   EnumDepend------枚举服务依赖关系。
 
- 以下命令不需要服务名称:  <br />   sc <server> <command> <option>  <br />   boot------------(ok | bad)指示是否应将上一次启动另存为最近一次已知的正确启动配置  <br />   Lock------------锁定服务数据库  <br />   QueryLock-------查询 SCManager 数据库的 LockStatus
+ 以下命令不需要服务名称:  <br />  ` sc <server> <command> <option>`  <br />   boot------------(ok | bad)指示是否应将上一次启动另存为最近一次已知的正确启动配置  <br />   Lock------------锁定服务数据库  <br />   QueryLock-------查询 SCManager 数据库的 LockStatus
 
 QUERY 和 QUERYEX 选项:  <br />   如果查询命令带服务名称，将返回  <br />   该服务的状态。其他选项不适合这种  <br />   情况。如果查询命令不带参数或  <br />   带下列选项之一，将枚举此服务。  <br />   type= 要枚举的服务的类型(driver, service, userservice, all)  <br />   (默认 = service)  <br />   state= 要枚举的服务的状态 (inactive, all)  <br />   (默认 = active)  <br />   bufsize= 枚举缓冲区的大小(以字节计)  <br />   (默认 = 4096)  <br />   ri= 开始枚举的恢复索引号  <br />   (默认 = 0)  <br />   group= 要枚举的服务组  <br />   (默认 = all groups)
 
