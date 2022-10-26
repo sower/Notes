@@ -1446,11 +1446,11 @@ Map<String, String> map = JSON.parseObject(jsonString, new TypeReference<Map<Str
 ```
 JSON 字符串反序列化API
 
-- JSONObject parseObject(String text, Feature... features)
-- <T> T parseObject(String text, Class<T> clazz, Feature... features)
-- <T> T parseObject(String text, TypeReference<T> type, Feature... features)
-- JSONArray parseArray(String text)
-- <T> List<T> parseArray(String text, Class<T> clazz)
+- `JSONObject parseObject(String text, Feature... features)`
+- `<T> T parseObject(String text, Class<T> clazz, Feature... features)`
+- `<T> T parseObject(String text, TypeReference<T> type, Feature... features)`
+- `JSONArray parseArray(String text)`
+- `<T> List<T> parseArray(String text, Class<T> clazz)`
 
 注解 `@JSONField`  <br />  配置在属性（setter、getter）和字段（必须是 public field）上
 ```java
@@ -1895,7 +1895,6 @@ Google style  <br />  [intellij-java-google-style.xml](https://github.com/google
 - Key Promoter X	快捷键
 - Statistic	项目信息统计
 - Translation	翻译插件
-
 
 
 

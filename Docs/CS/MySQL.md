@@ -258,7 +258,7 @@ REGEXP
 | * | 匹配前面的子表达式零次或多次 |
 | + | 匹配前面的子表达式一次或多次 |
 | {n} | n 是一个非负整数。匹配确定的 n 次 |
-| {n,m} | m 和 n 均为非负整数，其中n <= m。最少匹配 n 次且最多匹配 m 次。 |
+| `{n,m}` | m 和 n 均为非负整数，其中n <= m。最少匹配 n 次且最多匹配 m 次。 |
 
 ```sql
 mysql> SELECT * FROM tb_students_info WHERE name REGEXP 'e{2,}';

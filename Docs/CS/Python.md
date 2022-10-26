@@ -261,7 +261,7 @@ str1 = str.translate(trantab,'2')
 - digits：字符串 '0123456789'。
 - hexdigits：字符串 '0123456789abcdefABCDEF'。
 - octdigits：字符串 '01234567'。
-- punctuation：由在 C 区域设置中被视为标点符号的 ASCII 字符所组成的字符串: `!"#$%&'()*+,-./:;<=>?@[]^_`{|}~.`
+- punctuation：由在 C 区域设置中被视为标点符号的 ASCII 字符所组成的字符串: `!"#$%&'()*+,-./:;<=>?@[]^_|{}~.``
 - whitespace：空白符号的 ASCII 字符组成的字符串。 包括空格、制表、换行、回车、进纸和纵向制表符。
 - printable：可打印符号的 ASCII 字符组成的字符串。 digits, ascii_letters, punctuation 和 whitespace 的总和。
 
