@@ -64,9 +64,8 @@ class ExportMD:
             for repo in result.get('data'):
                 self.repo[repo['name']] = str(repo['id'])
 
-    def getLocalRepo(self):
-        return list(
-            filter(lambda item: item.find('.') == -1, os.listdir(export_dir)))
+    def getLocalRepo(self, repos):
+        return [repo for repo in os.listdir(export_dir) if repo in repos]
 
     # 选择知识库
     def selectRepo(self):
@@ -76,14 +75,14 @@ class ExportMD:
             print(f'{index} - {repo_name}')
 
         if self.is_action:
-            return self.getLocalRepo()
+            return self.getLocalRepo(repos)
 
         select = input('''
 			请输入知识库名对应序号，多个请以空格分开
 			默认为导入docs下的内容，全选请输入 0:
         ''').strip()
         if len(select) == 0:
-            return self.getLocalRepo()
+            return self.getLocalRepo(repos)
         if select == '0':
             return repos
         return [
@@ -271,5 +270,5 @@ if __name__ == '__main__':
     # asyncio.run(export.run())
     loop = asyncio.get_event_loop()
     loop.run_until_complete(export.run())
-    write_to_json_file(r'sidebar.json', sidebar)
+    write_to_json_file(f'{export_dir}/.vitepress/sidebar.json', sidebar)
     update_contents()

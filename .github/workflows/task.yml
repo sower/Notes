@@ -24,7 +24,7 @@ jobs:
         pip install aiohttp
         pip install asyncio
         pip install pyyaml
-        rm -rf ./docs/[a-zA-Z]*/*
+        rm -rf ./docs/[A-Z]*/*
     - name: build
       run: python build_notes.py ${{ secrets.YQ_NAMESAPCE }} ${{ secrets.YQ_TOKEN }}
     - name: Commit files

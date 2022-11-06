@@ -1,7 +1,7 @@
 {
   "name": "Notes",
   "version": "1.0.0",
-  "description": "My Notes",
+  "description": "My vitepress style site",
   "main": "index.js",
   "scripts": {
     "dev": "vitepress dev docs --open",
@@ -13,8 +13,8 @@
     "url": "git+https://github.com/sower/Notes.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Ylem",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sower/Notes/issues"
   },

@@ -1,8 +1,8 @@
 ---
 title: Node.js
 created_at: 2022-02-01T05:44:48.000Z
-updated_at: 2022-10-23T09:33:40.000Z
-word_count: 6647
+updated_at: 2022-11-05T14:45:27.000Z
+word_count: 6896
 ---
 # Node.js  
 ## —— [Node.js](https://nodejs.org/en/docs/) ——
@@ -46,6 +46,41 @@ node app.js joe
 - [Cluster](https://nodejs.org/api/cluster.html)
 - [Command-line options](https://nodejs.org/api/cli.html)
 - [Console](https://nodejs.org/api/console.html)
+   - [Class:Console](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#class-console)
+      - [new Console(stdout[, stderr][, ignoreErrors])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#new-consolestdout-stderr-ignoreerrors)
+      - [new Console(options)](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#new-consoleoptions)
+      - [console.assert(value[, ...message])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoleassertvalue-message)
+      - [console.clear()](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoleclear)
+      - [console.count([label])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consolecountlabel)
+      - [console.countReset([label])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consolecountresetlabel)
+      - [console.debug(data[, ...args])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoledebugdata-args)
+      - [console.dir(obj[, options])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoledirobj-options)
+      - [console.dirxml(...data)](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoledirxmldata)
+      - [console.error([data][, ...args])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoleerrordata-args)
+      - [console.group([...label])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consolegrouplabel)
+      - [console.groupCollapsed()](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consolegroupcollapsed)
+      - [console.groupEnd()](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consolegroupend)
+      - [console.info([data][, ...args])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoleinfodata-args)
+      - [console.log([data][, ...args])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consolelogdata-args)
+      - [console.table(tabularData[, properties])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoletabletabulardata-properties)
+      - [console.time([label])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoletimelabel)
+      - [console.timeEnd([label])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoletimeendlabel)
+      - [console.timeLog([label][, ...data])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoletimeloglabel-data)
+      - [console.trace([message][, ...args])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoletracemessage-args)
+      - [console.warn([data][, ...args])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consolewarndata-args)
+   - [Inspector only methods](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#inspector-only-methods)
+      - [console.profile([label])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoleprofilelabel)
+      - [console.profileEnd([label])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoleprofileendlabel)
+      - [console.timeStamp([label])](https://nodejs.org/dist/latest-v18.x/docs/api/console.html#consoletimestamplabel)
+- [Corepack](https://nodejs.org/dist/latest-v18.x/docs/api/corepack.html)
+```shell
+corepack enable
+
+corepack prepare yarn@x.y.z --activate
+corepack prepare pnpm@latest --activate
+corepack prepare yarn@stable --activate
+```
+
 - [Crypto](https://nodejs.org/api/crypto.html)
 - [Debugger](https://nodejs.org/api/debugger.html)
 - [Deprecated APIs](https://nodejs.org/api/deprecations.html)
@@ -97,6 +132,11 @@ try {
 ```
 
 - [Globals](https://nodejs.org/api/globals.html)
+   - [__dirname](https://nodejs.org/api/modules.html#__dirname)
+   - [__filename](https://nodejs.org/api/modules.html#__filename)
+   - [exports](https://nodejs.org/api/modules.html#exports)
+   - [module](https://nodejs.org/api/modules.html#module)
+   - [require()](https://nodejs.org/api/modules.html#requireid)
 - [HTTP](https://nodejs.org/api/http.html)
 ```javascript
 // 创建http服务
@@ -178,13 +218,19 @@ req.end()
 - [Net](https://nodejs.org/api/net.html)
 - [OS](https://nodejs.org/api/os.html)
 - [Path](https://nodejs.org/api/path.html)
-```javascript
-const notes = '/users/joe/notes.txt'
-path.dirname(notes) // /users/joe
-path.basename(notes) // notes.txt
-path.extname(notes) // .txt
-```
-
+   - [path.basename(path[, suffix])](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathbasenamepath-suffix)
+   - [path.delimiter](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathdelimiter)
+   - [path.dirname(path)](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathdirnamepath)
+   - [path.extname(path)](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathextnamepath)
+   - [path.format(pathObject)](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathformatpathobject)
+   - [path.isAbsolute(path)](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathisabsolutepath)
+   - [path.join([...paths])](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathjoinpaths)
+   - [path.normalize(path)](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathnormalizepath)
+   - [path.parse(path)](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathparsepath)
+   - [path.posix](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathposix)
+   - [path.relative(from, to)](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathrelativefrom-to)
+   - [path.resolve([...paths])](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathresolvepaths)
+   - [path.sep](https://nodejs.org/dist/latest-v18.x/docs/api/path.html#pathsep)
 - [Performance hooks](https://nodejs.org/api/perf_hooks.html)
 - [Policies](https://nodejs.org/api/policy.html)
 - [Process](https://nodejs.org/api/process.html)
@@ -225,6 +271,24 @@ console.log(5);
 - [TTY](https://nodejs.org/api/tty.html)
 - [UDP/datagram](https://nodejs.org/api/dgram.html)
 - [URL](https://nodejs.org/api/url.html)
+   - [Class:URL](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#class-url)
+      - [new URL(input[, base])](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#new-urlinput-base)
+      - [url.hash](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urlhash)
+      - [url.host](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urlhost)
+      - [url.hostname](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urlhostname)
+      - [url.href](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urlhref)
+      - [url.origin](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urlorigin)
+      - [url.password](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urlpassword)
+      - [url.pathname](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urlpathname)
+      - [url.port](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urlport)
+      - [url.protocol](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urlprotocol)
+      - [url.search](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urlsearch)
+      - [url.searchParams](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urlsearchparams)
+      - [url.username](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urlusername)
+      - [url.toString()](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urltostring)
+      - [url.toJSON()](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#urltojson)
+   - [Class:URLSearchParams](https://nodejs.org/dist/latest-v18.x/docs/api/url.html#class-urlsearchparams)
+
 - [Utilities](https://nodejs.org/api/util.html)
 - [V8](https://nodejs.org/api/v8.html)
 - [VM](https://nodejs.org/api/vm.html)
@@ -233,7 +297,10 @@ console.log(5);
 - [Web Streams API](https://nodejs.org/api/webstreams.html)
 - [Worker threads](https://nodejs.org/api/worker_threads.html)
 - [Zlib](https://nodejs.org/api/zlib.html)
-## [npm](https://docs.npmjs.com/)
+
+
+## Package Managers
+### [npm](https://docs.npmjs.com/)
 npm（Node Package Manager）是Node.js默认的、用JavaScript编写的软件包管理系统。  <br />  [**CLI**](https://docs.npmjs.com/cli/v7/commands)
 
 - [npm cache](https://docs.npmjs.com/cli/v7/commands/npm-cache)
@@ -323,7 +390,8 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
    - `^x.y.z`	x 位锁死，y、z 位使用最新版本
    - `~x.y.z`	x、y 锁定，z 位使用最新版本
 - main 	标识模块的默认入口文件
-### [npx](https://github.com/npm/npx)
+
+#### [npx](https://github.com/npm/npx)
 Execute binaries from npm packages.  <br />  npx [options] [@version] [command-arg]...  <br />  npx [options] [-p|--package ]...  [command-arg]...  <br />  npx [options] -c ' '  <br />  npx --shell-auto-fallback [shell]
 ```javascript
 Options:
@@ -348,7 +416,8 @@ Options:
   --node-arg, -n         Extra node argument when calling a node binary.[string]
 ```
 
-## [yarn](https://github.com/yarnpkg/yarn)
+### [yarn](https://github.com/yarnpkg/yarn)
+Fast, reliable, and secure dependency management
 ```shell
 # Node.js >=16.10
 corepack enable
@@ -387,6 +456,37 @@ yarn set version from sources
 ```
 
 
+### [pnpm](https://github.com/pnpm/pnpm)
+Fast, disk space efficient package manager.
+
+- [管理依赖](https://pnpm.io/zh/scripts#)
+   - [pnpm add](https://pnpm.io/zh/cli/add) `<pkg>`
+   - [pnpm install](https://pnpm.io/zh/cli/install)
+   - [pnpm update](https://pnpm.io/zh/cli/update)
+   - [pnpm remove](https://pnpm.io/zh/cli/remove)
+   - [pnpm link](https://pnpm.io/zh/cli/link)
+   - [pnpm unlink](https://pnpm.io/zh/cli/unlink)
+   - [pnpm import](https://pnpm.io/zh/cli/import)
+   - [pnpm rebuild](https://pnpm.io/zh/cli/rebuild)
+   - [pnpm prune](https://pnpm.io/zh/cli/prune)
+   - [pnpm fetch](https://pnpm.io/zh/cli/fetch)
+   - [pnpm install-test](https://pnpm.io/zh/cli/install-test)
+- [查看依赖](https://pnpm.io/zh/scripts#)
+   - [pnpm audit](https://pnpm.io/zh/cli/audit)
+   - [pnpm list](https://pnpm.io/zh/cli/list)
+   - [pnpm outdated](https://pnpm.io/zh/cli/outdated)
+   - [pnpm why](https://pnpm.io/zh/cli/why)
+- [运行脚本](https://pnpm.io/zh/scripts#)
+   - [pnpm run](https://pnpm.io/zh/cli/run)
+   - [pnpm test](https://pnpm.io/zh/cli/test)
+   - [pnpm exec](https://pnpm.io/zh/cli/exec)
+   - [pnpm dlx](https://pnpm.io/zh/cli/dlx)
+   - [pnpm create](https://pnpm.io/zh/cli/create)
+   - [pnpm start](https://pnpm.io/zh/cli/start)
+- [管理环境](https://pnpm.io/zh/scripts#)
+   - [pnpm env](https://pnpm.io/zh/cli/env) `<cmd>`
+
+
 ## Module
 暴露模块	module.exports = variable;  <br />  引入模块	var foo = require('other_module');
 ```javascript
@@ -404,6 +504,7 @@ server.listen(port, hostname, () => {
 });
 ```
 .mjs文件总是以 ES6 模块加载  <br />  .cjs文件总是以 CommonJS 模块加载
+
 ## [Axios](https://github.com/axios/axios)
 一个基于 Promise 的 HTTP 库，可以用在浏览器和 node.js 中。  <br />  在服务端它使用原生 node.js http 模块, 而在客户端 (浏览端) 则使用 XMLHttpRequests。
 ```html
@@ -784,6 +885,7 @@ axios.jsonp('http://xxxxx:8080/set_session_jsonp?callback=demo')
     .then(response => console.log(response))
     .catch(error => console.log(error));
 ```
+
 ## Koa
 app.use(middleware)：注册中间件  <br />  app.listen(port)  <br />  app.context：全应用共享的环境信息
 
@@ -813,6 +915,7 @@ app.use(async (ctx, next) => {
 
 app.listen(3000);
 ```
+
 ## [serve](https://github.com/vercel/serve)
 serve -s dist
 ```javascript
@@ -829,6 +932,7 @@ server.listen(3000, () => {
   console.log('Running at http://localhost:3000');
 });
 ```
+
 ## [Webpack](https://webpack.js.org/)
 模块打包器。将 JavaScript 文件打包在一起，打包后的文件用于在浏览器中使用，也能转换(transform)、打包(bundle)或包裹(package)任何资源(resource or asset)。
 
@@ -859,6 +963,7 @@ module.exports = {
 };
 ```
 **出口[output]**
+
 ## [Nodemailer](https://nodemailer.com/)
 ```javascript
 "use strict";
@@ -961,6 +1066,7 @@ let message = {
     }]
 }
 ```
+
 ## [puppeteer](https://github.com/puppeteer/puppeteer)
 [awesome-puppeteer](https://github.com/transitive-bullshit/awesome-puppeteer)  <br />  提供了一个高级 API 来通过 [DevTools](http://puppeteerjs.com/(https://chromedevtools.github.io/devtools-protocol/)) 协议控制 Chromium 或 Chrome。默认以 headless 模式运行
 ```javascript
@@ -1062,25 +1168,29 @@ test('two plus two', () => {
 
 ## Others
 
-
 utility-first CSS framework
 
 - [tailwindcss](https://github.com/tailwindlabs/tailwindcss)
 - [daisyui](https://github.com/saadeghi/daisyui)	Tailwind Components
+- [hyperui](https://github.com/sadcatsoft/hyperui#:~:text=HyperUI%20is%20a%20real-time%20C%2B%2B%20OpenGL%20UI%20framework,application%20consists%20of%20three%20basic%20sets%20of%20files%3A)	a collection of free Tailwind CSS components
 - [windicss](https://github.com/windicss/windicss)
+- [UnoCSS](https://github.com/antfu/unocss) - The instant on-demand atomic CSS engine.
 
+Data Visualization
 
-[Chart.js](https://github.com/chartjs/Chart.js)  <br />  [echarts](https://github.com/apache/echarts)
+- [d3](https://github.com/d3/d3) - A JavaScript visualization library for HTML and SVG.
+- [Chart.js](https://github.com/chartjs/Chart.js) - Simple HTML5 Charts using the `<canvas>` tag.
+- [echarts](https://github.com/apache/echarts) - Enterprise Charts.
+- [three.js](https://github.com/mrdoob/three.js) - JavaScript 3D library.
 
 [anime](https://github.com/juliangarnier/anime)
+
 
 toast
 
 - [popper-core](https://github.com/popperjs/popper-core)
 - [tippyjs](https://github.com/atomiks/tippyjs)	complete tooltip, popover, dropdown, and menu solution
 - [iziToast](https://github.com/marcelodolza/iziToast)
-
-
 
 CSS
 
@@ -1089,26 +1199,35 @@ CSS
 - [Hover](https://github.com/IanLunn/Hover)
 - [hint.css](https://github.com/chinchang/hint.css)
 
-
-
 Presentation 
 
+- [slidev](https://github.com/slidevjs/slidev)	Presentation Slides for Developers
 - [impress.js](https://github.com/impress/impress.js)	倒鸭子式
 - [reveal.js](https://github.com/hakimel/reveal.js)	HTML Presentation Framework
-- [fullPage.js](https://github.com/alvarotrigo/fullPage.js)
+- [fullPage.js](https://github.com/alvarotrigo/fullPage.js)	Create full screen pages fast and simple
+- [screenfull.js](https://github.com/sindresorhus/screenfull.js) - the JavaScript Fullscreen API, which lets you bring the page or any element into fullscreen.
 
- screenfull.js
 
-tools  <br />  [Day.js](https://github.com/iamkun/dayjs)  <br />  [node-qrcode](https://github.com/soldair/node-qrcode)
 
-[i18next](https://github.com/i18next/i18next)  <br />  [Clipboard.js](https://clipboardjs.com/)
+tools
 
 - [lodash](https://github.com/lodash/lodash)	delivering modularity, performance & extras
+- [Day.js](https://github.com/iamkun/dayjs)
+- [node-qrcode](https://github.com/soldair/node-qrcode)
+- [i18next](https://github.com/i18next/i18next)
+- [Clipboard.js](https://clipboardjs.com/)
+- [chalk](https://github.com/chalk/chalk)	Terminal string styling done right
 
+- [js-cookie](https://github.com/js-cookie/js-cookie)
 - [Sortable](https://github.com/SortableJS/Sortable)	reorderable drag-and-drop lists
 - [color](https://github.com/Qix-/color)	color conversion and manipulation
-
-[sheetjs](https://github.com/SheetJS/sheetjs)  <br />  [flv.js](https://github.com/bilibili/flv.js)  <br />  [better-scroll](https://github.com/ustbhuangyi/better-scroll)  <br />  [cypress](https://github.com/cypress-io/cypress)  <br />  [marked](https://github.com/markedjs/marked)	A markdown parser and compiler  <br />  [jszip](https://github.com/Stuk/jszip)	creating, reading and editing .zip files
+- [sheetjs](https://github.com/SheetJS/sheetjs)
+- [flv.js](https://github.com/bilibili/flv.js)
+- [better-scroll](https://github.com/ustbhuangyi/better-scroll)
+- [cypress](https://github.com/cypress-io/cypress)
+- [marked](https://github.com/markedjs/marked)	A markdown parser and compiler
+- [jszip](https://github.com/Stuk/jszip)	creating, reading and editing .zip files
+- [zx](https://github.com/google/zx)	A tool for writing better scripts
 
 
 [awesome-javascript](https://github.com/sorrycc/awesome-javascript)  <br />  [awesome-nodejs](https://github.com/sindresorhus/awesome-nodejs)  <br />  [awesome-electron](https://github.com/sindresorhus/awesome-electron)

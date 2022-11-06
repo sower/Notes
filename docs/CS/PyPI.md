@@ -1,8 +1,8 @@
 ---
 title: PyPI
 created_at: 2022-02-01T05:44:43.000Z
-updated_at: 2022-09-10T15:47:19.000Z
-word_count: 8097
+updated_at: 2022-11-06T00:52:12.000Z
+word_count: 8144
 ---
 # PyPI  
 ## ——[PyPI](https://pypi.org/)——
@@ -265,9 +265,12 @@ print(arr[0:2, 1:4])  # [[2 3 4] [7 8 9]]
 | [ceil](https://numpy.org/devdocs/reference/generated/numpy.ceil.html#numpy.ceil)(x, /[, out, where, cast, order, ...]) | 以元素方式返回输入的上限。 |
 | [trunc](https://numpy.org/devdocs/reference/generated/numpy.trunc.html#numpy.trunc)(x, /[, out, where, cast, order, ...]) | 以元素方式返回输入的截断值。 |
 
+
 ## [SciPy](https://www.scipy.org/)
 Scientific Python
+
 ## [Matplotlib](https://www.matplotlib.org.cn/)
+
 ## [pandas](https://pandas.pydata.org/)
 **数据结构**
 
@@ -364,6 +367,8 @@ Scientific Python
 - df.min()：返回每一列的最小值
 - df.median()：返回每一列的中位数
 - df.std()：返回每一列的标准差
+
+
 ## [Pillow](https://pillow.readthedocs.io/en/stable/)
 https://www.osgeo.cn/pillow/reference/ImageDraw.html  <br />  Bands  <br />  mode
 
@@ -469,6 +474,7 @@ from PIL import ImageEnhance
 enh = ImageEnhance.Contrast(im)
 enh.enhance(1.3).show("30% more contrast")
 ```
+
 ## [pyinstaller](https://pyinstaller.readthedocs.io/en/stable/)
 **pyinstaller 选项 file.py**
 
@@ -548,6 +554,8 @@ jupyter notebook
 - 指定运行的端口：jupyter notebook --port 9999
 - 启动服务器但不打开浏览器：jupyter notebook --no-browser
 - 查看服务器帮助内容：jupyter notebook --help
+
+
 ## [openpyxl](https://openpyxl.readthedocs.io/en/stable/)
 https://www.osgeo.cn/openpyxl/index.html  <br />  用于读/写Excel2010 XLSX/XLSM/XLTX/XLTM文件  <br />  **workbook**
 
@@ -626,6 +634,7 @@ from openpyxl.sytels import PatternFill
 sytle = PatternFill('solid',fgColor='#AABBCC',bgColor='#DDEEFF')
 ws['A1'].fill = style #指定单元格颜色
 ```
+
 ## [qrcode](https://github.com/sylnsfar/qrcode)
 命令行
 ```python
@@ -669,6 +678,8 @@ Optional parameters
    save_name: str, the output filename like 'example.png'
    save_dir: str, the output directory
 ```
+
+
 ## [PySimpleGUI](https://github.com/PySimpleGUI/PySimpleGUI)
 ```python
 import PySimpleGUI as sg                        # Part 1 - The import
@@ -754,6 +765,8 @@ sg.Popup('Title',
 - Image # 图片查看，只支持png,gif格式
 - TabGroup # 选项卡
 - Output # 输出框
+
+
 ## Pywin32
 win32api 提供了常用的用户API  <br />  win32clipboard 提供了有关粘贴板的API  <br />  win32console 提供了有关控制台的API  <br />  win32gui 提供了有关windows用户界面图形操作的API  <br />  win32service 提供了有关服务操作的API  <br />  win32file 提供了有关文件操作的API  <br />  win32con：基本上所有宏都集成在这里(5k+)  <br />  winerror：系统错误码的宏定义 来源于winerror.h
 ```python
@@ -780,6 +793,8 @@ win32api.SetCursorPos((x, y))
 win32api.keybd_event(VK_CODE[word], 0, 0, 0)
 win32api.keybd_event(VK_CODE[word], 0, win32con.KEYEVENTF_KEYUP, 0)
 ```
+
+
 ## [pywinauto](https://github.com/pywinauto/pywinauto)
 **GUI对象检查工具**  <br />  Inspect.exe 	Windows Kits\10\bin\10.0.18362.0\x64  <br />  Win32 API (backend="win32") - 现在的默认backend
 
@@ -808,7 +823,7 @@ app.UntitledNotepad.menu_select("编辑(&E) -> 粘贴(&P)")
 
 
 ## [paramiko](https://github.com/paramiko/paramiko)
-
+The leading native Python SSHv2 protocol library
 ```python
 # coding:utf8
 
@@ -967,10 +982,10 @@ if __name__ == '__main__':
 
 
 
-
-
-
-
+- [python-fire](https://github.com/google/python-fire) - A library for creating command line interfaces from absolutely any Python object.
+- [tablib](https://github.com/jazzband/tablib) - A module for Tabular Datasets in XLS, CSV, JSON, YAML.
+- [PyYAML](http://pyyaml.org/) - YAML implementations for Python.
+- [google-api-python-client](https://github.com/google/google-api-python-client) - Google APIs Client Library for Python.
 
 
 WSGI（Web Server Gateway Interface）一种描述web server如何与web application通信的规范。（PEP 3333）  <br />  Web程序必须有一个可调用对象，且该可调用对象接收两个参数，返回一个可迭代对象：

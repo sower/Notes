@@ -1,11 +1,37 @@
 ---
 title: Github
 created_at: 2022-02-20T09:18:58.000Z
-updated_at: 2022-02-20T12:25:06.000Z
-word_count: 1828
+updated_at: 2022-11-05T15:14:49.000Z
+word_count: 1977
 ---
 # Github  
-## Github
+ 
+## [git-lfs](https://github.com/git-lfs/git-lfs)
+Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a remote server.  <br />  ![](./assets/1667660284721-0371daf4-5a5a-4f41-b610-5dc0142d8703.gif)
+```git
+$ git lfs install
+
+
+git lfs help <command>
+git lfs <command> -h
+```
+
+Example Usage
+```git
+git lfs track "*.psd"
+git add .gitattributes
+
+git add file.psd
+git commit -m "Add design file"
+git push origin main
+
+git lfs ls-files
+
+git lfs migrate export --include="*.psd" --everything
+```
+
+
+## —— [Github](https://github.com/) ——
   <br />  
 ## 远程仓库
 1 创建SSH Key
@@ -26,9 +52,7 @@ git push [-u] origin master
 **failed to push some refs to '**[**https://github.com/**](https://github.com/)**...**  <br />  git pull --rebase origin master
 
 
-
 ## [GitHub Pages](https://pages.github.com/)
-
 
 
 
@@ -40,13 +64,7 @@ git push [-u] origin master
 - [GraphQL API](https://docs.github.com/en/graphql)
 
 
-
-[
-
-](https://docs.github.com/cn/articles/getting-started-with-writing-and-formatting-on-github)  <br />  [GitHub Flavored Markdown 规范](https://github.github.com/gfm/)
-
-
-  <br />  
+[GitHub Flavored Markdown 规范](https://github.github.com/gfm/)
 
 
 
@@ -385,7 +403,7 @@ catch (err) {
 ```
 
 
-## Bitbucket
+## —— Bitbucket ——
 [Bitbucket Cloud](https://support.atlassian.com/bitbucket-cloud/resources/)  <br />  glob patterns  <br />  pipeline  <br />  [**Configure your pipeline**](https://support.atlassian.com/bitbucket-cloud/docs/configure-your-pipeline/)  <br />  ![](./assets/1643807403056-be3eac65-1fdd-43f0-812f-1cd24de7b121.png)
 ```shell
 pipelines:
@@ -425,7 +443,8 @@ pipelines:
         script:
           - ./deploy.sh
 ```
-[
 
-](https://learngitbranching.js.org/?locale=zh_CN)
+
+
+
 

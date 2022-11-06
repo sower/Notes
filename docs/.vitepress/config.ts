@@ -1,12 +1,20 @@
 import { defineConfig } from 'vitepress';
-import { version } from '../../package.json';
-import sidebars from '../../sidebar.json';
+import { description, version } from '../../package.json';
 import { highlight } from './highlight';
+import sidebar from './sidebar.json';
+
+const logoUrl = '/ylem.svg';
 
 export default async () => defineConfig({
 
   title: "Ylem's Notes",
-  description: 'My vitepress style site',
+  description,
+  head: [
+    [
+      'link',
+      { rel: 'icon', type: 'image/svg+xml', href: logoUrl }
+    ]
+  ],
   base: "/",
   // srcDir: "./docs",
   appearance: true,
@@ -16,6 +24,7 @@ export default async () => defineConfig({
 
   // 主题配置
   themeConfig: {
+    logo: logoUrl,
     //   头部导航
     nav: nav(),
 
@@ -23,7 +32,7 @@ export default async () => defineConfig({
     outlineTitle: 'TOC',
 
     //   侧边导航
-    sidebar: sidebars,
+    sidebar,
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/sower/Notes' },

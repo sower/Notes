@@ -6,7 +6,7 @@ hero:
   text: My vitepress style site
   tagline: (っ◔◡◔)っ ♥
   image:
-    src: ./image.jpg
+    src: /image.jpg
     alt: VitePress
   actions:
     - theme: brand

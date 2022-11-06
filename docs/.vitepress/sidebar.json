@@ -39,16 +39,6 @@
         "link": "/CS/Vue Ecosystem"
       },
       {
-        "text": "数据交换格式",
-        "level": 4,
-        "link": "/CS/数据交换格式"
-      },
-      {
-        "text": "网络（Network）",
-        "level": 4,
-        "link": "/CS/网络（Network）"
-      },
-      {
         "text": "Python",
         "level": 3,
         "link": "/CS/Python"
@@ -102,6 +92,11 @@
         "text": "Design Patterns",
         "level": 4,
         "link": "/CS/Design Patterns"
+      },
+      {
+        "text": "Big Data",
+        "level": 4,
+        "link": "/CS/Big Data"
       },
       {
         "text": "Operating System",
@@ -189,6 +184,11 @@
         "link": "/CS/SSH"
       },
       {
+        "text": "网络（Network）",
+        "level": 3,
+        "link": "/CS/网络（Network）"
+      },
+      {
         "text": "C",
         "level": 3,
         "link": "/CS/C"
@@ -266,6 +266,11 @@
     "collapsible": true,
     "items": [
       {
+        "text": "数据交换格式",
+        "level": 3,
+        "link": "/Universal/数据交换格式"
+      },
+      {
         "text": "UML",
         "level": 3,
         "link": "/Universal/UML"
@@ -309,6 +314,11 @@
         "text": "Security",
         "level": 3,
         "link": "/Universal/Security"
+      },
+      {
+        "text": "Refactor 重构",
+        "level": 3,
+        "link": "/Universal/Refactor 重构"
       }
     ]
   }

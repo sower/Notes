@@ -1,8 +1,8 @@
 ---
 title: Vue Ecosystem
 created_at: 2022-03-04T14:44:29.000Z
-updated_at: 2022-10-23T09:50:00.000Z
-word_count: 5131
+updated_at: 2022-11-06T13:12:23.000Z
+word_count: 5279
 ---
 # Vue Ecosystem  
 ## [Vite](https://vitejs.dev/)
@@ -14,13 +14,20 @@ npm install vite -g
 npm create vite@latest
 ```
 
+- [配置](https://cn.vitejs.dev/config/)
+- [依赖预构建](https://cn.vitejs.dev/guide/dep-pre-bundling.html)
+- [静态资源处理](https://cn.vitejs.dev/guide/assets.html)
+- [模块热替换](https://cn.vitejs.dev/guide/features.html#hot-module-replacement)
+- [CSS](https://cn.vitejs.dev/guide/features.html#css)
+- [Glob 导入](https://cn.vitejs.dev/guide/features.html#glob-import)
+- [动态导入](https://cn.vitejs.dev/guide/features.html#dynamic-import)
+- [WebAssembly](https://cn.vitejs.dev/guide/features.html#webassembly)
+- [Web Workers](https://cn.vitejs.dev/guide/features.html#web-workers)
+- [构建优化](https://cn.vitejs.dev/guide/features.html#build-optimizations)
+
 
 ## [~~Vue CLI~~](https://cli.vuejs.org/zh/)
-
-CLI (@vue/cli) 是一个全局安装的 npm 包，提供了终端里的 vue 命令
-
-CLI 服务 (@vue/cli-service) 是一个开发环境依赖。它是一个 npm 包，局部安装在每个 @vue/cli 创建的项目中。
-
+CLI (@vue/cli) 是一个全局安装的 npm 包，提供了终端里的 vue 命令  <br />  CLI 服务 (@vue/cli-service) 是一个开发环境依赖。它是一个 npm 包，局部安装在每个 @vue/cli 创建的项目中。
 ```javascript
 npm install -g @vue/cli
 npm update -g @vue/cli
@@ -102,6 +109,115 @@ VUE_APP_NOT_SECRET_CODE=some_value
 只有 NODE_ENV，BASE_URL 和以 VUE_APP_ 开头的变量将通过 webpack.DefinePlugin 静态地嵌入到客户端侧的代码中。
 
 使用	process.env.VUE_APP_SECRET
+
+
+[**项目配置**](https://cli.vuejs.org/zh/config/)
+
+[browserslist](https://github.com/browserslist/browserslist)
+
+vue.config.js  <br />  一个可选的配置文件，在项目的根目录中
+
+```javascript
+// vue.config.js
+
+/**
+ * @type {import('@vue/cli-service').ProjectOptions}
+ */
+module.exports = {
+  // 选项...
+}
+```
+
+**设置目录别名 alias**
+
+```javascript
+const path = require('path')
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
+module.exports = {
+  // 别名 alias
+  chainWebpack: config => {
+    config.resolve.alias
+      .set('@', resolve('src'))
+      .set('assets', resolve('src/assets'))
+      .set('components', resolve('src/components'))
+  }
+}
+```
+
+**代理配置**
+
+```javascript
+module.exports = {
+  // 代理设置
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://192.168.0.1:8080/',
+        changeOrigin: true,
+        ws: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  }
+}
+```
+
+**环境配置**
+
+```javascript
+// .env.development
+NODE_ENV = 'development'
+BASE_URL = '/'
+VUE_APP_NAME = 'vue-quick-build'
+VUE_APP_FETCH_URL = 'http://192.168.0.1/
+VUE_APP_PUBLIC_KEY = 'VUE_APP_PUBLIC_KEY'
+// .env.test
+NODE_ENV = 'test'
+BASE_URL = '/'
+VUE_APP_NAME = 'vue-quick-build'
+VUE_APP_FETCH_URL = 'https://test.com/'
+VUE_APP_PUBLIC_KEY = 'VUE_APP_PUBLIC_KEY'
+// .env.production
+NODE_ENV = 'production'
+BASE_URL = '/'
+VUE_APP_NAME = 'vue-quick-build'
+VUE_APP_FETCH_URL = 'https://production.com/'
+VUE_APP_PUBLIC_KEY = 'VUE_APP_PUBLIC_KEY'
+```
+
+**多页面**
+
+```javascript
+module.exports = {
+  pages: {
+    index: {
+      // page 的入口
+      entry: 'src/index/main.js',
+      // 模板来源
+      template: 'public/index.html',
+      // 在 dist/index.html 的输出
+      filename: 'index.html',
+      // 当使用 title 选项时，
+      // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
+      title: 'Index Page',
+      // 在这个页面中包含的块，默认情况下会包含
+      // 提取出来的通用 chunk 和 vendor chunk。
+      chunks: ['chunk-vendors', 'chunk-common', 'index']
+    },
+    // 当使用只有入口的字符串格式时，
+    // 模板会被推导为 `public/subpage.html`
+    // 并且如果找不到的话，就回退到 `public/index.html`。
+    // 输出文件名会被推导为 `subpage.html`。
+    subpage: 'src/subpage/main.js'
+  }
+}
+```
 
 ## [Vue Router](https://next.router.vuejs.org/zh/)
 
@@ -1221,115 +1337,7 @@ Vue SFC Style CSS 变量
 -  CSS 提取 
 -  代码校验 (Linting) 
 
-## [项目配置](https://cli.vuejs.org/zh/config/)
 
-[browserslist](https://github.com/browserslist/browserslist)
-
-vue.config.js
-
-一个可选的配置文件，在项目的根目录中
-
-```javascript
-// vue.config.js
-
-/**
- * @type {import('@vue/cli-service').ProjectOptions}
- */
-module.exports = {
-  // 选项...
-}
-```
-
-**设置目录别名 alias**
-
-```javascript
-const path = require('path')
-
-function resolve(dir) {
-  return path.join(__dirname, dir)
-}
-
-module.exports = {
-  // 别名 alias
-  chainWebpack: config => {
-    config.resolve.alias
-      .set('@', resolve('src'))
-      .set('assets', resolve('src/assets'))
-      .set('components', resolve('src/components'))
-  }
-}
-```
-
-**代理配置**
-
-```javascript
-module.exports = {
-  // 代理设置
-  devServer: {
-    proxy: {
-      '/api': {
-        target: 'http://192.168.0.1:8080/',
-        changeOrigin: true,
-        ws: true,
-        pathRewrite: {
-          '^/api': ''
-        }
-      }
-    }
-  }
-}
-```
-
-**环境配置**
-
-```javascript
-// .env.development
-NODE_ENV = 'development'
-BASE_URL = '/'
-VUE_APP_NAME = 'vue-quick-build'
-VUE_APP_FETCH_URL = 'http://192.168.0.1/
-VUE_APP_PUBLIC_KEY = 'VUE_APP_PUBLIC_KEY'
-// .env.test
-NODE_ENV = 'test'
-BASE_URL = '/'
-VUE_APP_NAME = 'vue-quick-build'
-VUE_APP_FETCH_URL = 'https://test.com/'
-VUE_APP_PUBLIC_KEY = 'VUE_APP_PUBLIC_KEY'
-// .env.production
-NODE_ENV = 'production'
-BASE_URL = '/'
-VUE_APP_NAME = 'vue-quick-build'
-VUE_APP_FETCH_URL = 'https://production.com/'
-VUE_APP_PUBLIC_KEY = 'VUE_APP_PUBLIC_KEY'
-```
-
-**多页面**
-
-```javascript
-module.exports = {
-  pages: {
-    index: {
-      // page 的入口
-      entry: 'src/index/main.js',
-      // 模板来源
-      template: 'public/index.html',
-      // 在 dist/index.html 的输出
-      filename: 'index.html',
-      // 当使用 title 选项时，
-      // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
-      title: 'Index Page',
-      // 在这个页面中包含的块，默认情况下会包含
-      // 提取出来的通用 chunk 和 vendor chunk。
-      chunks: ['chunk-vendors', 'chunk-common', 'index']
-    },
-    // 当使用只有入口的字符串格式时，
-    // 模板会被推导为 `public/subpage.html`
-    // 并且如果找不到的话，就回退到 `public/index.html`。
-    // 输出文件名会被推导为 `subpage.html`。
-    subpage: 'src/subpage/main.js'
-  }
-}
-```
 
 ## —— 组件
 
@@ -1477,65 +1485,6 @@ API
 - [Directives](https://vue-i18n.intlify.dev/api/directive)
 - [Component Injections](https://vue-i18n.intlify.dev/api/injection)
 
-## [Vue Test Utils](https://next.vue-test-utils.vuejs.org/)
-
-```javascript
-import { mount } from '@vue/test-utils'
-
-// The component to test
-const MessageComponent = {
-  template: '<p>{{ msg }}</p>',
-  props: ['msg']
-}
-
-test('displays message', () => {
-  const wrapper = mount(MessageComponent, {
-    props: {
-      msg: 'Hello world'
-    }
-  })
-
-  // Assert the rendered text of the component
-  expect(wrapper.text()).toContain('Hello world')
-})
-```
-
-API
-
-- [mount](https://next.vue-test-utils.vuejs.org/api/#mount)
-   - [attachTo](https://next.vue-test-utils.vuejs.org/api/#attachto)
-   - [attrs](https://next.vue-test-utils.vuejs.org/api/#attrs)
-   - [data](https://next.vue-test-utils.vuejs.org/api/#data)
-   - [props](https://next.vue-test-utils.vuejs.org/api/#props)
-   - [slots](https://next.vue-test-utils.vuejs.org/api/#slots)
-   - [global](https://next.vue-test-utils.vuejs.org/api/#global)
-   - [shallow](https://next.vue-test-utils.vuejs.org/api/#shallow)
-- [Wrapper methods](https://next.vue-test-utils.vuejs.org/api/#wrapper-methods)
-   - [attributes](https://next.vue-test-utils.vuejs.org/api/#attributes)
-   - [classes](https://next.vue-test-utils.vuejs.org/api/#classes)
-   - [emitted](https://next.vue-test-utils.vuejs.org/api/#emitted)
-   - [exists](https://next.vue-test-utils.vuejs.org/api/#exists)
-   - [find](https://next.vue-test-utils.vuejs.org/api/#find)
-   - [findAll](https://next.vue-test-utils.vuejs.org/api/#findall)
-   - [findComponent](https://next.vue-test-utils.vuejs.org/api/#findcomponent)
-   - [findAllComponents](https://next.vue-test-utils.vuejs.org/api/#findallcomponents)
-   - [get](https://next.vue-test-utils.vuejs.org/api/#get)
-   - [getComponent](https://next.vue-test-utils.vuejs.org/api/#getcomponent)
-   - [html](https://next.vue-test-utils.vuejs.org/api/#html)
-   - [isVisible](https://next.vue-test-utils.vuejs.org/api/#isvisible)
-   - [props](https://next.vue-test-utils.vuejs.org/api/#props-1)
-   - [setData](https://next.vue-test-utils.vuejs.org/api/#setdata)
-   - [setProps](https://next.vue-test-utils.vuejs.org/api/#setprops)
-   - [setValue](https://next.vue-test-utils.vuejs.org/api/#setvalue)
-   - [text](https://next.vue-test-utils.vuejs.org/api/#text)
-   - [trigger](https://next.vue-test-utils.vuejs.org/api/#trigger)
-   - [unmount](https://next.vue-test-utils.vuejs.org/api/#unmount)
-- [Wrapper properties](https://next.vue-test-utils.vuejs.org/api/#wrapper-properties)
-   - [vm](https://next.vue-test-utils.vuejs.org/api/#vm)
-- [shallowMount](https://next.vue-test-utils.vuejs.org/api/#shallowmount)
-- [flushPromises](https://next.vue-test-utils.vuejs.org/api/#flushpromises)
-- [config](https://next.vue-test-utils.vuejs.org/api/#config)
-   - [config.global](https://next.vue-test-utils.vuejs.org/api/#config-global)
 
 ## [SSR](https://v3.cn.vuejs.org/guide/ssr/introduction.html)
 
@@ -1572,18 +1521,12 @@ server.get('*', async (req, res) => {
 server.listen(8080)
 ```
 
-## [nuxt.js](https://github.com/nuxt/nuxt.js)
 
 
-
-## [awesome-vue](https://github.com/vuejs/awesome-vue)
-
-
-## [vuepress](https://github.com/vuejs/vuepress)
 
 ## [vitepress](https://github.com/vuejs/vitepress)
 
-```markdown
+```
 .
 ├─ docs
 │  ├─ .vitepress
@@ -1592,6 +1535,12 @@ server.listen(8080)
 │  │  └─ config.js
 │  └─ index.md
 └─ package.json
+  
+    "scripts": {
+      "dev": "vitepress dev docs --open",
+      "build": "vitepress build docs",
+      "serve": "vitepress serve docs"
+    }
 ```
 
 Custom Containers
@@ -1648,6 +1597,12 @@ export default {
   lang: 'en-US',
   title: 'VitePress',
   description: 'Vite & Vue powered static site generator.',
+  head: [
+    [
+      'link',
+      { rel: 'icon', type: 'image/svg+xml', href: 'public/logo.svg' }
+    ]
+  ],
   base: '/',
   appearance: true,
   lastUpdated: true,
@@ -1669,10 +1624,13 @@ export default {
       { text: '关于', link: '/about/' },
     ],
 
+    outline: [1, 4],
+    outlineTitle: 'TOC',
     //   侧边导航
     sidebar: [
       {
         text: 'Guide',
+    		collapsible: true,
         items: [
           { text: 'Introduction', link: '/introduction' },
           { text: 'Getting Started', link: '/getting-started' },
@@ -1682,7 +1640,6 @@ export default {
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
-      { icon: 'discord', link: '...' }
     ],
 
     footer: {
@@ -1705,5 +1662,83 @@ export default {
 }
 
 ```
+
+
+## [awesome-vue](https://github.com/vuejs/awesome-vue)
+
+[vueuse](https://github.com/vueuse/vueuse)	Collection of essential Vue Composition Utilities for Vue 2 and 3
+```javascript
+import { useLocalStorage, useMouse, usePreferredDark } from '@vueuse/core'
+
+export default {
+  setup() {
+    // tracks mouse position
+    const { x, y } = useMouse()
+
+    // is user prefers dark theme
+    const isDark = usePreferredDark()
+
+    // persist state in localStorage
+    const store = useLocalStorage(
+      'my-storage',
+      {
+        name: 'Apple',
+        color: 'red',
+      },
+    )
+
+    return { x, y, isDark, store }
+  },
+}
+```
+
+
+[nuxt.js](https://github.com/nuxt/nuxt.js)
+
+[vitest](https://github.com/vitest-dev/vitest)	A Vite-native test framework.
+```javascript
+import { assert, describe, expect, it } from 'vitest'
+
+describe('suite name', () => {
+  it('foo', () => {
+    expect(1 + 1).toEqual(2)
+    expect(true).to.be.true
+  })
+
+  it('bar', () => {
+    assert.equal(Math.sqrt(4), 2)
+  })
+
+  it('snapshot', () => {
+    expect({ foo: 'bar' }).toMatchSnapshot()
+  })
+})
+```
+
+[test-utils](https://github.com/vuejs/test-utils)	Vue Test Utils for Vue 3
+
+```javascript
+import { mount } from '@vue/test-utils'
+
+// The component to test
+const MessageComponent = {
+  template: '<p>{{ msg }}</p>',
+  props: ['msg']
+}
+
+test('displays message', () => {
+  const wrapper = mount(MessageComponent, {
+    props: {
+      msg: 'Hello world'
+    }
+  })
+
+  // Assert the rendered text of the component
+  expect(wrapper.text()).toContain('Hello world')
+})
+```
+
+
+
 
 
