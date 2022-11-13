@@ -124,7 +124,7 @@ class Yuque(ApiGateway):
         return self.response
 
 
-class ComplexEncoder(json.JSONEncoder):
+class TimeEncoder(json.JSONEncoder):
 
     def default(self, obj):
         if isinstance(obj, datetime):
@@ -138,7 +138,7 @@ class ComplexEncoder(json.JSONEncoder):
 def trans(content):
     data = yaml.load(content, Loader=yaml.FullLoader)
     print("toc:",
-          json.dumps(data, indent=1, ensure_ascii=False, cls=ComplexEncoder))
+          json.dumps(data, indent=1, ensure_ascii=False, cls=TimeEncoder))
 
 
 def write_to_json_file(filename, an_object):

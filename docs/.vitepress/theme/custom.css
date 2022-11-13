@@ -1,8 +1,13 @@
 /* .vitepress/theme/custom.css */
+/* https: //github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css */
 
 :root {
     --vp-c-brand: #646cff;
     --vp-c-brand-light: #747bff;
+    --vp-c-green-dark: #2731f7;
+    --vp-c-green-darker: #1622fb;
+    /* --vp-c-brand-dark: #646cff;
+    --vp-c-brand-darker: #747bff; */
 
     --vp-c-hover: #212121;
     --vp-c-bg: #fff;

@@ -1,15 +1,15 @@
 ---
 title: Python Lib
 created_at: 2022-02-01T05:44:43.000Z
-updated_at: 2022-09-10T06:02:43.000Z
-word_count: 19385
+updated_at: 2022-11-13T14:16:01.000Z
+word_count: 19490
 ---
 # Python Lib  
 ## [—— Moudle ——](https://docs.python.org/zh-cn/3/library/index.html)
 
-## —— 数据类型
+## 数据类型
 
-## [datetime--- 基本的日期和时间类型](https://docs.python.org/zh-cn/3/library/datetime.html)
+### [datetime--- 基本的日期和时间类型](https://docs.python.org/zh-cn/3/library/datetime.html)
 **常量**
 
 - datetime.MINYEAR——1
@@ -123,7 +123,7 @@ str互换datetime
 ```
 
 
-## [time--- 时间的访问和转换](https://docs.python.org/zh-cn/3/library/time.html)
+### [time--- 时间的访问和转换](https://docs.python.org/zh-cn/3/library/time.html)
 | 从 | 到 | 使用 |
 | --- | --- | --- |
 | 自纪元以来的秒数 | UTC 的 [struct_time](https://docs.python.org/zh-cn/3/library/time.html#time.struct_time) | [gmtime()](https://docs.python.org/zh-cn/3/library/time.html#time.gmtime) |
@@ -152,7 +152,7 @@ str互换datetime
 - time.ctime([secs])：转换以距离初始纪元的秒数表示的时间，形式 'Sun Jun 20 23:21:05 1993' 代表本地时间
 - time.strftime(format[, t])：转换一个元组或 struct_time 表示的由 gmtime() 或 localtime() 返回的时间到由 format 参数指定的字符串
 - time.strptime(string[, format])：根据格式解析表示时间的字符串
-## [collections--- 容器数据类型](https://docs.python.org/zh-cn/3/library/collections.html)
+### [collections--- 容器数据类型](https://docs.python.org/zh-cn/3/library/collections.html)
 | [namedtuple()](https://docs.python.org/zh-cn/3/library/collections.html#collections.namedtuple) | 创建命名元组子类的工厂函数 |
 | --- | --- |
 | [deque](https://docs.python.org/zh-cn/3/library/collections.html#collections.deque) | 类似列表(list)的容器，实现了在两端快速添加(append)和弹出(pop) |
@@ -164,7 +164,7 @@ str互换datetime
 | [UserList](https://docs.python.org/zh-cn/3/library/collections.html#collections.UserList) | 封装了列表对象，简化了列表子类化 |
 | [UserString](https://docs.python.org/zh-cn/3/library/collections.html#collections.UserString) | 封装了列表对象，简化了字符串子类化 |
 
-### namedtuple
+#### namedtuple
 **namedtuple(typename, field_names, *, rename=False, defaults=None, module=None)**  <br />  元组子类，可以通过域名来获取属性值，也可以通过索引和迭代获取值。
 ```javascript
 >>> from collections import namedtuple
@@ -175,7 +175,8 @@ str互换datetime
 >>> p.y
 2
 ```
-### deque
+
+#### deque
 **class collections.deque([iterable[, maxlen]])**	双向队列
 
 - append(x)		添加 x 到右端。
@@ -243,7 +244,7 @@ IndexError: pop from an empty deque
 >>> d
 deque(['c', 'b', 'a'])
 ```
-### Counter
+#### Counter
 **class collections.Counter([iterable-or-mapping])**  <br />  字典的子类，不限制键和值
 
 - elements()：返回一个迭代器，其中每个元素将重复出现计数值所指定次。 元素会按首次出现的顺序返回。 如果一个元素的计数值<1，忽略。
@@ -278,7 +279,7 @@ Counter({'a': 2})
 >>> -c
 Counter({'b': 4})
 ```
-### defaultdict
+#### defaultdict
 **class collections.defaultdict([default_factory[, ...]])**  <br />  可以一个键映射多个值的默认值字典
 ```javascript
 >>> from collections import defaultdict
@@ -298,13 +299,13 @@ s = [('red', 1), ('blue', 2), ('red', 3), ('blue', 4), ('red', 1), ('blue', 4)]
 >>> sorted(d.items())
 [('blue', {2, 4}), ('red', {1, 3})]
 ```
-### OrderedDict
+#### OrderedDict
 **class collections.OrderedDict([items])**
 
 - popitem(last=True)：移除并返回一个 (key, value) 键值对。 如果 last 值为真，则按 LIFO 后进先出的顺序返回键值对，否则就按 FIFO 先进先出的顺序返回键值对。
 - move_to_end(key, last=True)：将现有 key 移动到有序字典的任一端。 如果 last 为真值（默认）则将元素移至末尾；如果 last 为假值则将元素移至开头。如果 key 不存在则会触发 KeyError
 
-### ChainMap
+#### ChainMap
 **class collections.ChainMap(*maps)**  <br />  将多个映射快速的链接到一起  <br />  支持所有常用字典方法。还有一个 maps 属性(attribute)，一个创建子上下文的方法(method)， 一个存取它们首个映射的属性(property)
 ```javascript
 >>> a = {'x': 1, 'z': 3 }
@@ -316,7 +317,35 @@ s = [('red', 1), ('blue', 2), ('red', 3), ('blue', 4), ('red', 1), ('blue', 4)]
 >>> merged['x'] # Notice change to merged dicts
 42
 ```
-## queue --- 一个同步的队列类
+
+### [heapq](https://docs.python.org/zh-cn/3/library/heapq.html) --- 堆队列算法
+> 堆是一个二叉树，它的每个父节点的值都只会小于或大于所有孩子节点（的值）。它使用了数组来实现：从零开始计数，对于所有的 k ，都有 heap[k] <= heap[2_k+1] 和 heap[k] <= heap[2_k+2]。
+
+- 最小堆
+- 索引从 0 开始，最小的元素总是在根结点：heap[0]
+- pop 方法返回最小的项
+
+方法
+
+- heapq.heappush(heap, item)：将 item 的值加入 heap 中，保持堆的不变性。
+- heapq.heappop(heap)：弹出并返回 heap 的最小的元素，保持堆的不变性。如果堆为空，抛出 IndexError 。
+- heapq.heappushpop(heap, item)：将 item 放入堆中，然后弹出并返回 heap 的最小元素。该组合操作比先调用  heappush() 再调用 heappop() 运行起来更有效率。
+- heapq.heapify(x)：将list x 转换成堆，原地，线性时间内。
+- heapq.heapreplace(heap, item)：弹出并返回 heap 中最小的一项，同时推入新的 item。 堆的大小不变。 如果堆为空则引发 IndexError。
+- heapq.merge(*iterables, key=None, reverse=False)：将多个已排序的输入合并为一个已排序的输出，返回已排序值的 iterator。
+- heapq.nlargest(n, iterable, key=None)：从 iterable 所定义的数据集中返回前 n 个最大元素组成的列表。
+- heapq.nsmallest(n, iterable, key=None)：从 iterable 所定义的数据集中返回前 n 个最小元素组成的列表。
+```python
+def heapsort(iterable):
+    h = []
+    for value in iterable:
+        heappush(h, value)
+    return [heappop(h) for i in range(len(h))]
+
+heapsort([1, 3, 5, 7, 9, 2, 4, 6, 8, 0])
+```
+
+### [queue](https://docs.python.org/zh-cn/3/library/queue.html) --- 一个同步的队列类
 **class queue.Queue(maxsize=0)	FIFO**  <br />  maxsize 用于设置可以放入队列中的项目数的上限。当达到这个大小的时候，插入操作将阻塞至队列中的项目被消费掉。如果 maxsize = 0，队列尺寸为无限大。  <br />  **class queue.LifoQueue(maxsize=0)**	LIFO  <br />  **class queue.PriorityQueue(maxsize=0)**	优先级队列
 ```javascript
 from dataclasses import dataclass, field
@@ -337,24 +366,9 @@ class PrioritizedItem:
 - Queue.get_nowait()：相当于 get(False) 。
 - Queue.task_done()：表示前面排队的任务已经被完成
 - Queue.join()：阻塞至队列中所有的元素都被接收和处理完毕
-## heapq --- 堆队列算法
-> 堆是一个二叉树，它的每个父节点的值都只会小于或大于所有孩子节点（的值）。它使用了数组来实现：从零开始计数，对于所有的 k ，都有 heap[k] <= heap[2_k+1] 和 heap[k] <= heap[2_k+2]。
 
-- 最小堆
-- 索引从 0 开始，最小的元素总是在根结点：heap[0]
-- pop 方法返回最小的项
 
-方法
-
-- heapq.heappush(heap, item)：将 item 的值加入 heap 中，保持堆的不变性。
-- heapq.heappop(heap)：弹出并返回 heap 的最小的元素，保持堆的不变性。如果堆为空，抛出 IndexError 。
-- heapq.heappushpop(heap, item)：将 item 放入堆中，然后弹出并返回 heap 的最小元素。该组合操作比先调用  heappush() 再调用 heappop() 运行起来更有效率。
-- heapq.heapify(x)：将list x 转换成堆，原地，线性时间内。
-- heapq.heapreplace(heap, item)：弹出并返回 heap 中最小的一项，同时推入新的 item。 堆的大小不变。 如果堆为空则引发 IndexError。
-- heapq.merge(*iterables, key=None, reverse=False)：将多个已排序的输入合并为一个已排序的输出，返回已排序值的 iterator。
-- heapq.nlargest(n, iterable, key=None)：从 iterable 所定义的数据集中返回前 n 个最大元素组成的列表。
-- heapq.nsmallest(n, iterable, key=None)：从 iterable 所定义的数据集中返回前 n 个最小元素组成的列表。
-## bisect --- 数组二分查找算法
+### [bisect](https://docs.python.org/zh-cn/3/library/bisect.html) --- 数组二分查找算法
 二分（bisection）算法
 
 - bisect.bisect_left(a, x, lo=0, hi=len(a))：在 a 中找到 x 合适的插入点以维持有序。参数 lo 和 hi 可以被用于确定需要考虑的子集；默认情况下整个列表都会被使用。如果 x 已经在 a 里存在，那么插入点会在已存在元素之前（也就是左边）。
@@ -366,7 +380,44 @@ class PrioritizedItem:
 - bisect.insort_left(a, x, lo=0, hi=len(a))：将 x 插入到一个有序序列 a 里，并维持其有序。如果 a 有序的话，这相当于 a.insert(bisect.bisect_left(a, x, lo, hi), x)。要注意搜索是 O(log n) 的，插入却是 O(n) 的。
 - bisect.insort_right(a, x, lo=0, hi=len(a))
 - bisect.insort(a, x, lo=0, hi=len(a))：类似于 insort_left()，但是把 x 插入到 a 中已存在元素 x 的右侧。
-## [re--- 正则表达式操作](https://docs.python.org/zh-cn/3/library/re.html)
+
+### [array](https://docs.python.org/zh-cn/3/library/array.html) --- 高效的数值数组
+定义了一种对象类型，可以紧凑地表示基本类型值的数组：字符、整数、浮点数等。 数组属于序列类型，其行为与列表非常相似，不同之处在于其中存储的对象类型是受限的。
+
+| 类型码 | C 类型 | Python 类型 | 以字节表示的最小尺寸 |
+| --- | --- | --- | --- |
+| 'b' | signed char | int | 1 |
+| 'B' | unsigned char | int | 1 |
+| 'u' | Py_UNICODE | Unicode 字符 | 2 |
+| 'h' | signed short | int | 2 |
+| 'H' | unsigned short | int | 2 |
+| 'i' | signed int | int | 2 |
+| 'I' | unsigned int | int | 2 |
+| 'l' | signed long | int | 4 |
+| 'L' | unsigned long | int | 4 |
+| 'q' | signed long long | int | 8 |
+| 'Q' | unsigned long long | int | 8 |
+| 'f' | float | float | 4 |
+| 'd' | double | float | 8 |
+
+**class array.array(typecode[, initializer])**：一个包含由 typecode 限制类型的条目的新数组，并由可选的 initializer 值进行初始化，该值必须为一个列表、[bytes-like object](https://docs.python.org/zh-cn/3/glossary.html#term-bytes-like-object) 或包含正确类型元素的可迭代对象。  <br />  **array.typecode**：用于创建数组的类型码字符。  <br />  **array.itemsize**：在内部表示中一个数组项的字节长度。  <br />  **array.append(x)**：添加一个值为 x 的新项到数组末尾。  <br />  **array.buffer_info()**：返回一个元组 (address, length) 以给出用于存放数组内容的缓冲区元素的当前内存地址和长度。 以字节表示的内存缓冲区大小可通过 array.buffer_info()[1] * array.itemsize 来计算。 这在使用需要内存地址的低层级（因此不够安全） I/O 接口时会很有用，例如某些 ioctl() 操作。 只要数组存在并且没有应用改变长度的操作，返回数值就是有效的。  <br />  **array.byteswap()**：“字节对调”所有数组项。 此方法只支持大小为 1, 2, 4 或 8 字节的值；对于其他值类型将引发 RuntimeError。 它适用于从不同字节序机器所生成的文件中读取数据的情况。  <br />  **array.count(x)**：返回 x 在数组中的出现次数。  <br />  **array.extend(iterable)**：将来自 iterable 的项添加到数组末尾。 如果 iterable 是另一个数组，它必须具有 完全 相同的类型码；否则将引发 TypeError。 如果 iterable 不是一个数组，则它必须为可迭代对象并且其元素必须为可添加到数组的适当类型。  <br />  **array.frombytes(s)**：添加来自字符串的项，将字符串解读为机器值的数组（相当于使用 fromfile() 方法从文件中读取数据）。  <br />  **array.fromfile(f, n)**：从 file object f 中读取 n 项（解读为机器值）并将它们添加到数组末尾。 如果可读取数据少于 n 项则将引发 EOFError，但有效的项仍然会被插入数组。 f 必须为一个真实的内置文件对象；不支持带有 read() 方法的其它对象。  <br />  **array.fromlist(list)**：添加来自 list 的项。 这等价于 for x in list: a.append(x)，区别在于如果发生类型错误，数组将不会被改变。  <br />  **array.fromunicode(s)**：使用来自给定 Unicode 字符串的数组扩展数组。 数组必须是类型为 'u' 的数组；否则将引发 ValueError。 请使用 array.frombytes(unicodestring.encode(enc)) 来将 Unicode 数据添加到其他类型的数组。  <br />  **array.index(x)**：返回最小的 i 使得 i 为 x 在数组中首次出现的序号。  <br />  **array.insert(i, x)**：将值 x 作为新项插入数组的 i 位置之前。 负值将被视为相对于数组末尾的位置。  <br />  **array.pop([i])**：从数组中移除序号为 i 的项并将其返回。 可选参数值默认为 -1，因此默认将移除并返回末尾项。  <br />  **array.remove(x)**：从数组中移除首次出现的 x。  <br />  **array.reverse()**：反转数组中各项的顺序。  <br />  **array.tobytes()**：将数组转换为一个机器值数组并返回其字节表示（即相当与通过 tofile() 方法写入到文件的字节序列。）  <br />  **array.tofile(f)**：将所有项（作为机器值）写入到 file object f。  <br />  **array.tolist()**：将数组转换为包含相同项的普通列表。  <br />  **array.tounicode()**：将数组转换为一个 Unicode 字符串。 数组必须是类型为 'u' 的数组；否则将引发 ValueError。 请使用 array.tobytes().decode(enc) 来从其他类型的数组生成 Unicode 字符串。
+
+
+### [dataclasses](https://docs.python.org/zh-cn/3/library/dataclasses.html#module-dataclasses) --- 数据类
+@dataclasses.dataclass(*, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False)	用于将生成的 [special method](https://docs.python.org/zh-cn/3/glossary.html#term-special-method) 添加到类中
+```javascript
+@dataclass
+class C:
+    a: int       # 'a' has no default value
+    b: int = 0   # assign a default value for 'b'
+    
+# a 和 b 都将包含在添加的 __init__() 方法中，它们将被定义为:
+def __init__(self, a: int, b: int = 0):
+```
+dataclasses.field(*, default=MISSING, default_factory=MISSING, init=True, repr=True, hash=None, compare=True, metadata=None, kw_only=MISSING)  <br />  dataclasses.asdict(instance, *, dict_factory=dict)	将数据类 instance 转换为字典  <br />  dataclasses.astuple(instance, *, tuple_factory=tuple)	将数据类 instance 转换为元组
+
+
+### [re--- 正则表达式操作](https://docs.python.org/zh-cn/3/library/re.html)
 ```javascript
 import re
 Chinese = re.compile('[\u4e00-\u9fa5]')  # 中文的编码范围
@@ -413,16 +464,18 @@ return 'zh-CN'
 - groups()：返回一个包含所有小组字符串的元组，从 1 到 所含的小组号。
 
 
-## —— 函数式编程模块
-## [itertools--- 为高效循环而创建迭代器的函数](https://docs.python.org/zh-cn/3/library/itertools.html)
-### 无穷迭代器
+## 函数式编程模块
+### [itertools--- 为高效循环而创建迭代器的函数](https://docs.python.org/zh-cn/3/library/itertools.html)
+无穷迭代器
+
 | 迭代器 | 实参 | 结果 | 示例 |
 | --- | --- | --- | --- |
 | [count()](https://docs.python.org/zh-cn/3/library/itertools.html?highlight=itertools#itertools.count) | start, [step] | start, start+step, start+2*step, ... | count(10) --> 10 11 12 13 14... |
 | [cycle()](https://docs.python.org/zh-cn/3/library/itertools.html?highlight=itertools#itertools.cycle) | p | p0, p1, ... plast, p0, p1, ... | cycle('ABCD') --> A B C D A B CD ... |
 | [repeat()](https://docs.python.org/zh-cn/3/library/itertools.html?highlight=itertools#itertools.repeat) | elem [,n] | elem, elem, elem, ... 重复无限次或n次 | repeat(10, 3) --> 10 10 10 |
 
-### 根据最短输入序列长度停止的迭代器
+根据最短输入序列长度停止的迭代器
+
 | 迭代器 | 实参 | 结果 | 示例 |
 | --- | --- | --- | --- |
 | [accumulate()](https://docs.python.org/zh-cn/3/library/itertools.html?highlight=itertools#itertools.accumulate) | p [,func] | p0, p0+p1, p0+p1+p2, ... | accumulate([1,2,3,4,5]) --> 1 3 610 15 |
@@ -438,7 +491,8 @@ return 'zh-CN'
 | [tee()](https://docs.python.org/zh-cn/3/library/itertools.html?highlight=itertools#itertools.tee) | it, n | it1, it2, ... itn 将一个迭代器拆分为n个迭代器 |  |
 | [zip_longest()](https://docs.python.org/zh-cn/3/library/itertools.html?highlight=itertools#itertools.zip_longest) | p, q, ... | (p[0], q[0]), (p[1], q[1]), ... | zip_longest('ABCD', 'xy',fillvalue='-') --> Ax By C- D- |
 
-### 排列组合迭代器
+排列组合迭代器
+
 | 迭代器 | 实参 | 结果 |
 | --- | --- | --- |
 | [product()](https://docs.python.org/zh-cn/3/library/itertools.html?highlight=itertools#itertools.product) | p, q, ... [repeat=1] | 笛卡尔积，相当于嵌套的for循环 |
@@ -453,7 +507,28 @@ return 'zh-CN'
 | combinations('ABCD', 2) | AB AC AD BC BD CD |
 | combinations_with_replacement('ABCD', 2) | AA AB AC AD BB BC BD CC CD DD |
 
-## operator --- 标准运算符替代函数
+
+### [functools--- 高阶函数和可调用对象上的操作](https://docs.python.org/zh-cn/3/library/functools.html)
+@functools.cache(user_function)	简单轻量级未绑定函数缓存  <br />  **@functools.cached_property(func)**：将一个类方法转换为特征属性，一次性计算该特征属性的值，然后将其缓存为实例生命周期内的普通属性。  <br />  **@functools.lru_cache(user_function)**  <br />  **@functools.lru_cache(maxsize=128, typed=False)**  <br />  **@functools.total_ordering**：给定一个声明一个或多个全比较排序方法的类，这个类装饰器实现剩余的方法  <br />  **@functools.singledispatch**：将一个函数转换为 单分派 generic function  <br />  **@functools.wraps(wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)**：用于在定义包装器函数时发起调用 update_wrapper() 作为函数装饰器
+
+**functools.partial(func, /, *args, **keywords)**：返回一个新的部分对象，当被调用时其行为类似于 func 附带位置参数 args 和关键字参数 keywords 被调用。  <br />  **functools.reduce(function, iterable[, initializer])**  <br />  **functools.update_wrapper(wrapper, wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)**：更新一个 wrapper 函数以使其类似于 wrapped 函数
+
+**class functools.partialmethod(func, /, *args, **keywords)**：返回一个新的 partialmethod 描述器，其行为类似 partial 但它被设计用作方法定义而非直接用作可调用对象。  <br />  **class functools.singledispatchmethod(func)**：将一个方法转换为 单分派 generic function
+```python
+@lru_cache(maxsize=None)
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+>>> [fib(n) for n in range(16)]
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
+
+>>> fib.cache_info()
+CacheInfo(hits=28, misses=16, maxsize=None, currsize=16)
+```
+
+### operator --- 标准运算符替代函数
 | 运算 | 语法 | 函数 |
 | --- | --- | --- |
 | 加法 | a + b | add(a, b) |
@@ -498,219 +573,10 @@ return 'zh-CN'
 
 **原地运算符**  <br />  operator.**iadd**(a, b)  <br />  operator.**__iadd__**(a, b)  <br />  a = iadd(a, b) 等价于 a += b。  <br />  operator.**iand**(a, b)  <br />  operator.**__iand__**(a, b)  <br />  a = iand(a, b) 等价于 a &= b。  <br />  operator.**iconcat**(a, b)  <br />  operator.**__iconcat__**(a, b)  <br />  a = iconcat(a, b) 等价于 a += b 其中 a 和 b 为序列。  <br />  operator.**ifloordiv**(a, b)  <br />  operator.**__ifloordiv__**(a, b)  <br />  a = ifloordiv(a, b) 等价于 a //= b。  <br />  operator.**ilshift**(a, b)  <br />  operator.**__ilshift__**(a, b)  <br />  a = ilshift(a, b) 等价于 a <<= b。  <br />  operator.**imod**(a, b)  <br />  operator.**__imod__**(a, b)  <br />  a = imod(a, b) 等价于 a %= b。  <br />  operator.**imul**(a, b)  <br />  operator.**__imul__**(a, b)  <br />  a = imul(a, b) 等价于 a *= b。  <br />  operator.**imatmul**(a, b)  <br />  operator.**__imatmul__**(a, b)  <br />  a = imatmul(a, b) 等价于 a @= b。  <br />  operator.**ior**(a, b)  <br />  operator.**__ior__**(a, b)  <br />  a = ior(a, b) 等价于 a |= b。  <br />  operator.**ipow**(a, b)  <br />  operator.**__ipow__**(a, b)  <br />  a = ipow(a, b) 等价于 a **= b。  <br />  operator.**irshift**(a, b)  <br />  operator.**__irshift__**(a, b)  <br />  a = irshift(a, b) 等价于 a >>= b。  <br />  operator.**isub**(a, b)  <br />  operator.**__isub__**(a, b)  <br />  a = isub(a, b) 等价于 a -= b。  <br />  operator.**itruediv**(a, b)  <br />  operator.**__itruediv__**(a, b)  <br />  a = itruediv(a, b) 等价于 a /= b。  <br />  operator.**ixor**(a, b)  <br />  operator.**__ixor__**(a, b)  <br />  a = ixor(a, b) 等价于 a ^= b。
 
-## [functools--- 高阶函数和可调用对象上的操作](https://docs.python.org/zh-cn/3/library/functools.html)
-**@functools.cached_property(func)**：将一个类方法转换为特征属性，一次性计算该特征属性的值，然后将其缓存为实例生命周期内的普通属性。  <br />  **@functools.lru_cache(user_function)**  <br />  **@functools.lru_cache(maxsize=128, typed=False)**  <br />  **@functools.total_ordering**：给定一个声明一个或多个全比较排序方法的类，这个类装饰器实现剩余的方法  <br />  **@functools.singledispatch**：将一个函数转换为 单分派 generic function  <br />  **@functools.wraps(wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)**：用于在定义包装器函数时发起调用 update_wrapper() 作为函数装饰器
 
-**functools.cmp_to_key(func)**  <br />  **functools.partial(func, /, *args, **keywords)**：返回一个新的部分对象，当被调用时其行为类似于 func 附带位置参数 args 和关键字参数 keywords 被调用。  <br />  **functools.reduce(function, iterable[, initializer])**  <br />  **functools.update_wrapper(wrapper, wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)**：更新一个 wrapper 函数以使其类似于 wrapped 函数
+## 文件和目录访问
 
-**class functools.partialmethod(func, /, *args, **keywords)**：返回一个新的 partialmethod 描述器，其行为类似 partial 但它被设计用作方法定义而非直接用作可调用对象。  <br />  **class functools.singledispatchmethod(func)**：将一个方法转换为 单分派 generic function
-```python
->>> import functools
->>> int2 = functools.partial(int, base=2)
->>> int2('1000000')
-64
-```
-## timeit --- 测量小代码片段的执行时间
-**命令行界面**  <br />  **python -m timeit [-n N] [-r N] [-u U] [-s S] [-h] [statement ...]**
-
-- -n N, --number=N		执行 '语句' 多少次
-- -r N, --repeat=N		重复计时器的次数（默认为5）
-- -s S, --setup=S		最初要执行一次的语句（默认为 pass ）
-- -p, --process	测量进程时间，使用 time.process_time() 而不是 time.perf_counter() ，这是默认值
-- -u, --unit=U		指定定时器输出的时间单位；可以选择 nsec，usec，msec或sec
-- -v, --verbose	打印原始计时结果；重复更多位数精度
-- -h, --help		打印一条简短的使用信息并退出
-```javascript
-python -m timeit "'-'.join(map(str, range(100)))"
-```
-**API**
-
-- timeit.timeit(stmt='pass', setup='pass', timer=, number=1000000, globals=None)
-- timeit.repeat(stmt='pass', setup='pass', timer=, repeat=5, number=1000000, globals=None)
-- timeit.default_timer()	默认的计时器，总是 time.perf_counter() 。
-
-class timeit.Timer(stmt='pass', setup='pass', timer=, globals=None)  <br />  用于小代码片段的计数执行速度的类
-```javascript
-// 对比使用 hasattr() 与 try/except 的开销来测试缺失与提供对象属性
->>> import timeit
->>> # attribute is missing
->>> s = """\
-... try:
-...     str.__bool__
-... except AttributeError:
-...     pass
-... """
->>> timeit.timeit(stmt=s, number=100000)
-0.9138244460009446
->>> s = "if hasattr(str, '__bool__'): pass"
->>> timeit.timeit(stmt=s, number=100000)
-0.5829014980008651
-```
-```javascript
-def f(x):
-    return x**2
-def g(x):
-    return x**4
-def h(x):
-    return x**8
-import timeit
-print(timeit.timeit('[func(42) for func in (f,g,h)]', globals=globals()))
-```
-## pickle --- Python 对象序列化
-对一个 Python 对象结构的二进制序列化和反序列化
-
-- 封存 (pickling)：将 Python 对象及其所拥有的层次结构转化为一个字节流的过程
-- 解封 (unpickling)
-
-方法
-
-- pickle.dump(obj, file, protocol=None, *, fix_imports=True, buffer_callback=None)
-   - 将对象 obj 封存以后的对象写入已打开的 file object file
-- pickle.dumps(obj, protocol=None, *, fix_imports=True, buffer_callback=None)
-   - 将 obj 封存以后的对象作为 bytes 类型直接返回，而不是将其写入到文件
-- pickle.load(file, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)
-   - 从已打开的 file object 文件 中读取封存后的对象，重建其中特定对象的层次结构并返回
-- pickle.loads(bytes_object, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)
-   - 对于封存生成的对象 bytes_object，还原出原对象的结构并返回
-```python
-import pickle
-<bytes>  = pickle.dumps(<object>)
-<object> = pickle.loads(<bytes>)
-
-def read_pickle_file(filename):
-    with open(filename, 'rb') as file:
-        return pickle.load(file)
-    
-def write_to_pickle_file(filename, an_object):
-    with open(filename, 'wb') as file:
-        pickle.dump(an_object, file)
-```
-
-class pickle.Pickler(file, protocol=None, *, fix_imports=True, buffer_callback=None)  <br />  接受一个二进制文件用于写入 pickle 数据流
-
-- dump(obj)
-- 将 obj 封存后的内容写入已打开的文件对象，该文件对象已经在构造函数中指定
-- persistent_id(obj)
-- 默认无动作，子类继承重载时使用
-- reducer_override(self, obj)
-- 可以在 Pickler 的子类中定义的特殊 reducer
-
-class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)  <br />  接受一个二进制文件用于读取 pickle 数据流
-
-- load()：从构造函数中指定的文件对象里读取封存好的对象，重建其中特定对象的层次结构并返回
-- persistent_load(pid)：默认抛出 UnpicklingError 异常
-- find_class(module, name)：如有必要，导入 module 模块并返回其中名叫 name 的对象
-
-**class pickle.PickleBuffer(buffer)**  <br />  缓冲区的包装器 (wrapper)，缓冲区中包含着可封存的数据
-
-- raw()：返回该缓冲区底层内存区域的 memoryview
-- release()：释放由 PickleBuffer 占用的底层缓冲区
-## [json--- JSON 编码和解码器](https://docs.python.org/zh-cn/3/library/json.html)
-
-- json.dump(obj, fp, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False, **kw)
-   - 将 obj 序列化为 JSON 格式化流形式
-- json.load(fp, *, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
-
-- json.dumps(obj, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False, **kw)
-   - 将 obj 序列化为 JSON 格式的 str
-- json.loads(s, *, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
-
-class json.**JSONDecoder**(*, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, strict=True, object_pairs_hook=None)  <br />  简单的JSON解码器  <br />  class json.**JSONEncoder**(*, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, sort_keys=False, indent=None, separators=None, default=None)  <br />  用于Python数据结构的可扩展JSON编码器
-```python
-import json
-<str>    = json.dumps(<object>, ensure_ascii=True, indent=None)
-<object> = json.loads(<str>)
-
-def read_json_file(filename):
-    with open(filename, encoding='utf-8') as file:
-        return json.load(file)
-    
-def write_to_json_file(filename, an_object):
-    with open(filename, 'w', encoding='utf-8') as file:
-        json.dump(an_object, file, ensure_ascii=False, indent=2)
-```
-## csv --- CSV 文件读写
-csv.reader(csvfile, dialect='excel', **fmtparams)  <br />  csv.writer(csvfile, dialect='excel', **fmtparams)
-```python
-import csv
-
-def read_csv_file(filename):
-    with open(filename, encoding='utf-8', newline='') as file:
-        return list(csv.reader(file, delimiter=':', quoting=csv.QUOTE_NONE))        
-
-def write_to_csv_file(filename, rows):
-    with open(filename, 'w', encoding='utf-8', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerows(rows)
-```
-class csv.DictReader(f, fieldnames=None, restkey=None, restval=None, dialect='excel', *args, **kwds)  <br />  class csv.DictWriter(f, fieldnames, restval='', extrasaction='raise', dialect='excel', *args, **kwds)
-```python
-import csv
-
-with open('names.csv', newline='') as csvfile:
-     reader = csv.DictReader(csvfile)
-     for row in reader:
-        print(row['first_name'], row['last_name'])
-    
-with open('names.csv', 'w', newline='') as csvfile:
-    fieldnames = ['first_name', 'last_name']
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    writer.writeheader()
-    writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
-```
-class csv.Dialect	一个容器类，其属性包含有如何处理双引号、空白符、分隔符等的信息。  <br />  常量  <br />  csv.QUOTE_ALL	指示 writer 对象给所有字段加上引号。  <br />  Reader 对象
-
-- csvreader.dialect	只读，供解析器使用。
-- csvreader.line_num	源迭代器已经读取了的行数。
-
-Writer 对象
-
-- csvwriter.writerow(row)	将 row 形参写入到 writer 的文件对象，根据当前 Dialect 进行格式化
-- csvwriter.writerows(rows)
-- DictWriter.writeheader()	在 writer 的文件对象中，写入一行字段名称（字段名称在构造函数中指定）
-## [html](https://docs.python.org/zh-cn/3/library/html.html#module-html)
-html --- 超文本标记语言支持
-
-- html.escape(s, quote=True)：将字符串中的字符`&` 、 < 和 > 转换为安全的HTML序列。
-- html.unescape(s)：将字符串中的所有命名和数字字符引用 (如 >) 转换为相应的Unicode字符
-
-html.parser --- 简单的 HTML 和 XHTML 解析器  <br />  class html.parser.HTMLParser(*, convert_charrefs=True)	一个能解析无效标记的解析器实例。
-```javascript
-from html.parser import HTMLParser
-class MyHTMLParser(HTMLParser):
-    def handle_starttag(self, tag, attrs):
-        print("Encountered a start tag:", tag)
-    def handle_endtag(self, tag):
-        print("Encountered an end tag :", tag)
-    def handle_data(self, data):
-        print("Encountered some data  :", data)
-
-parser = MyHTMLParser()
-parser.feed('<html><head><title>Test</title></head>'
-            '<body><h1>Parse me!</h1></body></html>')
-```
-html.entities --- HTML 一般实体的定义
-## array --- 高效的数值数组
-定义了一种对象类型，可以紧凑地表示基本类型值的数组：字符、整数、浮点数等。 数组属于序列类型，其行为与列表非常相似，不同之处在于其中存储的对象类型是受限的。
-
-| 类型码 | C 类型 | Python 类型 | 以字节表示的最小尺寸 |
-| --- | --- | --- | --- |
-| 'b' | signed char | int | 1 |
-| 'B' | unsigned char | int | 1 |
-| 'u' | Py_UNICODE | Unicode 字符 | 2 |
-| 'h' | signed short | int | 2 |
-| 'H' | unsigned short | int | 2 |
-| 'i' | signed int | int | 2 |
-| 'I' | unsigned int | int | 2 |
-| 'l' | signed long | int | 4 |
-| 'L' | unsigned long | int | 4 |
-| 'q' | signed long long | int | 8 |
-| 'Q' | unsigned long long | int | 8 |
-| 'f' | float | float | 4 |
-| 'd' | double | float | 8 |
-
-**class array.array(typecode[, initializer])**：一个包含由 typecode 限制类型的条目的新数组，并由可选的 initializer 值进行初始化，该值必须为一个列表、[bytes-like object](https://docs.python.org/zh-cn/3/glossary.html#term-bytes-like-object) 或包含正确类型元素的可迭代对象。  <br />  **array.typecode**：用于创建数组的类型码字符。  <br />  **array.itemsize**：在内部表示中一个数组项的字节长度。  <br />  **array.append(x)**：添加一个值为 x 的新项到数组末尾。  <br />  **array.buffer_info()**：返回一个元组 (address, length) 以给出用于存放数组内容的缓冲区元素的当前内存地址和长度。 以字节表示的内存缓冲区大小可通过 array.buffer_info()[1] * array.itemsize 来计算。 这在使用需要内存地址的低层级（因此不够安全） I/O 接口时会很有用，例如某些 ioctl() 操作。 只要数组存在并且没有应用改变长度的操作，返回数值就是有效的。  <br />  **array.byteswap()**：“字节对调”所有数组项。 此方法只支持大小为 1, 2, 4 或 8 字节的值；对于其他值类型将引发 RuntimeError。 它适用于从不同字节序机器所生成的文件中读取数据的情况。  <br />  **array.count(x)**：返回 x 在数组中的出现次数。  <br />  **array.extend(iterable)**：将来自 iterable 的项添加到数组末尾。 如果 iterable 是另一个数组，它必须具有 完全 相同的类型码；否则将引发 TypeError。 如果 iterable 不是一个数组，则它必须为可迭代对象并且其元素必须为可添加到数组的适当类型。  <br />  **array.frombytes(s)**：添加来自字符串的项，将字符串解读为机器值的数组（相当于使用 fromfile() 方法从文件中读取数据）。  <br />  **array.fromfile(f, n)**：从 file object f 中读取 n 项（解读为机器值）并将它们添加到数组末尾。 如果可读取数据少于 n 项则将引发 EOFError，但有效的项仍然会被插入数组。 f 必须为一个真实的内置文件对象；不支持带有 read() 方法的其它对象。  <br />  **array.fromlist(list)**：添加来自 list 的项。 这等价于 for x in list: a.append(x)，区别在于如果发生类型错误，数组将不会被改变。  <br />  **array.fromunicode(s)**：使用来自给定 Unicode 字符串的数组扩展数组。 数组必须是类型为 'u' 的数组；否则将引发 ValueError。 请使用 array.frombytes(unicodestring.encode(enc)) 来将 Unicode 数据添加到其他类型的数组。  <br />  **array.index(x)**：返回最小的 i 使得 i 为 x 在数组中首次出现的序号。  <br />  **array.insert(i, x)**：将值 x 作为新项插入数组的 i 位置之前。 负值将被视为相对于数组末尾的位置。  <br />  **array.pop([i])**：从数组中移除序号为 i 的项并将其返回。 可选参数值默认为 -1，因此默认将移除并返回末尾项。  <br />  **array.remove(x)**：从数组中移除首次出现的 x。  <br />  **array.reverse()**：反转数组中各项的顺序。  <br />  **array.tobytes()**：将数组转换为一个机器值数组并返回其字节表示（即相当与通过 tofile() 方法写入到文件的字节序列。）  <br />  **array.tofile(f)**：将所有项（作为机器值）写入到 file object f。  <br />  **array.tolist()**：将数组转换为包含相同项的普通列表。  <br />  **array.tounicode()**：将数组转换为一个 Unicode 字符串。 数组必须是类型为 'u' 的数组；否则将引发 ValueError。 请使用 array.tobytes().decode(enc) 来从其他类型的数组生成 Unicode 字符串。
-## [os--- 多种操作系统接口](https://docs.python.org/zh-cn/3/library/os.html)
+### [os--- 多种操作系统接口](https://docs.python.org/zh-cn/3/library/os.html)
 
 - os.name ：获取平台名称
 - os.cpu_count() ：获取系统的核心数
@@ -736,7 +602,7 @@ html.entities --- HTML 一般实体的定义
 
 - os.system(’command‘)	无返回
 - os.popen(cmd, mode='r', buffering=-1)	可读取返回
-## [pathlib--- 面向对象的文件系统路径](https://docs.python.org/zh-cn/3/library/pathlib.html)
+### [pathlib--- 面向对象的文件系统路径](https://docs.python.org/zh-cn/3/library/pathlib.html)
 
 - PurePath.parent	父路径
 - PurePath.name	最后路径组件的字符串
@@ -834,7 +700,7 @@ def listFile(path, level=0, preflag=True, flag=True, placeholder='', depth=3, hi
 p = Path(r'D://')
 listFile(p)
 ```
-## [shutil--- 高阶文件操作](https://docs.python.org/zh-cn/3/library/shutil.html)
+### [shutil--- 高阶文件操作](https://docs.python.org/zh-cn/3/library/shutil.html)
 
 - shutil.copy(src, dst, *, follow_symlinks=True)：将文件 src 拷贝到文件或目录 dst
 - shutil.copy2(src, dst, *, follow_symlinks=True)：类似于 copy()，会尝试保留文件的元数据
@@ -845,161 +711,256 @@ listFile(p)
 - shutil.make_archive(base_name, format[, root_dir[, base_dir[, verbose[, dry_run[, owner[, group[, logger]]]]]]])：创建一个归档文件（例如 zip 或 tar）并返回其名称
 - shutil.unpack_archive(filename[, extract_dir[, format]])：解包一个归档文件
 - shutil.get_terminal_size(fallback=(columns, lines))：获取终端窗口的尺寸
-## glob --- Unix 风格路径名模式扩展
+### [glob](https://docs.python.org/zh-cn/3/library/glob.html) --- Unix 风格路径名模式扩展
 
 - glob.glob(pathname, *, recursive=False)：返回匹配 pathname 的可能为空的路径名列表
 - glob.iglob(pathname, *, recursive=False)：返回一个 iterator，它会产生与 glob() 相同的结果，但不会实际地同时保存它们
 - glob.escape(pathname)：转义所有特殊字符 ('?', '*' 和 '[')
-## [sys--- 系统相关的参数和函数](https://docs.python.org/zh-cn/3/library/sys.html)
 
-- sys.argv 命令行参数List，第一个元素是程序本身路径
-- sys.path 返回模块的搜索路径，初始化时使用PYTHONPATH环境变量的值
-- sys.modules.keys() 返回所有已经导入的模块列表
-- sys.modules 返回系统导入的模块字段，key是模块名，value是模块
-- sys.exc_info() 获取当前正在处理的异常类,exc_type、exc_value、exc_traceback当前处理的异常详细信息
-- sys.exit(n) 退出程序，正常退出时exit(0)
-- sys.hexversion 获取Python解释程序的版本值，16进制格式如：0x020403F0
-- sys.version 获取Python解释程序的版本信息
-- sys.platform 返回操作系统平台名称
-- sys.stdout 标准输出
-- sys.stdout.write(‘aaa‘) 标准输出内容
-- sys.stdout.writelines() 无换行输出
-- sys.stdin 标准输入
-- sys.stdin.read() 输入一行
-- sys.stderr 错误输出
-- sys.exc_clear() 用来清除当前线程所出现的当前的或最近的错误信息
-- sys.exec_prefix 返回平台独立的python文件安装的位置
-- sys.byteorder 本地字节规则的指示器，big-endian平台的值是‘big‘,little-endian平台的值是‘little‘
-- sys.copyright 记录python版权相关的东西
-- sys.api_version 解释器的C的API版本
-- sys.version_info ‘final‘表示最终,也有‘candidate‘表示候选，表示版本级别，是否有后继的发行
-- sys.getdefaultencoding() 返回当前你所用的默认的字符编码格式
-- sys.getfilesystemencoding() 返回将Unicode文件名转换成系统文件名的编码的名字
-- sys.builtin_module_names Python解释器导入的内建模块列表
-- sys.executable Python解释程序路径
-- sys.getwindowsversion() 获取Windows的版本
-- sys.stdin.readline() 从标准输入读一行，sys.stdout.write(“a”) 屏幕输出a
-- sys.setdefaultencoding(name) 用来设置当前默认的字符编码
+
+## 数据与文件格式
+
+### pickle --- Python 对象序列化
+对一个 Python 对象结构的二进制序列化和反序列化
+
+- 封存 (pickling)：将 Python 对象及其所拥有的层次结构转化为一个字节流的过程
+- 解封 (unpickling)
+
+方法
+
+- pickle.dump(obj, file, protocol=None, *, fix_imports=True, buffer_callback=None)
+   - 将对象 obj 封存以后的对象写入已打开的 file object file
+- pickle.dumps(obj, protocol=None, *, fix_imports=True, buffer_callback=None)
+   - 将 obj 封存以后的对象作为 bytes 类型直接返回，而不是将其写入到文件
+- pickle.load(file, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)
+   - 从已打开的 file object 文件 中读取封存后的对象，重建其中特定对象的层次结构并返回
+- pickle.loads(bytes_object, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)
+   - 对于封存生成的对象 bytes_object，还原出原对象的结构并返回
 ```python
-import sys
-scripts_path = sys.argv[0]
-arguments    = sys.argv[1:]
-```
-## [argparse](https://docs.python.org/zh-cn/3/library/argparse.html#module-argparse) --- 命令行选项、参数和子命令解析器
-class **argparse.ArgumentParser**(prog=None, usage=None, description=None, epilog=None, parents=[], formatter_class=argparse.HelpFormatter, prefix_chars='-', fromfile_prefix_chars=None, argument_default=None, conflict_handler='error', add_help=True, allow_abbrev=True, exit_on_error=True)
+import pickle
+<bytes>  = pickle.dumps(<object>)
+<object> = pickle.loads(<bytes>)
 
-- prog - 程序的名称（默认：sys.argv[0]）
-- usage - 描述程序用途的字符串（默认值：从添加到解析器的参数生成）
-- description - 在参数帮助文档之前显示的文本
-- epilog - 在参数帮助文档之后显示的文本
-- parents - 一个 ArgumentParser 对象的列表，它们的参数也应包含在内
-- formatter_class - 用于自定义帮助文档输出格式的类
-- prefix_chars - 可选参数的前缀字符集合（默认值：'-'）
-- fromfile_prefix_chars - 当需要从文件中读取其他参数时，用于标识文件名的前缀字符集合
-- argument_default - 参数的全局默认值
-- conflict_handler - 解决冲突选项的策略
-- add_help - 为解析器添加一个 -h/--help 选项（默认值： True）
-- allow_abbrev - 如果缩写是无歧义的，则允许缩写长选项 （默认值：True）
-- exit_on_error - 决定当错误发生时是否让 ArgumentParser 附带错误信息退出。 (默认值: True)
-
-ArgumentParser.add_argument(name or flags...[, action][, nargs][, const][, default][, type][, choices][, required][, help][, metavar][, dest])
-
-- name or flags - 一个命名或者一个选项字符串的列表，例如 foo 或 -f, --foo。
-- action - 当参数在命令行中出现时使用的动作基本类型。
-- nargs - 命令行参数应当消耗的数目。
-- const - 被一些 action 和 nargs 选择所需求的常数。
-- default - 当参数未在命令行中出现时使用的值。
-- type - 命令行参数应当被转换成的类型。
-- choices - 可用的参数的容器。
-- required - 此命令行选项是否可省略
-- help - 一个此选项作用的简单描述。
-- metavar - 在使用方法消息中使用的参数值示例。
-- dest - 被添加到 parse_args() 所返回对象上的属性名。
-
-class** argparse.Action**(option_strings, dest, nargs=None, const=None, default=None, type=None, choices=None, required=False, help=None, metavar=None)
-
-ArgumentParser.parse_args(args=None, namespace=None)	将参数字符串转换为对象并将其设为命名空间的属性。  <br />  ArgumentParser.add_subparsers([title][, description][, prog][, parser_class][, action][, option_string][, dest][, required][, help][, metavar])	创建子命令  <br />  ArgumentParser.add_argument_group(title=None, description=None)	创建适当的分组  <br />  ArgumentParser.add_mutually_exclusive_group(required=False)	创建一个互斥组  <br />  ArgumentParser.set_defaults(**kwargs)	解析器默认值
-
-class argparse.FileType(mode='r', bufsize=-1, encoding=None, errors=None)
-```javascript
-import argparse
-parser = argparse.ArgumentParser(description="calculate X to the power of Y")
-group = parser.add_mutually_exclusive_group()
-group.add_argument("-v", "--verbose", action="store_true")
-group.add_argument("-q", "--quiet", action="store_true")
-parser.add_argument("x", type=int, help="the base")
-parser.add_argument("y", type=int, help="the exponent")
-args = parser.parse_args()
-answer = args.x**args.y
-if args.quiet:
-    print(answer)
-elif args.verbose:
-    print("{} to the power {} equals {}".format(args.x, args.y, answer))
-else:
-    print("{}^{} == {}".format(args.x, args.y, answer))
+def read_pickle_file(filename):
+    with open(filename, 'rb') as file:
+        return pickle.load(file)
     
----
-$ python3 prog.py --help
-usage: prog.py [-h] [-v | -q] x y
-calculate X to the power of Y
-positional arguments:
-  x              the base
-  y              the exponent
-optional arguments:
-  -h, --help     show this help message and exit
-  -v, --verbose
-  -q, --quiet
+def write_to_pickle_file(filename, an_object):
+    with open(filename, 'wb') as file:
+        pickle.dump(an_object, file)
 ```
-## [urllib--- URL 处理模块](https://docs.python.org/zh-cn/3/library/urllib.html)
 
-[urllib.request--- 用于打开 URL 的可扩展库](https://docs.python.org/zh-cn/3/library/urllib.request.html)  <br />  **urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)**
+class pickle.Pickler(file, protocol=None, *, fix_imports=True, buffer_callback=None)  <br />  接受一个二进制文件用于写入 pickle 数据流
 
-**class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)**  <br />  **···**
+- dump(obj)
+- 将 obj 封存后的内容写入已打开的文件对象，该文件对象已经在构造函数中指定
+- persistent_id(obj)
+- 默认无动作，子类继承重载时使用
+- reducer_override(self, obj)
+- 可以在 Pickler 的子类中定义的特殊 reducer
 
-[urllib.parse--- Parse URLs into components](https://docs.python.org/zh-cn/3/library/urllib.parse.html)  <br />  [URL 解析](https://docs.python.org/zh-cn/3/library/urllib.parse.html#url-parsing)
+class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)  <br />  接受一个二进制文件用于读取 pickle 数据流
 
-- **parse.urlparse(urlstring, scheme='', allow_fragments=True)	**将一个 URL 解析为六个部分，对应于 `scheme://netloc/path;parameters?query#fragment`
-- parse.urlunparse(parts)	根据 urlparse() 所返回的元组来构造一个 URL
-- parse.urlsplit(urlstring, scheme='', allow_fragments=True)	类似于 urlparse()，但不会拆分来自 URL 的参数
-- parse.urlunsplit(parts)	将 urlsplit() 所返回的元组中的元素合并为一个字符串形式的完整 URL
-- parse.parse_qs(qs, keep_blank_values=False, strict_parsing=False, encoding='utf-8', errors='replace', max_num_fields=None, separator='&')	解析以字符串参数形式（类型为 application/x-www-form-urlencoded 的数据）给出的查询字符串
-- parse.urljoin(base, url, allow_fragments=True)	通过合并一个 "基准 URL" (base) 和另一个 URL (url) 来构造一个完整 ("absolute") URL
-- parse.urldefrag(url)	返回不带片段标识符的 url 修改版本
+- load()：从构造函数中指定的文件对象里读取封存好的对象，重建其中特定对象的层次结构并返回
+- persistent_load(pid)：默认抛出 UnpicklingError 异常
+- find_class(module, name)：如有必要，导入 module 模块并返回其中名叫 name 的对象
 
-[URL 转码](https://docs.python.org/zh-cn/3/library/urllib.parse.html#url-quoting)
+**class pickle.PickleBuffer(buffer)**  <br />  缓冲区的包装器 (wrapper)，缓冲区中包含着可封存的数据
 
-- parse.quote(string, safe='/', encoding=None, errors=None)	使用`%xx` 转义符替换 string 中的特殊字符。 字母、数字和`'_.-~'` 等字符一定不会被转码
-- parse.quote_plus(string, safe='', encoding=None, errors=None)	类似于 quote()，但还会使用加号来替换空格
-- parse.quote_from_bytes(bytes, safe='/')
-- parse.unquote(string, encoding='utf-8', errors='replace')	将 %xx 转义符替换为其单字符等价物
-- parse.unquote_plus(string, encoding='utf-8', errors='replace')
-- parse.urlencode(query, doseq=False, safe='', encoding=None, errors=None, quote_via=quote_plus)	将一个包含有 str 或 bytes 对象的映射对象或二元组序列转换为以百分号编码的 ASCII 文本字符串
+- raw()：返回该缓冲区底层内存区域的 memoryview
+- release()：释放由 PickleBuffer 占用的底层缓冲区
+
+### [json--- JSON 编码和解码器](https://docs.python.org/zh-cn/3/library/json.html)
+
+- json.dump(obj, fp, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False, **kw)
+   - 将 obj 序列化为 JSON 格式化流形式
+- json.load(fp, *, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
+
+- json.dumps(obj, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False, **kw)
+   - 将 obj 序列化为 JSON 格式的 str
+- json.loads(s, *, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
+
+class json.**JSONDecoder**(*, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, strict=True, object_pairs_hook=None)  <br />  简单的JSON解码器  <br />  class json.**JSONEncoder**(*, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, sort_keys=False, indent=None, separators=None, default=None)  <br />  用于Python数据结构的可扩展JSON编码器
+```python
+import json
+
+class TimeEncoder(json.JSONEncoder):
+
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            return obj.strftime('%Y-%m-%d %H:%M:%S')
+        elif isinstance(obj, date):
+            return obj.strftime('%Y-%m-%d')
+        else:
+            return json.JSONEncoder.default(self, obj)
+
+
+<str>    = json.dumps(<object>, ensure_ascii=True, indent=2, cls=TimeEncoder)
+<object> = json.loads(<str>)
+
+def read_json_file(filename):
+    with open(filename, encoding='utf-8') as file:
+        return json.load(file)
+    
+def write_to_json_file(filename, an_object):
+    with open(filename, 'w', encoding='utf-8') as file:
+        json.dump(an_object, file, ensure_ascii=False, indent=2)
+```
+
+### csv --- CSV 文件读写
+csv.reader(csvfile, dialect='excel', **fmtparams)  <br />  csv.writer(csvfile, dialect='excel', **fmtparams)
+```python
+import csv
+
+def read_csv_file(filename):
+    with open(filename, encoding='utf-8', newline='') as file:
+        return list(csv.reader(file, delimiter=':', quoting=csv.QUOTE_NONE))        
+
+def write_to_csv_file(filename, rows):
+    with open(filename, 'w', encoding='utf-8', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerows(rows)
+```
+class csv.DictReader(f, fieldnames=None, restkey=None, restval=None, dialect='excel', *args, **kwds)  <br />  class csv.DictWriter(f, fieldnames, restval='', extrasaction='raise', dialect='excel', *args, **kwds)
+```python
+import csv
+
+with open('names.csv', newline='') as csvfile:
+     reader = csv.DictReader(csvfile)
+     for row in reader:
+        print(row['first_name'], row['last_name'])
+    
+with open('names.csv', 'w', newline='') as csvfile:
+    fieldnames = ['first_name', 'last_name']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
+```
+class csv.Dialect	一个容器类，其属性包含有如何处理双引号、空白符、分隔符等的信息。  <br />  常量  <br />  csv.QUOTE_ALL	指示 writer 对象给所有字段加上引号。  <br />  Reader 对象
+
+- csvreader.dialect	只读，供解析器使用。
+- csvreader.line_num	源迭代器已经读取了的行数。
+
+Writer 对象
+
+- csvwriter.writerow(row)	将 row 形参写入到 writer 的文件对象，根据当前 Dialect 进行格式化
+- csvwriter.writerows(rows)
+- DictWriter.writeheader()	在 writer 的文件对象中，写入一行字段名称（字段名称在构造函数中指定）
+
+### [html](https://docs.python.org/zh-cn/3/library/html.html#module-html) --- 超文本标记语言支持
+
+- html.escape(s, quote=True)：将字符串中的字符`&` 、 < 和 > 转换为安全的HTML序列。
+- html.unescape(s)：将字符串中的所有命名和数字字符引用 (如 >) 转换为相应的Unicode字符
+
+html.parser --- 简单的 HTML 和 XHTML 解析器  <br />  class html.parser.HTMLParser(*, convert_charrefs=True)	一个能解析无效标记的解析器实例。
 ```javascript
-from urllib import request, parse
+from html.parser import HTMLParser
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print("Encountered a start tag:", tag)
+    def handle_endtag(self, tag):
+        print("Encountered an end tag :", tag)
+    def handle_data(self, data):
+        print("Encountered some data  :", data)
 
-print('Login to weibo.cn...')
-email = input('Email: ')
-passwd = input('Password: ')
-login_data = parse.urlencode([
-    ('username', email),
-    ('password', passwd),
-    ('entry', 'mweibo'),
-    ('client_id', ''),
-    ('savestate', '1'),
-    ('ec', ''),
-    ('pagerefer', 'https://passport.weibo.cn/signin/welcome?entry=mweibo&r=http%3A%2F%2Fm.weibo.cn%2F')
-])
-req = request.Request('https://passport.weibo.cn/sso/login')
-req.add_header('Origin', 'https://passport.weibo.cn')
-req.add_header('User-Agent', 'Mozilla/6.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/8.0 Mobile/10A5376e Safari/8536.25')
-req.add_header('Referer', 'https://passport.weibo.cn/signin/login?entry=mweibo&res=wel&wm=3349&r=http%3A%2F%2Fm.weibo.cn%2F')
-with request.urlopen(req, data=login_data.encode('utf-8')) as f:
-    print('Status:', f.status, f.reason)
-    for k, v in f.getheaders():
-        print('%s: %s' % (k, v))
-    print('Data:', f.read().decode('utf-8'))
+parser = MyHTMLParser()
+parser.feed('<html><head><title>Test</title></head>'
+            '<body><h1>Parse me!</h1></body></html>')
 ```
-## [threading--- 基于线程的并行](https://docs.python.org/zh-cn/3/library/threading.html)
+html.entities --- HTML 一般实体的定义
+
+### struct --- 将字节串解读为打包的二进制数据
+
+- exception struct.error
+- 会在多种场合下被引发的异常
+- struct.pack(format, v1, v2, ...)
+- 返回一个 bytes 对象，其中包含根据格式字符串 format 打包的值 v1, v2, ... 参数个数必须与格式字符串所要求的值匹配
+- struct.unpack(format, buffer)
+- 根据格式字符串 format 从缓冲区 buffer 解包（假定是由 pack(format, ...) 打包）
+- struct.pack_into(format, buffer, offset, v1, v2, ...)
+- 根据格式字符串 format 打包 v1, v2, ... 等值并将打包的字节串写入可写缓冲区 buffer 从 offset 开始的位置
+- struct.unpack_from(format, buffer, offset=0)
+- struct.iter_unpack(format, buffer)
+- 根据格式字符串 format 以迭代方式从缓冲区 buffer 解包
+- struct.calcsize(format)
+- 返回与格式字符串 format 相对应的结构的大小
+
+**class struct.Struct(format)**  <br />  返回一个新的 Struct 对象，它会根据格式字符串 format 来写入和读取二进制数据
+
+- pack(v1, v2, ...)
+- pack_into(buffer, offset, v1, v2, ...)
+- unpack(buffer)
+- unpack_from(buffer, offset=0)
+- iter_unpack(buffer)
+- format
+- size
+```python
+>>> import struct
+>>> struct.pack('>I', 10240099)  #>表示字节顺序是big-endian，也就是网络序，I表示4字节无符号整数
+b'\x00\x9c@c'
+>>> struct.unpack('>IH', b'\xf0\xf0\xf0\xf0\x80\x80')
+(4042322160, 32896)
+```
+
+### [zipfile--- 使用ZIP存档](https://docs.python.org/zh-cn/3/library/zipfile.html)
+
+_class _zipfile.**ZipFile**(_file_, _mode='r'_, _compression=ZIP_STORED_, _allowZip64=True_, _compresslevel=None_, _*_, _strict_timestamps=True_)  <br />  打开一个 ZIP 文件，_file_ 为一个指向文件的路径
+
+ZipFile.**close**()	关闭归档文件。  <br />  ZipFile.**getinfo**(_name_)	返回一个 [ZipInfo](https://docs.python.org/zh-cn/3/library/zipfile.html#zipfile.ZipInfo) 对象，其中包含有关归档成员 _name_ 的信息  <br />  ZipFile.**infolist**()  <br />  ZipFile.**namelist**()	返回按名称排序的归档成员列表。  <br />  ZipFile.**open**(_name_, _mode='r'_, _pwd=None_, _*_, _force_zip64=False_)	以二进制文件类对象的形式访问一个归档成员。  <br />  ZipFile.**extract**(_member_, _path=None_, _pwd=None_)  <br />  从归档中提取出一个成员放入当前工作目录  <br />  ZipFile.**extractall**(_path=None_, _members=None_, _pwd=None_)  <br />  从归档中提取出所有成员放入当前工作目录  <br />  ZipFile.**printdir**()  <br />  将归档的目录表打印到 sys.stdout。  <br />  ZipFile.**setpassword**(_pwd_)  <br />  设置 _pwd_ 为用于提取已加密文件的默认密码。  <br />  ZipFile.**read**(_name_, _pwd=None_)  <br />  返回归档中文件 _name_ 的字节数据。  <br />  ZipFile.**testzip**()  <br />  读取归档中的所有文件并检查它们的 CRC 和文件头  <br />  ZipFile.**write**(_filename_, _arcname=None_, _compress_type=None_, _compresslevel=None_)  <br />  将名为 _filename_ 的文件写入归档，给予的归档名为 _arcname_   <br />  ZipFile.**writestr**(_zinfo_or_arcname_, _data_, _compress_type=None_, _compresslevel=None_)[¶](https://docs.python.org/zh-cn/3/library/zipfile.html#zipfile.ZipFile.writestr)  <br />  将一个文件写入归档
+
+_class _zipfile.**Path**(_root_, _at=''_)
+
+- Path.**name	**最终的路径组成部分。
+- Path.**open**(_mode='r'_, _*_, _pwd_, _**_)	在当前路径上发起调用 [ZipFile.open()](https://docs.python.org/zh-cn/3/library/zipfile.html#zipfile.ZipFile.open)。 
+- Path.**iterdir**()	枚举当前目录的子目录。
+- Path.**is_dir**()	如果当前上下文引用了一个目录则返回 True。
+- Path.**is_file**()	如果当前上下文引用了一个文件则返回 True。
+- Path.**exists**()	如果当前上下文引用了 zip 文件内的一个文件或目录则返回 True。
+- Path.**read_text**(_*_, _**_)	读取当前文件为 unicode 文本
+- Path.**read_bytes**()	读取当前文件为字节串。
+- Path.**joinpath**(_*other_)	返回一个新的 Path 对象，其中合并了每个 _other_ 参数
+
+```python
+import psutil
+import zipfile
+import os
+
+class Zip:
+    # 限制解压后大小不能超过1M，文件个数不能超过10
+    MAX_SIZE = 1*1024*1024
+    MAX_FILE_CNT = 10
+
+    @staticmethod
+    def unzip(path, zip_file):
+        file_path = path+os.sep+zip_file
+        dest_dir = path
+        src_file = zipfile.ZipFile(file_path, 'r')
+
+        # 1 检查文件个数
+        file_count = len(src_file.infolist())
+        if file_count >= Zip.MAX_FILE_CNT:
+            raise IOError(
+                f'zipfile({zip_file}) contains {file_count} files exceed max file count')
+
+        # 2 检查第一层解压文件总大小
+        total_size = sum(info.file_size for info in src_file.infolist())
+        if total_size >= Zip.MAX_SIZE:
+            raise IOError(
+                f'zipfile({zip_file}) size {total_size} exceed max limit')
+
+        # 3 检查磁盘剩余空间
+        dest_dir_partition = '/'  # 解压目录所在分区
+        if total_size >= psutil.disk_usage(dest_dir_partition).free:
+            raise IOError(
+                f'zipfile({zip_file}) size {total_size} exceed remain target disk space')
+
+        # 检查通过，解压所有文件
+        src_file.extractall(dest_dir)
+```
+
+
+## 并发
+### [threading--- 基于线程的并行](https://docs.python.org/zh-cn/3/library/threading.html)
 GIL(global interpreter lock，全局解释器锁)：使得同一个时刻只有一个线程在一个CPU上执行字节码。无法将多个线程映射到多个CPU上。
 
 释放条件
@@ -1166,7 +1127,7 @@ t2.start()
 t1.join()
 t2.join()
 ```
-## [multiprocessing--- 基于进程的并行](https://docs.python.org/zh-cn/3/library/multiprocessing.html)
+### [multiprocessing--- 基于进程的并行](https://docs.python.org/zh-cn/3/library/multiprocessing.html)
 **class multiprocessing.Process(group=None, target=None, name=None, args=(), kwargs={}, *, daemon=None)**  <br />   Process 类拥有和 threading.Thread 等价的大部分方法。
 
 **multiprocessing.Pipe([duplex])**  <br />  返回一对 Connection`对象 ``(conn1, conn2)` ， 分别表示管道的两端。
@@ -1229,7 +1190,7 @@ p = Pool(3)
 p.map(fun, event)
 print(time.time()-a)
 ```
-## [subprocess](https://docs.python.org/zh-cn/3/library/subprocess.html#module-subprocess) --- 子进程管理
+### [subprocess](https://docs.python.org/zh-cn/3/library/subprocess.html#module-subprocess) --- 子进程管理
 subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, env=None, universal_newlines=None, **other_popen_kwargs)  <br />  运行被 arg 描述的指令。等待指令完成，然后返回一个 CompletedProcess 实例。
 
 class subprocess.CompletedProcess  <br />  run() 的返回值, 代表一个进程已经结束.
@@ -1259,7 +1220,7 @@ def js_call(e, func_name, *args):
                          capture_output=True)
     return eval(r.stdout.decode())
 ```
-## [asyncio--- 异步 I/O](https://docs.python.org/zh-cn/3/library/asyncio.html)
+### [asyncio--- 异步 I/O](https://docs.python.org/zh-cn/3/library/asyncio.html)
 
 asyncio
 
@@ -1487,8 +1448,425 @@ asyncio.run(main())
 
 
 
-## —— 开发工具
-## [logging--- Python 的日志记录工具](https://docs.python.org/zh-cn/3/library/logging.html)
+## 网络
+
+### [urllib--- URL 处理模块](https://docs.python.org/zh-cn/3/library/urllib.html)
+
+[urllib.request--- 用于打开 URL 的可扩展库](https://docs.python.org/zh-cn/3/library/urllib.request.html)  <br />  **urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)**
+
+**class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)**  <br />  **···**
+
+[urllib.parse--- Parse URLs into components](https://docs.python.org/zh-cn/3/library/urllib.parse.html)  <br />  [URL 解析](https://docs.python.org/zh-cn/3/library/urllib.parse.html#url-parsing)
+
+- **parse.urlparse(urlstring, scheme='', allow_fragments=True)	**将一个 URL 解析为六个部分，对应于 `scheme://netloc/path;parameters?query#fragment`
+- parse.urlunparse(parts)	根据 urlparse() 所返回的元组来构造一个 URL
+- parse.urlsplit(urlstring, scheme='', allow_fragments=True)	类似于 urlparse()，但不会拆分来自 URL 的参数
+- parse.urlunsplit(parts)	将 urlsplit() 所返回的元组中的元素合并为一个字符串形式的完整 URL
+- parse.parse_qs(qs, keep_blank_values=False, strict_parsing=False, encoding='utf-8', errors='replace', max_num_fields=None, separator='&')	解析以字符串参数形式（类型为 application/x-www-form-urlencoded 的数据）给出的查询字符串
+- parse.urljoin(base, url, allow_fragments=True)	通过合并一个 "基准 URL" (base) 和另一个 URL (url) 来构造一个完整 ("absolute") URL
+- parse.urldefrag(url)	返回不带片段标识符的 url 修改版本
+
+[URL 转码](https://docs.python.org/zh-cn/3/library/urllib.parse.html#url-quoting)
+
+- parse.quote(string, safe='/', encoding=None, errors=None)	使用`%xx` 转义符替换 string 中的特殊字符。 字母、数字和`'_.-~'` 等字符一定不会被转码
+- parse.quote_plus(string, safe='', encoding=None, errors=None)	类似于 quote()，但还会使用加号来替换空格
+- parse.quote_from_bytes(bytes, safe='/')
+- parse.unquote(string, encoding='utf-8', errors='replace')	将 %xx 转义符替换为其单字符等价物
+- parse.unquote_plus(string, encoding='utf-8', errors='replace')
+- parse.urlencode(query, doseq=False, safe='', encoding=None, errors=None, quote_via=quote_plus)	将一个包含有 str 或 bytes 对象的映射对象或二元组序列转换为以百分号编码的 ASCII 文本字符串
+```javascript
+from urllib import request, parse
+
+print('Login to weibo.cn...')
+email = input('Email: ')
+passwd = input('Password: ')
+login_data = parse.urlencode([
+    ('username', email),
+    ('password', passwd),
+    ('entry', 'mweibo'),
+    ('client_id', ''),
+    ('savestate', '1'),
+    ('ec', ''),
+    ('pagerefer', 'https://passport.weibo.cn/signin/welcome?entry=mweibo&r=http%3A%2F%2Fm.weibo.cn%2F')
+])
+req = request.Request('https://passport.weibo.cn/sso/login')
+req.add_header('Origin', 'https://passport.weibo.cn')
+req.add_header('User-Agent', 'Mozilla/6.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/8.0 Mobile/10A5376e Safari/8536.25')
+req.add_header('Referer', 'https://passport.weibo.cn/signin/login?entry=mweibo&res=wel&wm=3349&r=http%3A%2F%2Fm.weibo.cn%2F')
+with request.urlopen(req, data=login_data.encode('utf-8')) as f:
+    print('Status:', f.status, f.reason)
+    for k, v in f.getheaders():
+        print('%s: %s' % (k, v))
+    print('Data:', f.read().decode('utf-8'))
+```
+
+
+
+### [socket](https://docs.python.org/zh-cn/3/library/socket.html#module-socket) --- 底层网络接口
+socket.socket(family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None)  <br />  使用给定的地址族、套接字类型和协议号创建一个新的套接字。  <br />  地址（和协议）簇
+
+- socket.AF_UNIX
+- socket.AF_INET
+- socket.AF_INET6
+
+套接字类型
+
+- socket.SOCK_STREAM
+- socket.SOCK_DGRAM
+- socket.SOCK_RAW
+- socket.SOCK_RDM
+- socket.SOCK_SEQPACKET
+
+**TCP**  <br />  server
+```javascript
+import socket,time,threading
+def tcplink(sock, addr):
+    print('Accept new connection from %s:%s...' % addr)
+    sock.send(b'Welcome!')
+    while True:
+        data = sock.recv(1024).decode('utf-8')
+        time.sleep(1)
+        if not data or data == 'exit':
+            break
+        print(f'{addr[0]}:{addr[1]} > {data}')
+        sock.send(input().encode('utf-8'))
+    sock.close()
+    print('Connection from %s:%s closed.' % addr)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 类型，类型协议
+# 监听端口:
+s.bind(('127.0.0.1', 9999))
+# 允许连接数
+s.listen(5)
+print('Waiting for connection...')
+while True:
+    # 接受一个新连接:
+    sock, addr = s.accept()
+    # 创建新线程来处理TCP连接:
+    t = threading.Thread(target=tcplink, args=(sock, addr))
+    t.start()
+```
+client
+```javascript
+import socket
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 建立连接:
+client.connect(('127.0.0.1', 9999))
+while True:
+    # 接收消息:
+    print('server > '+client.recv(1024).decode('utf-8'))
+    # 发送数据:
+    data = input()
+    if not data or data == 'exit':
+        client.close()
+    client.send(data.encode('utf-8'))
+```
+**UDP**  <br />  server
+```javascript
+import socket
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+# 监听端口:
+s.bind(('127.0.0.1', 9999))
+print('Bind UDP on 9999...')
+while True:
+    # 接收数据:
+    data, addr = s.recvfrom(1024)
+    print(f'{addr[0]}:{addr[1]} > {data}')
+    # 发送数据:
+    s.sendto(input().encode(), addr)
+```
+client
+```javascript
+import socket
+client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+print('Please input...')
+while True:
+    # 发送数据:
+    data = input()
+    if not data or data == 'exit':
+        client.close()
+    client.sendto(data.encode(), ('127.0.0.1', 9999))
+    # 接收消息:
+    print('server > ' + client.recv(1024).decode('utf-8'))
+```
+
+### smtplib ---SMTP协议客户端
+class smtplib.SMTP(host='', port=0, local_hostname=None, [timeout, ]source_address=None)
+
+- SMTP.set_debuglevel(level)
+- SMTP.docmd(cmd, args='')
+- SMTP.connect(host='localhost', port=0)
+- SMTP.helo(name='')
+- SMTP.ehlo(name='')
+- SMTP.ehlo_or_helo_if_needed()
+- SMTP.has_extn(name)
+- SMTP.verify(address)
+- SMTP.login(user, password, *, initial_response_ok=True)
+- SMTP.auth(mechanism, authobject, *, initial_response_ok=True)
+- SMTP.starttls(keyfile=None, certfile=None, context=None)
+- SMTP.sendmail(from_addr, to_addrs, msg, mail_options=(), rcpt_options=())
+- SMTP.send_message(msg, from_addr=None, to_addrs=None, mail_options=(), rcpt_options=())
+- SMTP.quit()
+
+示例
+```python
+import smtplib
+import email
+from email.mime.text import MIMEText    # 负责构造文本
+from email.mime.image import MIMEImage  # 负责构造图片
+from email.mime.multipart import MIMEMultipart  # 负责将多个对象集合起来
+from email.header import Header
+
+# SMTP服务器
+mail_host = "smtp.163.com"
+# 发件人邮箱
+mail_sender = "******@163.com"
+# 邮箱授权码
+mail_license = "********"
+# 收件人邮箱
+mail_receivers = ["******@qq.com", "******@outlook.com"]
+mm = MIMEMultipart('related')
+# 邮件头部内容
+# 邮件主题
+subject_content = """Python邮件测试"""
+# 设置发送者,注意严格遵守格式,里面邮箱为发件人邮箱
+mm["From"] = "sender_name<******@163.com>"
+# 设置接受者,注意严格遵守格式,里面邮箱为接受者邮箱
+mm["To"] = "receiver_1_name<******@qq.com>,receiver_2_name<******@outlook.com>"
+# 设置邮件主题
+mm["Subject"] = Header(subject_content, 'utf-8')
+# 邮件正文内容
+body_content = """你好，这是一个测试邮件！"""
+# 构造文本
+message_text = MIMEText(body_content, "plain", "utf-8")
+# 向MIMEMultipart对象中添加文本对象
+mm.attach(message_text)
+# 二进制读取图片
+image_data = open('a.jpg', 'rb')
+# 设置读取获取的二进制数据
+message_image = MIMEImage(image_data.read())
+image_data.close()
+# 添加图片文件到邮件信息当中去
+mm.attach(message_image)
+# 构造附件
+atta = MIMEText(open('sample.xlsx', 'rb').read(), 'base64', 'utf-8')
+# 设置附件信息
+atta["Content-Disposition"] = 'attachment; filename="sample.xlsx"'
+# 添加附件到邮件信息当中去
+mm.attach(atta)
+# 创建SMTP对象
+stp = smtplib.SMTP()
+# 设置发件人邮箱的域名和端口
+stp.connect(mail_host, 25)
+# 打印出和SMTP服务器交互的所有信息
+stp.set_debuglevel(1)
+# 登录邮箱
+stp.login(mail_sender, mail_license)
+# 发送邮件
+stp.sendmail(mail_sender, mail_receivers, mm.as_string())
+print("邮件发送成功")
+# 关闭SMTP对象
+stp.quit()
+```
+```python
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email.mime.text import MIMEText
+from email.mime.audio import MIMEAudio
+from email.mime.image import MIMEImage
+from email.encoders import encode_base64
+
+class Mail():
+    def __init__(self, user, pwd, host):
+        self.mail_user = user
+        self.mail_pwd = pwd      # 邮箱授权码
+        self.mail_server = smtplib.SMTP()
+        self.mail_server.connect(host, 25)
+        self.mail_server.ehlo()
+        self.mail_server.login(self.mail_user, self.mail_pwd)
+        
+    def __del__(self):
+        self.mail_server.close()
+        
+    # 发送邮件
+    def send_mail(self, recipient, subject, text, file_path=None):
+        msg = MIMEMultipart()
+        msg["From"] = self.mail_user
+        msg["Subject"] = subject
+        msg["To"] = ",".join(recipient)
+        msg.attach(MIMEText(text))
+        if file_path:
+            msg.attach(self.get_attachment(file_path))
+        self.mail_server.sendmail(self.mail_user, recipient, msg.as_string())
+        print("——邮件发送成功——")
+        
+    # 添加邮件附件
+    def get_attachment(self, file_path):
+        file_name = file_path.split("\\")[-1]
+        attachment = MIMEText(open(file_path, 'rb').read(), 'base64', 'utf-8')
+        # attachment["Content-Type"] = 'application/octet-stream'
+        attachment["Content-Disposition"] = 'attachment; filename=' + file_name
+        return attachment
+    
+    
+if __name__ == '__main__':
+    title = "自动化测试报告"
+    file_path = r"image.jpg"
+    content = """你好，这是一个测试邮件！"""
+    RECIPIENT = ["xxx@outlook.com", "rain@126.com"]
+    mail = Mail("rain@126.com", "code", "smtp.126.com")
+    mail.send_mail(RECIPIENT, title, content, file_path)
+```
+### base64 --- Base16, Base32, Base64, Base85 数据编码
+一种用64个字符来表示任意二进制数据的方法。
+
+- base64.b64encode(s, altchars=None)
+- 对 bytes-like object s 进行 Base64 编码，并返回编码后的 bytes
+- base64.b64decode(s, altchars=None, validate=False)
+- 解码 Base64 编码过的 bytes-like object 或 ASCII 字符串 s 并返回解码过的 bytes
+- base64.standard_b64encode(s)
+- 编码 bytes-like object s，使用标准 Base64 字母表并返回编码过的 bytes
+- base64.standard_b64decode(s)
+- base64.urlsafe_b64encode(s)
+- 编码 bytes-like object s，使用 URL 与文件系统安全的字母表，使用 - 以及 _ 代替标准 Base64 字母表中的 + 和 /。返回编码过的 bytes。
+- base64.urlsafe_b64decode(s)
+- base64.b32encode(s)
+- 用 Base32 编码 bytes-like object s 并返回编码过的 bytes
+- base64.b32decode(s, casefold=False, map01=None)
+- base64.b16encode(s)
+- 用 Base16 编码 bytes-like object s 并返回编码过的 bytes
+- base64.b16decode(s, casefold=False)¶
+- base64.a85encode(b, *, foldspaces=False, wrapcol=0, pad=False, adobe=False)
+- 用 Ascii85 编码 bytes-like object s 并返回编码过的 bytes
+- base64.a85decode(b, *, foldspaces=False, adobe=False, ignorechars=b' \t\n\r\v')
+```python
+>>> import base64
+>>> base64.b64encode(b'binary\x00string')
+b'YmluYXJ5AHN0cmluZw=='
+>>> base64.b64decode(b'YmluYXJ5AHN0cmluZw==')
+b'binary\x00string'
+```
+
+
+## 开发工具
+### timeit --- 测量小代码片段的执行时间
+**命令行界面**  <br />  **python -m timeit [-n N] [-r N] [-u U] [-s S] [-h] [statement ...]**
+
+- -n N, --number=N		执行 '语句' 多少次
+- -r N, --repeat=N		重复计时器的次数（默认为5）
+- -s S, --setup=S		最初要执行一次的语句（默认为 pass ）
+- -p, --process	测量进程时间，使用 time.process_time() 而不是 time.perf_counter() ，这是默认值
+- -u, --unit=U		指定定时器输出的时间单位；可以选择 nsec，usec，msec或sec
+- -v, --verbose	打印原始计时结果；重复更多位数精度
+- -h, --help		打印一条简短的使用信息并退出
+```javascript
+python -m timeit "'-'.join(map(str, range(100)))"
+```
+**API**
+
+- timeit.timeit(stmt='pass', setup='pass', timer=, number=1000000, globals=None)
+- timeit.repeat(stmt='pass', setup='pass', timer=, repeat=5, number=1000000, globals=None)
+- timeit.default_timer()	默认的计时器，总是 time.perf_counter() 。
+
+class timeit.Timer(stmt='pass', setup='pass', timer=, globals=None)  <br />  用于小代码片段的计数执行速度的类
+```javascript
+// 对比使用 hasattr() 与 try/except 的开销来测试缺失与提供对象属性
+>>> import timeit
+>>> # attribute is missing
+>>> s = """\
+... try:
+...     str.__bool__
+... except AttributeError:
+...     pass
+... """
+>>> timeit.timeit(stmt=s, number=100000)
+0.9138244460009446
+>>> s = "if hasattr(str, '__bool__'): pass"
+>>> timeit.timeit(stmt=s, number=100000)
+0.5829014980008651
+```
+```javascript
+def f(x):
+    return x**2
+def g(x):
+    return x**4
+def h(x):
+    return x**8
+import timeit
+print(timeit.timeit('[func(42) for func in (f,g,h)]', globals=globals()))
+```
+
+
+
+### [argparse](https://docs.python.org/zh-cn/3/library/argparse.html#module-argparse) --- 命令行选项、参数和子命令解析器
+class **argparse.ArgumentParser**(prog=None, usage=None, description=None, epilog=None, parents=[], formatter_class=argparse.HelpFormatter, prefix_chars='-', fromfile_prefix_chars=None, argument_default=None, conflict_handler='error', add_help=True, allow_abbrev=True, exit_on_error=True)
+
+- prog - 程序的名称（默认：sys.argv[0]）
+- usage - 描述程序用途的字符串（默认值：从添加到解析器的参数生成）
+- description - 在参数帮助文档之前显示的文本
+- epilog - 在参数帮助文档之后显示的文本
+- parents - 一个 ArgumentParser 对象的列表，它们的参数也应包含在内
+- formatter_class - 用于自定义帮助文档输出格式的类
+- prefix_chars - 可选参数的前缀字符集合（默认值：'-'）
+- fromfile_prefix_chars - 当需要从文件中读取其他参数时，用于标识文件名的前缀字符集合
+- argument_default - 参数的全局默认值
+- conflict_handler - 解决冲突选项的策略
+- add_help - 为解析器添加一个 -h/--help 选项（默认值： True）
+- allow_abbrev - 如果缩写是无歧义的，则允许缩写长选项 （默认值：True）
+- exit_on_error - 决定当错误发生时是否让 ArgumentParser 附带错误信息退出。 (默认值: True)
+
+ArgumentParser.add_argument(name or flags...[, action][, nargs][, const][, default][, type][, choices][, required][, help][, metavar][, dest])
+
+- name or flags - 一个命名或者一个选项字符串的列表，例如 foo 或 -f, --foo。
+- action - 当参数在命令行中出现时使用的动作基本类型。
+- nargs - 命令行参数应当消耗的数目。
+- const - 被一些 action 和 nargs 选择所需求的常数。
+- default - 当参数未在命令行中出现时使用的值。
+- type - 命令行参数应当被转换成的类型。
+- choices - 可用的参数的容器。
+- required - 此命令行选项是否可省略
+- help - 一个此选项作用的简单描述。
+- metavar - 在使用方法消息中使用的参数值示例。
+- dest - 被添加到 parse_args() 所返回对象上的属性名。
+
+class** argparse.Action**(option_strings, dest, nargs=None, const=None, default=None, type=None, choices=None, required=False, help=None, metavar=None)
+
+ArgumentParser.parse_args(args=None, namespace=None)	将参数字符串转换为对象并将其设为命名空间的属性。  <br />  ArgumentParser.add_subparsers([title][, description][, prog][, parser_class][, action][, option_string][, dest][, required][, help][, metavar])	创建子命令  <br />  ArgumentParser.add_argument_group(title=None, description=None)	创建适当的分组  <br />  ArgumentParser.add_mutually_exclusive_group(required=False)	创建一个互斥组  <br />  ArgumentParser.set_defaults(**kwargs)	解析器默认值
+
+class argparse.FileType(mode='r', bufsize=-1, encoding=None, errors=None)
+```javascript
+import argparse
+parser = argparse.ArgumentParser(description="calculate X to the power of Y")
+group = parser.add_mutually_exclusive_group()
+group.add_argument("-v", "--verbose", action="store_true")
+group.add_argument("-q", "--quiet", action="store_true")
+parser.add_argument("x", type=int, help="the base")
+parser.add_argument("y", type=int, help="the exponent")
+args = parser.parse_args()
+answer = args.x**args.y
+if args.quiet:
+    print(answer)
+elif args.verbose:
+    print("{} to the power {} equals {}".format(args.x, args.y, answer))
+else:
+    print("{}^{} == {}".format(args.x, args.y, answer))
+    
+---
+$ python3 prog.py --help
+usage: prog.py [-h] [-v | -q] x y
+calculate X to the power of Y
+positional arguments:
+  x              the base
+  y              the exponent
+optional arguments:
+  -h, --help     show this help message and exit
+  -v, --verbose
+  -q, --quiet
+```
+
+
+
+### [logging--- Python 的日志记录工具](https://docs.python.org/zh-cn/3/library/logging.html)
 日志级别
 
 | 级别 | 何时使用 | 数值 |
@@ -1639,7 +2017,7 @@ if __name__ == '__main__':
     logging.info('hi, info!',extra={'user_id': '19'})
     logging.warning('logging warning!',extra={'user_id': '20'})
 ```
-## [unittest--- 单元测试框架](https://docs.python.org/zh-cn/3/library/unittest.html)
+### [unittest--- 单元测试框架](https://docs.python.org/zh-cn/3/library/unittest.html)
 继承 [unittest.TestCase](https://docs.python.org/zh-cn/3/library/unittest.html#unittest.TestCase) 就创建了一个测试样例  <br />  方法的命名都以 test 开头
 
 - test fixture：测试夹具，初始化和清理测试数据及环境
@@ -1767,7 +2145,7 @@ with open(filename,'wb') as fp:
         description=u'用例执行情况：')
     runner.run(suite)
 ```
-## [pydoc](https://docs.python.org/zh-cn/3/library/pydoc.html#module-pydoc) --- 文档生成器和在线帮助系统
+### [pydoc](https://docs.python.org/zh-cn/3/library/pydoc.html#module-pydoc) --- 文档生成器和在线帮助系统
 
 - python -m pydoc 模块名：在控制台查看指定模块的说明性文档
 - python -m pydoc -w 模块名：生成 HTML 帮助文档
@@ -1775,7 +2153,7 @@ with open(filename,'wb') as fp:
    - python -m pydoc -p 端口号
    - python -m pydoc -b
 - python -m pydoc -k 模块名：查找模块
-## [doctest](https://docs.python.org/zh-cn/3/library/doctest.html#module-doctest) --- 测试交互性的Python示例
+### [doctest](https://docs.python.org/zh-cn/3/library/doctest.html#module-doctest) --- 测试交互性的Python示例
 寻找像Python交互式(>>>)代码的文本，然后执行这些代码来确保它们的确就像展示的那样正确运行
 
 - doctest.testfile(filename, module_relative=True, name=None, package=None, globs=None, verbose=None, report=True, optionflags=0, extraglobs=None, raise_on_error=False, parser=DocTestParser(), encoding=None)
@@ -1818,208 +2196,53 @@ python example.py -v
 或
 python -m doctest -v example.py
 ```
-## [dataclasses](https://docs.python.org/zh-cn/3/library/dataclasses.html#module-dataclasses) --- 数据类
-@dataclasses.dataclass(*, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False)	用于将生成的 [special method](https://docs.python.org/zh-cn/3/glossary.html#term-special-method) 添加到类中
+
+### [ctypes](https://docs.python.org/zh-cn/3.9/library/ctypes.html#module-ctypes) --- 外部函数库
+| ctypes 类型 | C 类型 | Python 数据类型 |
+| --- | --- | --- |
+| [c_bool](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_bool) | _Bool | bool (1) |
+| [c_char](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_char) | char | 单字符字节串对象 |
+| [c_wchar](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_wchar) | wchar_t | 单字符字符串 |
+| [c_byte](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_byte) | char | int |
+| [c_ubyte](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_ubyte) | unsigned char | int |
+| [c_short](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_short) | short | int |
+| [c_ushort](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_ushort) | unsigned short | int |
+| [c_int](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_int) | int | int |
+| [c_uint](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_uint) | unsigned int | int |
+| [c_long](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_long) | long | int |
+| [c_ulong](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_ulong) | unsigned long | int |
+| [c_longlong](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_longlong) | __int64 或 long long | int |
+| [c_ulonglong](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_ulonglong) | unsigned __int64 或 unsigned long long | int |
+| [c_size_t](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_size_t) | size_t | int |
+| [c_ssize_t](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_ssize_t) | ssize_t 或 Py_ssize_t | int |
+| [c_float](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_float) | float | float |
+| [c_double](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_double) | double | float |
+| [c_longdouble](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_longdouble) | long double | float |
+| [c_char_p](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_char_p) | char * (NUL terminated) | 字节串对象或 None |
+| [c_wchar_p](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_wchar_p) | wchar_t * (NUL terminated) | 字符串或 None |
+| [c_void_p](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_void_p) | void * | int 或 None |
+
+class ctypes.CDLL(name, mode=DEFAULT_MODE, handle=None, use_errno=False, use_last_error=False, winmode=0)  <br />  此类的实例即已加载的动态链接库
 ```javascript
-@dataclass
-class C:
-    a: int       # 'a' has no default value
-    b: int = 0   # assign a default value for 'b'
-    
-# a 和 b 都将包含在添加的 __init__() 方法中，它们将被定义为:
-def __init__(self, a: int, b: int = 0):
+gcc 原文件名.c -shared -o 新文件名.so
 ```
-dataclasses.field(*, default=MISSING, default_factory=MISSING, init=True, repr=True, hash=None, compare=True, metadata=None, kw_only=MISSING)  <br />  dataclasses.asdict(instance, *, dict_factory=dict)	将数据类 instance 转换为字典  <br />  dataclasses.astuple(instance, *, tuple_factory=tuple)	将数据类 instance 转换为元组
-## smtplib ---SMTP协议客户端
-class smtplib.SMTP(host='', port=0, local_hostname=None, [timeout, ]source_address=None)
-
-- SMTP.set_debuglevel(level)
-- SMTP.docmd(cmd, args='')
-- SMTP.connect(host='localhost', port=0)
-- SMTP.helo(name='')
-- SMTP.ehlo(name='')
-- SMTP.ehlo_or_helo_if_needed()
-- SMTP.has_extn(name)
-- SMTP.verify(address)
-- SMTP.login(user, password, *, initial_response_ok=True)
-- SMTP.auth(mechanism, authobject, *, initial_response_ok=True)
-- SMTP.starttls(keyfile=None, certfile=None, context=None)
-- SMTP.sendmail(from_addr, to_addrs, msg, mail_options=(), rcpt_options=())
-- SMTP.send_message(msg, from_addr=None, to_addrs=None, mail_options=(), rcpt_options=())
-- SMTP.quit()
-
-示例
-```python
-import smtplib
-import email
-from email.mime.text import MIMEText    # 负责构造文本
-from email.mime.image import MIMEImage  # 负责构造图片
-from email.mime.multipart import MIMEMultipart  # 负责将多个对象集合起来
-from email.header import Header
-
-# SMTP服务器
-mail_host = "smtp.163.com"
-# 发件人邮箱
-mail_sender = "******@163.com"
-# 邮箱授权码
-mail_license = "********"
-# 收件人邮箱
-mail_receivers = ["******@qq.com", "******@outlook.com"]
-mm = MIMEMultipart('related')
-# 邮件头部内容
-# 邮件主题
-subject_content = """Python邮件测试"""
-# 设置发送者,注意严格遵守格式,里面邮箱为发件人邮箱
-mm["From"] = "sender_name<******@163.com>"
-# 设置接受者,注意严格遵守格式,里面邮箱为接受者邮箱
-mm["To"] = "receiver_1_name<******@qq.com>,receiver_2_name<******@outlook.com>"
-# 设置邮件主题
-mm["Subject"] = Header(subject_content, 'utf-8')
-# 邮件正文内容
-body_content = """你好，这是一个测试邮件！"""
-# 构造文本
-message_text = MIMEText(body_content, "plain", "utf-8")
-# 向MIMEMultipart对象中添加文本对象
-mm.attach(message_text)
-# 二进制读取图片
-image_data = open('a.jpg', 'rb')
-# 设置读取获取的二进制数据
-message_image = MIMEImage(image_data.read())
-image_data.close()
-# 添加图片文件到邮件信息当中去
-mm.attach(message_image)
-# 构造附件
-atta = MIMEText(open('sample.xlsx', 'rb').read(), 'base64', 'utf-8')
-# 设置附件信息
-atta["Content-Disposition"] = 'attachment; filename="sample.xlsx"'
-# 添加附件到邮件信息当中去
-mm.attach(atta)
-# 创建SMTP对象
-stp = smtplib.SMTP()
-# 设置发件人邮箱的域名和端口
-stp.connect(mail_host, 25)
-# 打印出和SMTP服务器交互的所有信息
-stp.set_debuglevel(1)
-# 登录邮箱
-stp.login(mail_sender, mail_license)
-# 发送邮件
-stp.sendmail(mail_sender, mail_receivers, mm.as_string())
-print("邮件发送成功")
-# 关闭SMTP对象
-stp.quit()
+```javascript
+from ctypes import *
+  
+# load the shared object file
+adder = CDLL('./adder.so')
+res_int = adder.add_int(4, 5)
+print("Sum of 4 and 5 = " + str(res_int))
+a = c_float(5.5)
+b = c_float(4.1)
+add_float = adder.add_float
+add_float.restype = c_float
+print( "Sum of 5.5 and 4.1 = ", str(add_float(a, b)))
 ```
-```python
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email.mime.text import MIMEText
-from email.mime.audio import MIMEAudio
-from email.mime.image import MIMEImage
-from email.encoders import encode_base64
 
-class Mail():
-    def __init__(self, user, pwd, host):
-        self.mail_user = user
-        self.mail_pwd = pwd      # 邮箱授权码
-        self.mail_server = smtplib.SMTP()
-        self.mail_server.connect(host, 25)
-        self.mail_server.ehlo()
-        self.mail_server.login(self.mail_user, self.mail_pwd)
-        
-    def __del__(self):
-        self.mail_server.close()
-        
-    # 发送邮件
-    def send_mail(self, recipient, subject, text, file_path=None):
-        msg = MIMEMultipart()
-        msg["From"] = self.mail_user
-        msg["Subject"] = subject
-        msg["To"] = ",".join(recipient)
-        msg.attach(MIMEText(text))
-        if file_path:
-            msg.attach(self.get_attachment(file_path))
-        self.mail_server.sendmail(self.mail_user, recipient, msg.as_string())
-        print("——邮件发送成功——")
-        
-    # 添加邮件附件
-    def get_attachment(self, file_path):
-        file_name = file_path.split("\\")[-1]
-        attachment = MIMEText(open(file_path, 'rb').read(), 'base64', 'utf-8')
-        # attachment["Content-Type"] = 'application/octet-stream'
-        attachment["Content-Disposition"] = 'attachment; filename=' + file_name
-        return attachment
-    
-    
-if __name__ == '__main__':
-    title = "自动化测试报告"
-    file_path = r"image.jpg"
-    content = """你好，这是一个测试邮件！"""
-    RECIPIENT = ["xxx@outlook.com", "rain@126.com"]
-    mail = Mail("rain@126.com", "code", "smtp.126.com")
-    mail.send_mail(RECIPIENT, title, content, file_path)
-```
-## base64 --- Base16, Base32, Base64, Base85 数据编码
-一种用64个字符来表示任意二进制数据的方法。
 
-- base64.b64encode(s, altchars=None)
-- 对 bytes-like object s 进行 Base64 编码，并返回编码后的 bytes
-- base64.b64decode(s, altchars=None, validate=False)
-- 解码 Base64 编码过的 bytes-like object 或 ASCII 字符串 s 并返回解码过的 bytes
-- base64.standard_b64encode(s)
-- 编码 bytes-like object s，使用标准 Base64 字母表并返回编码过的 bytes
-- base64.standard_b64decode(s)
-- base64.urlsafe_b64encode(s)
-- 编码 bytes-like object s，使用 URL 与文件系统安全的字母表，使用 - 以及 _ 代替标准 Base64 字母表中的 + 和 /。返回编码过的 bytes。
-- base64.urlsafe_b64decode(s)
-- base64.b32encode(s)
-- 用 Base32 编码 bytes-like object s 并返回编码过的 bytes
-- base64.b32decode(s, casefold=False, map01=None)
-- base64.b16encode(s)
-- 用 Base16 编码 bytes-like object s 并返回编码过的 bytes
-- base64.b16decode(s, casefold=False)¶
-- base64.a85encode(b, *, foldspaces=False, wrapcol=0, pad=False, adobe=False)
-- 用 Ascii85 编码 bytes-like object s 并返回编码过的 bytes
-- base64.a85decode(b, *, foldspaces=False, adobe=False, ignorechars=b' \t\n\r\v')
-```python
->>> import base64
->>> base64.b64encode(b'binary\x00string')
-b'YmluYXJ5AHN0cmluZw=='
->>> base64.b64decode(b'YmluYXJ5AHN0cmluZw==')
-b'binary\x00string'
-```
-## struct --- 将字节串解读为打包的二进制数据
-
-- exception struct.error
-- 会在多种场合下被引发的异常
-- struct.pack(format, v1, v2, ...)
-- 返回一个 bytes 对象，其中包含根据格式字符串 format 打包的值 v1, v2, ... 参数个数必须与格式字符串所要求的值匹配
-- struct.unpack(format, buffer)
-- 根据格式字符串 format 从缓冲区 buffer 解包（假定是由 pack(format, ...) 打包）
-- struct.pack_into(format, buffer, offset, v1, v2, ...)
-- 根据格式字符串 format 打包 v1, v2, ... 等值并将打包的字节串写入可写缓冲区 buffer 从 offset 开始的位置
-- struct.unpack_from(format, buffer, offset=0)
-- struct.iter_unpack(format, buffer)
-- 根据格式字符串 format 以迭代方式从缓冲区 buffer 解包
-- struct.calcsize(format)
-- 返回与格式字符串 format 相对应的结构的大小
-
-**class struct.Struct(format)**  <br />  返回一个新的 Struct 对象，它会根据格式字符串 format 来写入和读取二进制数据
-
-- pack(v1, v2, ...)
-- pack_into(buffer, offset, v1, v2, ...)
-- unpack(buffer)
-- unpack_from(buffer, offset=0)
-- iter_unpack(buffer)
-- format
-- size
-```python
->>> import struct
->>> struct.pack('>I', 10240099)  #>表示字节顺序是big-endian，也就是网络序，I表示4字节无符号整数
-b'\x00\x9c@c'
->>> struct.unpack('>IH', b'\xf0\xf0\xf0\xf0\x80\x80')
-(4042322160, 32896)
-```
-## [hashlib](https://docs.python.org/zh-cn/3/library/hashlib.html#module-hashlib) --- 安全哈希与消息摘要
+## 加密
+### [hashlib](https://docs.python.org/zh-cn/3/library/hashlib.html#module-hashlib) --- 安全哈希与消息摘要
 
 - hashlib.algorithms_available
 - hash.digest_size	以字节表示的结果哈希对象的大小。
@@ -2043,156 +2266,51 @@ key = b'secret'
 h = hmac.new(key, message, digestmod='MD5')
 h.hexdigest()	# 'fa4ee7d173f2d97ee79022d1a7355bcf'
 ```
-## [secrets--- 生成管理密码的安全随机数](https://docs.python.org/zh-cn/3/library/secrets.html)
-
+### [secrets--- 生成管理密码的安全随机数](https://docs.python.org/zh-cn/3/library/secrets.html)
 _class _secrets.**SystemRandom**  <br />  用操作系统提供的最高质量源生成随机数的类。详见 [random.SystemRandom](https://docs.python.org/zh-cn/3/library/random.html#random.SystemRandom)。  <br />  secrets.**choice**(_sequence_)  <br />  返回从非空序列中随机选取的元素。  <br />  secrets.**randbelow**(_n_)  <br />  返回 [0, _n_) 范围内的随机整数。  <br />  secrets.**randbits**(_k_)  <br />  返回 _k_ 个随机比特位的整数。
 
 secrets.**token_bytes**([_nbytes=None_])  <br />  返回含 _nbytes_ 个字节的随机字节字符串  <br />  secrets.**token_hex**([_nbytes=None_])  <br />  返回十六进制随机文本字符串。  <br />  secrets.**token_urlsafe**([_nbytes=None_])  <br />  返回安全的 URL 随机文本字符串
 
-## [zipfile--- 使用ZIP存档](https://docs.python.org/zh-cn/3/library/zipfile.html)
 
-_class _zipfile.**ZipFile**(_file_, _mode='r'_, _compression=ZIP_STORED_, _allowZip64=True_, _compresslevel=None_, _*_, _strict_timestamps=True_)  <br />  打开一个 ZIP 文件，_file_ 为一个指向文件的路径
+## 系统
+### [sys--- 系统相关的参数和函数](https://docs.python.org/zh-cn/3/library/sys.html)
 
-ZipFile.**close**()	关闭归档文件。  <br />  ZipFile.**getinfo**(_name_)	返回一个 [ZipInfo](https://docs.python.org/zh-cn/3/library/zipfile.html#zipfile.ZipInfo) 对象，其中包含有关归档成员 _name_ 的信息  <br />  ZipFile.**infolist**()  <br />  ZipFile.**namelist**()	返回按名称排序的归档成员列表。  <br />  ZipFile.**open**(_name_, _mode='r'_, _pwd=None_, _*_, _force_zip64=False_)	以二进制文件类对象的形式访问一个归档成员。  <br />  ZipFile.**extract**(_member_, _path=None_, _pwd=None_)  <br />  从归档中提取出一个成员放入当前工作目录  <br />  ZipFile.**extractall**(_path=None_, _members=None_, _pwd=None_)  <br />  从归档中提取出所有成员放入当前工作目录  <br />  ZipFile.**printdir**()  <br />  将归档的目录表打印到 sys.stdout。  <br />  ZipFile.**setpassword**(_pwd_)  <br />  设置 _pwd_ 为用于提取已加密文件的默认密码。  <br />  ZipFile.**read**(_name_, _pwd=None_)  <br />  返回归档中文件 _name_ 的字节数据。  <br />  ZipFile.**testzip**()  <br />  读取归档中的所有文件并检查它们的 CRC 和文件头  <br />  ZipFile.**write**(_filename_, _arcname=None_, _compress_type=None_, _compresslevel=None_)  <br />  将名为 _filename_ 的文件写入归档，给予的归档名为 _arcname_   <br />  ZipFile.**writestr**(_zinfo_or_arcname_, _data_, _compress_type=None_, _compresslevel=None_)[¶](https://docs.python.org/zh-cn/3/library/zipfile.html#zipfile.ZipFile.writestr)  <br />  将一个文件写入归档
-
-_class _zipfile.**Path**(_root_, _at=''_)
-
-- Path.**name	**最终的路径组成部分。
-- Path.**open**(_mode='r'_, _*_, _pwd_, _**_)	在当前路径上发起调用 [ZipFile.open()](https://docs.python.org/zh-cn/3/library/zipfile.html#zipfile.ZipFile.open)。 
-- Path.**iterdir**()	枚举当前目录的子目录。
-- Path.**is_dir**()	如果当前上下文引用了一个目录则返回 True。
-- Path.**is_file**()	如果当前上下文引用了一个文件则返回 True。
-- Path.**exists**()	如果当前上下文引用了 zip 文件内的一个文件或目录则返回 True。
-- Path.**read_text**(_*_, _**_)	读取当前文件为 unicode 文本
-- Path.**read_bytes**()	读取当前文件为字节串。
-- Path.**joinpath**(_*other_)	返回一个新的 Path 对象，其中合并了每个 _other_ 参数
-
+- sys.argv 命令行参数List，第一个元素是程序本身路径
+- sys.path 返回模块的搜索路径，初始化时使用PYTHONPATH环境变量的值
+- sys.modules.keys() 返回所有已经导入的模块列表
+- sys.modules 返回系统导入的模块字段，key是模块名，value是模块
+- sys.exc_info() 获取当前正在处理的异常类,exc_type、exc_value、exc_traceback当前处理的异常详细信息
+- sys.exit(n) 退出程序，正常退出时exit(0)
+- sys.hexversion 获取Python解释程序的版本值，16进制格式如：0x020403F0
+- sys.version 获取Python解释程序的版本信息
+- sys.platform 返回操作系统平台名称
+- sys.stdout 标准输出
+- sys.stdout.write(‘aaa‘) 标准输出内容
+- sys.stdout.writelines() 无换行输出
+- sys.stdin 标准输入
+- sys.stdin.read() 输入一行
+- sys.stderr 错误输出
+- sys.exc_clear() 用来清除当前线程所出现的当前的或最近的错误信息
+- sys.exec_prefix 返回平台独立的python文件安装的位置
+- sys.byteorder 本地字节规则的指示器，big-endian平台的值是‘big‘,little-endian平台的值是‘little‘
+- sys.copyright 记录python版权相关的东西
+- sys.api_version 解释器的C的API版本
+- sys.version_info ‘final‘表示最终,也有‘candidate‘表示候选，表示版本级别，是否有后继的发行
+- sys.getdefaultencoding() 返回当前你所用的默认的字符编码格式
+- sys.getfilesystemencoding() 返回将Unicode文件名转换成系统文件名的编码的名字
+- sys.builtin_module_names Python解释器导入的内建模块列表
+- sys.executable Python解释程序路径
+- sys.getwindowsversion() 获取Windows的版本
+- sys.stdin.readline() 从标准输入读一行，sys.stdout.write(“a”) 屏幕输出a
+- sys.setdefaultencoding(name) 用来设置当前默认的字符编码
 ```python
-import psutil
-import zipfile
-import os
-
-class Zip:
-    # 限制解压后大小不能超过1M，文件个数不能超过10
-    MAX_SIZE = 1*1024*1024
-    MAX_FILE_CNT = 10
-
-    @staticmethod
-    def unzip(path, zip_file):
-        file_path = path+os.sep+zip_file
-        dest_dir = path
-        src_file = zipfile.ZipFile(file_path, 'r')
-
-        # 1 检查文件个数
-        file_count = len(src_file.infolist())
-        if file_count >= Zip.MAX_FILE_CNT:
-            raise IOError(
-                f'zipfile({zip_file}) contains {file_count} files exceed max file count')
-
-        # 2 检查第一层解压文件总大小
-        total_size = sum(info.file_size for info in src_file.infolist())
-        if total_size >= Zip.MAX_SIZE:
-            raise IOError(
-                f'zipfile({zip_file}) size {total_size} exceed max limit')
-
-        # 3 检查磁盘剩余空间
-        dest_dir_partition = '/'  # 解压目录所在分区
-        if total_size >= psutil.disk_usage(dest_dir_partition).free:
-            raise IOError(
-                f'zipfile({zip_file}) size {total_size} exceed remain target disk space')
-
-        # 检查通过，解压所有文件
-        src_file.extractall(dest_dir)
+import sys
+scripts_path = sys.argv[0]
+arguments    = sys.argv[1:]
 ```
 
 
-## [socket](https://docs.python.org/zh-cn/3/library/socket.html#module-socket) --- 底层网络接口
-socket.socket(family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None)  <br />  使用给定的地址族、套接字类型和协议号创建一个新的套接字。  <br />  地址（和协议）簇
-
-- socket.AF_UNIX
-- socket.AF_INET
-- socket.AF_INET6
-
-套接字类型
-
-- socket.SOCK_STREAM
-- socket.SOCK_DGRAM
-- socket.SOCK_RAW
-- socket.SOCK_RDM
-- socket.SOCK_SEQPACKET
-
-**TCP**  <br />  server
-```javascript
-import socket,time,threading
-def tcplink(sock, addr):
-    print('Accept new connection from %s:%s...' % addr)
-    sock.send(b'Welcome!')
-    while True:
-        data = sock.recv(1024).decode('utf-8')
-        time.sleep(1)
-        if not data or data == 'exit':
-            break
-        print(f'{addr[0]}:{addr[1]} > {data}')
-        sock.send(input().encode('utf-8'))
-    sock.close()
-    print('Connection from %s:%s closed.' % addr)
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 类型，类型协议
-# 监听端口:
-s.bind(('127.0.0.1', 9999))
-# 允许连接数
-s.listen(5)
-print('Waiting for connection...')
-while True:
-    # 接受一个新连接:
-    sock, addr = s.accept()
-    # 创建新线程来处理TCP连接:
-    t = threading.Thread(target=tcplink, args=(sock, addr))
-    t.start()
-```
-client
-```javascript
-import socket
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# 建立连接:
-client.connect(('127.0.0.1', 9999))
-while True:
-    # 接收消息:
-    print('server > '+client.recv(1024).decode('utf-8'))
-    # 发送数据:
-    data = input()
-    if not data or data == 'exit':
-        client.close()
-    client.send(data.encode('utf-8'))
-```
-**UDP**  <br />  server
-```javascript
-import socket
-s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-# 监听端口:
-s.bind(('127.0.0.1', 9999))
-print('Bind UDP on 9999...')
-while True:
-    # 接收数据:
-    data, addr = s.recvfrom(1024)
-    print(f'{addr[0]}:{addr[1]} > {data}')
-    # 发送数据:
-    s.sendto(input().encode(), addr)
-```
-client
-```javascript
-import socket
-client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-print('Please input...')
-while True:
-    # 发送数据:
-    data = input()
-    if not data or data == 'exit':
-        client.close()
-    client.sendto(data.encode(), ('127.0.0.1', 9999))
-    # 接收消息:
-    print('server > ' + client.recv(1024).decode('utf-8'))
-```
-## [winreg](https://docs.python.org/3/library/winreg.html#module-winreg) — Windows registry access
+### [winreg](https://docs.python.org/3/library/winreg.html#module-winreg) — Windows registry access
 Function
 
 - winreg.CloseKey(hkey)
@@ -2274,48 +2392,3 @@ with wr.OpenKey(wr.HKEY_LOCAL_MACHINE, BASE_PATH, access=wr.KEY_ALL_ACCESS) as f
             wr.SetValueEx(key, 'ThisPCPolicy', 0, wr.REG_SZ, 'Hide')
             print(i,'passed')
 ```
-## [ctypes](https://docs.python.org/zh-cn/3.9/library/ctypes.html#module-ctypes) --- 外部函数库
-| ctypes 类型 | C 类型 | Python 数据类型 |
-| --- | --- | --- |
-| [c_bool](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_bool) | _Bool | bool (1) |
-| [c_char](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_char) | char | 单字符字节串对象 |
-| [c_wchar](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_wchar) | wchar_t | 单字符字符串 |
-| [c_byte](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_byte) | char | int |
-| [c_ubyte](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_ubyte) | unsigned char | int |
-| [c_short](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_short) | short | int |
-| [c_ushort](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_ushort) | unsigned short | int |
-| [c_int](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_int) | int | int |
-| [c_uint](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_uint) | unsigned int | int |
-| [c_long](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_long) | long | int |
-| [c_ulong](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_ulong) | unsigned long | int |
-| [c_longlong](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_longlong) | __int64 或 long long | int |
-| [c_ulonglong](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_ulonglong) | unsigned __int64 或 unsigned long long | int |
-| [c_size_t](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_size_t) | size_t | int |
-| [c_ssize_t](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_ssize_t) | ssize_t 或 Py_ssize_t | int |
-| [c_float](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_float) | float | float |
-| [c_double](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_double) | double | float |
-| [c_longdouble](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_longdouble) | long double | float |
-| [c_char_p](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_char_p) | char * (NUL terminated) | 字节串对象或 None |
-| [c_wchar_p](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_wchar_p) | wchar_t * (NUL terminated) | 字符串或 None |
-| [c_void_p](https://docs.python.org/zh-cn/3.9/library/ctypes.html#ctypes.c_void_p) | void * | int 或 None |
-
-class ctypes.CDLL(name, mode=DEFAULT_MODE, handle=None, use_errno=False, use_last_error=False, winmode=0)  <br />  此类的实例即已加载的动态链接库
-```javascript
-gcc 原文件名.c -shared -o 新文件名.so
-```
-```javascript
-from ctypes import *
-  
-# load the shared object file
-adder = CDLL('./adder.so')
-res_int = adder.add_int(4, 5)
-print("Sum of 4 and 5 = " + str(res_int))
-a = c_float(5.5)
-b = c_float(4.1)
-add_float = adder.add_float
-add_float.restype = c_float
-print( "Sum of 5.5 and 4.1 = ", str(add_float(a, b)))
-```
-
-
-

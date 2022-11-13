@@ -29,7 +29,7 @@ export default async () => defineConfig({
     nav: nav(),
 
     outline: [1, 4],
-    outlineTitle: 'TOC',
+    outlineTitle: '⚔ TOC',
 
     //   侧边导航
     sidebar,
@@ -74,7 +74,15 @@ function nav() {
         {
           text: 'Changelog',
           link: 'https://github.com/sower/Notes/commits'
-        }
+        },
+        {
+          text: 'Netlify',
+          link: 'https://ylem-notes.netlify.app'
+        },
+        {
+          text: 'Vercel',
+          link: 'https://ylem-notes.vercel.app'
+        },
       ],
     },
   ]

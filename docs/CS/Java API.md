@@ -1,8 +1,8 @@
 ---
 title: Java API
 created_at: 2022-02-01T05:44:36.000Z
-updated_at: 2022-10-26T14:35:02.000Z
-word_count: 9424
+updated_at: 2022-11-13T13:57:18.000Z
+word_count: 9944
 ---
 # Java API  
 [openjdk](https://github.com/openjdk)/[jdk](https://github.com/openjdk/jdk)
@@ -207,6 +207,72 @@ double ended queue ，双端队列
 - 常用构造器 
    - `HashMap()`：构造一个具有默认初始容量（16）和默认加载因子（0.75）的空 HashMap
    - `HashMap(Map<? extends K,? extends V> m)`：构造一个映射关系与指定 Map 相同的新 HashMap
+
+
+## J.U.C
+并发容器
+
+| 并发容器 | 对应的普通容器 | 描述 |
+| --- | --- | --- |
+| ConcurrentHashMap | HashMap | Java 1.8 之前采用分段锁机制细化锁粒度，降低阻塞，从而提高并发性；Java 1.8 之后基于 CAS 实现。 |
+| ConcurrentSkipListMap | SortedMap | 基于跳表实现的 |
+| CopyOnWriteArrayList | ArrayList |  |
+| CopyOnWriteArraySet | Set | 基于 CopyOnWriteArrayList 实现。 |
+| ConcurrentSkipListSet | SortedSet | 基于 ConcurrentSkipListMap 实现。 |
+| ConcurrentLinkedQueue | Queue | 线程安全的无界队列。底层采用单链表。支持 FIFO。 |
+| ConcurrentLinkedDeque | Deque | 线程安全的无界双端队列。底层采用双向链表。支持 FIFO 和 FILO。 |
+| ArrayBlockingQueue | Queue | 数组实现的阻塞队列。 |
+| LinkedBlockingQueue | Queue | 链表实现的阻塞队列。 |
+| LinkedBlockingDeque | Deque | 双向链表实现的双端阻塞队列。 |
+
+
+并发工具类  <br />  CountDownLatch	递减计数锁，用于控制一个线程等待多个线程
+
+- await() - 调用 await() 方法的线程会被挂起，它会等待直到 count 值为 0 才继续执行。
+- await(long timeout, TimeUnit unit) - 和 await() 类似，只不过等待一定的时间后 count 值还没变为 0 的话就会继续执行
+- countDown() - 将统计值 count 减 1
+
+CyclicBarrier	循环栅栏，可以让一组线程等待至某个状态之后再全部同时执行
+
+- public CyclicBarrier(int parties)	parties 相当于一个阈值
+- `public CyclicBarrier(int parties, Runnable barrierAction)`
+- await() - 等待调用 await() 的线程数达到屏障数。
+- await(long timeout, TimeUnit unit) - 等待至一定的时间，如果还有线程没有到达栅栏状态就直接让到达栅栏状态的线程执行后续任务。
+- reset() - 将屏障重置为初始状态
+
+Semaphore 	信号量，用来控制某段代码块的并发数
+
+- acquire() - 获取 1 个 permit。
+- acquire(int permits) - 获取 permits 数量的 permit。
+- release() - 释放 1 个 permit。
+- release(int permits) - 释放 permits 数量的 permit
+```java
+public class SemaphoreDemo {
+
+    private static final int THREAD_COUNT = 30;
+
+    private static ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_COUNT);
+
+    private static Semaphore semaphore = new Semaphore(10);
+
+    public static void main(String[] args) {
+        for (int i = 0; i < THREAD_COUNT; i++) {
+            threadPool.execute(() -> {
+                    try {
+                        semaphore.acquire();
+                        System.out.println("save data");
+                        semaphore.release();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+            });
+        }
+
+        threadPool.shutdown();
+    }
+
+}
+```
 
 
 ## Time
