@@ -1,7 +1,7 @@
 ---
 title: Web API
 created_at: 2022-02-01T05:44:49.000Z
-updated_at: 2022-10-23T09:22:14.000Z
+updated_at: 2023-01-08T12:21:04.000Z
 word_count: 19430
 ---
 # Web API  
@@ -87,7 +87,8 @@ JavaScript 虚拟机
 
 **property**
 
-- [Node.nodeType](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType)
+[Node.nodeType](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType)
+
 | Name | Value |
 | --- | --- |
 | ELEMENT_NODE | 1 |
@@ -908,6 +909,7 @@ var frameDoc = frame.contentWindow.document;
 -  Location.username：域名前面的用户名。 
 -  Location.password：域名前面的密码。 
 -  Location.origin：URL 的协议、主机名和端口。 
+
 | 方法 | 描述 |
 | --- | --- |
 | [assign()](https://www.w3school.com.cn/jsref/met_loc_assign.asp) | 加载新的文档。 |
@@ -1451,6 +1453,7 @@ xhr.onload = function () {
 ```
 
 - 可以获得数据传输的进度信息
+
 | 事件 | 描述 |
 | --- | --- |
 | onloadstart | 获取数据开始 |

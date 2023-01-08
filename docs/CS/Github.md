@@ -1,8 +1,8 @@
 ---
 title: Github
 created_at: 2022-02-20T09:18:58.000Z
-updated_at: 2022-11-07T15:12:40.000Z
-word_count: 1977
+updated_at: 2023-01-08T11:19:22.000Z
+word_count: 1962
 ---
 # Github  
  
@@ -32,8 +32,9 @@ git lfs migrate export --include="*.psd" --everything
 
 
 ## —— [Github](https://github.com/) ——
-  <br />  
+
 ## 远程仓库
+
 1 创建SSH Key
 ```shell
 ssh-keygen -t rsa -C "youremail@example.com"
@@ -48,8 +49,6 @@ git remote add origin git@github.com:sower/Testing.git
 git push [-u] origin master
 ```
 
-
-**failed to push some refs to '**[**https://github.com/**](https://github.com/)**...**  <br />  git pull --rebase origin master
 
 
 ## [GitHub Pages](https://pages.github.com/)
@@ -107,6 +106,7 @@ git push [-u] origin master
 - sort:author-date  按作者日期降序或升序排序。
 - sort:committer-date  按提交者日期降序或升序排序。
 - sort:updated  按项目最近更新日期排序。
+
 | 限定符 | 示例 |
 | --- | --- |
 | sort:interactions 或 sort:interactions-desc | [org:github sort:interactions ](https://github.com/search?q=org%3Agithub+sort%3Ainteractions&type=Issues)  <br />  匹配 GitHub 所拥有仓库中的议题，按最高反应和评论总数排序。 |

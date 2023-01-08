@@ -1,8 +1,8 @@
 ---
 title: Vue Ecosystem
 created_at: 2022-03-04T14:44:29.000Z
-updated_at: 2022-11-06T13:12:23.000Z
-word_count: 5279
+updated_at: 2022-12-11T06:55:36.000Z
+word_count: 5306
 ---
 # Vue Ecosystem  
 ## [Vite](https://vitejs.dev/)
@@ -1665,6 +1665,13 @@ export default {
 
 
 ## [awesome-vue](https://github.com/vuejs/awesome-vue)
+
+**Template**
+
+- [vitesse](https://github.com/antfu/vitesse) - Opinionated Vite + Vue Starter Template
+- [vitesse-lite](https://github.com/antfu/vitesse-lite) - Lightweight version of Vitesse
+- [vitesse-nuxt3](https://github.com/antfu/vitesse-nuxt3) - Vitesse for Nuxt 3
+- [vitesse-webext](https://github.com/antfu/vitesse-webext) - WebExtension Vite starter template
 
 [vueuse](https://github.com/vueuse/vueuse)	Collection of essential Vue Composition Utilities for Vue 2 and 3
 ```javascript

@@ -1,8 +1,8 @@
 ---
 title: API Collections
 created_at: 2022-01-29T14:37:09.000Z
-updated_at: 2022-02-26T09:21:34.000Z
-word_count: 1747
+updated_at: 2023-01-08T11:30:21.000Z
+word_count: 1780
 ---
 # API Collections  
 ## Public API
@@ -41,10 +41,12 @@ word_count: 1747
 
  [https://api.slack.com/](https://api.slack.com/)
 
-图床
+随机壁纸
 
-- 壁纸	[https://bing.ioliu.cn/v1/rand](https://bing.ioliu.cn/v1/rand)
-- 随机unsplash：[https://picsum.photos/](https://picsum.photos/)
+- 随机获取最近8天Bing每日一图	[https://api.1314.cool/bingimg](https://api.1314.cool/bingimg)
+- 随机unsplash：[https://unsplash.it/1980/1080?random](https://unsplash.it/1980/1080?random)
+- [https://source.unsplash.com/1980x1080/?nature,water](https://source.unsplash.com/1980x1080/?nature,water)
+- 小歪二次元：[https://api.ixiaowai.cn/api/api.php](https://api.ixiaowai.cn/api/api.php)
 
 
 ```shell
@@ -274,11 +276,6 @@ Omit the version completely or use "latest" to load the latest one (not recommen
 Add ".min" to any JS/CSS/SVG file to get a minified version - if one doesn't exist, we'll generate it for you. All generated files come with source maps and can be easily used during development:  <br />  `/npm/github-markdown-css@2.4.1/github-markdown.min.css `
 
 **GitHub**  <br />  Load any GitHub release, commit, or branch:  <br />  `/gh/user/repo@version/file `  <br />  Load exact version:  <br />  `/gh/jquery/jquery@3.1.0/dist/jquery.min.js `  <br />  `/gh/jquery/jquery@32b00373b3f42e5cdcb709df53f3b08b7184a944/dist/jquery.min.js `  <br />  Use a version range instead of an exact version (only works with valid semver versions):  <br />  `/gh/jquery/jquery@3/dist/jquery.min.js`  <br />  `/gh/jquery/jquery@3.1/dist/jquery.min.js`
-
-
-
-
-
 
 
 

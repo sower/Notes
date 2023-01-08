@@ -1,8 +1,8 @@
 ---
 title: Application
 created_at: 2022-01-29T14:00:17.000Z
-updated_at: 2022-10-16T08:05:56.000Z
-word_count: 1760
+updated_at: 2022-12-11T07:06:29.000Z
+word_count: 1761
 ---
 # Application  
 
@@ -334,8 +334,7 @@ IDE
 
 [Notepads](https://github.com/JasonStein/Notepads)	A modern, lightweight text editor with a minimalist design.  <br />  [DevToys](https://github.com/veler/DevToys)	A Swiss Army knife for developers
 
-
-
+[rustdesk](https://github.com/rustdesk/rustdesk)	
 
 **.ini 文件(Initialization File，初始化文件）**  <br />  windows的系统[配置文件](https://baike.baidu.com/item/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)所采用的存储格式，一般用户就用windows提供的各项图形化管理界面就可实现相同的配置了。
 

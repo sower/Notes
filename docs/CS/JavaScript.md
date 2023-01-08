@@ -1,12 +1,12 @@
 ---
 title: JavaScript
 created_at: 2022-02-01T05:44:47.000Z
-updated_at: 2022-03-03T15:19:11.000Z
-word_count: 11953
+updated_at: 2023-01-08T09:25:36.000Z
+word_count: 11756
 ---
 # JavaScript  
 ## —— [Javascript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference) ——
-1995年，Brendan Eich设计出了一门跨平台、面向对象的脚本语言，它能使网页可交互。  <br />  ECMAScript标准：ECMA（European Computer Manufacturers Association）组织定制了JavaScript语言的标准  <br />  脚本语言（script language）：不具备开发操作系统的能力，而是用来编写控制其他大型应用程序（比如浏览器）的“脚本”
+1995年，Brendan Eich设计出了一门跨平台、面向对象的脚本语言，它能使网页可交互。  <br />  ECMAScript标准：ECMA（European Computer Manufacturers Association）组织定制了JavaScript语言的标准  <br />  脚本语言（script language）：不具备开发操作系统的能力，而是用来编写控制其他大型应用程序（如浏览器）的“脚本”
 
 一切皆对象，对象为引用值
 
@@ -18,9 +18,7 @@ word_count: 11953
 （multiple-line comment）*/
 ```
 ## Strict mode
-```javascript
-'use strict';
-```
+`'use strict';`
 
 - 变量必须声明后再使用
 - 禁止使用 with 语句
@@ -133,6 +131,7 @@ var baz = function() {
   console.log("bar2");
 };
 ```
+
 ## 数据类型
 原始数据类型（[Primitive data types](https://developer.mozilla.org/en-US/docs/Glossary/Primitive)）一种既非[对象](https://developer.mozilla.org/en-US/docs/Glossary/object)也无[方法](https://developer.mozilla.org/en-US/docs/Glossary/method)的数据。共有7种：[string](https://developer.mozilla.org/en-US/docs/Glossary/string)，[number](https://developer.mozilla.org/en-US/docs/Glossary/number)，[bigint](https://developer.mozilla.org/en-US/docs/Glossary/bigint)，[boolean](https://developer.mozilla.org/en-US/docs/Glossary/boolean)，[null](https://developer.mozilla.org/en-US/docs/Glossary/null)（空值），[undefined](https://developer.mozilla.org/en-US/docs/Glossary/undefined)（未定义），[symbol](https://developer.mozilla.org/en-US/docs/Glossary/symbol)
 
@@ -634,6 +633,7 @@ p.constructor === P // true
 p.constructor === P.prototype.constructor // true
 p.hasOwnProperty('constructor') // false
 ```
+
 ## OOP
 构造函数
 
@@ -910,6 +910,7 @@ obj.p2 = 5;
 obj.p3 // undefined
 p3 // 6
 ```
+
 ### [解构（Destructuring）赋值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 ```javascript
 let [x, , y] = [1, 2, 3];
@@ -984,18 +985,19 @@ function* fibs() {
 let [first, second, third, fourth, fifth, sixth] = fibs();
 sixth // 5
 ```
+
 ## 异常
 ```javascript
 try {
-     供测试的代码块
+     // 供测试的代码块
      throw expression; // 抛出异常
 }
-[catch [e] {
-     处理错误的代码块
+[ catch [e] {
+     // 处理错误的代码块
 } 
 finally {
-     无论 try / catch 结果如何都执行的代码块
-}]
+     // 无论 try / catch 结果如何都执行的代码块
+} ]
 ```
 **Error 对象属性**
 
@@ -1277,6 +1279,12 @@ asyncPrint('hello world', 50);
 | trace() | 追踪函数的调用过程 |
 | warn() | 输出警告信息 |
 
+
+### JSON
+
+- 序列化：`JSON.stringify(object, ?replacer, ?space)`
+- 反序列化：`JSON.parse()`
+
 ## 异步
 ### 定时器（Timer）
 向任务队列添加定时任务
@@ -1514,6 +1522,7 @@ var loggedObj = new Proxy(obj, {
   }
 });
 ```
+
 ## Module
 export
 ```javascript
@@ -1542,6 +1551,7 @@ export { foo as myFoo } from 'my_module';
 // 整体输出
 export * from 'my_module';
 ```
+
 import
 ```javascript
 // main.js
@@ -1550,6 +1560,7 @@ import * from './profile.js';
 
 import(specifier)    // 支持动态加载模块
 ```
+
 ## 运算符
 [赋值运算符(assignment operator)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Assignment_Operators)
 
@@ -1592,6 +1603,7 @@ import(specifier)    // 支持动态加载模块
 
 - propNameOrNumber in objectName
 - objectName instanceof objectType
+
 ### 优先级
 | Operator type | Individual operators |
 | --- | --- |
@@ -1676,22 +1688,4 @@ document.addEventListener('scroll', function(){
 ```
 
 
-## JSON
-JavaScript Object Notation：一种数据交换的文本格式  <br />  2002年，道格拉斯·克罗克福特（Douglas Crockford）发明的超轻量级的数据交换格式  <br />  **规定**
 
-1. 复合类型的值只能是数组或对象，不能是函数、正则表达式对象、日期对象。
-2. 原始类型的值只有四种：字符串、数值（必须以十进制表示）、布尔值和null（不能使用NaN, Infinity, -Infinity和undefined）。
-3. 字符串必须使用双引号表示，不能使用单引号。
-4. 对象的键名必须放在双引号里面。
-5. 数组或对象最后一个成员的后面，不能加逗号。
-
-序列化：JSON.stringify(object [```]);  <br />  反序列化：JSON.parse()
-```javascript
-var obj = JSON.parse('{"name":"小明","age":14}', function (key, value) {
-    if (key === 'name') {
-        return value + '同学';
-    }
-    return value;
-});
-console.log(JSON.stringify(obj)); // {name: '小明同学', age: 14}
-```

@@ -12,9 +12,13 @@ import yaml
 
 from yuque import write_to_json_file
 
-log.basicConfig(level=log.INFO)
+log.basicConfig(
+    format=
+    '%(asctime)s [%(levelname)s] %(filename)s - %(funcName)s (%(lineno)s line): %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S',
+    level=log.INFO)
 sidebar = []
-# "id", "slug","cover","description",
+# "id", "slug", "cover", "description",
 doc_property = [
     "title",
     "created_at",

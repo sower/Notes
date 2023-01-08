@@ -1,7 +1,7 @@
 ---
 title: Python Lib
 created_at: 2022-02-01T05:44:43.000Z
-updated_at: 2022-11-13T14:16:01.000Z
+updated_at: 2023-01-08T10:57:04.000Z
 word_count: 19490
 ---
 # Python Lib  
@@ -449,6 +449,7 @@ return 'zh-CN'
 - maxsplit：分隔次数，maxsplit=1 分隔一次，默认为 0，不限制次数。
 - endpos：指定字符串的结束位置，默认为字符串的长度。
 - pos ：指定字符串的起始位置，默认为 0。
+
 | flags | 描述 |
 | --- | --- |
 | re.I | 忽略大小写 IGNORECASE |
@@ -1406,9 +1407,10 @@ asyncio.run(main())
 | [asyncio.set_event_loop()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.set_event_loop) | 通过当前策略将事件循环设置当前事件循环。 |
 | [asyncio.new_event_loop()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.new_event_loop) | 创建一个新的事件循环。 |
 
-  <br />  
 
-- 生命周期
+
+生命周期
+
 | [loop.run_until_complete()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.run_until_complete) | 运行一个期程/任务/可等待对象直到完成。 |
 | --- | --- |
 | [loop.run_forever()](https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#asyncio.loop.run_forever) | 一直运行事件循环。 |

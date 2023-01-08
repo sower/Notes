@@ -1,7 +1,7 @@
 ---
 title: Data structure
 created_at: 2022-02-10T13:59:46.000Z
-updated_at: 2022-05-08T08:32:24.000Z
+updated_at: 2023-01-08T11:21:33.000Z
 word_count: 12641
 ---
 # Data structure  
@@ -1311,8 +1311,9 @@ SetName Find( SetType S, ElementType X )
 - 完全图：对于给定的一组顶点，顶点间都存在边
 
 ### 表示法
+
 #### 邻接矩阵
-  <br />   
+
 ```c
 #define MaxVertexNum 100    /* 最大顶点数设为100 */
 #define INFINITY 65535        /* ∞设为双字节无符号整数的最大值65535*/
@@ -1388,6 +1389,7 @@ MGraph BuildGraph()
 	return Graph;
 }
 ```
+
 #### 邻接表
 ```c
 #define MaxVertexNum 100    /* 最大顶点数设为100 */

@@ -1,7 +1,7 @@
 ---
 title: Chrome
 created_at: 2022-01-29T14:58:18.000Z
-updated_at: 2022-03-05T03:22:34.000Z
+updated_at: 2023-01-08T11:27:46.000Z
 word_count: 2840
 ---
 # Chrome  
@@ -67,8 +67,9 @@ Performance monitor
 | 缩小 | Ctrl + - |
 | 恢复默认文本大小 | Ctrl + 0 |
 
-  <br />  
+
 ### API
+
 `$_`	最近一次计算的表达式的值
 
 **选择元素**
@@ -455,7 +456,6 @@ chrome.tabs.create({...})
 
 
 **Skills**
-
 
 
 chrome://flags  <br />  Chrome 恢复显示网址 https:// 和 www   <br />  chrome://flags/#omnibox-ui-hide-steady-state-url-trivial-subdomains

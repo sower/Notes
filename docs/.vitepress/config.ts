@@ -45,7 +45,7 @@ export default async () => defineConfig({
 
     editLink: {
       pattern: 'https://github.com/sower/Notes/tree/main/docs/:path',
-      text: 'Edit this page on GitHub'
+      text: 'Suggest changes to this page'
     },
 
     lastUpdatedText: 'Updated Date'

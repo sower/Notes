@@ -1,8 +1,8 @@
 ---
 title: Node.js
 created_at: 2022-02-01T05:44:48.000Z
-updated_at: 2022-11-05T14:45:27.000Z
-word_count: 6896
+updated_at: 2023-01-08T09:16:33.000Z
+word_count: 6872
 ---
 # Node.js  
 ## —— [Node.js](https://nodejs.org/en/docs/) ——
@@ -1168,13 +1168,7 @@ test('two plus two', () => {
 
 ## Others
 
-utility-first CSS framework
-
-- [tailwindcss](https://github.com/tailwindlabs/tailwindcss)
-- [daisyui](https://github.com/saadeghi/daisyui)	Tailwind Components
-- [hyperui](https://github.com/sadcatsoft/hyperui#:~:text=HyperUI%20is%20a%20real-time%20C%2B%2B%20OpenGL%20UI%20framework,application%20consists%20of%20three%20basic%20sets%20of%20files%3A)	a collection of free Tailwind CSS components
-- [windicss](https://github.com/windicss/windicss)
-- [UnoCSS](https://github.com/antfu/unocss) - The instant on-demand atomic CSS engine.
+[awesome-javascript](https://github.com/sorrycc/awesome-javascript)  <br />  [awesome-nodejs](https://github.com/sindresorhus/awesome-nodejs)  <br />  [awesome-electron](https://github.com/sindresorhus/awesome-electron)
 
 Data Visualization
 
@@ -1185,19 +1179,11 @@ Data Visualization
 
 [anime](https://github.com/juliangarnier/anime)
 
-
 toast
 
 - [popper-core](https://github.com/popperjs/popper-core)
 - [tippyjs](https://github.com/atomiks/tippyjs)	complete tooltip, popover, dropdown, and menu solution
 - [iziToast](https://github.com/marcelodolza/iziToast)
-
-CSS
-
-- [bulma](https://github.com/jgthms/bulma) Modern CSS framework based on Flexbox
-- [normalize.css](https://github.com/necolas/normalize.css)
-- [Hover](https://github.com/IanLunn/Hover)
-- [hint.css](https://github.com/chinchang/hint.css)
 
 Presentation 
 
@@ -1229,8 +1215,8 @@ tools
 - [jszip](https://github.com/Stuk/jszip)	creating, reading and editing .zip files
 - [zx](https://github.com/google/zx)	A tool for writing better scripts
 
-
-[awesome-javascript](https://github.com/sorrycc/awesome-javascript)  <br />  [awesome-nodejs](https://github.com/sindresorhus/awesome-nodejs)  <br />  [awesome-electron](https://github.com/sindresorhus/awesome-electron)
+- [taze](https://github.com/antfu/taze)	A modern cli tool that keeps your deps fresh
+- [nprogress](https://github.com/rstacruz/nprogress)
 
 
 

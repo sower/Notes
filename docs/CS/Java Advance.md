@@ -1,12 +1,12 @@
 ---
 title: Java Advance
 created_at: 2022-04-03T08:46:14.000Z
-updated_at: 2022-11-13T14:05:20.000Z
-word_count: 7461
+updated_at: 2023-01-08T11:02:16.000Z
+word_count: 8295
 ---
 # Java Advance  
 
-## **并发 **Concurrent
+## 并发 Concurrent
 **并发安全**：是保证程序的正确性，使得并发处理结果符合预期  <br />  并发安全需要保证：
 
 - **可见性** - 一个线程修改了某个共享变量，其状态能够立即被其他线程知晓，即把线程本地状态反映到主内存上，volatile 就是负责保证可见性的。
@@ -36,6 +36,7 @@ word_count: 7461
 - int getPriority()：返回线程的优先级
 - void setPriority(int newPriority)：更改线程的优先级（范围是 1~10 之间）
 - boolean isAlive()：测试线程是否处于活动状态
+
 | 变量和类型 | 字段 | 描述 |
 | --- | --- | --- |
 | static int | [MAX_PRIORITY](https://www.apiref.com/java11-zh/java.base/java/lang/Thread.html#MAX_PRIORITY) | 线程可以拥有的最大优先级。 |
@@ -991,25 +992,48 @@ public class Main {
 
 ## JVM
 
+JVM 体系结构
+
+- JVM 指令集
+- 类加载器
+- 执行引擎 - 相当于 JVM 的 CPU
+- 内存区 - JVM 的存储
+- 本地方法调用 - 调用 C/C++ 实现的本地方法
+
+
+Hotspot 是最流行的 JVM
+
 ![](https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javacore/jvm/jvm-hotspot-key-components.png#crop=0&crop=0&crop=1&crop=1&from=url&id=KI4ZW&originHeight=720&originWidth=960&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ### 运行时数据区域
 ![](https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javacore/jvm/jvm-memory-runtime-data-area.png#crop=0.0486&crop=0.0344&crop=0.9559&crop=0.9668&from=url&height=711&id=G6EqC&originHeight=784&originWidth=658&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=&width=597)
 
 
-程序计数器（Program Counter Register）：一块较小的内存空间，可看做是当前线程所执行的字节码的行号指示器  <br />  Java 虚拟机栈（Java Virtual Machine Stacks） 也是线程私有的，它的生命周期与线程相同  <br />  本地方法栈（Native Method Stack） 与虚拟机栈的作用相似，为 Native 方法服务  <br />  Java 堆（Java Heap） ：存放对象实例
+程序计数器（Program Counter Register）：一块较小的内存空间，可看做是当前线程所执行的字节码的行号指示器  <br />  Java 虚拟机栈（Java Virtual Machine Stacks）：生命周期与线程相同；为 Java 方法服务  <br />  本地方法栈（Native Method Stack）：与虚拟机栈的作用相似；为 Native 方法服务  <br />  Java 堆（Java Heap） ：存放对象实例
 
 - 新生代（Young Generation）
    - Eden - Eden 和 Survivor 的比例为 8:1
    - From Survivor
    - To Survivor
 - 老年代（Old Generation）
-- 永久代（Permanent Generation）
+- 永久代（Permanent Generation）：方法区（Method Area），用于存放已被加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。
+   - 运行时常量池（Runtime Constant Pool）：方法区的一部分，Class 文件中除了有类的版本、字段、方法、接口等描述信息，还有一项信息是常量池（Constant Pool Table），用于存放编译器生成的各种字面量和符号引用
 
-方法区（Method Area）也被称为永久代。用于存放已被加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。  <br />  运行时常量池（Runtime Constant Pool） 是方法区的一部分，Class 文件中除了有类的版本、字段、方法、接口等描述信息，还有一项信息是常量池（Constant Pool Table），用于存放编译器生成的各种字面量和符号引用
+| 内存区域 | 内存作用范围 | 异常 |
+| --- | --- | --- |
+| 程序计数器 | 线程私有 | 无 |
+| Java 虚拟机栈 | 线程私有 | StackOverflowError 和 OutOfMemoryError |
+| 本地方法栈 | 线程私有 | StackOverflowError 和 OutOfMemoryError |
+| Java 堆 | 线程共享 | OutOfMemoryError |
+| 方法区 | 线程共享 | OutOfMemoryError |
+| 运行时常量池 | 线程共享 | OutOfMemoryError |
+| 直接内存 | 非运行时数据区 | OutOfMemoryError |
+
 
 
 ### 垃圾收集
 #### 可达性分析算法
+通过 GC Roots 作为起始点进行搜索，JVM 将能够到达到的对象视为存活，不可达的对象视为死亡
+
 **GC Roots 的对象**
 
 - 虚拟机栈中引用的对象
@@ -1018,13 +1042,38 @@ public class Main {
 - 方法区中，常量引用的对象
 
 
-#### 引用
+#### 引用类型
 
 - 强引用（Strong Reference）：不会被垃圾收集器回收，如使用 new 一个新对象
-- 软引用（Soft Reference）：只有在内存不够的情况下才会被回收，使用 SoftReference 类来创建
-- 弱引用（Weak Reference）：一定会被垃圾收集器回收
-- 虚引用（Phantom Reference）：不会对其生存时间构成影响，其 PhantomReference#get() 方法总是返回 null，因此无法获取被引用的对象，主要用于跟踪一个对象被回收的过程
+- 软引用（Soft Reference）：只有在内存不够的情况下才会被回收；SoftReference 类
+- 弱引用（Weak Reference）：一定会被垃圾收集器回收；WeakReference 类
+- 虚引用（Phantom Reference）：一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用取得一个对象实例；为一个对象设置虚引用关联的唯一目的就是能在这个对象被收集器回收时收到一个系统通知；PhantomReference类
 
+
+#### 垃圾收集算法
+
+**垃圾收集器的性能指标**
+
+- 停顿时间 - 因为 GC 而导致程序不能工作的时间长度。
+- 吞吐量 - 关注在特定的时间周期内一个应用的工作量的最大值。
+
+**标记 - 清除（Mark-Sweep）**：将需要回收的对象进行标记，然后清理掉被标记的对象。
+
+- 标记和清除过程效率都不高；
+- 会产生大量不连续的内存碎片，导致无法给大对象分配内存。
+
+**标记 - 整理（Mark-Compact）**：让所有存活的对象都向一端移动，然后直接清理掉端边界以外的内存。
+
+- 能够解决内存碎片化的问题，但代价是压缩算法的性能开销
+
+**复制（Copying）：**将内存划分为大小相等的两块，每次只使用其中一块，当这一块内存用完了就将还存活的对象复制到另一块上面，然后再把使用过的内存空间进行一次清理。
+
+- 主要不足是只使用了内存的一半
+
+**分代收集：**根据对象存活周期将内存划分为几块，不同块采用适当的收集算法
+
+- 年轻代：**复制** 算法
+- 老年代：**标记 - 清理** 或者 **标记 - 整理** 算法
 
 参数
 
@@ -1043,7 +1092,20 @@ public class Main {
 
 
 
-### 垃圾收集器 Garbage Collector
+#### 垃圾收集器 Garbage Collector
+
+| 收集器 | 运行方式 | 代 | 收集算法 | 目标 | 适用场景 |
+| --- | --- | --- | --- | --- | --- |
+| **Serial** | 串行 | 年轻代 | 复制 | 响应速度优先 | 单 CPU 环境下的 Client 模式 |
+| **Serial Old** | 串行 | 老年代 | 标记-整理 | 响应速度优先 | 单 CPU 环境下的 Client 模式、CMS 的后备预案 |
+| **ParNew** | 串行 + 并行 | 年轻代 | 复制算法 | 响应速度优先 | 多 CPU 环境时在 Server 模式下与 CMS 配合 |
+| **Parallel Scavenge** | 串行 + 并行 | 年轻代 | 复制算法 | 吞吐量优先 | 在后台运算而不需要太多交互的任务 |
+| **Parallel Old** | 串行 + 并行 | 老年代 | 标记-整理 | 吞吐量优先 | 在后台运算而不需要太多交互的任务 |
+| **CMS**  <br />  并发标记清除收集器 | 并行 + 并发 | 老年代 | 标记-清除 | 响应速度优先 | 集中在互联网站或 B/S 系统服务端上的 Java 应用 |
+| **G1** | 并行 + 并发 | 年轻代 + 老年代 | 标记-整理 + 复制算法 | 响应速度优先 | 面向服务端应用，将来替换 CMS |
+
+
+
 
 
 ### JDK 监控和故障诊断命令行工具

@@ -1,7 +1,7 @@
 ---
 title: Docker
 created_at: 2022-02-01T05:44:38.000Z
-updated_at: 2022-10-23T15:36:51.000Z
+updated_at: 2023-01-08T12:24:15.000Z
 word_count: 5639
 ---
 # Docker  
@@ -879,7 +879,8 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 | [docker node rm](https://docs.docker.com/engine/reference/commandline/node_rm/) | Remove one or more nodes from the swarm |
 | [docker node update](https://docs.docker.com/engine/reference/commandline/node_update/) | Update a node |
 
-  <br />  
+
+
 ### Service
 | Command | Description |
 | --- | --- |
@@ -892,6 +893,7 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 | [docker service rollback](https://docs.docker.com/engine/reference/commandline/service_rollback/) | Revert changes to a service’s configuration |
 | [docker service scale](https://docs.docker.com/engine/reference/commandline/service_scale/) | Scale one or multiple replicated services |
 | [docker service update](https://docs.docker.com/engine/reference/commandline/service_update/) | Update a service |
+
 
 新建服务  <br />  `docker service create --replicas 3 -p 80:80 --name nginx nginx:1.13.7-alpine`  <br />  服务伸缩  <br />  `docker service scale nginx=5`  <br />  升级服务  <br />  `docker service update  --image nginx:1.13.12-alpine  nginx`  <br />  服务回退  <br />  `docker service rollback nginx`
 

@@ -1,7 +1,7 @@
 ---
 title: Bash
 created_at: 2022-02-01T05:44:38.000Z
-updated_at: 2022-10-25T16:15:06.000Z
+updated_at: 2023-01-08T11:15:17.000Z
 word_count: 6199
 ---
 # Bash  
@@ -240,6 +240,7 @@ env 或 printenv	所有环境变量  <br />  env [OPTION]... [-] [NAME=VALUE]...
 - -0, --null           end each output line with NUL, not newline
 - -u, --unset=NAME     remove variable from the environment
 - -C, --chdir=目录     将工作目录变更为指定目录
+
 | 名称 | 作用 |
 | --- | --- |
 | HOME | 用户的主目录（也称家目录） |

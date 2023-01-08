@@ -1,8 +1,8 @@
 ---
 title: Microsoft
 created_at: 2022-02-01T05:44:33.000Z
-updated_at: 2022-10-25T12:21:00.000Z
-word_count: 2649
+updated_at: 2023-01-08T12:23:12.000Z
+word_count: 2665
 ---
 # Microsoft  
 ## [Windows Terminal](https://docs.microsoft.com/zh-cn/windows/terminal/)
@@ -70,6 +70,10 @@ extensions : `%USERPROFILE%\.vscode\extensions`
 - [Surround](https://marketplace.visualstudio.com/items?itemName=yatki.vscode-surround)
 - [Vscode Google Translate](https://marketplace.visualstudio.com/items?itemName=funkyremi.vscode-google-translate)
 - [Text Power Tools](https://marketplace.visualstudio.com/items?itemName=qcz.text-power-tools)
+- [vscode-theme-vitesse](https://github.com/antfu/vscode-theme-vitesse)
+- [vscode-spell-checker](https://github.com/streetsidesoftware/vscode-spell-checker)
+- [vscode-gitlens](https://github.com/gitkraken/vscode-gitlens)
+- file-icons
 
 ### [Shortcuts](https://code.visualstudio.com/docs/getstarted/keybindings)
 **Basic Editing**
@@ -157,6 +161,8 @@ code [options][paths...]
 
 ### Settings
 
+[vscode-settings](https://github.com/antfu/vscode-settings)
+
 `%APPDATA%\Code`  <br />  `C:\Users\<Username>\AppData\Roaming\Code\User\settings.json`
 ```json
 {
@@ -166,11 +172,17 @@ code [options][paths...]
     "oneDarkPro.vivid": true,
     "oneDarkPro.bold": true,
     "editor.suggestSelection": "first",
+		"editor.tabSize": 2,
     "editor.formatOnType": true,
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "editor.linkedEditing": true,
     "editor.suggest.maxVisibleSuggestions": 10,
+  	"editor.codeActionsOnSave": {
+  		"source.fixAll.eslint": true,
+  		"source.organizeImports": false
+  	},
+  	"files.eol": "\n",
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.fontSize": 15,
 
@@ -232,9 +244,9 @@ F1 键调出控制台，输入task,选择任务：配置任务运行程序,打�
 ```
 
 
-  <br />  
 ## [WSL](https://docs.microsoft.com/zh-cn/windows/wsl/)
-Windows Subsystem for Linux
+
+Windows Subsystem for Linux  
 ```shell
 ultra  1999
 
@@ -418,6 +430,7 @@ int WINAPI MessageBox( HWND hWnd, LPCTSTR lpText, LPCTSTR lpCaption, UINT uType 
 - lpText：消息框的内容。LPCTSTR 是自定义数据类型，等价于 const char *。
 - lpCaption：消息框的标题。
 - uType：对话框的按钮样式和图标。
+
 | 按钮 | 含义 |
 | --- | --- |
 | MB_OK | 默认值，有一个“确认”按钮在里面 |

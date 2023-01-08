@@ -1,7 +1,7 @@
 ---
 title: MySQL
 created_at: 2022-02-01T05:44:45.000Z
-updated_at: 2022-10-26T14:11:33.000Z
+updated_at: 2023-01-08T11:23:29.000Z
 word_count: 13963
 ---
 # MySQL  
@@ -222,6 +222,7 @@ SELECT <字段名> FROM <表1>, <表2> [WHERE子句]
 - 左连接 (LEFT OUTER JOIN)
 - 右连接 (RIGHT OUTER JOIN)
 - 全连接 (FULL OUTER JOIN)
+
 | INNER JOIN | LEFT OUTER JOIN | RIGHT OUTER JOIN | FULL OUTER JOIN |
 | --- | --- | --- | --- |
 | 两张表都存在的记录 | 左表存在的记录 | 右表存在的记录 | 左右表都存在的记录 |
@@ -565,6 +566,7 @@ SET autocommit = 1|0|ON|OFF;
 - 脏读 DIRTY READ： 查询同一记录，2 次结果不一样，读到还未 commit 的数据结果；
 - 不可重复读 NON REPEATABLE READ： 查询同一记录，2 次结果不一样，读到的结果在另一事务 commit/rollback 之间；
 - 幻读 PHANTOM READ：查询同一记录，2 次结果是一样，但是会出现 事务 A 新增的列，事务 B 读不到(SELECT)，但是却可以更新(UPDATE)，更新后才可以读到。
+
 | ISOLATION LEVEL | DIRTY READ | NON REPEATABLE READ | PHANTOM READ |
 | --- | --- | --- | --- |
 | READ UNCOMMITTED | YES | YES | YES |

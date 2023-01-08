@@ -1,8 +1,8 @@
 ---
 title: Pythonic
 created_at: 2022-02-20T02:15:13.000Z
-updated_at: 2022-10-16T06:10:50.000Z
-word_count: 4444
+updated_at: 2023-01-08T10:55:11.000Z
+word_count: 4480
 ---
 # Pythonic  
 ## Pythonic
@@ -60,6 +60,7 @@ a = c if c > b else b
 - 一行应不超过79个字符
 - 每个 import 语句只导入一个模块，每个导入应该独占一行
 - 使用必要的空行可以增加代码的可读性，通常在顶级定义（如函数或类的定义）之间空两行，而方法定义之间空一行，另外在用于分隔某些功能的位置也可以空一行
+
 | **Type** | **Public** | **Internal** |
 | --- | --- | --- |
 | Modules | lower_with_under | _lower_with_under |
@@ -163,6 +164,23 @@ if __name__ == '__main__':
 与None作比较使用”is [not]“，不用等号  <br />  使用isinstance判断变量类型  <br />  若list成员个数可以预知，创建应预留正好容纳所有成员的空间  <br />  同一个函数/方法的所有分支返回语句必须统一为显示或隐式，不混合使用  <br />  使用单个下划线替代循环体中未使用的循环变量
 
 
+
+Eval
+```python
+>>> from ast import literal_eval
+>>> literal_eval('[1, 2, 3]')
+[1, 2, 3]
+>>> literal_eval('1 + 2')
+ValueError: malformed node or string
+```
+
+Stopwatch
+```python
+from time import perf_counter
+start_time = perf_counter()
+...
+duration_in_seconds = perf_counter() - start_time
+```
 
 ## Format
 %  [keyname] [flags] [width] [.prec] typecode

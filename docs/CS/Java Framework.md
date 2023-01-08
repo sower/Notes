@@ -1,8 +1,8 @@
 ---
 title: Java Framework
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2022-10-26T14:37:43.000Z
-word_count: 8722
+updated_at: 2022-12-11T08:12:27.000Z
+word_count: 8936
 ---
 # Java Framework  
 
@@ -663,6 +663,7 @@ Retryer<Boolean> retryer = RetryerBuilder.<Boolean>newBuilder()
 
 - [slf4j](https://github.com/qos-ch/slf4j)
 
+MDC ( Mapped Diagnostic Contexts )：一个线程安全的存放诊断日志的容器，对分布式应用系统的审计和调试
 
 **Spring Boot + Slf4j + Logback**
 > Spring Boot 默认使用 logback 作为日志组件
@@ -1076,8 +1077,12 @@ void testCapitalize(String input, String result) {
 
 [PowerMock](https://github.com/powermock/powermock)
 
+## [HTTP Clients](https://github.com/akullpp/awesome-java#http-clients)
 
-## [okhttp](https://github.com/square/okhttp)
+- [Feign](https://github.com/OpenFeign/feign) - HTTP client binder inspired by Retrofit, JAXRS-2.0, and WebSocket.
+- [Retrofit](https://square.github.io/retrofit/) - Typesafe REST client
+
+[**okhttp**](https://github.com/square/okhttp)
 
 [OkHttpClient](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/)  <br />  [Cookie](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-cookie/)  <br />  [Headers](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-headers/)  <br />  [HttpUrl](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-http-url/)  <br />  [Interceptor](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-interceptor/)  <br />  [MediaType](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-media-type/)  <br />  [MultipartBody](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-multipart-body/)  <br />  [Request](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-request/)  <br />  [Response](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-response/)  <br />  [WebSocket](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-web-socket/)
 
@@ -1359,7 +1364,7 @@ public class HttpsUtils {
 ```
 
 
-## Json
+## [JSON](https://github.com/akullpp/awesome-java#json)
 
 ### [Jacson](https://github.com/FasterXML/jackson)
 ```java
@@ -1459,6 +1464,39 @@ public Date date;
 // 按ordinal排序
 @JSONField(ordinal = 2)
 ```
+
+**SerializerFeature**
+
+- QuoteFieldNames, //key使用引号
+- UseSingleQuotes, //使用单引号
+- **WriteMapNullValue**, //输出Map的null值
+- WriteEnumUsingToString, //枚举属性输出toString的结果
+- WriteEnumUsingName, //枚举数据输出name
+- UseISO8601DateFormat, //使用日期格式
+- WriteNullListAsEmpty, //List为空则输出`[]`
+- WriteNullStringAsEmpty, //String为空则输出`""`
+- WriteNullNumberAsZero, //Number类型为空则输出`0`
+- WriteNullBooleanAsFalse, //Boolean类型为空则输出`false`
+- SkipTransientField,
+- SortField, //排序字段
+- WriteTabAsSpecial,
+- **PrettyFormat**, // 格式化JSON缩进
+- WriteClassName, // 输出类名
+- DisableCircularReferenceDetect, // 禁止循环引用
+- WriteSlashAsSpecial, // 对斜杠’/’进行转义
+- BrowserCompatible,
+- WriteDateUseDateFormat, // 全局修改日期格式,默认为false
+- NotWriteRootClassName,
+- DisableCheckSpecialChar,
+- BeanToArray,
+- WriteNonStringKeyAsString,
+- NotWriteDefaultValue,
+- BrowserSecure,
+- IgnoreNonFieldGetter,
+- WriteNonStringValueAsString,
+- IgnoreErrorGetter,
+- WriteBigDecimalAsPlain,
+- **MapSortField**
 
 [JSONPath](https://github.com/alibaba/fastjson/wiki/JSONPath)
 ```java

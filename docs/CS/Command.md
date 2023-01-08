@@ -1,7 +1,7 @@
 ---
 title: Command
 created_at: 2022-02-12T02:31:37.000Z
-updated_at: 2022-10-25T13:20:13.000Z
+updated_at: 2023-01-08T11:14:20.000Z
 word_count: 15079
 ---
 # Command  
@@ -565,6 +565,7 @@ chattr - change file attributes on a Linux file system  <br />  chattr [+-=] [�
 - + 表示给文件或目录添加属性
 - - 表示移除文件或目录拥有的某些属性
 - = 表示给文件或目录设定一些属性
+
 | 属性选项 | 功能 |
 | --- | --- |
 | i | 如果对文件设置 i 属性，那么不允许对文件进行删除、改名，也不能添加和修改数据； 如果对目录设置 i 属性，那么只能修改目录下文件中的数据，但不允许建立和删除文件； |
@@ -666,6 +667,7 @@ w 或 who 命令都可以查看服务器上目前已登录的用户信息  <br /
 - -f, --from          show remote hostname field
 - -o, --old-style     old style output
 - -i, --ip-addr       display IP address instead of hostname
+
 | 标题 | 含义 |
 | --- | --- |
 | USER | 登录到系统的用户。 |
@@ -779,6 +781,7 @@ kill - send a signal to a process  <br />  `kill [options] <pid> [...]`
 
 - -s sig SIG 是信号名称
 - -n sig SIG 是信号编号
+
 | 信号编号 | 信号名 | 含义 |
 | --- | --- | --- |
 | 0 | EXIT | 程序退出时收到该信息。 |
@@ -936,6 +939,7 @@ anacron [选项] [工作名]  <br />  以 1 天、1周、1个月为检测周期�
 vmstat - Virtual Meomory Statistics（虚拟内存统计）  <br />  监控 CPU 使用、进程状态、内存使用、虚拟内存使用、硬盘输入/输出状态等信息  <br />  vmstat [-a] [刷新延时 刷新次数]  <br />  vmstat [选项]
 
 - -a ：用 inact/active（活跃与否） 来取代 buff/cache 的内存输出信息
+
 | 选项 | 含义 |
 | --- | --- |
 | -fs | -f：显示从启动到目前为止，系统复制（fork）的程序数，此信息是从 /proc/stat 中的 processes 字段中取得的。 -s：将从启动到目前为止，由一些事件导致的内存变化情况列表说明。 |

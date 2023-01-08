@@ -1,8 +1,8 @@
 ---
 title: CSS
 created_at: 2022-02-01T05:44:47.000Z
-updated_at: 2022-10-23T07:35:02.000Z
-word_count: 9830
+updated_at: 2023-01-08T09:41:27.000Z
+word_count: 10103
 ---
 # CSS  
 ## —— 层叠样式表 (Cascading Style Sheets) ——
@@ -196,6 +196,7 @@ height: 0.37rem;
 - width 和 height 属性将不起作用。
 - 垂直方向的内边距、外边距以及边框会被应用但是不会把其他处于 inline 状态的盒子推开。
 - 水平方向的内边距、外边距以及边框会被应用且会把其他处于 inline 状态的盒子推开。
+
 | Property | Description |
 | --- | --- |
 | [display](https://www.w3schools.com/cssref/pr_class_display.asp) | Specifies how an element should be displayed |
@@ -1026,6 +1027,7 @@ background-attachment
 - 等宽字体（Monospace）- 这里所有字母都有相同的固定宽度。它们创造出机械式的外观。
 - 草书字体（Cursive）- 模仿了人类的笔迹。
 - 幻想字体（Fantasy）- 是装饰性/俏皮的字体。
+
 | 通用字体族 | 字体名称实例 |
 | --- | --- |
 | Serif | Times New Roman  <br />  Georgia  <br />  Garamond |
@@ -1034,11 +1036,117 @@ background-attachment
 | Cursive | Brush Script MT  <br />  Lucida Handwriting |
 | Fantasy | Copperplate  <br />  Papyrus |
 
+
+
+
+
 ### [CSS命名规范-BEM](https://www.bemcss.com/#)
 Block（模块）、Element（元素）、Modifier（修饰符）  <br />  命名规矩：block-name__element-name--modifier-name
 
+
+
+## Resource
+
+- [awesome-css](https://github.com/awesome-css-group/awesome-css)
+- [awesome-css-frameworks](https://github.com/troxler/awesome-css-frameworks)
+
+
+**CSS预处理器**
+
+- [less](https://github.com/less/less.js)
+```css
+@width: 10px;
+@height: @width + 10px;
+
+#header {
+  width: @width;
+  height: @height;
+ 
+  .logo {
+    width: 300px;
+  }
+
+  &:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+```
+[sass](https://github.com/sass/sass)
+```css
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { @include border-radius(10px); }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+```
+SCSS : Sass 3 引入新的语法，其语法完全兼容 CSS3，并且继承了 Sass 的强大功能
+
+
+[postcss](https://github.com/postcss/postcss)	一个允许使用 JS 插件转换样式的工具
+
+
+CSS
+
+- [normalize.css](https://github.com/necolas/normalize.css)	A modern alternative to CSS resets
+- [animate.css](https://github.com/animate-css/animate.css)	A cross-browser library of CSS animations.
+- [Hover](https://github.com/IanLunn/Hover)
+- [hint.css](https://github.com/chinchang/hint.css)
+- [bttn.css](https://github.com/ganapativs/bttn.css)	Awesome buttons
+- [bulma](https://github.com/jgthms/bulma) Modern CSS framework based on Flexbox
+- [pure](https://github.com/pure-css/pure) css 	A set of small, responsive CSS modules
+- [bootstrap](https://github.com/twbs/bootstrap)	The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.
+
+utility-first CSS framework
+
+- [tailwindcss](https://github.com/tailwindlabs/tailwindcss)	A utility-first CSS framework for rapid UI development.
+- [daisyui](https://github.com/saadeghi/daisyui)	Tailwind Components
+- [hyperui](https://github.com/sadcatsoft/hyperui#:~:text=HyperUI%20is%20a%20real-time%20C%2B%2B%20OpenGL%20UI%20framework,application%20consists%20of%20three%20basic%20sets%20of%20files%3A)	a collection of free Tailwind CSS components
+- [windicss](https://github.com/windicss/windicss)
+- [UnoCSS](https://github.com/antfu/unocss) - The instant on-demand atomic CSS engine.
+
+
+| **Breakpoint prefix** | **Minimum width** | **CSS** |
+| --- | --- | --- |
+| **sm** | 640px | **@media (min-width: 640px) { ... }** |
+| **md** | 768px | **@media (min-width: 768px) { ... }** |
+| **lg** | 1024px | **@media (min-width: 1024px) { ... }** |
+| **xl** | 1280px | **@media (min-width: 1280px) { ... }** |
+| **2xl** | 1536px | **@media (min-width: 1536px) { ... }** |
+
+
+
 ## ——  Sass (Syntactically Awesome Stylesheets)   ——
-最初由 Hampton Catlin 设计并由 Natalie Weizenbaum 开发的层叠样式表语言  <br />  是一个 CSS 预处理器，CSS 扩展语言，帮助减少 CSS 重复的代码，节省开发时间。  <br />  Sass 文件后缀为 .scss。
+最初由 Hampton Catlin 设计并由 Natalie Weizenbaum 开发的层叠样式表语言  <br />  一个 CSS 预处理器，CSS 扩展语言，帮助减少 CSS 重复的代码，节省开发时间。  <br />  Sass 文件后缀为 .scss。
 
 **NPM 安装**
 ```css
@@ -1104,6 +1212,3 @@ font-weight: bold;
 - _@_include  ：将混入（mixin）引入到文档中。 
 - _@_extend  ：样式从另一选择器继承 
 
-
-
-#### [bootstrap](https://github.com/twbs/bootstrap)

@@ -1,7 +1,7 @@
 ---
 title: Java
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2022-10-30T12:00:21.000Z
+updated_at: 2023-01-08T11:00:35.000Z
 word_count: 14247
 ---
 # Java  
@@ -260,6 +260,7 @@ var sb = new StringBuilder();
 - 浮点数类型：float（ f | F ），double
 - 字符类型：char（Unicode）
 - 布尔类型：boolean (true,false)
+
 | 数据类型 | 大小/字节 | 默认值 |
 | --- | --- | --- |
 | byte | 1 | 0 |
@@ -1282,6 +1283,7 @@ Asynchronous IO，异步非阻塞 IO
    - System.out.printf()——格式化输出；
 - System.err
 - System.in - 一个典型的连接控制台程序和键盘输入的 InputStream 流
+
 | 占位符 | 说明 |
 | --- | --- |
 | %d | 格式化输出整数 |

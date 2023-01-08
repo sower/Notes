@@ -1,8 +1,8 @@
 ---
 title: Python
 created_at: 2022-02-01T05:44:44.000Z
-updated_at: 2022-10-26T14:13:53.000Z
-word_count: 11134
+updated_at: 2022-12-11T08:08:28.000Z
+word_count: 11274
 ---
 # Python  
 ## —— Python ——
@@ -199,6 +199,7 @@ b'bce'
 - u	unicode
 - r	raw string，不识别转义
 - f	format，格式化字符串	`f'{var} {{raw-big-parantheses}}'`
+
 | 方法 | 描述 |
 | --- | --- |
 | [capitalize()](https://www.w3school.com.cn/python/ref_string_capitalize.asp) | 把首字符转换为大写。 |
@@ -373,7 +374,7 @@ tup3 = 1, 2,
 D = sorted(d.items(), key=lambda x:(x[1],x[0]]), [reverse = False])
 ```
 ### 类型转换
-| [int(x [,base](https://www.runoob.com/python3/python-func-int.html)=10[])](https://www.runoob.com/python3/python-func-int.html) | 将x转换为一个整数 |
+| int(x [,base=10]) | 将x转换为一个整数 |
 | --- | --- |
 | [float(x)](https://www.runoob.com/python3/python-func-float.html) | 将x转换到一个浮点数 |
 | [complex(real [,imag])](https://www.runoob.com/python3/python-func-complex.html) | 创建一个复数 |
@@ -800,6 +801,7 @@ exc_type  = <name>.__class__
 filename  = <name>.__traceback__.tb_frame.f_code.co_filename
 func_name = <name>.__traceback__.tb_frame.f_code.co_name
 line      = linecache.getline(filename, <name>.__traceback__.tb_lineno)
+traceback = ''.join(traceback.format_tb(<name>.__traceback__))
 error_msg = ''.join(traceback.format_exception(exc_type, <name>, <name>.__traceback__))
 ```
 
@@ -822,69 +824,72 @@ if not expression:
 ### [内置异常](https://docs.python.org/zh-cn/3/library/exceptions.html)
 ```python
 BaseException
- +-- SystemExit
- +-- KeyboardInterrupt
- +-- GeneratorExit
- +-- Exception
-      +-- StopIteration
-      +-- StopAsyncIteration
-      +-- ArithmeticError
-      |    +-- FloatingPointError
-      |    +-- OverflowError
-      |    +-- ZeroDivisionError
-      +-- AssertionError
-      +-- AttributeError
-      +-- BufferError
-      +-- EOFError
-      +-- ImportError
-      |    +-- ModuleNotFoundError
-      +-- LookupError
-      |    +-- IndexError
-      |    +-- KeyError
-      +-- MemoryError
-      +-- NameError
-      |    +-- UnboundLocalError
-      +-- OSError
-      |    +-- BlockingIOError
-      |    +-- ChildProcessError
-      |    +-- ConnectionError
-      |    |    +-- BrokenPipeError
-      |    |    +-- ConnectionAbortedError
-      |    |    +-- ConnectionRefusedError
-      |    |    +-- ConnectionResetError
-      |    +-- FileExistsError
-      |    +-- FileNotFoundError
-      |    +-- InterruptedError
-      |    +-- IsADirectoryError
-      |    +-- NotADirectoryError
-      |    +-- PermissionError
-      |    +-- ProcessLookupError
-      |    +-- TimeoutError
-      +-- ReferenceError
-      +-- RuntimeError
-      |    +-- NotImplementedError
-      |    +-- RecursionError
-      +-- SyntaxError
-      |    +-- IndentationError
-      |         +-- TabError
-      +-- SystemError
-      +-- TypeError
-      +-- ValueError
-      |    +-- UnicodeError
-      |         +-- UnicodeDecodeError
-      |         +-- UnicodeEncodeError
-      |         +-- UnicodeTranslateError
-      +-- Warning
-           +-- DeprecationWarning
-           +-- PendingDeprecationWarning
-           +-- RuntimeWarning
-           +-- SyntaxWarning
-           +-- UserWarning
-           +-- FutureWarning
-           +-- ImportWarning
-           +-- UnicodeWarning
-           +-- BytesWarning
-           +-- ResourceWarning
+ ├── BaseExceptionGroup
+ ├── GeneratorExit
+ ├── KeyboardInterrupt
+ ├── SystemExit
+ └── Exception
+      ├── ArithmeticError
+      │    ├── FloatingPointError
+      │    ├── OverflowError
+      │    └── ZeroDivisionError
+      ├── AssertionError
+      ├── AttributeError
+      ├── BufferError
+      ├── EOFError
+      ├── ExceptionGroup [BaseExceptionGroup]
+      ├── ImportError
+      │    └── ModuleNotFoundError
+      ├── LookupError
+      │    ├── IndexError
+      │    └── KeyError
+      ├── MemoryError
+      ├── NameError
+      │    └── UnboundLocalError
+      ├── OSError
+      │    ├── BlockingIOError
+      │    ├── ChildProcessError
+      │    ├── ConnectionError
+      │    │    ├── BrokenPipeError
+      │    │    ├── ConnectionAbortedError
+      │    │    ├── ConnectionRefusedError
+      │    │    └── ConnectionResetError
+      │    ├── FileExistsError
+      │    ├── FileNotFoundError
+      │    ├── InterruptedError
+      │    ├── IsADirectoryError
+      │    ├── NotADirectoryError
+      │    ├── PermissionError
+      │    ├── ProcessLookupError
+      │    └── TimeoutError
+      ├── ReferenceError
+      ├── RuntimeError
+      │    ├── NotImplementedError
+      │    └── RecursionError
+      ├── StopAsyncIteration
+      ├── StopIteration
+      ├── SyntaxError
+      │    └── IndentationError
+      │         └── TabError
+      ├── SystemError
+      ├── TypeError
+      ├── ValueError
+      │    └── UnicodeError
+      │         ├── UnicodeDecodeError
+      │         ├── UnicodeEncodeError
+      │         └── UnicodeTranslateError
+      └── Warning
+           ├── BytesWarning
+           ├── DeprecationWarning
+           ├── EncodingWarning
+           ├── FutureWarning
+           ├── ImportWarning
+           ├── PendingDeprecationWarning
+           ├── ResourceWarning
+           ├── RuntimeWarning
+           ├── SyntaxWarning
+           ├── UnicodeWarning
+           └── UserWarning
 ```
 
 自定义异常

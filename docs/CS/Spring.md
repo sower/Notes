@@ -1,7 +1,7 @@
 ---
 title: Spring
 created_at: 2022-04-03T08:42:16.000Z
-updated_at: 2022-10-23T13:13:47.000Z
+updated_at: 2023-01-08T11:04:37.000Z
 word_count: 17577
 ---
 # Spring  
@@ -2349,6 +2349,7 @@ create-table-allow: false # 不允许创建表
 - Job 调度器调度的任务组件接口
 - JobDetail Job实例，包含了该实例的执行计划和所需要的数据
 - Trigger 触发器，定义了一个触发策略
+
 | 触发器 | 适用场景 |
 | --- | --- |
 | SimpleTrigger | 简单触发器，适用于 按指定的时间间隔执行多少次任务的情况 |

@@ -1,8 +1,8 @@
 ---
 title: Big Data
 created_at: 2022-01-31T15:12:13.000Z
-updated_at: 2022-11-06T13:26:46.000Z
-word_count: 1603
+updated_at: 2022-11-27T02:38:03.000Z
+word_count: 2670
 ---
 # Big Data  
 
@@ -10,15 +10,111 @@ word_count: 1603
 
 [大数据](https://dunwu.github.io/bigdata-tutorial)
 
-- [Hdfs](https://dunwu.github.io/bigdata-tutorial/hdfs)
-- [Hbase](https://dunwu.github.io/bigdata-tutorial/hbase)
-- [Hive](https://dunwu.github.io/bigdata-tutorial/hive)
-- [MapReduce](https://dunwu.github.io/bigdata-tutorial/mapreduce)
-- [Yarn](https://dunwu.github.io/bigdata-tutorial/yarn)
-- [ZooKeeper](https://dunwu.github.io/bigdata-tutorial/zookeeper)
-- Spark
-- Storm
-- [Flink](https://dunwu.github.io/bigdata-tutorial/tree/master/docs/flink)
+## [HDFS](https://dunwu.github.io/bigdata-tutorial/hdfs)
+**Hadoop Distributed File System**，Hadoop 的分布式文件系统
+
+用于存储具有流数据访问模式的超大文件的文件系统
+
+**优点**
+
+- **高容错** - 数据冗余多副本，副本丢失后自动恢复
+- **高可用** - NameNode HA、安全模式
+- **高扩展** - 能够处理 10K 节点的规模；处理数据达到 GB、TB、甚至 PB 级别的数据；能够处理百万规模以上的文件数量，数量相当之大。
+- **批处理** - 流式数据访问；数据位置暴露给计算框架
+- **构建在廉价商用机器上** - 提供了容错和恢复机制
+
+**缺点**
+
+- **不适合低延迟数据访问** - 适合高吞吐率的场景，就是在某一时间内写入大量的数据。但是它在低延时的情况下是不行的，比如毫秒级以内读取数据，它是很难做到的。
+- **不适合大量小文件存储**
+   - 存储大量小文件(这里的小文件是指小于 HDFS 系统的 Block 大小的文件（默认 64M）)的话，它会占用 NameNode 大量的内存来存储文件、目录和块信息。这样是不可取的，因为 NameNode 的内存总是有限的。
+   - 磁盘寻道时间超过读取时间
+- **不支持并发写入** - 一个文件同时只能有一个写入者
+- **不支持文件随机修改** - 仅支持追加写入
+
+
+主从架构
+
+**NameNode 负责管理文件系统的命名空间以及客户端对文件的访问**
+
+- 管理命名空间
+- 管理元数据：文件的位置、所有者、权限、数据块等
+- 管理 Block 副本策略：默认 3 个副本
+- 处理客户端读写请求，为 DataNode 分配任务
+
+**DataNode 负责文件数据的存储和读写操作，HDFS 将文件数据分割成若干数据块（Block），每个 DataNode 存储一部分数据块，这样文件就分布存储在整个 HDFS 服务器集群中**。
+
+- 存储 Block 和数据校验和
+- 执行客户端发送的读写操作
+- 通过心跳机制定期（默认 3 秒）向 NameNode 汇报运行状态和 Block 列表信息
+- 集群启动时，DataNode 向 NameNode 提供 Block 列表信息
+
+Block 数据块
+
+- HDFS 最小存储单元
+- 文件写入 HDFS 会被切分成若干个 Block
+- Block 大小固定，默认为 128MB，可自定义
+- 若一个 Block 的大小小于设定值，不会占用整个块空间
+- 默认情况下每个 Block 有 3 个副本
+
+Client
+
+- 将文件切分为 Block 数据块
+- 与 NameNode 交互，获取文件元数据
+- 与 DataNode 交互，读取或写入数据
+- 管理 HDFS
+
+
+
+
+## [Hbase](https://dunwu.github.io/bigdata-tutorial/hbase)
+一个构建在 HDFS（Hadoop 文件系统）之上的面向列的数据库管理系统
+
+- **没有真正的索引** - 行是顺序存储的，每行中的列也是，所以不存在索引膨胀的问题，而且插入性能和表的大小无关。
+- **不支持复杂的事务** - 仅支持行级事务，即单行数据的读写都是原子性的；
+- **自动分区** - 在表增长的时候，表会自动分裂区域（region），并分布到可用的节点上。
+- **线性扩展和对于新节点的自动处理** - 增加一个节点，把它指向现有集群并进行 region server。区域自动重新进行平衡，负载均匀分布。
+- **容错** - 支持 RegionServers 之间的自动故障转移
+- **批处理** - MapReduce 集成功能使 HBase 可用用全并行的分布式作业根据数据位置来处理它们。
+
+
+## [Hive](https://dunwu.github.io/bigdata-tutorial/hive)
+一个构建在 Hadoop 之上的数据仓库，它可以将结构化的数据文件映射成表，并提供类 SQL 查询功能，用于查询的 SQL 语句会被转化为 MapReduce 作业，然后提交到 Hadoop 上运行。
+
+
+
+
+
+
+## [MapReduce](https://dunwu.github.io/bigdata-tutorial/mapreduce)
+
+
+## [Yarn](https://dunwu.github.io/bigdata-tutorial/yarn)
+
+
+## Spark
+
+
+## Storm
+
+
+## [Flink](https://dunwu.github.io/bigdata-tutorial/tree/master/docs/flink)
+分布式处理引擎，用于在无边界和有边界数据流上进行有状态的计算
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 [**Lucene**](https://lucene.apache.org/)  <br />  高性能、可伸缩的、开源的信息检索库  <br />  提供了完整的查询引擎和索引引擎  <br />  构建索引、索引更新与删除、条件查询、结果排序、高亮、中文分词器、索引优化、分布式扩展
