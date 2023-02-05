@@ -3,8 +3,7 @@ title: Python
 created_at: 2022-02-01T05:44:44.000Z
 updated_at: 2022-12-11T08:08:28.000Z
 word_count: 11274
----
-# Python  
+---  
 ## —— Python ——
 Python是Guido van Rossum在1989年圣诞节期间编写的一个脚本语言。  <br />  Python是一种广泛使用的解释型、高级编程、通用型编程语言。Python支持多种编程范式，包括面向对象、结构化、指令式、函数式和反射式编程。它拥有动态类型系统和垃圾回收功能，能够自动管理内存使用，拥有一个巨大而广泛的标准库。  <br />  Python源代码遵循 GPL(GNU General Public License)协议
 

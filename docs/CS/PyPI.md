@@ -3,8 +3,7 @@ title: PyPI
 created_at: 2022-02-01T05:44:43.000Z
 updated_at: 2022-11-06T00:52:12.000Z
 word_count: 8144
----
-# PyPI  
+---  
 ## ——[PyPI](https://pypi.org/)——
 
 
@@ -741,7 +740,7 @@ sg.Popup('Title',
          'The button clicked was "{}"'.format(event),
          'The values are', values)
 ```
-![](https://user-images.githubusercontent.com/13696193/62234730-4295ea00-b399-11e9-9281-5defb91886f6.png#crop=0&crop=0&crop=1&crop=1&id=avOUO&originHeight=638&originWidth=633&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  控件列表
+![](https://user-images.githubusercontent.com/13696193/62234730-4295ea00-b399-11e9-9281-5defb91886f6.png#id=avOUO&originHeight=638&originWidth=633&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  控件列表
 
 - Text # 文本
 - InputText # 单行输入框

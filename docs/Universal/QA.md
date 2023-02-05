@@ -3,8 +3,7 @@ title: QA
 created_at: 2022-02-01T05:44:45.000Z
 updated_at: 2022-03-05T02:59:54.000Z
 word_count: 10187
----
-# QA  
+---  
 ## —— Software Testing ——
 软件测试：在规定的条件下对程序进行操作，以发现程序错误，衡量软件质量，并对其是否能满足设计要求进行评估的过程。
 
@@ -260,7 +259,7 @@ QA & QC  <br />  软件质量保证与质量控制的区别
 | 责任 | 开发团队的每个成员都负责QA | 只有特定的测试团队负责QC |
 | 示例 | 验证软件流程。 | 检验软件功能和流程。 |
 
-![](https://images2015.cnblogs.com/blog/15172/201603/15172-20160327140427917-1972216437.png#crop=0&crop=0&crop=1&crop=1&id=oHkBS&originHeight=814&originWidth=1654&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://images2015.cnblogs.com/blog/15172/201603/15172-20160327140427917-1972216437.png#id=oHkBS&originHeight=814&originWidth=1654&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 
 
@@ -348,7 +347,7 @@ alpha: 内部版本  <br />  beta: 公测版本  <br />  rc（Release candiate�
 
 ## Testing Tools
 ### Jira
-基于Java架构的管理系统，开发者是 Atlassian，是集项目计划、任务分配、需求管理、错误跟踪于一体的商业软件。  <br />  ![](https://community.atlassian.com/t5/image/serverpage/image-id/110990i21F2440EDEB21200/image-dimensions/2000?v=1.0&px=-1#crop=0&crop=0&crop=1&crop=1&id=NPOSF&originHeight=1594&originWidth=1100&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+基于Java架构的管理系统，开发者是 Atlassian，是集项目计划、任务分配、需求管理、错误跟踪于一体的商业软件。  <br />  ![](https://community.atlassian.com/t5/image/serverpage/image-id/110990i21F2440EDEB21200/image-dimensions/2000?v=1.0&px=-1#id=NPOSF&originHeight=1594&originWidth=1100&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 
 ### Fiddler

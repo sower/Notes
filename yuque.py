@@ -1,6 +1,9 @@
 import json
 from datetime import date, datetime
 from functools import wraps
+import warnings
+
+warnings.filterwarnings("ignore")
 
 import requests
 import yaml

@@ -3,9 +3,8 @@ title: Git
 created_at: 2022-02-01T05:44:38.000Z
 updated_at: 2022-07-14T15:31:10.000Z
 word_count: 9088
----
-# Git  
-**概览**  <br />  ![](http://assets.processon.com/chart_image/5e4bf29ae4b00aefb7e7333a.png#crop=0&crop=0&crop=1&crop=1&id=R8BaA&originHeight=5390&originWidth=2204&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+---  
+**概览**  <br />  ![](http://assets.processon.com/chart_image/5e4bf29ae4b00aefb7e7333a.png#id=R8BaA&originHeight=5390&originWidth=2204&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ## —— Git ——
 分布式版本控制系统（Distributed Version Control System，DVCS）  <br />  C语言开发
 
@@ -16,7 +15,7 @@ Git 保存的不是文件的变化或者差异，而是一系列不同时刻的�
 
 
 ## [Glossary](https://git-scm.com/docs/gitglossary)
-![](http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png#crop=0&crop=0&crop=1&crop=1&id=Bqtsv&originHeight=340&originWidth=1172&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png#id=Bqtsv&originHeight=340&originWidth=1172&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 - Workspace：工作区：对项目的某个版本独立提取出来的内容
 - Index / Stage：暂存区：在 Git 仓库中一个文件，保存了下次将要提交的文件列表信息

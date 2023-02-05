@@ -3,8 +3,7 @@ title: HTML
 created_at: 2022-02-01T05:44:47.000Z
 updated_at: 2022-10-30T13:55:37.000Z
 word_count: 15487
----
-# HTML  
+---  
 ## ——超文本标记语言 (Hyper Text Markup Language)——
 
 Tim Berners-Lee发明的一种标记语言是一套标记标签 (markup tag)

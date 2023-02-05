@@ -3,8 +3,7 @@ title: Terminology
 created_at: 2020-12-06T15:21:23.000Z
 updated_at: 2022-06-18T15:59:05.000Z
 word_count: 2848
----
-# Terminology  
+---  
 
 
 ## 网络

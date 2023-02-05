@@ -3,8 +3,7 @@ title: MySQL
 created_at: 2022-02-01T05:44:45.000Z
 updated_at: 2023-01-08T11:23:29.000Z
 word_count: 13963
----
-# MySQL  
+---  
 ## ——MySQL——
 [MySQL](https://dev.mysql.com/)是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，属于 Oracle 旗下产品。
 

@@ -3,8 +3,7 @@ title: C
 created_at: 2022-02-02T12:59:47.000Z
 updated_at: 2022-10-25T14:58:51.000Z
 word_count: 10344
----
-# C  
+---  
 ## —— C ——
 
 C 语言是一种通用的高级语言，最初是由 Dennis Ritchie 在贝尔实验室为开发 UNIX 操作系统而设计的。  <br />  C 语言最开始是于 1972 年在 DEC PDP-11 计算机上被首次实现。  <br />  1978 年，布莱恩·柯林汉（Brian Kernighan）和丹尼斯·里奇（Dennis Ritchie）制作了 C 的第一个公开可用的描述(K&R 标准)。

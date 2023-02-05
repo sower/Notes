@@ -3,8 +3,7 @@ title: Data Structure & Algorithm
 created_at: 2022-02-01T05:44:33.000Z
 updated_at: 2022-05-08T08:35:56.000Z
 word_count: 3279
----
-# Data Structure & Algorithm  
+---  
 数据结构（Data Structure）：相互之间存在一种或多种特定关系的数据元素的集合。  <br />  ![](./assets/1643807394113-3ed0ccfd-1bf0-4a74-bb06-607fbd267ed9.png)
 
 - 顺序存储结构——借助元素在存储器中的相对位置来表示数据元素间的逻辑关系

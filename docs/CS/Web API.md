@@ -3,8 +3,7 @@ title: Web API
 created_at: 2022-02-01T05:44:49.000Z
 updated_at: 2023-01-08T12:21:04.000Z
 word_count: 19430
----
-# Web API  
+---  
 ## —— [Web API](https://developer.mozilla.org/zh-CN/docs/Web/API) ——
 **网页中嵌入 JavaScript 代码**
 
@@ -71,7 +70,7 @@ JavaScript 虚拟机
 
 **HTML DOM 树**
 
-![](https://www.w3school.com.cn/i/ct_htmltree.gif#crop=0&crop=0&crop=1&crop=1&id=LzjhR&originHeight=266&originWidth=486&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://www.w3school.com.cn/i/ct_htmltree.gif#id=LzjhR&originHeight=266&originWidth=486&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 ## [Node](https://developer.mozilla.org/zh-CN/docs/Web/API/Node)
 
@@ -2095,7 +2094,7 @@ rtf.format(1, 'week') // "in 1 week"
 
 ## [Page Lifecycle API](https://wangdoc.com/webapi/page-lifecycle.html)
 
-![](https://www.wangbase.com/blogimg/asset/201811/bg2018110401.png#crop=0&crop=0&crop=1&crop=1&id=fHCkR&originHeight=491&originWidth=800&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://www.wangbase.com/blogimg/asset/201811/bg2018110401.png#id=fHCkR&originHeight=491&originWidth=800&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 -  Active 阶段：网页处于可见状态，且拥有输入焦点。 
 -  Passive 阶段：网页可见，但没有输入焦点，无法接受输入。UI 更新（比如动画）仍然在执行。只发生在桌面同时有多个窗口的情况。 

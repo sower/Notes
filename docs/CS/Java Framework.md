@@ -1,10 +1,9 @@
 ---
 title: Java Framework
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2022-12-11T08:12:27.000Z
-word_count: 8936
----
-# Java Framework  
+updated_at: 2023-01-15T13:29:09.000Z
+word_count: 9011
+---  
 
 ## [Maven](https://maven.apache.org/)
 管理和构建工具  <br />  约定优于配置（Convention Over Configuration）
@@ -663,7 +662,22 @@ Retryer<Boolean> retryer = RetryerBuilder.<Boolean>newBuilder()
 
 - [slf4j](https://github.com/qos-ch/slf4j)
 
-MDC ( Mapped Diagnostic Contexts )：一个线程安全的存放诊断日志的容器，对分布式应用系统的审计和调试
+[MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html#:~:text=A%20Mapped%20Diagnostic%20Context%2C%20or%20MDC%20in%20short%2C,MDC%20is%20managed%20on%20a%20per%20thread%20basis.) ( Mapped Diagnostic Contexts )：一个线程安全的存放诊断日志的容器，对分布式应用系统的审计和调试
+```java
+public class MDC {
+  // 将上下文的值作为 MDC 的 key 放到线程上下的 map 中
+  public static void put(String key, String val);
+
+  // 通过 key 获取上下文标识
+  public static String get(String key);
+
+  // 通过 key 移除上下文标识
+  public static void remove(String key);
+
+  // 清除 MDC 中所有的 entry
+  public static void clear();
+}
+```
 
 **Spring Boot + Slf4j + Logback**
 > Spring Boot 默认使用 logback 作为日志组件
@@ -846,7 +860,6 @@ public class WebLogAspect {
     public void doAfterReturning(Object ret) throws Throwable {
         // 处理完请求，返回内容
         log.info("RESPONSE : {}", ret);
-        log.debug("SPEND TIME : {}", (System.currentTimeMillis() - startTime.get()));
     }
 }
 ```
@@ -1081,6 +1094,10 @@ void testCapitalize(String input, String result) {
 
 - [Feign](https://github.com/OpenFeign/feign) - HTTP client binder inspired by Retrofit, JAXRS-2.0, and WebSocket.
 - [Retrofit](https://square.github.io/retrofit/) - Typesafe REST client
+- [spring-cloud-openfeign](https://github.com/spring-cloud/spring-cloud-openfeign)
+   - @EnableFeignClients
+   - @FeignClient
+   - @SpringQueryMap
 
 [**okhttp**](https://github.com/square/okhttp)
 

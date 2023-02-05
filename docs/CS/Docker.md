@@ -3,8 +3,7 @@ title: Docker
 created_at: 2022-02-01T05:44:38.000Z
 updated_at: 2023-01-08T12:24:15.000Z
 word_count: 5639
----
-# Docker  
+---  
 ## —— [Docker](https://www.docker.com/)  ——
 
 一个开源的应用容器引擎，遵从 Apache2.0 协议开源。由 [Go 语言](https://golang.google.cn/) 进行开发实现，基于 Linux 内核的 [cgroup](https://zh.wikipedia.org/wiki/Cgroups)，[namespace](https://en.wikipedia.org/wiki/Linux_namespaces)，以及 [OverlayFS](https://docs.docker.com/storage/storagedriver/overlayfs-driver/) 类的 [Union FS](https://en.wikipedia.org/wiki/Union_mount) 等技术，对进程进行封装隔离，属于 [操作系统层面的虚拟化技术](https://en.wikipedia.org/wiki/Operating-system-level_virtualization)。  <br />  让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。
@@ -387,7 +386,7 @@ docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]	提交一个容器的文件
 - Libnetwork 是 CNM 的具体实现，Libnetwork 通过 Go 语言编写，并实现了 CNM 中列举的核心组件。
 - 驱动通过实现特定网络拓扑的方式来拓展该模型的能力。
 
-![](http://c.biancheng.net/uploads/allimg/190418/4-1Z41Q55GJ60.gif#crop=0&crop=0&crop=1&crop=1&id=pUscv&originHeight=306&originWidth=728&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/190418/4-1Z41Q55GJ60.gif#id=pUscv&originHeight=306&originWidth=728&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 
 

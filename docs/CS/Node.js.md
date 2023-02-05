@@ -3,8 +3,7 @@ title: Node.js
 created_at: 2022-02-01T05:44:48.000Z
 updated_at: 2023-01-08T09:16:33.000Z
 word_count: 6872
----
-# Node.js  
+---  
 ## —— [Node.js](https://nodejs.org/en/docs/) ——
 2009年，Ryan正式推出了基于JavaScript语言和V8引擎的开源Web服务器项目Node.js。
 

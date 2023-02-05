@@ -3,8 +3,7 @@ title: Chrome
 created_at: 2022-01-29T14:58:18.000Z
 updated_at: 2023-01-08T11:27:46.000Z
 word_count: 2840
----
-# Chrome  
+---  
 ## —— Google Chrome ——
 
 ### [DevTools（开发者工具）](https://developer.chrome.com/docs/devtools/)

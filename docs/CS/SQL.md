@@ -3,8 +3,7 @@ title: SQL
 created_at: 2022-02-01T05:44:46.000Z
 updated_at: 2022-03-05T02:10:51.000Z
 word_count: 928
----
-# SQL  
+---  
 **SQL(结构化查询语言，Structured Query Language)**  <br />  一种 ANSI（American National Standards Institute 美国国家标准化组织）标准的计算机语言。
 
 - 大小写不敏感

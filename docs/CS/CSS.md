@@ -3,8 +3,7 @@ title: CSS
 created_at: 2022-02-01T05:44:47.000Z
 updated_at: 2023-01-08T09:41:27.000Z
 word_count: 10103
----
-# CSS  
+---  
 ## —— 层叠样式表 (Cascading Style Sheets) ——
 [**CSS**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)：一种 样式表 语言，用来描述 HTML 或 XML文档的呈现  <br />  样式规则语法
 ```css
@@ -203,7 +202,7 @@ height: 0.37rem;
 | [visibility](https://www.w3schools.com/cssref/pr_class_visibility.asp) | Specifies whether or not an element should be visible |
 
 ### [弹性盒子（Flexbox）](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Flexbox)
-![](https://developer.mozilla.org/files/3739/flex_terms.png#crop=0&crop=0&crop=1&crop=1&id=otrAP&originHeight=333&originWidth=563&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  **flex**
+![](https://developer.mozilla.org/files/3739/flex_terms.png#id=otrAP&originHeight=333&originWidth=563&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  **flex**
 ```css
 .box {
   flex-direction: row | row-reverse | column | column-reverse;
@@ -669,7 +668,7 @@ background-attachment
 | box-decoration-break |  |
 | [box-shadow](https://www.w3school.com.cn/cssref/pr_box-shadow.asp) | 向方框添加一个或多个阴影。 |
 
-盒模型相关的属性  <br />  ![](http://c.biancheng.net/uploads/allimg/181112/1-1Q112150JE20.gif#crop=0&crop=0&crop=1&crop=1&id=KkaSY&originHeight=473&originWidth=700&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+盒模型相关的属性  <br />  ![](http://c.biancheng.net/uploads/allimg/181112/1-1Q112150JE20.gif#id=KkaSY&originHeight=473&originWidth=700&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ### Box 属性
 | 属性 | 描述 | CSS |
 | --- | --- | --- |

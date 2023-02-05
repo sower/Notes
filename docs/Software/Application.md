@@ -1,10 +1,9 @@
 ---
 title: Application
 created_at: 2022-01-29T14:00:17.000Z
-updated_at: 2022-12-11T07:06:29.000Z
-word_count: 1761
----
-# Application  
+updated_at: 2023-02-02T11:59:52.000Z
+word_count: 1770
+---  
 
 ### —— Windows ——
 [蓝奏云](http://www.lanzou.com/account.php?action=register)
@@ -16,7 +15,7 @@ word_count: 1761
 - Directory Opus
 - Q-Dir
 
-[QTTaBar](http://qttabbar.wikidot.com/)  <br />  [LanguageFile_zh-CN_bixue_1038.xml](https://www.yuque.com/attachments/yuque/0/2022/xml/5360088/1646459612555-1f2c07d5-8bdf-4cea-81e5-8b28d750e6e4.xml?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2022%2Fxml%2F5360088%2F1646459612555-1f2c07d5-8bdf-4cea-81e5-8b28d750e6e4.xml%22%2C%22name%22%3A%22LanguageFile_zh-CN_bixue_1038.xml%22%2C%22size%22%3A44018%2C%22type%22%3A%22text%2Fxml%22%2C%22ext%22%3A%22xml%22%2C%22source%22%3A%22%22%2C%22status%22%3A%22done%22%2C%22mode%22%3A%22title%22%2C%22download%22%3Atrue%2C%22taskId%22%3A%22u3f348f0c-a5fb-4a50-b807-ba536738c09%22%2C%22taskType%22%3A%22upload%22%2C%22id%22%3A%22u24f0571e%22%2C%22card%22%3A%22file%22%7D)  <br />  [QTTabBarConfig-2020-8-14.xml](https://www.yuque.com/attachments/yuque/0/2022/xml/5360088/1646459641317-4994448e-6431-4e60-9c11-2d1377d71639.xml?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2022%2Fxml%2F5360088%2F1646459641317-4994448e-6431-4e60-9c11-2d1377d71639.xml%22%2C%22name%22%3A%22QTTabBarConfig-2020-8-14.xml%22%2C%22size%22%3A27539%2C%22type%22%3A%22text%2Fxml%22%2C%22ext%22%3A%22xml%22%2C%22source%22%3A%22%22%2C%22status%22%3A%22done%22%2C%22mode%22%3A%22title%22%2C%22download%22%3Atrue%2C%22taskId%22%3A%22u67fd405e-ef89-4746-87f6-15c8711d3af%22%2C%22taskType%22%3A%22upload%22%2C%22id%22%3A%22u581245aa%22%2C%22card%22%3A%22file%22%7D)
+[QTTaBar](http://qttabbar.wikidot.com/)  <br />  [LanguageFile_zh-CN_bixue_1038.xml](https://www.yuque.com/attachments/yuque/0/2022/xml/5360088/1646459612555-1f2c07d5-8bdf-4cea-81e5-8b28d750e6e4.xml?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2022%2Fxml%2F5360088%2F1646459612555-1f2c07d5-8bdf-4cea-81e5-8b28d750e6e4.xml%22%2C%22name%22%3A%22LanguageFile_zh-CN_bixue_1038.xml%22%2C%22size%22%3A44018%2C%22ext%22%3A%22xml%22%2C%22source%22%3A%22%22%2C%22status%22%3A%22done%22%2C%22download%22%3Atrue%2C%22type%22%3A%22text%2Fxml%22%2C%22mode%22%3A%22title%22%2C%22taskId%22%3A%22u3f348f0c-a5fb-4a50-b807-ba536738c09%22%2C%22taskType%22%3A%22upload%22%2C%22id%22%3A%22u24f0571e%22%2C%22card%22%3A%22file%22%7D)  <br />  [QTTabBarConfig-2020-8-14.xml](https://www.yuque.com/attachments/yuque/0/2022/xml/5360088/1646459641317-4994448e-6431-4e60-9c11-2d1377d71639.xml?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2022%2Fxml%2F5360088%2F1646459641317-4994448e-6431-4e60-9c11-2d1377d71639.xml%22%2C%22name%22%3A%22QTTabBarConfig-2020-8-14.xml%22%2C%22size%22%3A27539%2C%22ext%22%3A%22xml%22%2C%22source%22%3A%22%22%2C%22status%22%3A%22done%22%2C%22download%22%3Atrue%2C%22type%22%3A%22text%2Fxml%22%2C%22mode%22%3A%22title%22%2C%22taskId%22%3A%22u67fd405e-ef89-4746-87f6-15c8711d3af%22%2C%22taskType%22%3A%22upload%22%2C%22id%22%3A%22u581245aa%22%2C%22card%22%3A%22file%22%7D)
 
 WindowTabs
 
@@ -73,7 +72,7 @@ Others  <br />  BulkRenameUtility  <br />  ExtractIcon  <br />  FastCopy	  <br /
 
 ### Practical
 
-**mouse gesture**  <br />  [MouseInc](https://shuax.com/project/mouseinc/)  <br />  [MouseInc.json](https://www.yuque.com/attachments/yuque/0/2022/json/5360088/1652800308885-bfd08267-e3c7-4aaf-a78b-1404379f4957.json?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2022%2Fjson%2F5360088%2F1652800308885-bfd08267-e3c7-4aaf-a78b-1404379f4957.json%22%2C%22name%22%3A%22MouseInc.json%22%2C%22size%22%3A28587%2C%22type%22%3A%22application%2Fjson%22%2C%22ext%22%3A%22json%22%2C%22source%22%3A%22%22%2C%22status%22%3A%22done%22%2C%22mode%22%3A%22title%22%2C%22download%22%3Atrue%2C%22taskId%22%3A%22u0c9df56f-90cf-474c-810d-d15b1e0ef8e%22%2C%22taskType%22%3A%22upload%22%2C%22id%22%3A%22u6ff62be4%22%2C%22card%22%3A%22file%22%7D)
+**mouse gesture**  <br />  [MouseInc](https://shuax.com/project/mouseinc/)  <br />  [MouseInc.json](https://www.yuque.com/attachments/yuque/0/2022/json/5360088/1652800308885-bfd08267-e3c7-4aaf-a78b-1404379f4957.json?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2022%2Fjson%2F5360088%2F1652800308885-bfd08267-e3c7-4aaf-a78b-1404379f4957.json%22%2C%22name%22%3A%22MouseInc.json%22%2C%22size%22%3A28587%2C%22ext%22%3A%22json%22%2C%22source%22%3A%22%22%2C%22status%22%3A%22done%22%2C%22download%22%3Atrue%2C%22type%22%3A%22application%2Fjson%22%2C%22mode%22%3A%22title%22%2C%22taskId%22%3A%22u0c9df56f-90cf-474c-810d-d15b1e0ef8e%22%2C%22taskType%22%3A%22upload%22%2C%22id%22%3A%22u6ff62be4%22%2C%22card%22%3A%22file%22%7D)
 
 护眼
 
@@ -188,8 +187,7 @@ Preview
    - [I don't care about cookies](https://www.runningcheese.com/go?url=https://www.i-dont-care-about-cookies.eu/abp/)：去掉网站的 Cookies 使用警告。
    - [https://filterlists.com](https://filterlists.com/)：最全广告过滤清单，语言选择 “ZH” 则只显示中文规则。
 
-[  <br />  ](https://github.com/xinggsf/Adblock-Plus-Rule)
-
+- [tamper.dev](https://tamper.dev/)
 - [xStyle](https://github.com/FirefoxBar/xStyle)
    - [Userstyles.world](https://userstyles.world/)
 - [ext-saladict](https://github.com/crimx/ext-saladict)
@@ -334,7 +332,7 @@ IDE
 
 [Notepads](https://github.com/JasonStein/Notepads)	A modern, lightweight text editor with a minimalist design.  <br />  [DevToys](https://github.com/veler/DevToys)	A Swiss Army knife for developers
 
-[rustdesk](https://github.com/rustdesk/rustdesk)	
+[rustdesk](https://github.com/rustdesk/rustdesk)	远程桌面软件
 
 **.ini 文件(Initialization File，初始化文件）**  <br />  windows的系统[配置文件](https://baike.baidu.com/item/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)所采用的存储格式，一般用户就用windows提供的各项图形化管理界面就可实现相同的配置了。
 
@@ -503,6 +501,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 
 [太极](https://taichi.cool/)  <br />  **https://www.taichi-app.com/#/index**  <br />  821218720  <br />  1808
+
+两仪
 
 [Xposed](https://repo.xposed.info/)  <br />  **Xposed**（XP框架、Xposed framework），是一个运行于[Android](https://zh.wikipedia.org/wiki/Android)操作系统的[钩子](https://zh.wikipedia.org/wiki/%E9%92%A9%E5%AD%90%E7%BC%96%E7%A8%8B)[框架](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94%E6%A1%86%E6%9E%B6)。其通过替换Android系统的关键文件，可以拦截几乎所有[Java](https://zh.wikipedia.org/wiki/Java)[函数](https://zh.wikipedia.org/wiki/%E5%AD%90%E7%A8%8B%E5%BA%8F#%E5%87%BD%E6%95%B0)的调用，并允许通过Xposed模块中的自定义代码更改调用这些函数时的行为。  <br />  Xposed框架是以模块扩展方式来实现对系统部分功能的修改，这些模块都依赖于Xposed这个框架。
 

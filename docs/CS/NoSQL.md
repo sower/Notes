@@ -3,8 +3,7 @@ title: NoSQL
 created_at: 2022-02-01T05:44:46.000Z
 updated_at: 2022-10-25T13:29:53.000Z
 word_count: 4544
----
-# NoSQL  
+---  
 ## —— Not Only SQL ——
 非关系型数据库：可以处理分布式、规模庞大、类型不确定、完整性没有保证的“杂乱”数据
 
@@ -14,7 +13,7 @@ word_count: 4544
 - 可用性(Availability)：保证每个请求不管成功或者失败都有响应
 - 分隔容忍(Partition tolerance) ：系统中任意信息的丢失或失败不会影响系统的继续运作
 
-![](https://www.runoob.com/wp-content/uploads/2013/10/cap-theoram-image.png#crop=0&crop=0&crop=1&crop=1&id=y8n8P&originHeight=578&originWidth=671&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://www.runoob.com/wp-content/uploads/2013/10/cap-theoram-image.png#id=y8n8P&originHeight=578&originWidth=671&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 **BASE理论**（由 Eric Brewer 定义）  <br />  NoSQL数据库通常对可用性及一致性的弱要求原则:
 

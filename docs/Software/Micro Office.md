@@ -3,8 +3,7 @@ title: Micro Office
 created_at: 2022-01-29T15:29:08.000Z
 updated_at: 2022-10-23T12:53:11.000Z
 word_count: 7527
----
-# Micro Office  
+---  
 ## [Office](https://support.office.com/zh-cn)
 
 初级——无视或无知规则  <br />  中级——遵守或利用规则  <br />  高级——改变或创造规则

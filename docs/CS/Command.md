@@ -1,10 +1,9 @@
 ---
 title: Command
 created_at: 2022-02-12T02:31:37.000Z
-updated_at: 2023-01-08T11:14:20.000Z
-word_count: 15079
----
-# Command  
+updated_at: 2023-01-15T02:46:23.000Z
+word_count: 15068
+---  
 ## —— [Command ](https://linuxcommandlibrary.com/)——
 
 内建命令： 一些比较简单的 Linux 系统命令是写在 bash 源码的 builtins 里面的，由 shell 程序识别并在 shell 程序内部完成运行，通常在 Linux 系统加载运行时 shell 就被加载并驻留在系统内存中。而且解析内部命令 shell 不需要创建子进程，因此其执行速度比外部命令快。比如：history、cd、exit 等。  <br />  外部命令： Linux 系统中的实用程序部分，因为实用程序的功能通常都比较强大，程序量也很大，在系统加载时并不随系统一起被加载到内存中，而是在需要时才将其调入内存。虽然其不包含在 shell 中，但是其命令执行过程是由 shell 程序控制的。外部命令是在 Bash 之外额外安装的，通常放在/bin，/usr/bin，/sbin，/usr/sbin 等。比如：ls、vi 等。
@@ -21,11 +20,16 @@ word_count: 15079
 
 - `which <command>`	查找并显示给定命令的绝对路径
 - `whereis <command>` 	将相关的文件都查找出来
-- `type <command>`**	显示命令类型的信息**
+- `type <command>`**	**显示命令类型的信息
    - -a	查看命令的所有定义
    - -t	返回命令的类型：别名（alias），关键词（keyword），函数（function），内置命令（builtin）和文件（file）
 
-  <br />  **查看系统信息**  <br />  查看Linux内核版本  <br />  cat /proc/version  <br />  uname -a  <br />  Linux系统版本	lsb_release -a  <br />  系统的位数	file /bin/ss  <br />  CPU信息	cat /proc/cpuinfo	lscpu  <br />  shell	cat /etc/shells
+  <br />  **查看系统信息**  <br />  查看Linux内核版本
+
+- cat /proc/version
+- uname -a
+
+Linux系统版本	lsb_release -a  <br />  系统的位数	file /bin/ss  <br />  CPU信息	cat /proc/cpuinfo	lscpu  <br />  shell	cat /etc/shells
 
 
 uname	print system information  <br />  uname [OPTION]...
@@ -111,7 +115,7 @@ alias [-p] [名称[=值] ... ]  <br />  -p        以可重用的格式打印所
 IFS（内部字段分隔符，Internal Field Separator），修改分隔标志
 
 ### 文件管理
-**cd - Change Directory **  <br />  cd [路径]
+**cd - Change Directory**  <br />  cd [路径]
 
 | 特殊符号 | 作 用 |
 | --- | --- |
@@ -173,7 +177,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志
 
 
 
-**rmdir - remove empty directories **  <br />  rmdir [OPTION]... DIRECTORY...
+**rmdir - remove empty directories**  <br />  rmdir [OPTION]... DIRECTORY...
 
 - --ignore-fail-on-non-empty
 - -p, --parents 递归所有目录
@@ -190,7 +194,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志
 
 
 
-**cp - **copy files and directories  <br />  cp [选项] 源文件 目标文件
+**cp - copy files and directories**  <br />  cp [选项] 源文件 目标文件
 
 - -a, --archive	  same as -dR --preserve=all
 - -P, --no-dereference  never follow symbolic links in SOURCE
@@ -203,7 +207,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志
 
 
 
-**mv  - **move (rename)  <br />  mv [选项] 源文件 目标文件
+**mv  - move (rename)**  <br />  mv [选项] 源文件 目标文件
 
 - -f, --force
 - -i, --interactive
@@ -213,7 +217,7 @@ IFS（内部字段分隔符，Internal Field Separator），修改分隔标志
 
 
 
-**touch	**change file timestamps  <br />  touch [选项] 文件名
+**touch**	change file timestamps  <br />  touch [选项] 文件名
 
 - -a：只修改文件的访问时间；
 - -c：仅修改文件的时间参数（3 个时间参数都改变），如果文件不存在，则不建立新文件。
@@ -229,7 +233,7 @@ file	查看文件类型
 - -s：建立软链接文件。如果不加 "-s" 选项，则建立硬链接文件；
 - -f：强制。如果目标文件已经存在，则删除目标文件后再建立链接文件；
 
-locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数据库来检索信息  <br />  locate [OPTION]... PATTERN
+**locate**	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数据库来检索信息  <br />  locate [OPTION]... PATTERN
 
 - -A, --all
 - -b, --basename
@@ -256,7 +260,7 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 ### 文本处理
 
 
-**cat - **concatenate	tac 倒序  <br />  cat [选项] [文件]
+**cat - concatenate**	tac 倒序  <br />  cat [选项] [文件]
 
 - -b, --number-nonblank 对非空输出行编号
 - -n, --number 对输出的所有行编号,由1开始对所有输出的行数编号
@@ -271,7 +275,7 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 
 
 
-**nl	**number lines of files  <br />  nl [参数] [file]
+**nl	number lines of files**  <br />  nl [参数] [file]
 
 - -b : 指定添加行号的方式
    - -b a：表示无论是否为空行，同样列出行号("cat -n"就是这种方式)
@@ -369,7 +373,7 @@ locate	find files by name  <br />  通过查询 /var/lib/mlocate/mlocate.db 数�
 
 Context control:  <br />  -B, --before-context=NUM  print NUM lines of leading context  <br />  -A, --after-context=NUM   print NUM lines of trailing context  <br />  -C, --context=NUM         print NUM lines of output context  <br />  -NUM                      same as --context=NUM
 
-**sed - stream editor **for filtering and transforming text  <br />  一种流编辑器，一次处理一行内容。处理时，把当前处理的行存储在临时缓冲区中，称为“模式空间”（pattern space），接着用sed 命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。然后读入下行，执行下一个循环。如果没有使诸如‘D’ 的特殊命令，那会在两个循环之间清空模式空间，但不会清空保留空间。这样不断重复，直到文件末尾。文件内容并没有改变，除非你使用重定向存储输出或-i。  <br />  `sed [options] '[地址定界] command' file(s)`
+**sed - stream editor** for filtering and transforming text  <br />  一种流编辑器，一次处理一行内容。处理时，把当前处理的行存储在临时缓冲区中，称为“模式空间”（pattern space），接着用sed 命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。然后读入下行，执行下一个循环。如果没有使诸如‘D’ 的特殊命令，那会在两个循环之间清空模式空间，但不会清空保留空间。这样不断重复，直到文件末尾。文件内容并没有改变，除非你使用重定向存储输出或-i。  <br />  `sed [options] '[地址定界] command' file(s)`
 
 | 选项 | 含义 |
 | --- | --- |
@@ -386,10 +390,12 @@ Context control:  <br />  -B, --before-context=NUM  print NUM lines of leading c
    - #：指定的行
    - /pattern/：被此处模式所能够匹配到的每一行
 - 地址范围：
-   - #,- #,+- /pat1/,/pat2/
-   - #,/pat1/
+   - `#,#`
+   - `#,+#`
+   - `/pat1/,/pat2/`
+   - `#,/pat1/`
 - ~：步进
-   - sed -n** '1~2p' ** 只打印奇数行 （1~2 从第1行，一次加2行）
+   - sed -n '1~2p'  只打印奇数行 （1~2 从第1行，一次加2行）
 
 command
 
@@ -410,9 +416,7 @@ command
 - w W	file	写并追加模板块到(第一行)file末尾
 - !	取反
 - =	打印当前行号码。 
-- #	把注释扩展到下一个换行符以前。 
-
-
+- `#`	把注释扩展到下一个换行符以前。 
 
 sed替换标记
 
@@ -426,7 +430,8 @@ sed替换标记
 sed -n -e '1~2=' -e '1~2p' test.txt
 ```
 
-awk  Alfred Aho，Peter Weinberger 和 Brian Kernighan 创造  <br />  awk [选项] '脚本命令' 文件名  <br />  `awk 'BEGIN{ commands } pattern{ commands } END{ commands }'`
+
+**awk**  Alfred Aho，Peter Weinberger 和 Brian Kernighan 创造  <br />  awk [选项] '脚本命令' 文件名  <br />  `awk 'BEGIN{ commands } pattern{ commands } END{ commands }'`
 
 | 选项 | 含义 |
 | --- | --- |
@@ -443,7 +448,7 @@ awk  Alfred Aho，Peter Weinberger 和 Brian Kernighan 创造  <br />  awk [选�
 
 
 
-**cut	**remove sections from each line of files  <br />  显示每行从开头算起 n1 到 n2 的文字  <br />  cut  file [option] [n1,n2]
+**cut	remove sections from each line of files**  <br />  显示每行从开头算起 n1 到 n2 的文字  <br />  `cut  file [option] [n1,n2]`
 
 - -b ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。
 - -c ：以字符为单位进行分割。
@@ -453,7 +458,7 @@ awk  Alfred Aho，Peter Weinberger 和 Brian Kernighan 创造  <br />  awk [选�
 
 N      N'th byte, character or field, counted from 1  <br />  N-     from N'th byte, character or field, to end of line  <br />  N-M    from N'th to M'th (included) byte, character or field  <br />  -M     from first to M'th (included) byte, character or field
 
-**wc	**print  newline, word, and byte counts for each file  <br />  wc [-clw] [FILE]
+**wc	print  newline, word, and byte counts for each file**  <br />  `wc [-clw] [FILE]`
 
 - -c, --bytes
 - -m, --chars
@@ -463,7 +468,7 @@ N      N'th byte, character or field, counted from 1  <br />  N-     from N'th b
 
 
 
-**uniq	**report or omit repeated lines  <br />  uniq [-cdu] [-f<栏位>] [-s<字符位置>] [-w<字符位置>] [INPUT [OUTPUT]]
+**uniq	report or omit repeated lines**  <br />  `uniq [-cdu] [-f<栏位>] [-s<字符位置>] [-w<字符位置>] [INPUT [OUTPUT]]`
 
 - -c --count：在每列旁边显示该行重复出现的次数。
 - -d --repeated ：显示重复出现的行列。
@@ -475,7 +480,7 @@ N      N'th byte, character or field, counted from 1  <br />  N-     from N'th b
 
 
 
-**tr	**translate or delete characters  <br />  tr [OPTION] …SET1[SET2]
+**tr	translate or delete characters**  <br />  `tr [OPTION] …SET1[SET2]`
 
 - -c, --complement：反选设定字符。也就是符合 SET1 的部份不做处理，不符合的剩余部份才进行转换
 - -d, --delete：删除指令字符
@@ -484,28 +489,28 @@ N      N'th byte, character or field, counted from 1  <br />  N-     from N'th b
 
 
 
-**join	**join lines of two files on a common field  <br />  join [option]... file1 file2
+**join**	join lines of two files on a common field  <br />  `join [option]... file1 file2`
 
 - -t	指定分隔符，默认为空格
 - -i, --ignore-case
 - -1	指明第一个文件要用哪个字段来对比，默认对比第一个字段
 - -2	指明第二个文件要用哪个字段来对比，默认对比第一个字段
 
-paste	merge lines of files  <br />  paste [option] file...
+**paste**	merge lines of files  <br />  `paste [option] file...`
 
 - -d, --delimiters=LIST
 - -s, --serial：不合并到一行，每个文件为一行
 
 
 
-**tee**  <br />  读取标准输入的数据，并将其内容输出成文件  <br />  tee [-ai] [文件...]
+**tee**  <br />  读取标准输入的数据，并将其内容输出成文件  <br />  `tee [-ai] [文件...]`
 
 - -a --append 　附加到既有文件的后面，而非覆盖它．
 - -i --ignore-interrupts 　忽略中断信号。
 
 
 
-**col	**filter reverse line feeds from input  <br />  col [-bfhpx] [-l num]
+**col**	filter reverse line feeds from input  <br />  `col [-bfhpx] [-l num]`
 
 - -b 过滤掉所有的控制字符，包括RLF和HRLF。
 - -f 滤除RLF字符，但允许将HRLF字符呈现出来。
@@ -562,9 +567,9 @@ getfacl  get file access control lists 查看文件或目录当前设定的 ACL 
 
 chattr - change file attributes on a Linux file system  <br />  chattr [+-=] [属性] 文件或目录名
 
-- + 表示给文件或目录添加属性
-- - 表示移除文件或目录拥有的某些属性
-- = 表示给文件或目录设定一些属性
+- `+` 表示给文件或目录添加属性
+- `-` 表示移除文件或目录拥有的某些属性
+- `=` 表示给文件或目录设定一些属性
 
 | 属性选项 | 功能 |
 | --- | --- |
@@ -710,7 +715,13 @@ last, lastb - show a listing of last logged in users  <br />  last [options] [us
 - -w, --fullnames      显示完整的用户名和域名
 - -x, --system         显示系统关机项和运行级别更改
 
-lastlog - 报告所有用户的最近登录情况，或者指定用户的最近登录情况  <br />  lastlog [选项]  <br />  -b, --before DAYS             仅打印早于 DAYS 的最近登录记录  <br />  -C, --clear                   清除一个用户的最近登录记录(须配合 -u 使用)  <br />  -S, --set                     设置最近登录记录为当前时间(须配合 -u 使用)  <br />  -t, --time DAYS               仅打印晚于 DAYS 的最近登录记录  <br />  -u, --user LOGIN              打印 LOGIN 用户的最近登录记录
+lastlog - 报告所有用户的最近登录情况，或者指定用户的最近登录情况  <br />  lastlog [选项]
+
+- -b, --before DAYS             仅打印早于 DAYS 的最近登录记录
+- -C, --clear                   清除一个用户的最近登录记录(须配合 -u 使用)
+- -S, --set                     设置最近登录记录为当前时间(须配合 -u 使用)
+- -t, --time DAYS               仅打印晚于 DAYS 的最近登录记录
+- -u, --user LOGIN              打印 LOGIN 用户的最近登录记录
 
 ps - process status  <br />  ps [options]
 
@@ -1172,17 +1183,19 @@ rsync 远程同步（remote sync）  <br />  检查发送方和接收方已有�
 
 | 选项 | 作用 |
 | --- | --- |
-| -a | 显示所有文件系统信息，包括系统特有的 /proc、/sysfs 等文件系统； |
+| -a | 显示所有文件系统信息 |
 | -m | 以 MB 为单位显示容量； |
-| -k | 以 KB 为单位显示容量，默认以 KB 为单位； |
+| -k | 以 KB 为单位显示容量，默认； |
 | -h | 使用人们习惯的 KB、MB 或 GB 等单位自行显示容量； |
-| -T | 显示该分区的文件系统名称； |
+| -T | 显示该分区的文件系统类型； |
 | -i | 不用硬盘容量显示，而是以含有 inode 的数量来显示。 |
 
 **du - Disk usage**  <br />  du [选项] [目录或文件名]
 
 - -a：显示每个子文件的磁盘占用量。默认只统计子目录的磁盘占用量
-- -h：使用习惯单位显示磁盘占用量，如 KB、MB 或 GB 等；
+- -c, --total	produce a grand total
+- -d, --max-depth=N
+- -h, --human-readable	使用习惯单位显示磁盘占用量，如 KB、MB 或 GB 等；
 - -s：统计总磁盘占用量，而不列出子目录和子文件的磁盘占用量
 
 mount	挂载磁盘到目录树
@@ -1193,6 +1206,7 @@ mount	挂载磁盘到目录树
 - -n：加载没有写入文件“/etc/mtab”中的文件系统；
 - -r：将文件系统加载为只读模式；
 - -a：加载文件“/etc/fstab”中描述的所有文件系统。
+
 | 选项 | 功能 |
 | --- | --- |
 | rw/ro | 是否对挂载的文件系统拥有读写权限，rw 为默认值，表示拥有读写权限；ro 表示只读权限。 |

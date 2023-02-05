@@ -3,8 +3,7 @@ title: Kubernetes
 created_at: 2022-04-13T13:53:11.000Z
 updated_at: 2022-10-23T15:34:18.000Z
 word_count: 2396
----
-# Kubernetes  
+---  
 ## [kubernetes](https://github.com/kubernetes/kubernetes)
   <br />  Kubernetes 是一个可移植的、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。
 

@@ -1,10 +1,9 @@
 ---
 title: Py Web
 created_at: 2022-02-01T05:44:43.000Z
-updated_at: 2022-10-25T14:02:03.000Z
-word_count: 9821
----
-# Py Web  
+updated_at: 2023-01-15T03:14:36.000Z
+word_count: 10143
+---  
 
 ## PyMySQL
 class pymysql.connections.Connection
@@ -78,7 +77,7 @@ print('共查找出', cursor.rowcount, '条数据')
 
 # 插入数据
 sql = "INSERT INTO trade (name, account, saving) VALUES ( '%s', '%s', %.2f )"
-data = ('雷军', '13512345678', 10000)
+data = ('tom', '13512345678', 10000)
 cursor.execute(sql % data)
 db.commit()
 print('成功插入', cursor.rowcount, '条数据')
@@ -103,7 +102,7 @@ cursor.close()
 db.close()
 ```
 ### mysql.connector
-```javascript
+```python
 import mysql.connector
 
 # 建立连接
@@ -136,7 +135,6 @@ mydb.close()
 ## [SQLAlchemy](https://www.sqlalchemy.org/)
 [https://www.osgeo.cn/sqlalchemy/](https://www.osgeo.cn/sqlalchemy/)
 ```python
-# 导入:
 from sqlalchemy import Column, String, create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -167,6 +165,7 @@ session.commit()
 # 关闭session:
 session.close()
 ```
+
 ## [redis](https://github.com/andymccurdy/redis-py)
 ```python
 import redis
@@ -175,6 +174,7 @@ redis_conn = redis.Redis(host='127.0.0.1', port= 6379, password= 'your pw', db= 
 redis_pool = redis.ConnectionPool(host='127.0.0.1', port= 6379, password= 'your pw', db= 0)
 redis_conn = redis.Redis(connection_pool= redis_pool)
 ```
+
 ## [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 ```python
 from flask import Flask
@@ -955,7 +955,7 @@ if __name__ == "__main__":
     uvicorn.run(app=app, host="127.0.0.1", port=5000, log_level="info")
 ```
 ## [requests](https://github.com/psf/requests)
-**requests.request(method, url, **kwargs)**  <br />  request(method, url, params=None, data=None, headers=None, cookies=None, files=None, auth=None, timeout=None, allow_redirects=True, proxies=None, hooks=None, stream=None, verify=None, cert=None, json=None)  <br />  参数:
+`requests.request(method, url, **kwargs)`  <br />  request(method, url, params=None, data=None, headers=None, cookies=None, files=None, auth=None, timeout=None, allow_redirects=True, proxies=None, hooks=None, stream=None, verify=None, cert=None, json=None)  <br />  参数:
 
 - method -- method for the new Request object.
 - url：请求服务器地址；
@@ -975,7 +975,7 @@ if __name__ == "__main__":
 
 
 
-**requests.head(url, **kwargs)**  <br />  **requests.get(url, params=None, **kwargs)**  <br />  **requests.post(url, data=None, json=None, **kwargs)**  <br />  **requests.put(url, data=None, **kwargs)**  <br />  **requests.patch(url, data=None, **kwargs)**  <br />  **requests.delete(url, **kwargs)**
+requests.head(url, **kwargs)  <br />  requests.get(url, params=None, **kwargs)  <br />  requests.post(url, data=None, json=None, **kwargs)  <br />  requests.put(url, data=None, **kwargs)  <br />  requests.patch(url, data=None, **kwargs)  <br />  requests.delete(url, **kwargs)
 
 **class requests.Session**
 
@@ -1209,6 +1209,72 @@ async def main():
 
 
 asyncio.run(main())
+```
+
+## [loguru](https://github.com/Delgan/loguru)
+**logger**
+
+- `add(sink, *, level='DEBUG', format='<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>', filter=None, colorize=None, serialize=False, backtrace=True, diagnose=True, enqueue=False, catch=True, **kwargs)`
+- remove(handler_id=None)
+- complete()	Wait for the end of enqueued messages and asynchronous tasks scheduled by handlers
+- `catch(exception=<class 'Exception'>, *, level='ERROR', reraise=False, onerror=None, exclude=None, default=None, message="An error has been caught in function '{record[function]}', process '{record[process].name}' ({record[process].id}), thread '{record[thread].name}' ({record[thread].id}):")`
+- opt()	Parametrize a logging call to slightly change generated log message.
+- bind()
+- contextualize()
+- patch()
+- level()
+- disable()
+- enable()
+- configure()
+- parse()
+- log()
+- exception()
+
+  <br />  severity levels
+
+| **Level name** | **Severity value** | **Logger method** |
+| --- | --- | --- |
+| TRACE | 5 | [logger.trace()](https://loguru.readthedocs.io/en/stable/api/logger.html#loguru._logger.Logger.trace) |
+| DEBUG | 10 | [logger.debug()](https://loguru.readthedocs.io/en/stable/api/logger.html#loguru._logger.Logger.debug) |
+| INFO | 20 | [logger.info()](https://loguru.readthedocs.io/en/stable/api/logger.html#loguru._logger.Logger.info) |
+| SUCCESS | 25 | [logger.success()](https://loguru.readthedocs.io/en/stable/api/logger.html#loguru._logger.Logger.success) |
+| WARNING | 30 | [logger.warning()](https://loguru.readthedocs.io/en/stable/api/logger.html#loguru._logger.Logger.warning) |
+| ERROR | 40 | [logger.error()](https://loguru.readthedocs.io/en/stable/api/logger.html#loguru._logger.Logger.error) |
+| CRITICAL | 50 | [logger.critical()](https://loguru.readthedocs.io/en/stable/api/logger.html#loguru._logger.Logger.critical) |
+
+  <br />  record dict
+
+| **Key** | **Description** | **Attributes** |
+| --- | --- | --- |
+| elapsed | The time elapsed since the start of the program | See [datetime.timedelta](https://docs.python.org/3/library/datetime.html#datetime.timedelta) |
+| exception | The formatted exception if any, None otherwise | type, value, traceback |
+| extra | The dict of attributes bound by the user (see [bind()](https://loguru.readthedocs.io/en/stable/api/logger.html#loguru._logger.Logger.bind)) | None |
+| file | The file where the logging call was made | name (default), path |
+| function | The function from which the logging call was made | None |
+| level | The severity used to log the message | name (default), no, icon |
+| line | The line number in the source code | None |
+| message | The logged message (not yet formatted) | None |
+| module | The module where the logging call was made | None |
+| name | The __name__ where the logging call was made | None |
+| process | The process in which the logging call was made | name, id (default) |
+| thread | The thread in which the logging call was made | name, id (default) |
+| time | The aware local time when the logging call was made | See [datetime.datetime](https://docs.python.org/3/library/datetime.html#datetime.datetime) |
+
+
+```python
+from loguru import logger
+
+logger.debug("That's it, beautiful and simple logging!")
+logger.info("If you're using Python {}, prefer {feature} of course!", 3.6, feature="f-strings")
+
+logger.add(sys.stderr, format="{time} {level} {message}", filter="my_module", level="INFO")
+logger.add("file_1.log", rotation="500 MB", compression="zip")    # Automatically rotate too big file
+
+# Exceptions catching within threads or main
+@logger.catch
+def my_function(x, y, z):
+    # An error? It's caught anyway!
+    return 1 / (x + y + z)
 ```
 
 ## [lxml](https://lxml.de/)
@@ -1593,7 +1659,7 @@ sleep(5)
 driver.quit()
 ```
 ## [Scrapy](https://scrapy.org/)
-https://www.osgeo.cn/scrapy/index.html  <br />  conda install -c conda-forge scrapy  <br />  scrapy  [options] [args]  <br />  bench         Run quick benchmark test  <br />  fetch         Fetch a URL using the Scrapy downloader  <br />  genspider     Generate new spider using pre-defined templates  <br />  runspider     Run a self-contained spider (without creating a project)  <br />  settings      Get settings values  <br />  shell         Interactive scraping console  <br />  startproject  Create new project  <br />  version       Print Scrapy version  <br />  view          Open URL in browser, as seen by Scrapy  <br />  ![](https://www.runoob.com/wp-content/uploads/2018/10/8c591d54457bb033812a2b0364011e9c_articlex.png#crop=0&crop=0&crop=1&crop=1&id=GKVZl&originHeight=494&originWidth=700&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+https://www.osgeo.cn/scrapy/index.html  <br />  conda install -c conda-forge scrapy  <br />  scrapy  [options] [args]  <br />  bench         Run quick benchmark test  <br />  fetch         Fetch a URL using the Scrapy downloader  <br />  genspider     Generate new spider using pre-defined templates  <br />  runspider     Run a self-contained spider (without creating a project)  <br />  settings      Get settings values  <br />  shell         Interactive scraping console  <br />  startproject  Create new project  <br />  version       Print Scrapy version  <br />  view          Open URL in browser, as seen by Scrapy  <br />  ![](https://www.runoob.com/wp-content/uploads/2018/10/8c591d54457bb033812a2b0364011e9c_articlex.png#id=GKVZl&originHeight=494&originWidth=700&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 - Scrapy Engine(引擎): 负责Spider、ItemPipeline、Downloader、Scheduler中间的通讯，信号、数据传递等。
 - Scheduler(调度器): 接受引擎发送过来的Request请求，并按照一定的方式进行整理排列，入队

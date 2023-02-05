@@ -1,10 +1,9 @@
 ---
 title: Pythonic
 created_at: 2022-02-20T02:15:13.000Z
-updated_at: 2023-01-08T10:55:11.000Z
-word_count: 4480
----
-# Pythonic  
+updated_at: 2023-02-04T10:07:17.000Z
+word_count: 4508
+---  
 ## Pythonic
 > import this
 > 
@@ -572,7 +571,7 @@ A = TypeVar('A', str, bytes)  # Must be str or bytes
 typing.**AnyStr	** AnyStr = TypeVar('AnyStr', str, bytes)  <br />  class typing.**Protocol**(Generic)	Protocol 类的基类。  <br />  typing.**cast**(typ, val)	把值强制转换为类型。  <br />  _@_typing. **overload	**修饰支持多个不同参数类型组合的函数或方法。  <br />  _@_typing. **final	**被装饰的方法不能被覆盖，且被装饰的类不能作为子类的装饰器  <br />  内省辅助器  <br />  typing.**get_type_hints**(obj, globalns=None, localns=None, include_extras=False)	返回函数、方法、模块、类对象的类型提示的字典  <br />  typing.**get_args**(tp)  <br />  typing.**get_origin**(tp)	为泛型类型与特殊类型形式提供了基本的内省功能。
 
 
-## CLI
+## [CLI](https://docs.python.org/zh-cn/3/using/cmdline.html)
 
 `python [-bBdEhiIOqsSuvVWx?] [-c 'command' | -m module-name | script | - ] [args]`
 
@@ -591,6 +590,12 @@ typing.**AnyStr	** AnyStr = TypeVar('AnyStr', str, bytes)  <br />  class ty
 - .pyo	优化编译后的程序（相比于.pyc文件更小），也可以提高加载速度
 
 第一次执行代码的时，Python解释器把编译的字节码放在__pycache__文件夹中，这样以后再次运行的话，如果被调用的模块未发生改变，那就跳过编译，直接去__pycache__文件夹中去运行相关的*.pyc文件，缩短时间。
+
+### 环境变量
+
+- PYTHONHOME	更改标准 Python 库的位置
+- PYTHONPATH	增加模块文件默认搜索路径
+- PYTHONWARNINGS
 
 ### [pip](https://pip.pypa.io/en/stable/)
 Python 包管理工具，提供了对Python 包的查找、下载、安装、卸载的功能。

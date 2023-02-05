@@ -3,8 +3,7 @@ title: JavaScript
 created_at: 2022-02-01T05:44:47.000Z
 updated_at: 2023-01-08T09:25:36.000Z
 word_count: 11756
----
-# JavaScript  
+---  
 ## —— [Javascript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference) ——
 1995年，Brendan Eich设计出了一门跨平台、面向对象的脚本语言，它能使网页可交互。  <br />  ECMAScript标准：ECMA（European Computer Manufacturers Association）组织定制了JavaScript语言的标准  <br />  脚本语言（script language）：不具备开发操作系统的能力，而是用来编写控制其他大型应用程序（如浏览器）的“脚本”
 

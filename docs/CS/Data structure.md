@@ -3,8 +3,7 @@ title: Data structure
 created_at: 2022-02-10T13:59:46.000Z
 updated_at: 2023-01-08T11:21:33.000Z
 word_count: 12641
----
-# Data structure  
+---  
 
 ## Tree
 
@@ -841,7 +840,7 @@ public class RedBlackBST {
 
 
 ### 字典树 Trie
-单词查找树，前缀树，常用于存储动态集或键为字符串的关联数组  <br />  Trie 树用「树枝」存储字符串（键），用「节点」存储字符串（键）对应的数据（值）  <br />  ![](https://camo.githubusercontent.com/7e1222be8035e86fb36c04c6d8eca901d7940e99fe0f03607f4269e2a95bc2f8/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f622f62652f547269655f6578616d706c652e737667#crop=0&crop=0&crop=1&crop=1&from=url&id=dSabN&margin=%5Bobject%20Object%5D&originHeight=375&originWidth=400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+单词查找树，前缀树，常用于存储动态集或键为字符串的关联数组  <br />  Trie 树用「树枝」存储字符串（键），用「节点」存储字符串（键）对应的数据（值）  <br />  ![](https://camo.githubusercontent.com/7e1222be8035e86fb36c04c6d8eca901d7940e99fe0f03607f4269e2a95bc2f8/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f622f62652f547269655f6578616d706c652e737667#from=url&id=dSabN&originHeight=375&originWidth=400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 class TrieMap<V> {
     // ASCII 码个数

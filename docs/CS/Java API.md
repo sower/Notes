@@ -3,8 +3,7 @@ title: Java API
 created_at: 2022-02-01T05:44:36.000Z
 updated_at: 2022-11-13T13:57:18.000Z
 word_count: 9944
----
-# Java API  
+---  
 [openjdk](https://github.com/openjdk)/[jdk](https://github.com/openjdk/jdk)
 
 ## API

@@ -3,8 +3,7 @@ title: Software
 created_at: 2022-02-01T05:44:50.000Z
 updated_at: 2022-05-01T03:22:20.000Z
 word_count: 2399
----
-# Software  
+---  
 
 ## —— 软件（Software）——
 **软件**是一系列按照特定顺序组织的[电脑](https://zh.wikipedia.org/wiki/%E9%9B%BB%E8%85%A6)数据和指令，是电脑中的非有形部分
@@ -31,7 +30,7 @@ word_count: 2399
 - 持久层（persistence）：提供数据，SQL 语句就放在这一层
 - 数据库（database） ：保存数据
 
-![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090303.png#crop=0&crop=0&crop=1&crop=1&id=d7Goo&originHeight=511&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090303.png#id=d7Goo&originHeight=511&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ###   <br />  
 
 ### 事件驱动架构（event-driven architecture）
@@ -42,15 +41,15 @@ word_count: 2399
 - 事件通道（event channel）：分发器与处理器之间的联系渠道
 - 事件处理器（event processor）：实现业务逻辑，处理完成后会发出事件，触发下一步操作
 
-![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090304.png#crop=0&crop=0&crop=1&crop=1&id=JUJDi&originHeight=578&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090304.png#id=JUJDi&originHeight=578&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ###   <br />  
 ###   <br />  
 ### 微核架构（microkernel architecture）
-又称为"插件架构"（plug-in architecture），软件的内核相对较小，主要功能和业务逻辑都通过插件实现。  <br />  内核（core）通常只包含系统运行的最小功能。插件则是互相独立的，插件之间的通信，应该减少到最低，避免出现互相依赖的问题。  <br />  ![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090306.png#crop=0&crop=0&crop=1&crop=1&id=eAuUP&originHeight=487&originWidth=722&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+又称为"插件架构"（plug-in architecture），软件的内核相对较小，主要功能和业务逻辑都通过插件实现。  <br />  内核（core）通常只包含系统运行的最小功能。插件则是互相独立的，插件之间的通信，应该减少到最低，避免出现互相依赖的问题。  <br />  ![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090306.png#id=eAuUP&originHeight=487&originWidth=722&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ###   <br />  
 ###   <br />  
 ### 微服务架构（microservices architecture）
-是服务导向架构（service-oriented architecture，缩写 SOA）的升级。  <br />  每一个服务就是一个独立的部署单元（separately deployed unit）。这些单元都是分布式的，互相解耦，通过远程通信协议（比如REST、SOAP）联系  <br />  ![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090307.png#crop=0&crop=0&crop=1&crop=1&id=kXDwk&originHeight=460&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  实现模式。
+是服务导向架构（service-oriented architecture，缩写 SOA）的升级。  <br />  每一个服务就是一个独立的部署单元（separately deployed unit）。这些单元都是分布式的，互相解耦，通过远程通信协议（比如REST、SOAP）联系  <br />  ![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090307.png#id=kXDwk&originHeight=460&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  实现模式。
 
 - RESTful API 模式：服务通过 API 提供，云服务就属于这一类
 - RESTful 应用模式：服务通过传统的网络协议或者应用协议提供，背后通常是一个多功能的应用程序，常见于企业内部
@@ -66,7 +65,7 @@ word_count: 2399
 - 处理中间件（Processing Grid）：可选，如果一个请求涉及不同类型的处理单元，该中间件负责协调处理单元
 - 部署中间件（Deployment Manager）：负责处理单元的启动和关闭，监控负载和响应时间，当负载增加，就新启动处理单元，负载减少，就关闭处理单元。
 
-![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090311.png#crop=0&crop=0&crop=1&crop=1&id=cVtlo&originHeight=402&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016090311.png#id=cVtlo&originHeight=402&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 
 
@@ -114,4 +113,4 @@ word_count: 2399
 
 **MIT（Massachusetts Institute of Technology）协议**  <br />  目前限制最少的开源许可协议之一（比 BSD 和 Apache 的限制都少），只要程序的开发者在修改后的源代码中保留原作者的许可信息即可，因此普遍被商业软件所使用。
 
-**GUN LGPL（GNU Lesser General Public License，GNU 宽通用公共许可证）**  <br />  LGPL 是 GPL 的一个衍生版本，也被称为 GPL V2，该协议主要是为类库设计的开源协议。  <br />  ![](http://c.biancheng.net/uploads/allimg/190328/1-1Z32QI643931.gif#crop=0&crop=0&crop=1&crop=1&id=xyaa4&originHeight=605&originWidth=1000&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+**GUN LGPL（GNU Lesser General Public License，GNU 宽通用公共许可证）**  <br />  LGPL 是 GPL 的一个衍生版本，也被称为 GPL V2，该协议主要是为类库设计的开源协议。  <br />  ![](http://c.biancheng.net/uploads/allimg/190328/1-1Z32QI643931.gif#id=xyaa4&originHeight=605&originWidth=1000&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)

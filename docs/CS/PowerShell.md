@@ -3,8 +3,7 @@ title: PowerShell
 created_at: 2022-02-01T05:44:40.000Z
 updated_at: 2022-10-25T12:33:18.000Z
 word_count: 6950
----
-# PowerShell  
+---  
 ## —— [PowerShell](https://docs.microsoft.com/zh-cn/powershell/) ——
 任务自动化和[配置管理](https://zh.wikipedia.org/w/index.php?title=%E7%B5%84%E6%85%8B%E7%AE%A1%E7%90%86&action=edit&redlink=1)框架，由.NET Framework和.NET Core是构建的命令行界面壳层相关脚本语言组成
 

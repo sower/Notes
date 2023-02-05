@@ -3,8 +3,7 @@ title: UML
 created_at: 2022-04-03T14:17:39.000Z
 updated_at: 2022-04-04T14:04:39.000Z
 word_count: 1564
----
-# UML  
+---  
 
 统一建模语言（Unified Modeling Language）：设计软件蓝图的可视化建模语言，具有简单、统一、图形化、能表达软件设计中的动态与静态信息等特点。
 
@@ -53,7 +52,7 @@ word_count: 1564
 
 ## 图
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/cs/design/uml/uml-diagrams.png#crop=0&crop=0&crop=1&crop=1&from=url&id=a5AVA&originHeight=400&originWidth=800&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://raw.githubusercontent.com/dunwu/images/dev/cs/design/uml/uml-diagrams.png#from=url&id=a5AVA&originHeight=400&originWidth=800&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 ### 结构式建模图
 > 结构式建模图（Structure diagrams）：强调的是系统式的建模。结构图定义了一个模型的静态架构。通常被用来对那些构成模型的‘要素’建模，如：类，对象，接口和物理组件。另外，也可用来对元素间关联和依赖关系进行建模。

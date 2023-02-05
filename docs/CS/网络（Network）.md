@@ -3,8 +3,7 @@ title: 网络（Network）
 created_at: 2022-02-02T13:10:18.000Z
 updated_at: 2022-03-03T16:03:15.000Z
 word_count: 18960
----
-# 网络（Network）  
+---  
 ## —— 网络（Network）——
 **互联网**（Internet）：[20世纪](https://zh.wikipedia.org/wiki/20%E4%B8%96%E7%B4%80)末期兴起电脑网络与电脑网络之间所串连成的庞大网络系统。  <br />  万维网是一个由许多互相链接的超文本组成的系统，通过互联网访问。是互联网的一项服务
 

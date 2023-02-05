@@ -3,8 +3,7 @@ title: Design Patterns
 created_at: 2022-02-02T13:10:00.000Z
 updated_at: 2022-04-05T06:58:12.000Z
 word_count: 11442
----
-# Design Patterns  
+---  
 ## —— Design Patterns ——
 **软件设计模式（Software Design Pattern）**：一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。  <br />  它描述了在软件设计过程中的一些不断重复发生的问题，以及该问题的解决方案。  <br />  它是解决特定问题的一系列套路，是前辈们的代码设计经验的总结，具有一定的普遍性，可以反复使用。  <br />  作用：提高代码的**可重用性、可读性和可靠性**。
 
@@ -17,7 +16,7 @@ word_count: 11442
 - **聚合（Aggregation）**关系：强关联关系，是 has-a 的关系。
 - **组合（Composition）**关系：一种更强烈的聚合关系，是 contains-a 关系。
 
-![](http://c.biancheng.net/uploads/allimg/181119/3-1Q119161203241.gif#crop=0&crop=0&crop=1&crop=1&id=kyJ2L&originHeight=395&originWidth=450&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181119/3-1Q119161203241.gif#id=kyJ2L&originHeight=395&originWidth=450&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 
 
@@ -76,7 +75,7 @@ word_count: 11442
 - 抽象产品（Product）：定义了产品的规范，描述了产品的主要特性和功能。
 - 具体产品（ConcreteProduct）：实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间一一对应。
 
-![](http://c.biancheng.net/uploads/allimg/181114/3-1Q114135A2M3.gif#crop=0&crop=0&crop=1&crop=1&id=dxj6x&originHeight=340&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181114/3-1Q114135A2M3.gif#id=dxj6x&originHeight=340&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 **简单工厂模式**
 ```java
@@ -157,7 +156,7 @@ class divFactory: IFactory
 - 抽象产品（Product）：定义了产品的规范，描述了产品的主要特性和功能，抽象工厂模式有多个抽象产品。
 - 具体产品（ConcreteProduct）：实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间是多对一的关系。
 
-![](http://c.biancheng.net/uploads/allimg/181114/3-1Q11416002NW.gif#crop=0&crop=0&crop=1&crop=1&id=Xy7Yi&originHeight=576&originWidth=580&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181114/3-1Q11416002NW.gif#id=Xy7Yi&originHeight=576&originWidth=580&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 //抽象工厂：提供了产品的生成方法。
 interface AbstractFactory
@@ -192,7 +191,7 @@ class ConcreteFactory1 implements AbstractFactory
 - 单例类：包含一个实例且能自行创建这个实例的类。
 - 访问类：使用单例的类。
 
-![](http://c.biancheng.net/uploads/allimg/181113/3-1Q1131K441K2.gif#crop=0&crop=0&crop=1&crop=1&id=yzwuV&originHeight=472&originWidth=550&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  **懒汉式单例：**第一次调用 getlnstance 方法时创建这个单例
+![](http://c.biancheng.net/uploads/allimg/181113/3-1Q1131K441K2.gif#id=yzwuV&originHeight=472&originWidth=550&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  **懒汉式单例：**第一次调用 getlnstance 方法时创建这个单例
 ```java
 public class LazySingleton
 {
@@ -261,7 +260,7 @@ public class Singleton {
 - 具体原型类：实现抽象原型类的 clone() 方法，它是可被复制的对象。
 - 访问类：使用具体原型类中的 clone() 方法来复制新的对象。
 
-![](http://c.biancheng.net/uploads/allimg/181114/3-1Q114101Fa22.gif#crop=0&crop=0&crop=1&crop=1&id=GkUjB&originHeight=316&originWidth=690&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181114/3-1Q114101Fa22.gif#id=GkUjB&originHeight=316&originWidth=690&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 //具体原型类
 class Realizetype implements Cloneable
@@ -289,7 +288,7 @@ public class PrototypeTest
     }
 }
 ```
-**带原型管理器的原型模式**  <br />  ![](http://c.biancheng.net/uploads/allimg/181114/3-1Q114102049214.gif#crop=0&crop=0&crop=1&crop=1&id=BMFcS&originHeight=407&originWidth=680&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+**带原型管理器的原型模式**  <br />  ![](http://c.biancheng.net/uploads/allimg/181114/3-1Q114102049214.gif#id=BMFcS&originHeight=407&originWidth=680&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 ### 建造者模式（Builder Pattern）
 > 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
@@ -302,7 +301,7 @@ public class PrototypeTest
 - 具体建造者(Concrete Builder）：实现 Builder 接口，完成复杂产品的各个部件的具体创建方法。
 - 指挥者（Director）：它调用建造者对象中的部件构造与装配方法完成复杂对象的创建，在指挥者中不涉及具体产品的信息。
 
-![](http://c.biancheng.net/uploads/allimg/181114/3-1Q1141H441X4.gif#crop=0&crop=0&crop=1&crop=1&id=tEr8c&originHeight=576&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181114/3-1Q1141H441X4.gif#id=tEr8c&originHeight=576&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 //产品角色：包含多个组成部件的复杂对象。
 class Product
@@ -389,7 +388,7 @@ class Director
 
 缺：过多地使用适配器，会让系统非常零乱，不易整体进行把握
 
-**对象结构型模式**  <br />  ![](http://c.biancheng.net/uploads/allimg/181115/3-1Q1151046105A.gif#crop=0&crop=0&crop=1&crop=1&id=ESrxA&originHeight=302&originWidth=600&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+**对象结构型模式**  <br />  ![](http://c.biancheng.net/uploads/allimg/181115/3-1Q1151046105A.gif#id=ESrxA&originHeight=302&originWidth=600&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package adapter;
 
@@ -425,7 +424,7 @@ public class ObjectAdapterTest
 }
 ```
 
-**类结构型模式**  <br />  ![](http://c.biancheng.net/uploads/allimg/181115/3-1Q1151045351c.gif#crop=0&crop=0&crop=1&crop=1&id=i2kQG&originHeight=276&originWidth=570&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+**类结构型模式**  <br />  ![](http://c.biancheng.net/uploads/allimg/181115/3-1Q1151045351c.gif#id=i2kQG&originHeight=276&originWidth=570&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package adapter;
 
@@ -464,7 +463,7 @@ public class ClassAdapterTest
 }
 ```
 
-**双向适配器模式**  <br />  ![](http://c.biancheng.net/uploads/allimg/181115/3-1Q115104Q1604.gif#crop=0&crop=0&crop=1&crop=1&id=EeElu&originHeight=574&originWidth=490&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+**双向适配器模式**  <br />  ![](http://c.biancheng.net/uploads/allimg/181115/3-1Q115104Q1604.gif#id=EeElu&originHeight=574&originWidth=490&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package adapter;
 
@@ -550,7 +549,7 @@ public class TwoWayAdapterTest
 - 实现化（Implementor）角色：定义实现化角色的接口，供扩展抽象化角色调用。
 - 具体实现化（Concrete Implementor）角色：给出实现化角色接口的具体实现。
 
-![](http://c.biancheng.net/uploads/allimg/181115/3-1Q115125253H1.gif#crop=0&crop=0&crop=1&crop=1&id=kYHSi&originHeight=381&originWidth=650&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181115/3-1Q115125253H1.gif#id=kYHSi&originHeight=381&originWidth=650&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package bridge;
 
@@ -617,7 +616,7 @@ class RefinedAbstraction extends Abstraction
 
 
 
-**透明方式**  <br />  抽象构件声明了所有子类中的全部方法，所以客户端无须区别树叶对象和树枝对象，对客户端来说是透明的。缺点是树叶构件本来没有 Add()、Remove() 及 GetChild() 方法，却要实现它们（空实现或抛异常），这样会带来一些安全性问题  <br />  ![](http://c.biancheng.net/uploads/allimg/181115/3-1Q1151G62L17.gif#crop=0&crop=0&crop=1&crop=1&id=T5DTl&originHeight=519&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+**透明方式**  <br />  抽象构件声明了所有子类中的全部方法，所以客户端无须区别树叶对象和树枝对象，对客户端来说是透明的。缺点是树叶构件本来没有 Add()、Remove() 及 GetChild() 方法，却要实现它们（空实现或抛异常），这样会带来一些安全性问题  <br />  ![](http://c.biancheng.net/uploads/allimg/181115/3-1Q1151G62L17.gif#id=T5DTl&originHeight=519&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package composite;
 import java.util.ArrayList;
@@ -694,7 +693,7 @@ class Composite implements Component
 }
 ```
 
-**安全方式**  <br />  将管理子构件的方法移到树枝构件中，抽象构件和树叶构件没有对子对象的管理方法，这样就避免了上一种方式的安全性问题，但由于叶子和分支有不同的接口，客户端在调用时要知道树叶对象和树枝对象的存在，所以失去了透明性。  <br />  ![](http://c.biancheng.net/uploads/allimg/181115/3-1Q1151GF5221.gif#crop=0&crop=0&crop=1&crop=1&id=PDv3G&originHeight=528&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+**安全方式**  <br />  将管理子构件的方法移到树枝构件中，抽象构件和树叶构件没有对子对象的管理方法，这样就避免了上一种方式的安全性问题，但由于叶子和分支有不同的接口，客户端在调用时要知道树叶对象和树枝对象的存在，所以失去了透明性。  <br />  ![](http://c.biancheng.net/uploads/allimg/181115/3-1Q1151GF5221.gif#id=PDv3G&originHeight=528&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 ### 装饰器模式（Decorator Pattern）
 > 在不改变现有对象结构的情况下，动态地给该对象增加一些职责（即增加其额外功能）
@@ -707,7 +706,7 @@ class Composite implements Component
 - 抽象装饰（Decorator）角色：继承抽象构件，并包含具体构件的实例，可以通过其子类扩展具体构件的功能。
 - 具体装饰（Concrete Decorator）角色：实现抽象装饰的相关方法，并给具体构件对象添加附加的责任。
 
-![](http://c.biancheng.net/uploads/allimg/181115/3-1Q115142115M2.gif#crop=0&crop=0&crop=1&crop=1&id=aLRBy&originHeight=483&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181115/3-1Q115142115M2.gif#id=aLRBy&originHeight=483&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package decorator;
 
@@ -786,7 +785,7 @@ class ConcreteDecorator extends Decorator
 - 子系统（Sub System）角色：实现系统的部分功能，客户可以通过外观角色访问它。
 - 客户（Client）角色：通过一个外观角色访问各个子系统的功能。
 
-![](http://c.biancheng.net/uploads/allimg/181115/3-1Q115152143509.gif#crop=0&crop=0&crop=1&crop=1&id=kqyUB&originHeight=476&originWidth=450&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181115/3-1Q115152143509.gif#id=kqyUB&originHeight=476&originWidth=450&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package facade;
 public class FacadePattern
@@ -839,7 +838,7 @@ class SubSystem02
 - 非享元（Unsharable Flyweight)角色：是不可以共享的外部状态，它以参数的形式注入具体享元的相关方法中。
 - 享元工厂（Flyweight Factory）角色：负责创建和管理享元角色。当客户对象请求一个享元对象时，享元工厂检査系统中是否存在符合要求的享元对象，如果存在则提供给客户；如果不存在的话，则创建一个新的享元对象。
 
-![](http://c.biancheng.net/uploads/allimg/181115/3-1Q115161342242.gif#crop=0&crop=0&crop=1&crop=1&id=TEjds&originHeight=517&originWidth=700&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181115/3-1Q115161342242.gif#id=TEjds&originHeight=517&originWidth=700&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package flyweight;
 import java.util.HashMap;
@@ -933,7 +932,7 @@ class FlyweightFactory
 - 真实主题（Real Subject）类：实现了抽象主题中的具体业务，是代理对象所代表的真实对象，是最终要引用的对象。
 - 代理（Proxy）类：提供了与真实主题相同的接口，内部含有对真实主题的引用，它可以访问、控制或扩展真实主题的功能。
 
-![](http://c.biancheng.net/uploads/allimg/181115/3-1Q115093011523.gif#crop=0&crop=0&crop=1&crop=1&id=lRyki&originHeight=346&originWidth=650&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181115/3-1Q115093011523.gif#id=lRyki&originHeight=346&originWidth=650&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package proxy;
 
@@ -1012,7 +1011,7 @@ class Proxy implements Subject
 - 增加新的聚合类和迭代器类都很方便，无须修改原有代码。
 - 封装性良好，为遍历不同的聚合结构提供一个统一的接口。
 
-缺：增加了类的个数，这在一定程度上增加了系统的复杂性。  <br />  ![](http://c.biancheng.net/uploads/allimg/181116/3-1Q1161PU9528.gif#crop=0&crop=0&crop=1&crop=1&id=JQjKk&originHeight=360&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+缺：增加了类的个数，这在一定程度上增加了系统的复杂性。  <br />  ![](http://c.biancheng.net/uploads/allimg/181116/3-1Q1161PU9528.gif#id=JQjKk&originHeight=360&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package iterator;
 import java.util.*;
@@ -1125,7 +1124,7 @@ class ConcreteIterator implements Iterator
 - 提取公共代码，便于维护
 - 行为由父类控制，子类实现。
 
-**缺：**每一个不同的实现都需要一个子类来实现，导致类的个数增加，使得系统更加庞大。  <br />  ![](http://c.biancheng.net/uploads/allimg/181116/3-1Q116095405308.gif#crop=0&crop=0&crop=1&crop=1&id=EBlYl&originHeight=377&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+**缺：**每一个不同的实现都需要一个子类来实现，导致类的个数增加，使得系统更加庞大。  <br />  ![](http://c.biancheng.net/uploads/allimg/181116/3-1Q116095405308.gif#id=EBlYl&originHeight=377&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package templateMethod;
 
@@ -1178,7 +1177,7 @@ class ConcreteClass extends AbstractClass
 - 具体策略（Concrete Strategy）类：实现了抽象策略定义的接口，提供具体的算法实现。
 - 环境（Context）类：持有一个策略类的引用，最终给客户端调用。
 
-![](http://c.biancheng.net/uploads/allimg/181116/3-1Q116103K1205.gif#crop=0&crop=0&crop=1&crop=1&id=g31lx&originHeight=286&originWidth=700&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181116/3-1Q116103K1205.gif#id=g31lx&originHeight=286&originWidth=700&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package strategy;
 
@@ -1251,7 +1250,7 @@ class Context
 - 具体元素（ConcreteElement）角色：实现抽象元素角色提供的 accept() 操作，其方法体通常都是 visitor.visit(this) ，另外具体元素中可能还包含本身业务逻辑的相关操作。
 - 对象结构（Object Structure）角色：是一个包含元素角色的容器，提供让访问者对象遍历容器中的所有元素的方法，通常由 List、Set、Map 等聚合类实现。
 
-![](http://c.biancheng.net/uploads/allimg/181119/3-1Q11910135Y25.gif#crop=0&crop=0&crop=1&crop=1&id=ayifh&originHeight=443&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181119/3-1Q11910135Y25.gif#id=ayifh&originHeight=443&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package visitor;
 import java.util.*;
@@ -1369,7 +1368,7 @@ class ObjectStructure
 - 具体处理者（Concrete Handler）角色：实现抽象处理者的处理方法，判断能否处理本次请求，如果可以处理请求则处理，否则将该请求转给它的后继者。
 - 客户类（Client）角色：创建处理链，并向链头的具体处理者对象提交请求，它不关心处理细节和请求的传递过程。
 
-![](http://c.biancheng.net/uploads/allimg/181116/3-1Q116135Z11C.gif#crop=0&crop=0&crop=1&crop=1&id=cOLZV&originHeight=477&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181116/3-1Q116135Z11C.gif#id=cOLZV&originHeight=477&originWidth=750&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package chainOfResponsibility;
 
@@ -1460,7 +1459,7 @@ class ConcreteHandler2 extends Handler
 - 抽象同事类（Colleague）角色：定义同事类的接口，保存中介者对象，提供同事对象交互的抽象方法，实现所有相互影响的同事类的公共功能。
 - 具体同事类（Concrete Colleague）角色：是抽象同事类的实现者，当需要与其他同事对象交互时，由中介者对象负责后续的交互。
 
-![](http://c.biancheng.net/uploads/allimg/181116/3-1Q1161I532V0.gif#crop=0&crop=0&crop=1&crop=1&id=pqGeF&originHeight=375&originWidth=690&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181116/3-1Q1161I532V0.gif#id=pqGeF&originHeight=375&originWidth=690&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package mediator;
 import java.util.*;
@@ -1564,7 +1563,7 @@ class ConcreteColleague2 extends Colleague
 - 抽象观察者（Observer）角色：一个抽象类或接口，包含一个更新自己的抽象方法，当接到具体主题的更改通知时被调用。
 - 具体观察者（Concrete Observer）角色：实现抽象观察者中定义的抽象方法，以得到目标的更改通知时更新自身的状态。
 
-![](http://c.biancheng.net/uploads/allimg/181116/3-1Q1161A6221S.gif#crop=0&crop=0&crop=1&crop=1&id=gyqNr&originHeight=462&originWidth=590&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181116/3-1Q1161A6221S.gif#id=gyqNr&originHeight=462&originWidth=590&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package observer;
 import java.util.*;
@@ -1648,7 +1647,7 @@ class ConcreteObserver2 implements Observer
 - 备忘录（Memento）角色：负责存储发起人的内部状态，在需要的时候提供这些内部状态给发起人。
 - 管理者（Caretaker）角色：对备忘录进行管理，提供保存与获取备忘录的功能，但其不能对备忘录的内容进行访问与修改。
 
-![](http://c.biancheng.net/uploads/allimg/181119/3-1Q119130413927.gif#crop=0&crop=0&crop=1&crop=1&id=DC2rP&originHeight=364&originWidth=550&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181119/3-1Q119130413927.gif#id=DC2rP&originHeight=364&originWidth=550&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package memento;
 
@@ -1732,7 +1731,7 @@ class Caretaker
 - 抽象状态（State）角色：定义一个接口，用以封装环境对象中的特定状态所对应的行为。
 - 具体状态（Concrete    State）角色：实现抽象状态所对应的行为。
 
-![](http://c.biancheng.net/uploads/allimg/181116/3-1Q11615412U55.gif#crop=0&crop=0&crop=1&crop=1&id=hHWZY&originHeight=339&originWidth=550&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181116/3-1Q11615412U55.gif#id=hHWZY&originHeight=339&originWidth=550&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package state;
 
@@ -1810,7 +1809,7 @@ class ConcreteStateB extends State
 - 实现者/接收者（Receiver）角色：执行命令功能的相关操作，是具体命令对象业务的真正实现者。
 - 调用者/请求者（Invoker）角色：是请求的发送者，通常拥有很多的命令对象，通过访问命令对象来执行相关请求，不直接访问接收者。
 
-![](http://c.biancheng.net/uploads/allimg/181116/3-1Q11611335E44.gif#crop=0&crop=0&crop=1&crop=1&id=y29Nj&originHeight=612&originWidth=550&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181116/3-1Q11611335E44.gif#id=y29Nj&originHeight=612&originWidth=550&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 package command;
 
@@ -1888,7 +1887,7 @@ class Receiver
 
 - 语法树
 
-句子结构的一种树型表示，代表了句子的推导结果，有利于理解句子语法结构的层次。下图是“我是大学生”的语法树。  <br />  ![](http://c.biancheng.net/uploads/allimg/181119/3-1Q119150550114.gif#crop=0&crop=0&crop=1&crop=1&id=LtcRP&originHeight=262&originWidth=310&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  **模式的结构**
+句子结构的一种树型表示，代表了句子的推导结果，有利于理解句子语法结构的层次。下图是“我是大学生”的语法树。  <br />  ![](http://c.biancheng.net/uploads/allimg/181119/3-1Q119150550114.gif#id=LtcRP&originHeight=262&originWidth=310&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  **模式的结构**
 
 - 抽象表达式（Abstract Expression）角色：定义解释器的接口，约定解释器的解释操作，主要包含解释方法 interpret()。
 - 终结符表达式（Terminal    Expression）角色：抽象表达式的子类，用来实现文法中与终结符相关的操作，文法中的每一个终结符都有一个具体终结表达式与之相对应。
@@ -1896,7 +1895,7 @@ class Receiver
 - 环境（Context）角色：通常包含各个解释器需要的数据或是公共的功能，一般用来传递被所有解释器共享的数据，后面的解释器可以从这里获取这些值。
 - 客户端（Client）：主要任务是将需要分析的句子或表达式转换成使用解释器对象描述的抽象语法树，然后调用解释器的解释方法，也可通过环境角色间接访问解释器的解释方法。
 
-![](http://c.biancheng.net/uploads/allimg/181119/3-1Q119150626422.gif#crop=0&crop=0&crop=1&crop=1&id=I9ogp&originHeight=337&originWidth=650&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/181119/3-1Q119150626422.gif#id=I9ogp&originHeight=337&originWidth=650&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 // 抽象表达式类
 interface AbstractExpression

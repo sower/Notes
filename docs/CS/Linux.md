@@ -3,8 +3,7 @@ title: Linux
 created_at: 2022-02-01T05:44:39.000Z
 updated_at: 2022-10-25T16:04:25.000Z
 word_count: 12215
----
-# Linux  
+---  
 ## —— Linux ——
 
 Linux 是一套免费使用和自由传播的类 Unix 操作系统，是一个基于 POSIX 和 UNIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。  <br />  Linux 内核最初是由芬兰人林纳斯·托瓦兹（Linus Torvalds）在赫尔辛基大学上学时出于个人爱好而编写的
@@ -571,7 +570,7 @@ getenforce	查询SELinux的工作模式  <br />  sestatus	查看策略
 
 
 ## —— vi ——
-![](https://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch1.gif#crop=0&crop=0&crop=1&crop=1&id=f6Bqi&originHeight=724&originWidth=1024&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch1.gif#id=f6Bqi&originHeight=724&originWidth=1024&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 vi - Visual Interface  <br />  [vim](http://vimdoc.sourceforge.net/htmldoc/quickref.html) - Vi IMproved, a programmer's text editor
 

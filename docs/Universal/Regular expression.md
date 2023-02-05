@@ -3,8 +3,7 @@ title: Regular expression
 created_at: 2022-01-28T14:04:35.000Z
 updated_at: 2022-10-23T13:32:30.000Z
 word_count: 1384
----
-# Regular expression  
+---  
 
 [正则表达式](http://regexlab.com)（regex）	一种从左到右匹配主体字符串的模式    <br />  一组由字母和符号组成的特殊文本，它可以用来从文本中找出满足你想要的格式的句子。
 

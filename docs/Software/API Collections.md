@@ -3,8 +3,7 @@ title: API Collections
 created_at: 2022-01-29T14:37:09.000Z
 updated_at: 2023-01-08T11:30:21.000Z
 word_count: 1780
----
-# API Collections  
+---  
 ## Public API
 [public-apis](https://github.com/public-apis/public-apis)  <br />  [接口大全](https://www.free-api.com/)
 

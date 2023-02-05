@@ -3,8 +3,7 @@ title: Android SDK
 created_at: 2022-03-05T00:41:54.000Z
 updated_at: 2022-10-23T15:31:52.000Z
 word_count: 12734
----
-# Android SDK  
+---  
 ## Android SDK
 **配置环境变量**
 ```javascript

@@ -3,8 +3,7 @@ title: Algorithm
 created_at: 2022-02-10T14:00:47.000Z
 updated_at: 2022-05-08T08:34:17.000Z
 word_count: 8398
----
-# Algorithm  
+---  
 
 算法：一个有穷的指令集，这些指令为解决某一特定任务规定了一个运算序列
 
@@ -25,7 +24,7 @@ word_count: 8398
 - 用来衡量算法随着问题规模增大，算法执行时间增长的快慢；
 - 大 O 表示法 T(n)=O(f(n)) f(n)，一般考虑最坏情况下的时间复杂度
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20220320160627.png#crop=0&crop=0&crop=1&crop=1&from=url&id=zEvwm&margin=%5Bobject%20Object%5D&originHeight=271&originWidth=843&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20220320160627.png#from=url&id=zEvwm&originHeight=271&originWidth=843&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 **空间复杂度**
 

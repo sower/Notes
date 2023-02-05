@@ -3,8 +3,7 @@ title: Operating System
 created_at: 2022-02-01T05:44:39.000Z
 updated_at: 2022-03-05T00:26:43.000Z
 word_count: 1682
----
-# Operating System  
+---  
 ## —— 操作系统（Operating System） ——
 操作系统：一组主管并控制[计算机](https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA)操作、运用和运行硬件、软件资源和提供公共服务来组织用户交互的相互关联的系统软件程序，同时也是计算机系统的内核与基石。
 

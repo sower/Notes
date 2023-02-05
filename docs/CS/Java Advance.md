@@ -3,8 +3,7 @@ title: Java Advance
 created_at: 2022-04-03T08:46:14.000Z
 updated_at: 2023-01-08T11:02:16.000Z
 word_count: 8295
----
-# Java Advance  
+---  
 
 ## 并发 Concurrent
 **并发安全**：是保证程序的正确性，使得并发处理结果符合预期  <br />  并发安全需要保证：
@@ -1003,9 +1002,9 @@ JVM 体系结构
 
 Hotspot 是最流行的 JVM
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javacore/jvm/jvm-hotspot-key-components.png#crop=0&crop=0&crop=1&crop=1&from=url&id=KI4ZW&originHeight=720&originWidth=960&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javacore/jvm/jvm-hotspot-key-components.png#from=url&id=KI4ZW&originHeight=720&originWidth=960&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ### 运行时数据区域
-![](https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javacore/jvm/jvm-memory-runtime-data-area.png#crop=0.0486&crop=0.0344&crop=0.9559&crop=0.9668&from=url&height=711&id=G6EqC&originHeight=784&originWidth=658&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=&width=597)
+![](https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javacore/jvm/jvm-memory-runtime-data-area.png#from=url&height=711&id=G6EqC&originHeight=784&originWidth=658&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=&width=597)
 
 
 程序计数器（Program Counter Register）：一块较小的内存空间，可看做是当前线程所执行的字节码的行号指示器  <br />  Java 虚拟机栈（Java Virtual Machine Stacks）：生命周期与线程相同；为 Java 方法服务  <br />  本地方法栈（Native Method Stack）：与虚拟机栈的作用相似；为 Native 方法服务  <br />  Java 堆（Java Heap） ：存放对象实例

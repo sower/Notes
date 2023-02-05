@@ -20,8 +20,6 @@
   },
   "homepage": "https://github.com/sower/Notes#readme",
   "devDependencies": {
-    "escape-html": "^1.0.3",
-    "shiki": "^0.12.1",
-    "vitepress": "^1.0.0-alpha.35"
+    "vitepress": "^1.0.0-alpha.45"
   }
 }

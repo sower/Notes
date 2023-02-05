@@ -3,8 +3,7 @@ title: FFmpeg
 created_at: 2022-01-29T15:20:45.000Z
 updated_at: 2022-03-05T08:32:25.000Z
 word_count: 1793
----
-# FFmpeg  
+---  
 
 ## FFmpeg
 

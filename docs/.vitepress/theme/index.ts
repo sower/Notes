@@ -6,5 +6,8 @@ export default {
     ...DefaultTheme,
     // override the Layout with a wrapper component that
     // injects the slots
-    Layout: MyLayout
+    Layout: MyLayout,
+
+    // this is a Vue 3 functional component
+    // NotFound: () => 'custom 404',
 }

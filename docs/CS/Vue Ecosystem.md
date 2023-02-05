@@ -3,8 +3,7 @@ title: Vue Ecosystem
 created_at: 2022-03-04T14:44:29.000Z
 updated_at: 2022-12-11T06:55:36.000Z
 word_count: 5306
----
-# Vue Ecosystem  
+---  
 ## [Vite](https://vitejs.dev/)
 ```java
 // 全局安装 vite
@@ -1488,7 +1487,7 @@ API
 
 ## [SSR](https://v3.cn.vuejs.org/guide/ssr/introduction.html)
 
-![](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png#clientId=u9a034459-3792-4&crop=0&crop=0&crop=1&crop=1&errorMessage=unknown%20error&id=yZjUA&originHeight=892&originWidth=1946&originalType=binary&ratio=1&rotation=0&showTitle=false&status=error&style=none&taskId=ue8e28367-b99d-4946-909f-5f0119f31f9&title=)
+![](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png#clientId=u9a034459-3792-4&errorMessage=unknown%20error&id=yZjUA&originHeight=892&originWidth=1946&originalType=binary&ratio=1&rotation=0&showTitle=false&status=error&style=none&taskId=ue8e28367-b99d-4946-909f-5f0119f31f9&title=)
 
 ```javascript
 const { createSSRApp } = require('vue')

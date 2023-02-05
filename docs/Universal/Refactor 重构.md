@@ -3,8 +3,7 @@ title: Refactor 重构
 created_at: 2022-05-21T13:40:54.000Z
 updated_at: 2022-11-06T01:24:41.000Z
 word_count: 1512
----
-# Refactor 重构  
+---  
 重构
 > 不改变软件系统外部行为的前提下，改善它的内部结构
 

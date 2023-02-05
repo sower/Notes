@@ -46,6 +46,7 @@
 - ### [SQL](/CS/SQL.md)  
   - #### [MySQL](/CS/MySQL.md)  
   - #### [NoSQL](/CS/NoSQL.md)  
+- ### [Machine learning](/CS/Machine%20learning.md)  
 
   <br />  
 ## Software  

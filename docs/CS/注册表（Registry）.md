@@ -3,8 +3,7 @@ title: 注册表（Registry）
 created_at: 2022-02-02T13:10:09.000Z
 updated_at: 2022-10-25T12:44:42.000Z
 word_count: 2928
----
-# 注册表（Registry）  
+---  
 ## [注册表（Registry）](https://docs.microsoft.com/en-us/windows/win32/sysinfo/registry)
 [Microsoft Windows](https://zh.wikipedia.org/wiki/Microsoft_Windows)操作系统和其应用程序中的一个重要的层次型数据库，用于存储系统和应用程序的设置信息。  <br />  ![](./assets/1643807407595-929cdb27-5f38-43eb-93b4-582aad457566.png)
 

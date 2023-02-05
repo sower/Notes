@@ -3,8 +3,7 @@ title: Batch
 created_at: 2022-02-01T05:44:39.000Z
 updated_at: 2022-10-25T12:40:15.000Z
 word_count: 8912
----
-# Batch  
+---  
 ## —— [批处理](https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/windows-commands) ——
 将一系列命令按一定的顺序集合为一个可执行的文本文件，其扩展名为BAT或CMD，这些命令统称批处理命令。
 

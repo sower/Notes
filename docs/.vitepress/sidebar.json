@@ -1,187 +1,221 @@
 [
   {
     "text": "CS",
-    "collapsible": true,
+    "collapsed": false,
     "items": [
       {
-        "text": "HTML",
-        "level": 4,
-        "link": "/CS/HTML"
-      },
-      {
-        "text": "CSS",
-        "level": 4,
-        "link": "/CS/CSS"
-      },
-      {
-        "text": "JavaScript",
-        "level": 4,
-        "link": "/CS/JavaScript"
-      },
-      {
-        "text": "Web API",
-        "level": 4,
-        "link": "/CS/Web API"
-      },
-      {
-        "text": "Node.js",
-        "level": 4,
-        "link": "/CS/Node.js"
-      },
-      {
-        "text": "Vue.js",
-        "level": 4,
-        "link": "/CS/Vue.js"
-      },
-      {
-        "text": "Vue Ecosystem",
-        "level": 5,
-        "link": "/CS/Vue Ecosystem"
+        "text": "Web",
+        "level": 3,
+        "items": [
+          {
+            "text": "HTML",
+            "level": 4,
+            "link": "/CS/HTML"
+          },
+          {
+            "text": "CSS",
+            "level": 4,
+            "link": "/CS/CSS"
+          },
+          {
+            "text": "JavaScript",
+            "level": 4,
+            "link": "/CS/JavaScript"
+          },
+          {
+            "text": "Web API",
+            "level": 4,
+            "link": "/CS/Web API"
+          },
+          {
+            "text": "Node.js",
+            "level": 4,
+            "link": "/CS/Node.js"
+          },
+          {
+            "text": "Vue.js",
+            "level": 4,
+            "link": "/CS/Vue.js",
+            "items": [
+              {
+                "text": "Vue Ecosystem",
+                "level": 5,
+                "link": "/CS/Vue Ecosystem"
+              }
+            ],
+            "collapsed": false
+          }
+        ],
+        "collapsed": false
       },
       {
         "text": "Python",
         "level": 3,
-        "link": "/CS/Python"
-      },
-      {
-        "text": "Pythonic",
-        "level": 4,
-        "link": "/CS/Pythonic"
-      },
-      {
-        "text": "Python Lib",
-        "level": 4,
-        "link": "/CS/Python Lib"
-      },
-      {
-        "text": "PyPI",
-        "level": 4,
-        "link": "/CS/PyPI"
-      },
-      {
-        "text": "Py Web",
-        "level": 4,
-        "link": "/CS/Py Web"
+        "link": "/CS/Python",
+        "items": [
+          {
+            "text": "Pythonic",
+            "level": 4,
+            "link": "/CS/Pythonic"
+          },
+          {
+            "text": "Python Lib",
+            "level": 4,
+            "link": "/CS/Python Lib"
+          },
+          {
+            "text": "PyPI",
+            "level": 4,
+            "link": "/CS/PyPI"
+          },
+          {
+            "text": "Py Web",
+            "level": 4,
+            "link": "/CS/Py Web"
+          }
+        ],
+        "collapsed": false
       },
       {
         "text": "Java",
         "level": 3,
-        "link": "/CS/Java"
-      },
-      {
-        "text": "Java Advance",
-        "level": 4,
-        "link": "/CS/Java Advance"
-      },
-      {
-        "text": "Java API",
-        "level": 4,
-        "link": "/CS/Java API"
-      },
-      {
-        "text": "Spring",
-        "level": 4,
-        "link": "/CS/Spring"
-      },
-      {
-        "text": "Java Framework",
-        "level": 4,
-        "link": "/CS/Java Framework"
-      },
-      {
-        "text": "Design Patterns",
-        "level": 4,
-        "link": "/CS/Design Patterns"
-      },
-      {
-        "text": "Big Data",
-        "level": 4,
-        "link": "/CS/Big Data"
+        "link": "/CS/Java",
+        "items": [
+          {
+            "text": "Java Advance",
+            "level": 4,
+            "link": "/CS/Java Advance"
+          },
+          {
+            "text": "Java API",
+            "level": 4,
+            "link": "/CS/Java API"
+          },
+          {
+            "text": "Spring",
+            "level": 4,
+            "link": "/CS/Spring"
+          },
+          {
+            "text": "Java Framework",
+            "level": 4,
+            "link": "/CS/Java Framework"
+          },
+          {
+            "text": "Design Patterns",
+            "level": 4,
+            "link": "/CS/Design Patterns"
+          },
+          {
+            "text": "Big Data",
+            "level": 4,
+            "link": "/CS/Big Data"
+          }
+        ],
+        "collapsed": false
       },
       {
         "text": "Operating System",
         "level": 3,
-        "link": "/CS/Operating System"
-      },
-      {
-        "text": "Windows",
-        "level": 4,
-        "link": "/CS/Windows"
-      },
-      {
-        "text": "Microsoft",
-        "level": 5,
-        "link": "/CS/Microsoft"
-      },
-      {
-        "text": "PowerShell",
-        "level": 5,
-        "link": "/CS/PowerShell"
-      },
-      {
-        "text": "Batch",
-        "level": 5,
-        "link": "/CS/Batch"
-      },
-      {
-        "text": "善假于键",
-        "level": 5,
-        "link": "/CS/善假于键"
-      },
-      {
-        "text": "注册表（Registry）",
-        "level": 5,
-        "link": "/CS/注册表（Registry）"
-      },
-      {
-        "text": "Linux",
-        "level": 4,
-        "link": "/CS/Linux"
-      },
-      {
-        "text": "Command",
-        "level": 5,
-        "link": "/CS/Command"
-      },
-      {
-        "text": "Bash",
-        "level": 5,
-        "link": "/CS/Bash"
-      },
-      {
-        "text": "Docker",
-        "level": 4,
-        "link": "/CS/Docker"
-      },
-      {
-        "text": "Kubernetes",
-        "level": 5,
-        "link": "/CS/Kubernetes"
-      },
-      {
-        "text": "Git",
-        "level": 4,
-        "link": "/CS/Git"
-      },
-      {
-        "text": "Github",
-        "level": 5,
-        "link": "/CS/Github"
-      },
-      {
-        "text": "Android",
-        "level": 4,
-        "link": "/CS/Android"
-      },
-      {
-        "text": "Android SDK",
-        "level": 5,
-        "link": "/CS/Android SDK"
-      },
-      {
-        "text": "SSH",
-        "level": 4,
-        "link": "/CS/SSH"
+        "link": "/CS/Operating System",
+        "items": [
+          {
+            "text": "Windows",
+            "level": 4,
+            "link": "/CS/Windows",
+            "items": [
+              {
+                "text": "Microsoft",
+                "level": 5,
+                "link": "/CS/Microsoft"
+              },
+              {
+                "text": "PowerShell",
+                "level": 5,
+                "link": "/CS/PowerShell"
+              },
+              {
+                "text": "Batch",
+                "level": 5,
+                "link": "/CS/Batch"
+              },
+              {
+                "text": "善假于键",
+                "level": 5,
+                "link": "/CS/善假于键"
+              },
+              {
+                "text": "注册表（Registry）",
+                "level": 5,
+                "link": "/CS/注册表（Registry）"
+              }
+            ],
+            "collapsed": false
+          },
+          {
+            "text": "Linux",
+            "level": 4,
+            "link": "/CS/Linux",
+            "items": [
+              {
+                "text": "Command",
+                "level": 5,
+                "link": "/CS/Command"
+              },
+              {
+                "text": "Bash",
+                "level": 5,
+                "link": "/CS/Bash"
+              }
+            ],
+            "collapsed": false
+          },
+          {
+            "text": "Docker",
+            "level": 4,
+            "link": "/CS/Docker",
+            "items": [
+              {
+                "text": "Kubernetes",
+                "level": 5,
+                "link": "/CS/Kubernetes"
+              }
+            ],
+            "collapsed": false
+          },
+          {
+            "text": "Git",
+            "level": 4,
+            "link": "/CS/Git",
+            "items": [
+              {
+                "text": "Github",
+                "level": 5,
+                "link": "/CS/Github"
+              }
+            ],
+            "collapsed": false
+          },
+          {
+            "text": "Android",
+            "level": 4,
+            "link": "/CS/Android",
+            "items": [
+              {
+                "text": "Android SDK",
+                "level": 5,
+                "link": "/CS/Android SDK"
+              }
+            ],
+            "collapsed": false
+          },
+          {
+            "text": "SSH",
+            "level": 4,
+            "link": "/CS/SSH"
+          }
+        ],
+        "collapsed": false
       },
       {
         "text": "网络（Network）",
@@ -191,48 +225,62 @@
       {
         "text": "C",
         "level": 3,
-        "link": "/CS/C"
-      },
-      {
-        "text": "C++",
-        "level": 4,
-        "link": "/CS/C++"
+        "link": "/CS/C",
+        "items": [
+          {
+            "text": "C++",
+            "level": 4,
+            "link": "/CS/C++"
+          }
+        ],
+        "collapsed": false
       },
       {
         "text": "Data Structure & Algorithm",
         "level": 3,
-        "link": "/CS/Data Structure & Algorithm"
-      },
-      {
-        "text": "Data structure",
-        "level": 4,
-        "link": "/CS/Data structure"
-      },
-      {
-        "text": "Algorithm",
-        "level": 4,
-        "link": "/CS/Algorithm"
+        "link": "/CS/Data Structure & Algorithm",
+        "items": [
+          {
+            "text": "Data structure",
+            "level": 4,
+            "link": "/CS/Data structure"
+          },
+          {
+            "text": "Algorithm",
+            "level": 4,
+            "link": "/CS/Algorithm"
+          }
+        ],
+        "collapsed": false
       },
       {
         "text": "SQL",
         "level": 3,
-        "link": "/CS/SQL"
+        "link": "/CS/SQL",
+        "items": [
+          {
+            "text": "MySQL",
+            "level": 4,
+            "link": "/CS/MySQL"
+          },
+          {
+            "text": "NoSQL",
+            "level": 4,
+            "link": "/CS/NoSQL"
+          }
+        ],
+        "collapsed": false
       },
       {
-        "text": "MySQL",
-        "level": 4,
-        "link": "/CS/MySQL"
-      },
-      {
-        "text": "NoSQL",
-        "level": 4,
-        "link": "/CS/NoSQL"
+        "text": "Machine learning",
+        "level": 3,
+        "link": "/CS/Machine learning"
       }
     ]
   },
   {
     "text": "Software",
-    "collapsible": true,
+    "collapsed": false,
     "items": [
       {
         "text": "Application",
@@ -263,7 +311,7 @@
   },
   {
     "text": "Universal",
-    "collapsible": true,
+    "collapsed": false,
     "items": [
       {
         "text": "数据交换格式",

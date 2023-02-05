@@ -3,8 +3,7 @@ title: Security
 created_at: 2020-12-06T15:21:23.000Z
 updated_at: 2022-12-11T07:04:38.000Z
 word_count: 2514
----
-# Security  
+---  
 
 
 resource

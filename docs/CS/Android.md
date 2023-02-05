@@ -3,8 +3,7 @@ title: Android
 created_at: 2022-02-01T05:44:37.000Z
 updated_at: 2022-10-23T14:57:28.000Z
 word_count: 7146
----
-# Android  
+---  
 ## —— Android ——
 App类型
 
@@ -19,7 +18,7 @@ App类型
 - 核心类库
 - Linux 内核
 
-![](http://c.biancheng.net/uploads/allimg/190327/5-1Z32G5124H60.gif#crop=0&crop=0&crop=1&crop=1&id=CegQR&originHeight=517&originWidth=799&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/uploads/allimg/190327/5-1Z32G5124H60.gif#id=CegQR&originHeight=517&originWidth=799&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 应用程序框架层
 
@@ -168,7 +167,7 @@ Android中的日志工具类是Log（android.util.Log）
 | onRestart() | 重新启动已经停止的 Activity 时调用。 |
 | onDestroy() | Activity 被完全从系统内存中移除时调用。  该方法被调用可能是因为有人直接调用 finish() 方法或者系统决定停止该活动以释放资源。 |
 
-![](https://developer.android.google.cn/guide/components/images/activity_lifecycle.png#crop=0&crop=0&crop=1&crop=1&id=GUirm&originHeight=663&originWidth=513&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  活动间数据传递
+![](https://developer.android.google.cn/guide/components/images/activity_lifecycle.png#id=GUirm&originHeight=663&originWidth=513&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  活动间数据传递
 ```javascript
 public class ParentActivity extends AppCompatActivity {
     @Override
@@ -236,7 +235,7 @@ public class ChildActivity extends AppCompatActivity {
 }
 ```
 
-[Fragment](https://developer.android.google.cn/reference/androidx/fragment/app/Fragment?hl=zh-cn) 表示应用界面中可重复使用的一部分  <br />  ![](https://developer.android.google.cn/images/guide/fragments/fragment-view-lifecycle.png?hl=zh-cn#crop=0&crop=0&crop=1&crop=1&id=yizdq&originHeight=1004&originWidth=821&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+[Fragment](https://developer.android.google.cn/reference/androidx/fragment/app/Fragment?hl=zh-cn) 表示应用界面中可重复使用的一部分  <br />  ![](https://developer.android.google.cn/images/guide/fragments/fragment-view-lifecycle.png?hl=zh-cn#id=yizdq&originHeight=1004&originWidth=821&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```java
 public class LeftFragment extends Fragment {
     @Override

@@ -6,6 +6,9 @@ import os
 import re
 import sys
 from urllib import parse
+import warnings
+
+warnings.filterwarnings("ignore")
 
 import aiohttp
 import yaml
@@ -17,7 +20,9 @@ log.basicConfig(
     '%(asctime)s [%(levelname)s] %(filename)s - %(funcName)s (%(lineno)s line): %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S',
     level=log.INFO)
+
 sidebar = []
+
 # "id", "slug", "cover", "description",
 doc_property = [
     "title",
@@ -25,6 +30,7 @@ doc_property = [
     "updated_at",
     "word_count",
 ]
+
 export_dir = './docs'
 
 
@@ -43,10 +49,12 @@ class ExportMD:
 
     # 用户信息
     def get_UserInfo(self):
+        # GitHub action
         if len(sys.argv) == 3:
             self.is_action = True
             return sys.argv[1:]
 
+        # local
         with open("info.txt") as f:
             namespace, token = f.read().split(' ')
             userinfo = [namespace, token]
@@ -95,7 +103,7 @@ class ExportMD:
         ]
 
     # 获取一个知识库的文档列表目录结构
-    async def get_dirs(self, repo_name, file):
+    async def get_dirs(self, repo_name, file, bar):
         api = f"/repos/{self.repo[repo_name]}"
         async with aiohttp.ClientSession() as session:
             result = await self.req(session, api)
@@ -112,17 +120,15 @@ class ExportMD:
                 item = {
                     "text": title,
                     "level": level + 3,
-                    "link": f"/{repo_name}/{title}"
                 }
 
                 self.docs_id.add(block["doc_id"])
                 title_level = (level + 3) * '#' if level < 3 else ''
                 link = title
+                bar['items'].append(item)
                 if block["type"] == "DOC":
                     path = parse.quote(f"{export_dir}/{repo_name}/{title}.md")
-
-                    sidebar[-1]['items'].append(item)
-
+                    bar['items'][-1]['link'] = f"/{repo_name}/{title}"
                     link = f'[{title}]({path})'
                 file.write(f"{'  '*level}- {title_level} {link}  \n")
 
@@ -159,8 +165,8 @@ class ExportMD:
         # 获取文档属性
         for property in doc_property:
             frontmatter.append(f'{property}: {data[property]}')
-        frontmatter.append('---')
-        frontmatter.append(f"# {data['title']}  \n")
+        frontmatter.append('---  \n')
+        # frontmatter.append(f"# {data['title']}  \n")
         return '\n'.join(frontmatter)
 
     # 获取文章并执行保存
@@ -233,16 +239,17 @@ class ExportMD:
     async def run(self):
         await self.getRepo()
         repo_name_list = self.selectRepo()
-        repo_name_list.sort(key=lambda x: x)
+        repo_name_list.sort()
         self.mkDir(export_dir)  # 创建用于存储知识库文章的文件夹
 
         with open('README.md', 'w', encoding='utf-8') as md:
             md.write('# Notes  \n')
             for repo_name in repo_name_list:
-                first = {"text": repo_name, "collapsible": True, "items": []}
-                sidebar.append(first)
+                bar = {"text": repo_name, "collapsed": False, "items": []}
                 md.write(f'## {repo_name}  \n')
-                await self.get_dirs(repo_name, md)
+                await self.get_dirs(repo_name, md, bar)
+                bar["items"], _ = group_sidebar(bar["items"], 0, 3)
+                sidebar.append(bar)
                 md.write('\n  <br />  \n')
 
         # 遍历所选知识库
@@ -267,6 +274,22 @@ def update_contents():
     with open("README.md", 'r', encoding='utf-8') as rf:
         with open(f"{export_dir}/Contents.md", 'w', encoding='utf-8') as wf:
             wf.write(rf.read().replace(export_dir, ''))
+
+
+# 构建层级
+def group_sidebar(bar, index, level):
+    items = []
+    while index < len(bar):
+        if bar[index]['level'] == level:
+            items.append(bar[index])
+            index += 1
+        elif bar[index]['level'] > level:
+            last = index - 1
+            bar[last]['items'], index = group_sidebar(bar, index, level + 1)
+            bar[last]['collapsed'] = False
+        else:
+            return items, index
+    return items, index
 
 
 if __name__ == '__main__':

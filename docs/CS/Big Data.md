@@ -1,14 +1,13 @@
 ---
 title: Big Data
 created_at: 2022-01-31T15:12:13.000Z
-updated_at: 2022-11-27T02:38:03.000Z
-word_count: 2670
----
-# Big Data  
+updated_at: 2023-02-05T14:22:37.000Z
+word_count: 3029
+---  
+## Big data
 
-[BigData-Notes](https://github.com/heibaiying/BigData-Notes)  <br />  [Cookbook](https://github.com/andkret/Cookbook)	The Data Engineering Cookbook  <br />  [data-science](https://github.com/ossu/data-science)
+[BigData-Notes](https://github.com/heibaiying/BigData-Notes)  <br />  [Cookbook](https://github.com/andkret/Cookbook)	The Data Engineering Cookbook  <br />  [data-science](https://github.com/ossu/data-science)  <br />  [大数据](https://dunwu.github.io/bigdata-tutorial)
 
-[大数据](https://dunwu.github.io/bigdata-tutorial)
 
 ## [HDFS](https://dunwu.github.io/bigdata-tutorial/hdfs)
 **Hadoop Distributed File System**，Hadoop 的分布式文件系统
@@ -81,21 +80,38 @@ Client
 ## [Hive](https://dunwu.github.io/bigdata-tutorial/hive)
 一个构建在 Hadoop 之上的数据仓库，它可以将结构化的数据文件映射成表，并提供类 SQL 查询功能，用于查询的 SQL 语句会被转化为 MapReduce 作业，然后提交到 Hadoop 上运行。
 
-
+![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200224193019.png#from=url&id=e7d9t&originHeight=483&originWidth=682&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 
 
 
 ## [MapReduce](https://dunwu.github.io/bigdata-tutorial/mapreduce)
+Hadoop MapReduce 是一个分布式计算框架，用于编写批处理应用程序
+
+![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200601162305.png#from=url&id=opORN&originHeight=672&originWidth=1416&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 
 ## [Yarn](https://dunwu.github.io/bigdata-tutorial/yarn)
+YARN(Yet Another Resource Negotiator，另一种资源管理器)是一个分布式通用资源管理系统。
+
+设计目标：聚焦资源管理、通用（适用各种计算框架）、高可用、高扩展
+
+系统架构
+
+- 主从结构（master/slave）
+- 将 JobTracker 的资源管理、任务调度功能分离
+- 三种角色：
+   - ResourceManager（Master） - 集群资源的统一管理和分配
+   - NodeManager（Slave） - 管理节点资源，以及容器的生命周期
+   - ApplicationMaster（新角色） - 管理应用程序实例，包括任务调度和资源申请
 
 
 ## Spark
+相对于 MapReduce 的批处理计算，Spark 可以带来上百倍的性能提升，因此它成为继 MapReduce 之后，最为广泛使用的分布式计算框架
 
 
 ## Storm
+一个开源的分布式实时计算框架，可以以简单、可靠的方式进行大数据流的处理
 
 
 ## [Flink](https://dunwu.github.io/bigdata-tutorial/tree/master/docs/flink)
@@ -339,24 +355,7 @@ MQ 是消费-生产者模型的一个典型的代表，一端往消息队列中�
 
 ### [Kafka](https://kafka.apache.org/)
 
-
-
-
-
-
-### RabbitMQ
-
-
-
-
-
-
-
-
-
-
-
-
+一款开源的消息引擎系统，也是一个分布式流计算平台，还可以作为数据存储
 
 
 
@@ -364,6 +363,11 @@ MQ 是消费-生产者模型的一个典型的代表，一端往消息队列中�
 > 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。
 
 
+- **顺序一致性**：从一个客户端发起的事务请求，最终都会严格按照其发起顺序被应用到 Zookeeper 中；
+- **原子性**：所有事务请求的处理结果在整个集群中所有机器上都是一致的；
+- **单一视图**：所有客户端看到的服务端数据模型都是一致的；
+- **可靠性**：一旦服务端成功应用了一个事务，则其引起的改变会一直保留，直到被另外一个事务所更改；
+- **实时性**：一旦一个事务被成功应用后，Zookeeper 可以保证客户端立即可以读取到这个事务变更后的最新状态的数据。
 
 
 ## [Apache Dubbo](https://dubbo.apache.org/zh-cn/)
@@ -383,26 +387,4 @@ MQ 是消费-生产者模型的一个典型的代表，一端往消息队列中�
 
 
 
-
-
-
-
-
-
-
-机器学习
-
-人工智能（artificial intelligence，AI）：由人制造出来的机器所表现出来的智能。  <br />  [监督学习](https://zh.wikipedia.org/wiki/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0)从给定的训练数据集中学习出一个函数，当新的数据到来时，可以根据这个函数预测结果。  <br />  深度学习（deep learning）：[机器学习](https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0)的分支，一种以[人工神经网络](https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C)为架构，对资料进行表征学习的[算法](https://zh.wikipedia.org/wiki/%E7%AE%97%E6%B3%95)。
-
-[https://easyai.tech/](https://easyai.tech/)
-
-[DeepLearning](https://github.com/Mikoto10032/DeepLearning)
-
-[AiLearning](https://github.com/apachecn/AiLearning)
-
-[100-Days-Of-ML-Code](https://github.com/Avik-Jain/100-Days-Of-ML-Code)
-
-[d2l-zh](https://github.com/d2l-ai/d2l-zh)
-
-[AI 算法工程师手册](http://www.huaxiaozhuan.com/)
 

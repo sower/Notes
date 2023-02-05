@@ -3,8 +3,7 @@ title: Windows
 created_at: 2022-02-01T05:44:40.000Z
 updated_at: 2022-03-05T00:14:32.000Z
 word_count: 1560
----
-# Windows  
+---  
 **Microsoft Windows**（视窗操作系统）是[微软公司](https://zh.wikipedia.org/wiki/%E5%BE%AE%E8%BB%9F%E5%85%AC%E5%8F%B8)以图形用户界面为主推出的一系列专有商业软件操作系统。
 ## PC
 **个人电脑**（Personal Computer）是在大小、性能以及价位等多个方面适合于个人使用，并由最终用户直接操控的[计算机](https://zh.wikipedia.org/wiki/%E9%9B%BB%E5%AD%90%E8%A8%88%E7%AE%97%E6%A9%9F)的统称。

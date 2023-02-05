@@ -3,8 +3,7 @@ title: Markdown
 created_at: 2022-02-01T05:44:36.000Z
 updated_at: 2022-02-20T12:02:12.000Z
 word_count: 1205
----
-# Markdown  
+---  
 ## Markdown
 > 一种轻量级标记语言，在 2004 由约翰·格鲁伯（John Gruber）创建。
 > Markdown 编写的文档可以导出 HTML、Word、图像、PDF、Epub 等多种格式的文档。

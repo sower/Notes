@@ -3,13 +3,12 @@ title: Java
 created_at: 2022-02-01T05:44:34.000Z
 updated_at: 2023-01-08T11:00:35.000Z
 word_count: 14247
----
-# Java  
+---  
 ## —— [Java](https://www.oracle.com/cn/java/) ——
 Java是由Sun Microsystems公司于1995年5月推出的Java面向对象程序设计语言和Java平台的总称。由James Gosling和同事们共同研发，并在1995年正式推出。
 
 
-**分布式的、解释型的、动态的**  <br />  ![](https://www.runoob.com/wp-content/uploads/2013/12/ZSSDMld.png#crop=0&crop=0&crop=1&crop=1&id=T4lMm&originHeight=276&originWidth=619&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  **程序示例**
+**分布式的、解释型的、动态的**  <br />  ![](https://www.runoob.com/wp-content/uploads/2013/12/ZSSDMld.png#id=T4lMm&originHeight=276&originWidth=619&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  **程序示例**
 ```java
 public class Hello {
     public static void main(String[] args) {
@@ -1442,7 +1441,7 @@ Files.write(Paths.get("/path/to/file.txt"), lines);
 ```
 
 ## 异常（Exception）
-![](https://images2017.cnblogs.com/blog/858860/201709/858860-20170911125844719-1230755033.png#crop=0&crop=0&crop=1&crop=1&id=fUCkL&originHeight=458&originWidth=718&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://images2017.cnblogs.com/blog/858860/201709/858860-20170911125844719-1230755033.png#id=fUCkL&originHeight=458&originWidth=718&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 **Throwable**
 

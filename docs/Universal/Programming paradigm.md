@@ -3,8 +3,7 @@ title: Programming paradigm
 created_at: 2022-02-01T05:44:50.000Z
 updated_at: 2022-02-01T06:50:40.000Z
 word_count: 1918
----
-# Programming paradigm  
+---  
 
 **程序设计（programming）**  <br />  给出解决特定问题程序的过程，软件开发过程中的重要步骤。  <br />  程序设计往往以某种程序设计语言为工具，给出这种语言下的程序。  <br />  程序设计过程一般包括分析、设计、编码、测试、调试等不同阶段。
 
@@ -42,7 +41,7 @@ compose(compose(f, g), h)
 // 等同于
 compose(f, g, h)
 ```
-![](http://www.ruanyifeng.com/blogimg/asset/2017/bg2017022209.png#crop=0&crop=0&crop=1&crop=1&id=Ck0Mc&originHeight=313&originWidth=800&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://www.ruanyifeng.com/blogimg/asset/2017/bg2017022209.png#id=Ck0Mc&originHeight=313&originWidth=800&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ### 柯里化(curry)
 把一个多参数的函数，转化为单参数函数
 ```javascript

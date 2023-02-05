@@ -3,8 +3,7 @@ title: Vue.js
 created_at: 2022-02-01T05:44:48.000Z
 updated_at: 2022-10-23T09:44:40.000Z
 word_count: 6458
----
-# Vue.js  
+---  
 ## —— [Vue.js](https://vuejs.org) ——
 一套构建用户界面的渐进式框架。  <br />  Vue 只关注视图层， 采用自底向上增量开发的设计。
 ```html
@@ -44,7 +43,7 @@ word_count: 6458
 ```
 
 ## 生命周期
-![](https://v3.vuejs.org/images/lifecycle.svg#crop=0&crop=0&crop=1&crop=1&id=Q7xGM&originHeight=1388&originWidth=838&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  [生命周期钩子](https://v3.cn.vuejs.org/api/options-lifecycle-hooks.html)
+![](https://v3.vuejs.org/images/lifecycle.svg#id=Q7xGM&originHeight=1388&originWidth=838&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  [生命周期钩子](https://v3.cn.vuejs.org/api/options-lifecycle-hooks.html)
 
 - [beforeCreate](https://v3.cn.vuejs.org/api/options-lifecycle-hooks.html#beforecreate)
 - [created](https://v3.cn.vuejs.org/api/options-lifecycle-hooks.html#created)
@@ -1822,9 +1821,9 @@ app.component('async-example', AsyncComp)
 5.  v-leave-active：定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。 
 6.  v-leave-to：离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 v-leave-from 被删除)，在过渡/动画完成之后移除。 
 
-![](https://v3.vuejs.org/images/transitions.svg#crop=0&crop=0&crop=1&crop=1&id=WZBuK&originHeight=150&originWidth=295&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://v3.vuejs.org/images/transitions.svg#id=WZBuK&originHeight=150&originWidth=295&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
-![](https://v3.vuejs.org/images/transitions.svg#crop=0&crop=0&crop=1&crop=1&id=mrrbS&originHeight=150&originWidth=295&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://v3.vuejs.org/images/transitions.svg#id=mrrbS&originHeight=150&originWidth=295&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
 ```javascript
 <div id="example-1">

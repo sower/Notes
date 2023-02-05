@@ -3,8 +3,7 @@ title: Microsoft
 created_at: 2022-02-01T05:44:33.000Z
 updated_at: 2023-01-08T12:23:12.000Z
 word_count: 2665
----
-# Microsoft  
+---  
 ## [Windows Terminal](https://docs.microsoft.com/zh-cn/windows/terminal/)
 
 
@@ -459,7 +458,7 @@ int WINAPI MessageBox( HWND hWnd, LPCTSTR lpText, LPCTSTR lpCaption, UINT uType 
 | MB_ICONERROR | 一个停止消息图标出现在消息框（同上） |
 | MB_ICONHAND | 一个停止消息图标出现在消息框（同上） |
 
-![](http://c.biancheng.net/cpp/uploads/allimg/141108/1-14110Q0425B47.png#crop=0&crop=0&crop=1&crop=1&id=VaWk7&originHeight=38&originWidth=58&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  ![](http://c.biancheng.net/cpp/uploads/allimg/141108/1-14110Q0431R22.png#crop=0&crop=0&crop=1&crop=1&id=Dzwln&originHeight=38&originWidth=58&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  ![](http://c.biancheng.net/cpp/uploads/allimg/141108/1-14110Q043302b.png#crop=0&crop=0&crop=1&crop=1&id=ZT56s&originHeight=38&originWidth=58&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  ![](http://c.biancheng.net/cpp/uploads/allimg/141108/1-14110Q04345J6.png#crop=0&crop=0&crop=1&crop=1&id=g0Wok&originHeight=38&originWidth=58&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](http://c.biancheng.net/cpp/uploads/allimg/141108/1-14110Q0425B47.png#id=VaWk7&originHeight=38&originWidth=58&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  ![](http://c.biancheng.net/cpp/uploads/allimg/141108/1-14110Q0431R22.png#id=Dzwln&originHeight=38&originWidth=58&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  ![](http://c.biancheng.net/cpp/uploads/allimg/141108/1-14110Q043302b.png#id=ZT56s&originHeight=38&originWidth=58&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  ![](http://c.biancheng.net/cpp/uploads/allimg/141108/1-14110Q04345J6.png#id=g0Wok&originHeight=38&originWidth=58&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ```c
 #define MB_ICONHAND           0x00000010L
 #define MB_ICONQUESTION       0x00000020L

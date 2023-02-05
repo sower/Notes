@@ -3,8 +3,7 @@ title: Bash
 created_at: 2022-02-01T05:44:38.000Z
 updated_at: 2023-01-08T11:15:17.000Z
 word_count: 6199
----
-# Bash  
+---  
 ## —— Bash ——
 Shell 是一个用 C 语言编写的程序，提供一个与用户对话的环境。这个环境只有一个命令提示符，让用户从键盘输入命令，所以又称为命令行环境（command line interface，CLI）
 

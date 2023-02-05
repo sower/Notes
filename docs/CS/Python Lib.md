@@ -1,10 +1,9 @@
 ---
 title: Python Lib
 created_at: 2022-02-01T05:44:43.000Z
-updated_at: 2023-01-08T10:57:04.000Z
-word_count: 19490
----
-# Python Lib  
+updated_at: 2023-02-04T09:58:30.000Z
+word_count: 19661
+---  
 ## [—— Moudle ——](https://docs.python.org/zh-cn/3/library/index.html)
 
 ## 数据类型
@@ -58,12 +57,12 @@ class datetime.**datetime	**日期和时间的结合。
 - datetime.astimezone(tz=None)	返回一个具有新的 tzinfo 属性 tz 的 datetime 对象，并会调整日期和时间数据使得结果对应的 UTC 时间与 self 相同，但为 tz 时区的本地时间
 - datetime.timestamp()	返回对应于 datetime 实例的 POSIX 时间戳
 - datetime.isoformat(sep='T', timespec='auto')	返回一个以 ISO 8601 格式表示的日期和时间字符串
-- 'auto': 如果 microsecond 为 0 则与 'seconds' 相同，否则与 'microseconds' 相同。
-- 'hours': 以两个数码的 HH 格式 包含 hour。
-- 'minutes': 以 HH:MM 格式包含 hour 和 minute。
-- 'seconds': 以 HH:MM:SS 格式包含 hour, minute 和 second。
-- 'milliseconds': 包含完整时间，但将秒值的小数部分截断至微秒。 格式为 HH:MM:SS.sss
-- 'microseconds': 以 HH:MM:SS.ffffff 格式包含完整时间。
+   - 'auto': 如果 microsecond 为 0 则与 'seconds' 相同，否则与 'microseconds' 相同。
+   - 'hours': 以两个数码的 HH 格式 包含 hour。
+   - 'minutes': 以 HH:MM 格式包含 hour 和 minute。
+   - 'seconds': 以 HH:MM:SS 格式包含 hour, minute 和 second。
+   - 'milliseconds': 包含完整时间，但将秒值的小数部分截断至微秒。 格式为 HH:MM:SS.sss
+   - 'microseconds': 以 HH:MM:SS.ffffff 格式包含完整时间。
 
 class datetime.**timedelta	**表示两个 date 或者 time 的时间间隔，精确到微秒  <br />  class datetime.timedelta(days=0, seconds=0, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)  <br />  所有参数都是可选的并且默认为 0。 这些参数可以是整数或者浮点数，也可以是正数或者负数。
 
@@ -2310,6 +2309,24 @@ import sys
 scripts_path = sys.argv[0]
 arguments    = sys.argv[1:]
 ```
+
+
+### [warnings](https://docs.python.org/zh-cn/3/library/warnings.html) —— 警告信息的控制
+
+- warnings.**warn**(_message_, _category=None_, _stacklevel=1_, _source=None_)	引发警告、忽略或者触发异常
+- warnings.**filterwarnings**(_action_, _message=''_, _category=Warning_, _module=''_, _lineno=0_, _append=False_)
+- warnings.**simplefilter**(_action_, _category=Warning_, _lineno=0_, _append=False_)
+
+action
+
+| 值 | 处置 |
+| --- | --- |
+| "default" | 为发出警告的每个位置（模块+行号）打印第一个匹配警告 |
+| "error" | 将匹配警告转换为异常 |
+| "ignore" | 从不打印匹配的警告 |
+| "always" | 总是打印匹配的警告 |
+| "module" | 为发出警告的每个模块打印第一次匹配警告（无论行号如何） |
+| "once" | 无论位置如何，仅打印第一次出现的匹配警告 |
 
 
 ### [winreg](https://docs.python.org/3/library/winreg.html#module-winreg) — Windows registry access
