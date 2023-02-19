@@ -1,7 +1,7 @@
 ---
 title: Android
 created_at: 2022-02-01T05:44:37.000Z
-updated_at: 2022-10-23T14:57:28.000Z
+updated_at: 2023-02-19T13:17:34.000Z
 word_count: 7146
 ---  
 ## —— Android ——
@@ -84,6 +84,7 @@ class TitleLayout(context: Context, attrs: AttributeSet) : LinearLayout(context,
 - ImageView：图片控件
 - CheckBox：复选框控件
 - RadioButton：单选框控件
+
 ### [应用资源](https://developer.android.google.cn/guide/topics/resources/providing-resources?hl=zh-cn)
 res
 
@@ -91,6 +92,7 @@ res
 - mipmap 	应用图标
 - values	字符串、样式、颜色等配置
 - layout	布局文件
+
 | 目录 | 资源类型 |
 | --- | --- |
 | animator/ | 用于定义[属性动画](https://developer.android.google.cn/guide/topics/graphics/prop-animation?hl=zh-cn)的 XML 文件。 |

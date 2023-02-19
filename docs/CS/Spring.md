@@ -1,8 +1,8 @@
 ---
 title: Spring
 created_at: 2022-04-03T08:42:16.000Z
-updated_at: 2023-01-08T11:04:37.000Z
-word_count: 17577
+updated_at: 2023-02-19T07:22:04.000Z
+word_count: 17539
 ---  
 ## —— [Spring](https://spring.io/) ——
 
@@ -278,9 +278,11 @@ public class AppConfig {
 }
 ```
 
-  <br />  
+
 ### AOP
 Aspect Oriented Programming，面向切面编程
+
+作用范围：spring托管的bean的非static方法
 
 **术语**
 
@@ -392,31 +394,29 @@ applicationContext.xml 配置
 public class WebLogAspect {
 
   @Pointcut("execution( public * me.demo.controller..*.*(..))")
-  public void aopPointCut() {
+  public void requestLog() {
+  }
+
+  @Pointcut("@annotation(me.demo.aspect.LogInOutParam)")
+  public void methodLog() {
   }
 
   // 前置通知
-  @Before("aopPointCut()")
+  @Before("requestLog() || methodLog()")
   public void doBefore(JoinPoint joinPoint) {
     ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
     Optional.ofNullable(requestAttributes).map(ServletRequestAttributes::getRequest)
-        .ifPresent(request -> log.info("{} sends {} request {}", request.getRemoteAddr(),
+        .ifPresent(request -> log.info("Received {} - {} request {}", request.getRemoteAddr(),
             request.getMethod(),
             ServletUriComponentsBuilder.fromContextPath(request).encode().build()));
-    log.info("Ready into {} - {} - {}", joinPoint.getTarget(),
-        joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
-    log.info("ARGS: {}", joinPoint.getArgs());
-  }
-
-  // 后置通知
-  @AfterReturning(value = "aopPointCut()")
-  public void doAfterReturning(JoinPoint joinPoint) {
-    log.info("Exit from {} - {}", joinPoint.getTarget(),
-        joinPoint.getSignature().getName());
+    MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+    log.info("Ready into {} . {} - ARGS: (name) {} - (value) {}",
+        signature.getDeclaringTypeName(), signature.getName(),
+        signature.getParameterNames(), joinPoint.getArgs());
   }
 
   // 环绕通知
-  @Around("aopPointCut()")
+  @Around("requestLog() || methodLog()")
   public Object doAround(ProceedingJoinPoint proceedingJoinPoint)
       throws Throwable {
 
@@ -430,27 +430,24 @@ public class WebLogAspect {
     } finally {
 
       stopWatch.stop();
-      log.info("{} - {} complete, it takes {}ms", proceedingJoinPoint.getTarget(),
-          proceedingJoinPoint.getSignature().getName()
+      String methodName = proceedingJoinPoint.getSignature().getName();
+      log.info("{} - {} complete, it takes {}ms", proceedingJoinPoint.getTarget(), methodName
           , stopWatch.getLastTaskTimeMillis());
       if (Objects.nonNull(obj)) {
-        log.info("return result -> {}", StringUtils.abbreviate(JSON.toJSONString(obj), 1000));
+        log.info("{} return result -> {}", methodName,
+            StringUtils.abbreviate(JSON.toJSONString(obj), 1000));
       }
     }
   }
 
   // 异常通知
-  @AfterThrowing(value = "aopPointCut()", throwing = "e")
+  @AfterThrowing(value = "requestLog()", throwing = "e")
   public void doAfterThrowing(JoinPoint joinPoint, Throwable e) {
     log.info("{} - {} execute error {}", joinPoint.getTarget(),
-        joinPoint.getSignature().getName() , e.getMessage());
+        joinPoint.getSignature().getName()
+        , e.getMessage());
   }
 
-  // 最终通知
-  @After("aopPointCut()")
-  public void doAfter() {
-    log.info("最终通知");
-  }
 }
 ```
 applicationContext.xml 配置
@@ -466,13 +463,14 @@ AspectJ 切入点语法
 
 - [Supported Pointcut Designators](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop-pointcuts-designators)
 - Spring AOP 常用的切入点指示符（pointcut designators，PCD）
+   - 可用通配符：
+      - `*` 代表一个任意类型的参数
+      - `..` 代表零个或多个任意类型的参数，在表示类时，必须和 * 联合使用，而在表示入参时则单独使用
+      - `+` 表示按类型匹配指定类的所有类，必须跟在类名后面，如 com.smart.Car+ 继承或扩展指定类的所有类，同时还包括指定类本身
+      - 运算符：`&&、||、！`
    - execution：用于匹配执行方法的连接点
       - `execution(<修饰符>? <返回值类型> <所属类>?<方法名>(形参类型列表) <声明抛出的异常>?)`，? 表示该部分可省略
-      - 通配符：
-         - * 代表一个任意类型的参数
-         - .. 代表零个或多个任意类型的参数，在表示类时，必须和 * 联合使用，而在表示入参时则单独使用
-         - + 表示按类型匹配指定类的所有类，必须跟在类名后面，如 com.smart.Car+ 继承或扩展指定类的所有类，同时还包括指定类本身
-      - 如 execution(* com.example.app.service.impl.*.*(..))，匹配 com.example.app.service.impl 包中任意类的任意方法的执行
+      - 如 `execution(* com.example.app.service.impl.*.*(..))`，匹配 com.example.app.service.impl 包中任意类的任意方法的执行
    - within：用于限定匹配特定域下的连接点。当使用 Spring AOP 的时候，只能匹配方法执行的连接点。
       - 如 within(com.example.app.service..*)，匹配在 com.example.app.service 包或其子包中的任意连接点
    - this：用于限定 AOP 代理对象必须是指定类型的实例，匹配该对象的所有连接点
@@ -481,9 +479,9 @@ AspectJ 切入点语法
       - target(com.example.app.service.AccountService)，匹配实现了 com.example.app.service.AccountService 接口的目标对象的所有连接点
    - args：args(参数类型列表)，用于对连接点的参数类型进行限制，要求参数是指定类型的实例
    - bean：bean(Bean的id或name)，用于限定只匹配指定 Bean 实例内方法的连接点，支持使用 * 通配符，注意：bean 切入点表达式是 Spring AOP 额外支持的
-   - @annotation：@annotation(注解类型)，用于匹配标注有指定注解的方法
+   - @annotation：用于匹配标注有指定注解的方法
    - @within：用于匹配标注有指定注解的类内所有方法
-      - 如 @within(feign.Client+)，切入 feign.Client 的**实现类**
+      - 如 @within(feign.Client+)，切入 feign.Client 的实现类
    - @target：用于匹配标注有指定注解的类的目标对象内所有方法
    - @args：用于匹配入参标注有指定注解的方法
 
@@ -1261,6 +1259,8 @@ spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 
 - @EnableTransactionManagement：开启注解式事务的支持，Spring 容器会自动扫描注解 
 - @EnableScheduling：开启计划任务的支持，再在执行计划任务的 Bean 的方法上使用 @Scheduled 声明这是一个计划任务
 - @EnableAsync：开启对异步任务的支持，再通过在实际执行的 Bean 的方法中使用 @Async 注解来声明其是一个异步任务
+   - 实现是基于AOP，方法要从类的外部调用（即走代理类）
+   - 注解的方法必须是public，返回值只能为void或者Future
 
 条件注解
 
@@ -1419,11 +1419,6 @@ public class WebConfig implements WebMvcConfigurer  {
     }
 }
 ```
-接管 Spring MVC 
-
-1. @EnableWebMvc + extends WebMvcConfigurerAdapter，在扩展类中重写父类的方法，会导致 WebMvcAutoConfiguration 不被自动装配
-2. extends WebMvcConfigurationSupport，在扩展类中重写父类的方法，会导致 WebMvcAutoConfiguration（@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)） 不被自动装配
-3. extends WebMvcConfigurerAdapter 或 implements WebMvcConfigurer，在扩展类中重写父类的方法，WebMvcAutoConfiguration 可以被自动装配
 
 
 ### Bean Validation

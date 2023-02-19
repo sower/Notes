@@ -1,8 +1,8 @@
 ---
 title: Java Framework
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2023-01-15T13:29:09.000Z
-word_count: 9011
+updated_at: 2023-02-19T13:37:09.000Z
+word_count: 8875
 ---  
 
 ## [Maven](https://maven.apache.org/)
@@ -658,6 +658,39 @@ Retryer<Boolean> retryer = RetryerBuilder.<Boolean>newBuilder()
 - [logging-log4j2](https://github.com/apache/logging-log4j2)
 - [logback](https://github.com/qos-ch/logback)
 
+PatternLayout
+
+| **参数** | **说明** | 配置 | 示例 |
+| --- | --- | --- | --- |
+| %c | 列出logger名字空间的全称，如果加上{<层数>}表示列出从最内层算起的指定层数的名字空间 | 假设当前logger名字空间是"a.b.c" |  |
+|  |  | %c | a.b.c |
+|  |  | `%c{2}` | b.c |
+|  |  | %20c | （若名字空间长度小于20，则左边用空格填充） |
+|  |  | %-20c | （若名字空间长度小于20，则右边用空格填充） |
+|  |  | %.30c | （若名字空间长度超过30，截去多余字符） |
+|  |  | %-20.30c | （若名字空间长度小于20，则右边用空格填充；若名字空间长度超过30，截去多余字符） |
+| %C | 列出调用logger的类的全名（包含包路径） | 假设当前类是"org.apache.xyz.SomeClass" |  |
+|  |  | %C | org.apache.xyz.SomeClass |
+|  |  | `%C{1}` | SomeClass |
+| %d | 显示日志记录时间，{<日期格式>}使用ISO8601定义的日期格式 | `%d{yyyy/MM/dd HH:mm:ss,SSS}` | 2023/10/12 22:23:30,117 |
+|  |  | `%d{ABSOLUTE}` | 22:23:30,117 |
+|  |  | `%d{DATE}` | 12 Oct 2005 22:23:30,117 |
+|  |  | `%d{ISO8601}` | 2005-10-12 22:23:30,117 |
+| %F | 显示调用logger的源文件名 | %F | MyClass.java |
+| %l | 输出日志事件的发生位置，包括类目名、发生的线程，以及在代码中的行数 | %l | MyClass.main(MyClass.java:129) |
+| %L | 显示调用logger的代码行 | %L | 129 |
+| %m | 显示输出消息 | %m | This is a message for debug. |
+| %M | 显示调用logger的方法名 | %M | main |
+| %n | 当前平台下的换行符 | %n | Windows平台下表示rn  <br />  UNIX平台下表示n |
+| %p | 显示该条日志的优先级 | %p | INFO |
+| %r | 显示从程序启动时到记录该条日志时已经经过的毫秒数 | %r | 1215 |
+| %t | 输出产生该日志事件的线程名 | %t | MyClass |
+| %x | 按NDC（Nested Diagnostic Context，线程堆栈）顺序输出日志 | 假设某程序调用顺序是MyApp调用com.foo.Bar |  |
+|  |  | %c %x - %m%n | MyApp - Call com.foo.Bar.  <br />  com.foo.Bar - Log in Bar  <br />  MyApp - Return to MyApp. |
+| %X | 按MDC输出日志 | `%X{traceId}` | 2023 |
+| %% | 显示一个百分号 | %% | % |
+
+
 日志门面：对不同日志框架提供的一个 API 封装，可以在部署的时候不修改任何配置即可接入一种日志实现方案
 
 - [slf4j](https://github.com/qos-ch/slf4j)
@@ -865,231 +898,6 @@ public class WebLogAspect {
 ```
 
 
-## Test
-### [JUnit](https://junit.org/junit5/)
-Fixture
-```java
-// main
-public class Calculator {
-    private long n = 0;
-    
-    public long add(long x) {
-        n = n + x;
-        return n;
-    }
-    
-    public long sub(long x) {
-        n = n - x;
-        return n;
-    }
-}
-
-// test
-public class CalculatorTest {
-    Calculator calculator;
-    static Database db;
-    
-    @BeforeAll
-    public static void initDatabase() {
-        db = createDb(...);
-    }
-    
-    @AfterAll
-    public static void dropDatabase() {
-        ...
-    }
-    
-    @BeforeEach
-    public void setUp() {
-        this.calculator = new Calculator();
-    }
-    
-    @AfterEach
-    public void tearDown() {
-        this.calculator = null;
-    }
-    
-    @Test
-    void testAdd() {
-        assertEquals(100, this.calculator.add(100));
-        assertEquals(150, this.calculator.add(50));
-        assertEquals(130, this.calculator.add(-20) ,
-                     "The optional assertion message is now the last parameter.");
-    }
-    
-    @Test
-    void testSub() {
-        assertAll("sub method",
-            () ->  assertEquals(-100, this.calculator.sub(100)),
-            () -> assertEquals(-150, this.calculator.sub(50))
-        );
-    }
-}
-```
-异常测试
-```java
-// main
-public class Factorial {
-    public static long fact(long n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("Negative");
-        }
-        long r = 1;
-        for (long i = 1; i <= n; i++) {
-            r = r * i;
-        }
-        return r;
-    }
-}
-
-@Test
-void testNegative() {
-    assertThrows(IllegalArgumentException.class, new Executable() {
-        @Override
-        public void execute() throws Throwable {
-            Factorial.fact(-1);
-        }
-    });
-}
-// or
-
-@Test
-void testNegative() {
-    Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-        Factorial.fact(-1);
-    });
-    assertEquals("Negative", exception.getMessage());
-}
-```
-
-超时
-```java
-@Test
-void timeoutNotExceeded() {
-    // The following assertion succeeds.
-    assertTimeout(ofMinutes(2), () -> {
-        // Perform task that takes less than 2 minutes.
-    });
-}
-
-@Test
-void timeoutNotExceededWithResult() {
-    // The following assertion succeeds, and returns the supplied object.
-    String actualResult = assertTimeout(ofMinutes(2), () -> {
-        return "a result";
-    });
-    assertEquals("a result", actualResult);
-}
-```
-
-条件测试
-```java
-@Disabled
-@Test
-void testBug101() {
-    // 这个测试不会运行
-}
-
-@Test
-@EnabledIfEnvironmentVariable(named = "DEBUG", matches = "true")
-void testOnlyOnDebugMode() {
-    // TODO: this test is only run on DEBUG=true
-}
-```
-参数化测试
-```java
-// 单参数
-@ParameterizedTest
-@ValueSource(ints = { -1, -5, -100 })
-void testAbsNegative(int x) {
-    assertEquals(-x, Math.abs(x));
-}
-
-// 多参数
-@ParameterizedTest
-@MethodSource
-void testCapitalize(String input, String result) {
-    assertEquals(result, StringUtils.capitalize(input));
-}
-
-static List<Arguments> testCapitalize() {
-    return List.of( // arguments:
-            Arguments.arguments("abc", "Abc"), //
-            Arguments.arguments("APPLE", "Apple"), //
-            Arguments.arguments("gooD", "Good"));
-}
-
-// csv
-@ParameterizedTest
-@CsvSource({ "abc, Abc", "APPLE, Apple", "gooD, Good" })
-// @CsvFileSource(resources = { "/test-capitalize.csv" })
-void testCapitalize(String input, String result) {
-    assertEquals(result, StringUtils.capitalize(input));
-}
-```
-
-
-
-
-### [mockito](https://github.com/mockito/mockito)
-
-- [mock()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#mock-java.lang.Class-)/[@Mock](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mock.html): create mock
-   - optionally specify how it should behave via [Answer](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/stubbing/Answer.html)/[MockSettings](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/MockSettings.html)
-   - [when()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#when-T-)/[given()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/BDDMockito.html#given-T-) to specify how a mock should behave
-   - If the provided answers don't fit your needs, write one yourself extending the [Answer](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/stubbing/Answer.html) interface
-- [spy()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#spy-T-)/[@Spy](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Spy.html): partial mocking, real methods are invoked but still can be verified and stubbed
-- [@InjectMocks](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/InjectMocks.html): automatically inject mocks/spies fields annotated with @Spy or @Mock
-- [verify()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#verify-T-): to check methods were called with given arguments
-   - can use flexible argument matching, for example any expression via the [any()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/ArgumentMatchers.html#any--)
-   - or capture what arguments were called using [@Captor](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Captor.html) instead
-
-验证操作
-```java
- // 使用Mock对象
- mockOne.add("one");
- // 普通验证
- verify(mockOne).add("one");
-
- // 验证某个交互是否从未被执行
- verify(mockOne, never()).add("two");
- // 验证mock对象没有交互过
- verifyZeroInteractions(mockTwo, mockThree);
-```
-执行顺序
-```java
-// A. 验证mock一个对象的函数执行顺序
- List singleMock = mock(List.class);
-
- //using a single mock
- singleMock.add("was added first");
- singleMock.add("was added second");
-
- // 为该mock对象创建一个inOrder对象
- InOrder inOrder = inOrder(singleMock);
-
- // 确保add函数首先执行的是add("was added first"),然后才是add("was added second")
- inOrder.verify(singleMock).add("was added first");
- inOrder.verify(singleMock).add("was added second");
-
-
- // B .验证多个mock对象的函数执行顺序
- List firstMock = mock(List.class);
- List secondMock = mock(List.class);
-
- //using mocks
- firstMock.add("was called first");
- secondMock.add("was called second");
-
- // 为这两个Mock对象创建inOrder对象
- InOrder inOrder = inOrder(firstMock, secondMock);
-
- // 验证它们的执行顺序
- inOrder.verify(firstMock).add("was called first");
- inOrder.verify(secondMock).add("was called second");
-```
-
-[PowerMock](https://github.com/powermock/powermock)
-
 ## [HTTP Clients](https://github.com/akullpp/awesome-java#http-clients)
 
 - [Feign](https://github.com/OpenFeign/feign) - HTTP client binder inspired by Retrofit, JAXRS-2.0, and WebSocket.
@@ -1101,7 +909,16 @@ void testCapitalize(String input, String result) {
 
 [**okhttp**](https://github.com/square/okhttp)
 
-[OkHttpClient](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/)  <br />  [Cookie](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-cookie/)  <br />  [Headers](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-headers/)  <br />  [HttpUrl](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-http-url/)  <br />  [Interceptor](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-interceptor/)  <br />  [MediaType](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-media-type/)  <br />  [MultipartBody](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-multipart-body/)  <br />  [Request](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-request/)  <br />  [Response](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-response/)  <br />  [WebSocket](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-web-socket/)
+- [OkHttpClient](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/)
+- [Cookie](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-cookie/)
+- [Headers](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-headers/)
+- [HttpUrl](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-http-url/)
+- [Interceptor](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-interceptor/)
+- [MediaType](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-media-type/)
+- [MultipartBody](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-multipart-body/)
+- [Request](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-request/)
+- [Response](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-response/)
+- [WebSocket](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-web-socket/)
 
 ```java
 @Slf4j
@@ -1405,6 +1222,7 @@ ObjectNode -> JsonNode
 [**Jackson Annotations**](https://github.com/FasterXML/jackson-annotations/wiki/Jackson-Annotations)  <br />  Property Naming
 
 - `@JsonProperty`: 属性使用的注解，用来表示外部属性名字，就是使用别名序列化
+- `@JsonAlias`：在反序列化的时可以让Bean的属性接收多个json字段的名称
 - `@JsonNaming`：属性命名策略，如PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy，将大写转换为小写并添加下划线
 
 Property Inclusion
@@ -1907,7 +1725,7 @@ insert	插入/改写模式
 | Show Commit window | Alt+0 |
 | Show Terminal window | Alt+F12 |
 
-  <br />  
+
 ### Settings
 方法分隔符  <br />  Settings -> Editor -> General -> Appearance  <br />  勾选 show method separators
 
@@ -1925,10 +1743,17 @@ Google style  <br />  [intellij-java-google-style.xml](https://github.com/google
 - Tabnine	基于 AI 的代码提示
 - Rainbow Brackets	彩虹括号
 - One Dark theme
+- google-java-format
+- Alibaba Java Coding Guidelines
 - String Manipulation
+- CamelCase	Shift + Alt + U
 - GsonFormat	JSON转类对象
+- SequenceDiagram	调用时序图
 
-- RestfulToolkit	RESTful服务开发
+- Docer Savior	批量导出接口信息+文档信息到Postman或Markdown
+- Doc View		单个接口文档生成
+
+- RestfulToolkitX	RESTful服务开发
 - Key Promoter X	快捷键
 - Statistic	项目信息统计
 - Translation	翻译插件
