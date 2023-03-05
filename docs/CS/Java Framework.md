@@ -1,8 +1,8 @@
 ---
 title: Java Framework
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2023-02-19T13:37:09.000Z
-word_count: 8875
+updated_at: 2023-03-05T15:15:42.000Z
+word_count: 9354
 ---  
 
 ## [Maven](https://maven.apache.org/)
@@ -207,6 +207,38 @@ POM（Project Object Model，项目对象模型）是 Maven 的基本组件，�
   <activeProfiles/>
 </settings>
 ```
+
+**可用变量**
+
+- 内置属性	Maven预定义属性
+   - `${basedir}`	项目的根路径，即包含pom.xml文件的目录，同`${project.basedir}`
+   - `${version}`	项目版本
+   - `${project.baseUri}`	项目文件地址
+   - `${maven.build.timestamp}`	项目构建开始时间
+   - `${maven.build.timestamp.format}`	默认值为yyyyMMdd-HHmm
+
+- pom属性
+   - `${project.build.sourceDirectory}`	主源码路径，默认为src/main/java/
+   - `${project.build.testSourceDirectory}`	测试源码路径，默认为src/test/java/
+   - `${project.build.directory}`	项目构建输出目录，默认为target/
+   - `${project.outputDirectory}`	项目测试代码编译输出目录，默认为target/classes/
+   - `${project.groupId}`	项目的groupId
+   - `${project.artifactId}`	项目的artifactId
+   - `${project.version}`	项目的version，同`${version}`
+   - `${project.build.finalName}`	项目打包输出文件的名称，默认为`${project.artifactId}${project.version}`
+
+- 自定义属性	在pom.xml的`<properties>`下定义的Maven属性
+- setting.xml文件属性
+   - `${settings.localRepository}`	本地仓库的地址
+- Java系统属性
+   - `System.getProperties()`	可以得到所有的Java属性
+   - `${user.home}`	用户目录
+
+- 环境变量属性
+   - `${env.JAVA_HOME}` 表示JAVA_HOME环境变量的值
+
+`mvn help:system` 可以查看所有的Java及环境变量属性
+
 
 搜索第三方组件	[search.maven.org](https://search.maven.org/)  <br />  生命周期（default为例）phase：
 
@@ -906,6 +938,7 @@ public class WebLogAspect {
    - @EnableFeignClients
    - @FeignClient
    - @SpringQueryMap
+   - 支持Spring MVC的注解
 
 [**okhttp**](https://github.com/square/okhttp)
 
@@ -1395,6 +1428,71 @@ gson.toJson(object);
 Object bean = gson.fromJson(jsonString, Object.class)
 ```
 
+## [Bean Mapping](https://github.com/akullpp/awesome-java#bean-mapping)
+
+[MapStruct](https://github.com/mapstruct/mapstruct)  <br />  在编译期自动生成映射转换代码，类型安全、高性能、无依赖性
+
+```java
+@Mapper( imports = UUID.class )
+public interface SourceMapper {
+
+  SourceMapper INSTANCE = Mappers.getMapper(SourceMapper.class);
+
+  @Mapping(target="id", source="sourceId", defaultExpression = "java( UUID.randomUUID().toString() )")
+  @Mapping(source = "sourceName", target = "targetName", defaultValue = "undefined")
+  @Mapping(target="startDt", source = "source.startTime",
+         dateFormat = "dd-MM-yyyy HH:mm:ss")
+  Target toTarget(Source source);
+
+  @InheritInverseConfiguration
+  Source toSource(Target target);
+}
+```
+自定义mapping可使用抽象类
+
+注解  <br />  `@Mapper`  <br />  componentModel
+
+- default	工厂方式 `Mappers.getMapper(Class)` 来获取
+- cdi	一个应用程序范围的 CDI bean，使用 `@Inject` 注解来获取
+- spring Spring 的自动注入方式
+- jsr330	用 `@javax.inject.Named` 和 `@Singleton` 注解，通过 `@Inject` 来获取
+
+`@Mapping`	配置字段映射  <br />  `@Mappings`	聚合配置多个Mapping  <br />  `@BeanMapping`  <br />  `@IterableMapping`  <br />  `@MappingTarget`  <br />  `@InheritConfiguration`  <br />  `@InheritInverseConfiguration`  <br />  `@MapperConfig`	共享配置  <br />  `@BeforeMapping`  <br />  `@AfterMapping`
+
+```xml
+<!-- Maven 编译插件，提供给 MapStruct 使用 -->
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <version>${maven-compiler-plugin.version}</version>
+  <configuration>
+    <source>${java.version}</source>
+    <target>${java.version}</target>
+    <annotationProcessorPaths>
+      <!-- MapStruct 注解处理器 -->
+      <path>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct-processor</artifactId>
+        <version>${org.mapstruct.version}</version>
+      </path>
+      <!-- Lombok 注解处理器 -->
+      <path>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+      </path>
+      <!-- MapStruct 和 Lombok 注解绑定处理器 -->
+      <path>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok-mapstruct-binding</artifactId>
+        <version>0.2.0</version>
+      </path>
+    </annotationProcessorPaths>
+  </configuration>
+</plugin>
+```
+
+
 
 ## [Tomcat](https://tomcat.apache.org/) 
 Tomcat 是由 Apache 开发的一个 Servlet 容器，实现了对 Servlet 和 JSP 的支持，并提供了作为 Web 服务器的一些特有功能，如 Tomcat 管理和控制平台、安全域管理和 Tomcat 阀等
@@ -1753,7 +1851,6 @@ Google style  <br />  [intellij-java-google-style.xml](https://github.com/google
 - Docer Savior	批量导出接口信息+文档信息到Postman或Markdown
 - Doc View		单个接口文档生成
 
-- RestfulToolkitX	RESTful服务开发
 - Key Promoter X	快捷键
 - Statistic	项目信息统计
 - Translation	翻译插件

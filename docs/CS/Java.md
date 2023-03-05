@@ -1,8 +1,8 @@
 ---
 title: Java
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2023-01-08T11:00:35.000Z
-word_count: 14247
+updated_at: 2023-03-05T14:59:23.000Z
+word_count: 14846
 ---  
 ## —— [Java](https://www.oracle.com/cn/java/) ——
 Java是由Sun Microsystems公司于1995年5月推出的Java面向对象程序设计语言和Java平台的总称。由James Gosling和同事们共同研发，并在1995年正式推出。
@@ -1794,3 +1794,49 @@ System.setProperty("cglib.debugLocation", "d:/");
 ```
 
 
+## CLI
+```shell
+java [options] <主类> [args...]（执行类）
+   或  java [options] -jar <jar 文件> [args...]（执行 jar 文件）
+   或  java [options] -m |  --module <模块>[/<主类>] [args...]（执行模块中的主类）
+   或  java [options] <源文件> [args]（执行单个源文件程序）
+ 
+options：
+  -cp | -classpath <目录和 zip/jar 文件的类搜索路径>，使用 ;（Win）or :（Unix)）分隔的
+  -p | --module-path <模块路径>
+  --list-modules	列出可观察模块并退出
+  --dry-run     创建 VM 并加载主类, 但不执行 main 方法。
+  		
+  --validate-modules	验证所有模块并退出
+  -D<名称>=<值>	设置系统属性
+  -esa | -enablesystemassertions	启用系统断言
+  -dsa | -disablesystemassertions	禁用系统断言
+  -agentlib:<库名>[=<选项>]	加载本机代理库 <库名>
+  -agentpath:<路径名>[=<选项>]	按完整路径名加载本机代理库
+  -javaagent:<jar 路径>[=<选项>]	加载 Java 编程语言代理
+  --enable-preview	允许类依赖于此发行版的预览功能
+
+
+javac <options> <source files>
+	@<filename>                  从文件读取选项和文件名
+	-Akey[=value]                传递给注释处理程序的选项
+	--boot-class-path <path>, -bootclasspath <path>	覆盖引导类文件的位置
+	--class-path <path>, -classpath <path>, -cp <path>	查找用户类文件和注释处理程序的位置
+	-d <directory>               指定放置生成的类文件的位置
+	-deprecation                 输出使用已过时的 API 的源位置
+	--enable-preview             启用预览语言功能。要与 -source 或 --release 一起使用。
+	-encoding <encoding>         指定源文件使用的字符编码
+	-g                           生成所有调试信息
+	-h <directory>               指定放置生成的本机标头文件的位置
+	--module <模块>(,<模块>)*, -m <模块>(,<模块>)*		只编译指定的模块，请检查时间戳
+	--module-path <path>, -p <path>	查找应用程序模块的位置
+	-nowarn                      不生成任何警告
+	-parameters                  生成元数据以用于方法参数的反射
+	--release <release>          为指定的 Java SE 发行版编译
+	-s <directory>               指定放置生成的源文件的位置
+	--source <release>	提供与指定的 Java SE 发行版的源兼容性
+	--source-path <path>, -sourcepath <path>	指定查找输入源文件的位置
+	--system <jdk>|none          覆盖系统模块位置
+	--target <release>	生成适合指定的 Java SE 发行版的类文件
+```
+JVM不依赖classpath加载核心库
