@@ -117,6 +117,11 @@
             "link": "/CS/Design Patterns"
           },
           {
+            "text": "Message Queue",
+            "level": 4,
+            "link": "/CS/Message Queue"
+          },
+          {
             "text": "Big Data",
             "level": 4,
             "link": "/CS/Big Data"
@@ -274,17 +279,27 @@
             "link": "/CS/MySQL"
           },
           {
-            "text": "NoSQL",
+            "text": "Redis",
             "level": 4,
-            "link": "/CS/NoSQL"
+            "link": "/CS/Redis"
           }
         ],
         "collapsed": false
       },
       {
+        "text": "分布式",
+        "level": 3,
+        "link": "/CS/分布式"
+      },
+      {
         "text": "Machine learning",
         "level": 3,
         "link": "/CS/Machine learning"
+      },
+      {
+        "text": "Hardware",
+        "level": 3,
+        "link": "/CS/Hardware"
       }
     ]
   },

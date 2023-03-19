@@ -1,8 +1,8 @@
 ---
 title: SQL
 created_at: 2022-02-01T05:44:46.000Z
-updated_at: 2022-03-05T02:10:51.000Z
-word_count: 928
+updated_at: 2023-03-16T14:37:10.000Z
+word_count: 1285
 ---  
 **SQL(结构化查询语言，Structured Query Language)**  <br />  一种 ANSI（American National Standards Institute 美国国家标准化组织）标准的计算机语言。
 
@@ -91,3 +91,18 @@ from  <用户|角色列表>
 ```sql
 create role <role_name>
 ```
+
+
+
+## —— Not Only SQL ——
+非关系型数据库：可以处理分布式、规模庞大、类型不确定、完整性没有保证的“杂乱”数据
+
+| 分类 | 相关产品 | 应用场景 | 数据模型 | 优点 | 缺点 |
+| --- | --- | --- | --- | --- | --- |
+| 键值数据库 | [Redis](http://c.biancheng.net/redis/)、[Memcached](http://c.biancheng.net/view/6574.html)、Riak | 内容缓存，如会话、配置文件、参数等；  <br />  频繁读写、拥有简单数据模型的应用 | <key,value> 键值对，通过散列表来实现 | 扩展性好，灵活性好，大量操作时性能高 | 数据无结构化，通常只被当做字符串或者二进制数据，只能通过键来查询值 |
+| 列族数据库 | Bigtable、[HBase](http://c.biancheng.net/hbase/)、Cassandra | 分布式数据存储与管理 | 以列族式存储，将同一列数据存在一起 | 可扩展性强，查找速度快，复杂性低 | 功能局限，不支持事务的强一致性 |
+| 文档数据库 | [MongoDB](http://c.biancheng.net/mongodb/)、CouchDB | Web 应用，存储面向文档或类似半结构化的数据 | <key,value>   <br />  value 是 JSON 结构的文档 | [数据结构](http://c.biancheng.net/data_structure/)灵活，可以根据 value 构建索引 | 缺乏统一查询语法 |
+| 图形数据库 | [Neo4j](http://c.biancheng.net/view/6579.html)、InfoGrid | 社交网络、推荐系统，专注构建关系图谱 | 图结构 | 支持复杂的图形算法 | 复杂性高，只能支持一定的数据规模 |
+
+
+

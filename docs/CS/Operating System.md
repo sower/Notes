@@ -1,8 +1,8 @@
 ---
 title: Operating System
 created_at: 2022-02-01T05:44:39.000Z
-updated_at: 2022-03-05T00:26:43.000Z
-word_count: 1682
+updated_at: 2023-03-19T08:54:58.000Z
+word_count: 1948
 ---  
 ## —— 操作系统（Operating System） ——
 操作系统：一组主管并控制[计算机](https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA)操作、运用和运行硬件、软件资源和提供公共服务来组织用户交互的相互关联的系统软件程序，同时也是计算机系统的内核与基石。
@@ -86,14 +86,26 @@ cat < myPipe
 - 非阻塞：指调用函数的时候当前线程不会被挂起，会立即返回。
 
 
+**调度程序（scheduler）**  <br />  原则
+
+- **CPU 利用率**：确保 CPU 是始终匆忙的状态
+- **系统吞吐量**：吞吐量表示的是单位时间内 CPU 完成进程的数量，长作业的进程会占用较长的 CPU 资源，因此会降低吞吐量
+- **周转时间**：进程运行+阻塞时间+等待时间的总和，一个进程的周转时间越小越好；
+- **等待时间**：进程处于就绪队列的时间，等待的时间越短越好
+- **响应时间**：用户提交请求到系统第一次产生响应所花费的时间，在交互式系统中，响应时间是衡量调度算法好坏的主要标准。
+
+算法
+
+- 先来先服务（First Come First Serve, FCFS）
+- 最短作业优先（Shortest Job First, SJF）
+- 高响应比优先 （Highest Response Ratio Next, HRRN）
+- 时间片轮转（Round Robin, RR）
+- 最高优先级（Highest Priority First，HPF）
+- 多级反馈队列（Multilevel Feedback Queue）
+
 
 ## 内存管理机制
 
-分页机制
-
-- 程序的逻辑地址划分为固定大小的页（Page）。
-- 物理地址划分为同样大小的帧（Frame）。
-- 通过页表对应逻辑地址和物理地址。
 
 分段机制
 
@@ -103,6 +115,14 @@ cat < myPipe
 - 每个段内部是连续内存分配，段和段之间是离散分配的。
 - 通过段号、段长和起始地址。
 
+
+分页机制
+
+- 程序的逻辑地址划分为固定大小的页（Page）。
+- 物理地址划分为同样大小的帧（Frame）。
+- 通过页表对应逻辑地址和物理地址。
+
+
 虚拟内存
 
 - 将内存中暂时不需要的内容放到硬盘上。
@@ -111,7 +131,7 @@ cat < myPipe
 
 
 
-**CLI**(comand-Line Interface，命令行界面）  <br />  GUI (Graphical User Interface ，图形用户界面)	采用图形方式显示的[计算机](https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA)操作用户界面。  <br />  SDK（Software Development Kit，**软件开发工具包**）一般是一些被软件工程师用于为特定的[软件包](https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%8C%85)、软件框架、硬件平台、操作系统等创建应用软件的开发工具的集合。  <br />  API (Application Programming Interface，应用程序编程接口)  <br />  一种[计算](https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97)接口，它定义多个软件中介之间的交互，以及可以进行的调用（call）或请求（request）的种类，如何进行调用或发出请求，应使用的数据格式，应遵循的惯例等。
+**CLI **(comand-Line Interface，命令行界面）  <br />  GUI (Graphical User Interface ，图形用户界面)	采用图形方式显示的[计算机](https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA)操作用户界面。  <br />  SDK（Software Development Kit，**软件开发工具包**）一般是一些被软件工程师用于为特定的[软件包](https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%8C%85)、软件框架、硬件平台、操作系统等创建应用软件的开发工具的集合。  <br />  API (Application Programming Interface，应用程序编程接口)  <br />  一种[计算](https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97)接口，它定义多个软件中介之间的交互，以及可以进行的调用（call）或请求（request）的种类，如何进行调用或发出请求，应使用的数据格式，应遵循的惯例等。
 
 
 

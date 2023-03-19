@@ -34,6 +34,7 @@ const date = computed(() => new Date(frontmatter.value.updated_at).toLocaleStrin
   line-height: 1.25rem;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1rem;
 }
 </style>
 

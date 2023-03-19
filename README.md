@@ -21,6 +21,7 @@
   - #### [Java Framework](./docs/CS/Java%20Framework.md)  
   - #### [Unit Test](./docs/CS/Unit%20Test.md)  
   - #### [Design Patterns](./docs/CS/Design%20Patterns.md)  
+  - #### [Message Queue](./docs/CS/Message%20Queue.md)  
   - #### [Big Data](./docs/CS/Big%20Data.md)  
 - ### [Operating System](./docs/CS/Operating%20System.md)  
   - #### [Windows](./docs/CS/Windows.md)  
@@ -47,8 +48,10 @@
   - #### [Algorithm](./docs/CS/Algorithm.md)  
 - ### [SQL](./docs/CS/SQL.md)  
   - #### [MySQL](./docs/CS/MySQL.md)  
-  - #### [NoSQL](./docs/CS/NoSQL.md)  
+  - #### [Redis](./docs/CS/Redis.md)  
+- ### [分布式](./docs/CS/%E5%88%86%E5%B8%83%E5%BC%8F.md)  
 - ### [Machine learning](./docs/CS/Machine%20learning.md)  
+- ### [Hardware](./docs/CS/Hardware.md)  
 
   <br />  
 ## Software  

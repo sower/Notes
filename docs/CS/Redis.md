@@ -1,40 +1,47 @@
 ---
-title: NoSQL
+title: Redis
 created_at: 2022-02-01T05:44:46.000Z
-updated_at: 2022-10-25T13:29:53.000Z
-word_count: 4544
+updated_at: 2023-03-16T14:36:25.000Z
+word_count: 5209
 ---  
-## —— Not Only SQL ——
-非关系型数据库：可以处理分布式、规模庞大、类型不确定、完整性没有保证的“杂乱”数据
-
-**CAP 理论**：针对分布式数据库而言的，指在一个分布式系统中，一致性、可用性、分区容错性三者不可兼得。
-
-- 一致性(Consistency)：所有节点在同一时间具有相同的数据
-- 可用性(Availability)：保证每个请求不管成功或者失败都有响应
-- 分隔容忍(Partition tolerance) ：系统中任意信息的丢失或失败不会影响系统的继续运作
-
-![](https://www.runoob.com/wp-content/uploads/2013/10/cap-theoram-image.png#id=y8n8P&originHeight=578&originWidth=671&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
-
-**BASE理论**（由 Eric Brewer 定义）  <br />  NoSQL数据库通常对可用性及一致性的弱要求原则:
-
-- Basically Availble --基本可用
-- Soft-state --软状态/柔性事务。 "Soft state" 可以理解为"无连接"的, 而 "Hard state" 是"面向连接"的
-- Eventual Consistency -- 最终一致性， 也是是 ACID 的最终目的。
-
-| 分类 | 相关产品 | 应用场景 | 数据模型 | 优点 | 缺点 |
-| --- | --- | --- | --- | --- | --- |
-| 键值数据库 | [Redis](http://c.biancheng.net/redis/)、[Memcached](http://c.biancheng.net/view/6574.html)、Riak | 内容缓存，如会话、配置文件、参数等；  <br />  频繁读写、拥有简单数据模型的应用 | <key,value> 键值对，通过散列表来实现 | 扩展性好，灵活性好，大量操作时性能高 | 数据无结构化，通常只被当做字符串或者二进制数据，只能通过键来查询值 |
-| 列族数据库 | Bigtable、[HBase](http://c.biancheng.net/hbase/)、Cassandra | 分布式数据存储与管理 | 以列族式存储，将同一列数据存在一起 | 可扩展性强，查找速度快，复杂性低 | 功能局限，不支持事务的强一致性 |
-| 文档数据库 | [MongoDB](http://c.biancheng.net/mongodb/)、CouchDB | Web 应用，存储面向文档或类似半结构化的数据 | <key,value>   <br />  value 是 JSON 结构的文档 | [数据结构](http://c.biancheng.net/data_structure/)灵活，可以根据 value 构建索引 | 缺乏统一查询语法 |
-| 图形数据库 | [Neo4j](http://c.biancheng.net/view/6579.html)、InfoGrid | 社交网络、推荐系统，专注构建关系图谱 | 图结构 | 支持复杂的图形算法 | 复杂性高，只能支持一定的数据规模 |
-
-
-
-
 ## —— [Redis](https://github.com/redis/redis) ——
 Remote Dictionary Server（远程字典服务器）
 
 由Salvatore Sanfilippo编写的key-value存储系统。  <br />  一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。
+
+**使用场景**
+
+- **缓存** - 将热点数据放到内存中，设置内存的最大使用量以及过期淘汰策略来保证缓存的命中率。
+- **计数器** - Redis 这种内存数据库能支持计数器频繁的读写操作。
+- **应用限流** - 限制一个网站访问流量。
+- **消息队列** - 使用 List 数据类型，它是双向链表。
+- **查找表** - 使用 HASH 数据类型。
+- **交集运算** - 使用 SET 类型，例如求两个用户的共同好友。
+- **排行榜** - 使用 ZSET 数据类型。
+- **分布式 Session** - 多个应用服务器的 Session 都存储到 Redis 中来保证 Session 的一致性。
+- **分布式锁** - 除了可以使用 SETNX 实现分布式锁之外，还可以使用官方提供的 RedLock 分布式锁实现。
+
+
+**特性**
+
+- 丰富的数据类型，数据结构简单
+- 单个操作是原子性的。多个操作也支持事务
+- 持久化：可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
+- 基于内存操作
+- 使用 I/O 多路复用模型
+
+
+
+数据淘汰策略
+
+- noeviction - 当内存使用达到阈值的时候，所有引起申请内存的命令会报错。默认策略
+- allkeys-lru - 在主键空间中，优先移除最近未使用的 key。
+- allkeys-random - 在主键空间中，随机移除某个 key。
+- volatile-lru - 在设置了过期时间的键空间中，优先移除最近未使用的 key。
+- volatile-random - 在设置了过期时间的键空间中，随机移除某个 key。
+- volatile-ttl - 在设置了过期时间的键空间中，具有更早过期时间的 key 优先移除。
+
+
 
 **Redis架构**
 
@@ -89,7 +96,7 @@ Remote Dictionary Server（远程字典服务器）
 ## 数据类型
 | 数据类型 | 数据类型存储的值 | 说 明 |
 | --- | --- | --- |
-| STRING  <br />  （字符串） | 可以是保存字符串、整数和浮点数 | 对字符串进行操作，如增加字符或者求子串：如果是整数或者浮点数，可以计算，如自增等 |
+| STRING  <br />  （字符串） | 字符串、整数和浮点数 | 对字符串进行操作，如增加字符或者求子串：如果是整数或者浮点数，可以计算，如自增等 |
 | LIST  <br />  （列表） | 一个链表，它的每一个节点都包含一个字符串 | 可以在链表的两端插入或者弹出节点，或者通过偏移对它进行裁剪；还可以读取一个或者多个节点，根据条件删除或者查找节点等 |
 | SET  <br />  （集合） | 无序集合，每一个元素都是一个字符串 | 可以新增、读取、删除单个元素：检测一个元素是否在集合中；进行集合的运算；随机从集合中读取元素 |
 | HASH  <br />  （哈希散列表）  | 一个键值对应的无序列表 | 可以増、删、査、改单个键值对，也可以获取所有的键值对 |
@@ -111,6 +118,7 @@ Remote Dictionary Server（远程字典服务器）
 | [RENAME key newkey](http://www.yiibai.com/redis/keys_rename.html) | 更改键的名称。 |
 | [RENAMENX key newkey](http://www.yiibai.com/redis/keys_renamenx.html) | 如果新键不存在，重命名键。 |
 | [TYPE key](http://www.yiibai.com/redis/keys_type.html) | 返回存储在键中的值的数据类型。 |
+| SORT source-key [BY pattern] [LIMIT offset count] [GET pattern ...] [ASC &#124; DESC] [ALPHA] [STORE dest-key] | 对输入 LIST、SET、ZSET 进行排序，然后返回或存储排序的结果。 |
 | clear | 清屏 |
 
 
@@ -223,13 +231,38 @@ Remote Dictionary Server（远程字典服务器）
 
 
 
-### HyperLogLog
+### 高级数据类型
+
+**BitMap**
+
+- [SETBIT ](http://redisdoc.com/bitmap/setbit.html)- 对 key 所储存的字符串值，设置或清除指定偏移量上的位(bit)。
+- [GETBIT ](http://redisdoc.com/bitmap/getbit.html)- 对 key 所储存的字符串值，获取指定偏移量上的位(bit)。
+- [BITCOUNT ](http://redisdoc.com/bitmap/bitcount.html)- 计算给定字符串中，被设置为 1 的比特位的数量。
+- [BITPOS ](http://redisdoc.com/bitmap/bitpos.html)
+- [BITOP ](http://redisdoc.com/bitmap/bitop.html)
+- [BITFIELD](http://redisdoc.com/bitmap/bitfield.html)
+
+**HyperLogLog**  <br />  用于计算唯一事物的概率数据结构
+
+- [PFADD ](http://redisdoc.com/hyperloglog/pfadd.html)- 将任意数量的元素添加到指定的 HyperLogLog 里
+- [PFCOUNT ](http://redisdoc.com/hyperloglog/pfcount.html)- 返回 HyperLogLog 包含的唯一元素的近似数量。
+- [PFMERGE ](http://redisdoc.com/hyperloglog/pfmerge.html)- 将多个 HyperLogLog 合并为一个 HyperLogLog
 | 命令 | 说明 |
 | --- | --- |
 | [PFADD key element [element …]](http://www.yiibai.com/redis/hyperloglog_pfadd.html) | 将指定的元素添加到指定的HyperLogLog 中。 |
 | [PFCOUNT key [key …]](http://www.yiibai.com/redis/hyperloglog_pfcount.html) | 返回给定 HyperLogLog 的基数估算值。 |
 | [PFMERGE destkey sourcekey [sourcekey …]](http://www.yiibai.com/redis/hyperloglog_pfmerge.html) | 将多个 HyperLogLog 合并为一个 HyperLogLog |
 
+
+
+**GEO**
+
+- [GEOADD ](http://redisdoc.com/geo/geoadd.html)- 将指定的地理空间位置（纬度、经度、名称）添加到指定的 key 中。
+- [GEOPOS ](http://redisdoc.com/geo/geopos.html)- 从 key 里返回所有给定位置元素的位置（经度和纬度）。
+- [GEODIST ](http://redisdoc.com/geo/geodist.html)- 返回两个给定位置之间的距离。
+- [GEOHASH ](http://redisdoc.com/geo/geohash.html)- 回一个或多个位置元素的标准 Geohash 值
+- [GEORADIUS ](http://redisdoc.com/geo/georadius.html)
+- [GEORADIUSBYMEMBER](http://redisdoc.com/geo/georadiusbymember.html)
 
 
 ### 发布订阅
@@ -245,6 +278,8 @@ Remote Dictionary Server（远程字典服务器）
 
 
 ### 事务
+Redis 提供的不是严格的事务，只保证串行执行命令，并且能保证全部执行，但是执行命令失败时并不会回滚，而是会继续执行下去。
+
 | 命令 | 说明 |
 | --- | --- |
 | [DISCARD](http://www.yiibai.com/transactions_discard.html) | 丢弃在MULTI之后发出的所有命令 |
@@ -339,10 +374,33 @@ info [section]：查询 Redis 相关信息
 | [CLIENT SETNAME connection-name](http://www.yiibai.com/redis/server_client_setname.html) | 设置当前连接名称 |
 
 
-## 备份
-快照恢复（RDB）  <br />  通过快照（snapshotting）实现的，它是备份当前瞬间 Redis 在内存中的数据记录。将默认文件 dump.rdb  <br />  只追加文件（Append-Only File，AOF）  <br />  当 Redis 执行写命令后，在一定的条件下将执行过的写命令依次保存在 Redis 的文件中，将来就可以依次执行那些保存的命令恢复 Redis 的数据了。
+## 持久化 | 备份
+
+- 快照方式（RDB）：将某个时间点的所有 Redis 数据保存到一个经过压缩的二进制文件（RDB 文件）中
+- 只追加文件（Append-Only File，AOF）：以文本日志形式将所有写命令追加到 AOF 文件的末尾，以此来记录数据的变化。当服务器重启的时候会重新载入和执行这些命令来恢复原始的数据
 
 
+## 分布式
+
+哨兵（Sentinel）：由一个或多个 Sentinel 实例组成的 Sentinel 系统可以监视任意多个主服务器，以及这些主服务器的所有从服务器，并在被监视的主服务器进入下线状态时，自动将下线主服务器的某个从服务器升级为新的主服务器，然后由新的主服务器代替已下线的主服务器继续处理命令请求。
+
+- 监控（Monitoring） - 不断检查主从服务器是否正常在工作。
+- 通知（Notification） - 可以通过一个 api 来通知系统管理员或者另外的应用程序，被监控的 Redis 实例有一些问题。
+- 自动故障转移（Automatic Failover） - 如果一个主服务器下线，Sentinel 会开始自动故障转移：把一个从节点提升为主节点，并重新配置其他的从节点使用新的主节点，使用 Redis 服务的应用程序在连接的时候也被通知新的地址。
+- 配置提供者（Configuration provider） - Sentinel 给客户端的服务发现提供来源：对于一个给定的服务，客户端连接到 Sentinels 来寻找当前主节点的地址。当故障转移发生的时候，Sentinel 将报告新的地址。
+
+
+## Resource
+
+- [http://redis.cn](http://redis.cn/)
+- [Redis 命令参考](http://redisdoc.com/)
+- [awesome-redis](https://github.com/JamzyWang/awesome-redis)
+
+Java Redis Client
+
+- [jedis](https://github.com/xetorthio/jedis) - 最流行的 Redis Java 客户端
+- [redisson ](https://github.com/redisson/redisson)- 额外提供了很多的分布式服务特性，如：分布式锁、分布式 Java 常用对象
+- [lettuce ](https://github.com/lettuce-io/lettuce-core)- Spring Boot 2.0 默认 Redis 客户端
 
 
 ## —— MongoDB ——

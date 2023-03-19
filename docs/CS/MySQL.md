@@ -1,8 +1,8 @@
 ---
 title: MySQL
 created_at: 2022-02-01T05:44:45.000Z
-updated_at: 2023-01-08T11:23:29.000Z
-word_count: 13963
+updated_at: 2023-03-19T02:47:29.000Z
+word_count: 13843
 ---  
 ## ——MySQL——
 [MySQL](https://dev.mysql.com/)是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，属于 Oracle 旗下产品。
@@ -122,12 +122,12 @@ create table section
 ### SELECT
 ```sql
 SELECT {[=ALL | DISTINCT] <column_name [,···, function(column_name)]>}
-[   FROM <table_name[,···]>
-    [WHERE Clause]
-    [GROUP BY <column_name>
-    [HAVING <P(Function(X))>]
-    [ORDER BY field1 [=ASC | DESC] [,field2...] [=ASC | DESC]]
-    [LIMIT <M> [OFFSET <N>] ]    ]   --分页查询
+	[FROM <table_name[,···]>
+  [WHERE Clause]
+  [GROUP BY <column_name>
+  [HAVING <P(Function(X))>]
+  [ORDER BY field1 [=ASC | DESC] [,field2...] [=ASC | DESC]]
+  [LIMIT <M> [OFFSET <N>] ]    ]   --分页查询
 ```
 
 - 表之间使用逗号(,)分割，并使用WHERE语句来设定查询条件，可嵌套
@@ -232,6 +232,7 @@ SELECT *
 FROM <table_name>  JOIN  <table_name> [ JOIN  ···] [ON <P>]
  # <table_name> JOIN <table_name> using (column_name)
 ```
+
 ### LIKE & REGEXP
 ```sql
 [NOT] LIKE 'str%' [ESCAPE '_']
@@ -243,20 +244,6 @@ FROM <table_name>  JOIN  <table_name> [ JOIN  ···] [ON <P>]
 - 大小写敏感
 
 REGEXP
-
-| 模式 | 描述 |
-| --- | --- |
-| ^ | 匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 '\\n' 或 '\\r' 之后的位置。 |
-| $ | 匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 '\\n' 或 '\\r' 之前的位置。 |
-| . | 匹配除 "\\n" 之外的任何单个字符。要匹配包括 '\\n' 在内的任何字符，请使用象 '[.\\n]' 的模式。 |
-| [...] | 字符集合 |
-| [^...] | 负值字符集合 |
-| p1&#124;p2&#124;p3 | 匹配 p1 或 p2 或 p3 |
-| * | 匹配前面的子表达式零次或多次 |
-| + | 匹配前面的子表达式一次或多次 |
-| {n} | n 是一个非负整数。匹配确定的 n 次 |
-| `{n,m}` | m 和 n 均为非负整数，其中n <= m。最少匹配 n 次且最多匹配 m 次。 |
-
 ```sql
 mysql> SELECT * FROM tb_students_info WHERE name REGEXP 'e{2,}';
 +----+-------+------+------+--------+-----------+
@@ -307,9 +294,9 @@ select * from fib;
 
 - 普通索引（CREATE INDEX）
 - 唯一索引，索引列的值必须唯一（CREATE UNIQUE INDEX）
-- 多列索引（key的值由多个列组成）
 - 主键索引（PRIMARY KEY），一个表只能有一个
-- 全文索引（FULLTEXT INDEX），InnoDB不支持
+- 全文索引（FULLTEXT INDEX），用来查找文本中的关键字
+- 组合索引：多个字段上创建的索引
 ```sql
 CREATE [UNIQUE] INDEX <index_name>
 ON <table_name (column_name [<长度>] [ ASC | DESC] )>  [invisible]   --主键索引必须可见
@@ -320,13 +307,13 @@ DROP INDEX <index_name> ON <table_name>
 SHOW INDEX <index_name> FROM <table_name>[\G]
 
 --更改索引
- ALTER TABLE <> ALTER INDEX <> VISIBLE 
- 
- --降序索引
- CREATE TABLE <> (c1,INT,c2 INT,INDEX idx(c1 ASC,c2 DESC))
- 
- --函数索引
- CREATE INDEX fun_idx ON table_name( (fun_name(column_name)) );
+ALTER TABLE <> ALTER INDEX <> VISIBLE 
+
+--降序索引
+CREATE TABLE <> (c1,INT,c2 INT,INDEX idx(c1 ASC,c2 DESC))
+
+--函数索引
+CREATE INDEX fun_idx ON table_name( (fun_name(column_name)) );
 ```
 隐藏索引不会被优化器使用，但仍然需要进行维护。  <br />  优化器默认情况是不可见隐藏索引的，但是可以通过配置开关来使之可见
 
@@ -543,7 +530,7 @@ SELECT * FROM information_schema.views;
 **ACID特性**
 
 - Atomicity，原子性：将所有SQL作为原子工作单元执行，要么全部执行，要么全部不执行；
-- Consistency，一致性：事务完成后，所有数据的状态都是一致的，即A账户只要减去了100，B账户则必定加上了100；
+- Consistency，一致性：事务完成后，所有数据的状态都是一致的
 - Isolation，隔离性：如果有多个事务并发执行，每个事务作出的修改必须与其他事务隔离；
 - Durability，持久性：即事务完成后，对数据库数据的修改被持久化存储。
 ```sql
@@ -582,18 +569,21 @@ show variables like '%tx_isolation%'
 SET [=SESSION | GLOBAL] TRANSACTION ISOLATION LEVEL 
 {READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SERIALIZABLE};
 ```
+
 ## 锁表
 用于防止其它客户端进行不正当地读取和写入
 
-- 行锁（Record Lock）：直接对索引项加锁。
-- 间隙锁（Gap Lock）：锁加在索引项之间的间隙，也可以是第一条记录前的“间隙”或最后一条记录后的“间隙”。
-- Next-Key Lock：行锁与间隙锁组合起来用就叫做 Next-Key Lock。 前两种的组合，对记录及其前面的间隙加锁。
+- 行锁（Record Lock）：对索引项加锁，若没有索引则使用表锁
+- 间隙锁（Gap Lock）：对索引项之间的间隙加锁
+- Next-Key Lock：行锁与间隙锁组合，对记录及其前面的间隙加锁。
 ```sql
 -- 锁定
     LOCK TABLES tbl_name [AS alias]
 -- 解锁
     UNLOCK TABLES
 ```
+
+
 ## 触发器（TRIGGER）
 触发程序是与表有关的命名数据库对象，当该表出现特定事件时，将激活该对象  <br />  监听：记录的增加、修改、删除。
 ```sql
@@ -1312,11 +1302,11 @@ END;
 
 MySQL支持的存储引擎
 
-- MyISAM
-- nnoDB
-- Memory
-- CSV
-- Archive
+- **MyISAM** - Mysql 5.1 版本前的默认存储引擎。特性丰富但不支持事务，也不支持行级锁和外键，也没有崩溃恢复功能。
+- **InnoDB** - Mysql 的默认事务型存储引擎，并且提供了行级锁和外键的约束。性能不错且支持自动崩溃恢复。
+- **CSV** - 可以将 CSV 文件作为 Mysql 的表来处理，但这种表不支持索引。
+- **Memory** - 适合快速访问数据，且数据不会被修改，重启丢失也没有关系。
+- **NDB** - 用于 Mysql 集群场景。
 
 ![](./assets/1643807412450-91d601c6-1248-4302-9987-335df6140a29.png)
 
@@ -1509,6 +1499,12 @@ mysqladmin -u用户名 -p旧密码 password 新密码
 4. 刷新权限
     FLUSH PRIVILEGES;
 ```
+
+
+## Resource
+
+- [awesome-mysql](https://github.com/shlomi-noach/awesome-mysql)
+
 ## 常见错误代码
 **服务器**
 
