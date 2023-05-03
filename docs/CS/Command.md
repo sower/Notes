@@ -1,8 +1,8 @@
 ---
 title: Command
 created_at: 2022-02-12T02:31:37.000Z
-updated_at: 2023-01-15T02:46:23.000Z
-word_count: 15068
+updated_at: 2023-04-05T14:26:13.000Z
+word_count: 15271
 ---  
 ## —— [Command ](https://linuxcommandlibrary.com/)——
 
@@ -431,21 +431,46 @@ sed -n -e '1~2=' -e '1~2p' test.txt
 ```
 
 
-**awk**  Alfred Aho，Peter Weinberger 和 Brian Kernighan 创造  <br />  awk [选项] '脚本命令' 文件名  <br />  `awk 'BEGIN{ commands } pattern{ commands } END{ commands }'`
+[awk](https://www.gnu.org/software/gawk/manual/gawk.html)  Alfred Aho，Peter Weinberger 和 Brian Kernighan 创造  <br />  `awk [option] '{[pattern] action}' file`  <br />  `awk 'BEGIN{ commands } pattern{ commands } END{ commands }'`
 
 | 选项 | 含义 |
 | --- | --- |
-| -F fs | 指定以 fs 作为输入行的分隔符，awk 命令默认分隔符为空格或制表符。 |
+| -F fs | 指定以 fs 作为输入行的分隔符，默认为空格或制表符 |
 | -f file | 从脚本文件中读取 awk 脚本指令，以取代直接在命令行中输入指令。 |
 | -v var=val | 在执行处理过程之前，设置一个变量 var，并给其设备初始值为 val。 |
 
-**数据字段变量**
+**变量**
 
-- $0 代表整个文本行；
-- $1 代表文本行中的第 1 个数据字段；
-- $2 代表文本行中的第 2 个数据字段；
-- $n 代表文本行中的第 n 个数据字段。
+- $0	整个文本行；
+- $num	第n个字段，字段间由FS分隔
+- NF	当前行有多少个字段，$(NF-1)代表倒数第二个字段
+- NR	当前处理的是第几行
+- FILENAME：当前文件名
+- FS：字段分隔符，默认是空格和制表符。
+- RS：行分隔符，用于分割每一行，默认是换行符。
+- OFS：输出字段的分隔符，用于打印时分隔字段，默认为空格。
+- ORS：输出记录的分隔符，用于打印时分隔记录，默认为换行符。
+- OFMT：数字输出的格式，默认为％.6g。
 
+
+
+[函数](https://www.gnu.org/software/gawk/manual/html_node/Built_002din.html#Built_002din)
+
+- toupper()：字符转为大写
+- tolower()：字符转为小写
+- length()：返回字符串长度
+- substr()：返回子字符串
+- sin()：正弦
+- cos()：余弦
+- sqrt()：平方根
+- rand()：随机数
+```bash
+# 行匹配语句 awk '' 只能用单引号
+awk 'NR % 2 == 1 || $1 == "bin" {print $1, $(NF-1)}' demo.txt
+
+# if-else
+awk -F ':' '{if ($1 > "m") print toupper($1); else print "---"}' demo.txt
+```
 
 
 **cut	remove sections from each line of files**  <br />  显示每行从开头算起 n1 到 n2 的文字  <br />  `cut  file [option] [n1,n2]`
@@ -592,7 +617,9 @@ tar [必要参数] [选择参数] [文件]
 
 - -A, --catenate, --concatenate   追加 tar 文件至归档
 - -c, --create               创建一个新归档
+- -C, --directory=DIR	切换到指定的目录
 - -d, --diff, --compare      找出归档和文件系统的差异
+- --delete
 - -r, --append               追加文件至归档结尾
 - -t, --list                 列出归档内容
 - -u, --update               仅追加比归档中副本更新的文件
@@ -607,7 +634,6 @@ tar [必要参数] [选择参数] [文件]
 -  -z, --gzip, --gunzip, --ungzip 通过 gzip 过滤归档
 -  --zstd 通过 zstd 过滤归档
 -  -Z, --compress, --uncompress 通过 compress 过滤归档
-
 
 **.tar文件格式**  <br />  解包：tar xvf FileName.tar  <br />  打包：tar cvf FileName.tar DirName  <br />  **.gz文件格式**  <br />  解压1：gunzip FileName.gz  <br />  解压2：gzip -d FileName.gz  <br />  压缩：gzip FileName  <br />  **.tar.gz 和 .tgz**  <br />  解压：tar zxvf FileName.tar.gz  <br />  压缩：tar zcvf FileName.tar.gz DirName  <br />  **.bz2文件格式**  <br />  解压1：bzip2 -d FileName.bz2  <br />  解压2：bunzip2 FileName.bz2  <br />  压缩： bzip2 -z FileName  <br />  **.tar.bz2文件格式**  <br />  解压：tar jxvf FileName.tar.bz2  <br />  压缩：tar jcvf FileName.tar.bz2 DirName  <br />  **.Z文件格式**  <br />  解压：uncompress FileName.Z  <br />  压缩：compress FileName  <br />  **.tar.Z文件格式**  <br />  解压：tar Zxvf FileName.tar.Z  <br />  压缩：tar Zcvf FileName.tar.Z DirName  <br />  **.zip文件格式**  <br />  解压：unzip FileName.zip  <br />  压缩：zip FileName.zip DirName  <br />  **.rar**  <br />  解压：rar x FileName.rar  <br />  压缩：rar a FileName.rar DirName
 

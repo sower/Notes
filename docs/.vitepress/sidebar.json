@@ -186,14 +186,14 @@
             "collapsed": false
           },
           {
-            "text": "Docker",
+            "text": "Kubernetes",
             "level": 4,
-            "link": "/CS/Docker",
+            "link": "/CS/Kubernetes",
             "items": [
               {
-                "text": "Kubernetes",
+                "text": "Docker",
                 "level": 5,
-                "link": "/CS/Kubernetes"
+                "link": "/CS/Docker"
               }
             ],
             "collapsed": false

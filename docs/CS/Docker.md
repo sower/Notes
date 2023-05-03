@@ -1,12 +1,14 @@
 ---
 title: Docker
 created_at: 2022-02-01T05:44:38.000Z
-updated_at: 2023-01-08T12:24:15.000Z
-word_count: 5639
+updated_at: 2023-05-03T12:48:36.000Z
+word_count: 5439
 ---  
 ## —— [Docker](https://www.docker.com/)  ——
 
 一个开源的应用容器引擎，遵从 Apache2.0 协议开源。由 [Go 语言](https://golang.google.cn/) 进行开发实现，基于 Linux 内核的 [cgroup](https://zh.wikipedia.org/wiki/Cgroups)，[namespace](https://en.wikipedia.org/wiki/Linux_namespaces)，以及 [OverlayFS](https://docs.docker.com/storage/storagedriver/overlayfs-driver/) 类的 [Union FS](https://en.wikipedia.org/wiki/Union_mount) 等技术，对进程进行封装隔离，属于 [操作系统层面的虚拟化技术](https://en.wikipedia.org/wiki/Operating-system-level_virtualization)。  <br />  让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。
+
+基本架构：采用了 C/S 架构，包括客户端和服务端。Docker 守护进程 （Daemon）作为服务端接受来自客户端的请求，并处理这些请求（创建、运行、分发容器）
 
 版本
 
@@ -16,15 +18,12 @@ word_count: 5639
 基本概念
 
 - 镜像（Image）：相当于是一个 root 文件系统
-- 容器（Container）：镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。
+- 容器（Container）：利用命名空间来做权限的隔离控制，利用 cgroups 来做资源分配，共用一个内核和某些运行时环境（如一些系统命令和系统库）
 - 仓库（Repository）：镜像控制中心
    - [Docker Hub](https://hub.docker.com/)
    - [阿里云加速器](https://www.aliyun.com/product/acr?source=5176.11533457&userCode=8lx5zmtu)、[DaoCloud 加速器](https://www.daocloud.io/mirror#accelerator-doc)
 
 
-Resource
-
-- [docker_practice](https://github.com/yeasy/docker_practice)
 
 ![image.png](./assets/1644501203821-ab179753-5ac2-4aa0-b9f3-172f0fbe488f.png)
 
@@ -198,7 +197,7 @@ docker image prune
 - -f, --file string             Name of the Dockerfile (Default is 'PATH/Dockerfile')
 - -t, --tag list                Name and optionally a tag in the 'name:tag' format
 
-尾部记得加** .**  <br />  docker history [OPTIONS] IMAGE
+尾部记得加 `.`  <br />  docker history [OPTIONS] IMAGE
 
 - --format string   Pretty-print images using a Go template
 - -H, --human           Print sizes and dates in human readable format (default true)
@@ -252,7 +251,6 @@ docker logout [SERVER]
 
 
 - 挂载主机目录 (Bind mounts)
-
 ```shell
 docker run -d -P \
   --name web \
@@ -260,8 +258,6 @@ docker run -d -P \
   --mount type=bind,source=/src/webapp,target=/usr/share/nginx/html \
   nginx:alpine
 ```
-
-
 
 
 
@@ -297,7 +293,7 @@ docker run -d -P \
 
 
 ### 容器生命周期管理
-docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
+`docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]`
 
 - -d, --detach                         Run container in background and print
 - -i, --interactive                    Keep STDIN open even if not attached
@@ -337,6 +333,7 @@ docker start [OPTIONS] CONTAINER [CONTAINER...]  <br />  docker stop [--time , -
 - --workdir , -w		Working directory inside the container
 
 docker attach [OPTIONS] CONTAINER	进入容器正在执行的终端，不会启动新的进程
+
 ### 容器操作
 docker port CONTAINER [PRIVATE_PORT[/PROTO]]	列出一个容器的端口映射情况  <br />  docker rename CONTAINER NEW_NAME  <br />  docker ps [OPTIONS]		列出容器
 
@@ -363,6 +360,7 @@ docker logs [OPTIONS] CONTAINER	获取docker日志
 - --timestamps , -t		Show timestamps
 - --since		Show logs since timestamp (e.g. 2013-01-02T13:23:37) or relative (e.g. 42m for 42 minutes)
 - --until		Show logs before a timestamp (e.g. 2013-01-02T13:23:37) or relative (e.g. 42m for 42 minutes)
+
 ### 容器文件系统操作
 docker diff CONTAINER	检查一个容器文件系统更改情况  <br />  docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-  <br />  docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
 
@@ -809,6 +807,8 @@ services:
 $ docker-compose --profile frontend --profile debug up
 $ COMPOSE_PROFILES=frontend,debug docker-compose up
 ```
+
+
 ## Docker Machine
 一种可以让您在虚拟主机上安装 Docker 的工具，并可以使用 docker-machine 命令来管理主机。
 ```shell
@@ -926,10 +926,9 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 
 
 
-
-
-
 ## docker buildx
+一个 docker CLI 插件，其扩展了 docker 命令，支持 [Moby BuildKit](https://github.com/moby/buildkit) 提供的功能。提供了与 docker build 相同的用户体验，并增加了许多新功能
+
 | Command | Description |
 | --- | --- |
 | [docker buildx bake](https://docs.docker.com/engine/reference/commandline/buildx_bake/) | Build from a file |
@@ -947,25 +946,27 @@ $ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
 
 
 
-## [kubernetes](https://github.com/kubernetes/kubernetes)
 
-Kubernetes 是 Google 团队发起的开源项目，它的目标是管理跨多个主机的容器，提供基本的部署，维护以及应用伸缩，主要实现语言为 Go 语言。
+## Resource
 
-**基本概念**  <br />  ![image.png](./assets/1644630796866-d619a28c-cffc-4362-97bd-f1dc20a8b440.png)
+- [awesome-docker](https://github.com/veggiemonk/awesome-docker)
+- [awesome-compose](https://github.com/docker/awesome-compose)
 
-- 节点（Node）：一个节点是一个运行 Kubernetes 中的主机。
-- 容器组（Pod）：一个 Pod 对应于由若干容器组成的一个容器组，同个组内的容器共享一个存储卷(volume)。
-- 容器组生命周期（pos-states）：包含所有容器状态集合，包括容器组状态类型，容器组生命周期，事件，重启策略，以及 replication controllers。
-- Replication Controllers：主要负责指定数量的 pod 在同一时间一起运行。
-- 服务（services）：一个 Kubernetes 服务是容器组逻辑的高级抽象，同时也对外提供访问容器组的策略。
-- 卷（volumes）：一个卷就是一个目录，容器对其有访问权限。
-- 标签（labels）：标签是用来连接一组对象的，比如容器组。标签可以被用来组织和选择子对象。
-- 接口权限（accessing_the_api）：端口，IP 地址和代理的防火墙规则。
-- web 界面（ux）：用户可以通过 web 界面操作 Kubernetes。
-- 命令行操作（cli）：kubectl命令。
+- [docker_practice](https://github.com/yeasy/docker_practice)
+- [docker-cheat-sheet](https://github.com/wsargent/docker-cheat-sheet)
 
+- [podman](https://github.com/containers/podman)	一个无守护程序与 docker 命令兼容的下一代 Linux 容器工具
+- [distroless](https://github.com/GoogleContainerTools/distroless)	Language focused docker images, minus the operating system
 
+tools
 
+- [dive](https://github.com/wagoodman/dive)	A tool for exploring each layer in a docker image
+- [ctop](https://github.com/bcicen/ctop)	Top-like interface for container metrics
+- [container-diff](https://github.com/GoogleContainerTools/container-diff)
+- [portainer](https://github.com/portainer/portainer)	容器可视化管理
+- [rancher](https://github.com/rancher/rancher)	Complete container management platform
+
+- [jib](https://github.com/GoogleContainerTools/jib)	Build container images for your Java applications
 
 
 

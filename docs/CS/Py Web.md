@@ -1,8 +1,8 @@
 ---
 title: Py Web
 created_at: 2022-02-01T05:44:43.000Z
-updated_at: 2023-01-15T03:14:36.000Z
-word_count: 10143
+updated_at: 2023-04-05T14:46:40.000Z
+word_count: 10144
 ---  
 
 ## PyMySQL
@@ -1004,30 +1004,33 @@ import requests
 
 
 def log(func):
+
     @wraps(func)
     def wrapper(self, *args, **kwargs):
-        print('running', func.__name__)
+        logger.info('running {}', func.__name__)
 
         try:
             res = func(self, *args, **kwargs)
-            request = res.request
-            print(f'send -> {request.method} {res.url}')
-            print(f'request headers: {request.headers}')
+            response = self.response
+            request = response.request
+            logger.info(f'send -> {request.method} {response.url}')
+            logger.info(f'request headers: {request.headers}')
             if request.body:
-                print(f'request body: {request.body}')
-            print(f'recevie <- {res.status_code}')
-            print(f'response headers: {res.headers}')
+                logger.info(f'request body: {request.body}')
+            logger.info(f'recevie <- {response.status_code}')
+            logger.info(f'response headers: {response.headers}')
         except Exception as exception:
-            print("request error: ", exception)
+            logger.exception("request error")
 
-        if not res.ok:
-            print('request failed: ', self.response.text)
+        if not response.ok:
+            logger.error('request failed: ')
         else:
-            if self.response.headers['Content-Type'].find('json') > 0:
-                print("response result:",
-                      json.dumps(res.json(), indent=2, ensure_ascii=False))
-            else:
-                print('response result:', self.response.text)
+            logger.info('response result: ')
+        if self.response.headers['Content-Type'].find('json') > 0:
+            logger.info(
+                json.dumps(response.json(), indent=2, ensure_ascii=False))
+        else:
+            logger.info(response.text)
         return res
 
     return wrapper

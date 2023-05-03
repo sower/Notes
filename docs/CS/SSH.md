@@ -1,8 +1,8 @@
 ---
 title: SSH
 created_at: 2022-02-01T05:44:39.000Z
-updated_at: 2022-02-11T13:01:55.000Z
-word_count: 2350
+updated_at: 2023-05-03T01:51:34.000Z
+word_count: 2412
 ---  
 
 
@@ -13,7 +13,7 @@ word_count: 2350
 - Telnet（命令行界面远程管理协议）：几乎所有的操作系统都默认支持此协议。数据传送使用明文传输的方式。
 - SSH（Secure Shell，命令行界面远程管理协议）：几乎所有操作系统都默认支持此协议。数据传输会对数据进行加密并压缩，安全快速。
 
-SSH  <br />  **Secure Shell**（安全外壳协议）是一种加密的[网络传输协议](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE)，可在不安全的网络中为网络服务提供安全的传输环境
+**Secure Shell**（安全外壳协议）是一种加密的[网络传输协议](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE)，可在不安全的网络中为网络服务提供安全的传输环境
 
 - 通过在网络中创建安全隧道来实现SSH客户端与服务器之间的连接
 - 以非对称加密实现身份验证
@@ -23,6 +23,8 @@ SSH  <br />  **Secure Shell**（安全外壳协议）是一种加密的[网络�
 - 传输层协议（The Transport Layer Protocol）：传输层协议提供服务器认证，数据机密性，信息完整性等的支持。
 - 用户认证协议（The User Authentication Protocol）：用户认证协议为服务器提供客户端的身份鉴别。
 - 连接协议（The Connection Protocol）：连接协议将加密的信息隧道复用成若干个逻辑通道，提供给更高层的应用协议使用。
+
+
 ## [OpenSSH](http://www.openssh.com/)
 **组件**
 
@@ -50,10 +52,21 @@ SSH  <br />  **Secure Shell**（安全外壳协议）是一种加密的[网络�
 
 **ssh-keygen**	[-q] [-a rounds] [-b bits] [-C comment] [-f output_keyfile] [-m format] [-N new_passphrase] [-O option] [-t dsa | ecdsa | ecdsa-sk | ed25519 | ed25519-sk | rsa] [-w provider] [-Z cipher]  <br />  **ssh-keygen** -R hostname [-f known_hosts_file]    Removes all keys belonging to the specified hostname (with optional port number) from a known_hosts file  <br />  **scp** [-346BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]  <br />       [-l limit] [-o ssh_option] [-P port] [-S program] source ... target  <br />  [-r    ](https://man.openbsd.org/scp#r)Recursively copy entire directories. Note that scp follows symbolic links encountered in the tree traversal.
 
+**sftp**	[-46AaCfNpqrv] [-B buffer_size] [-b batchfile] [-c cipher] [-D sftp_server_command] [-F ssh_config] [-i identity_file] [-J destination] [-l limit] [-o ssh_option] [-P port] [-R num_requests] [-S program] [-s subsystem | sftp_server] [-X sftp_option] destination  <br />  交互命令
+
+- ls [directory]：列出一个远程目录的内容
+- cd directory：从当前目录改到指定目录
+- mkdir directory：创建一个远程目录
+- rmdir path：删除一个远程目录
+- put localfile [remotefile]：本地文件传输到远程主机
+- get remotefile [localfile]：远程文件传输到本地
+
 **ssh-copy-id** [-h|-?|-f|-n] [-i [identity_file]] [-p port] [[-o ] ...] [user@]hostname  <br />  自动将公钥拷贝到远程服务器的~/.ssh/authorized_keys文件(authorized_keys文件的末尾必须是换行符)  <br />  查看公钥的指纹
 ```javascript
 ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key.pub
 ```
+
+
 
 SSH 连接的握手阶段，客户端必须跟服务端约定加密参数集（cipher suite）
 ```javascript
@@ -69,9 +82,20 @@ TLS_RSA_WITH_AES_128_CBC_SHA
 
 
 ## 配置
-每个命令占据一行。  <br />  每行都是配置项和对应的值，配置项的大小写不敏感，与值之间使用空格分隔。  <br />  配置项与值之间有一个等号，等号前后的空格可选。  <br />  #开头的行表示注释，只能放在一行的开头  <br />  [ssh_config](https://man.openbsd.org/ssh_config) — The client configuration file
+每个命令占据一行。  <br />  每行都是配置项和对应的值，配置项的大小写不敏感，与值之间使用空格分隔。  <br />  配置项与值之间有一个等号，等号前后的空格可选。  <br />  #开头的行表示注释  <br />  [ssh_config](https://man.openbsd.org/ssh_config) — The client configuration file
 
-#### 配置命令
+```
+# 对所有主机生效
+Host *
+     Port 2222
+
+Host remoteserver
+     HostName remote.example.com
+     User neo
+     Port 2112
+```
+
+### 配置命令
 
 - AddressFamily inet：使用 IPv4 协议。如果设为inet6，表示只使用 IPv6 协议。
 - BindAddress 192.168.10.235：指定本机的 IP 地址（如果本机有多个 IP 地址）。
@@ -106,6 +130,7 @@ TLS_RSA_WITH_AES_128_CBC_SHA
 - VerifyHostKeyDNS yes：是否通过检查 SSH 服务器的 DNS 记录，确认公钥指纹是否与known_hosts文件保存的一致。
 
 [sshd_config](https://man.openbsd.org/sshd_config) — The daemon configuration file
+
 
 ## 端口转发（Port forwarding）
 又称 SSH 隧道（tunnel）
@@ -151,7 +176,7 @@ RemoteForward local-IP:local-port target-ip:target-port
 ```
 
 
-## 简易 VPN
+### 简易 VPN
 VPN 用来在外网与内网之间建立一条加密通道。内网的服务器不能从外网直接访问，必须通过一个跳板机，如果本机可以访问跳板机，就可以使用 SSH 本地转发，简单实现一个 VPN。
 ```javascript
 ssh -L 2080:corp-server:80 -L 2443:corp-server:443 tunnel-host -N
@@ -171,9 +196,6 @@ ssh-copy-id ldz@192.168.0.1
 ```
 本机 .ssh/config
 ```javascript
-# 别名（Host）：Host 和 HostName 的值可以相同
-# 如 ssh aliyun 等于 ssh -i C:\Users\泷\.ssh\id_rsa_aliyun root@172.20.217.87
-# 每项配置都是参数名 参数值或参数值=参数名的形式，其中参数名不区分大小写，而参数值区分大小写
 Host vm
     User darkiny				# 用户名
     HostName 172.20.217.87			# 主机地址
@@ -197,3 +219,16 @@ Set-Service -Name sshd -StartupType 'Automatic'
 确认防火墙是否是开放（ OpenSSH-Server-In-TCP 是 enabled ）
 Get-NetFirewallRule -Name *ssh*
 ```
+
+
+
+
+
+
+## Resource
+
+- [xxh](https://github.com/xxh/xxh)	Bring your favorite shell wherever you go through the ssh
+
+
+
+

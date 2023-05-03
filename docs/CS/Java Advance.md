@@ -1,8 +1,8 @@
 ---
 title: Java Advance
 created_at: 2022-04-03T08:46:14.000Z
-updated_at: 2023-01-08T11:02:16.000Z
-word_count: 8295
+updated_at: 2023-05-03T09:45:34.000Z
+word_count: 9811
 ---  
 
 ## 并发 Concurrent
@@ -1000,21 +1000,22 @@ JVM 体系结构
 - 本地方法调用 - 调用 C/C++ 实现的本地方法
 
 
-Hotspot 是最流行的 JVM
-
-![](https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javacore/jvm/jvm-hotspot-key-components.png#from=url&id=KI4ZW&originHeight=720&originWidth=960&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+Hotspot 是最流行的 JVM  <br />  ![jvm-hotspot-architecture.png](./assets/1683080254664-42117d05-e1f5-4bf9-a252-940ecad3fe4a.png)
 ### 运行时数据区域
-![](https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javacore/jvm/jvm-memory-runtime-data-area.png#from=url&height=711&id=G6EqC&originHeight=784&originWidth=658&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=&width=597)
+![jvm-memory-runtime-data-area.png](./assets/1683080324293-1abda312-9903-4445-94d5-72e9606dd144.png)
 
 
-程序计数器（Program Counter Register）：一块较小的内存空间，可看做是当前线程所执行的字节码的行号指示器  <br />  Java 虚拟机栈（Java Virtual Machine Stacks）：生命周期与线程相同；为 Java 方法服务  <br />  本地方法栈（Native Method Stack）：与虚拟机栈的作用相似；为 Native 方法服务  <br />  Java 堆（Java Heap） ：存放对象实例
+程序计数器（Program Counter Register）：一块较小的内存空间，可看做是当前线程所执行的字节码的行号指示器  <br />  Java 虚拟机栈（Java Virtual Machine Stacks）：生命周期与线程相同；为 Java 方法服务  <br />  本地方法栈（Native Method Stack）：与虚拟机栈的作用相似；为 Native 方法服务  <br />  Java 堆（Java Heap） ：存放对象实例，垃圾收集器管理的主要区域，即GC 堆
 
 - 新生代（Young Generation）
    - Eden - Eden 和 Survivor 的比例为 8:1
    - From Survivor
    - To Survivor
 - 老年代（Old Generation）
-- 永久代（Permanent Generation）：方法区（Method Area），用于存放已被加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。
+- ~~永久代（Permanent Generation）~~：方法区（Method Area），用于存放已被加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。
+
+1.8 hotspot 移除了永久代用元空间(Metaspace)取而代之
+
    - 运行时常量池（Runtime Constant Pool）：方法区的一部分，Class 文件中除了有类的版本、字段、方法、接口等描述信息，还有一项信息是常量池（Constant Pool Table），用于存放编译器生成的各种字面量和符号引用
 
 | 内存区域 | 内存作用范围 | 异常 |
@@ -1024,9 +1025,27 @@ Hotspot 是最流行的 JVM
 | 本地方法栈 | 线程私有 | StackOverflowError 和 OutOfMemoryError |
 | Java 堆 | 线程共享 | OutOfMemoryError |
 | 方法区 | 线程共享 | OutOfMemoryError |
-| 运行时常量池 | 线程共享 | OutOfMemoryError |
 | 直接内存 | 非运行时数据区 | OutOfMemoryError |
 
+
+
+**回收策略**
+
+- Minor GC：当 Eden 区空间不足时，年轻代对象存活时间很短，因此 Minor GC 会频繁执行，执行的速度一般也会比较快
+- Full GC
+   - 调用 System.gc()
+   - 老年代空间不足
+   - 方法区空间不足
+   - Minor GC 的平均晋升空间大小大于老年代可用空间
+   - 对象大小大于 To 区和老年代的可用内存
+
+**内存分配策略**
+
+- 对象优先在 Eden 分配
+- 大对象直接进入老年代
+- 长期存活的对象进入老年代
+- 动态对象年龄判定
+- 空间分配担保
 
 
 ### 垃圾收集
@@ -1107,22 +1126,167 @@ Hotspot 是最流行的 JVM
 
 
 
-### JDK 监控和故障诊断命令行工具
+### 字节码
+.class 文件是一组以 8 位字节为基础单位的二进制流
 
-- **jps -l**：JVM 进程状态工具，列出系统上的 JVM 进程
-- jcmd：JVM 命令行调试工具，用于向 JVM 进程发送调试命令
-- jstat：JVM 统计监控工具，附加到一个 JVM 进程上收集和记录 JVM 的各种性能指标数据
-   - `jstat -gcutil <pid> 5000 100`：输出 GC 和内存占用汇总信息，每隔 5 秒输出一次，输出 100 次（其中，S0 表示 Survivor0 区占用百分比，S1 表示 Survivor1 区占用百分比，E 表示 Eden 区占用百分比，O 表示老年代占用百分比，M 表示元数据区占用百分比，YGC 表示新生代回收次数，YGCT 表示新生代回收耗时，FGC 表示老年代回收次数，FGCT 表示老年代回收耗时）
-- **jstack**：JVM 栈查看工具，可以打印 JVM 进程的线程栈和锁情况
-- **jinfo**：JVM 信息查看工具，查看 JVM 的各种配置信息
-- **jmap**：JVM 堆内存分析工具，可以打印 VM 进程对象直方图、类加载统计，以及做堆转储操作
-   - `jmap -dump:format=b,file=/tmp/a.hprof <pid>`：生成虚拟机的堆内存转储快照（heapdump 文件）
-   - `jmap -heap <pid>`：显示堆详细信息，包括使用的 GC 算法、堆配置信息和各内存区域内存使用信息
-   - `jmap -histo:live <pid>`：显示堆中对象的统计信息，包括每个 Java 类的对象数量（只计算活动的对象）、内存大小
-- jhat：JVM Heap Dump Browser，用于分析 heapdump 文件，它会建立一个 HTTP/HTML 服务器，让用户可以在浏览器上查看分析结果
+```c
+ClassFile {
+    u4             magic; //Class 文件的标志
+    u2             minor_version;//Class 的小版本号
+    u2             major_version;//Class 的大版本号
+    u2             constant_pool_count;//常量池的数量
+    cp_info        constant_pool[constant_pool_count-1];//常量池
+    u2             access_flags;//Class 的访问标记
+    u2             this_class;//当前类
+    u2             super_class;//父类
+    u2             interfaces_count;//接口
+    u2             interfaces[interfaces_count];//一个类可以实现多个接口
+    u2             fields_count;//Class 文件的字段属性
+    field_info     fields[fields_count];//一个类会可以有多个字段
+    u2             methods_count;//Class 文件的方法数量
+    method_info    methods[methods_count];//一个类可以有个多个方法
+    u2             attributes_count;//此类的属性表中的属性数
+    attribute_info attributes[attributes_count];//属性表集合
+}
+```
+
+魔数（Magic Number）  <br />   Class 文件的头 4 个字节，固定值为 `0xCAFEBABE`，用来判断是否为.class文件
 
 
 
+### 类加载
+类的加载：将类的 .class 文件中的二进制数据读入到内存中，将其放在运行时数据区的方法区内，然后在堆区创建一个java.lang.Class对象，用来封装类在方法区内的数据结构
+
+类的生命周期
+
+![class.png](./assets/1683102539617-059da21e-c307-4000-9486-dee9e4a59675.png)
+
+加载（Loading）	查找字节流，并且据此创建类  <br />  链接（Linking）
+
+- 验证（Verification）	确保 Class 文件的字节流中包含的信息符合当前虚拟机的要求
+- 准备（Preparation）	为 static 变量在方法区分配内存并初始化为默认值，使用的是方法区的内存
+- 解析（Resolution）	将常量池的符号引用替换为直接引用
+
+初始化（Initialization）	开始执行类中的定义的 Java 程序代码，为类的静态变量赋予正确的初始值  <br />  使用（Using）  <br />  卸载（Unloading）
+
+
+- **符号引用（Symbolic References）** - 符号引用以一组符号来描述所引用的目标，符号可以是任何形式的字面量，只要使用时能无歧义地定位到目标即可。
+- **直接引用（Direct Reference）** - 直接引用可以是直接指向目标的指针、相对偏移量或是一个能间接定位到目标的句柄。
+
+
+### ClassLoader
+类加载器，负责将类加载到 JVM
+
+- **Bootstrap ClassLoader**：启动类加载器 ，由 C++ 实现，由 JVM 自己控制，加载 JVM 自身工作所需要的类，即 将 `<JAVA_HOME>\lib`或被 -Xbootclasspath 参数所指定的路径的，并且是虚拟机识别的类库加载到虚拟机内存中
+- **ExtClassLoader**：扩展类加载器，将 `<JAVA_HOME>\lib\ext` 或者被 java.ext.dir 系统变量所指定路径中的所有类库加载到内存中，可以直接使用扩展类加载器
+- **AppClassLoader**：应用程序类加载器，加载用户类路径（即 classpath）上所指定的类库
+
+自定义类加载器
+```java
+public class FileSystemClassLoader extends ClassLoader {
+
+    private String rootDir;
+
+    public FileSystemClassLoader(String rootDir) {
+        this.rootDir = rootDir;
+    }
+
+    protected Class<?> findClass(String name) throws ClassNotFoundException {
+        byte[] classData = getClassData(name);
+        if (classData == null) {
+            throw new ClassNotFoundException();
+        } else {
+            return defineClass(name, classData, 0, classData.length);
+        }
+    }
+
+    private byte[] getClassData(String className) {
+        String path = classNameToPath(className);
+        try {
+            InputStream ins = new FileInputStream(path);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            int bufferSize = 4096;
+            byte[] buffer = new byte[bufferSize];
+            int bytesNumRead;
+            while ((bytesNumRead = ins.read(buffer)) != -1) {
+                baos.write(buffer, 0, bytesNumRead);
+            }
+            return baos.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private String classNameToPath(String className) {
+        return rootDir + File.separatorChar
+                + className.replace('.', File.separatorChar) + ".class";
+    }
+}
+```
+
+
+双亲委派模型（Parents Delegation Model）  <br />  一个类加载器首先将类加载请求传送到父类加载器，只有当父类加载器无法完成类加载请求时才尝试加载
+
+| 参数选项 | ClassLoader 类型 | 说明 |
+| --- | --- | --- |
+| -Xbootclasspath | Bootstrap ClassLoader | 设置 Bootstrap ClassLoader 搜索路径 |
+| -Xbootclasspath/a | Bootstrap ClassLoader | 把路径添加到已存在的 Bootstrap ClassLoader 搜索路径后面 |
+| -Xbootclasspath/p | Bootstrap ClassLoader | 把路径添加到已存在的 Bootstrap ClassLoader 搜索路径前面 |
+| -Djava.ext.dirs | ExtClassLoader | 设置 ExtClassLoader 搜索路径 |
+| -Djava.class.path 或 -cp 或 -classpath | AppClassLoader | 设置 AppClassLoader 搜索路径 |
+
+
+
+### JDK CLI Tools
+
+jps (JVM Process Status）: 查看所有 Java 进程的启动类、传入参数和 Java 虚拟机参数等信息
+
+- -m - 输出 JVM 启动时传递给 main() 的参数
+- -l - 输出主类的全名，如果进程执行的是 jar 包，输出 jar 路径
+- -v - 显示传递给 JVM 的参数
+- -q - 仅输出本地 JVM 进程 ID
+- -V - 仅输出本地 JVM 标识符
+
+
+jcmd：JVM 命令行调试工具，用于向 JVM 进程发送调试命令
+
+jstat（JVM Statistics Monitoring Tool）: 用于收集 HotSpot 虚拟机各方面的运行数据  <br />  `jstat [option] VMID [interval] [count]`
+
+- -class - 监视类装载、卸载数量、总空间以及类装载所耗费的时间
+- -compiler：显示 JIT 编译的相关信息
+- -gc：监视 Java 堆状况，包括 Eden 区、两个 survivor 区、老年代、永久代等区的容量、已用空间、GC 时间合计等信息。
+- -gccapacity：显示各个代的容量以及使用情况；
+- -gcmetacapacity：显示 Metaspace 的大小
+- -gcnew：显示新生代信息
+- -gcnewcapacity：显示新生代大小和使用情况
+- -gcold：显示老年代和永久代的信息
+- -gcoldcapacity：显示老年代的大小
+- -gcutil：显示垃圾回收统计信息
+- -gccause：显示垃圾回收的相关信息，同时显示最后一次或当前正在发生的垃圾回收的诱因
+- -printcompilation：输出 JIT 编译的方法信息
+
+`jstat -gcutil <pid> 5000 100`：输出 GC 和内存占用汇总信息，每隔 5 秒输出一次，输出 100 次（其中，S0 表示 Survivor0 区占用百分比，S1 表示 Survivor1 区占用百分比，E 表示 Eden 区占用百分比，O 表示老年代占用百分比，M 表示元数据区占用百分比，YGC 表示新生代回收次数，YGCT 表示新生代回收耗时，FGC 表示老年代回收次数，FGCT 表示老年代回收耗时）
+
+jstack (Stack Trace for Java) : 生成虚拟机当前时刻的线程快照，即当前虚拟机内每一条线程正在执行的方法堆栈的集合
+
+**jinfo**：JVM 信息查看工具，查看 JVM 的各种配置信息
+
+jmap（Memory Map for Java）：JVM 堆内存分析工具，可以打印 VM 进程对象直方图、类加载统计，以及  <br />  做堆转储操作
+
+- `jmap -dump:format=b,file=/tmp/a.hprof <pid>`：生成虚拟机的堆内存转储快照（heapdump 文件）
+- `jmap -heap <pid>`：显示堆详细信息，包括使用的 GC 算法、堆配置信息和各内存区域内存使用信息
+- `jmap -histo:live <pid>`：显示堆中对象的统计信息，包括每个 Java 类的对象数量（只计算活动的对象）、内存大小
+
+jhat (JVM Heap Dump Browser) : 用于分析 heapdump 文件，它会建立一个 HTTP/HTML 服务器，可以在浏览器上查看分析结果
+
+
+
+GUI Tools
+
+- jvisualvm(All-In-One Java Troubleshooting Tool) ：多合一故障处理工具。支持运行监视、故障处理、性能分析等功能
+- [MAT](https://www.eclipse.org/mat/)（Eclipse Memory Analyzer Tool）能够获取堆的二进制快照
+- [JProfiler](https://www.ej-technologies.com/products/jprofiler/overview.html)：一款性能分析工具
 
 
 

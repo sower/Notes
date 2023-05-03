@@ -1,8 +1,8 @@
 ---
 title: Microsoft
 created_at: 2022-02-01T05:44:33.000Z
-updated_at: 2023-01-08T12:23:12.000Z
-word_count: 2665
+updated_at: 2023-04-05T07:47:04.000Z
+word_count: 2666
 ---  
 ## [Windows Terminal](https://docs.microsoft.com/zh-cn/windows/terminal/)
 
@@ -73,6 +73,7 @@ extensions : `%USERPROFILE%\.vscode\extensions`
 - [vscode-spell-checker](https://github.com/streetsidesoftware/vscode-spell-checker)
 - [vscode-gitlens](https://github.com/gitkraken/vscode-gitlens)
 - file-icons
+- [thunder-client-support](https://github.com/rangav/thunder-client-support)
 
 ### [Shortcuts](https://code.visualstudio.com/docs/getstarted/keybindings)
 **Basic Editing**

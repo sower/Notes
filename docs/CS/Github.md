@@ -1,8 +1,8 @@
 ---
 title: Github
 created_at: 2022-02-20T09:18:58.000Z
-updated_at: 2023-01-08T11:19:22.000Z
-word_count: 1962
+updated_at: 2023-04-08T02:51:35.000Z
+word_count: 2044
 ---  
  
 ## [git-lfs](https://github.com/git-lfs/git-lfs)
@@ -60,6 +60,56 @@ git push [-u] origin master
 - [Developers](https://docs.github.com/en/developers)
 - [REST API](https://docs.github.com/en/rest)
 - [GraphQL API](https://docs.github.com/en/graphql)
+
+```python
+class Gist(ApiGateway):
+    # https://docs.github.com/en/rest/gists/gists
+    def __init__(self, token: str = None):
+        self._token = token
+        super().__init__('https://api.github.com', '/gists')
+
+    def update_headers(self):
+        return self.session.headers.update({
+            'Accept':
+            'application/vnd.github+json',
+            'Authorization':
+            f'Bearer {self._token}',
+            'X-GitHub-Api-Version':
+            '2022-11-28',
+        })
+
+    @log
+    def gists(self):
+        return self._get('')
+
+    @log
+    def public_gists(self):
+        return self._get('/public')
+
+    @log
+    def starred_gists(self):
+        return self._get('/starred')
+
+    @log
+    def gist(self, gist_id):
+        return self._get(f'/{gist_id}')
+
+    @log
+    def update_gist(self, gist_id, data):
+        return self._request('patch', f'/{gist_id}', data=data)
+
+    @log
+    def delete_gist(self, gist_id):
+        return self._delete('/{gist_id}')
+
+    @log
+    def create_gist(self, data):
+        return self._post('', data)
+
+    @log
+    def gist_commits(self, gist_id):
+        return self._get(f'/{gist_id}/commits')
+```
 
 
 [GitHub Flavored Markdown 规范](https://github.github.com/gfm/)
@@ -126,7 +176,7 @@ git push [-u] origin master
 
 ## [GitHub Actions](https://docs.github.com/en/actions)
 
-[awesome-actions](https://github.com/sdras/awesome-actions)
+[awesome-actions](https://github.com/sdras/awesome-actions)  <br />  [act](https://github.com/nektos/act)	Run your GitHub Actions locally
 
 - workflow （工作流程）：持续集成一次运行的过程，就是一个 workflow。
 - job （任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务。

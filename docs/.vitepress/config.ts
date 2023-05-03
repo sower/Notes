@@ -26,6 +26,9 @@ export default async () => defineConfig({
     logo: logoUrl,
     //   头部导航
     nav: nav(),
+    search: {
+      provider: 'local'
+    },
 
     outline: [1, 4],
     outlineTitle: '⚔ TOC',

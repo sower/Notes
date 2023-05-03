@@ -1,8 +1,8 @@
 ---
 title: Unit Test
 created_at: 2023-02-18T05:29:41.000Z
-updated_at: 2023-02-18T07:05:05.000Z
-word_count: 1243
+updated_at: 2023-04-25T14:37:58.000Z
+word_count: 1485
 ---  
 ## [JUnit](https://junit.org/junit5/)
 Fixture
@@ -267,6 +267,7 @@ public void hamcrestDemo() {
 ```
 
 ## [mockito](https://github.com/mockito/mockito)
+底层使用了动态代理（CGLIB），需要被mock的对象，Mockito会生成一个子类继承该类，代理的对象会代替真实的对象进行执行。子类会覆盖父类。
 
 - [mock()](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#mock-java.lang.Class-)/[@Mock](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mock.html): create mock
    - optionally specify how it should behave via [Answer](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/stubbing/Answer.html)/[MockSettings](http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/MockSettings.html)
@@ -324,8 +325,48 @@ public void hamcrestDemo() {
 ```
 
 [PowerMock](https://github.com/powermock/powermock)
+本质是通过修改字节码来实现对静态和final等方法的mock的
+
+```java
+@RunWith(PowerMockRunner.class)
+@PrepareForTest( { Static.class })
+public class YourTestCase {
+	@Test
+    public void testMethodThatCallsStaticMethod() {
+        // mock all the static methods in a class called "Static"
+        PowerMockito.mockStatic(Static.class);
+        // use Mockito to set up your expectation
+        Mockito.when(Static.firstStaticMethod(param)).thenReturn(value);
+        Mockito.when(Static.secondStaticMethod()).thenReturn(123);
+
+        // execute your test
+        classCallStaticMethodObj.execute();
+
+        // Different from Mockito, always use PowerMockito.verifyStatic(Class) first
+        // to start verifying behavior
+        PowerMockito.verifyStatic(Static.class, Mockito.times(2));
+        // IMPORTANT:  Call the static method you want to verify
+        Static.firstStaticMethod(param);
 
 
+        // IMPORTANT: You need to call verifyStatic(Class) per method verification,
+        // so call verifyStatic(Class) again
+        PowerMockito.verifyStatic(Static.class); // default times is once
+        // Again call the static method which is being verified
+        Static.secondStaticMethod();
+
+        // Again, remember to call verifyStatic(Class)
+        PowerMockito.verifyStatic(Static.class, Mockito.never());
+        // And again call the static method.
+        Static.thirdStaticMethod();
+    }
+}
+```
+
+- Whitebox.setInternalState()	set a non-public member of an instance or class.
+- Whitebox.getInternalState()	get a non-public member of an instance or class.
+- Whitebox.invokeMethod()	invoke a non-public method of an instance or class.
+- Whitebox.invokeConstructor()	create an instance of a class with a private constructor.
 
 ## [Spring Test](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/testing.html#integration-testing) 
 

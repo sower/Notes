@@ -1,8 +1,8 @@
 ---
 title: Java Framework
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2023-03-05T15:15:42.000Z
-word_count: 9354
+updated_at: 2023-04-25T14:46:47.000Z
+word_count: 9693
 ---  
 
 ## [Maven](https://maven.apache.org/)
@@ -399,6 +399,8 @@ my-project
 Date round(Date date, int field)：相当于数学中的四舍五入法取整  <br />  Date truncate(Date date, int field)：相当于去余法取整  <br />  Date ceiling(Date date, int field)：相当于向上取整
 
 - [Pair](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/tuple/Pair.html)
+- [Range](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/Range.html)`<T>`
+- [ObjectUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/ObjectUtils.html)
 - [BooleanUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/BooleanUtils.html)
 - [CharUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/CharUtils.html)
 - [NumberUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/math/NumberUtils.html)
@@ -408,9 +410,11 @@ Date round(Date date, int field)：相当于数学中的四舍五入法取整  <
 - [SerializationUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/SerializationUtils.html)
 - [SystemUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/SystemUtils.html)
 - [ThreadUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ThreadUtils.html)
+- [Validate](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/Validate.html)
 - [ClassUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/ClassUtils.html)
 - [FieldUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/reflect/FieldUtils.html)
 - [MethodUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/reflect/MethodUtils.html)
+- [ConstructorUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/reflect/ConstructorUtils.html)
 
 #### commons-io
 [FilenameUtils](https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FilenameUtils.html)
@@ -454,6 +458,7 @@ Date round(Date date, int field)：相当于数学中的四舍五入法取整  <
 - write - these methods write data to a stream
 - copy - these methods copy all the data from one stream to another
 - contentEquals - these methods compare the content of two streams
+- close
 
 
 #### [Compress](http://commons.apache.org/proper/commons-compress/)
@@ -643,8 +648,25 @@ LoadingCache<Object, Object> loadingCache = CacheBuilder.newBuilder()
    - [Unsigned support](https://github.com/google/guava/wiki/PrimitivesExplained#unsigned-support)
 - [Ranges](https://github.com/google/guava/wiki/RangesExplained)
 - [I/O](https://github.com/google/guava/wiki/IOExplained)
-   - [Closing Resources](https://github.com/google/guava/wiki/ClosingResourcesExplained)
+
+| **ByteStreams** | **CharStreams** |
+| --- | --- |
+| byte[] toByteArray(InputStream) | String toString(Readable) |
+| N/A | `List<String>` readLines(Readable) |
+| long copy(InputStream, OutputStream) | long copy(Readable, Appendable) |
+| void readFully(InputStream, byte[]) | N/A |
+| void skipFully(InputStream, long) | void skipFully(Reader, long) |
+| OutputStream nullOutputStream() | Writer nullWriter() |
+
+
 - [Hashing](https://github.com/google/guava/wiki/HashingExplained)
+   - md5()
+   - murmur3_128()
+   - murmur3_32()
+   - sha1()
+   - sha256()
+   - sha512()
+   - goodFastHash(int bits)
    - [BloomFilter](https://github.com/google/guava/wiki/HashingExplained#bloomfilter)
 - [EventBus](https://github.com/google/guava/wiki/EventBusExplained)
 - [Math](https://github.com/google/guava/wiki/MathExplained)
@@ -940,7 +962,7 @@ public class WebLogAspect {
    - @SpringQueryMap
    - 支持Spring MVC的注解
 
-[**okhttp**](https://github.com/square/okhttp)
+### [okhttp](https://github.com/square/okhttp)
 
 - [OkHttpClient](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/)
 - [Cookie](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-cookie/)
@@ -1227,6 +1249,122 @@ public class HttpsUtils {
     myHttp.url("https://httpbin.org/get")
         .queryParams(map).get().sync();
   }
+}
+```
+
+
+### Apache [HttpClient](https://hc.apache.org/httpcomponents-client-5.2.x/index.html)
+
+```java
+public class CloseHttpUtil implements HttpsUtil {
+
+  private static CloseableHttpClient client;
+
+  @Autowired
+  public void setClient(CloseableHttpClient client) {
+    this.client = client;
+  }
+
+  public Map<String, String> queryParams;
+  private String url;
+
+  private Map<String, String> headers;
+  private Object body;
+
+
+  @SneakyThrows
+  public URI requestUrl(String url, Map<String, String> queryParams) {
+    URIBuilder uriBuilder = new URIBuilder(url);
+    if (ObjectUtils.isNotEmpty(queryParams)) {
+      queryParams.forEach((key, value) -> {
+        if (value != null) {
+          uriBuilder.addParameter(key, value);
+        }
+      });
+    }
+    return uriBuilder.build();
+  }
+
+  // Create a custom response handler
+  final HttpClientResponseHandler<String> responseHandler = response -> {
+    final int status = response.getCode();
+    log.info("<=== Received response code is {} , response headers: {}", status,
+        response.getHeaders());
+    HttpEntity entity = response.getEntity();
+    String responseEntity = entity != null ? EntityUtils.toString(entity) : null;
+    log.info("response body:{}", responseEntity);
+    return responseEntity;
+  };
+
+  @Override
+  @SneakyThrows
+  public String executeRequest(String method) {
+    URI requestUrl = requestUrl(url, queryParams);
+    log.info("===> Sending {} request: {}", method, requestUrl);
+    log.info("request headers: {}", headers);
+    HttpUriRequestBase request = new HttpUriRequestBase(method, requestUrl);
+
+    if (ObjectUtils.isNotEmpty(headers)) {
+      headers.forEach(request::addHeader);
+    }
+
+    if (body != null) {
+      log.info("request body: {}", body);
+      request.setEntity(new StringEntity(JSON.toJSONString(body), ContentType.APPLICATION_JSON));
+    }
+
+    return client.execute(request, responseHandler);
+  }
+
+}
+
+
+@Bean
+public CloseableHttpClient closeableHttpClient(HttpsClientConfig config) {
+  //  创建请求配置信息
+  RequestConfig requestConfig = RequestConfig.custom()
+    // 设置连接超时时间
+    .setConnectionRequestTimeout(Timeout.ofSeconds(config.connectionTimeout))
+    // 设置响应超时时间
+    .setResponseTimeout(config.readTimeout, TimeUnit.SECONDS)
+    // 设置从连接池获取链接的超时时间
+    .setConnectionRequestTimeout(config.callTimeout, TimeUnit.SECONDS)
+    .setConnectionKeepAlive(TimeValue.ofSeconds(config.keepAliveTimeout))
+    .build();
+
+  ConnectionConfig connConfig = ConnectionConfig.custom()
+    .setConnectTimeout(config.connectionTimeout, TimeUnit.SECONDS)
+    .setSocketTimeout(config.connectionTimeout, TimeUnit.SECONDS)
+    .build();
+
+  BasicHttpClientConnectionManager cm = connectionManager();
+  cm.setConnectionConfig(connConfig);
+
+  return HttpClients.custom()
+    .setDefaultHeaders(Collections.emptyList())
+    .setDefaultRequestConfig(requestConfig)
+    .setConnectionManager(cm)
+    .build();
+}
+
+/**
+* HC SSL connectionManager
+*/
+@SneakyThrows
+public BasicHttpClientConnectionManager connectionManager() {
+  TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
+  SSLContext sslContext = SSLContexts.custom()
+    .loadTrustMaterial(null, acceptingTrustStrategy)
+    .build();
+  SSLConnectionSocketFactory sslsf =
+    new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
+  Registry<ConnectionSocketFactory> socketFactoryRegistry =
+    RegistryBuilder.<ConnectionSocketFactory>create()
+        .register("https", sslsf)
+        .register("http", new PlainConnectionSocketFactory())
+        .build();
+
+  return new BasicHttpClientConnectionManager(socketFactoryRegistry);
 }
 ```
 
