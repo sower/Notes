@@ -1,8 +1,8 @@
 ---
 title: Redis
 created_at: 2022-02-01T05:44:46.000Z
-updated_at: 2023-03-16T14:36:25.000Z
-word_count: 5209
+updated_at: 2023-07-02T08:32:51.000Z
+word_count: 5459
 ---  
 ## —— [Redis](https://github.com/redis/redis) ——
 Remote Dictionary Server（远程字典服务器）
@@ -233,7 +233,7 @@ Remote Dictionary Server（远程字典服务器）
 
 ### 高级数据类型
 
-**BitMap**
+**BitMap**  <br />  一串连续的二进制数组（0和1），可以通过偏移量（offset）定位元素
 
 - [SETBIT ](http://redisdoc.com/bitmap/setbit.html)- 对 key 所储存的字符串值，设置或清除指定偏移量上的位(bit)。
 - [GETBIT ](http://redisdoc.com/bitmap/getbit.html)- 对 key 所储存的字符串值，获取指定偏移量上的位(bit)。
@@ -242,7 +242,7 @@ Remote Dictionary Server（远程字典服务器）
 - [BITOP ](http://redisdoc.com/bitmap/bitop.html)
 - [BITFIELD](http://redisdoc.com/bitmap/bitfield.html)
 
-**HyperLogLog**  <br />  用于计算唯一事物的概率数据结构
+**HyperLogLog**  <br />  统计一个集合中不重复的元素个数，基于概率完成的，标准误算率是 0.81%
 
 - [PFADD ](http://redisdoc.com/hyperloglog/pfadd.html)- 将任意数量的元素添加到指定的 HyperLogLog 里
 - [PFCOUNT ](http://redisdoc.com/hyperloglog/pfcount.html)- 返回 HyperLogLog 包含的唯一元素的近似数量。
@@ -264,6 +264,17 @@ Remote Dictionary Server（远程字典服务器）
 - [GEORADIUS ](http://redisdoc.com/geo/georadius.html)
 - [GEORADIUSBYMEMBER](http://redisdoc.com/geo/georadiusbymember.html)
 
+**Stream**  <br />  为消息队列设计的数据类型  <br />  支持消息的持久化、支持自动生成全局唯一 ID、支持 ack 确认消息的模式、支持消费组模式等，让消息队列更加的稳定和可靠
+
+- XADD：插入消息，保证有序，可以自动生成全局唯一 ID；
+- XLEN ：查询消息长度；
+- XREAD：用于读取消息，可以按 ID 读取数据；
+- XDEL ： 根据消息 ID 删除消息；
+- DEL ：删除整个 Stream；
+- XRANGE ：读取区间消息
+- XREADGROUP：按消费组形式读取消息；
+- XPENDING ：查询每个消费组内所有消费者「已读取、但尚未确认」的消息；
+- XACK ：向消息队列确认消息处理已完成
 
 ### 发布订阅
 | 命令 | 说明 |
@@ -392,7 +403,6 @@ info [section]：查询 Redis 相关信息
 
 ## Resource
 
-- [http://redis.cn](http://redis.cn/)
 - [Redis 命令参考](http://redisdoc.com/)
 - [awesome-redis](https://github.com/JamzyWang/awesome-redis)
 
@@ -401,6 +411,8 @@ Java Redis Client
 - [jedis](https://github.com/xetorthio/jedis) - 最流行的 Redis Java 客户端
 - [redisson ](https://github.com/redisson/redisson)- 额外提供了很多的分布式服务特性，如：分布式锁、分布式 Java 常用对象
 - [lettuce ](https://github.com/lettuce-io/lettuce-core)- Spring Boot 2.0 默认 Redis 客户端
+
+
 
 
 ## —— MongoDB ——

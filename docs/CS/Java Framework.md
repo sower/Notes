@@ -1,8 +1,8 @@
 ---
 title: Java Framework
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2023-04-25T14:46:47.000Z
-word_count: 9693
+updated_at: 2023-10-05T08:57:12.000Z
+word_count: 10450
 ---  
 
 ## [Maven](https://maven.apache.org/)
@@ -329,11 +329,14 @@ my-project
 - `@AllArgsConstructor` 注解在类，生成包含类中所有字段的构造方法。
 - `@Data` 注解在类，生成setter/getter、equals、canEqual、hashCode、toString方法，如为final属性，则不会为该属性生成setter方法。
 - [@Builder](https://projectlombok.org/features/Builder)
+- [@Accessors](https://projectlombok.org/features/experimental/Accessors)	fluent API for getters and setters
 - [@NonNull](https://projectlombok.org/features/NonNull)
 - [@Cleanup](https://projectlombok.org/features/Cleanup)	Automatic resource management: Call your close() methods safely with no hassle.
 - [@Synchronized](https://projectlombok.org/features/Synchronized)
 - [@SneakyThrows](https://projectlombok.org/features/SneakyThrows)
 - `@Slf4j` 注解在类，生成log变量，严格意义来说是常量
+- [@With](https://projectlombok.org/features/With)	Immutable 'setters' - methods that create a clone but with one changed field
+
 
 
 
@@ -416,7 +419,40 @@ Date round(Date date, int field)：相当于数学中的四舍五入法取整  <
 - [MethodUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/reflect/MethodUtils.html)
 - [ConstructorUtils](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/reflect/ConstructorUtils.html)
 
-#### commons-io
+
+#### [Collections](http://commons.apache.org/proper/commons-collections/)
+数据结构
+
+| [Bag](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/Bag.html) | Defines a collection that counts the number of times an object appears in the collection. |
+| --- | --- |
+| [BidiMap](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/BidiMap.html) | 双向map |
+| [BoundedCollection](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/BoundedCollection.html) | Defines a collection that is bounded in size. |
+| [BoundedMap](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/BoundedMap.html) | Defines a map that is bounded in size. |
+| [KeyValue](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/KeyValue.html) | Defines a simple key value pair. |
+| [ListValuedMap](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/ListValuedMap.html) | Defines a map that holds a list of values against each key. |
+| [MultiSet](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/MultiSet.html) | Defines a collection that counts the number of times an object appears in the collection. |
+| [MultiValuedMap](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/MultiValuedMap.html) | Defines a map that holds a collection of values against each key. |
+| [OrderedBidiMap](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/OrderedBidiMap.html) | Defines a map that allows bidirectional lookup between key and values and retains and provides access to an ordering. |
+| [OrderedMap](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/OrderedMap.html) | Defines a map that maintains order and allows both forward and backward iteration through that order. |
+| [SetValuedMap](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/SetValuedMap.html) | Defines a map that holds a set of values against each key. |
+| [SortedBag](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/SortedBag.html) | Defines a type of Bag that maintains a sorted order among its unique representative members. |
+| [SortedBidiMap](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/SortedBidiMap.html) | Defines a map that allows bidirectional lookup between key and values and retains both keys and values in sorted order. |
+| [Transformer](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/Transformer.html) | Defines a functor interface implemented by classes that transform one object into another. |
+| [Trie](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/Trie.html) | Defines the interface for a prefix tree, an ordered tree data structure. |
+
+
+工具类
+
+- [BagUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/BagUtils.html)
+- [CollectionUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/CollectionUtils.html)
+- [ListUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/ListUtils.html)
+- [MapUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/MapUtils.html)
+- [MultiMapUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/MultiMapUtils.html)
+- [QueueUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/QueueUtils.html)
+- [SetUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/SetUtils.html)
+- [TrieUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/TrieUtils.html)
+
+#### [IO](http://commons.apache.org/proper/commons-io/)
 [FilenameUtils](https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FilenameUtils.html)
 
 - concat(String basePath, String fullFilenameToAdd)  合并目录和文件名为文件全路径
@@ -956,11 +992,6 @@ public class WebLogAspect {
 
 - [Feign](https://github.com/OpenFeign/feign) - HTTP client binder inspired by Retrofit, JAXRS-2.0, and WebSocket.
 - [Retrofit](https://square.github.io/retrofit/) - Typesafe REST client
-- [spring-cloud-openfeign](https://github.com/spring-cloud/spring-cloud-openfeign)
-   - @EnableFeignClients
-   - @FeignClient
-   - @SpringQueryMap
-   - 支持Spring MVC的注解
 
 ### [okhttp](https://github.com/square/okhttp)
 
@@ -1595,7 +1626,46 @@ public interface SourceMapper {
 - spring Spring 的自动注入方式
 - jsr330	用 `@javax.inject.Named` 和 `@Singleton` 注解，通过 `@Inject` 来获取
 
-`@Mapping`	配置字段映射  <br />  `@Mappings`	聚合配置多个Mapping  <br />  `@BeanMapping`  <br />  `@IterableMapping`  <br />  `@MappingTarget`  <br />  `@InheritConfiguration`  <br />  `@InheritInverseConfiguration`  <br />  `@MapperConfig`	共享配置  <br />  `@BeforeMapping`  <br />  `@AfterMapping`
+| [AfterMapping](https://mapstruct.org/documentation/stable/api/org/mapstruct/AfterMapping.html) | Marks a method to be invoked at the end of a generated mapping method, right before the last return statement of the mapping method. |
+| --- | --- |
+| [BeanMapping](https://mapstruct.org/documentation/stable/api/org/mapstruct/BeanMapping.html) | Configures the mapping between two bean types. |
+| [BeforeMapping](https://mapstruct.org/documentation/stable/api/org/mapstruct/BeforeMapping.html) | Marks a method to be invoked at the beginning of a generated mapping method. |
+| [Builder](https://mapstruct.org/documentation/stable/api/org/mapstruct/Builder.html) | Configuration of builders |
+| [Condition](https://mapstruct.org/documentation/stable/api/org/mapstruct/Condition.html) | This annotation marks a method as a _presence check method_ to check check for presence in beans. |
+| [Context](https://mapstruct.org/documentation/stable/api/org/mapstruct/Context.html) | Marks a parameter of a method to be treated as _mapping context_. |
+| [DecoratedWith](https://mapstruct.org/documentation/stable/api/org/mapstruct/DecoratedWith.html) | Specifies a decorator to be applied to a generated mapper, which e.g. can be used to amend mappings performed by generated mapping methods. |
+| [EnumMapping](https://mapstruct.org/documentation/stable/api/org/mapstruct/EnumMapping.html) | Configured the mapping between two value types. |
+| [InheritConfiguration](https://mapstruct.org/documentation/stable/api/org/mapstruct/InheritConfiguration.html) | Advises the code generator to apply the configuration (as given via [Mapping](https://mapstruct.org/documentation/stable/api/org/mapstruct/Mapping.html), [IterableMapping](https://mapstruct.org/documentation/stable/api/org/mapstruct/IterableMapping.html) etc.) |
+| [InheritInverseConfiguration](https://mapstruct.org/documentation/stable/api/org/mapstruct/InheritInverseConfiguration.html) | Advises the code generator to apply all the [Mapping](https://mapstruct.org/documentation/stable/api/org/mapstruct/Mapping.html)s from an inverse mapping method to the annotated method as well. |
+| [IterableMapping](https://mapstruct.org/documentation/stable/api/org/mapstruct/IterableMapping.html) | Configures the mapping between two iterable like types |
+| [MapMapping](https://mapstruct.org/documentation/stable/api/org/mapstruct/MapMapping.html) | Configures the mapping between two map types |
+| [Mapper](https://mapstruct.org/documentation/stable/api/org/mapstruct/Mapper.html) | Marks an interface or abstract class as a mapper and activates the generation of a implementation of that type via MapStruct. |
+| [MapperConfig](https://mapstruct.org/documentation/stable/api/org/mapstruct/MapperConfig.html) | Marks a class or interface as configuration source for generated mappers. |
+| [Mapping](https://mapstruct.org/documentation/stable/api/org/mapstruct/Mapping.html) | Configures the mapping of one bean attribute or enum constant. |
+| [Mappings](https://mapstruct.org/documentation/stable/api/org/mapstruct/Mappings.html) | Configures the mappings of several bean attributes. |
+| [MappingTarget](https://mapstruct.org/documentation/stable/api/org/mapstruct/MappingTarget.html) | Declares a parameter of a mapping method to be the target of the mapping. |
+| [Named](https://mapstruct.org/documentation/stable/api/org/mapstruct/Named.html) | Marks mapping methods with the given qualifier name. |
+| [ObjectFactory](https://mapstruct.org/documentation/stable/api/org/mapstruct/ObjectFactory.html) | This annotation marks a method as a _factory method_ to create beans. |
+| [Qualifier](https://mapstruct.org/documentation/stable/api/org/mapstruct/Qualifier.html) | Declares an annotation type to be a qualifier. |
+| [SubclassMapping](https://mapstruct.org/documentation/stable/api/org/mapstruct/SubclassMapping.html) | Configures the mapping to handle hierarchy of the source type. |
+| [SubclassMappings](https://mapstruct.org/documentation/stable/api/org/mapstruct/SubclassMappings.html) | Configures the SubclassMappings of several subclasses. |
+| [TargetType](https://mapstruct.org/documentation/stable/api/org/mapstruct/TargetType.html) | Declares a parameter of a custom mapping method to be populated with the target type of the mapping. |
+| [ValueMapping](https://mapstruct.org/documentation/stable/api/org/mapstruct/ValueMapping.html) | Configures the mapping of source constant value to target constant value. |
+| [ValueMappings](https://mapstruct.org/documentation/stable/api/org/mapstruct/ValueMappings.html) | Constructs a set of value (constant) mappings. |
+
+
+映射策略
+
+| [CollectionMappingStrategy](https://mapstruct.org/documentation/stable/api/org/mapstruct/CollectionMappingStrategy.html) | Strategy for propagating the value of collection-typed properties from source to target. |
+| --- | --- |
+| [InjectionStrategy](https://mapstruct.org/documentation/stable/api/org/mapstruct/InjectionStrategy.html) | Strategy for handling injection. |
+| [MappingInheritanceStrategy](https://mapstruct.org/documentation/stable/api/org/mapstruct/MappingInheritanceStrategy.html) | Strategy for inheriting configurations given for methods of prototype mapping methods (declared on mapper config classes) to actual mapping methods declared on mappers referring to such config class via Mapper.config(). |
+| [NullValueCheckStrategy](https://mapstruct.org/documentation/stable/api/org/mapstruct/NullValueCheckStrategy.html) | Strategy for dealing with null source values. |
+| [NullValueMappingStrategy](https://mapstruct.org/documentation/stable/api/org/mapstruct/NullValueMappingStrategy.html) | Strategy for dealing with null values passed to mapping methods. |
+| [NullValuePropertyMappingStrategy](https://mapstruct.org/documentation/stable/api/org/mapstruct/NullValuePropertyMappingStrategy.html) | Strategy for dealing with null or not present properties in the source bean. |
+| [ReportingPolicy](https://mapstruct.org/documentation/stable/api/org/mapstruct/ReportingPolicy.html) | Policy for reporting issues occurring during the generation of a mapper implementation. |
+| [SubclassExhaustiveStrategy](https://mapstruct.org/documentation/stable/api/org/mapstruct/SubclassExhaustiveStrategy.html) | Strategy for dealing with subclassMapping annotated methods. |
+
 
 ```xml
 <!-- Maven 编译插件，提供给 MapStruct 使用 -->
@@ -1630,6 +1700,54 @@ public interface SourceMapper {
 </plugin>
 ```
 
+
+## Diff
+### [javers](https://github.com/javers/javers)
+
+**注解**  <br />  类级别
+
+- @Entity
+- @ValueObject
+- @Value
+- @DiffIgnore
+- @ShallowReference
+- @IgnoreDeclaredProperties
+- @TypeName
+
+属性
+
+- @Id
+- @DiffIgnore
+- @DiffInclude
+- @ShallowReference
+- @PropertyName
+
+
+### [Java Diff Utils](https://java-diff-utils.github.io/java-diff-utils/)
+
+- DiffUtils: to calculate patches and deltas
+- UnifiedDiffUtils: to process UnifiedDiff files (import / create)
+- text/DiffRowGenerator: to provide a difference set in a readable form
+- unifieddiff/: contains the new implementation of UnifiedDiff parser tools
+   - UnifiedDiffReader.parseUnifiedDiff
+
+```java
+DiffRowGenerator generator = DiffRowGenerator.create()
+                .showInlineDiffs(true)
+                .inlineDiffByWord(true)
+                .oldTag(f -> "~")
+                .newTag(f -> "**")
+                .build();
+List<DiffRow> rows = generator.generateDiffRows(
+                Arrays.asList("This is a test senctence.", "This is the second line.", "And here is the finish."),
+                Arrays.asList("This is a test for diffutils.", "This is the second line."));
+        
+System.out.println("|original|new|");
+System.out.println("|--------|---|");
+for (DiffRow row : rows) {
+    System.out.println("|" + row.getOldLine() + "|" + row.getNewLine() + "|");
+}
+```
 
 
 ## [Tomcat](https://tomcat.apache.org/) 
@@ -1985,6 +2103,9 @@ Google style  <br />  [intellij-java-google-style.xml](https://github.com/google
 - CamelCase	Shift + Alt + U
 - GsonFormat	JSON转类对象
 - SequenceDiagram	调用时序图
+
+- JPA
+- Mapstruct
 
 - Docer Savior	批量导出接口信息+文档信息到Postman或Markdown
 - Doc View		单个接口文档生成

@@ -2,27 +2,15 @@
 /* https: //github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css */
 
 :root {
-    --vp-c-brand: #646cff;
-    --vp-c-brand-light: #747bff;
-    --vp-c-green-dark: #2731f7;
-    --vp-c-green-darker: #1622fb;
-    /* --vp-c-brand-dark: #646cff;
-    --vp-c-brand-darker: #747bff; */
+    --vp-c-brand-1: #646cff;
+    --vp-c-brand-2: #747bff;
+    /* --vp-c-brand-3: #646cff; */
 
-    --vp-c-hover: #212121;
-    --vp-c-bg: #fff;
 }
 
 .dark {
     --vp-c-bg: black;
-    --vp-c-text: white;
-    --vp-c-hover: #ffffff;
 }
-
-/* #app {
-    min-height: 100vh;
-    position: relative;
-} */
 
 .theme {
     background-color: var(--vp-c-bg);

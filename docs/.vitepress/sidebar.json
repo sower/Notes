@@ -49,34 +49,6 @@
         "collapsed": false
       },
       {
-        "text": "Python",
-        "level": 3,
-        "link": "/CS/Python",
-        "items": [
-          {
-            "text": "Pythonic",
-            "level": 4,
-            "link": "/CS/Pythonic"
-          },
-          {
-            "text": "Python Lib",
-            "level": 4,
-            "link": "/CS/Python Lib"
-          },
-          {
-            "text": "PyPI",
-            "level": 4,
-            "link": "/CS/PyPI"
-          },
-          {
-            "text": "Py Web",
-            "level": 4,
-            "link": "/CS/Py Web"
-          }
-        ],
-        "collapsed": false
-      },
-      {
         "text": "Java",
         "level": 3,
         "link": "/CS/Java",
@@ -95,6 +67,11 @@
             "text": "Spring",
             "level": 4,
             "link": "/CS/Spring"
+          },
+          {
+            "text": "Spring Boot Starter",
+            "level": 4,
+            "link": "/CS/Spring Boot Starter"
           },
           {
             "text": "ORM",
@@ -125,6 +102,34 @@
             "text": "Big Data",
             "level": 4,
             "link": "/CS/Big Data"
+          }
+        ],
+        "collapsed": false
+      },
+      {
+        "text": "Python",
+        "level": 3,
+        "link": "/CS/Python",
+        "items": [
+          {
+            "text": "Pythonic",
+            "level": 4,
+            "link": "/CS/Pythonic"
+          },
+          {
+            "text": "Python Lib",
+            "level": 4,
+            "link": "/CS/Python Lib"
+          },
+          {
+            "text": "PyPI",
+            "level": 4,
+            "link": "/CS/PyPI"
+          },
+          {
+            "text": "Py Web",
+            "level": 4,
+            "link": "/CS/Py Web"
           }
         ],
         "collapsed": false

@@ -1,8 +1,8 @@
 ---
 title: MySQL
 created_at: 2022-02-01T05:44:45.000Z
-updated_at: 2023-03-19T02:47:29.000Z
-word_count: 13843
+updated_at: 2023-10-05T07:38:36.000Z
+word_count: 14455
 ---  
 ## ——MySQL——
 [MySQL](https://dev.mysql.com/)是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，属于 Oracle 旗下产品。
@@ -292,11 +292,20 @@ select * from fib;
 ### INDEX
 一种特殊的数据库结构，由数据表中的一列或多列组合而成，用来快速查询数据表中有某一特定值的记录。
 
-- 普通索引（CREATE INDEX）
-- 唯一索引，索引列的值必须唯一（CREATE UNIQUE INDEX）
-- 主键索引（PRIMARY KEY），一个表只能有一个
-- 全文索引（FULLTEXT INDEX），用来查找文本中的关键字
-- 组合索引：多个字段上创建的索引
+- **聚簇索引**（clustered）：叶子节点存的是整行数据。InnoDB 的聚簇索引实际是在同一个结构中保存了 B 树的索引和数据行。
+   - **主键索引（PRIMARY KEY）**：不允许有空值，一个表只能有一个
+- **非聚簇索引（二级索引）**：叶子节点内容是主键的值。可以有多个，小于 249 个
+   - **唯一索引（UNIQUE INDEX）**：索引列的值必须唯一，允许有空值
+   - **组合索引**：多个字段上创建的索引，遵循**最左前缀匹配**
+   - **前缀索引**：对字符类型字段的前几个字符建立的索引	`INDEX(column_name(length))`
+   - **全文索引（FULLTEXT INDEX）**：用来查找文本中的关键字，配合 `match against` 操作使用
+   - 普通索引（CREATE INDEX）
+
+> 聚簇表示数据行和相邻的键值紧凑地存储在一起，因为数据紧凑，所以访问快。因为无法同时把数据行存放在两个不同的地方，所以一个表只能有一个聚簇索引。
+
+
+回表：非聚簇索引查询，需要先在非聚簇索引搜索，得到主键，再到聚簇索引（主键）树搜索一次
+
 ```sql
 CREATE [UNIQUE] INDEX <index_name>
 ON <table_name (column_name [<长度>] [ ASC | DESC] )>  [invisible]   --主键索引必须可见
@@ -315,7 +324,22 @@ CREATE TABLE <> (c1,INT,c2 INT,INDEX idx(c1 ASC,c2 DESC))
 --函数索引
 CREATE INDEX fun_idx ON table_name( (fun_name(column_name)) );
 ```
-隐藏索引不会被优化器使用，但仍然需要进行维护。  <br />  优化器默认情况是不可见隐藏索引的，但是可以通过配置开关来使之可见
+
+
+优点：
+
+- 减少了服务器需要扫描的数据量，从而加快检索速度。
+- 支持行级锁的数据库，如 InnoDB 会在访问行的时候加锁。使用索引可以减少访问的行数，从而减少锁的竞争，提高并发。
+- 可以帮助服务器避免排序和临时表。
+- 可以将随机 I/O 变为顺序 I/O
+- 唯一索引可以确保每一行数据的唯一性，通过使用索引，可以在查询的过程中使用优化隐藏器，提高系统的性能。
+
+缺点：
+
+- 创建和维护索引要耗费时间，这会随着数据量的增加而增加。
+- 需要占用额外的物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间
+- 写操作（INSERT/UPDATE/DELETE）时很可能需要更新索引，导致数据库的写操作性能降低
+
 
 ### EXPLAIN
 模拟优化器执行SQL查询语句，分析你的查询语句或是表结构的性能瓶颈。
@@ -570,12 +594,8 @@ SET [=SESSION | GLOBAL] TRANSACTION ISOLATION LEVEL
 {READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SERIALIZABLE};
 ```
 
-## 锁表
+## 锁
 用于防止其它客户端进行不正当地读取和写入
-
-- 行锁（Record Lock）：对索引项加锁，若没有索引则使用表锁
-- 间隙锁（Gap Lock）：对索引项之间的间隙加锁
-- Next-Key Lock：行锁与间隙锁组合，对记录及其前面的间隙加锁。
 ```sql
 -- 锁定
     LOCK TABLES tbl_name [AS alias]
@@ -583,6 +603,21 @@ SET [=SESSION | GLOBAL] TRANSACTION ISOLATION LEVEL
     UNLOCK TABLES
 ```
 
+
+独享锁（Exclusive）：又称写锁。使用方式：SELECT ... FOR UPDATE;  <br />  共享锁（Shared）：又称读锁。使用方式：SELECT ... LOCK IN SHARE MODE;
+
+加锁的范围划分
+
+- **全局锁**：主要应用于做全库逻辑备份
+- **表级锁**
+   - 表锁：限制读写
+   - 元数据锁（MDL）：对表执行 CRUD 操作时自动加锁，防止其他线程对这个表结构做了变更，事务提交后释放
+   - 意向锁：方便快速判断表里是否有记录被加锁
+   - AUTO-INC 锁：过对主键字段声明 AUTO_INCREMENT 属性实现
+- **行级锁**
+   - 记录锁（Record Lock）：对索引项加锁，若没有索引则使用表锁
+   - 间隙锁（Gap Lock）：对索引项之间的间隙加锁
+   - Next-Key Lock：行锁与间隙锁组合，对记录及其前面的间隙加锁。
 
 ## 触发器（TRIGGER）
 触发程序是与表有关的命名数据库对象，当该表出现特定事件时，将激活该对象  <br />  监听：记录的增加、修改、删除。

@@ -1,8 +1,8 @@
 ---
 title: Bash
 created_at: 2022-02-01T05:44:38.000Z
-updated_at: 2023-01-08T11:15:17.000Z
-word_count: 6199
+updated_at: 2023-06-24T02:12:46.000Z
+word_count: 6267
 ---  
 ## —— Bash ——
 Shell 是一个用 C 语言编写的程序，提供一个与用户对话的环境。这个环境只有一个命令提示符，让用户从键盘输入命令，所以又称为命令行环境（command line interface，CLI）
@@ -174,7 +174,23 @@ bar
 variable=`commands`
 variable=$(commands)
 ```
-set	设置变量  <br />  unset [option] [名称 ...]	删除变量
+
+**source**  <br />  在当前环境读取并执行脚本的命令，用于刷新环境变量，导入函数  <br />  被包含的文件不需要可执行权限
+```shell
+. filename
+或
+source filename
+```
+
+
+set	设置变量及运行参数
+
+- -u	遇到不存在的变量就报错，并停止执行
+- -x	打印执行的命令
+- -e	执行错误，退出执行
+- -o pipefail	管道命令执行错误，退出执行
+
+unset [option] [名称 ...]	删除变量
 
 - -f	函数
 - -v	变量
@@ -490,14 +506,6 @@ $ command > /dev/null
 ```
 
 
-**文件包含**  <br />  被包含的文件不需要可执行权限
-```shell
-. filename   # 点号(.)和文件名中间有一空格
-或
-source filename
-```
-  <br />  
-
 
 ## 流程控制
 **条件**
@@ -560,6 +568,7 @@ done
 - continue [n=1]
 
 n为循环得层数
+
 ## 函数
 函数体内直接声明的变量，属于全局变量
 ```shell

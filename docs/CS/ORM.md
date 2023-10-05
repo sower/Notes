@@ -1,11 +1,185 @@
 ---
 title: ORM
 created_at: 2023-03-05T10:49:15.000Z
-updated_at: 2023-03-05T11:21:36.000Z
-word_count: 3732
+updated_at: 2023-10-05T07:50:51.000Z
+word_count: 4324
 ---  
 ## —— ORM ——
 ### [Hibernate](http://hibernate.org/orm/)
+
+#### 注解
+
+##### 基础类型
+
+- @Column(name, nullable, length, insertable, updatable)：定义属性和表的映射关系
+- @Comment：列注释
+- @Type(type, parameters)
+- @Enumerated		ORDINAL、STRING
+- @Lob	Large Objects
+- @Nationalized
+- @Temporal(TemporalType.TIMESTAMP)
+- @Convert(converter)：指定使用的转换器（自定义转换器实现 `AttributeConverter<X,Y>`）
+- @Generated( value = GenerationTime.ALWAYS )
+- @ColumnTransformer(read, write)
+- @Formula	映射只读的计算值
+- @Version	可用于乐观锁并发更新
+
+##### Identifiers
+
+- @Id：指定该属性为表的主键
+- @EmbeddedId or @IdClass：复合主键
+- @GeneratedValue(strategy, generator)：主键生成策略，如 @GeneratedValue(strategy = GenerationType.IDENTITY)，依赖于数据库递增的策略
+- @GenericGenerator	自定义主键生成策略
+   - native: 将主键的生成工作交由数据库完成，对于 oracle 采用 Sequence 方式，对于MySQL 和 SQL Server 采用identity（自增主键生成机制）
+   - org.hibernate.id.UUIDGenerator: 采用128位的uuid算法生成主键，uuid被编码为一个32位16进制数字的字符串
+   - assigned: 在插入数据的时候主键由程序处理。等同于JPA中的AUTO
+- @MapsId
+- @PrimaryKeyJoinColumn
+- @RowId
+- @NaturalId
+
+##### 可嵌套类型
+可多层嵌套
+
+- @Embeddable	类注解 
+- @Embedded	字段注解
+- @AttributeOverrides
+- @AttributeOverride	覆盖@Embeddable类中字段的属性的
+- @Target	@Parent		用于指定接口类实现
+
+##### 实体类型
+
+- @Entity：表示该类是一个实体类
+- @Table(name)：指定该类对应数据库中的表名，如果类名和数据库表名符合驼峰及下划线规则，可省略
+- @Subselect
+- @Proxy
+- @Tuplizer	动态实体代理
+- @Persister	自定义实现EntityPersister interface
+- @Access( AccessType.FIELD )
+- @Immutable
+- @SecondaryTable(name , pkJoinColumns = @PrimaryKeyJoinColumn(name ))
+
+- @Where	静态过滤
+- @FilterDef  定义变量的名称
+- @Filter(name, condition )
+
+##### 关系
+
+- @OneToOne、@OneToMany、@ManyToOne、@ManyToMany
+   - CascadeType.MERGE 级联更新
+   - CascadeType.PERSIST 级联保存
+   - CascadeType.REFRESH 级联刷新
+   - CascadeType.REMOVE 级联删除
+   - CascadeType.ALL 级联上述4种操作
+- @JoinTable(name)、@JoinColumn(name, referencedColumnName)
+- @NotFound(action = NotFoundAction.IGNORE)
+- @Any	模拟单向 @ManyToOne
+- @JoinFormula
+
+> 不生成外键
+> @JoinColumn(foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
+> @JoinTable(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT), 　inverseForeignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+
+
+```java
+@Entity(name = "Person")
+public static class Person {
+
+	@Id
+	@GeneratedValue
+	private Long id;
+
+    // mappedBy代表一方放弃维护关系
+	@OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Phone> phones = new ArrayList<>();
+
+	//Getters and setters are omitted for brevity
+
+	public void addPhone(Phone phone) {
+		phones.add( phone );
+		phone.setPerson( this );
+	}
+
+	public void removePhone(Phone phone) {
+		phones.remove( phone );
+		phone.setPerson( null );
+	}
+}
+
+@Entity(name = "Phone")
+public static class Phone {
+
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	@NaturalId
+	@Column(name = "`number`", unique = true)
+	private String number;
+
+	@ManyToOne
+	private Person person;
+
+	//Getters and setters are omitted for brevity
+
+	@Override
+	public boolean equals(Object o) {
+		if ( this == o ) {
+			return true;
+		}
+		if ( o == null || getClass() != o.getClass() ) {
+			return false;
+		}
+		Phone phone = (Phone) o;
+		return Objects.equals( number, phone.number );
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash( number );
+	}
+}
+```
+
+| 删除操作 | 设置 | 未设置 |
+| --- | --- | --- |
+| mappedBy | 无效果 | update被删除掉的多方的外键为null |
+| orphanRemoval | 数据会被彻底删除 | 不会删除数据 |
+
+
+##### Collections
+
+- @ElementCollection
+- @OrderColumn
+- @OrderBy	对集合排序
+- @SortNatural
+- @SortComparator
+- @MapKeyType
+- @MapKeyColumn
+- @MapKeyClass
+
+##### 继承
+
+- @MappedSuperclass
+- @Inheritance	继承映射
+
+InheritanceType
+
+   - SINGLE_TABLE	继承共用一张表，通过@DiscriminatorColumn创建一个新的字段来判断对象的类型
+   - TABLE_PER_CLASS	每一个类创建一个表，这些表相互独立
+   - JOINED	父类、子类分别存放在不同的表中，并建立相应的外键，以确定相互之间的关系
+
+- @DiscriminatorColumn	指定生成的新的判断对象类型的字段的名称和类型
+- @DiscriminatorValue	类的标识，即 DiscriminatorColumn 的值
+
+##### Schema generation
+
+- @Check	constraint
+- @UniqueConstraint
+- @Index
+- @ColumnDefault
+- @DynamicInsert	实体字段的值是null不会加入到insert语句当中
+- @DynamicUpdate
 
 #### HQL
 [大小写敏感性](https://hibernate.net.cn/docs/72.html)：除了Java类与属性的名称外，查询语句对大小写并不敏感  <br />  [from子句](https://hibernate.net.cn/docs/73.html)
@@ -72,8 +246,6 @@ where fatcat.weight > (
 select cat.id, (select max(kit.weight) from cat.kitten kit) 
 from Cat as cat
 ```
-[  <br />  ](https://hibernate.net.cn/docs/86.html)
-
 
 
 
@@ -234,139 +406,55 @@ public class Test {
 
 ## [JPA](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
 Java Persistence API（Java 持久化 API）：定义了对象关系映射（ORM）以及实体对象持久化的标准接口  <br />  Spirng Data JPA 是 Spring 提供的一套简化 JPA 开发的框架，可以理解为对 JPA 规范的再次封装抽象，底层还是使用了 Hibernate 的 JPA 技术实现
-### 注解
-javax.persistence
 
-- 实体
-   - @Entity：表示该类是一个实体类
-   - @MappedSuperclass
-   - @Table(name)：指定该类对应数据库中的表名，如果类名和数据库表名符合驼峰及下划线规则，可省略
-   - @SecondaryTable(name , pkJoinColumns = @PrimaryKeyJoinColumn(name ))
-- 主键
-   - @Id：指定该属性为表的主键
-   - @IdClass：复合主键
-   - @GeneratedValue(strategy, generator)：主键生成策略，如 @GeneratedValue(strategy = GenerationType.IDENTITY)，依赖于数据库递增的策略
-   - @GenericGenerator	自定义主键生成策略
-      - native: 将主键的生成工作交由数据库完成，对于 oracle 采用 Sequence 方式，对于MySQL 和 SQL Server 采用identity（自增主键生成机制）
-      - org.hibernate.id.UUIDGenerator: 采用128位的uuid算法生成主键，uuid被编码为一个32位16进制数字的字符串
-      - assigned: 在插入数据的时候主键由程序处理。等同于JPA中的AUTO
-
-- 映射
-   - @Column(name, nullable, length, insertable, updatable)：定义属性和表的映射关系
-   - @JoinTable(name)、@JoinColumn(name, referencedColumnName)
-   - @Enumerated
-   - @Convert(converter)：指定使用的转换器（自定义转换器实现 `AttributeConverter<X,Y>`）
-   - @Version	可用于乐观锁并发更新
-
-- 关系
-   - @OneToOne、@OneToMany、@ManyToOne、@ManyToMany
-      - CascadeType.MERGE 级联更新
-      - CascadeType.PERSIST 级联保存
-      - CascadeType.REFRESH 级联刷新
-      - CascadeType.REMOVE 级联删除
-      - CascadeType.ALL 级联上述4种操作
-   - @OrderBy	对集合排序
-   - @NamedEntityGraph(name, attributeNodes = {@NamedAttributeNode()})	命名实体图
-   - @EntityGraph(value, type=EntityGraphType.FETCH)
-
-spring-data-commons
+**spring-data-commons**
 
 - `@Query`：自定义语句查询
 - `@Modifying`：自定义语句查询涉及到修改、删除时需要加上此注解
 - `@Transient`：属性不被持久化
+- @NoRepositoryBean
+- @QueryHints
+- @Meta：查询语句注释
+
+- @NamedEntityGraph(name, attributeNodes = {@NamedAttributeNode()})	命名实体图
+- @EntityGraph(value, type=EntityGraphType.FETCH)
+- @Procedure
+- @NamedStoredProcedureQuery	存储过程
+
+审计
+
 - @CreatedBy、@CreatedDate、@LastModifiedBy、@LastModifiedDate
 - @EntityListeners(AuditingEntityListener.class)
-- @NoRepositoryBean
+- @PreLoad
+- @PrePersist 在实体保存到数据库之前执行的操作
+- @PostPersist 在实体保存到数据库之后执行的操作
+- @PreUpdate 在实体更新到数据库之前执行的操作
+- @PostUpdate 在实体更新到数据库之后执行的操作
+- @PreRemove 在实体从数据库删除之前执行的操作
+- @PostRemove 在实体从数据库删除之后执行的操作
 
-Hibernate
+**Repository**
 
-- org.hibernate.annotations
-- @CreationTimestamp、@UpdateTimestamp
-- @Type(type、parameters)
+- CrudRepository	基础
+   - PagingAndSortingRepository	分页排序
+   - QueryByExampleExecutor	样例查询
+      - JpaRepository	通用
+- JpaSpecificationExecutor	动态规格查询
+- QuerydslPredicateExecutor	[Querydsl](http://www.querydsl.com/)
+
+[**Web support**](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#core.web)
+
+- @EnableSpringDataWebSupport
+- `@QuerydslPredicate(root = <entity.class>)` Predicate
 
 ### 操作数据
 
 - 添加依赖 spring-boot-starter-data-jpa
-- @EnableJpaRepositories：启用 JPA 编程
+- @EnableJpaRepositories：启用 JPA 
 - 继承 `JpaRepository<T, ID>`
-```java
-public interface CrudRepository<T, ID> extends Repository<T, ID> {
-  <S extends T> S save(S entity);
-
-  <S extends T> Iterable<S> saveAll(Iterable<S> entities);
-
-  Optional<T> findById(ID id);
-
-  boolean existsById(ID id);
-
-  Iterable<T> findAll();
-
-  Iterable<T> findAllById(Iterable<ID> ids);
-
-  long count();
-
-  void deleteById(ID id);
-
-  void delete(T entity);
-
-  void deleteAllById(Iterable<? extends ID> ids);
-
-  void deleteAll(Iterable<? extends T> entities);
-
-  void deleteAll();
-}
-
-public interface PagingAndSortingRepository<T, ID> extends CrudRepository<T, ID> {
-  Iterable<T> findAll(Sort sort);
-
-  Page<T> findAll(Pageable pageable);
-}
-
-public interface JpaRepository<T, ID> extends PagingAndSortingRepository<T, ID>, QueryByExampleExecutor<T> {
-  List<T> findAll();
-
-  List<T> findAll(Sort var1);
-
-  List<T> findAllById(Iterable<ID> var1);
-
-  <S extends T> List<S> saveAll(Iterable<S> var1);
-
-  void flush();
-
-  <S extends T> S saveAndFlush(S var1);
-
-  void deleteInBatch(Iterable<T> var1);
-
-  void deleteAllInBatch();
-
-  T getOne(ID var1);
-
-  <S extends T> List<S> findAll(Example<S> var1);
-
-  <S extends T> List<S> findAll(Example<S> var1, Sort var2);
-}
-
-
-// 动态查询
-public interface JpaSpecificationExecutor<T> {
-  Optional<T> findOne(@Nullable Specification<T> spec);
-
-  List<T> findAll(@Nullable Specification<T> spec);
-
-  Page<T> findAll(@Nullable Specification<T> spec, Pageable pageable);
-
-  List<T> findAll(@Nullable Specification<T> spec, Sort sort);
-
-  long count(@Nullable Specification<T> spec);
-
-  boolean exists(Specification<T> spec);
-}
-```
-
 - 按照一定[规则](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-keywords)命名的方法可以在不写接口实现的情况下完成逻辑（JPA 会根据方法命名生成 SQL）
 
-[Query Methods](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods)
-
+#### [Query Methods](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods)
 | **Keyword** | **Sample** | **JPQL snippet** |
 | --- | --- | --- |
 | Distinct | findDistinctByLastnameAndFirstname | select distinct … where x.lastname = ?1 and x.firstname = ?2 |
@@ -396,8 +484,7 @@ public interface JpaSpecificationExecutor<T> {
 | IgnoreCase | findByFirstnameIgnoreCase | … where UPPER(x.firstname) = UPPER(?1) |
 
 
-**Query subject keywords**
-
+#### Query subject keywords
 | **Keyword** | **Description** |
 | --- | --- |
 | find…By, read…By,   <br />  get…By, query…By, search…By, stream…By | General query method returning typically the repository type, a Collection or Streamable subtype or a result wrapper such as Page, GeoResults or any other store-specific result wrapper. Can be used as findBy…, findMyDomainTypeBy… or in combination with additional keywords. |
@@ -408,8 +495,7 @@ public interface JpaSpecificationExecutor<T> {
 | …Distinct… | Use a distinct query to return only unique results. Consult the store-specific documentation whether that feature is supported. This keyword can occur in any place of the subject between find (and the other keywords) and by. |
 
 
-**Query return types**
-
+#### Query return types
 | **Return type** | **Description** |
 | --- | --- |
 | void | Denotes no return value. |
@@ -436,13 +522,16 @@ public interface JpaSpecificationExecutor<T> {
 
 
 
-**示例**  <br />  数据库基础配置
+#### 示例
+数据库基础配置
 ```yaml
 spring:
   jpa:
     hibernate:
       naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+        # 默认表名及字段全小写下划线分隔命名策略
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
       # 自动创建、更新、验证数据库表结构
       ddl-auto: update
       
@@ -451,12 +540,13 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
         new_generator_mappings: false
         format_sql: true
-      show-sql: true
+        show-sql: true
+        use_sql_comments: true
       
   datasource:
-    url: jdbc:mysql://localhost:3306/ss?serverTimezone=UTC&useSSL=false&autoReconnect=true&tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8
-    username: root
-    password: 123qwe
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:boot}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+    username: ${DB_USER:root}
+    password: ${DB_PWD:mysql8}
     
     
 logging:
@@ -554,17 +644,13 @@ public void getBooksPageable()
 public class User {
 
     @Id
-    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @GenericGenerator(name = "idGenerator", strategy = "org.hibernate.id.UUIDGenerator")
     @GeneratedValue(generator = "idGenerator")
     private String id;
 
     @Column(name = "username", unique = true, nullable = false, length = 64)
     private String username;
 
-    @Column(name = "password", nullable = false, length = 64)
-    private String password;
-
-    @Column(name = "email", unique = true, length = 64)
     private String email;
 
     @ManyToMany(targetEntity = Role.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -573,20 +659,20 @@ public class User {
     private Set<Role> roles;
 
     @CreatedDate
-    @Column(name = "created_date", updatable = false)
-    private Date createdDate;
+    @Column(nullable = false, updatable = false, columnDefinition = "timestamp")
+    private LocalDateTime createTime;
 
     @CreatedBy
-    @Column(name = "created_by", updatable = false, length = 64)
-    private String createdBy;
+    @Column(nullable = false, updatable = false, length = 30)
+    private String creator;
 
     @LastModifiedDate
-    @Column(name = "updated_date")
-    private Date updatedDate;
+    @Column(nullable = false, columnDefinition = "timestamp")
+    private LocalDateTime updateTime;
 
     @LastModifiedBy
-    @Column(name = "updated_by", length = 64)
-    private String updatedBy;
+    @Column(nullable = false, length = 30)
+    private String updater;
 }
 
 
@@ -602,6 +688,12 @@ public class JpaAuditingConfiguration {
 
 }
 ```
+
+
+
+## [Spring Data Envers](https://spring.io/projects/spring-data-envers#overview)
+
+@Audited  <br />  @AuditTable  <br />  @AuditJoinTable  <br />  @AuditMappedBy
 
 
 ## [Druid](https://github.com/alibaba/druid)
@@ -681,7 +773,39 @@ create-table-allow: false # 不允许创建表
 
 
 
-
-
 ## [h2database](https://github.com/h2database/h2database)
 一个用Java开发的嵌入式数据库，本身只是一个类库
+
+连接模式
+
+- Embedded 嵌入式	`jdbc:h2:〜/test`	数据库存储在本地
+- Remote (client/server) 远程连接	`jdbc:h2:tcp//localhost/〜/test`
+- In-Memory 内存	`jdbc:h2:mem:test`	数据不持久
+
+jpa config
+```yaml
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: true
+    properties:
+      show-sql: true
+
+  datasource:
+    url: jdbc:h2:mem:mydb;NON_KEYWORDS=USER
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2
+```
+
+
+
+## 变更管理
+
+- [Liquibase](https://github.com/liquibase/liquibase) - Database-independent library for tracking, managing and applying database schema changes.
+- [Flyway](https://flywaydb.org/) - Simple database migration tool.

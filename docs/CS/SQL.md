@@ -1,8 +1,8 @@
 ---
 title: SQL
 created_at: 2022-02-01T05:44:46.000Z
-updated_at: 2023-03-16T14:37:10.000Z
-word_count: 1285
+updated_at: 2023-08-06T00:14:52.000Z
+word_count: 1586
 ---  
 **SQL(结构化查询语言，Structured Query Language)**  <br />  一种 ANSI（American National Standards Institute 美国国家标准化组织）标准的计算机语言。
 
@@ -103,6 +103,29 @@ create role <role_name>
 | 列族数据库 | Bigtable、[HBase](http://c.biancheng.net/hbase/)、Cassandra | 分布式数据存储与管理 | 以列族式存储，将同一列数据存在一起 | 可扩展性强，查找速度快，复杂性低 | 功能局限，不支持事务的强一致性 |
 | 文档数据库 | [MongoDB](http://c.biancheng.net/mongodb/)、CouchDB | Web 应用，存储面向文档或类似半结构化的数据 | <key,value>   <br />  value 是 JSON 结构的文档 | [数据结构](http://c.biancheng.net/data_structure/)灵活，可以根据 value 构建索引 | 缺乏统一查询语法 |
 | 图形数据库 | [Neo4j](http://c.biancheng.net/view/6579.html)、InfoGrid | 社交网络、推荐系统，专注构建关系图谱 | 图结构 | 支持复杂的图形算法 | 复杂性高，只能支持一定的数据规模 |
+
+
+
+
+## 设计规范
+
+
+
+
+表名、字段名必须使用小写字母或数字
+
+主键索引名为 pk_字段名，唯一索引名为 uk_字段名，普通索引名则为 idx_字段名  <br />  小数类型为 decimal，禁止使用 float 和 double  <br />  varchar 是可变长字符串，不预先分配存储空间，长度不要超过 5000，如果存储长 度大于此值，定义字段类型为 text，独立出来一张表，用主键来对应，避免影响其它字段索引效率。
+
+原则上字段必须都是 NOT NULL 属性，业务可以根据需要定义 DEFAULT 值  <br />  使用 NULL 值会存在每一行都会占用额外存储空间、数据迁移容易出错、聚合函数计算结果偏差等问题
+
+
+字段允许适当冗余，以提高查询性能，但必须考虑数据一致。冗余字段应遵循:
+
+- 不是频繁修改的字段。
+- 不是 varchar 超长字段，更不能是 text 字段。
+
+单表行数超过 500 万行或者单表容量超过 2GB，才推荐进行分库分表
+
 
 
 

@@ -1,8 +1,8 @@
 ---
 title: Java
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2023-03-05T14:59:23.000Z
-word_count: 14846
+updated_at: 2023-06-24T02:29:15.000Z
+word_count: 14919
 ---  
 ## —— [Java](https://www.oracle.com/cn/java/) ——
 Java是由Sun Microsystems公司于1995年5月推出的Java面向对象程序设计语言和Java平台的总称。由James Gosling和同事们共同研发，并在1995年正式推出。
@@ -1756,6 +1756,21 @@ System.out.println(Array.get(array, 3));
 - Proxy 类：提供动态地生成代理类和类实例的静态方法。
    - `Class<?> getProxyClass(ClassLoader loader, Class<?>... interfaces)`：创建一个动态代理类所对应的 Class 对象，该代理类将实现 interfaces 所指定的多个接口
    - `Object newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h)`：使用指定的 InvocationHandler 创建一个动态代理对象，该代理对象的实现类实现了 interfaces 指定的系列接口，执行代理对象的每个方法时都会被替换执行 InvocationHandler 对象的 invoke 方法
+
+- Type
+   - GenericArrayType	一个参数泛型化的数组
+   - WildcardType	通配符?相关的泛型，包含的?、下界通配符? super E 、上界通配符? extend E
+   - `Class<T>`	类的Class对象
+   - ParameterizedType 参数化类型
+
+```java
+public Type getType(Collection<?> set) {
+	ParameterizedType  genericSuperclass =(ParameterizedType) set.getClass().getGenericSuperclass();
+	Type[] actualTypeArguments = genericSuperclass.getActualTypeArguments();
+	return actualTypeArguments[0];
+}
+```
+
 
 ### 动态代理
 通过使用 Proxy 类和 InvocationHandler 接口可以生成 JDK 动态代理类或动态代理对象，即在程序中为一个或多个接口动态地生成实现类或创建实例  <br />  特点：

@@ -1,8 +1,8 @@
 ---
 title: Application
 created_at: 2022-01-29T14:00:17.000Z
-updated_at: 2023-02-02T11:59:52.000Z
-word_count: 1770
+updated_at: 2023-07-30T02:21:30.000Z
+word_count: 1771
 ---  
 
 ### —— Windows ——
@@ -73,6 +73,8 @@ Others  <br />  BulkRenameUtility  <br />  ExtractIcon  <br />  FastCopy	  <br /
 ### Practical
 
 **mouse gesture**  <br />  [MouseInc](https://shuax.com/project/mouseinc/)  <br />  [MouseInc.json](https://www.yuque.com/attachments/yuque/0/2022/json/5360088/1652800308885-bfd08267-e3c7-4aaf-a78b-1404379f4957.json?_lake_card=%7B%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2022%2Fjson%2F5360088%2F1652800308885-bfd08267-e3c7-4aaf-a78b-1404379f4957.json%22%2C%22name%22%3A%22MouseInc.json%22%2C%22size%22%3A28587%2C%22ext%22%3A%22json%22%2C%22source%22%3A%22%22%2C%22status%22%3A%22done%22%2C%22download%22%3Atrue%2C%22type%22%3A%22application%2Fjson%22%2C%22mode%22%3A%22title%22%2C%22taskId%22%3A%22u0c9df56f-90cf-474c-810d-d15b1e0ef8e%22%2C%22taskType%22%3A%22upload%22%2C%22id%22%3A%22u6ff62be4%22%2C%22card%22%3A%22file%22%7D)
+
+[Umi-OCR](https://github.com/hiroi-sora/Umi-OCR)
 
 护眼
 

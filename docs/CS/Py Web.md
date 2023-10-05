@@ -1,11 +1,11 @@
 ---
 title: Py Web
 created_at: 2022-02-01T05:44:43.000Z
-updated_at: 2023-04-05T14:46:40.000Z
-word_count: 10144
+updated_at: 2023-07-30T03:00:08.000Z
+word_count: 10235
 ---  
 
-## PyMySQL
+## [PyMySQL](https://github.com/PyMySQL/PyMySQL)
 class pymysql.connections.Connection
 
 - host – Host where the database server is located
@@ -131,6 +131,60 @@ print(values)
 cursor.close()
 mydb.close()
 ```
+
+
+## [dataset](https://github.com/pudo/dataset)
+
+```python
+# connecting to a MySQL database with user and password
+db = dataset.connect('mysql://user:password@localhost/mydatabase')
+
+# get a reference to the table 'user'
+table = db['user']
+
+# All users from China
+chinese_users = table.find(country='China')
+
+# dataset will create "missing" columns any time you insert a dict with an unknown key
+table.insert(dict(name='Jane Doe', age=37, country='France', gender='female'))
+
+table.update(dict(name='John Doe', age=47), ['name'])
+```
+
+- [Database](https://dataset.readthedocs.io/en/latest/api.html#dataset.Database)
+   - [Database.begin()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Database.begin)
+   - [Database.commit()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Database.commit)
+   - [Database.create_table()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Database.create_table)
+   - [Database.get_table()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Database.get_table)
+   - [Database.load_table()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Database.load_table)
+   - [Database.query()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Database.query)
+   - [Database.rollback()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Database.rollback)
+   - [Database.tables](https://dataset.readthedocs.io/en/latest/api.html#dataset.Database.tables)
+
+- [Table](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table)
+   - [Table.__iter__()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.__iter__)
+   - [Table.__len__()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.__len__)
+   - [Table.all()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.all)
+   - [Table.columns](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.columns)
+   - [Table.count()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.count)
+   - [Table.create_column()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.create_column)
+   - [Table.create_column_by_example()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.create_column_by_example)
+   - [Table.create_index()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.create_index)
+   - [Table.delete()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.delete)
+   - [Table.distinct()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.distinct)
+   - [Table.drop()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.drop)
+   - [Table.drop_column()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.drop_column)
+   - [Table.find()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.find)
+   - [Table.find_one()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.find_one)
+   - [Table.has_column()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.has_column)
+   - [Table.has_index()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.has_index)
+   - [Table.insert()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.insert)
+   - [Table.insert_ignore()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.insert_ignore)
+   - [Table.insert_many()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.insert_many)
+   - [Table.update()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.update)
+   - [Table.update_many()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.update_many)
+   - [Table.upsert()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.upsert)
+   - [Table.upsert_many()](https://dataset.readthedocs.io/en/latest/api.html#dataset.Table.upsert_many)
 
 ## [SQLAlchemy](https://www.sqlalchemy.org/)
 [https://www.osgeo.cn/sqlalchemy/](https://www.osgeo.cn/sqlalchemy/)
