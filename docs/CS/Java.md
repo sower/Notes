@@ -1,8 +1,8 @@
 ---
 title: Java
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2023-06-24T02:29:15.000Z
-word_count: 14919
+updated_at: 2023-10-21T13:35:50.000Z
+word_count: 14979
 ---  
 ## —— [Java](https://www.oracle.com/cn/java/) ——
 Java是由Sun Microsystems公司于1995年5月推出的Java面向对象程序设计语言和Java平台的总称。由James Gosling和同事们共同研发，并在1995年正式推出。
@@ -12,7 +12,6 @@ Java是由Sun Microsystems公司于1995年5月推出的Java面向对象程序设
 ```java
 public class Hello {
     public static void main(String[] args) {
-        // 向屏幕输出文本:
         System.out.println("Hello, world!");
     }
 }
@@ -431,13 +430,13 @@ int[] ints = list.stream().mapToInt(Integer::valueOf).toArray();
 Integer[] integers = list.toArray(new Integer[list.size()]);
 ```
 
-#### 枚举类
+#### Enum
 
 - 定义的enum类型总是继承自java.lang.Enum，且无法被继承；
 - 只能定义出enum的实例，而无法通过new操作符创建enum的实例；
 - 定义的每个实例都是引用类型的唯一实例；
 
-Enum
+方法
 
 - values()：返回 enum 实例的数组，而且该数组中的元素严格保持在 enum 中声明时的顺序。
 - name()：返回实例名。
@@ -1808,6 +1807,10 @@ System.setProperty("cglib.debugLocation", "d:/");
 
 ```
 
+## SPI
+Service Provider Interface：JDK内置的一种服务提供发现机制，用来启用框架扩展和替换组件，主要是被框架的开发人员使用  <br />  在classpath下的`META-INF/services/`目录里创建一个以服务接口命名的文件
+
+ServiceLoader
 
 ## CLI
 ```shell

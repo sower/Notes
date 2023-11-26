@@ -1,13 +1,13 @@
 ---
 title: SQL
 created_at: 2022-02-01T05:44:46.000Z
-updated_at: 2023-08-06T00:14:52.000Z
-word_count: 1586
+updated_at: 2023-11-26T15:56:45.000Z
+word_count: 1610
 ---  
 **SQL(结构化查询语言，Structured Query Language)**  <br />  一种 ANSI（American National Standards Institute 美国国家标准化组织）标准的计算机语言。
 
 - 大小写不敏感
-- 每条语句的末端使用分号(;)
+- 每条语句的末端使用分号`;`
 
 
 
@@ -30,13 +30,14 @@ SQL分类
 - 候选键（candidate key）是某个[关系变量](https://zh.wikipedia.org/w/index.php?title=%E5%85%B3%E7%B3%BB%E5%8F%98%E9%87%8F&action=edit&redlink=1)的一组属性所组成的集合
 
 ### 范式
-[第一范式](https://baike.baidu.com/item/%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F)（1NF）  <br />  数据库[表](https://baike.baidu.com/item/%E8%A1%A8/9997188)的每一列都是不可分割的基本数据项，同一列中不能有多个值，即无重复的列  <br />  字段不能再分
+[第一范式](https://baike.baidu.com/item/%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F)（1NF）  <br />  数据库表的每一列都是不可分割的基本数据项，同一列中不能有多个值，即无重复的列  <br />  字段不能再分
 
-[第二范式](https://baike.baidu.com/item/%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F)（2NF）  <br />  数据库表中的每个[实例](https://baike.baidu.com/item/%E5%AE%9E%E4%BE%8B)或行必须可以被唯一地区分，即非主属性完全依赖于主关键字  <br />  不出现部分依赖
+[第二范式](https://baike.baidu.com/item/%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F)（2NF）  <br />  数据库表中的每个实例或行必须可以被唯一地区分，即非主属性完全依赖于主关键字  <br />  不出现部分依赖
 
 [第三范式](https://baike.baidu.com/item/%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F)（3NF）  <br />  数据库表中不包含已在其它表中已包含的非主关键字信息。即属性不依赖于其它非主属性  <br />  不能出现传递依赖  <br />  Boyce-Codd范式（[BCNF](https://baike.baidu.com/item/BCNF)）
 
-[第四范式](https://baike.baidu.com/item/%E7%AC%AC%E5%9B%9B%E8%8C%83%E5%BC%8F)（4NF）  <br />  [第五范式](https://baike.baidu.com/item/%E7%AC%AC%E4%BA%94%E8%8C%83%E5%BC%8F)（5NF）
+[第四范式](https://baike.baidu.com/item/%E7%AC%AC%E5%9B%9B%E8%8C%83%E5%BC%8F)（4NF）	不存在[多值依赖](https://zh.wikipedia.org/wiki/%E5%A4%9A%E5%80%BC%E4%BE%9D%E8%B5%96)  <br />  [第五范式](https://baike.baidu.com/item/%E7%AC%AC%E4%BA%94%E8%8C%83%E5%BC%8F)（5NF）	每个连接依赖可由候选键推出
+
 
 
 ### 数据类型
@@ -99,18 +100,20 @@ create role <role_name>
 
 | 分类 | 相关产品 | 应用场景 | 数据模型 | 优点 | 缺点 |
 | --- | --- | --- | --- | --- | --- |
-| 键值数据库 | [Redis](http://c.biancheng.net/redis/)、[Memcached](http://c.biancheng.net/view/6574.html)、Riak | 内容缓存，如会话、配置文件、参数等；  <br />  频繁读写、拥有简单数据模型的应用 | <key,value> 键值对，通过散列表来实现 | 扩展性好，灵活性好，大量操作时性能高 | 数据无结构化，通常只被当做字符串或者二进制数据，只能通过键来查询值 |
-| 列族数据库 | Bigtable、[HBase](http://c.biancheng.net/hbase/)、Cassandra | 分布式数据存储与管理 | 以列族式存储，将同一列数据存在一起 | 可扩展性强，查找速度快，复杂性低 | 功能局限，不支持事务的强一致性 |
-| 文档数据库 | [MongoDB](http://c.biancheng.net/mongodb/)、CouchDB | Web 应用，存储面向文档或类似半结构化的数据 | <key,value>   <br />  value 是 JSON 结构的文档 | [数据结构](http://c.biancheng.net/data_structure/)灵活，可以根据 value 构建索引 | 缺乏统一查询语法 |
-| 图形数据库 | [Neo4j](http://c.biancheng.net/view/6579.html)、InfoGrid | 社交网络、推荐系统，专注构建关系图谱 | 图结构 | 支持复杂的图形算法 | 复杂性高，只能支持一定的数据规模 |
+| 键值数据库 | Redis、Memcached、Riak | 内容缓存，如会话、配置文件、参数等；  <br />  频繁读写、拥有简单数据模型的应用 | <key,value> 键值对，通过散列表来实现 | 扩展性好，灵活性好，大量操作时性能高 | 数据无结构化，通常只被当做字符串或者二进制数据，只能通过键来查询值 |
+| 列族数据库 | Bigtable、HBase、Cassandra | 分布式数据存储与管理 | 以列族式存储，将同一列数据存在一起 | 可扩展性强，查找速度快，复杂性低 | 功能局限，不支持事务的强一致性 |
+| 文档数据库 | MongoDB、CouchDB | Web 应用，存储面向文档或类似半结构化的数据 | <key,value>   <br />  value 是 JSON 结构的文档 | 数据结构灵活，可以根据 value 构建索引 | 缺乏统一查询语法 |
+| 图形数据库 | Neo4j、InfoGrid | 社交网络、推荐系统，专注构建关系图谱 | 图结构 | 支持复杂的图形算法 | 复杂性高，只能支持一定的数据规模 |
 
 
 
 
-## 设计规范
+## Style
+
+[sqlstyle.guide](https://github.com/treffynnon/sqlstyle.guide)
 
 
-
+**设计规范**
 
 表名、字段名必须使用小写字母或数字
 
@@ -128,4 +131,6 @@ create role <role_name>
 
 
 
+## Resource
 
+- [awesome-db-tools](https://github.com/mgramin/awesome-db-tools)

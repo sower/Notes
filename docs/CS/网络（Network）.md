@@ -1,22 +1,56 @@
 ---
 title: 网络（Network）
 created_at: 2022-02-02T13:10:18.000Z
-updated_at: 2022-03-03T16:03:15.000Z
-word_count: 18960
+updated_at: 2023-11-26T15:09:34.000Z
+word_count: 19403
 ---  
-## —— 网络（Network）——
-**互联网**（Internet）：[20世纪](https://zh.wikipedia.org/wiki/20%E4%B8%96%E7%B4%80)末期兴起电脑网络与电脑网络之间所串连成的庞大网络系统。  <br />  万维网是一个由许多互相链接的超文本组成的系统，通过互联网访问。是互联网的一项服务
+## —— 电信网络 ——
+由用户终端设备、传输设备、[交换机](https://zh.wikipedia.org/wiki/%E4%BA%A4%E6%8D%A2%E6%9C%BA)和[电信运营商](https://zh.wikipedia.org/wiki/%E7%94%B5%E4%BF%A1%E8%BF%90%E8%90%A5%E5%95%86)[机房](https://zh.wikipedia.org/wiki/%E6%9C%BA%E6%88%BF)所组成的网络
 
-局域网（Local Area Network，LAN）：又称内网。指覆盖局部区域（如办公室或楼层）的[计算机网络](https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C)。  <br />  广域网（Wide Area Network，WAN）：又称外网、公网。是连接不同地区[局域网](https://zh.wikipedia.org/wiki/%E5%B1%80%E5%9F%9F%E7%BD%91)或城域网计算机通信的远程网。
+**互联网**（Internet）：20世纪末期兴起电脑网络与电脑网络之间所串连成的庞大网络系统。  <br />  万维网是一个由许多互相链接的超文本组成的系统，通过互联网访问。是互联网的一项服务
 
-VPN（Virtual Private Network，虚拟私人网络）：一种常用于连接中、大型企业或团体与团体间的私人网络的通讯方法。它利用[隧道协议](https://zh.wikipedia.org/wiki/%E9%9A%A7%E9%81%93%E5%8D%8F%E8%AE%AE)（Tunneling Protocol）来达到发送端认证、消息保密与准确性等功能。  <br />  在公用网络上建立专用网络，进行加密通讯。VPN网关通过对数据包的加密和数据包目标地址的转换实现远程访问。
+[**局域网**](https://zh.wikipedia.org/wiki/%E5%B1%80%E5%9F%9F%E7%BD%91)（Local Area Network，LAN）：又称内网。指覆盖局部区域（如办公室或楼层）的[计算机网络](https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C)。
 
-**(网络)代理**（Proxy）：一种特殊的网络服务，允许一个[网络终端](https://zh.wikipedia.org/w/index.php?title=%E7%BD%91%E7%BB%9C%E7%BB%88%E7%AB%AF&action=edit&redlink=1)（一般为客户端）通过这个服务与另一个网络终端（一般为服务器）进行非直接的连接。  <br />  **Wi-Fi**（wireless fidelity，无线网络/热点）一个基于[IEEE 802.11](https://zh.wikipedia.org/wiki/IEEE_802.11)标准的无线局域网技术。
+- 有线局域网
+   - [以太网](https://zh.wikipedia.org/wiki/%E4%BB%A5%E5%A4%AA%E7%BD%91)（Ethernet）：一种计算机局域网技术。
+   - [光纤分布式数据接口](https://zh.wikipedia.org/wiki/%E5%85%89%E7%BA%A4%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%8F%A3)（Fiber Distributed Data Interface，**FDDI**）：美国国家标准学会制定的在[光缆](https://zh.wikipedia.org/wiki/%E5%85%89%E7%BA%9C)上发送数字信号的一组协议。
+- [无线局域网](https://zh.wikipedia.org/wiki/%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91)（WLAN）
+   - [Wi-Fi](https://zh.wikipedia.org/wiki/Wi-Fi)
+- [虚拟局域网](https://zh.wikipedia.org/wiki/%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91)（VLAN）：一种建构于局域网交换技术（LAN Switch）的网络管理的技术
+
+**广域网**（Wide Area Network，WAN）：又称外网、公网。是连接不同地区局域网或城域网计算机通信的远程网。
+
+
+**蜂窝网络**（Cellular network），又称移动网络（mobile network）是一种[移动通信](https://zh.wikipedia.org/wiki/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1)硬件架构，分为模拟蜂窝网络和数字蜂窝网络。  <br />  主流蜂窝网络类型
+
+- [GSM](https://zh.wikipedia.org/wiki/GSM)（[2G](https://zh.wikipedia.org/wiki/2G)）	全球移动通信系统（Global System for Mobile Communications）
+- [UMTS](https://zh.wikipedia.org/wiki/UMTS)／[HSPA](https://zh.wikipedia.org/wiki/%E9%AB%98%E9%80%9F%E5%B0%81%E5%8C%85%E5%AD%98%E5%8F%96)（[3G](https://zh.wikipedia.org/wiki/3G)）
+- [LTE](https://zh.wikipedia.org/wiki/%E9%95%B7%E6%9C%9F%E6%BC%94%E9%80%B2%E6%8A%80%E8%A1%93)／[LTE-A](https://zh.wikipedia.org/wiki/%E9%95%B7%E6%9C%9F%E6%BC%94%E9%80%B2%E6%8A%80%E8%A1%93%E5%8D%87%E7%B4%9A%E7%89%88)（[4G](https://zh.wikipedia.org/wiki/4G)）
+- [NR](https://zh.wikipedia.org/wiki/5G_NR)（[5G](https://zh.wikipedia.org/wiki/5G)）
+
+
+**Wi-Fi**（wireless fidelity，无线网络/热点）一个基于[IEEE 802.11](https://zh.wikipedia.org/wiki/IEEE_802.11)标准的无线局域网技术。
+
+| 世代名称 | IEEE标准 |  | 最大[速率](https://zh.wikipedia.org/wiki/%E6%AF%94%E7%89%B9%E7%8E%87)（Mbit/s） | [频率](https://zh.wikipedia.org/wiki/%E6%97%A0%E7%BA%BF%E7%94%B5%E9%A2%91%E8%B0%B1)  <br />  （GHz） |
+| --- | --- | --- | --- | --- |
+|  | 名称 | 发布年份 |  |  |
+| Wi‑Fi 7 | [802.11be](https://zh.wikipedia.org/wiki/IEEE_802.11be) | (2024)  | 1376～46120 | 2.4/5/6 |
+| Wi‑Fi 6E | [802.11ax](https://zh.wikipedia.org/wiki/IEEE_802.11ax) | 2020 | 574～9608 | 6 |
+| Wi‑Fi 6 |  | 2019 |  | 2.4/5 |
+| Wi‑Fi 5 | [802.11ac](https://zh.wikipedia.org/wiki/IEEE_802.11ac) | 2014 | 433～6933 | 5 |
+| Wi‑Fi 4 | [802.11n](https://zh.wikipedia.org/wiki/IEEE_802.11n) | 2008 | 72～600 | 2.4/5 |
+| _Wi-Fi 3_ | [802.11g](https://zh.wikipedia.org/wiki/IEEE_802.11g-2003) | 2003 | 6～54 | 2.4 |
+| _Wi-Fi 2_ | [802.11a](https://zh.wikipedia.org/wiki/IEEE_802.11a-1999) | 1999 |  | 5 |
+| _Wi-Fi 1_ | [802.11b](https://zh.wikipedia.org/wiki/IEEE_802.11b-1999) |  | 1～11 | 2.4 |
+| _Wi-Fi 0_ | [802.11](https://zh.wikipedia.org/wiki/IEEE_802.11_(%E5%8E%9F%E5%A7%8B%E6%A0%87%E5%87%86)) | 1997 | 1～2 |  |
+
+频段比较
 
 | 频段 | 2.4G | 5G |
 | --- | --- | --- |
 | 优点 | 信号频率低，在空气或障碍物中传播时衰减较小，传播距离更远。 | 信号频宽较宽，无线环境比较干净，干扰少，网速稳定，且支持更高的无线速率。 |
 | 缺点 | 信号频宽较窄，家电、无线设备大多使用2.4G频段，无线环境更加拥挤，干扰较大。 | 信号频率较高，在空气或障碍物中传播时衰减较大，覆盖距离一般比2.4G信号小。 |
+
 
 **SSID**（Service Set Identifier，服务集标识符）：一个或一组基础架构模式[无线网络](https://zh.wikipedia.org/wiki/%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C)的标识
 
@@ -25,9 +59,9 @@ VPN（Virtual Private Network，虚拟私人网络）：一种常用于连接�
 
 
 
-**WAP**（Wireless Access Point，无线接入点）：[电脑网络](https://zh.wikipedia.org/wiki/%E9%9B%BB%E8%85%A6%E7%B6%B2%E7%B5%A1)中一种连接无线网络至有线网络（以太网）的设备，又称为无线基站
+**WAP**（Wireless Access Point，无线接入点）：电脑网络中一种连接无线网络至有线网络（以太网）的设备，又称为无线基站
 
-WPS（Wi-Fi Protected Setup，**Wi-Fi保护设置**）是一个[无线网络](https://zh.wikipedia.org/wiki/%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C)安全标准，旨在让家庭用户使用无线网络时简化加密步骤。  <br />  **WPA**（Wi-Fi Protected Access，Wi-Fi访问保护）：一种保护[无线网络](https://zh.wikipedia.org/wiki/%E7%84%A1%E7%B7%9A%E7%B6%B2%E8%B7%AF)（Wi-Fi）访问安全的技术标准。
+**WPS**（Wi-Fi Protected Setup，Wi-Fi保护设置）是一个[无线网络](https://zh.wikipedia.org/wiki/%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C)安全标准，旨在让家庭用户使用无线网络时简化加密步骤。  <br />  **WPA**（Wi-Fi Protected Access，Wi-Fi访问保护）：一种保护[无线网络](https://zh.wikipedia.org/wiki/%E7%84%A1%E7%B7%9A%E7%B6%B2%E8%B7%AF)（Wi-Fi）访问安全的技术标准。
 
 - 胖AP（FAT）：常见的无线路由器，一般具备WAN、LAN两种接口，支持地址转换（NAT）功能，有自己的管理系统、DHCP服务等，需要每台AP分别进行设置。
 - 瘦AP（FIT）：本身没有管理系统，需要专门的设备（无线控制器）来统一管理、下发数据等集中管理设备，在AP数量大的情况下，及大简化了管理工作。
@@ -44,7 +78,26 @@ WPS（Wi-Fi Protected Setup，**Wi-Fi保护设置**）是一个[无线网络](ht
 
 快速漫游协议	802.11k/v/r
 
-**以太网**（Ethernet）是一种[计算机](https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA)局域网技术。  <br />  **蜂窝网络**（Cellular network），又称移动网络（mobile network）是一种[移动通信](https://zh.wikipedia.org/wiki/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1)硬件架构，分为模拟蜂窝网络和数字蜂窝网络。  <br />  **蓝牙**（Bluetooth），一种[无线通讯](https://zh.wikipedia.org/wiki/%E7%84%A1%E7%B7%9A%E9%80%9A%E8%A8%8A)技术标准，用来让固定与移动设备，在短距离间交换资料，以形成个人局域网（PAN）。  <br />  NFC（Near-field communication，**近距离无线通信**）是一套[通信协议](https://zh.wikipedia.org/wiki/%E9%80%9A%E8%A8%8A%E5%8D%94%E5%AE%9A)，让两个电子设备在相距几厘米之内进行通信
+**蓝牙**（Bluetooth），一种[无线通讯](https://zh.wikipedia.org/wiki/%E7%84%A1%E7%B7%9A%E9%80%9A%E8%A8%8A)技术标准，用来让固定与移动设备，在短距离间交换资料，以形成个人局域网（PAN）。
+
+| 蓝牙版本 | 发布时间 | **最大传输速度** | 传输距离 |
+| --- | --- | --- | --- |
+| 蓝牙5.3 | 2021 | 48 Mbit/s[](https://zh.wikipedia.org/wiki/Wikipedia:%E5%88%97%E6%98%8E%E6%9D%A5%E6%BA%90) | 300米 |
+| 蓝牙5.2 | 2020 | 48 Mbit/s[](https://zh.wikipedia.org/wiki/Wikipedia:%E5%88%97%E6%98%8E%E6%9D%A5%E6%BA%90) | 300米 |
+| 蓝牙5.1 | 2019 | 48 Mbit/s[](https://zh.wikipedia.org/wiki/Wikipedia:%E5%88%97%E6%98%8E%E6%9D%A5%E6%BA%90) | 300米 |
+| 蓝牙5.0 | 2016 | 48 Mbit/s | 300米 |
+| 蓝牙4.2 | 2014 | 24 Mbit/s[](https://zh.wikipedia.org/wiki/Wikipedia:%E5%88%97%E6%98%8E%E6%9D%A5%E6%BA%90) | 50米 |
+| 蓝牙4.1 | 2013 | 24 Mbit/s[](https://zh.wikipedia.org/wiki/Wikipedia:%E5%88%97%E6%98%8E%E6%9D%A5%E6%BA%90) | 50米 |
+| 蓝牙4.0 | 2010 | 24 Mbit/s[](https://zh.wikipedia.org/wiki/Wikipedia:%E5%88%97%E6%98%8E%E6%9D%A5%E6%BA%90) | 50米 |
+| 蓝牙3.0+HS | 2009 | 24 Mbit/s | 10米 |
+| 蓝牙2.1+EDR | 2007 | 3 Mbit/s | 10米 |
+| 蓝牙2.0+EDR | 2004 | 2.1 Mbit/s | 10米 |
+| 蓝牙1.2 | 2003 | 1 Mbit/s | 10米 |
+| 蓝牙1.1 | 2002 | 810 Kbit/s | 10米 |
+| 蓝牙1.0 | 1998 | 723.1 Kbit/s | 10米 |
+
+
+**NFC**（Near-field communication，近距离无线通信）是一套[通信协议](https://zh.wikipedia.org/wiki/%E9%80%9A%E8%A8%8A%E5%8D%94%E5%AE%9A)，让两个电子设备在相距几厘米之内进行通信
 
 |  | NFC | 蓝牙 |
 | --- | --- | --- |
@@ -59,7 +112,17 @@ WPS（Wi-Fi Protected Setup，**Wi-Fi保护设置**）是一个[无线网络](ht
 | 设置程序 | < 0.1 s | < 6 s |
 | 功耗 | < 15mA (read) | varies with class |
 
+
 **P2P**（peer-to-peer，对等式网络），又称点对点技术，是[无中心服务器](https://zh.wikipedia.org/wiki/%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96)、依靠用户群（peers）交换信息的互联网体系  <br />  减低以往网路传输中的节点，以降低资料遗失的风险。
+
+[**VPN**](https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF)（Virtual Private Network，虚拟私人网络）：一种常用于连接中、大型企业或团体与团体间的私人网络的通讯方法。它利用[隧道协议](https://zh.wikipedia.org/wiki/%E9%9A%A7%E9%81%93%E5%8D%8F%E8%AE%AE)（Tunneling Protocol）来达到发送端认证、消息保密与准确性等功能。  <br />  在公用网络上建立专用网络，进行加密通讯。VPN网关通过对数据包的加密和数据包目标地址的转换实现远程访问。
+
+- [**L2TP**](https://zh.wikipedia.org/wiki/%E7%AC%AC%E4%BA%8C%E5%B1%82%E9%9A%A7%E9%81%93%E5%8D%8F%E8%AE%AE)（Layer Two Tunneling Protocol，第二层隧道协议）：一种[虚拟隧道协议](https://zh.wikipedia.org/wiki/%E8%99%9A%E6%8B%9F%E9%9A%A7%E9%81%93%E5%8D%8F%E8%AE%AE)，常搭配的加密协议是[IPsec](https://zh.wikipedia.org/wiki/IPsec)
+- [**PPTP**](https://zh.wikipedia.org/wiki/%E9%BB%9E%E5%B0%8D%E9%BB%9E%E9%9A%A7%E9%81%93%E5%8D%94%E8%AD%B0)（Point to Point Tunneling Protocol，点对点隧道协议）
+
+  <br />  
+
+**(网络)代理**（Proxy）：一种特殊的网络服务，允许一个[网络终端](https://zh.wikipedia.org/w/index.php?title=%E7%BD%91%E7%BB%9C%E7%BB%88%E7%AB%AF&action=edit&redlink=1)（一般为客户端）通过这个服务与另一个网络终端（一般为服务器）进行非直接的连接。
 
 **防火墙**（Firewall）是一个架设在互联网与企业内网之间的信息安全系统，根据企业预定的策略来监控往来的传输。
 
@@ -72,8 +135,9 @@ WPS（Wi-Fi Protected Setup，**Wi-Fi保护设置**）是一个[无线网络](ht
 - 时延：数据（一个报文或分组、甚至比特）从网络（或链路）的一段传送到另一端的时间，也称延迟。
 
 数据在TCP层称为流（Stream），数据分组称为分段（Segment）  <br />  数据在IP层称为Datagram，数据分组称为分片（Fragment）。  <br />  UDP 中分组称为Message。
-## 互联网协议套件（Internet Protocol Suite，IPS）
-一个网络通信模型，以及一整个[网络传输协议](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE)家族，为网际网络的基础通信架构。  <br />  常被通称为**TCP/IP协议族**（TCP/IP Protocol Suite），TCP/IP协议栈（TCP/IP Protocol Stack）,简称TCP/IP  <br />  定义了电子设备（比如计算机）如何连入因特网，以及数据如何在它们之间传输的标准。  <br />  TCP 负责应用软件和网络软件之间的通信。  <br />  IP 负责计算机之间的通信。  <br />  TCP 负责将数据分割并装入 IP 包，然后在它们到达的时候重新组合它们。  <br />  IP 负责将包发送至接受者。
+
+## —— IPS ——
+[互联网协议套组](https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F)（Internet Protocol Suite）：一个网络通信模型，以及一整个[网络传输协议](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE)家族，为网际网络的基础通信架构。  <br />  常被通称为**TCP/IP协议族**（TCP/IP Protocol Suite），TCP/IP协议栈（TCP/IP Protocol Stack）,简称TCP/IP  <br />  定义了电子设备（比如计算机）如何连入因特网，以及数据如何在它们之间传输的标准。  <br />  TCP 负责应用软件和网络软件之间的通信。  <br />  IP 负责计算机之间的通信。  <br />  TCP 负责将数据分割并装入 IP 包，然后在它们到达的时候重新组合它们。  <br />  IP 负责将包发送至接受者。
 ## 网络结构
 ![](./assets/1643807418041-e22d909e-f6e6-4703-8ac8-18b51c69511d.png)  <br />  **OSI（Open System Interconnection ，开放式系统互联）**
 
@@ -85,7 +149,7 @@ WPS（Wi-Fi Protected Setup，**Wi-Fi保护设置**）是一个[无线网络](ht
 | 运输层 | 提供端到端的可靠报文传递和错误恢复（ 段Segment） | TCP、UDP、SPX |
 | 会话层 | 建立、管理和终止会话（会话协议数据单元 SPDU） | NFS、SQL、NETBIOS、RPC |
 | 表示层 | 对数据进行翻译、加密和压缩（表示协议数据单元 PPDU） | JPEG、MPEG、ASII |
-| 应用层 | 允许访问OSI环境的手段（应用协议数据单元 APDU） | FTP、DNS、Telnet、SMTP、HTTP、WWW、NFS |
+| [应用层](https://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E5%B1%82) | 允许访问OSI环境的手段（应用协议数据单元 APDU） | [HTTP](https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE)、[FTP](https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE)、[DNS](https://zh.wikipedia.org/wiki/DNS)、Telnet、SMTP、WWW、NFS |
 
 ## 应用层（Application layer）
 直接和应用程序接口结合，并提供常见的网络应用服务。

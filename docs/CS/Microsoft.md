@@ -1,9 +1,11 @@
 ---
 title: Microsoft
 created_at: 2022-02-01T05:44:33.000Z
-updated_at: 2023-04-05T07:47:04.000Z
-word_count: 2666
+updated_at: 2023-11-05T14:39:44.000Z
+word_count: 3139
 ---  
+## —— [Microsoft dev env](https://learn.microsoft.com/en-us/windows/dev-environment/) ——
+
 ## [Windows Terminal](https://docs.microsoft.com/zh-cn/windows/terminal/)
 
 
@@ -53,6 +55,37 @@ word_count: 2666
 ```
 
 
+
+## [WinGet](https://github.com/microsoft/winget-cli)
+Windows Package Manager
+
+| Command | Description |
+| --- | --- |
+| [info](https://learn.microsoft.com/en-us/windows/package-manager/winget/info) | Displays metadata about the system (version numbers, architecture, log location, etc). Helpful for troubleshooting. |
+| [install](https://learn.microsoft.com/en-us/windows/package-manager/winget/install) | Installs the specified application. |
+| [show](https://learn.microsoft.com/en-us/windows/package-manager/winget/show) | Displays details for the specified application. |
+| [source](https://learn.microsoft.com/en-us/windows/package-manager/winget/source) | Adds, removes, and updates the Windows Package Manager repositories accessed by the **winget** tool. |
+| [search](https://learn.microsoft.com/en-us/windows/package-manager/winget/search) | Searches for an application. |
+| [list](https://learn.microsoft.com/en-us/windows/package-manager/winget/list) | Display installed packages. |
+| [upgrade](https://learn.microsoft.com/en-us/windows/package-manager/winget/upgrade) | Upgrades the given package. |
+| [uninstall](https://learn.microsoft.com/en-us/windows/package-manager/winget/uninstall) | Uninstalls the given package. |
+| [hash](https://learn.microsoft.com/en-us/windows/package-manager/winget/hash) | Generates the SHA256 hash for the installer. |
+| [validate](https://learn.microsoft.com/en-us/windows/package-manager/winget/validate) | Validates a manifest file for submission to the Windows Package Manager repository. |
+| [settings](https://learn.microsoft.com/en-us/windows/package-manager/winget/settings) | Open settings. |
+| [features](https://learn.microsoft.com/en-us/windows/package-manager/winget/features) | Shows the status of experimental features. |
+| [export](https://learn.microsoft.com/en-us/windows/package-manager/winget/export) | Exports a list of the installed packages. |
+| [import](https://learn.microsoft.com/en-us/windows/package-manager/winget/import) | Installs all the packages in a file. |
+| [pin](https://learn.microsoft.com/en-us/windows/package-manager/winget/pinning) | Manage package pins. |
+| [configure](https://learn.microsoft.com/en-us/windows/package-manager/winget/configure) | Configures the system into a desired state. |
+
+
+```
+winget list --upgrade-available
+```
+
+
+
+
 ## [VS Code](https://code.visualstudio.com/docs)
 
 [awesome-vscode](https://github.com/viatsko/awesome-vscode)
@@ -71,8 +104,10 @@ extensions : `%USERPROFILE%\.vscode\extensions`
 - [Text Power Tools](https://marketplace.visualstudio.com/items?itemName=qcz.text-power-tools)
 - [vscode-theme-vitesse](https://github.com/antfu/vscode-theme-vitesse)
 - [vscode-spell-checker](https://github.com/streetsidesoftware/vscode-spell-checker)
+- [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)
 - [vscode-gitlens](https://github.com/gitkraken/vscode-gitlens)
 - file-icons
+- EditorConfig
 - [thunder-client-support](https://github.com/rangav/thunder-client-support)
 
 ### [Shortcuts](https://code.visualstudio.com/docs/getstarted/keybindings)
@@ -166,37 +201,119 @@ code [options][paths...]
 `%APPDATA%\Code`  <br />  `C:\Users\<Username>\AppData\Roaming\Code\User\settings.json`
 ```json
 {
-    "editor.fontSize": 18,
-    "debug.console.fontSize": 16,
-    "workbench.colorTheme": "One Dark Pro",
-    "oneDarkPro.vivid": true,
-    "oneDarkPro.bold": true,
-    "editor.suggestSelection": "first",
-		"editor.tabSize": 2,
-    "editor.formatOnType": true,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.linkedEditing": true,
-    "editor.suggest.maxVisibleSuggestions": 10,
-  	"editor.codeActionsOnSave": {
-  		"source.fixAll.eslint": true,
-  		"source.organizeImports": false
-  	},
-  	"files.eol": "\n",
-    "terminal.integrated.copyOnSelection": true,
-    "terminal.integrated.fontSize": 15,
-
-		"python.jediEnabled": true,
-    "python.languageServer": "Pylance",
-    "python.linting.enabled": true,
-    "python.linting.lintOnSave": true,
-    "python.linting.maxNumberOfProblems": 100,
-    "python.formatting.provider": "yapf",
-    "python.formatting.yapfArgs": [
-        "--style",
-        "{column_limit: 79}"
-    ],
-  
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "cSpell.allowCompoundWords": true,
+  "cSpell.language": "en,en-US",
+  "debug.console.fontSize": 16,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": false
+  },
+  "editor.fontSize": 18,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.inlineSuggest.enabled": true,
+  "editor.linkedEditing": true,
+  "editor.suggest.maxVisibleSuggestions": 10,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "errorLens.enabledDiagnosticLevels": [
+    "warning",
+    "error"
+  ],
+  "errorLens.excludeBySource": [
+    "cSpell",
+    "Grammarly",
+    "eslint"
+  ],
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "eslint.quiet": true,
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "json5"
+  ],
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.simpleDialog.enable": true,
+  "files.trimTrailingWhitespace": true,
+  "git.enableSmartCommit": true,
+  "git.ignoreMissingGitWarning": true,
+  "git.untrackedChanges": "separate",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "oneDarkPro.bold": true,
+  "oneDarkPro.vivid": true,
+  "python.formatting.provider": "yapf",
+  "python.formatting.yapfArgs": [
+	"--style",
+	"{column_limit: 79}"
+  ],
+  "python.linting.enabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.maxNumberOfProblems": 100,
+  "python.jediEnabled": true,
+  "python.languageServer": "Pylance",
+  "search.exclude": {
+    "**/.git": true,
+    "**/.github": true,
+    "**/.nuxt": true,
+    "**/.output": true,
+    "**/.pnpm": true,
+    "**/.vscode": true,
+    "**/.yarn": true,
+    "**/bower_components": true,
+    "**/dist/**": true,
+    "**/logs": true,
+    "**/node_modules": true,
+    "**/out/**": true,
+    "**/package-lock.json": true,
+    "**/pnpm-lock.yaml": true,
+    "**/tmp": true,
+    "**/yarn.lock": true
+  },
+  "tabnine.experimentalAutoImports": true,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.detectLocale": "off",
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.tabs.enabled": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "update.enableWindowsBackgroundUpdates": false,
+  "volar.codeLens.pugTools": false,
+  "volar.codeLens.scriptSetupTools": true,
+  "volar.completion.preferredAttrNameCase": "pascal",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.activityBar.visible": true,
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.editor.limit.value": 5,
+  "workbench.editor.wrapTabs": true,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "workbench.iconTheme": "file-icons",
+  "workbench.list.smoothScrolling": true,
+  "workbench.productIconTheme": "icons-carbon",
+  "workbench.startupEditor": "newUntitledFile"
 }
 ```
 
@@ -366,8 +483,6 @@ WSLENV=HOME/w:GOPATH/l:TMPDIR/p …
 - --distribution, -d <分发版>        运行指定的分发。
 - --user, -u <用户名>        以指定用户身份运行。
 - --export <分发版> <文件名>
-- 将分发导出到 tar 文件。
-- 对于标准输出，文件名可以是 -。
 - --import <分发版> <安装位置> <文件名> [选项]
 - --shutdown       立即终止所有正在运行的分发和 WSL 2 轻型工具虚拟机。
 
@@ -404,120 +519,349 @@ Start-VM | Stop-VM -Name <virtual machine name>	启动和关闭虚拟机
 
   <br />  
 
-  <br />  
-## `<windows.h>`
-```c
-#include <windows.h>
-int WINAPI WinMain(
-    HINSTANCE hInstance,  // 当前窗口句柄
-    HINSTANCE hPrevInstance,  // 前一个窗口句柄，Win32下为NULL（Win16留下的废物，目前已弃用）
-    LPSTR lpCmdLine,  // 命令行参数
-    int nCmdShow  // 窗口显示方式)
-{
-    // 调用API 函数MessageBox
-    int nSelect = MessageBox(NULL, TEXT("你好"), TEXT("Welcome"), MB_OKCANCEL);
-    if(nSelect == IDOK){
-        MessageBox(NULL, TEXT("你点击了“确定”按钮"), TEXT("提示"), MB_OK);
-    }else{
-        MessageBox(NULL, TEXT("你点击了“取消”按钮"), TEXT("提示"), MB_OK);
-    }
-    return 0;
-}
-```
-int WINAPI MessageBox( HWND hWnd, LPCTSTR lpText, LPCTSTR lpCaption, UINT uType );
 
-- hWnd：该消息框的父窗口句柄，如果此参数为NULL，则该消息框没有拥有父窗口
-- lpText：消息框的内容。LPCTSTR 是自定义数据类型，等价于 const char *。
-- lpCaption：消息框的标题。
-- uType：对话框的按钮样式和图标。
 
-| 按钮 | 含义 |
+## **—— **IntelliJ IDEA** ——**
+
+### [Shortcuts](https://www.jetbrains.com/help/idea/reference-keymap-win-default.html)
+
+**Live Templates**
+> File | Settings | Editor | Live Templates
+
+fori	for循环  <br />  sout	System.out  <br />  .var	生成变量
+
+insert	插入/改写模式
+
+
+**IntelliJ IDEA's top keyboard shortcuts**
+
+| [Search Everywhere](https://www.jetbrains.com/help/idea/searching-everywhere.html) | Double Shift |
 | --- | --- |
-| MB_OK | 默认值，有一个“确认”按钮在里面 |
-| MB_YESNO | 有“是”和“否”两个按钮在里面 |
-| MB_ABORTRETRYIGNORE | 有“中止”，“重试”和“跳过”三个按钮在里面 |
-| MB_YESNOCANCEL | 有“是”，“否”和“取消”三个按钮在里面 |
-| MB_RETRYCANCEL | 有“重试”和“取消”两个按钮在里面 |
-| MB_OKCANCEL | 有“确定”和“取消”两个按钮在里面 |
+| [Find Action...](https://www.jetbrains.com/help/idea/searching-everywhere.html#search_actions) | Ctrl+Shift+A |
+| [Show Project window](https://www.jetbrains.com/help/idea/project-tool-window.html) | Alt+1 |
+| [Rebuild](https://www.jetbrains.com/help/idea/compiling-applications.html) | Ctrl+Shift+F9 |
+| [Show Intention Actions](https://www.jetbrains.com/help/idea/intention-actions.html#apply-intention-actions) | Alt+Enter |
+| [Recent Files](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#recent_files) | Ctrl+E |
+| [Find Usages](https://www.jetbrains.com/help/idea/find-highlight-usages.html#find-usages) | Alt+F7 |
+| [Select In...](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#navigate_in_project_view) | Alt+F1 |
+| [Settings...](https://www.jetbrains.com/help/idea/configure-project-settings.html) | Ctrl+Alt+S |
+| [Generate...](https://www.jetbrains.com/help/idea/generating-code.html) | Alt+Insert |
+| [Run Anything](https://www.jetbrains.com/help/idea/running-applications.html) | Double Ctrl |
+| [Debug...](https://www.jetbrains.com/help/idea/starting-the-debugger-session.html) | Alt+Shift+F9 |
+| [View Breakpoints...](https://www.jetbrains.com/help/idea/using-breakpoints.html) | Ctrl+Shift+F8 |
+| [Attach to Process...](https://www.jetbrains.com/help/idea/attaching-to-local-process.html) | Ctrl+Alt+F5 |
+| [VCS Operations Popup...](https://www.jetbrains.com/help/idea/version-control-integration.html) | Alt+` |
+| [Refactor This...](https://www.jetbrains.com/help/idea/refactoring-source-code.html) | Ctrl+Alt+Shift+T |
+| [Reformat Code](https://www.jetbrains.com/help/idea/reformat-and-rearrange-code.html) | Ctrl+Alt+L |
 
-```c
-#define MB_OK                 0x00000000L
-#define MB_OKCANCEL           0x00000001L
-#define MB_ABORTRETRYIGNORE   0x00000002L
-#define MB_YESNOCANCEL        0x00000003L
-#define MB_YESNO              0x00000004L
-#define MB_RETRYCANCEL        0x00000005L
-```
-| 图标 | 含义 |
+
+
+**Basic editing**
+
+| Paste as Plain Text | Ctrl+Alt+Shift+V |
 | --- | --- |
-| MB_ICONEXCLAMATION | 一个惊叹号出现在消息框： |
-| MB_ICONWARNING | 一个惊叹号出现在消息框（同上） |
-| MB_ICONINFORMATION | 一个圆圈中小写字母i组成的图标出现在消息框： |
-| MB_ICONASTERISK | 一个圆圈中小写字母i组成的图标出现在消息框（同上） |
-| MB_ICONQUESTION | 一个问题标记图标出现在消息框： |
-| MB_ICONSTOP | 一个停止消息图标出现在消息框： |
-| MB_ICONERROR | 一个停止消息图标出现在消息框（同上） |
-| MB_ICONHAND | 一个停止消息图标出现在消息框（同上） |
+| Paste from History... | Ctrl+Shift+V |
+| Duplicate Line or Selection | Ctrl+D |
+| Copy Paths | Ctrl+Shift+C |
+| Copy Reference | Ctrl+Alt+Shift+C |
+| Save All | Ctrl+S |
+| Undo | Ctrl+Z |
+| Redo | Ctrl+Shift+Z |
+| Start New Line | Shift+Enter |
+| Start New Line Before Current | Ctrl+Alt+Enter |
+| Delete Line | Ctrl+Y |
+| Toggle Case | Ctrl+Shift+U |
+| Scratch File | Ctrl+Alt+Shift+Insert |
+| Open Source in New Window | Shift+F4 |
 
-![](http://c.biancheng.net/cpp/uploads/allimg/141108/1-14110Q0425B47.png#id=VaWk7&originHeight=38&originWidth=58&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  ![](http://c.biancheng.net/cpp/uploads/allimg/141108/1-14110Q0431R22.png#id=Dzwln&originHeight=38&originWidth=58&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  ![](http://c.biancheng.net/cpp/uploads/allimg/141108/1-14110Q043302b.png#id=ZT56s&originHeight=38&originWidth=58&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)  <br />  ![](http://c.biancheng.net/cpp/uploads/allimg/141108/1-14110Q04345J6.png#id=g0Wok&originHeight=38&originWidth=58&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
-```c
-#define MB_ICONHAND           0x00000010L
-#define MB_ICONQUESTION       0x00000020L
-#define MB_ICONEXCLAMATION    0x00000030L
-#define MB_ICONASTERISK       0x00000040L
-```
-| 返回值 | 含义 |
+**Caret navigation**
+
+|   <br />   |   <br />   |
 | --- | --- |
-| IDOK | 用户按下了“确认”按钮 |
-| IDCANCEL | 用户按下了“取消”按钮 |
-| IDABORT | 用户按下了“中止”按钮 |
-| IDRETRY | 用户按下了“重试”按钮 |
-| IDIGNORE | 用户按下了“忽略”按钮 |
-| IDYES | 用户按下了“是”按钮 |
-| IDNO | 用户按下了“否”按钮 |
+| Move Caret to Previous Word | Ctrl+Left |
+| Move Caret to Next Word | Ctrl+Right |
+| Move Caret to Line Start | Home |
+| Move Caret to Line End | End |
+| Move Caret to Matching Brace | Ctrl+Shift+M |
+| Move Caret to Code Block Start | Ctrl+[ |
+| Move Caret to Code Block End | Ctrl+] |
+| Next Method | Alt+Down |
+| Previous Method | Alt+Up |
+| Move Caret to Page Top | Ctrl+Page Up |
+| Move Caret to Page Bottom | Ctrl+Page Down |
+| Page Up | Page Up |
+| Page Down | Page Down |
+| Move Caret to Text Start | Ctrl+Home |
+| Move Caret to Text End | Ctrl+End |
 
-```c
-#define IDOK       1
-#define IDCANCEL   2
-#define IDABORT    3
-#define IDRETRY    4
-#define IDIGNORE   5
-#define IDYES      6
-#define IDNO       7
+**Select text**
+
+|   <br />   |   <br />   |
+| --- | --- |
+| Select All | Ctrl+A |
+| Left with Selection | Shift+Left |
+| Right with Selection | Shift+Right |
+| Move Caret to Previous Word with Selection | Ctrl+Shift+Left |
+| Move Caret to Next Word with Selection | Ctrl+Shift+Right |
+| Move Caret to Line Start with Selection | Shift+Home |
+| Move Caret to Line End with Selection | Shift+End |
+| Up with Selection | Shift+Up |
+| Down with Selection | Shift+Down |
+| Move Caret to Code Block Start with Selection | Ctrl+Shift+[ |
+| Move Caret to Code Block End with Selection | Ctrl+Shift+] |
+| Move Caret to Page Top with Selection | Ctrl+Shift+Page Up |
+| Move Caret to Page Bottom with Selection | Ctrl+Shift+Page Down |
+| Page Up with Selection | Shift+Page Up |
+| Page Down with Selection | Shift+Page Down |
+| Move Caret to Text Start with Selection | Ctrl+Shift+Home |
+| Move Caret to Text End with Selection | Ctrl+Shift+End |
+| Extend Selection | Ctrl+W |
+| Shrink Selection | Ctrl+Shift+W |
+
+**Multiple carets and selection ranges**
+
+|   <br />   |   <br />   |
+| --- | --- |
+| [Add/Remove Caret](https://www.jetbrains.com/help/idea/multicursor.html#add-carets-at-selected-locations) | Alt+Shift+Click |
+| [Toggle Column Selection Mode](https://www.jetbrains.com/help/idea/multicursor.html#column_selection) | Alt+Shift+Insert |
+| [Clone Caret Above](https://www.jetbrains.com/help/idea/multicursor.html#add-carets-above-or-below-the-current-caret) | Double Ctrl + Up |
+| [Clone Caret Below](https://www.jetbrains.com/help/idea/multicursor.html#add-carets-above-or-below-the-current-caret) | Double Ctrl + Down |
+| [Add Caret to Each Line in Selection](https://www.jetbrains.com/help/idea/multicursor.html#add-carets-to-the-end-of-each-line-in-the-selected-region) | Alt+Shift+G |
+| [Add Selection for Next Occurrence](https://www.jetbrains.com/help/idea/multicursor.html#multiple_words) | Alt+J |
+| [Select All Occurrences](https://www.jetbrains.com/help/idea/multicursor.html#multiple_words) | Ctrl+Alt+Shift+J |
+| [Deselect Last Occurrence](https://www.jetbrains.com/help/idea/multicursor.html#multiple_words) | Alt+Shift+J |
+| [Create Rectangular Selection](https://www.jetbrains.com/help/idea/multicursor.html#use-mouse-to-select-rectangular-fragments-of-text-in-normal-selection-mode) | Alt+Shift+Middle-Click |
+| [Drag to Create Rectangular Selection](https://www.jetbrains.com/help/idea/multicursor.html#use-mouse-to-select-rectangular-fragments-of-text-in-normal-selection-mode) | Alt+Click |
+| [Drag to Create Multiple Rectangular Selections](https://www.jetbrains.com/help/idea/multicursor.html#use-mouse-to-select-rectangular-fragments-of-text-in-normal-selection-mode) | Ctrl+Alt+Shift+Click |
+
+**Coding assistance**
+
+|   <br />   |   <br />   |
+| --- | --- |
+| [Show Intention Actions](https://www.jetbrains.com/help/idea/intention-actions.html#apply-intention-actions) | Alt+Enter |
+| [Basic Completion](https://www.jetbrains.com/help/idea/auto-completing-code.html#basic_completion) | Ctrl+Space |
+| Type-Matching Completion | Ctrl+Shift+Space |
+| Second Basic Completion | Ctrl+Alt+Space |
+| Complete Current Statement | Ctrl+Shift+Enter |
+| Reformat Code | Ctrl+Alt+L |
+| [Parameter Info](https://www.jetbrains.com/help/idea/viewing-reference-information.html#view-parameter-info) | Ctrl+P |
+| [Quick Documentation](https://www.jetbrains.com/help/idea/viewing-reference-information.html#inline-quick-documentation) | Ctrl+Q |
+| Move Statement Up | Ctrl+Shift+Up |
+| Move Statement Down | Ctrl+Shift+Down |
+| Move Element Left | Ctrl+Alt+Shift+Left |
+| Move Statement Right | Ctrl+Alt+Shift+Right |
+| Move Line Up | Alt+Shift+Up |
+| Move Line Down | Alt+Shift+Down |
+| Comment with Line Comment | Ctrl+/ |
+| Comment with Block Comment | Ctrl+Shift+/ |
+| Generate... | Alt+Insert |
+
+**Context navigation**
+
+|   <br />   |   <br />   |
+| --- | --- |
+| Next Method | Alt+Down |
+| Previous Method | Alt+Up |
+| [Go to Line/Column...](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#find_line) | Ctrl+G |
+| [Switcher](https://www.jetbrains.com/help/idea/using-code-editor.html#ws_editor_switch_between_tabs) | Ctrl+Tab |
+| [Select In...](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#navigate_in_project_view) | Alt+F1 |
+| [Recent Files](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#recent_files) | Ctrl+E |
+| Last Edit Location | Ctrl+Shift+Backspace |
+| Back | Ctrl+Alt+Left |
+| Forward | Ctrl+Alt+Right |
+| Select Next Tab | Alt+Right |
+| Select Previous Tab | Alt+Left |
+| Toggle Anonymous Bookmark | F11 |
+| Toggle Bookmark with Digit | Ctrl+Shift+[digit] |
+| Toggle Bookmark with Mnemonic | Ctrl+F11 |
+| Show All Bookmarks | Shift+F11 |
+| Go to Bookmark with Digit | Ctrl+[digit] |
+| Show Mnemonic Bookmarks | N/A |
+| Go to Next Bookmark | N/A |
+| Go to Previous Bookmark | N/A |
+| Show Bookmarks window | N/A |
+| Show Structure window | Alt+7 |
+| Show Find window | Alt+3 |
+| Next Occurrence | Ctrl+Alt+Down |
+| Previous Occurrence | Ctrl+Alt+Up |
+
+**Find everything**
+
+|   <br />   |   <br />   |
+| --- | --- |
+| Search Everywhere | Double Shift |
+| [Find...](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-file.html#find_in_file) | Ctrl+F |
+| [Find Next / Move to Next Occurrence](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-file.html#find_in_file) | F3 |
+| [Find Previous / Move to Previous Occurrence](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-file.html#find_in_file) | Shift+F3 |
+| [Replace...](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-file.html#replace_search_string) | Ctrl+R |
+| [Find in Files...](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-project.html#find_in_project) | Ctrl+Shift+F |
+| [Replace in Files...](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-project.html#replace_search_string_in_project) | Ctrl+Shift+R |
+| Next Occurrence of the Word at Caret | Ctrl+F3 |
+| Go to File... | Ctrl+Shift+N |
+| File Structure | Ctrl+F12 |
+| Go to Symbol... | Ctrl+Alt+Shift+N |
+| [Find Action...](https://www.jetbrains.com/help/idea/searching-everywhere.html#search_actions) | Ctrl+Shift+A |
+
+**Navigate from symbols**
+
+|   <br />   |   <br />   |
+| --- | --- |
+| [Find Usages](https://www.jetbrains.com/help/idea/find-highlight-usages.html#find-usages) | Alt+F7 |
+| Go to Declaration or Usages | Ctrl+B |
+| Go to Type Declaration | Ctrl+Shift+B |
+| Show Usages | Ctrl+Alt+F7 |
+| [Go to Super Method](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#go_to_implementation) | Ctrl+U |
+| [Go to Implementation(s)](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#go_to_implementation) | Ctrl+Alt+B |
+| [Highlight Usages in File](https://www.jetbrains.com/help/idea/find-highlight-usages.html#usages_in_file) | Ctrl+Shift+F7 |
+
+**Code analysis**
+
+|   <br />   |   <br />   |
+| --- | --- |
+| [Show Intention Actions](https://www.jetbrains.com/help/idea/intention-actions.html#apply-intention-actions) | Alt+Enter |
+| Error Description | Ctrl+F1 |
+| [Next Highlighted Error](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#navigate-errors-warnings) | F2 |
+| [Previous Highlighted Error](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#navigate-errors-warnings) | Shift+F2 |
+| [Run Inspection by Name...](https://www.jetbrains.com/help/idea/running-inspections.html#run-inspections-manually) | Ctrl+Alt+Shift+I |
+| Show Problems window | Alt+6 |
+
+**Run and debug**
+
+|   <br />   |   <br />   |
+| --- | --- |
+| Run Anything | Double Ctrl |
+| Run context configuration | Shift+F10 |
+| Run... | Alt+Shift+F10 |
+| Debug context configuration | Shift+F9 |
+| Debug... | Alt+Shift+F9 |
+| Attach to Process... | Ctrl+Alt+F5 |
+| Stop | Ctrl+F2 |
+| Resume Program | F9 |
+| Stop Background Processes... | Ctrl+Shift+F2 |
+| Step Over | F8 |
+| Force Step Over | Alt+Shift+F8 |
+| Step Into | F7 |
+| Smart Step Into | Shift+F7 |
+| Force Step Into | Alt+Shift+F7 |
+| Step Out | Shift+F8 |
+| Run To Cursor | Alt+F9 |
+| Force Run To Cursor | Ctrl+Alt+F9 |
+| Show Execution Point | Alt+F10 |
+| Evaluate Expression... | Alt+F8 |
+| Quick Evaluate Expression | Ctrl+Alt+F8 |
+| Toggle Line Breakpoint | Ctrl+F8 |
+| Toggle Temporary Line Breakpoint | Ctrl+Alt+Shift+F8 |
+| View Breakpoints... | Ctrl+Shift+F8 |
+| Edit Breakpoint | Ctrl+Shift+F8 |
+| Show Run window | Alt+4 |
+| Show Debug window | Alt+5 |
+| Show Services window | Alt+8 |
+
+**Refactorings**
+
+|   <br />   |   <br />   |
+| --- | --- |
+| Refactor This... | Ctrl+Alt+Shift+T |
+| Rename... | Shift+F6 |
+| Change Signature... | Ctrl+F6 |
+| Inline... | Ctrl+Alt+N |
+| Move... | F6 |
+| Extract Method... | Ctrl+Alt+M |
+| Introduce Field... | Ctrl+Alt+F |
+| Introduce Parameter... | Ctrl+Alt+P |
+| Introduce Variable... | Ctrl+Alt+V |
+| Safe Delete... | Alt+Delete |
+
+**Global VCS actions**
+
+|   <br />   |   <br />   |
+| --- | --- |
+| VCS Operations Popup... | Alt+` |
+| Commit... | Ctrl+K |
+| Update Project | Ctrl+T |
+| Rollback | Ctrl+Alt+Z |
+| Push... | Ctrl+Shift+K |
+| Next Change | Ctrl+Alt+Shift+Down |
+| Previous Change | Ctrl+Alt+Shift+Up |
+| Show Version Control window | Alt+9 |
+| Show Commit window | Alt+0 |
+
+**Tool windows**
+
+|   <br />   |   <br />   |
+| --- | --- |
+| Hide Active Tool Window | Shift+Escape |
+| Hide All Tool Windows | Ctrl+Shift+F12 |
+| Jump to Last Tool Window | F12 |
+| Stretch to Left | Ctrl+Alt+Shift+Left |
+| Stretch to Right | Ctrl+Alt+Shift+Right |
+| Stretch to Top | Ctrl+Alt+Shift+Up |
+| Stretch to Bottom | Ctrl+Alt+Shift+Down |
+| Show Project window | Alt+1 |
+| Show Bookmarks window | N/A |
+| Show Find window | Alt+3 |
+| Show Run window | Alt+4 |
+| Show Debug window | Alt+5 |
+| Show Problems window | Alt+6 |
+| Show Structure window | Alt+7 |
+| Show Services window | Alt+8 |
+| Show Version Control window | Alt+9 |
+| Show Commit window | Alt+0 |
+| Show Terminal window | Alt+F12 |
+
+
+### Settings
+方法分隔符  <br />  Settings -> Editor -> General -> Appearance  <br />  勾选 show method separators
+
+忽略大小写字母  <br />  Settings -> Editor -> General -> Code Completion  <br />  关闭 Match case
+
+多行显示Tab  <br />  Editor Tabs  <br />  勾选 Show tabs in one row
+
+编码字符集  <br />  Settings -> Editor -> General -> File Encodings
+
+Google style  <br />  [intellij-java-google-style.xml](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml)  <br />  Settings -> Editor -> General -> Code Style | Java
+
+filr
+```java
+/**
+ * @description
+ *
+## * @author ${USER}
+ * @date ${YEAR}/${MONTH}/${DAY}
+ **/
 ```
-**数据类型**
-```c
-typedef int                 INT;       /* 整形 */
-typedef unsigned int        UINT;      /* 无符号整形 */
-typedef unsigned int        *PUINT;    /* 无符号整形指针 */
-typedef int                 BOOL;      /* 布尔类型 */
-typedef unsigned char       BYTE;      /* 字节 */
-typedef unsigned short      WORD;      /* WORD (无符号短整型) */
-typedef unsigned long       DWORD;     /* DOUBLE WORD (无符号长整形)*/
-typedef float               FLOAT;     /* 浮点型 */
-typedef FLOAT               *PFLOAT;   /* 指向float类型指针 */
-typedef BOOL near           *PBOOL;    /* 指向布尔类型指针 */
-typedef BOOL far            *LPBOOL;
-typedef BYTE near           *PBYTE;    /* 指向字节类型指针 */
-typedef BYTE far            *LPBYTE;
-typedef int near            *PINT;     /* 整形指针 */
-typedef int far             *LPINT;    
-typedef WORD near           *PWORD;    /* 指向WORD类型的指针 */
-typedef WORD far            *LPWORD;
-typedef long far            *LPLONG;   /* 指向长整形的指针 */
-typedef DWORD near          *PDWORD;   /* 指向DWORD类型的指针 */
-typedef DWORD far           *LPDWORD;
-typedef void far            *LPVOID;   /* 指向void类型的指针 */
-typedef CONST void far      *LPCVOID;  /* 指向void类型的常指针 */
+
+
+### plugin
+
+- Maven Helper	依赖分析
+- Tabnine	基于 AI 的代码提示
+- Rainbow Brackets	彩虹括号
+- One Dark theme
+- google-java-format
+- Alibaba Java Coding Guidelines
+- String Manipulation
+- CamelCase	Shift + Alt + U
+- GsonFormat	JSON转类对象
+- SequenceDiagram	调用时序图
+
+- JPA
+- Mapstruct
+
+- Docer Savior	批量导出接口信息+文档信息到Postman或Markdown
+- Doc View		单个接口文档生成
+
+- Key Promoter X	快捷键
+- Statistic	项目信息统计
+- Translation	翻译插件
+
+
+
+### [CLI](https://www.jetbrains.com/help/idea/working-with-the-ide-features-from-command-line.html)
+```shell
+idea64.exe [project_dir]
+idea64.exe [-l|--line line] [project_dir|--temp-project] file[:line]
+idea64.exe diff <left> <right>
+idea64.exe merge <local> <remote> [base] <merged>
 ```
-"LP"是老式写法  <br />  定义宽字符串，需要加前缀L  <br />  wchar_t *str = L"C语言";  <br />  句柄(Handle)：不同窗口、控件、图像等都对应一个唯一的数字  <br />  消息结构体
-```c
-typedef struct tagMSG {
-    HWND hwnd;
-    UINT message;
-    WPARAM wParam;
-    LPARAM lParam;
-    DWORD time;
-    POINT pt;
-} MSG;
-```
+

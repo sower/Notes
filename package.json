@@ -1,6 +1,6 @@
 {
   "name": "Notes",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "type": "module",
   "description": "My vitepress style site",
   "main": "index.js",
@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/sower/Notes#readme",
   "devDependencies": {
-    "vitepress": "^1.0.0-rc.20"
+    "vitepress": "^1.0.0-rc.31"
   }
 }

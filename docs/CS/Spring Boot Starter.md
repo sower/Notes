@@ -1,8 +1,8 @@
 ---
 title: Spring Boot Starter
 created_at: 2023-06-24T02:32:43.000Z
-updated_at: 2023-10-05T09:51:18.000Z
-word_count: 2243
+updated_at: 2023-10-21T12:07:25.000Z
+word_count: 3240
 ---  
 
 
@@ -12,6 +12,8 @@ Java Specification Requests：Java 规范提案，指向JCP(Java Community Proce
 JSR-303 是JAVA EE 6 中的一项子规范，叫做Bean Validation。  <br />  [Hibernate Validator](https://hibernate.org/validator/) 提供了 JSR 303 规范中所有内置 constraint 的实现，除此之外还有一些附加的 constraint。
 
 **spring-boot-starter-validation**
+
+Jakarta Bean Validation constraints
 
 | 名称 | 说明 |
 | --- | --- |
@@ -30,6 +32,8 @@ JSR-303 是JAVA EE 6 中的一项子规范，叫做Bean Validation。  <br />  [
 | @Pattern(value) | 被标注的元素必须符合指定的正则表达式 |
 
 
+Additional constraints
+
 | @Email | 字符串，邮箱格式 |
 | --- | --- |
 | @NotEmpty | 集合，不为空 |
@@ -39,11 +43,42 @@ JSR-303 是JAVA EE 6 中的一项子规范，叫做Bean Validation。  <br />  [
 | @Negative | 数字，负数 |
 | @NegativeOrZero | 数字，负数或0 |
 | @PastOrPresent | 过去或者现在 |
+| @Normalized | 标准格式字符串 |
+| @UniqueElements | 集合元素的唯一性 |
+| @URL | url字符格式 |
+
+
 
 - `@Valid` 嵌套校验
 - `@Validated` 分组校验
-- 自定义注解校验
+   - @GroupSequence	按序校验
+   - @GroupSequenceProvider
+   - @ConvertGroup
+- 自定义注解校验： 实现`ConstraintValidator`
+- 组合校验
+```java
+@ConstraintComposition(AND)
+@NotNull
+@Pattern(regexp = ".+")
+// @ReportAsSingleViolation
+@Target({ METHOD, FIELD })
+@Retention(RUNTIME)
+@Constraint(validatedBy = { })
+public @interface NotNullAndPattern {
+    String message() default "{javax.validation.constraints.Pattern.message}";
 
+    Class<?>[] groups() default { };
+
+    Class<? extends Payload>[] payload() default { };
+
+    @OverridesAttribute(constraint = Pattern.class, name = "regexp")
+    String regex();
+}
+```
+校验信息：在`ValidationMessages.properties`定义
+
+
+校验器
 ```java
 @Bean
 public Validator validator(AutowireCapableBeanFactory springFactory) {
@@ -58,6 +93,7 @@ public Validator validator(AutowireCapableBeanFactory springFactory) {
     }
 }
 ```
+
 
 ## [Spring Security](https://docs.spring.io/spring-security/reference/index.html)
 
@@ -143,6 +179,236 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 [Pubsub](https://docs.spring.io/spring-data/data-redis/docs/current/reference/html/#pubsub)
 
+
+
+## [Redisson](https://github.com/redisson/redisson)
+
+[**redisson-spring-boot-starter**](https://github.com/redisson/redisson/tree/master/redisson-spring-boot-starter)
+
+[Configuration](https://github.com/redisson/redisson/wiki/2.-Configuration)
+
+[Operations execution](https://github.com/redisson/redisson/wiki/3.-operations-execution)
+
+### [Data serialization](https://github.com/redisson/redisson/wiki/4.-data-serialization)
+| Codec class name | Description |
+| --- | --- |
+| org.redisson.codec.Kryo5Codec | [Kryo 5](https://github.com/EsotericSoftware/kryo) binary codec  <br />  (Android compatible) **Default codec** |
+| org.redisson.codec.KryoCodec | [Kryo 4](https://github.com/EsotericSoftware/kryo) binary codec |
+| org.redisson.codec.JsonJacksonCodec | [Jackson JSON](https://github.com/FasterXML/jackson)  codec.  <br />  Stores type information in @class field |
+| org.redisson.codec.TypedJsonJacksonCodec | Jackson JSON codec which doesn't store type id (@class field) during encoding and doesn't require it for decoding |
+| org.redisson.codec.AvroJacksonCodec | [Avro](http://avro.apache.org/) binary json codec |
+| org.redisson.codec.ProtobufCodec | [Protobuf](https://github.com/protocolbuffers/protobuf) codec |
+| org.redisson.codec.SmileJacksonCodec | [Smile](http://wiki.fasterxml.com/SmileFormatSpec) binary json codec |
+| org.redisson.codec.CborJacksonCodec | [CBOR](http://cbor.io/) binary json codec |
+| org.redisson.codec.MsgPackJacksonCodec | [MsgPack](http://msgpack.org/) binary json codec |
+| org.redisson.codec.IonJacksonCodec | [Amazon Ion](https://amzn.github.io/ion-docs/) codec |
+| org.redisson.codec.SerializationCodec | JDK Serialization binary codec |
+| org.redisson.codec.LZ4Codec | [LZ4](https://github.com/jpountz/lz4-java) compression codec.  <br />  Uses Kryo5Codec for serialization by default |
+| org.redisson.codec.SnappyCodecV2 | Snappy compression codec based on [snappy-java](https://github.com/xerial/snappy-java) project.  <br />  Uses Kryo5Codec for serialization by default |
+| org.redisson.client.codec.StringCodec | String codec |
+| org.redisson.client.codec.LongCodec | Long codec |
+| org.redisson.client.codec.ByteArrayCodec | Byte array codec |
+| org.redisson.codec.CompositeCodec | Allows to mix different codecs as one |
+
+
+
+[Data partitioning (sharding)](https://github.com/redisson/redisson/wiki/5.-data-partitioning-(sharding))
+
+### [Distributed objects](https://github.com/redisson/redisson/wiki/6.-distributed-objects)
+
+- [Object holder](https://github.com/redisson/redisson/wiki/6.-distributed-objects/#61-object-holder)
+```java
+RBucket<AnyObject> bucket = redisson.getBucket("anyObject");
+
+bucket.set(new AnyObject(1));
+AnyObject obj = bucket.get();
+
+bucket.trySet(new AnyObject(3));
+bucket.compareAndSet(new AnyObject(4), new AnyObject(5));
+bucket.getAndSet(new AnyObject(6));
+```
+
+- [JSON object holder](https://github.com/redisson/redisson/wiki/6.-distributed-objects/#615-json-object-holder)
+- [Binary stream holder](https://github.com/redisson/redisson/wiki/6.-distributed-objects/#62-binary-stream-holder)
+- [Geospatial holder](https://github.com/redisson/redisson/wiki/6.-distributed-objects/#63-geospatial-holder)
+- [BitSet](https://github.com/redisson/redisson/wiki/6.-distributed-objects/#64-bitset)
+- [AtomicLong](https://github.com/redisson/redisson/wiki/6.-distributed-objects/#65-atomiclong)
+- [AtomicDouble](https://github.com/redisson/redisson/wiki/6.-distributed-objects/#66-atomicdouble)
+- [LongAdder](https://github.com/redisson/redisson/wiki/6.-distributed-objects#610-longadder)
+- [DoubleAdder](https://github.com/redisson/redisson/wiki/6.-distributed-objects#611-doubleadder)
+- [PublishSubscribe](https://github.com/redisson/redisson/wiki/6.-distributed-objects/#67-topic)
+```java
+RTopic topic = redisson.getTopic("myTopic");
+int listenerId = topic.addListener(SomeObject.class, new MessageListener<SomeObject>() {
+    @Override
+    public void onMessage(String channel, SomeObject message) {
+        //...
+    }
+});
+
+// subscribe to all topics by `topic*` pattern
+RPatternTopic patternTopic = redisson.getPatternTopic("topic*");
+int listenerId = patternTopic.addListener(Message.class, new PatternMessageListener<Message>() {
+    @Override
+    public void onMessage(String pattern, String channel, Message msg) {
+        //...
+    }
+});
+
+// in other thread or JVM
+RTopic topic = redisson.getTopic("myTopic");
+long clientsReceivedMessage = topic.publish(new SomeObject());
+```
+
+- [Reliable PublishSubscribe](https://github.com/redisson/redisson/wiki/6.-distributed-objects#613-reliable-topic)
+```java
+RReliableTopic topic = redisson.getReliableTopic("anyTopic");
+topic.addListener(SomeObject.class, new MessageListener<SomeObject>() {
+    @Override
+    public void onMessage(CharSequence channel, SomeObject message) {
+        //...
+    }
+});
+
+// in other thread or JVM
+RReliableTopic topic = redisson.getReliableTopic("anyTopic");
+long subscribersReceivedMessage = topic.publish(new SomeObject());
+```
+
+- [Id generator](https://github.com/redisson/redisson/wiki/6.-distributed-objects#614-id-generator)
+- [Bloom filter](https://github.com/redisson/redisson/wiki/6.-distributed-objects/#68-bloom-filter)
+```java
+RBloomFilter<SomeObject> bloomFilter = redisson.getBloomFilter("sample");
+// initialize bloom filter with 
+// expectedInsertions = 55000000
+// falseProbability = 0.03
+bloomFilter.tryInit(55000000L, 0.03);
+
+bloomFilter.add(new SomeObject("field1Value", "field2Value"));
+bloomFilter.add(new SomeObject("field5Value", "field8Value"));
+
+bloomFilter.contains(new SomeObject("field1Value", "field8Value"));
+bloomFilter.count();
+```
+
+- [HyperLogLog](https://github.com/redisson/redisson/wiki/6.-distributed-objects/#68-bloom-filter)
+- [RateLimiter](https://github.com/redisson/redisson/wiki/6.-distributed-objects#612-ratelimiter)
+```java
+RRateLimiter limiter = redisson.getRateLimiter("myLimiter");
+// Initialization required only once.
+// 5 permits per 2 seconds
+limiter.trySetRate(RateType.OVERALL, 5, 2, RateIntervalUnit.SECONDS);
+
+// acquire 3 permits or block until they became available       
+limiter.acquire(3);
+```
+
+
+
+### [Distributed collections](https://github.com/redisson/redisson/wiki/7.-distributed-collections)
+
+- [Map](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#71-map)
+```java
+RMap<String, SomeObject> map = redisson.getMap("anyMap");
+SomeObject prevObject = map.put("123", new SomeObject());
+SomeObject currentObject = map.putIfAbsent("323", new SomeObject());
+SomeObject obj = map.remove("123");
+
+// use fast* methods when previous value is not required
+map.fastPut("a", new SomeObject());
+map.fastPutIfAbsent("d", new SomeObject());
+map.fastRemove("b");
+
+RFuture<SomeObject> putAsyncFuture = map.putAsync("321");
+RFuture<Void> fastPutAsyncFuture = map.fastPutAsync("321");
+
+map.fastPutAsync("321", new SomeObject());
+map.fastRemoveAsync("321");
+```
+
+- [Multimap](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#72-multimap)
+- [Set](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#73-set)
+- [SortedSet](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#74-sortedset)
+- [ScoredSortedSet](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#75-scoredsortedset)
+- [List](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#77-list)
+- [Queue](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#78-queue)
+- [Deque](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#79-deque)
+- [Blocking Queue](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#710-blocking-queue)
+- [Bounded Blocking Queue](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#711-bounded-blocking-queue)
+- [Blocking Deque](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#712-blocking-deque)
+- [Delayed Queue](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#714-delayed-queue)
+- [Priority Queue](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#716-priority-queue)
+- [Transfer Queue](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#722-transfer-queue)
+- [Stream](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#720-stream)
+- [Time Series](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#723-time-series)
+- [Ring Buffer](https://github.com/redisson/redisson/wiki/7.-distributed-collections/#721-ring-buffer)
+
+### [Distributed locks and synchronizers](https://github.com/redisson/redisson/wiki/8.-distributed-locks-and-synchronizers)
+
+- [Lock](https://github.com/redisson/redisson/wiki/8.-distributed-locks-and-synchronizers/#81-lock)
+```java
+RLock lock = redisson.getLock("myLock");
+
+// traditional lock method
+lock.lock();
+
+// or acquire lock and automatically unlock it after 10 seconds
+lock.lock(10, TimeUnit.SECONDS);
+
+// or wait for lock aquisition up to 100 seconds 
+// and automatically unlock it after 10 seconds
+boolean res = lock.tryLock(100, 10, TimeUnit.SECONDS);
+if (res) {
+   try {
+     ...
+   } finally {
+       lock.unlock();
+   }
+}
+```
+
+- [Spin Lock](https://github.com/redisson/redisson/wiki/8.-distributed-locks-and-synchronizers/#89-spin-lock)
+- [Fenced Lock](https://github.com/redisson/redisson/wiki/8.-distributed-locks-and-synchronizers/#810-fenced-lock)
+- [Fair Lock](https://github.com/redisson/redisson/wiki/8.-distributed-locks-and-synchronizers/#82-fair-lock)
+- [MultiLock](https://github.com/redisson/redisson/wiki/8.-distributed-locks-and-synchronizers/#83-multilock)
+- [ReadWriteLock](https://github.com/redisson/redisson/wiki/8.-distributed-locks-and-synchronizers/#85-readwritelock)
+- [Semaphore](https://github.com/redisson/redisson/wiki/8.-distributed-locks-and-synchronizers/#86-semaphore)
+- [PermitExpirableSemaphore](https://github.com/redisson/redisson/wiki/8.-distributed-locks-and-synchronizers/#87-permitexpirablesemaphore)
+- [CountDownLatch](https://github.com/redisson/redisson/wiki/8.-distributed-locks-and-synchronizers/#88-countdownlatch).
+
+  <br />   
+
+[Distributed services](https://github.com/redisson/redisson/wiki/9.-distributed-services)
+
+- [Remote service](https://github.com/redisson/redisson/wiki/9.-distributed-services/#91-remote-service)
+- [Live Object service](https://github.com/redisson/redisson/wiki/9.-distributed-services/#92-live-object-service)
+- [Executor service](https://github.com/redisson/redisson/wiki/9.-distributed-services/#93-distributed-executor-service)
+- [Scheduler service](https://github.com/redisson/redisson/wiki/9.-distributed-services/#94-distributed-scheduled-executor-service)
+- [MapReduce service](https://github.com/redisson/redisson/wiki/9.-distributed-services/#95-distributed-mapreduce-service)
+- [RediSearch service](https://github.com/redisson/redisson/wiki/9.-distributed-services/#96-redisearch-service)
+
+
+
+[Additional features](https://github.com/redisson/redisson/wiki/10.-additional-features)
+
+- [Operations with Redis nodes](https://github.com/redisson/redisson/wiki/10.-additional-features/#101-operations-with-redis-nodes)
+- [References to Redisson objects](https://github.com/redisson/redisson/wiki/10.-additional-features/#102-references-to-redisson-objects)
+- [Execution batches of commands](https://github.com/redisson/redisson/wiki/10.-additional-features/#103-execution-batches-of-commands)
+- [Transactions](https://github.com/redisson/redisson/wiki/10.-additional-features/#104-transactions)
+- [XA Transactions](https://github.com/redisson/redisson/wiki/10.-additional-features/#105-xa-transactions)
+- [Scripting](https://github.com/redisson/redisson/wiki/10.-additional-features/#106-scripting)
+- [Functions](https://github.com/redisson/redisson/wiki/10.-additional-features/#107-functions)
+- [Low level Redis client](https://github.com/redisson/redisson/wiki/10.-additional-features/#108-low-level-redis-client)
+
+[Redis commands mapping](https://github.com/redisson/redisson/wiki/11.-Redis-commands-mapping)
+
+[Standalone node](https://github.com/redisson/redisson/wiki/12.-Standalone-node)
+
+[Tools](https://github.com/redisson/redisson/wiki/13.-Tools)
+
+[Integration with frameworks](https://github.com/redisson/redisson/wiki/14.-Integration-with-frameworks)
+
+
 ## [Spring Cache](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache)
 
 spring-boot-starter-cache
@@ -176,6 +442,131 @@ SpEL上下文数据
 
 
 
+
+
+## spring websocket
+
+
+### javax.websocket
+
+- @ServerEndpoint
+- @ClientEndpoint
+```java
+@Configuration(proxyBeanMethods = false)
+public class JavaxWebSocketConfiguration {
+
+    @Bean
+    public ServerEndpointExporter serverEndpointExporter() {
+        return new ServerEndpointExporter();
+    }
+}
+
+
+@Component
+@ServerEndpoint("/websocket/{type}")
+public class WebSocketServer {
+
+    @OnOpen
+    public void onOpen(Session session, EndpointConfig config,
+                       @PathParam(value = "type") String type) {
+        //连接建立
+    }
+
+    @OnClose
+    public void onClose(Session session, CloseReason reason) {
+        //连接关闭
+    }
+
+    @OnMessage
+    public void onMessage(Session session, String message) {
+        //接收文本信息
+    }
+
+    @OnMessage
+    public void onMessage(Session session, PongMessage message) {
+        //接收pong信息
+    }
+
+    @OnMessage
+    public void onMessage(Session session, ByteBuffer message) {
+        //接收二进制信息，也可以用byte[]接收
+    }
+
+    @OnError
+    public void onError(Session session, Throwable e) {
+        //异常处理
+    }
+}
+```
+
+### spring-boot-starter-websocket
+
+```java
+@Configuration
+@EnableWebSocket
+public class ServletWebSocketServerConfigurer implements WebSocketConfigurer {
+
+    @Override
+    public void registerWebSocketHandlers(@NonNull WebSocketHandlerRegistry registry) {
+        registry
+            //添加处理器到对应的路径
+            .addHandler(new ServletWebSocketServerHandler(), "/websocket")
+            //添加握手拦截器
+            .addInterceptors(new ServletWebSocketHandshakeInterceptor())
+            .setAllowedOrigins("*");
+    }
+    
+    public static class ServletWebSocketHandshakeInterceptor implements HandshakeInterceptor {
+
+        @Override
+        public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
+            //握手之前
+            //继续握手返回true, 中断握手返回false
+            return false;
+        }
+
+        @Override
+        public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Exception exception) {
+            //握手之后
+        }
+    }
+}
+
+
+public class ServletWebSocketServerHandler implements WebSocketHandler {
+
+    @Override
+    public void afterConnectionEstablished(@NonNull WebSocketSession session) throws Exception {
+        //连接建立
+    }
+
+    @Override
+    public void handleMessage(@NonNull WebSocketSession session, @NonNull WebSocketMessage<?> message) throws Exception {
+        //接收消息
+    }
+
+    @Override
+    public void handleTransportError(@NonNull WebSocketSession session, @NonNull Throwable exception) throws Exception {
+        //异常处理
+    }
+
+    @Override
+    public void afterConnectionClosed(@NonNull WebSocketSession session, @NonNull CloseStatus closeStatus) throws Exception {
+        //连接关闭
+    }
+
+    @Override
+    public boolean supportsPartialMessages() {
+        //是否支持接收不完整的消息
+        return false;
+    }
+}
+```
+
+支持
+
+- [Simple (or Streaming) Text Orientated Messaging Protocol](https://stomp.github.io/index.html)	简单(流)文本定向消息协议
+- [SockJS](https://github.com/sockjs/sockjs-protocol)
 
 
 ## [Spring Data REST](https://spring.io/projects/spring-data-rest)
@@ -279,7 +670,8 @@ public class HelloJob implements Job {
 }
 ```
 
-**SpringBoot整合**  <br />  spring-boot-starter-quartz
+
+spring-boot-starter-quartz
 ```java
 @Slf4j
 public class DemoJob extends QuartzJobBean {

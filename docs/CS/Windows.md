@@ -1,8 +1,8 @@
 ---
 title: Windows
 created_at: 2022-02-01T05:44:40.000Z
-updated_at: 2022-03-05T00:14:32.000Z
-word_count: 1560
+updated_at: 2023-11-05T15:46:02.000Z
+word_count: 1537
 ---  
 **Microsoft Windows**（视窗操作系统）是[微软公司](https://zh.wikipedia.org/wiki/%E5%BE%AE%E8%BB%9F%E5%85%AC%E5%8F%B8)以图形用户界面为主推出的一系列专有商业软件操作系统。
 ## PC
@@ -18,16 +18,24 @@ word_count: 1560
    - 拦截一些恶意网站的请求，从而防止访问欺诈网站、感染病毒或恶意软件。
 - services：记录了网络服务名、端口号、协议、别名
 
+**用户相关目录**
+
+| **APPDATA** | `C:\\Users\\<user>\\AppData\\Roaming` |
+| --- | --- |
+| **DriverData** | C:\\Windows\\System32\\Drivers\\DriverData |
+| **HOMEPATH** | `\\Users\\<user>` |
+| **LOCALAPPDATA** | `C:\\Users\\<user>\\AppData\\Local` |
+| **TEMP** | `C:\\Users\\<user>\\AppData\\Local\\Temp` |
 
 
 **开机自启目录**
 
-- 特定用户：C:\Users\<Username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-- 所有用户：C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
+- 特定用户：`C:\Users\<User>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
+- 所有用户：`C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp`
 
 
 
-**任务栏**：C:\Users\<Username>\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar
+**任务栏**：`C:\Users\<User>\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar`
 
 ## 日志
 查看日志 eventvwr  <br />  伪造日志 eventcreate  <br />  日志路径 %SystemRoot%\System32\Winevt\Logs
@@ -106,7 +114,7 @@ def disable_all_uwp_net():
 **激活**  <br />  数字永久激活：自从Windows8以来，微软将OEM激活方式升级为OA 3.0，激活机制是将OEM密钥写入BIOS中，并根据硬件信息生成一组Hardware Hash（硬件哈希值），重新安装系统时无需再次输入密钥，安装后会自动激活。
 
 ## 基础配置
-禁用摄像头	Win + X --> 设备管理  <br />  屏幕显示百分比，壁纸，锁屏，休眠时间
+禁用摄像头	Win + X --> 设备管理  <br />  屏幕显示百分比，壁纸，锁屏，休眠时间，电池管理，输入法设置
 
 关闭快速访问	Windows资源管理器，点击选择“查看”选项
 
@@ -196,7 +204,7 @@ Stop-process -name explorer -force
 
 ## FAQ
 #### 更改语言
-家庭版单语言 --> 家庭版		YTMG3-N6DKC-DKB77-7M9GH-8HVX7	重启  <br />  ![](./assets/1643807406716-8214f5e1-d83c-4c49-baf3-8865ee1b3b16.png)
+家庭版单语言 --> 家庭版	重启  <br />  ![](./assets/1643807406716-8214f5e1-d83c-4c49-baf3-8865ee1b3b16.png)
 
 #### 查询Windows序列号
 **CLI**
@@ -204,6 +212,7 @@ Stop-process -name explorer -force
 # 只在许可证类型为 OEM 时才有效
 wmic path softwarelicensingservice get OA3xOriginalProductKey
 ```
+
 
 
 **注册表 —— 备份产品密钥**  <br />  HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform  <br />  BackupProductKeyDefault
@@ -224,4 +233,4 @@ wmic path softwarelicensingservice get OA3xOriginalProductKey
 ![](./assets/1643807406796-a3f8a2f7-2af2-4b7e-9a40-ae9e26f58fdd.png)
 
 
-#### win10 系统版本转换工具
+

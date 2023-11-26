@@ -1,8 +1,8 @@
 ---
 title: Spring
 created_at: 2022-04-03T08:42:16.000Z
-updated_at: 2023-10-05T10:09:57.000Z
-word_count: 11471
+updated_at: 2023-10-21T13:14:23.000Z
+word_count: 11503
 ---  
 ## —— [Spring](https://spring.io/) ——
 ## [Core](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core)
@@ -1262,10 +1262,15 @@ spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 
 - @Lazy：修饰属性、方法或 Bean 类，指定该属性延迟到调用此属性时才注入属性值，或该方法对应的 Bean 延迟初始化（可用来解决循环依赖）
 - @DependsOn：修饰方法，指定在初始化该方法对应的 Bean 之前初始化指定的 Bean
 - @Conditional：满足某个特定的条件才创建该一个特定的 Bean，其属性 value 的类型是 `Class<? extends Condition>[]`
-- @Scheduled：修饰方法，用于声明该方法是一个计划任务
 
 - @EnableTransactionManagement：开启注解式事务的支持，Spring 容器会自动扫描注解 
-- @EnableScheduling：开启计划任务的支持，再在执行计划任务的 Bean 的方法上使用 @Scheduled 声明这是一个计划任务
+- @EnableScheduling：开启计划任务的支持
+- @Scheduled：修饰方法，用于声明该方法是一个计划任务
+   - fixedRate：隔指定时间调用一次，不管任务是否执行完
+   - fixedDelay：任务执行完后隔指定时间再调用
+   - cron： 按表达式执行
+   - 并行任务配置：`spring.task.scheduling.pool.size=5`
+   - 动态定时任务 ScheduledTaskRegistrar
 - @EnableAsync：开启对异步任务的支持，再通过在实际执行的 Bean 的方法中使用 @Async 注解来声明其是一个异步任务
    - 实现是基于AOP，方法要从类的外部调用（即走代理类）
    - 注解的方法必须是public，返回值只能为void或者Future
