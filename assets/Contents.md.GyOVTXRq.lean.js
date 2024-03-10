@@ -1,0 +1,1 @@
+import{_ as a,c as e,o as r,a5 as t}from"./chunks/framework.CgY2496V.js";const b=JSON.parse('{"title":"Notes","description":"","frontmatter":{},"headers":[],"relativePath":"Contents.md","filePath":"Contents.md"}'),i={name:"Contents.md"},l=t("",7),o=[l];function h(n,s,d,m,c,u){return r(),e("div",null,o)}const S=a(i,[["render",h]]);export{b as __pageData,S as default};
