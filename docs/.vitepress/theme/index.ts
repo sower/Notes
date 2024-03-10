@@ -3,7 +3,7 @@ import MyLayout from './components/MyLayout.vue'
 import './custom.css'
 
 export default {
-    ...DefaultTheme,
+    extends: DefaultTheme,
     // override the Layout with a wrapper component that
     // injects the slots
     Layout: MyLayout,

@@ -1,10 +1,9 @@
 ---
 title: Application
 created_at: 2022-01-29T14:00:17.000Z
-updated_at: 2023-11-26T14:05:55.000Z
-word_count: 1795
+updated_at: 2024-03-10T15:01:10.000Z
+word_count: 1939
 ---  
-
 ### —— [Windows](https://www.microsoft.com/zh-cn/software-download) ——
 
 [Microsoft-Activation-Scripts](https://github.com/massgravel/Microsoft-Activation-Scripts)
@@ -26,6 +25,8 @@ WindowTabs
 - Listary
 - FileLocator Pro
 - [AnyTXT Searcher](https://anytxt.net/)
+
+[czkawka](https://github.com/qarmin/czkawka)	重复文件查找
 
 **Compression**
 
@@ -71,6 +72,7 @@ WindowTabs
 
 Others
 
+- [Detect-It-Easy](https://github.com/horsicq/Detect-It-Easy)	determining types of files
 - BulkRenameUtility
 - ExtractIcon
 - FastCopy	[飞扬时空](http://iyoung.ysepan.com/)
@@ -106,7 +108,6 @@ Password
 - [keeweb](https://github.com/keeweb/keeweb)
 - [lesspass](https://github.com/lesspass/lesspass)
 - [authpass](https://github.com/authpass/authpass)
-- [keepass2android](https://github.com/PhilippC/keepass2android)
 
 **Dictionary**
 
@@ -136,7 +137,7 @@ Tools
 
 [IPTV](https://github.com/iptv-org/iptv)
 
--  [awesome-iptv](https://github.com/iptv-org/awesome-iptv)
+- [awesome-iptv](https://github.com/iptv-org/awesome-iptv)
 - [real-url](https://github.com/wbt5/real-url)	直播平台的真实流媒体地址(直播源)和弹幕
 - [Tvlist-awesome-m3u-m3u8](https://github.com/imDazui/Tvlist-awesome-m3u-m3u8)
 
@@ -158,6 +159,8 @@ Tools
    - Inpaint	去水印
    - ImageTuner	格式转换
    - [Paint.Net](https://www.getpaint.net/)
+- **Upscaler**
+   - [Real-ESRGAN-GUI](https://github.com/tsukumijima/Real-ESRGAN-GUI)
 
 **Screen**
 
@@ -223,7 +226,6 @@ Tools
 - [XDM](https://github.com/subhra74/xdm)
 - [FDM](https://www.freedownloadmanager.org/)
 - [NDM](https://www.neatdownloadmanager.com/)
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp)
 - [AriaNg](https://github.com/mayswind/AriaNg)
 - [Motrix](https://github.com/agalwood/Motrix)
 - [qBittorrent](https://github.com/qbittorrent/qBittorrent)
@@ -291,8 +293,12 @@ Sync
 
 - Sandboxie
 - Encryption
+   - [cryptomator](https://github.com/cryptomator/cryptomator)
+      - Plugin	[keepassxc-cryptomator](https://github.com/purejava/keepassxc-cryptomator)
    - [Filefriend](http://www.filefriend.net/)
    - Wise Folder Hider
+   - [Picocrypt](https://github.com/HACKERALERT/Picocrypt)	压缩加密
+   - [VeraCrypt](https://github.com/veracrypt/VeraCrypt)  Disk encryption with strong security based on TrueCrypt
 
 USB
 
@@ -348,9 +354,10 @@ Adobe
 **IDE**
 
 - [Visual Studio Code](https://code.visualstudio.com/)
-- jetbrains
+- JetBrains
    - [IntelliJ IDEA](https://www.jetbrains.com/idea/)
    - Pycharm
+   - [Fleet](https://www.jetbrains.com/zh-cn/fleet/)
 
 **Testing**
 
@@ -361,8 +368,10 @@ Adobe
 **Database**
 
 - [dbeaver](https://github.com/dbeaver/dbeaver)	Free universal database tool and SQL client
-- Navicat Premium	[果核剥壳](https://www.ghpym.com/)
-- SQLiteStudio
+- [HeidiSQL](https://github.com/HeidiSQL/HeidiSQL)	lightweight sql client
+- Navicat Premium
+- [SQLiteStudio](https://github.com/pawelsalawa/sqlitestudio)	免费开源、跨平台的SQLite数据库管理工具
+- [sqlitebrowser](https://github.com/sqlitebrowser/sqlitebrowser)
 - [tiny-rdm](https://github.com/tiny-craft/tiny-rdm)	Redis
 
 **SSH**
@@ -371,10 +380,21 @@ Adobe
 - [WindTerm](https://github.com/kingToolbox/WindTerm)
 - [nxshell](https://github.com/nxshell/nxshell)
 
+
+### CLI
+
+- [just](https://github.com/casey/just)	command runner
+- [ripgrep](https://github.com/BurntSushi/ripgrep)	recursively searches directories for a regex pattern while respecting your gitignore
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp)	video downloader
+
+collections
+
+- [awesome-cli-apps](https://github.com/agarrharr/awesome-cli-apps)
+- [modern-unix](https://github.com/ibraheemdev/modern-unix)
+
 ### Open Source
 
-
-[Files](https://github.com/files-community/Files)	A modern file manager for Windows  <br />  [TablacusExplorer](https://github.com/tablacus/TablacusExplorer)	A tabbed file manager with Add-on support
+[WingetUI](https://github.com/marticliment/WingetUI)	an intuitive GUI for the most common CLI package managers for Windows  <br />  [Files](https://github.com/files-community/Files)	A modern file manager for Windows  <br />  [TablacusExplorer](https://github.com/tablacus/TablacusExplorer)	A tabbed file manager with Add-on support
 
 [ColorPicker](https://github.com/Leo-Corporation/ColorPicker)
 
@@ -424,14 +444,15 @@ Google三件套
 
 Browser
 
-- [X浏览器](https://www.xbext.com/)
 - [Via](https://github.com/tuyafeng/Via)	**轻插件中心：**[http://via-app.cn](http://via-app.cn/#/tabBar/home)
-- [Kiwi Browser](https://kiwibrowser.com/)
+- [X浏览器](https://www.xbext.com/)
+- [Kiwi Browser](https://github.com/kiwibrowser/src.next)
 
 自动跳过
 
 - 李跳跳
 - [GKD](https://github.com/gkd-kit/gkd)
+- [点击助手](https://github.com/mr-bogey/TouchTool)
 
 Player
 
@@ -442,17 +463,26 @@ Player
 - [MX Player](https://play.google.com/store/apps/details?id=com.mxtech.videoplayer.ad) - Powerful video player with advanced hardware acceleration and subtitle support.
 - [Kodi](https://play.google.com/store/apps/details?id=org.xbmc.kodi) - Free cross-platform media player with library support.
 
-Video Downloader
 
-- [Seal](https://github.com/JunkFood02/Seal)
-- [YTDLnis](https://github.com/deniscerri/ytdlnis)
+Security
+
+- [Aegis](https://github.com/beemdevelopment/Aegis)	身份验证器
+- [keepass2android](https://github.com/PhilippC/keepass2android)
+- [LockMyPix](https://lockmypix.com)	隐私保险库
+
+Downloader
+
+- ADM
+- [FDM](https://www.freedownloadmanager.org/)
+- [Seal](https://github.com/JunkFood02/Seal)	视频下载器
+- [YTDLnis](https://github.com/deniscerri/ytdlnis)	视频下载器
 
 Tools
 
+- [简朴](https://github.com/ismartcoding/plain-app)
+- [一个木函](https://www.woobx.cn/)	工具箱
 - 局域网精灵	剪贴板共享
-- MT管理器	双列文件窗口，修改apk
-- 应用与系统信息	监控辅助（Activity），测距
-- 爱玩机工具箱		设备详细详细，应用高级管理，刷机增强，监控辅助，终端
+- 回收站 Dumpster
 - [Anki](http://www.ankichina.net/manual/anki/)
 - 欧陆词典
 - [BinaryEye](https://github.com/markusfisch/BinaryEye)	扫码
@@ -465,12 +495,23 @@ Tools
 - 一触即发	[https://bgg.lanzoui.com/b02bsrsah](https://bgg.lanzoui.com/b02bsrsah)
 
 
+Dev
+
+- DevCheck
+- 应用与系统信息	监控辅助（Activity），测距
+- [MT管理器](https://mt2.cn)	双列文件窗口，修改apk
+- 开发助手
+
+
 Proxy
 
 - [v2rayNG](https://github.com/2dust/v2rayNG)
+- [Virtual-Hosts](https://github.com/x-falcon/Virtual-Hosts)	hosts for android, implement by vpn mode, supports wildcard DNS records 
 
+Enhance
 
 - [Shizuku](https://github.com/RikkaApps/Shizuku)
+- 爱玩机工具箱		设备详细详细，应用高级管理，刷机增强，监控辅助，终端
 
 #### [termux](https://termux.com/)
 

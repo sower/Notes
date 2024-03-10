@@ -1,8 +1,8 @@
 ---
 title: PowerShell
 created_at: 2022-02-01T05:44:40.000Z
-updated_at: 2022-10-25T12:33:18.000Z
-word_count: 6950
+updated_at: 2024-02-25T12:54:02.000Z
+word_count: 6964
 ---  
 ## —— [PowerShell](https://docs.microsoft.com/zh-cn/powershell/) ——
 任务自动化和[配置管理](https://zh.wikipedia.org/w/index.php?title=%E7%B5%84%E6%85%8B%E7%AE%A1%E7%90%86&action=edit&redlink=1)框架，由.NET Framework和.NET Core是构建的命令行界面壳层相关脚本语言组成
@@ -38,7 +38,7 @@ Windows PowerShell ISE是Windows PowerShell的主机应用程序  <br />  文件
 能自动识别计算机容量单位，包括KB，MB，GB，TB，PB
 
 ## cmdlet
-执行特定操作的专用.NET[类](https://zh.wikipedia.org/wiki/%E7%B1%BB_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6))  <br />  指令名称的格式都是以[连字号](https://zh.wikipedia.org/wiki/%E8%BF%9E%E5%AD%97%E5%8F%B7)（-）隔开的一对动词和名词，并且通常都是单数名词
+执行特定操作的专用.NET类  <br />  指令名称的格式都是以连字号（-）隔开的一对动词和名词，并且通常都是单数名词
 
 常见命令行解释器命令对比
 
@@ -103,6 +103,9 @@ Set-DNSClientServerAddress -InterfaceIndex 8 -ServerAddress ("192.168.1.3","192.
 
 # 秒数转日期
 Get-Date ([timezone]::CurrentTimeZone.ToLocalTime(([datetime]'1/1/1970').AddSeconds(1664810878))) -uformat "%Y-%m-%d %H:%M:%S"
+
+# 获取执行文件位置
+Get-Command notepad | Select-Object Source
 ```
 
 

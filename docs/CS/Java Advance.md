@@ -1,8 +1,8 @@
 ---
 title: Java Advance
 created_at: 2022-04-03T08:46:14.000Z
-updated_at: 2023-05-03T09:45:34.000Z
-word_count: 9811
+updated_at: 2024-01-14T14:48:42.000Z
+word_count: 10275
 ---  
 
 ## 并发 Concurrent
@@ -1238,7 +1238,73 @@ public class FileSystemClassLoader extends ClassLoader {
 
 
 
-### JDK CLI Tools
+
+## JMX
+Java Management Extensions 是 Java SE 平台的标准功能，提供了一种简单的、标准的监控和管理资源的方式，对于如何定义一个资源给出了明确的结构和设计模式，主要用于监控和管理 Java 应用程序运行状态、设备和资源信息、Java 虚拟机运行情况等信息。  <br />  ![](./assets/1705241863646-3c99fae3-a327-4258-92fa-c93541fcc9ea.svg)
+
+java.lang.management
+
+- 类加载相关
+- JVM 相关，如运行时间、系统环境变量、用户输入参数
+- 线程相关，如线程状态，线程的统计信息、线程的堆栈等
+- 内存使用情况
+- GC 情况
+- 死锁检测
+- 操作系统信息
+```java
+public static void main(String[] args) {
+    OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
+    String osName = operatingSystemMXBean.getName();
+    String osVersion = operatingSystemMXBean.getVersion();
+    int processors = operatingSystemMXBean.getAvailableProcessors();
+    System.out.printf("操作系统：%s，版本：%s，处理器：%d 个%n", osName, osVersion, processors);
+
+    CompilationMXBean compilationMXBean = ManagementFactory.getCompilationMXBean();
+    String compilationMXBeanName = compilationMXBean.getName();
+    System.out.println("编译系统：" + compilationMXBeanName);
+
+    MemoryMXBean memoryMXBean = ManagementFactory.getMemoryMXBean();
+    MemoryUsage heapMemoryUsage = memoryMXBean.getHeapMemoryUsage();
+    long max = heapMemoryUsage.getMax();
+    long used = heapMemoryUsage.getUsed();
+    System.out.printf("使用内存：%dMB/%dMB%n", used / 1024 / 1024, max / 1024 / 1024);
+}
+```
+
+**使用**
+
+1. 编写资源管理 MBean
+2. 注册资源到 MBean Server
+```java
+public static void main(String[] args) throws MalformedObjectNameException, NotCompliantMBeanException,
+    InstanceAlreadyExistsException, MBeanRegistrationException {
+    // 获取 MBean Server
+    MBeanServer platformMBeanServer = ManagementFactory.getPlatformMBeanServer();
+
+    TestMBean testMBean = new TestMBean();
+
+    // 注册
+    ObjectName objectName = new ObjectName("me.ylem.jmx:type=testMBean");
+    platformMBeanServer.registerMBean(testMBean, objectName);
+
+}
+```
+
+远程访问
+```shell
+java -Dcom.sun.management.jmxremote=true \  # 开启远程访问
+-Dcom.sun.management.jmxremote.port=8398 \		# 自定义 JMX 端口
+-Dcom.sun.management.jmxremote.ssl=false \		# 是否使用 SSL 协议
+-Dcom.sun.management.jmxremote.authenticate=false \ # 是否需要认证
+-Djava.rmi.server.hostname=192.168.3.5 YourClass.java # 当前机器 ip
+```
+
+jconsole 是 Java 自带的基于 JMX 技术的监控管理工具
+
+
+
+
+## JDK CLI Tools
 
 jps (JVM Process Status）: 查看所有 Java 进程的启动类、传入参数和 Java 虚拟机参数等信息
 
@@ -1282,11 +1348,27 @@ jhat (JVM Heap Dump Browser) : 用于分析 heapdump 文件，它会建立一个
 
 
 
-GUI Tools
+### GUI Tools
 
 - jvisualvm(All-In-One Java Troubleshooting Tool) ：多合一故障处理工具。支持运行监视、故障处理、性能分析等功能
 - [MAT](https://www.eclipse.org/mat/)（Eclipse Memory Analyzer Tool）能够获取堆的二进制快照
 - [JProfiler](https://www.ej-technologies.com/products/jprofiler/overview.html)：一款性能分析工具
 
+[jmc](https://github.com/openjdk/jmc)	Java Mission Control 用于管理、监听、分析以及排除 Java 故障的高级工具  <br />  [jmh](https://github.com/openjdk/jmh)	Java Microbenchmark Harness	微基准测试工具
+
+
+## Resource
+JVM/JDK
+
+- [Graal](https://github.com/oracle/graal) - Polyglot embeddable JVM
+- [Open JDK](https://openjdk.java.net/) - Open JDK community home
+- [Zulu](https://www.azul.com/products/zulu-community/) - OpenJDK builds for Windows, Linux, and macOS
+- [Microsoft JDK](https://github.com/microsoft/openjdk) - Microsoft Build of OpenJDK, Free, Open Source
+
+Style:
+
+- [google/styleguide](https://github.com/google/styleguide)
+- [alibaba/p3c](https://github.com/alibaba/p3c)
+- [checkstyle](https://github.com/checkstyle/checkstyle)
 
 

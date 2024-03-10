@@ -1,8 +1,8 @@
 ---
 title: Python
 created_at: 2022-02-01T05:44:44.000Z
-updated_at: 2022-12-11T08:08:28.000Z
-word_count: 11274
+updated_at: 2024-03-10T09:23:03.000Z
+word_count: 11276
 ---  
 ## —— Python ——
 Python是Guido van Rossum在1989年圣诞节期间编写的一个脚本语言。  <br />  Python是一种广泛使用的解释型、高级编程、通用型编程语言。Python支持多种编程范式，包括面向对象、结构化、指令式、函数式和反射式编程。它拥有动态类型系统和垃圾回收功能，能够自动管理内存使用，拥有一个巨大而广泛的标准库。  <br />  Python源代码遵循 GPL(GNU General Public License)协议
@@ -1394,4 +1394,7 @@ seed(a=None, version=2)：初始化随机数生成器  <br />  getstate()：返�
 randrange(start, stop[, step])：从 range(start, stop, step) 返回一个随机选择的元素  <br />  randint(a, b)：返回随机整数 N 满足 a <= N <= b  <br />  choice(seq)：从非空序列 seq 返回一个随机元素  <br />  choices(population, weights=None, _, cum_weights=None, k=1)：从_population*中选择替换，返回大小为 k 的元素列表  <br />  shuffle(x[, random])：将序列 x 随机打乱位置  <br />  sample(population, k)：返回从总体序列或集合中选择的唯一元素的 k 长度列表  <br />  random()：返回 [0.0, 1.0) 范围内的下一个随机浮点数  <br />  uniform(a, b)：返回一个随机浮点数 N ，当 a <= b 时 a <= N <= b ，当 b < a 时 b <= N <= a  <br />  triangular(low, high, mode)：返回一个随机浮点数 N ，使得 low <= N <= high 并在这些边界之间使用指定的 mode  <br />  betavariate(alpha, beta)：Beta 分布  <br />  expovariate(lambd)：指数分布  <br />  gammavariate(alpha, beta)：Gamma 分布  <br />  gauss(mu, sigma)：高斯分布  <br />  lognormvariate(mu, sigma)：对数正态分布  <br />  normalvariate(mu, sigma)：正态分布  <br />  vonmisesvariate(mu, kappa)：冯·米塞斯（von Mises）分布  <br />  paretovariate(alpha)：帕累托分布  <br />  weibullvariate(alpha, beta)：威布尔分布  <br />  **class random.Random([seed])**
 
 ## Appendix
-[python-cheatsheet](https://github.com/gto76/python-cheatsheet)
+
+- [python-cheatsheet](https://github.com/gto76/python-cheatsheet)
+- [pythonsheets](https://www.pythonsheets.com/)
+- [python-guide](https://github.com/realpython/python-guide)

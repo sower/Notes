@@ -1,12 +1,14 @@
 ---
 title: Java Framework
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2023-11-05T03:17:41.000Z
-word_count: 9334
+updated_at: 2024-03-10T08:12:22.000Z
+word_count: 9717
 ---  
 
 ## [Maven](https://maven.apache.org/)
 管理和构建工具  <br />  约定优于配置（Convention Over Configuration）
+
+[标准目录结构](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)
 ```shell
 a-maven-project
 ├── pom.xml  核心配置文件
@@ -20,7 +22,10 @@ a-maven-project
 └── target  打包输出文件
 ```
 
-POM（Project Object Model，项目对象模型）是 Maven 的基本组件，它是以 xml 文件的形式存放在项目的根目录下
+
+### [POM](https://maven.apache.org/pom.html)
+
+项目对象模型（Project Object Model）是 Maven 的基本组件，它是以 xml 文件的形式存放在项目的根目录下
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -137,14 +142,14 @@ POM（Project Object Model，项目对象模型）是 Maven 的基本组件，�
 - artifactId：该jar包自身的名称，类似Java的类名
 - version：该jar包的版本
 
-依赖关系
-
-| scope | 说明 | 示例 |
+#### [依赖机制](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html)
+| **scope** | **说明** | **示例** |
 | --- | --- | --- |
 | compile | 编译时需要用到该jar包（默认） | commons-logging |
 | test | 编译Test时需要用到该jar包 | junit |
 | runtime | 编译时不需要，但运行时需要用到 | mysql |
 | provided | 编译时需要用到，但运行时由JDK或某个服务器提供 | servlet-api |
+| import | 只在依赖是一个 pom 里定义的依赖时使用 | spring-boot-dependencies |
 
 
 可选依赖（Optional Dependencies）：控制当前依赖是否向下传递成为间接依赖
@@ -175,6 +180,8 @@ POM（Project Object Model，项目对象模型）是 Maven 的基本组件，�
   </exclusions>
 </dependency>
 ```
+
+### [Settings](https://maven.apache.org/settings.html)
 
 全局配置文件 (settings.xml)
 
@@ -239,7 +246,15 @@ POM（Project Object Model，项目对象模型）是 Maven 的基本组件，�
 `mvn help:system` 可以查看所有的Java及环境变量属性
 
 
-搜索第三方组件	[search.maven.org](https://search.maven.org/)  <br />  生命周期（default为例）phase：
+**Maven Repository**
+
+- 本地（local）
+   - 默认在 `Windows: C:\Users\<User_Name>\.m2`	
+- [中央（central）](https://search.maven.org/)
+- 远程（remote）
+
+
+[Build Lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)  <br />  生命周期（default为例）phase：
 
 - validate
 - initialize
@@ -267,23 +282,68 @@ POM（Project Object Model，项目对象模型）是 Maven 的基本组件，�
 
 CLI
 
-- mvn clean：清理所有生成的class和jar；
-- mvn clean compile：先清理，再执行到compile；
-- mvn clean test：先清理，再执行到test
-- mvn clean package：先清理，再执行到package。
+- mvn clean：清理所有生成的class和jar
+- mvn clean package：先清理，再执行到package
+- mvn clean install -T 1C    并行构建
+   - -T 1C	为每个可用核心使用一个线程
+   - -T 4	使用四个线程。
+   - -T auto
 
 
+[构建配置文件](https://maven.apache.org/guides/introduction/introduction-to-profiles.html)  <br />  一系列的配置项的值，可以用来设置或者覆盖 Maven 构建默认值
 
-**Reference**
+| 类型 | 说明 |
+| --- | --- |
+| 项目级（Per Project） | 定义在项目的POM文件pom.xml中 |
+| 用户级 （Per User） | 定义在Maven的设置xml文件中 (%USER_HOME%/.m2/settings.xml) |
+| 全局（Global） | 定义在Maven全局的设置 xml 文件中 (${maven.home}/conf/settings.xml) |
 
-- [POM Reference](https://maven.apache.org/pom.html)
-   - POM（Project Object Model，项目对象模型）是 Maven 的基本组件，它是以 xml 文件的形式存放在项目的根目录下
-- [Settings Reference](https://maven.apache.org/settings.html)
-- [Run](https://maven.apache.org/run.html)
-- [Configure](https://maven.apache.org/configure.html)
-- [IDE Integration](https://maven.apache.org/ide.html)
 
-plugin  <br />  moudel manager
+```xml
+<profile>
+    <id>no-tests</id>
+    <properties>
+        <maven.test.skip>true</maven.test.skip>
+    </properties>
+</profile>
+```
+
+### [Maven Plugins](https://maven.apache.org/plugins/)
+一个 Maven 插件是一组目标，这些目标并不一定都绑定在同一阶段
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>${maven.failsafe.version}</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>integration-test</goal>
+                        <goal>verify</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+```
+
+列出特定插件中的所有目标  `mvn <PLUGIN>:help`  <br />  运行特定目标  `mvn <PLUGIN>:<GOAL>`
+
+
+Available Plugins
+
+- [versions-maven-plugin](https://www.mojohaus.org/versions/versions-maven-plugin/index.html)  Manage versions of your project, its modules, dependencies and plugins.
+
+
+[Write Maven Plugins](https://maven.apache.org/plugin-developers/index.html)  <br />  Mojo
+
+
+[Maven Extensions](https://maven.apache.org/extensions/index.html)
+
+
+moudel manager
 
 **Maven Wrapper**  <br />  给一个项目提供一个独立的，指定版本的Maven给它使用
 ```shell
@@ -317,6 +377,14 @@ my-project
 ```
 
 
+
+### [maven-mvnd](https://github.com/apache/maven-mvnd)
+Maven Daemon  <br />  原理：生成一个或多个的守护进程来服务构建请求以此来达到并行构建的效果
+
+**options**  <br />  --status	列出正在运行的守护进程  <br />  --stop	杀死所有正在运行的守护进程
+
+
+
 ## Utility
 ### [Lombok](https://projectlombok.org/features/all)
 
@@ -327,7 +395,7 @@ my-project
 - `@RequiredArgsConstructor` 注解在类，为类中需要特殊处理的字段生成构造方法，比如final和被`@NonNull`注解的字段。
 - `@AllArgsConstructor` 注解在类，生成包含类中所有字段的构造方法。
 - `@Data` 注解在类，生成setter/getter、equals、canEqual、hashCode、toString方法，如为final属性，则不会为该属性生成setter方法。
-- [@Builder](https://projectlombok.org/features/Builder)
+- [@Builder](https://projectlombok.org/features/Builder)		@Singular
 - [@Accessors](https://projectlombok.org/features/experimental/Accessors)	fluent API for getters and setters
 - [@NonNull](https://projectlombok.org/features/NonNull)
 - [@Cleanup](https://projectlombok.org/features/Cleanup)	Automatic resource management: Call your close() methods safely with no hassle.
@@ -335,8 +403,6 @@ my-project
 - [@SneakyThrows](https://projectlombok.org/features/SneakyThrows)
 - `@Slf4j` 注解在类，生成log变量，严格意义来说是常量
 - [@With](https://projectlombok.org/features/With)	Immutable 'setters' - methods that create a clone but with one changed field
-
-
 
 
 ### [Apache Commons](https://commons.apache.org/)
@@ -444,6 +510,8 @@ Date round(Date date, int field)：相当于数学中的四舍五入法取整  <
 
 - [BagUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/BagUtils.html)
 - [CollectionUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/CollectionUtils.html)
+- [IterableUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/IterableUtils.html)
+- [IteratorUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/IteratorUtils.html)
 - [ListUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/ListUtils.html)
 - [MapUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/MapUtils.html)
 - [MultiMapUtils](https://commons.apache.org/proper/commons-collections/javadocs/api-4.4/org/apache/commons/collections4/MultiMapUtils.html)
@@ -1418,7 +1486,7 @@ JsonNode jsonNode = mapper.readTree(jsonString);
 
 Object object = mapper.treeToValue(jsonNode);
 ```
-ObjectNode -> JsonNode
+ObjectNode -> JsonNode  <br />  [jsonschema2pojo](https://www.jsonschema2pojo.org/)
 
 [**Jackson Annotations**](https://github.com/FasterXML/jackson-annotations/wiki/Jackson-Annotations)  <br />  Property Naming
 
@@ -1790,7 +1858,29 @@ Cache
 - [Caffeine](https://github.com/ben-manes/caffeine) - High-performance, near-optimal caching library.
 - [Ehcache](http://www.ehcache.org/) - Distributed general-purpose cache.
 
+字节码操作
+
+- [byte-buddy](https://github.com/raphw/byte-buddy)	Further simplifies bytecode generation with a fluent API.
+- [Javassist](https://github.com/jboss-javassist/javassist) - Tries to simplify bytecode editing.
+
+jwt
+
+- [Nimbus JOSE + JWT](https://connect2id.com/products/nimbus-jose-jwt) - Covers all standard signature (JWS) and encryption (JWE) algorithms
+- [jjwt](https://github.com/jwtk/jjwt) - JSON web token for Java and Android.
+- [jwt-java](https://github.com/BastiaanJansen/jwt-java) - Easily create and parse JSON Web Tokens and create customized JWT validators using a fluent API.
 
 
+[Imagery](https://github.com/akullpp/awesome-java?tab=readme-ov-file#imagery)
 
+- [thumbnailator](https://github.com/coobird/thumbnailator)	图片缩放，区域裁剪，水印，旋转，保持比例，图片压缩
+
+Office
+
+- [Apache POI](https://poi.apache.org/) - Supports OOXML (XLSX, DOCX, PPTX) as well as OLE2 (XLS, DOC or PPT).
+- [easyexcel](https://github.com/alibaba/easyexcel)
+
+Misc
+
+- [JGraphT](https://github.com/jgrapht/jgrapht) - Graph library that provides mathematical graph-theory objects and algorithms.
+- [JGit](https://www.eclipse.org/jgit/) - Lightweight, pure Java library implementing the Git version control system.
 

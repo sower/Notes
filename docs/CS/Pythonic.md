@@ -1,8 +1,8 @@
 ---
 title: Pythonic
 created_at: 2022-02-20T02:15:13.000Z
-updated_at: 2023-02-04T10:07:17.000Z
-word_count: 4508
+updated_at: 2024-03-10T14:42:54.000Z
+word_count: 4567
 ---  
 ## Pythonic
 > import this
@@ -568,19 +568,23 @@ typing.**Callable	**可调类型； Callable[[int], str] 是把（int）转�
 T = TypeVar('T')  # Can be anything
 A = TypeVar('A', str, bytes)  # Must be str or bytes
 ```
-typing.**AnyStr	** AnyStr = TypeVar('AnyStr', str, bytes)  <br />  class typing.**Protocol**(Generic)	Protocol 类的基类。  <br />  typing.**cast**(typ, val)	把值强制转换为类型。  <br />  _@_typing. **overload	**修饰支持多个不同参数类型组合的函数或方法。  <br />  _@_typing. **final	**被装饰的方法不能被覆盖，且被装饰的类不能作为子类的装饰器  <br />  内省辅助器  <br />  typing.**get_type_hints**(obj, globalns=None, localns=None, include_extras=False)	返回函数、方法、模块、类对象的类型提示的字典  <br />  typing.**get_args**(tp)  <br />  typing.**get_origin**(tp)	为泛型类型与特殊类型形式提供了基本的内省功能。
+typing.**AnyStr** AnyStr = TypeVar('AnyStr', str, bytes)  <br />  class typing.**Protocol**(Generic)	Protocol 类的基类。  <br />  typing.**cast**(typ, val)	把值强制转换为类型。  <br />  _@_typing. **overload	**修饰支持多个不同参数类型组合的函数或方法。  <br />  _@_typing. **final	**被装饰的方法不能被覆盖，且被装饰的类不能作为子类的装饰器  <br />  内省辅助器  <br />  typing.**get_type_hints**(obj, globalns=None, localns=None, include_extras=False)	返回函数、方法、模块、类对象的类型提示的字典  <br />  typing.**get_args**(tp)  <br />  typing.**get_origin**(tp)	为泛型类型与特殊类型形式提供了基本的内省功能。
 
 
 ## [CLI](https://docs.python.org/zh-cn/3/using/cmdline.html)
 
-`python [-bBdEhiIOqsSuvVWx?] [-c 'command' | -m module-name | script | - ] [args]`
-
 程序
 
 - python.exe	   运行时，会弹出一个黑色的控制台窗口
+
+`python [-bBdEhiIOqsSuvVWx?] [-c 'command' | -m module-name | script | - ] [args]`
+
 - pythonw.exe	无窗口的Python可执行程序，即运行时，没有窗口，代码在后台执行。用于运行GUI（窗口程序），会忽略程序中向控制台输出的信息
+- py.exe	Python启动器
 
+`py [launcher-args] [python-args] [script [script-args]]`  <br />  -0  --list       : List the available pythons  <br />  -0p --list-paths : List with paths
 
+Launcher arguments:  <br />  -2     : Launch the latest Python 2.x version  <br />  -3     : Launch the latest Python 3.x version  <br />  -X.Y   : Launch the specified Python version
 
 **文件**
 
@@ -599,7 +603,7 @@ typing.**AnyStr	** AnyStr = TypeVar('AnyStr', str, bytes)  <br />  class ty
 
 ### [pip](https://pip.pypa.io/en/stable/)
 Python 包管理工具，提供了对Python 包的查找、下载、安装、卸载的功能。
-```python
+```bash
 pip <command> [options]
   -V, --version
   --no-input                  Disable prompting for input.
@@ -630,17 +634,25 @@ pip config [<file-option>] list
 pip config [<file-option>] get command.option
 pip config [<file-option>] set command.option value
 pip config [<file-option>] unset command.option
-
-// 镜像源
-pip config set --global global.index-url http://mirrors.aliyun.com/pypi/simple/
-pip config set --global install.trusted-host mirrors.aliyun.com
-pip config set --global global.disable-pip-version-check True
 ```
 
 
+[**Configuration**](https://pip.pypa.io/en/stable/topics/configuration/)  <br />  Location
+
+- Global	`C:\ProgramData\pip\pip.ini`
+- User	`%APPDATA%\pip\pip.ini`
+- Site	`%VIRTUAL_ENV%\pip.ini`
+
+配置镜像源
+```bash
+pip config set --global global.index-url http://mirrors.aliyun.com/pypi/simple/
+pip config set --global global.trusted-host mirrors.aliyun.com
+pip config set --global global.disable-pip-version-check True
+```
+
 ### [venv](https://docs.python.org/zh-cn/3/library/venv.html#module-venv)
 **虚拟环境（virtualenv）**是 Python 多版本管理的利器，可以使每个项目环境与其他项目独立开来，保持环境的干净，解决包冲突问题。
-```python
+```bash
 venv [-h] [--system-site-packages] [--symlinks | --copies] [--clear]
             [--upgrade] [--without-pip] [--prompt PROMPT]
             ENV_DIR [ENV_DIR ...]
@@ -668,10 +680,10 @@ optional arguments:
   --prompt PROMPT       Provides an alternative prompt prefix for this
                         environment.
 ```
-创建虚拟环境  <br />  **python -m venv  venv_name**
+创建虚拟环境  <br />  `python -m venv  venv_name`
 
 激活虚拟环境
-```python
+```bash
 在Posix标准平台下
 $ source <venv>/bin/activate
 在Windows cmd下
@@ -680,7 +692,7 @@ C:> <venv>/Scripts/activate.bat
 C:> <venv>/Scripts/Activate.ps1
 ```
 ### conda
-```python
+```bash
 clean        Remove unused packages and caches.
 config       Modify configuration values in .condarc. This is modeled after the git config command. Writes to the
              user .condarc file (C:\Users\Hyle\.condarc) by default.
@@ -700,7 +712,7 @@ update       Updates conda packages to the latest compatible version.
 upgrade      Alias for conda update.
 ```
 管理包
-```python
+```bash
 conda update [-n myenv] --all   # updates all packages
 conda install <package> ...
 conda install <package=ver>
@@ -710,7 +722,7 @@ conda list [-r]  # 列出所有包
 conda clean --packages  //删除从不使用的包
 conda clean -a   // 删除索引缓存、锁定文件、未使用过的包和tar包。
 ```
-```python
+```bash
 # Update Anaconda
 conda update conda
 conda update anaconda=VersionNumber(2019.10)

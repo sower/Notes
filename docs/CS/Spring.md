@@ -1,8 +1,8 @@
 ---
 title: Spring
 created_at: 2022-04-03T08:42:16.000Z
-updated_at: 2023-10-21T13:14:23.000Z
-word_count: 11503
+updated_at: 2024-01-14T15:17:51.000Z
+word_count: 11655
 ---  
 ## —— [Spring](https://spring.io/) ——
 ## [Core](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core)
@@ -14,23 +14,28 @@ IoC（Inverse of Control，控制反转）：依赖注入（Dependency Injection
 - 构造注入（**Constructor** Injection）：通过 Bean 的带参构造函数，以实现 Bean 的属性注入
 
 
-**Spring 容器**  <br />  **BeanFactory 接口**  <br />  负责配置、创建、管理 Bean。在初始化容器时，并未实例化 Bean，直到第一次访问某个 Bean 时才实例化目标 Bean
+**Spring 容器**
 
-常用方法
+**Bean工厂**
 
-- `boolean containsBean(String name)`：判断 Spring 容器是否包含 id 为 name 的 Bean 实例
-- `T getBean(Class<T> requiredType)`：获取 Spring 容器中属于 requiredType 类型的、唯一的 Bean 实例
-- `Object getBean(String name)`：返回容器 id 为 name 的 Bean 实例
-- `T getBean(String name, Class requiredType)`：返回容器中 id 为 name，并且类型为 requiredType 的 Bean
-- `Class<?> getType(String name)`：返回容器中 id 为 name 的 Bean 实例的类型
-
+- BeanFactory**：**负责配置、创建、管理 Bean。在初始化容器时，并未实例化 Bean，直到第一次访问某个 Bean 时才实例化目标 Bean
+   - `boolean containsBean(String name)`：判断 Spring 容器是否包含 id 为 name 的 Bean 实例
+   - `T getBean(Class<T> requiredType)`：获取 Spring 容器中属于 requiredType 类型的、唯一的 Bean 实例
+   - `Object getBean(String name)`：返回容器 id 为 name 的 Bean 实例
+   - `T getBean(String name, Class requiredType)`：返回容器中 id 为 name，并且类型为 requiredType 的 Bean
+   - `Class<?> getType(String name)`：返回容器中 id 为 name 的 Bean 实例的类型
+- ListableBeanFactory：支持按类型获取Bean的集合
+- HierarchicalBeanFactory：支持父子容器关系，实现Bean定义的层次结构
+- ConfigurableBeanFactory：提供对BeanFactory配置的扩展，如属性编辑器、作用域等
+- AutowireCapableBeanFactory：Bean创建、初始化、注入、销毁的核心功能接口
+- ConfigurableListableBeanFactory：支持配置和列表操作的可配置Bean工厂接口
 
 **ApplicationContext 接口**  <br />  Spring 上下文，BeanFactory 的子接口。在初始化应用上下文时就实例化所有单实例的 Bean  <br />  常用实现类：FileSystemXmlApplicationContext、ClassPathXmlApplicationContext 和 AnnotationConfigApplicationContext
 
 
 **后置处理器**
 
-- BeanPostProcessor	Bean 后置处理器
+- BeanPostProcessor	Bean后置处理器
    - postProcessBeforeInitialization（初始化前执行）
    - postProcessAfterInitialization（初始化后执行）
 - BeanFactoryPostProcessor	容器后置处理器
@@ -475,8 +480,29 @@ AspectJ 切入点语法
    - @args：用于匹配入参标注有指定注解的方法
 
 
-### SpEL
-Spring Expression Language 是一种功能强大的表达式语言，支持运行时查询和操作对象图 。
+### [SpEL](https://docs.spring.io/spring-framework/reference/core/expressions.html)
+Spring Expression Language 是一种功能强大的表达式语言
+
+- Literal expressions
+- Boolean and relational operators
+- Regular expressions
+- Class expressions
+- Accessing properties, arrays, lists, and maps
+- Method invocation
+- Assignment
+- Calling constructors
+- Bean references
+- Array construction
+- Inline lists
+- Inline maps
+- Ternary operator
+- Variables
+- User-defined functions added to the context
+- reflective invocation of Method
+- various cases of MethodHandle
+- Collection projection
+- Collection selection
+- Templated expressions
 ```java
 // 构造解析器
 ExpressionParser parser = new SpelExpressionParser();
@@ -504,7 +530,7 @@ public class DemoEvent extends ApplicationEvent {
 
     private String msg;
 
-    public DemoEvent(Object source,String msg) {
+    public DemoEvent(Object source, String msg) {
         super(source);
         this.msg = msg;
     }
@@ -514,15 +540,19 @@ public class DemoEvent extends ApplicationEvent {
 ```java
 @Component
 public class DemoListener {
-    //使用onApplicationEvent方法对消息进行接受处理
-    @EventListener
+    // 条件事件
+    @EventListener(condition = "#event.meg.equals('success')")
     public void onApplicationEvent(DemoEvent event) {
         String msg = event.getMsg();
-        System.out.println("DemoListener获取到了监听消息:"+msg);
+        System.out.println("Receive message: " + msg);
 
     }
 }
 ```
+> @TransactionalEventListener 事务处理
+> 使用 @Order 注解指定执行顺序
+
+
 3 定义发布者，通过 ApplicationEventPublisher
 ```java
 @Component
@@ -531,8 +561,7 @@ public class DemoPublisher  {
     private ApplicationContext applicationContext;
 
     public void publish(String msg){
-        applicationContext.publishEvent(new DemoEvent(this,msg));//使用ApplicationContext对象的publishEvent发布事件
-    }
+        applicationContext.publishEvent(new DemoEvent(this, msg));
 }
 ```
 
@@ -552,7 +581,6 @@ public interface CommandLineRunner {
 ### Utils
 #### StringUtils
 
-- boolean ~~isEmpty~~(Object str)：字符串是否为空或者空字符串
 - boolean hasLength(CharSequence str)：字符串是否为空，或者长度为 0
 - boolean hasText(String str)：字符串是否有内容（不为空，且不全为空格）
 - boolean containsWhitespace(String str)：字符串是否包含空格
@@ -800,6 +828,8 @@ public class UserDaoImpl implements UserDao {
 - 自调用失效：一个类**自身方法之间的调用**
 - 方法是 public 且非静态的
 :::
+
+自注入：Spring bean将自身作为依赖注入。它使用Spring容器获取对自身的引用，然后使用该引用执行某些操作
 
 ## [Spring MVC](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html)
 
@@ -1261,7 +1291,6 @@ spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 
 - @Scope：修饰属性或方法，指定该方法对应的 Bean 的生命域
 - @Lazy：修饰属性、方法或 Bean 类，指定该属性延迟到调用此属性时才注入属性值，或该方法对应的 Bean 延迟初始化（可用来解决循环依赖）
 - @DependsOn：修饰方法，指定在初始化该方法对应的 Bean 之前初始化指定的 Bean
-- @Conditional：满足某个特定的条件才创建该一个特定的 Bean，其属性 value 的类型是 `Class<? extends Condition>[]`
 
 - @EnableTransactionManagement：开启注解式事务的支持，Spring 容器会自动扫描注解 
 - @EnableScheduling：开启计划任务的支持
@@ -1277,7 +1306,7 @@ spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 
 
 条件注解
 
-- @Conditional
+- @Conditional：满足某个特定的条件才创建该一个特定的 Bean，其属性 value 的类型是 `Class<? extends Condition>[]`
 - @ConditionalOnBean：当容器里有指定的 Bean 的条件下
 - @ConditionalOnMissingBean：当容器里没有指定 Bean 的情况下
 - @ConditionalOnClass：当类路径下有指定的类的条件下

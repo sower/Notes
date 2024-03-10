@@ -1,10 +1,13 @@
 ---
 title: ORM
 created_at: 2023-03-05T10:49:15.000Z
-updated_at: 2023-10-05T07:50:51.000Z
-word_count: 4324
+updated_at: 2024-01-14T15:13:18.000Z
+word_count: 4401
 ---  
 ## —— ORM ——
+
+- [jOOQ](https://www.jooq.org/) - Generates typesafe code based on SQL schema.
+
 ### [Hibernate](http://hibernate.org/orm/)
 
 #### 注解
@@ -178,8 +181,16 @@ InheritanceType
 - @UniqueConstraint
 - @Index
 - @ColumnDefault
+
+Custom CRUD
+
 - @DynamicInsert	实体字段的值是null不会加入到insert语句当中
 - @DynamicUpdate
+- @SQLInsert
+- @SQLUpdate
+- @SQLDelete
+- @SQLDeleteAll
+- @SQLSelect
 
 #### HQL
 [大小写敏感性](https://hibernate.net.cn/docs/72.html)：除了Java类与属性的名称外，查询语句对大小写并不敏感  <br />  [from子句](https://hibernate.net.cn/docs/73.html)
@@ -246,8 +257,6 @@ where fatcat.weight > (
 select cat.id, (select max(kit.weight) from cat.kitten kit) 
 from Cat as cat
 ```
-
-
 
 
 ### [MyBatis](https://mybatis.org/mybatis-3/zh/index.html)
@@ -538,10 +547,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
-        new_generator_mappings: false
-        format_sql: true
+        new-generator-mappings: false
+        format-sql: true
         show-sql: true
-        use_sql_comments: true
+        use-sql-comments: true
       
   datasource:
     url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:boot}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
@@ -696,8 +705,28 @@ public class JpaAuditingConfiguration {
 @Audited  <br />  @AuditTable  <br />  @AuditJoinTable  <br />  @AuditMappedBy
 
 
-## [Druid](https://github.com/alibaba/druid)
-数据库连接池，提供强大的监控和扩展功能  <br />  web: [http://localhost/druid](http://localhost/demo/druid)
+## 数据库连接池
+
+### [HikariCP](https://github.com/brettwooldridge/HikariCP)
+简单快速
+```yaml
+spring:
+  datasource:
+    hikari:
+    # 连接数 = ((cpu核数 * 2) + 磁盘有效主轴数)
+      maximum-pool-size: 10
+      minimum-idle: 10
+      # 官方推荐 MYSQL驱动的配置参数
+      data-source-properties:
+        cachePrepStmts: true
+        # 开启服务端预编译
+        useServerPrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+```
+
+### [Druid](https://github.com/alibaba/druid)
+提供强大的监控和扩展功能  <br />  web: [http://localhost/druid](http://localhost/demo/druid)
 
 druid-spring-boot-starter
 ```yaml
@@ -804,8 +833,9 @@ spring:
 ```
 
 
-
 ## 变更管理
 
 - [Liquibase](https://github.com/liquibase/liquibase) - Database-independent library for tracking, managing and applying database schema changes.
 - [Flyway](https://flywaydb.org/) - Simple database migration tool.
+
+
