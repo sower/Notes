@@ -1,8 +1,8 @@
 ---
 title: Spring
 created_at: 2022-04-03T08:42:16.000Z
-updated_at: 2024-01-14T15:17:51.000Z
-word_count: 11655
+updated_at: 2024-03-16T08:14:08.000Z
+word_count: 11665
 ---  
 ## —— [Spring](https://spring.io/) ——
 ## [Core](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core)
@@ -705,6 +705,11 @@ ClassUtils  <br />  AnnotationUtils  <br />  ResolvableType
 StreamUtils  <br />  Base64Utils  <br />  DigestUtils  <br />  DomUtils
 
 PropertyPlaceholderHelper
+```java
+PropertyPlaceholderHelper helper = new PropertyPlaceholderHelper("${", "}", ":",
+        true);
+helper.replacePlaceholders(input, Environment::getProperty);
+```
 
 数据结构
 

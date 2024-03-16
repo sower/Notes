@@ -1,8 +1,8 @@
 ---
 title: PowerShell
 created_at: 2022-02-01T05:44:40.000Z
-updated_at: 2024-02-25T12:54:02.000Z
-word_count: 6964
+updated_at: 2024-03-16T14:00:08.000Z
+word_count: 6990
 ---  
 ## —— [PowerShell](https://docs.microsoft.com/zh-cn/powershell/) ——
 任务自动化和[配置管理](https://zh.wikipedia.org/w/index.php?title=%E7%B5%84%E6%85%8B%E7%AE%A1%E7%90%86&action=edit&redlink=1)框架，由.NET Framework和.NET Core是构建的命令行界面壳层相关脚本语言组成
@@ -570,6 +570,8 @@ Get-NetTCPConnection	端口信息  <br />  Get-WmiObject win32_service | select 
 ```
 语法大写为可读性，但不区分大小写。
 
+转义符```  <br />  换行符 ``n`  <br />  `[Environment]::NewLine`等同``n`r`
+
 ## [Keywords](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_language_keywords)
 | Keyword | Reference |
 | --- | --- |
@@ -704,6 +706,13 @@ System.String  <br />  方法
 $message = "Hello, $first $last."
 $message = "Time: $($directory.CreationTime)"
 $message = "Date: $(Get-Date)"
+
+# 多行字符串
+$Variable=@'
+test line
+test line
+test line
+'@
 ```
 格式字符串
 ```shell

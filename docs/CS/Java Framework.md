@@ -1,8 +1,8 @@
 ---
 title: Java Framework
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2024-03-10T08:12:22.000Z
-word_count: 9717
+updated_at: 2024-03-16T16:04:53.000Z
+word_count: 10212
 ---  
 
 ## [Maven](https://maven.apache.org/)
@@ -283,7 +283,7 @@ a-maven-project
 CLI
 
 - mvn clean：清理所有生成的class和jar
-- mvn clean package：先清理，再执行到package
+- mvn clean package -Dmaven.test.skip=true：先清理，再执行到package
 - mvn clean install -T 1C    并行构建
    - -T 1C	为每个可用核心使用一个线程
    - -T 4	使用四个线程。
@@ -309,7 +309,7 @@ CLI
 ```
 
 ### [Maven Plugins](https://maven.apache.org/plugins/)
-一个 Maven 插件是一组目标，这些目标并不一定都绑定在同一阶段
+一个 Maven 插件是一组目标(Goal)，这些目标并不一定都绑定在同一阶段
 ```xml
 <build>
     <plugins>
@@ -334,13 +334,67 @@ CLI
 
 Available Plugins
 
+- [resources](https://maven.apache.org/plugins/maven-resources-plugin/)
+   - [resources:resources](https://maven.apache.org/plugins/maven-resources-plugin/resources-mojo.html)	将主源代码的资源复制到主输出目录
+   - [resources:testResources](https://maven.apache.org/plugins/maven-resources-plugin/testResources-mojo.html)	将测试源代码的资源复制到测试输出目录。
+   - [resources:copy-resources](https://maven.apache.org/plugins/maven-resources-plugin/copy-resources-mojo.html)	将资源复制到输出目录。
+- [dependency](https://maven.apache.org/plugins/maven-dependency-plugin/)
+   - [dependency:analyze](https://maven.apache.org/plugins/maven-dependency-plugin/analyze-mojo.html) analyzes the dependencies of this project and determines which are: used and declared; used and undeclared; unused and declared.
+   - [dependency:analyze-dep-mgt](https://maven.apache.org/plugins/maven-dependency-plugin/analyze-dep-mgt-mojo.html) analyzes your projects dependencies and lists mismatches between resolved dependencies and those listed in your dependencyManagement section.
+   - [dependency:analyze-only](https://maven.apache.org/plugins/maven-dependency-plugin/analyze-only-mojo.html) is the same as analyze, but is meant to be bound in a pom. It does not fork the build and execute test-compile.
+   - [dependency:analyze-duplicate](https://maven.apache.org/plugins/maven-dependency-plugin/analyze-duplicate-mojo.html)
+   - [dependency:copy](https://maven.apache.org/plugins/maven-dependency-plugin/copy-mojo.html) takes a list of artifacts defined in the plugin configuration section and copies them to a specified location, renaming them or stripping the version if desired. 
+   - [dependency:display-ancestors](https://maven.apache.org/plugins/maven-dependency-plugin/display-ancestors-mojo.html) displays all ancestor POMs of the project. 
+   - [dependency:list](https://maven.apache.org/plugins/maven-dependency-plugin/list-mojo.html) alias for resolve that lists the dependencies for this project.
+   - [dependency:list-classes](https://maven.apache.org/plugins/maven-dependency-plugin/list-classes-mojo.html) displays the fully package-qualified names of all classes found in a specified artifact.
+   - [dependency:resolve-plugins](https://maven.apache.org/plugins/maven-dependency-plugin/resolve-plugins-mojo.html) tells Maven to resolve plugins and their dependencies.
+   - [dependency:tree](https://maven.apache.org/plugins/maven-dependency-plugin/tree-mojo.html) displays the dependency tree for this project.
+   - [dependency:unpack](https://maven.apache.org/plugins/maven-dependency-plugin/unpack-mojo.html) like copy but unpacks.
+   - [dependency:unpack-dependencies](https://maven.apache.org/plugins/maven-dependency-plugin/unpack-dependencies-mojo.html) like copy-dependencies but unpacks.
+- [archetype](https://maven.apache.org/archetype/maven-archetype-plugin/)
 - [versions-maven-plugin](https://www.mojohaus.org/versions/versions-maven-plugin/index.html)  Manage versions of your project, its modules, dependencies and plugins.
+   - [versions:compare-dependencies](https://www.mojohaus.org/versions/versions-maven-plugin/compare-dependencies-mojo.html)	将当前项目的依赖项版本与远程项目的依赖项管理部分进行比较
+   - [versions:display-dependency-updates](https://www.mojohaus.org/versions/versions-maven-plugin/display-dependency-updates-mojo.html)	扫描项目的依赖项并生成具有可用更新版本的依赖项的报告。
+   - [versions:display-plugin-updates](https://www.mojohaus.org/versions/versions-maven-plugin/display-plugin-updates-mojo.html)
+   - [versions:display-property-updates](https://www.mojohaus.org/versions/versions-maven-plugin/display-property-updates-mojo.html)	扫描项目并生成用于控制工件版本以及哪些属性具有可用更新版本的属性的报告
+   - [versions:update-parent](https://www.mojohaus.org/versions/versions-maven-plugin/update-parent-mojo.html)	更新项目的父部分，以便它引用最新的可用版本
+   - [versions:update-properties](https://www.mojohaus.org/versions/versions-maven-plugin/update-properties-mojo.html)	更新项目中定义的属性，以便它们对应于特定依赖项的最新可用版本
+   - [versions:update-child-modules](https://www.mojohaus.org/versions/versions-maven-plugin/update-child-modules-mojo.html)
+   - [versions:use-next-versions](https://www.mojohaus.org/versions/versions-maven-plugin/use-next-versions-mojo.html)	pom 中搜索所有较新版本，并将其替换为下一个版本。
+   - [versions:use-latest-versions](https://www.mojohaus.org/versions/versions-maven-plugin/use-latest-versions-mojo.html)	pom 中搜索所有较新版本，并将其替换为最新版本。
+   - [versions:use-dep-version](https://www.mojohaus.org/versions/versions-maven-plugin/use-dep-version-mojo.html)	将依赖项更新为特定版本。 
 
 
-[Write Maven Plugins](https://maven.apache.org/plugin-developers/index.html)  <br />  Mojo
+[**Write Maven Plugins**](https://maven.apache.org/plugin-developers/index.html)  <br />  [Mojo](https://maven.apache.org/developers/mojo-api-specification.html)(Maven plain Old Java Object) an executable goal in Maven
+```java
+@Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.COMPILE)
+public class DependencyCounterMojo extends AbstractMojo {
 
+    @Parameter(defaultValue = "${project}", required = true, readonly = true)
+    MavenProject project;
 
-[Maven Extensions](https://maven.apache.org/extensions/index.html)
+    @Parameter(property = "scope")
+    String scope;
+
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        boolean isEmpty = scope == null || scope.isEmpty();
+        List<Dependency> dependencies = project.getDependencies();
+        long numDependencies = dependencies.stream()
+            .filter(dependency -> isEmpty || scope.equals(dependency.getScope()))
+            .count();
+        getLog().info("Number of dependencies: " + numDependencies);
+    }
+
+}
+```
+
+[**Maven Extensions**](https://maven.apache.org/extensions/index.html)
+
+- [Build Cache](https://maven.apache.org/extensions/maven-build-cache-extension/)
+- [Enforcer](https://maven.apache.org/enforcer/maven-enforcer-extension/)
+
+[Configure Extensions](https://maven.apache.org/guides/mini/guide-using-extensions.html)  <br />  [Write Extensions](https://maven.apache.org/examples/maven-3-lifecycle-extensions.html)
 
 
 moudel manager

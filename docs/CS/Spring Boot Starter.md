@@ -1,8 +1,8 @@
 ---
 title: Spring Boot Starter
 created_at: 2023-06-24T02:32:43.000Z
-updated_at: 2023-10-21T12:07:25.000Z
-word_count: 3240
+updated_at: 2024-03-16T08:10:37.000Z
+word_count: 3249
 ---  
 
 
@@ -55,6 +55,7 @@ Additional constraints
    - @GroupSequenceProvider
    - @ConvertGroup
 - 自定义注解校验： 实现`ConstraintValidator`
+- 跨参校验	`@SupportedValidationTarget`
 - 组合校验
 ```java
 @ConstraintComposition(AND)
@@ -443,8 +444,10 @@ SpEL上下文数据
 
 
 
+## [Messaging](https://docs.spring.io/spring-boot/docs/current/reference/html/messaging.html#messaging)
 
-## spring websocket
+
+## Spring Websocket
 
 
 ### javax.websocket
@@ -567,6 +570,10 @@ public class ServletWebSocketServerHandler implements WebSocketHandler {
 
 - [Simple (or Streaming) Text Orientated Messaging Protocol](https://stomp.github.io/index.html)	简单(流)文本定向消息协议
 - [SockJS](https://github.com/sockjs/sockjs-protocol)
+
+
+## [Spring Boot Actuator](https://github.com/spring-projects/spring-boot/tree/v3.2.3/spring-boot-project/spring-boot-actuator)
+
 
 
 ## [Spring Data REST](https://spring.io/projects/spring-data-rest)
