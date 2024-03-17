@@ -1,8 +1,8 @@
 ---
 title: Java Framework
 created_at: 2022-02-01T05:44:34.000Z
-updated_at: 2024-03-16T16:04:53.000Z
-word_count: 10212
+updated_at: 2024-03-17T02:37:40.000Z
+word_count: 10221
 ---  
 
 ## [Maven](https://maven.apache.org/)
@@ -352,6 +352,7 @@ Available Plugins
    - [dependency:unpack](https://maven.apache.org/plugins/maven-dependency-plugin/unpack-mojo.html) like copy but unpacks.
    - [dependency:unpack-dependencies](https://maven.apache.org/plugins/maven-dependency-plugin/unpack-dependencies-mojo.html) like copy-dependencies but unpacks.
 - [archetype](https://maven.apache.org/archetype/maven-archetype-plugin/)
+- [git-commit-id-maven-plugin](https://github.com/git-commit-id/git-commit-id-maven-plugin)	生成构建和Git消息
 - [versions-maven-plugin](https://www.mojohaus.org/versions/versions-maven-plugin/index.html)  Manage versions of your project, its modules, dependencies and plugins.
    - [versions:compare-dependencies](https://www.mojohaus.org/versions/versions-maven-plugin/compare-dependencies-mojo.html)	将当前项目的依赖项版本与远程项目的依赖项管理部分进行比较
    - [versions:display-dependency-updates](https://www.mojohaus.org/versions/versions-maven-plugin/display-dependency-updates-mojo.html)	扫描项目的依赖项并生成具有可用更新版本的依赖项的报告。

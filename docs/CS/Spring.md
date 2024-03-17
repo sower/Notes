@@ -1,8 +1,8 @@
 ---
 title: Spring
 created_at: 2022-04-03T08:42:16.000Z
-updated_at: 2024-03-16T08:14:08.000Z
-word_count: 11665
+updated_at: 2024-03-17T10:39:44.000Z
+word_count: 11682
 ---  
 ## —— [Spring](https://spring.io/) ——
 ## [Core](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core)
@@ -836,7 +836,7 @@ public class UserDaoImpl implements UserDao {
 
 自注入：Spring bean将自身作为依赖注入。它使用Spring容器获取对自身的引用，然后使用该引用执行某些操作
 
-## [Spring MVC](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html)
+## [Spring MVC](https://docs.spring.io/spring-framework/reference/web/webmvc.html)
 
 
 **MVC**
@@ -967,8 +967,7 @@ class PersonController {
 ```
 
 ### 拦截器（Interceptor）
-
-1. 自定义拦截器：自定义一个类实现 Hanlderlnterceptor 接口或者继承 HandlerlnterceptorAdapter 抽象类，重写 preHandle 方法（在请求发生前执行），或重写 postHandle 方法（在请求完成后执行）
+自定义拦截器：类实现 Hanlderlnterceptor 接口或者继承 HandlerlnterceptorAdapter 抽象类，重写 preHandle 方法（在请求发生前执行），或重写 postHandle 方法（在请求完成后执行）
 ```java
 public class MyInterceptor implements HandlerInterceptor {
 
@@ -994,19 +993,36 @@ public class MyInterceptor implements HandlerInterceptor {
     }
 }
 ```
-注册拦截器：拦截器的配置XML方式
-```xml
-<mvc:interceptors>
-  <mvc:interceptor>
-    <!--/** 包括路径及其子路径-->
-    <!--/admin/* 拦截的是/admin/add等等这种 , /admin/add/user不会被拦截-->
-    <!--/admin/** 拦截的是/admin/下的所有-->
-    <mvc:mapping path="/**"/>
-    <!--bean配置的就是拦截器-->
-    <bean class="com.example.MyInterceptor"/>
-  </mvc:interceptor>
-</mvc:interceptors>
+注册拦截器
+```java
+@Configuration
+@EnableWebMvc
+public class WebConfig implements WebMvcConfigurer {
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new LocaleChangeInterceptor());
+		registry.addInterceptor(new ThemeChangeInterceptor()).addPathPatterns("/**").excludePathPatterns("/admin/**");
+	}
+}
 ```
+
+**Filter**
+```java
+// URL 模式过滤
+@Bean
+public FilterRegistrationBean<RequestResponseLoggingFilter> loggingFilter(){
+    FilterRegistrationBean<RequestResponseLoggingFilter> registrationBean 
+      = new FilterRegistrationBean<>();
+        
+    registrationBean.setFilter(new RequestResponseLoggingFilter());
+    registrationBean.addUrlPatterns("/users/*");
+    registrationBean.setOrder(2);
+        
+    return registrationBean;    
+}
+```
+
 
 ### 控制器通知 Controller Advice
 `@ControllerAdvice` 或 `@RestControllerAdvice` 定义统一的处理类，用来拦截 Controller 的方法
@@ -1282,12 +1298,40 @@ spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 
 - @ImportResource：修饰配置类，用于导入指定的 XML 配置文件
 - @PropertySource：修饰配置类，用于加载指定的资源配置文件
 - @PropertySources：修饰配置类，用于同时加载多个的资源配置文件
-- @ComponentScan：修饰配置类，相当于 `<context:component-scan base-package="..."/>`，默认扫描当前包以及子包下所有使用 @Service @Components @Repository @Controller 的类，并注册为 Bean。属性：basePackages、lazyInit
-- @ConfigurationProperties：修饰配置类或其内部的 @Bean 方法，用于将**配置文件**的某类名下所有的参数值赋给配置类的属性
 - @Profile：修饰配置类或方法，设定当前 context 需要使用的配置环境，可达到在不同情况下选择实例化不同的 Bean
+- @ComponentScan：修饰配置类，相当于 `<context:component-scan base-package="..."/>`，默认扫描当前包以及子包下所有使用 @Service @Components @Repository @Controller 的类，并注册为 Bean。属性：basePackages、lazyInit
+
+- @ConfigurationProperties：修饰配置类或其内部的 @Bean 方法，用于将**配置文件**的某类名下所有的参数值赋给配置类的属性
+- ＠NestedConfigurationProperty：嵌套配置属性
+- @EnableConfigurationProperties：快速注册 @ConfigurationProperties 注解的类
+- ＠AutoConfiguration：自动配置应用程序上下文
 - @AutoConfigureAfter：在指定的配置类初始化后再加载
 - @AutoConfigureBefore：在指定的配置类初始化前加载
 - @AutoConfigureOrder：数越小越先初始化
+- @ConfigurationPropertiesScan
+
+属性转换
+```java
+@DurationUnit(ChronoUnit.DAYS)
+private Duration timeInDays;
+
+@DataSizeUnit(DataUnit.TERABYTES)
+private DataSize sizeInTB;
+```
+
+
+条件注解
+
+- @Conditional：满足某个特定的条件才创建该一个特定的 Bean，其属性 value 的类型是 `Class<? extends Condition>[]`
+- @ConditionalOnBean：当容器里有指定的 Bean 的条件下
+- @ConditionalOnMissingBean：当容器里没有指定 Bean 的情况下
+- @ConditionalOnClass：当类路径下有指定的类的条件下
+- @ConditionalOnMissingClass：当类路径下没有指定的类的条件下
+- @ConditionalOnProperty：基于属性作为判断条件
+- @ConditionalOnResource
+- @ConditionalOnExpression：基于 SpEL 表达式作为判断条件
+- @ConditionalOnWebApplication：当前项目是 Web 项目的条件下
+- @ConditionalOnNotWebApplication：当前项目不是 Web 项目的条件下
 
 属性注解
 
@@ -1308,20 +1352,6 @@ spring-boot-starter-parent 是所有 Spring Boot 项目的父级依赖，称为 
 - @EnableAsync：开启对异步任务的支持，再通过在实际执行的 Bean 的方法中使用 @Async 注解来声明其是一个异步任务
    - 实现是基于AOP，方法要从类的外部调用（即走代理类）
    - 注解的方法必须是public，返回值只能为void或者Future
-
-条件注解
-
-- @Conditional：满足某个特定的条件才创建该一个特定的 Bean，其属性 value 的类型是 `Class<? extends Condition>[]`
-- @ConditionalOnBean：当容器里有指定的 Bean 的条件下
-- @ConditionalOnMissingBean：当容器里没有指定 Bean 的情况下
-- @ConditionalOnClass：当类路径下有指定的类的条件下
-- @ConditionalOnMissingClass：当类路径下没有指定的类的条件下
-- @ConditionalOnProperty：基于属性作为判断条件
-- @ConditionalOnResource
-- @ConditionalOnExpression：基于 SpEL 表达式作为判断条件
-- @ConditionalOnWebApplication：当前项目是 Web 项目的条件下
-- @ConditionalOnNotWebApplication：当前项目不是 Web 项目的条件下
-
 
 ### [Common Application Properties](https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html)
 
@@ -1416,6 +1446,8 @@ public class Person {
   }
 }
 ```
+
+[属性变更动态重载](https://www.baeldung.com/spring-reloading-properties)
 
 ### 静态资源配置
 

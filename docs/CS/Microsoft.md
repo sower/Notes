@@ -1,8 +1,8 @@
 ---
 title: Microsoft
 created_at: 2022-02-01T05:44:33.000Z
-updated_at: 2023-11-05T14:39:44.000Z
-word_count: 3139
+updated_at: 2024-03-17T02:19:21.000Z
+word_count: 3150
 ---  
 ## —— [Microsoft dev env](https://learn.microsoft.com/en-us/windows/dev-environment/) ——
 
@@ -98,7 +98,7 @@ extensions : `%USERPROFILE%\.vscode\extensions`
 - Tabnine AI
 - [Indent Rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)
 - Code Runner
-- [Toggle Quotes](https://marketplace.visualstudio.com/items?itemName=BriteSnow.vscode-toggle-quotes)
+- [Toggle Quotes](https://github.com/BriteSnow/vscode-toggle-quotes)
 - [Surround](https://marketplace.visualstudio.com/items?itemName=yatki.vscode-surround)
 - [Vscode Google Translate](https://marketplace.visualstudio.com/items?itemName=funkyremi.vscode-google-translate)
 - [Text Power Tools](https://marketplace.visualstudio.com/items?itemName=qcz.text-power-tools)
@@ -108,7 +108,7 @@ extensions : `%USERPROFILE%\.vscode\extensions`
 - [vscode-gitlens](https://github.com/gitkraken/vscode-gitlens)
 - file-icons
 - EditorConfig
-- [thunder-client-support](https://github.com/rangav/thunder-client-support)
+- [Thunder Client](https://github.com/rangav/thunder-client-support)
 
 ### [Shortcuts](https://code.visualstudio.com/docs/getstarted/keybindings)
 **Basic Editing**
@@ -834,20 +834,21 @@ filr
 
 ### plugin
 
-- Maven Helper	依赖分析
+- [Maven Helper](https://github.com/krasa/MavenHelper)	依赖分析
 - Tabnine	基于 AI 的代码提示
 - Rainbow Brackets	彩虹括号
-- One Dark theme
+- [One Dark theme](https://github.com/one-dark/jetbrains-one-dark-theme)
 - google-java-format
 - Alibaba Java Coding Guidelines
-- String Manipulation
-- CamelCase	Shift + Alt + U
-- GsonFormat	JSON转类对象
+- [String Manipulation](https://github.com/krasa/StringManipulation/)
+- [CamelCase](https://github.com/netnexus/camelcaseplugin)	Shift + Alt + U
+- [GsonFormat](https://github.com/mars-men/GsonFormatPlus)	JSON转类对象
 - SequenceDiagram	调用时序图
 
 - JPA
 - Mapstruct
 
+- [Easy Javadoc](https://github.com/starcwang/easy_javadoc)	`ctrl \`快捷生成注释
 - Docer Savior	批量导出接口信息+文档信息到Postman或Markdown
 - Doc View		单个接口文档生成
 

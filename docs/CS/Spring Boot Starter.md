@@ -1,8 +1,8 @@
 ---
 title: Spring Boot Starter
 created_at: 2023-06-24T02:32:43.000Z
-updated_at: 2024-03-16T08:10:37.000Z
-word_count: 3249
+updated_at: 2024-03-17T14:28:41.000Z
+word_count: 3253
 ---  
 
 
@@ -572,7 +572,9 @@ public class ServletWebSocketServerHandler implements WebSocketHandler {
 - [SockJS](https://github.com/sockjs/sockjs-protocol)
 
 
+
 ## [Spring Boot Actuator](https://github.com/spring-projects/spring-boot/tree/v3.2.3/spring-boot-project/spring-boot-actuator)
+
 
 
 
@@ -801,5 +803,20 @@ spring:
 | QRTZ_BLOG_TRIGGERS | Trigger 作为 Blob 类型存储(用于 Quartz 用户用 JDBC 创建他们自己定制的 Trigger 类型，JobStore 并不知道如何存储实例的时候) |
 | QRTZ_TRIGGER_LISTENERS | 存储已配置的 TriggerListener 的信息 |
 | QRTZ_TRIGGERS | 存储已配置的 Trigger 的信息 |
+
+
+
+
+
+其它
+
+[jasypt-spring-boot](https://github.com/ulisesbocchio/jasypt-spring-boot)
+
+[spring-boot-admin](https://github.com/codecentric/spring-boot-admin)
+
+
+
+
+
 
 
