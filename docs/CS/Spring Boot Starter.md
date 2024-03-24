@@ -1,8 +1,8 @@
 ---
 title: Spring Boot Starter
 created_at: 2023-06-24T02:32:43.000Z
-updated_at: 2024-03-17T14:28:41.000Z
-word_count: 3253
+updated_at: 2024-03-24T12:19:10.000Z
+word_count: 3308
 ---  
 
 
@@ -173,6 +173,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 }
 
+```
+
+注解
+
+- @RolesAllowed、@Secured	指定方法上的角色列表
+- @PreAuthorize、@PostAuthorize	提供基于表达式的访问控制
+- @PreFilter、@PostFilter	执行方法之前过滤集合参数
+
+```java
+@Bean 
+public DelegatingSecurityContextAsyncTaskExecutor taskExecutor(ThreadPoolTaskExecutor delegate) { 
+    return new DelegatingSecurityContextAsyncTaskExecutor(delegate); 
+}
 ```
 
 

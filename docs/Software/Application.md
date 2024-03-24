@@ -1,8 +1,8 @@
 ---
 title: Application
 created_at: 2022-01-29T14:00:17.000Z
-updated_at: 2024-03-10T15:01:10.000Z
-word_count: 1939
+updated_at: 2024-03-24T12:28:22.000Z
+word_count: 1947
 ---  
 ### —— [Windows](https://www.microsoft.com/zh-cn/software-download) ——
 
@@ -367,12 +367,12 @@ Adobe
 
 **Database**
 
-- [dbeaver](https://github.com/dbeaver/dbeaver)	Free universal database tool and SQL client
+- [Dbeaver](https://github.com/dbeaver/dbeaver)	Free universal database tool and SQL client
 - [HeidiSQL](https://github.com/HeidiSQL/HeidiSQL)	lightweight sql client
 - Navicat Premium
 - [SQLiteStudio](https://github.com/pawelsalawa/sqlitestudio)	免费开源、跨平台的SQLite数据库管理工具
 - [sqlitebrowser](https://github.com/sqlitebrowser/sqlitebrowser)
-- [tiny-rdm](https://github.com/tiny-craft/tiny-rdm)	Redis
+- [Tiny RDM](https://github.com/tiny-craft/tiny-rdm)	Redis
 
 **SSH**
 
@@ -429,6 +429,8 @@ Google三件套
 - Google service framework 谷歌服务框架 —— GMS （Google Mobile Service，谷歌移动服务）
 - Google play service
 - Google play
+
+[Google Camera](https://www.celsoazevedo.com/files/android/google-camera/)
 
 **App Store**
 
@@ -500,6 +502,7 @@ Dev
 - DevCheck
 - 应用与系统信息	监控辅助（Activity），测距
 - [MT管理器](https://mt2.cn)	双列文件窗口，修改apk
+- [AmazeFileManager](https://github.com/TeamAmaze/AmazeFileManager)  文件管理
 - 开发助手
 
 

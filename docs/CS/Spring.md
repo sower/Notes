@@ -1,8 +1,8 @@
 ---
 title: Spring
 created_at: 2022-04-03T08:42:16.000Z
-updated_at: 2024-03-17T10:39:44.000Z
-word_count: 11682
+updated_at: 2024-03-24T08:17:23.000Z
+word_count: 11812
 ---  
 ## —— [Spring](https://spring.io/) ——
 ## [Core](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core)
@@ -483,34 +483,47 @@ AspectJ 切入点语法
 ### [SpEL](https://docs.spring.io/spring-framework/reference/core/expressions.html)
 Spring Expression Language 是一种功能强大的表达式语言
 
-- Literal expressions
-- Boolean and relational operators
-- Regular expressions
-- Class expressions
-- Accessing properties, arrays, lists, and maps
-- Method invocation
-- Assignment
-- Calling constructors
-- Bean references
-- Array construction
-- Inline lists
-- Inline maps
-- Ternary operator
-- Variables
-- User-defined functions added to the context
-- reflective invocation of Method
-- various cases of MethodHandle
-- Collection projection
-- Collection selection
-- Templated expressions
+- [Literal Expressions](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/literal.html)
+- [Properties, Arrays, Lists, Maps, and Indexers](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/properties-arrays.html)	`officers['advisors'][0]?.placeOfBirth`
+- [Inline Lists](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/inline-lists.html)	`"{{'a','b'},{'x','y'}}"`
+- [Inline Maps](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/inline-maps.html)	`"{name:{first:'Nikola',last:'Tesla'},dob:1856}"`
+- [Array Construction](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/array-construction.html)	`"new int[] {1, 2, 3}"`
+- [Methods](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/methods.html)	`"'abc'.substring(1, 3)"`
+- [Operators](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/operators.html)	`"1 between {1, 5}"	"123 instanceof T(Integer)"`
+- [Types](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/types.html)	`"T(String)"`
+- [Constructors](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/constructors.html)	`"new String('hello spel').toUpperCase()"`
+- [Variables](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/variables.html)	`"#primes.?[#this > 10]"`
+- [Functions](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/functions.html)	`"#reverseString('hello')"`
+- [Bean References](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/bean-references.html)	`@Bean   &FactoryBean`
+- [Ternary Operator (If-Then-Else)](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/operator-ternary.html)	`"false ? 'trueExp' : 'falseExp'"`
+- [The Elvis Operator](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/operator-elvis.html)	`"name?:'Unknown'"`
+- [Safe Navigation Operator](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/operator-safe-navigation.html)
+   - null-safe selection: `?.?`
+   - null-safe select first: `?.^`
+   - null-safe select last: `?.$`
+   - null-safe projection: `?.!`
+- [Collection Selection](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/collection-selection.html)	`#map.?[value < 27]`
+- [Collection Projection](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/collection-projection.html)
+- [Expression Templating](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/templating.html)	`"random number is #{T(java.lang.Math).random()}"`
 ```java
 // 构造解析器
 ExpressionParser parser = new SpelExpressionParser();
-// 解析器解析字符串表达式
-Expression exp = parser.parseExpression("new String('hello spel').toUpperCase()");
-// 获取表达式的值
-String message = exp.getValue(String.class);
-System.out.println(message); // HELLO SPEL
+EvaluationContext context = SimpleEvaluationContext.forReadWriteDataBinding().build();
+
+// Create an inventor to use as the root context object.
+Inventor tesla = new Inventor("Nikola Tesla");
+tesla.setInventions("Telephone repeater", "Tesla coil transformer");
+
+// Iterate over all inventions of the Inventor referenced as the #root
+// object, and generate a list of strings whose contents take the form
+// "<inventor's name> invented the <invention>." (using projection !{...}).
+String expression = "#root.inventions.![#root.name + ' invented the ' + #this + '.']";
+
+// Evaluates to a list containing:
+// "Nikola Tesla invented the Telephone repeater."
+// "Nikola Tesla invented the Tesla coil transformer."
+List<String> results = parser.parseExpression(expression)
+		.getValue(context, tesla, List.class);
 ```
 
 ### Application Event
@@ -1031,6 +1044,8 @@ public FilterRegistrationBean<RequestResponseLoggingFilter> loggingFilter(){
 
 - `@ExceptionHandler(value = Exception.class)` 指定该方法处理的异常类型
 - `@ResponseStatus(HttpStatus.xxx)` 指定该方法返回的状态码
+- `ResponseStatusException`：@ResponseStatus的编程替代方案
+- `HandlerExceptionResolver`：处理Web程序引发的任何异常
 ```java
 @Slf4j
 @RestControllerAdvice
