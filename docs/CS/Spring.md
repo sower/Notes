@@ -1,8 +1,8 @@
 ---
 title: Spring
 created_at: 2022-04-03T08:42:16.000Z
-updated_at: 2024-03-24T08:17:23.000Z
-word_count: 11812
+updated_at: 2024-03-26T15:59:06.000Z
+word_count: 11824
 ---  
 ## —— [Spring](https://spring.io/) ——
 ## [Core](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core)
@@ -485,7 +485,7 @@ Spring Expression Language 是一种功能强大的表达式语言
 
 - [Literal Expressions](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/literal.html)
 - [Properties, Arrays, Lists, Maps, and Indexers](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/properties-arrays.html)	`officers['advisors'][0]?.placeOfBirth`
-- [Inline Lists](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/inline-lists.html)	`"{{'a','b'},{'x','y'}}"`
+- [Inline Lists](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/inline-lists.html)	`"{'a','b'}"`
 - [Inline Maps](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/inline-maps.html)	`"{name:{first:'Nikola',last:'Tesla'},dob:1856}"`
 - [Array Construction](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/array-construction.html)	`"new int[] {1, 2, 3}"`
 - [Methods](https://docs.spring.io/spring-framework/reference/core/expressions/language-ref/methods.html)	`"'abc'.substring(1, 3)"`
@@ -886,10 +886,12 @@ public class UserDaoImpl implements UserDao {
   <br />  `@CrossOrigin`：可用于类或方法，**设置跨域行为**，常用属性：origins（允许域名）、methods、allowedHeaders、exposedHeaders、allowCredentials（是否允许发送 Cookie，**启用后允许域名不能设置为 '*'**）、maxAge（本次预检请求的有效期，单位为秒）
 
 
-**Util**
+**Utils**
 
 - HttpMethod
 - HttpStatus
+- MediaType
+- HttpRange
 - UriComponents
 ```java
 UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl("https://www.bing.cn")
@@ -1020,7 +1022,7 @@ public class WebConfig implements WebMvcConfigurer {
 }
 ```
 
-**Filter**
+**Filter**  <br />  OncePerRequestFilter	保证请求仅执行一次
 ```java
 // URL 模式过滤
 @Bean
